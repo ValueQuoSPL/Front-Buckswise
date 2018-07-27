@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DraggableModule } from 'app/demo/widget/draggable/draggable.module';
 import { GridComponent } from 'app/demo/widget/grid/grid.component';
+import { DraggableModule } from 'app/shared/draggable/draggable.module';
 
 @NgModule({
     imports: [

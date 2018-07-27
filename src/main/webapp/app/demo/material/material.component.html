@@ -1,5 +1,7 @@
 
 <mat-accordion>
+
+  <!-- buttons -->
   <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -99,6 +101,7 @@
       
   </mat-expansion-panel>
   
+  <!-- Self declare -->
   <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -160,6 +163,7 @@
 
   </mat-expansion-panel>
 
+  <!-- nav tab -->
   <mat-expansion-panel>
       <mat-expansion-panel-header>
           <mat-panel-title>
@@ -181,6 +185,7 @@
 
   </mat-expansion-panel>
 
+  <!-- datepicker -->
   <mat-expansion-panel>
 
         <mat-expansion-panel-header>
@@ -202,6 +207,39 @@
   
   </mat-expansion-panel>
 
+  <!-- modal -->
+  <mat-expansion-panel>
+      
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                Dialog, Popup, Modal
+              </mat-panel-title>
+              <mat-panel-description>
+                hello 
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+    
+          <div>
+                    
+            <ol>
+                <li>
+                  <mat-form-field>
+                    <input matInput [(ngModel)]="name" placeholder="What's your name?">
+                  </mat-form-field>
+                </li>
+                <li>
+                  <button mat-raised-button (click)="openDialog()">Pick one</button>
+                </li>
+                <li *ngIf="animal">
+                  You chose: <i>{{animal}}</i>
+                </li>
+              </ol>
+         
+          </div>
+    
+  </mat-expansion-panel>
+
+  <!-- demo -->
   <mat-expansion-panel>
       
           <mat-expansion-panel-header>
@@ -218,5 +256,7 @@
           </div>
     
   </mat-expansion-panel>
+
+  
 </mat-accordion>
   

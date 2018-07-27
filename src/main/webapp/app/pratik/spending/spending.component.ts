@@ -9,7 +9,7 @@ import { IncomeService, UtilityService, HouseService, TravelService, MiscService
 @Component({
   selector: 'jhi-spending',
   templateUrl: './spending.component.html',
-  styles: ['./spending.component.css']
+  styleUrls: ['./spending.component.css']
 })
 export class SpendingComponent implements OnInit {
   totalIncome: number; totalUtility: number; totalHousehold: number; totalTravel: number; totalMisc: number;

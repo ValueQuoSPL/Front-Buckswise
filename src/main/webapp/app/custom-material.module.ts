@@ -9,13 +9,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     imports: [
     ],
     exports: [
       MatButtonModule, MatMenuModule, MatTabsModule, MatExpansionModule, MatGridListModule, MatDatepickerModule,
-      MatFormFieldModule, MatNativeDateModule, MatInputModule
+      MatFormFieldModule, MatNativeDateModule, MatInputModule, MatCardModule, MatDialogModule
     ],
   })
 

@@ -10,7 +10,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { IncomeService, UtilityService, HouseService, TravelService, MiscService, LoanService, LifeService, HealthService, GeneralService, CreditService } from 'app/pratik/spending/spending.service';
 
 // material
-// import { MatTabsModule} from '@angular/material/tabs';
+import { CustomMaterialModule } from 'app/custom-material.module';
 
 @NgModule({
     imports: [
@@ -19,7 +19,7 @@ import { IncomeService, UtilityService, HouseService, TravelService, MiscService
         RouterModule.forChild(pratikState),
         BsDatepickerModule.forRoot(),
         // material
-        // MatTabsModule
+        CustomMaterialModule
     ],
     declarations: [
         HowItWorkComponent,

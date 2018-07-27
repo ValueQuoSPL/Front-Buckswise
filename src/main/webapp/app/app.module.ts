@@ -43,7 +43,7 @@ import {
 } from 'app/layouts';
 import { SuccessComponent } from 'app/success/success.component';
 import { FailComponent } from 'app/fail/fail.component';
-import { DraggableModule } from 'app/demo/widget/draggable/draggable.module';
+import { DraggableModule } from './shared/draggable/draggable.module';
 
 @NgModule({
     imports: [

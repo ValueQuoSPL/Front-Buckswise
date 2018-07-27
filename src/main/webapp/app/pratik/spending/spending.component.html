@@ -1,18 +1,6 @@
 <div>
     <!--start of navbar2 -->
-    <div  style=" opacity: 10;
-    transition: all 700ms ease;
-    right: 0;
-    left: 0;
-    background: #fff;
-    -webkit-box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-    z-index: 5;
-    line-height: 20px;
-    font-size: 0.75em;
-    font-weight: 500;
-    vertical-align: middle;
-    border-radius: 10px;">
+    <div  class="nav-shadow">
     <div style="border-radius: 10px;">
       <nav  class="navbar navbar-expand-md navbar-dark bg-dark "
         style=" margin-top:0px; border-radius: 10px;">
@@ -34,14 +22,267 @@
           </div>
         </nav>
       </div>
-    </div>  <!--end of navbar2 -->
+    </div>  <br> <!--end of navbar2 -->
 
-    <mat-tab-group>
-        <mat-tab label="First"> Content 1 </mat-tab>
-        <mat-tab label="Second"> Content 2 </mat-tab>
-        <mat-tab label="Third"> Content 3 </mat-tab>
-    </mat-tab-group>
-      
+    <mat-accordion >
+        <mat-expansion-panel class="accordion">
+        
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    Income
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Fill your income details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+        
+                <div>
+                    <div class="float-right">
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#incomeModal">
+                            <span>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <span>Add</span>
+                            </span>
+                    </button>
+                    <button type="button" class="btn btn-link" (click)="onIncomeSave()">
+                            <span>
+                                <i class="fa fa-save" aria-hidden="true"></i>
+                                <span>Save</span>
+                            </span>
+                    </button>
+                    <button type="button" class="btn btn-link" (click)="onIncomeGet()">
+                            <span>
+                                <i class="far fa-arrow-alt-circle-down"></i>
+                                <span>Get</span>
+                            </span>
+                    </button>
+                    </div>
+                </div>
+
+                <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Monthly Amount</th>
+                            <th scope="col">Yearly Amount</th>
+                            <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td> Post Tax Take Home Salary of # </td>
+                            <td> <input type="number" [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
+                            <td> <input type="number" placeholder="0" value="{{income.incomeSalary * 12}}" disabled > </td>
+                            </tr>
+                            <tr>
+                            <td> Performance award / bonus </td>
+                            <td> <input type="number" id="21" [(ngModel)]="income.incomeAward"  name="income-award" placeholder="0"> </td>
+                            <td> <input type="number" id="22" value="{{income.incomeAward * 12}}"  placeholder="0" disabled> </td>
+                            </tr>
+                            <tr>
+                            <td> Sign-up bonus </td>
+                            <td> <input type="number" id="31" [(ngModel)]="income.incomeBonus"  name="income-bonus" placeholder="0"> </td>
+                            <td> <input type="number" id="32" value="{{income.incomeBonus * 12}}"  placeholder="0"disabled> </td>
+                            </tr>
+                            <tr>
+                            <td> Pensions </td>
+                            <td> <input type="number" id="41" [(ngModel)]="income.incomePension"  name="income-pension" placeholder="0"> </td>
+                            <td> <input type="number" id="42" value="{{income.incomePension * 12}}"  placeholder="0"disabled> </td>
+                            </tr>
+                            <tr>
+                            <td> Interest earned on savings </td>
+                            <td> <input type="number" id="51" [(ngModel)]="income.incomeSaving"  name="income-saving" placeholder="0"> </td>
+                            <td> <input type="number" id="52" value="{{income.incomeSaving * 12}}"  placeholder="0" disabled> </td>
+                            </tr>
+                            <tr>
+                            <td> Income from investments(Deposites, Securities) </td>
+                            <td> <input type="number" id="61" [(ngModel)]="income.incomeDeposit"  name="income-deposit" placeholder="0"> </td>
+                            <td> <input type="number" id="62" value="{{income.incomeDeposit * 12}}"  placeholder="0"disabled> </td>
+                            </tr>
+                            <tr>
+                            <td> Rental Income </td>
+                            <td> <input type="number" id="71" [(ngModel)]="income.incomeRental"  name="income-rental" placeholder="0"> </td>
+                            <td> <input type="number" id="72" value="{{income.incomeRental * 12}}"  placeholder="0" disabled> </td>
+                            </tr>
+                            <!-- </tbody>
+                            <tbody *ngIf="incomeStatus === saved">
+                            <tr *ngFor="let field of IncomeArray">
+                                <td> {{field.name}} </td>
+                                <td><input  type="number" value="{{field.value}}"  placeholder="0" > </td>
+                                <td><input  type="number" value="{{field.value * 12}}" placeholder="0"  disabled> </td>
+                            </tr>
+                            </tbody> -->
+                            <tr *ngFor="let field of dynamicIncome; let i = index">
+                                <td> {{field.name}} </td>
+                                <td><input  type="number" value="{{field.value}}"  placeholder="0" disabled> </td>
+                                <td><input  type="number" value="{{field.value * 12}}" placeholder="0"  disabled> </td>
+                                <td><button class="btn btn-outline-info"  type="button" (click)="deleteFieldValue(i)" >
+                                <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                                <tr >
+                                <th scope="col">Total</th>
+                                <th >
+                                    {{income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome}}
+                                </th>
+                                <th> {{(income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome) * 12 }}
+                                </th>
+                                </tr>
+                        </tfoot>
+                </table>         
+                
+        
+        </mat-expansion-panel>
+
+        <!-- Start expense panel -->
+        <mat-expansion-panel>
+        
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    Expense
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Fill your Expense details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+        
+                <!-- start expense content -->
+                <div> 
+                    <mat-accordion>
+
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                            Utilities 
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel>     
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                            Household
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel>   
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                            Loan
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel>   
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Insurance
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel> 
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Credit Cards
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel>   
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Entertainment & Travel
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel> 
+                        
+                        <mat-expansion-panel>
+        
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Miscellaneous
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    hello demo
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                        
+                                <div>
+                                    content            
+                                </div>
+                        
+                        </mat-expansion-panel>    
+                    </mat-accordion> 
+                </div>  <!-- end expense content -->
+        </mat-expansion-panel> <!-- end expense panel -->
+    </mat-accordion>
+
+
+
+
+
+
+
+
+
 
     <!--start of main tab header-->
     <nav>

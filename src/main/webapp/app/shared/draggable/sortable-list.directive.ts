@@ -1,5 +1,5 @@
 import { log } from 'util';
-import { DraggableDirective } from 'app/demo/widget/draggable/draggable.directive';
+import { DraggableDirective } from './draggable.directive';
 import { Directive, QueryList, ContentChildren, AfterContentInit, OnInit } from '@angular/core';
 
 @Directive({

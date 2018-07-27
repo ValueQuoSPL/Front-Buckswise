@@ -1,0 +1,12 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image1 {
+    background-image: url('../img/pratik/asset.jpg');
+    background-size: cover;
+  }
+  .example-header-image2 {
+    background-image: url('../img/pratik/liability.jpg');
+    background-size: cover;
+  }

@@ -1,5 +1,5 @@
 import { Directive, OnInit, HostListener, HostBinding, Input, ElementRef, ViewContainerRef } from '@angular/core';
-import { DraggableDirective } from 'app/demo/widget/draggable/draggable.directive';
+import { DraggableDirective } from './draggable.directive';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 interface Position {
