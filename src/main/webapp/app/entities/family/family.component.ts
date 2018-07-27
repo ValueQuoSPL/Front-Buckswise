@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { Family } from './family.model';
-import { FamilyService } from './family.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import { Family } from 'app/entities/family/family.model';
+import { FamilyService } from 'app/entities/family/family.service';
+import { ITEMS_PER_PAGE, Principal } from 'app/shared';
 
 @Component({
     selector: 'jhi-family',

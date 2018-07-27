@@ -1,17 +1,17 @@
-import { DemoComponent } from './demo/demo.component';
+import { DemoComponent } from 'app/demo/demo.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { errorRoute, navbarRoute} from './layouts';
-import {registerRoute} from './account';
-import { DEBUG_INFO_ENABLED } from './app.constants';
- import { GoalComponent } from './goal/goal.component';
-import { GoalSelectComponent } from './goal';
-import { GoalAddButtonComponent} from './goal';
-import { SubscribeComponent } from './subscribe/subscribe.component';
-import { SuccessComponent } from './success/success.component';
-import { LifeInsuranceComponent } from './risk/life-insurance/life-insurance.component';
-import { lifeRoute } from './risk/life-insurance/life-insurance.route';
-import { medicalRoute, MedicalInsuranceComponent, questionnaireRoute } from './risk';
+import { errorRoute, navbarRoute} from 'app/layouts';
+import {registerRoute} from 'app/account';
+import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+ import { GoalComponent } from 'app/goal/goal.component';
+import { GoalSelectComponent } from 'app/goal';
+import { GoalAddButtonComponent} from 'app/goal';
+import { SubscribeComponent } from 'app/subscribe/subscribe.component';
+import { SuccessComponent } from 'app/success/success.component';
+import { LifeInsuranceComponent } from 'app/risk/life-insurance/life-insurance.component';
+import { lifeRoute } from 'app/risk/life-insurance/life-insurance.route';
+import { medicalRoute, MedicalInsuranceComponent, questionnaireRoute } from 'app/risk';
 
 const LAYOUT_ROUTES = [
     navbarRoute,

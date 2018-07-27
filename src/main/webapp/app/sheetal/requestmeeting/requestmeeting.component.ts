@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared';
-import { MeetService } from './meet.service';
+import { User } from 'app/shared';
+import { MeetService } from 'app/sheetal/requestmeeting/meet.service';
 @Component({
   selector: 'jhi-requestmeeting',
   templateUrl: './requestmeeting.component.html',
@@ -11,7 +11,7 @@ export class RequestmeetingComponent implements OnInit {
     constructor(private meetService: MeetService) { }
     submitUser(): void {
       this.meetService.submitUser(this.user)
-      .subscribe( (data) => {
+      .subscribe( data => {
         alert('successfully');
       });
     }

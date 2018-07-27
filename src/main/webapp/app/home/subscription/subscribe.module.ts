@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { SubscriptionComponent } from './subscription.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CommonModule } from '@angular/common';
-import { subscribeRoute } from './subscribe.route';
+import { subscribeRoute } from 'app/home/subscription/subscribe.route';
 
 @NgModule({
     imports: [

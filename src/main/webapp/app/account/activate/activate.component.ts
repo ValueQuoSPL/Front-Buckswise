@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
-import { ActivateService } from './activate.service';
-import { LoginModalService } from '../../shared';
+import { ActivateService } from 'app/account/activate/activate.service';
+import { LoginModalService } from 'app/shared';
 
 @Component({
     selector: 'jhi-activate',

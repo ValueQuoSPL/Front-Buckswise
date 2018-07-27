@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { BuckswiseFrontEndSharedModule } from '../shared';
+import { BuckswiseFrontEndSharedModule } from 'app/shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -28,7 +28,7 @@ import {
     UserResolvePagingParams,
     UserResolve,
     UserModalService
-} from './';
+} from 'app/admin';
 
 @NgModule({
     imports: [

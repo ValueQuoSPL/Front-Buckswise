@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { BuckswiseFrontEndSharedModule } from '../shared';
+import { BuckswiseFrontEndSharedModule, UserService } from 'app/shared';
 
 import {
     Register,
@@ -17,7 +17,8 @@ import {
     PasswordResetFinishComponent,
     SettingsComponent,
     accountState
-} from './';
+} from 'app/account';
+import { UserMgmtComponent } from 'app/admin';
 
 @NgModule({
     imports: [
@@ -38,7 +39,9 @@ import {
         ActivateService,
         PasswordService,
         PasswordResetInitService,
-        PasswordResetFinishService
+        PasswordResetFinishService,
+        UserMgmtComponent,
+        UserService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

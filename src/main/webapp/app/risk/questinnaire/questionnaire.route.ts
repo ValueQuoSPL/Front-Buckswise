@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
-import { UserRouteAccessService } from '../../shared';
+import { UserRouteAccessService } from 'app/shared';
 
-import { QuestionnaireComponent } from './questionnaire.component';
+import { QuestionnaireComponent } from 'app/risk/questinnaire/questionnaire.component';
 
 export const questionnaireRoute: Route = {
     path: 'questionnaire',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NAMED_ENTITIES } from '@angular/compiler';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
-import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel } from './spending.model';
+import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel } from 'app/pratik/spending/spending.model';
 
 // tslint:disable-next-line:max-line-length
-import { IncomeService, UtilityService, HouseService, TravelService, MiscService, LoanService, LifeService, HealthService, GeneralService, CreditService } from './spending.service';
+import { IncomeService, UtilityService, HouseService, TravelService, MiscService, LoanService, LifeService, HealthService, GeneralService, CreditService } from 'app/pratik/spending/spending.service';
 
 @Component({
   selector: 'jhi-spending',
@@ -210,6 +210,7 @@ export class SpendingComponent implements OnInit {
             this.income.incomeDeposit = this.IncomeArray.incomeDeposit;
             this.income.incomeRental = this.IncomeArray.incomeRental;
             this.dynamicIncome = this.IncomeArray.dynamicIncome;
+            console.log(response);
         }
       );
       console.log('onIncomeGet() success');

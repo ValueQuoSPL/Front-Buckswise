@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
-import { Principal } from '../';
-import { LoginModalService } from '../login/login-modal.service';
-import { StateStorageService } from './state-storage.service';
+import { Principal } from 'app/shared';
+import { LoginModalService } from 'app/shared/login/login-modal.service';
+import { StateStorageService } from 'app/shared/auth/state-storage.service';
 
 @Injectable()
 export class UserRouteAccessService implements CanActivate {

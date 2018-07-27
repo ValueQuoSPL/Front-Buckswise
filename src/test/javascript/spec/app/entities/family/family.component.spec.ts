@@ -4,9 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { FamilyComponent } from '../../../../../../main/webapp/app/entities/family/family.component';
-import { FamilyService } from '../../../../../../main/webapp/app/entities/family/family.service';
-import { Family } from '../../../../../../main/webapp/app/entities/family/family.model';
+import { FamilyComponent } from 'app/entities/family/family.component';
+import { FamilyService } from 'app/entities/family/family.service';
+import { Family } from 'app/entities/family/family.model';
 
 describe('Component Tests', () => {
 

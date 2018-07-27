@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { FamilyDialogComponent } from '../../../../../../main/webapp/app/entities/family/family-dialog.component';
-import { FamilyService } from '../../../../../../main/webapp/app/entities/family/family.service';
-import { Family } from '../../../../../../main/webapp/app/entities/family/family.model';
+import { FamilyDialogComponent } from 'app/entities/family/family-dialog.component';
+import { FamilyService } from 'app/entities/family/family.service';
+import { Family } from 'app/entities/family/family.model';
 
 describe('Component Tests', () => {
 

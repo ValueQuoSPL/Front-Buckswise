@@ -9,9 +9,9 @@ import {
     metricsRoute,
     userMgmtRoute,
     userDialogRoute
-} from './';
+} from 'app/admin';
 
-import { UserRouteAccessService } from '../shared';
+import { UserRouteAccessService } from 'app/shared';
 
 const ADMIN_ROUTES = [
     auditsRoute,

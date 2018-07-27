@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import { SERVER_API_URL } from 'app/app.constants';
 
-import { Family } from './family.model';
-import { createRequestOption } from '../../shared';
+import { Family } from 'app/entities/family/family.model';
+import { createRequestOption } from 'app/shared';
 
 export type EntityResponseType = HttpResponse<Family>;
 

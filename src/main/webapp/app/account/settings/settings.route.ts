@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
-import { UserRouteAccessService } from '../../shared';
-import { SettingsComponent } from './settings.component';
+import { UserRouteAccessService } from 'app/shared';
+import { SettingsComponent } from 'app/account/settings/settings.component';
 
 export const settingsRoute: Route = {
     path: 'settings',

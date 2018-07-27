@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { FamilyDeleteDialogComponent } from '../../../../../../main/webapp/app/entities/family/family-delete-dialog.component';
-import { FamilyService } from '../../../../../../main/webapp/app/entities/family/family.service';
+import { FamilyDeleteDialogComponent } from 'app/entities/family/family-delete-dialog.component';
+import { FamilyService } from 'app/entities/family/family.service';
 
 describe('Component Tests', () => {
 

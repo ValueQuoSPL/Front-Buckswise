@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Family } from './family.model';
-import { FamilyPopupService } from './family-popup.service';
-import { FamilyService } from './family.service';
+import { Family } from 'app/entities/family/family.model';
+import { FamilyPopupService } from 'app/entities/family/family-popup.service';
+import { FamilyService } from 'app/entities/family/family.service';
 
 @Component({
     selector: 'jhi-family-dialog',

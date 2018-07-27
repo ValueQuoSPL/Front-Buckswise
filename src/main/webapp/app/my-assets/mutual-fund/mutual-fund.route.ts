@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { MutualFundComponent } from './mutual-fund.component';
+import { MutualFundComponent } from 'app/my-assets/mutual-fund/mutual-fund.component';
 
 export const mutualRoute: Route = {
     path: 'mutual-fund',

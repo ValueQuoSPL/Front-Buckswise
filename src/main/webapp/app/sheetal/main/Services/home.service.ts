@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../../app.constants';
-import { Home } from './home.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Home } from 'app/sheetal/main/Services/home.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 

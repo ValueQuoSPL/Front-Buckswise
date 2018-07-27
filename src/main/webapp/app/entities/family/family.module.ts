@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { BuckswiseFrontEndSharedModule } from '../../shared';
+import { BuckswiseFrontEndSharedModule } from 'app/shared';
 import {
     FamilyService,
     FamilyPopupService,
@@ -14,7 +14,7 @@ import {
     familyRoute,
     familyPopupRoute,
     FamilyResolvePagingParams,
-} from './';
+} from 'app/entities/family';
 
 const ENTITY_STATES = [
     ...familyRoute,

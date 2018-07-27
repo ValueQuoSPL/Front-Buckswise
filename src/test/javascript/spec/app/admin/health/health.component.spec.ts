@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { JhiHealthCheckComponent } from '../../../../../../main/webapp/app/admin/health/health.component';
-import { JhiHealthService } from '../../../../../../main/webapp/app/admin/health/health.service';
+import { JhiHealthCheckComponent } from 'app/admin/health/health.component';
+import { JhiHealthService } from 'app/admin/health/health.service';
 
 describe('Component Tests', () => {
 

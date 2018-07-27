@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { UserModalService } from './user-modal.service';
-import {  User, UserService } from '../../shared';
+import { UserModalService } from 'app/admin/user-management/user-modal.service';
+import {  User, UserService } from 'app/shared';
 
 @Component({
     selector: 'jhi-user-mgmt-dialog',

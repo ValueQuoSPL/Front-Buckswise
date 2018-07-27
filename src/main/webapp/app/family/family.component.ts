@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
-import { Principal } from '../shared';
+import { Principal } from 'app/shared';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Myprofile } from './family.modal';
-import { FamilyserviceService } from './familyservice.service';
-import { Familyprofile, Assumption} from './family.modal';
+import { Myprofile } from 'app/family/family.modal';
+import { FamilyserviceService } from 'app/family/familyservice.service';
+import { Familyprofile, Assumption} from 'app/family/family.modal';
 
 @Component({
   selector:  'jhi-family',

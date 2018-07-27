@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Principal } from '../shared';
+import { Principal } from 'app/shared';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class RiskComponent implements OnInit {
       private router: Router) {}
 
     ngOnInit() {
-        this.principal.identity().then((account) => {
+        this.principal.identity().then(account => {
             this.account = account;
         });
       }

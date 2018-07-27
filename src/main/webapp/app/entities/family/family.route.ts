@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { UserRouteAccessService } from '../../shared';
-import { FamilyComponent } from './family.component';
-import { FamilyDetailComponent } from './family-detail.component';
-import { FamilyPopupComponent } from './family-dialog.component';
-import { FamilyDeletePopupComponent } from './family-delete-dialog.component';
+import { UserRouteAccessService } from 'app/shared';
+import { FamilyComponent } from 'app/entities/family/family.component';
+import { FamilyDetailComponent } from 'app/entities/family/family-detail.component';
+import { FamilyPopupComponent } from 'app/entities/family/family-dialog.component';
+import { FamilyDeletePopupComponent } from 'app/entities/family/family-delete-dialog.component';
 
 @Injectable()
 export class FamilyResolvePagingParams implements Resolve<any> {

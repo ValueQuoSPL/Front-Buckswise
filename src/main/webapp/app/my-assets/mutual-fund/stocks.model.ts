@@ -11,7 +11,7 @@
 //     ) {
 //     }
 // }
-import { BaseEntity } from './../../shared';
+import { BaseEntity } from 'app/shared';
 
 export class Stocks implements BaseEntity {
     constructor(

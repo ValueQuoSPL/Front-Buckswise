@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { Principal, AccountService } from '../../../../../../main/webapp/app/shared';
-import { SettingsComponent } from '../../../../../../main/webapp/app/account/settings/settings.component';
+import { Principal, AccountService } from 'app/shared';
+import { SettingsComponent } from 'app/account/settings/settings.component';
 
 describe('Component Tests', () => {
 

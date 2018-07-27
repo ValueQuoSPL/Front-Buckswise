@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { UserRouteAccessService } from '../shared';
-import { SubscribeComponent } from './subscribe.component';
+import { UserRouteAccessService } from 'app/shared';
+import { SubscribeComponent } from 'app/subscribe/subscribe.component';
 
 export const subscribeRoute: Route = {
     path: 'subscribe',

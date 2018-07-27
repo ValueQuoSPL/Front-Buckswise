@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
-import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel } from './spending.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel } from 'app/pratik/spending/spending.model';
 
 @Injectable()
 export class IncomeService {

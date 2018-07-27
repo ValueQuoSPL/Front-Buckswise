@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
-import { UserRouteAccessService } from '../shared';
-import { FamilyComponent } from './';
+import { UserRouteAccessService } from 'app/shared';
+import { FamilyComponent } from 'app/family';
 
 export const familyRoute: Route = {
     path: 'myfamily',

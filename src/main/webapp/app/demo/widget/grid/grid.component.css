@@ -1,0 +1,38 @@
+.box {
+	background: yellow;
+	border: 2px solid red;
+	border-radius: 20px;
+	padding: 10px 20px;
+	display: inline-block;
+	}
+	.box2 {
+		background: lightcyan;
+		border: 2px solid red;
+		border-radius: 20px;
+		padding: 10px 20px;
+		display: inline-block;
+		}
+  .dragging {
+	background: red;
+  }
+  .sortable.dragging {
+	background: blueviolet;
+	border: 1px dashed black;
+	color: transparent;
+}
+
+  .draggable {
+	  cursor: move;
+	}
+	
+	.movable:not(.dragging) {
+		transition: transform 500ms ease-in-out
+	}
+
+	.area {
+		background: lightcyan;
+		padding: 40px;
+		border: 1px solid magenta;
+		border-radius: 20px 40px;
+
+	}

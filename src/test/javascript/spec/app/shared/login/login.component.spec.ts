@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { LoginService } from '../../../../../../main/webapp/app/shared/login/login.service';
-import { JhiLoginModalComponent } from '../../../../../../main/webapp/app/shared/login/login.component';
-import { StateStorageService } from '../../../../../../main/webapp/app/shared/auth/state-storage.service';
+import { LoginService } from 'app/shared/login/login.service';
+import { JhiLoginModalComponent } from 'app/shared/login/login.component';
+import { StateStorageService } from 'app/shared/auth/state-storage.service';
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
 import { MockLoginService } from '../../../helpers/mock-login.service';
 import { MockStateStorageService } from '../../../helpers/mock-state-storage.service';

@@ -10,9 +10,9 @@ import { Router, Route } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import {PaymentComponent} from './payment/payment.component';
+import {PaymentComponent} from 'app/home/subscriber/payment/payment.component';
 
-import { Account, LoginModalService, Principal } from '../../shared';
+import { Account, LoginModalService, Principal } from 'app/shared';
 
 @Component({
     selector: 'jhi-subscriber',

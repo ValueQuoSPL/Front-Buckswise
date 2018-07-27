@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
-import { SERVER_API_URL } from './../app.constants';
-import { Myprofile, Familyprofile, Assumption} from './family.modal';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Myprofile, Familyprofile, Assumption} from 'app/family/family.modal';
 
 @Injectable()
 export class FamilyserviceService {

@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
-import { lifeRoute, LifeInsuranceComponent } from './';
-import { RiskComponent } from './risk.component';
+import { lifeRoute, LifeInsuranceComponent } from 'app/risk';
+import { RiskComponent } from 'app/risk/risk.component';
 
 // const RISK_ROUTES = [
 //    lifeRoute
