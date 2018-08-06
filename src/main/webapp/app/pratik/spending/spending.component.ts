@@ -1,10 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NAMED_ENTITIES } from '@angular/compiler';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
 import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel } from 'app/pratik/spending/spending.model';
 
 // tslint:disable-next-line:max-line-length
 import { IncomeService, UtilityService, HouseService, TravelService, MiscService, LoanService, LifeService, HealthService, GeneralService, CreditService } from 'app/pratik/spending/spending.service';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+// import { IncomeDialog } from 'app/pratik/spending/dialog/dialog';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as $ from 'jQuery';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'jhi-spending',
@@ -12,9 +22,30 @@ import { IncomeService, UtilityService, HouseService, TravelService, MiscService
   styleUrls: ['./spending.component.css']
 })
 export class SpendingComponent implements OnInit {
+
   totalIncome: number; totalUtility: number; totalHousehold: number; totalTravel: number; totalMisc: number;
   resource: any; amount: any; expense; demoarr;
-   i;
+   i;   closeResult: string;
+   step = 0;
+
+   loanDate = new FormControl(new Date());
+   repDate = new FormControl(new Date());
+   lifeDate = new FormControl(new Date());
+   healthDate = new FormControl(new Date());
+   generalDate = new FormControl(new Date());
+
+   resource_react = new FormControl('');
+   amount_react = new FormControl('');
+
+  //  inputForm = new FormGroup({
+  //   name: new FormControl(''),
+  //   value: new FormControl(''),
+  // });
+
+  inputForm = this.fb.group({
+    name: ['',  Validators.required],
+    value: [''],
+  });
 
   dynamicLoanArray: any = [];
   newLoanArray: any [];
@@ -83,6 +114,11 @@ export class SpendingComponent implements OnInit {
   general: General = new General();
   credit: Credit = new Credit();
 
+  // for material dialog
+  panelOpenState = false;
+  animal: string;
+  name: string;
+
   constructor(
     private incomeService: IncomeService,
     private utilityService: UtilityService,
@@ -93,7 +129,11 @@ export class SpendingComponent implements OnInit {
     private lifeService: LifeService,
     private healthService: HealthService,
     private generalService: GeneralService,
-    private creditService: CreditService
+    private creditService: CreditService,
+
+    public incomeDialog: MatDialog,
+    private modalService: NgbModal,
+    private fb: FormBuilder
     ) { }
 
   ngOnInit() {
@@ -144,6 +184,9 @@ export class SpendingComponent implements OnInit {
     this.house.selfcare = 0;
     this.house.property = 0;
 
+    // loan
+    this.loan.check = false;
+
     // travel
     this.travel.food = 0;
     this.travel.entertainment = 0;
@@ -159,15 +202,98 @@ export class SpendingComponent implements OnInit {
     this.misc.charity = 0;
     this.misc.gift = 0;
     this.misc.cloth = 0;
+
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
   clear() {
       this.resource = '';
       this.amount = '';
       this.expense = '';
+
+      this.loan.amnt = '';
+      this.loan.applicant = '';
+      this.loan.check = false;
+      this.loan.intrest_type = '';
+      this.loan.ldate = '';
+      this.loan.lender = '';
+      this.loan.loan_type = '';
+      this.loan.rdate = '';
+      this.loan.roi = '';
+      this.loan.tenure = '';
+
+      this.life.ins_name  = '';
+      this.life.issuer = '';
+      this.life.policy_name = '';
+      this.life.policy_term = '';
+      this.life.premium = '';
+      this.life.premium_mode = '';
+      this.life.premium_term = '';
+      this.life.proposer_name = '';
+      this.life.start_date = '';
+      this.life.sum = '';
+      this.life.type = '';
+
+      this.health.ins_name = '';
+      this.health.issuer = '';
+      this.health.policy_name = '';
+      this.health.policy_no = '';
+      this.health.policy_term = '';
+      this.health.premium = '';
+      this.health.premium_mode = '';
+      this.health.proposer_name = '';
+      this.health.start_date = '';
+      this.health.sum = '';
+
+      this.general.generalModelArray = '';
+      this.general.ins_obj = '';
+      this.general.issuer = '';
+      this.general.policy_name = '';
+      this.general.policy_no = '';
+      this.general.policy_term = '';
+      this.general.premium = '';
+      this.general.proposer_name = '';
+      this.general.start_date = '';
+      this.general.sum = '';
+
+      this.credit.balance = '';
+      this.credit.balance = '';
+      this.credit.issuer = '';
+      this.credit.limit = '';
+      this.credit.monthly_pay = '';
+      this.credit.monthly_usage = '';
+      this.credit.roi = '';
+      this.credit.type = '';
   }
 
   // income
+  openIncome(incomeContent) {
+    console.log('income modal open');
+
+    this.modalService.open(incomeContent, {ariaLabelledBy: 'incomeModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddIncome();
+      // console.log('add income success');
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.inputForm.value);
+  }
   calcIncomeTotal() {
     this.totalIncome = 0;
     for (let i = 0; i < this.dynamicIncome.length; i++) {
@@ -175,9 +301,10 @@ export class SpendingComponent implements OnInit {
         // console.log(this.totalIncome);
         this.totalIncome = this.totalIncome + value1;
     }
+    console.log(this.dynamicIncome);
     console.log(this.totalIncome);
   }
-  addFieldValue() {
+  AddIncome() {
       this.dynamicIncome.push({
         name: this.resource,
         value: this.amount
@@ -193,7 +320,7 @@ export class SpendingComponent implements OnInit {
     this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PutIncome(this.income)
      .subscribe(
-         (data) => { alert('Your data saved'); }
+         data => { alert('Your data saved'); }
         );
   }
   onIncomeGet() {
@@ -217,6 +344,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // utility
+  openUtility(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'expense-modal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddUtility();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   calcUtilityTotal() {
     this.totalUtility = 0;
     for (let i = 0; i < this.dynamicUtilityArray.length; i++) {
@@ -242,7 +380,7 @@ export class SpendingComponent implements OnInit {
     this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PutUtility(this.utility)
      .subscribe(
-       (data) => { alert ('Your utility data saved') ; }
+       data => { alert ('Your utility data saved') ; }
       );
   }
   GetUtility(): void {
@@ -266,6 +404,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // household
+  openHousehold(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'expense-modal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddHousehold();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   calcHouseholdTotal() {
     this.totalHousehold = 0;
     for (let i = 0; i < this.dynamicHousehold.length; i++) {
@@ -291,7 +440,7 @@ export class SpendingComponent implements OnInit {
     this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PutHouse(this.house)
     .subscribe(
-      (data) => { alert ('Your household data saved') ; }
+      data => { alert ('Your household data saved') ; }
      );
   }
   GetHousehold(): void {
@@ -320,22 +469,31 @@ export class SpendingComponent implements OnInit {
   }
 
   // loan
+  openLoan(loanModal) {
+    this.modalService.open(loanModal, {ariaLabelledBy: 'loanModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddLoan();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   AddLoan() {
     this.dynamicLoanArray.push({
       ltype: this.loan.loan_type,
       lender: this.loan.lender,
       app: this.loan.applicant,
       amnt: this.loan.amnt,
-      ldate: this.loan.ldate,
+      ldate: this.loanDate.value,
       check: this.loan.check,
       tenure: this.loan.tenure,
       itype: this.loan.intrest_type,
       roi:  this.loan.roi,
-      rdate: this.loan.rdate
+      rdate: this.repDate.value
     });
-
-    console.log('AddLoan() call success');
-    console.log(this.loan.loan_type);
+    this.clear();
   }
   RemoveLoan(index) {
     this.dynamicLoanArray.splice(index, 1);
@@ -344,7 +502,7 @@ export class SpendingComponent implements OnInit {
     this.loan.loanModelArray = this.dynamicLoanArray;
     this.loanService.PutLoan(this.loan.loanModelArray)
      .subscribe(
-       (data) => {alert('Loan Added successfully'); });
+       data => {alert('Loan Added successfully'); });
   }
   onGetLoan(): void {
     console.log('inside getLoan()');
@@ -359,13 +517,25 @@ export class SpendingComponent implements OnInit {
   }
 
   // life insurance
+  openLife(lifeModal) {
+    this.modalService.open(lifeModal, {ariaLabelledBy: 'lifeModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      console.log(this.life.type);
+      this.AddLifeInsurance();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   AddLifeInsurance() {
     this.dynamicLifeArray.push({
       iName: this.life.type,
       issuer: this.life.issuer,
       ins_name: this.life.ins_name,
       prName: this.life.proposer_name,
-      sDate: this.life.start_date,
+      sDate: this.lifeDate.value,
       pterm: this.life.policy_term,
       pMode: this.life.premium_mode,
       pName: this.life.policy_name,
@@ -373,8 +543,7 @@ export class SpendingComponent implements OnInit {
       premium: this.life.premium,
       term: this.life.premium_term,
     });
-    console.log('AddLife() call success');
-
+this.clear();
   }
   RemoveLifeInsurance(index) {
     this.dynamicLifeArray.splice(index, 1);
@@ -382,7 +551,7 @@ export class SpendingComponent implements OnInit {
   onLifeSave(): void {
     this.life.lifeModelArray = this.dynamicLifeArray;
     this.lifeService.PutLife(this.life.lifeModelArray)
-     .subscribe((data) => {
+     .subscribe(data => {
        alert('success');
     });
     console.log('in life save');
@@ -398,6 +567,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // health insurance
+  openHealth(healthModal) {
+    this.modalService.open(healthModal, {ariaLabelledBy: 'healthModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddHealth();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   AddHealth() {
     this.dynamicHealth.push({
       iName: this.health.ins_name,
@@ -410,8 +590,8 @@ export class SpendingComponent implements OnInit {
       prName: this.health.proposer_name,
       sDate: this.health.start_date,
       pMode: this.health.premium_mode
-
     });
+this.clear();
   }
   RemoveHealth(index) {
     this.dynamicHealth.splice(index, 1);
@@ -419,7 +599,7 @@ export class SpendingComponent implements OnInit {
   onHealthSave(): void {
     this.health.healthModelArray = this.dynamicHealth;
     this.healthService.PutHealth(this.health.healthModelArray)
-     .subscribe((data) => {
+     .subscribe(data => {
        alert('Health Insurance saved');
     });
   }
@@ -434,6 +614,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // general insurance
+  openGeneral(generalModal) {
+    this.modalService.open(generalModal, {ariaLabelledBy: 'generalModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddGeneral();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   AddGeneral() {
     this.dynamicGeneral.push({
       iName: this.general.ins_obj,
@@ -446,8 +637,7 @@ export class SpendingComponent implements OnInit {
       poNo: this.general.policy_no,
       prName: this.general.proposer_name
     });
-
-    console.log('AddGeneral() call success');
+this.clear();
   }
   RemoveGeneral(index) {
     this.dynamicGeneral.splice(index, 1);
@@ -455,7 +645,7 @@ export class SpendingComponent implements OnInit {
   onGeneralSave(): void {
     this.general.generalModelArray = this.dynamicGeneral;
     this.generalService.PutGeneral(this.general.generalModelArray)
-     .subscribe((data) => {
+     .subscribe(data => {
        alert('General Insurance saved');
     });
     console.log('in general save');
@@ -471,6 +661,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // credit card
+  openCredit(creditModal) {
+    this.modalService.open(creditModal, {ariaLabelledBy: 'creditModal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddCredit();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   AddCredit() {
       this.dynamicCredit.push({
           type: this.credit.type,
@@ -478,8 +679,7 @@ export class SpendingComponent implements OnInit {
           roi: this.credit.roi,
           balance: this.credit.balance
         });
-
-  console.log('AddGeneral() call success');
+        this.clear();
   }
   RemoveCredit(index) {
     this.dynamicCredit.splice(index, 1);
@@ -488,7 +688,7 @@ export class SpendingComponent implements OnInit {
     this.credit.creditModelArray = this.dynamicCredit;
       this.creditService.PutCredit(this.credit.creditModelArray)
       .subscribe(
-        (data) => { alert('success'); }
+        data => { alert('success'); }
       );
     console.log('in credit save');
   }
@@ -504,6 +704,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // travel
+  openTravel(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'expense-modal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddTravel();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   calcTravelTotal() {
     this.totalTravel = 0;
     for (let i = 0; i < this.dynamicTravel.length; i++) {
@@ -529,7 +740,7 @@ export class SpendingComponent implements OnInit {
     this.travel.dynamicTravel = this.dynamicTravel;
     this.travelService.PutTravel(this.travel)
     .subscribe(
-      (data) => { alert ('Your travel data saved') ; }
+      data => { alert ('Your travel data saved') ; }
      );
   }
   GetTravel(): void {
@@ -549,6 +760,17 @@ export class SpendingComponent implements OnInit {
   }
 
   // misc
+  openMisc(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'expense-modal'})
+    .result.then(
+      result => {
+      this.closeResult = `Closed with: ${result}`;
+      this.AddMisc();
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
   calcMiscTotal() {
     this.totalMisc = 0;
     for (let i = 0; i < this.dynamicMisc.length; i++) {
@@ -574,7 +796,7 @@ export class SpendingComponent implements OnInit {
     this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PutMisc(this.misc)
      .subscribe(
-       (data) => { alert('Your Misc data saved'); });
+       data => { alert('Your Misc data saved'); });
   }
   GetMisc(): void {
     console.log('inside getMisc()');
@@ -595,3 +817,23 @@ export class SpendingComponent implements OnInit {
   }
 
 }
+
+// @Component({
+//   selector: 'jhi-income-dialog',
+//   templateUrl: './dialog/income-dialog.html',
+// })
+// export class IncomeDialog {
+//   private spend: SpendingComponent = new SpendingComponent;
+//   constructor(
+//     public dialogRef: MatDialogRef<IncomeDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+//   onIncomeClose(): void {
+//     this.dialogRef.close();
+//   }
+
+//   incomeDialogData() {
+//      this.spend.addFieldValue(this.data);
+//   }
+
+// }

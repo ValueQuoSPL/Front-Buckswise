@@ -11,13 +11,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import {LayoutModule } from '@angular/cdk/layout';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     imports: [
     ],
     exports: [
       MatButtonModule, MatMenuModule, MatTabsModule, MatExpansionModule, MatGridListModule, MatDatepickerModule,
-      MatFormFieldModule, MatNativeDateModule, MatInputModule, MatCardModule, MatDialogModule
+      MatFormFieldModule, MatNativeDateModule, MatInputModule, MatCardModule, MatDialogModule,
+      LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule,
+      MatSelectModule, MatCheckboxModule, MatTableModule
     ],
   })
 

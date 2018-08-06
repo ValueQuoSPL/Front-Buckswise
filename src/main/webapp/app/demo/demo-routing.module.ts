@@ -4,6 +4,7 @@ import { DemoComponent } from 'app/demo/demo.component';
 import { GridComponent } from 'app/demo/widget/grid/grid.component';
 import { MaterialComponent } from 'app/demo/material/material.component';
 import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
+import { SimpleComponent } from 'app/demo/simple/simple.component';
 
 const MyRoute: Routes =
 [
@@ -11,6 +12,7 @@ const MyRoute: Routes =
   { path: 'demo/grid' , component: GridComponent },
   { path: 'demo/material' , component: MaterialComponent },
   { path: 'demo/ngb' , component: NgBootstrapComponent },
+  { path: 'demo/simple' , component: SimpleComponent },
 
 ];
 

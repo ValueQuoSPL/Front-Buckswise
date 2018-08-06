@@ -22,9 +22,14 @@
             ],
             "styles": [
               "src/main/webapp/content/scss/vendor.scss",
-              "src/main/webapp/content/scss/global.scss"
+              "src/main/webapp/content/scss/global.scss",
+              "./node_modules/font-awesome/css/fontawesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.slim.min.js",
+              "./node_modules/popper.js/dist/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {}
         }

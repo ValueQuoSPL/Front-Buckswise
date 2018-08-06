@@ -7,10 +7,12 @@ import { DemoComponent } from 'app/demo/demo.component';
 import { DemoRoutingModule } from 'app/demo/demo-routing.module';
 import { MyloginService } from 'app/demo/mylogin.service';
 import { WidgetModule } from 'app/demo/widget/widget.module';
-import { MaterialComponent, IncomeDialog } from 'app/demo/material/material.component';
+import { MaterialComponent, IncomeDialogComponent } from 'app/demo/material/material.component';
 // import { MaterialModule } from 'app/material.module';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
+import { SimpleComponent } from './simple/simple.component';
+import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
 
 @NgModule({
     imports: [
@@ -25,9 +27,11 @@ import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.compone
         DemoComponent,
         MaterialComponent,
         NgBootstrapComponent,
-        IncomeDialog
+        IncomeDialogComponent,
+        SimpleComponent,
+        MatNavbarComponent
         ],
-    entryComponents: [MaterialComponent, IncomeDialog
+    entryComponents: [MaterialComponent, IncomeDialogComponent
         ],
     providers: [
         MyloginService

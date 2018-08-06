@@ -44,6 +44,7 @@ import {
 import { SuccessComponent } from 'app/success/success.component';
 import { FailComponent } from 'app/fail/fail.component';
 import { DraggableModule } from './shared/draggable/draggable.module';
+import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 
 @NgModule({
     imports: [
@@ -68,7 +69,7 @@ import { DraggableModule } from './shared/draggable/draggable.module';
         BuckswiseAppSheetalModule,
         BuckswiseAppSheetalModule,
         DraggableModule,
-
+        CustomDirectiveModule,
         DashBoardModule
     ],
     declarations: [

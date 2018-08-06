@@ -28,12 +28,28 @@ export class Credit {
     balance;
     creditModelArray: any = [];
 }
+export class Life {
+    type;
+    ins_name;
+    policy_name;
+    premium;
+    policy_term;
+    issuer;
+    start_date;
+    proposer_name;
+    sum;
+    premium_term;
+    premium_mode;
+    lifeModelArray: any = [];
+
+    constructor() { }
+}
 export class General {
     ins_obj;
     policy_name;
     premium;
-    issuer;
     policy_term;
+    issuer;
     start_date;
     sum;
     policy_no;
@@ -45,11 +61,11 @@ export class Health {
     policy_name;
     premium;
     policy_term;
+    issuer;
+    start_date;
     sum;
     policy_no;
-    issuer;
     proposer_name;
-    start_date;
     premium_mode;
     healthModelArray: any = [];
 }
@@ -83,22 +99,6 @@ export class Income {
 
     }
 }
-export class Life {
-    type;
-    issuer;
-    ins_name;
-    proposer_name;
-    start_date;
-    policy_term;
-    premium_mode;
-    policy_name;
-    sum;
-    premium;
-    premium_term;
-    lifeModelArray: any = [];
-
-    constructor() { }
-}
 export class Loan {
 
     loan_type;
@@ -106,7 +106,7 @@ export class Loan {
     applicant: '';
     amnt;
     ldate: '';
-    check: '';
+    check: boolean;
     tenure;
     intrest_type: '';
     roi;

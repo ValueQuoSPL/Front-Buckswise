@@ -22,7 +22,7 @@ export class MaterialComponent implements OnInit {
   ngOnInit() {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(IncomeDialog, {
+    const dialogRef = this.dialog.open(IncomeDialogComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal}
     });
@@ -36,12 +36,12 @@ export class MaterialComponent implements OnInit {
 }
 
 @Component({
-  selector: 'income-dialog',
+  selector: 'jhi-income-dialog',
   templateUrl: './income-dialog.html',
 })
-export class IncomeDialog {
+export class IncomeDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<IncomeDialog>,
+    public dialogRef: MatDialogRef<IncomeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
