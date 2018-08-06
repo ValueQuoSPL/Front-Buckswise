@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { RequestmeetingComponent } from './requestmeeting.component';
+import { RequestmeetingComponent } from 'app/sheetal/requestmeeting/requestmeeting.component';
 
 export const meetRoute: Route = {
     path: 'meet',

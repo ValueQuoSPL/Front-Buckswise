@@ -9,9 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { Stocks } from './stocks.model';
-import { StocksService } from './stocks.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import { Stocks } from 'app/my-assets/mutual-fund/stocks.model';
+import { StocksService } from 'app/my-assets/mutual-fund/stocks.service';
+import { ITEMS_PER_PAGE, Principal } from 'app/shared';
 
 @Component({
     selector: 'jhi-stocks',

@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
-import { UserRouteAccessService } from '../../../shared';
-import { PasswordResetInitComponent } from './password-reset-init.component';
+import { UserRouteAccessService } from 'app/shared';
+import { PasswordResetInitComponent } from 'app/account/password-reset/init/password-reset-init.component';
 
 export const passwordResetInitRoute: Route = {
     path: 'reset/request',

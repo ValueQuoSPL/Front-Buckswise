@@ -1,6 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ProdConfig } from './blocks/config/prod.config';
-import { BuckswiseFrontEndAppModule } from './app.module';
+import { ProdConfig } from 'app/blocks/config/prod.config';
+import { BuckswiseFrontEndAppModule } from 'app/app.module';
 
 ProdConfig();
 
@@ -9,5 +9,5 @@ if (module['hot']) {
 }
 
 platformBrowserDynamic().bootstrapModule(BuckswiseFrontEndAppModule)
-.then((success) => console.log(`Application started`))
-.catch((err) => console.error(err));
+.then(success => console.log(`Application started`))
+.catch(err => console.error(err));

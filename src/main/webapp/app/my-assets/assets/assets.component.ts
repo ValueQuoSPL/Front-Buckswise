@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Principal } from '../../shared';
-import { Stocks } from './stocks.model';
+import { Principal } from 'app/shared';
+import { Stocks } from 'app/my-assets/assets/stocks.model';
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { MutualFundService } from './mutual-fund.service';
-import { StocksService } from './stocks.service';
-import { MutualFund } from './mutual-fund.model';
-import { AssetsService } from './assets.service';
-import { FAO, SavingScheme, AltInvest, Cash, Property, ChitFund } from './assets.model';
+import { MutualFundService } from 'app/my-assets/assets/mutual-fund.service';
+import { StocksService } from 'app/my-assets/assets/stocks.service';
+import { MutualFund } from 'app/my-assets/assets/mutual-fund.model';
+import { AssetsService } from 'app/my-assets/assets/assets.service';
+import { FAO, SavingScheme, AltInvest, Cash, Property, ChitFund } from 'app/my-assets/assets/assets.model';
 
 @Component({
     selector: 'jhi-assets',

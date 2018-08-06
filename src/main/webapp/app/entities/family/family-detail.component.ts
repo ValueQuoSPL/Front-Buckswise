@@ -4,8 +4,8 @@ import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Family } from './family.model';
-import { FamilyService } from './family.service';
+import { Family } from 'app/entities/family/family.model';
+import { FamilyService } from 'app/entities/family/family.service';
 
 @Component({
     selector: 'jhi-family-detail',

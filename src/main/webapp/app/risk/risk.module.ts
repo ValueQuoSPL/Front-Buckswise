@@ -1,9 +1,9 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BuckswiseFrontEndSharedModule } from '../shared';
+import { BuckswiseFrontEndSharedModule } from 'app/shared';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { RiskService } from './risk.service';
+import { RiskService } from 'app/risk/risk.service';
 import {
     LifeInsuranceComponent,
     MedicalInsuranceComponent,
@@ -12,7 +12,7 @@ import {
     medicalRoute,
     questionnaireRoute,
     riskRoute
-     } from './';
+     } from 'app/risk';
 
 // import { QuestionnaireComponent } from './questinnaire/questionnaire.component';
      @NgModule({

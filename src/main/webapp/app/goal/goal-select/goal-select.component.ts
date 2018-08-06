@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
-import { GoalselectService } from './goalselect.service';
+import { GoalselectService } from 'app/goal/goal-select/goalselect.service';
 // tslint:disable-next-line:max-line-length
-import { GoalSelect, EducationSelect, VehicleSelect, ChildBirthSelect, MerrageSelect, BusinessSelect, FamilySupportSelect, VacationSelect, EmergencyFundSelect, RetirementFundSelect, NewGoalSelect} from './goalselect.model';
+import { GoalSelect, EducationSelect, VehicleSelect, ChildBirthSelect, MerrageSelect, BusinessSelect, FamilySupportSelect, VacationSelect, EmergencyFundSelect, RetirementFundSelect, NewGoalSelect} from 'app/goal/goal-select/goalselect.model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component( {

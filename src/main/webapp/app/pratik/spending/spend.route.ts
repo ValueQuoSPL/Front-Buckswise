@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { SpendingComponent } from './spending.component';
+import { SpendingComponent } from 'app/pratik/spending/spending.component';
 
 export const SpendRoute: Route = {
     path: 'spend',

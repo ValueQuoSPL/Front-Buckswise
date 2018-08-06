@@ -1,4 +1,4 @@
-export * from './family.component';
-export * from './family.route';
-export * from './familyprofile/familyprofile.component';
+export * from 'app/family/family.component';
+export * from 'app/family/family.route';
+export * from 'app/family/familyprofile/familyprofile.component';
 // export * from './familyprofile/familyprofile.route';

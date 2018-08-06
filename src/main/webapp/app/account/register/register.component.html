@@ -7,13 +7,13 @@
                 </div>
                 <div class="container" *ngIf="!VerifyButtonClicked">
                     <div class="form-group" >
-                        <label for="pass">Enter OTP</label>
-                        <input type="number" class="form-control col-md-2" id="pass" placeholder="otp"
+                        <label for="pass">Enter Verification Key</label>
+                        <input ty`pe="number" class="form-control col-md-5" id="pass" placeholder="otp"
                         [(ngModel)]="userMailOtp" [ngModelOptions]="{standalone: true}">
                     </div>
-                    <div >
+                    <div>
                         <a class="btn btn-primary btn-lg active col-md-2" role="button" aria-pressed="true"
-                            (click)="verify()">Verify OTP</a>
+                            (click)="verify()">Verify Email</a>
                     </div>
                 </div>
     
@@ -50,12 +50,18 @@
               </div>
           </div>
       </div>
+
+
+
+
       <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success" class="f">
             <h3 style="margin-left: 30px;">GET STARTED</h3>
           <div class="form-group">
             <label for="firstName" class=" sr-only margin" >FirstName</label>
+            
             <input type="text" name="login" class="form-control" [(ngModel)]="registerAccount.login" id="login" #login="ngModel" placeholder="Your name"
             required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+            
             <div *ngIf="login.dirty && login.invalid">
                 <small class="form-text text-danger" *ngIf="login.errors.required">
                     Your username is required.

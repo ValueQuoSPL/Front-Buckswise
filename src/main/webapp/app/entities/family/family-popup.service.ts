@@ -2,8 +2,8 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
-import { Family } from './family.model';
-import { FamilyService } from './family.service';
+import { Family } from 'app/entities/family/family.model';
+import { FamilyService } from 'app/entities/family/family.service';
 
 @Injectable()
 export class FamilyPopupService {

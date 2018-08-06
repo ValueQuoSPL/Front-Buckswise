@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { AssetsComponent } from './assets.component';
+import { AssetsComponent } from 'app/my-assets/assets/assets.component';
 
 export const upRoute: Route = {
     path: 'assets',

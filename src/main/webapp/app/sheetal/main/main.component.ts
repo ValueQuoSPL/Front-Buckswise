@@ -2,16 +2,16 @@
 import { NAMED_ENTITIES } from '@angular/compiler';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
 import { Component, OnInit } from '@angular/core';
-import { Gross } from './Services/gross.model';
-import { GrossService } from './Services/gross.service';
-import { Eightyc } from './Services/eightyc.model';
-import { EightycService } from './Services/eightyc.service';
-import { Home } from './Services/home.model';
-import { HomeService } from './Services/home.service';
-import { Eightyd } from './Services/eightyd.model';
-import { EightydService } from './Services/eightyd.service';
-import { Other } from './Services/other.model';
-import { OtherService } from './Services/other.service';
+import { Gross } from 'app/sheetal/main/Services/gross.model';
+import { GrossService } from 'app/sheetal/main/Services/gross.service';
+import { Eightyc } from 'app/sheetal/main/Services/eightyc.model';
+import { EightycService } from 'app/sheetal/main/Services/eightyc.service';
+import { Home } from 'app/sheetal/main/Services/home.model';
+import { HomeService } from 'app/sheetal/main/Services/home.service';
+import { Eightyd } from 'app/sheetal/main/Services/eightyd.model';
+import { EightydService } from 'app/sheetal/main/Services/eightyd.service';
+import { Other } from 'app/sheetal/main/Services/other.model';
+import { OtherService } from 'app/sheetal/main/Services/other.service';
 
 @Component({
   selector: 'jhi-main',
@@ -89,35 +89,35 @@ export class MainComponent implements OnInit {
     // gross call function
     onGrossSave(): void {
       this.grossService.ServiceGross(this.gross)
-       .subscribe((data) => {
+       .subscribe(data => {
          alert('success');
       });
     }
     // eightyc call function
     onEightycSave(): void {
       this.eightycService.ServiceEightyc(this.eightyc)
-       .subscribe((data) => {
+       .subscribe(data => {
          alert('success');
       });
     }
     // home call function
     onHomeSave(): void {
       this.homeService.ServiceHome(this.home)
-       .subscribe((data) => {
+       .subscribe(data => {
          alert('success');
       });
     }
     // eightyd call function
     onEightydSave(): void {
       this.eightydService.ServiceEightyd(this.eightyd)
-       .subscribe((data) => {
+       .subscribe(data => {
          alert('success');
       });
     }
     // Other call function
     onOtherSave(): void {
       this.otherService.ServiceOther(this.other)
-       .subscribe((data) => {
+       .subscribe(data => {
          alert('success');
       });
     }

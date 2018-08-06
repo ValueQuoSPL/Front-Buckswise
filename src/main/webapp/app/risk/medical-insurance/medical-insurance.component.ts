@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Principal } from '../../shared';
+import { Principal } from 'app/shared';
 import { Router } from '@angular/router';
-import { RiskService } from '../risk.service';
-import { MedicalInsurance } from '../risk.model';
+import { RiskService } from 'app/risk/risk.service';
+import { MedicalInsurance } from 'app/risk/risk.model';
 
 @Component({
   selector: 'jhi-medical-insurance',

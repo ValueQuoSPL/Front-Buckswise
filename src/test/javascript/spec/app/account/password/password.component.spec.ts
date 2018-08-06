@@ -3,10 +3,10 @@ import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { PasswordComponent } from '../../../../../../main/webapp/app/account/password/password.component';
-import { PasswordService } from '../../../../../../main/webapp/app/account/password/password.service';
-import { Principal } from '../../../../../../main/webapp/app/shared/auth/principal.service';
-import { AccountService } from '../../../../../../main/webapp/app/shared/auth/account.service';
+import { PasswordComponent } from 'app/account/password/password.component';
+import { PasswordService } from 'app/account/password/password.service';
+import { Principal } from 'app/shared/auth/principal.service';
+import { AccountService } from 'app/shared/auth/account.service';
 
 describe('Component Tests', () => {
 

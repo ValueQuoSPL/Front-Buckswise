@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BuckswiseFrontEndSharedModule } from '../shared';
-import { StocksService } from './assets/stocks.service';
+import { BuckswiseFrontEndSharedModule } from 'app/shared';
+import { StocksService } from 'app/my-assets/assets/stocks.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {
@@ -9,9 +9,9 @@ import {
     MutualFundComponent,
     mutualRoute,
     userprofileState
-     } from './';
-import { MutualFundService } from './assets/mutual-fund.service';
-import { AssetsService } from './assets/assets.service';
+     } from 'app/my-assets';
+import { MutualFundService } from 'app/my-assets/assets/mutual-fund.service';
+import { AssetsService } from 'app/my-assets/assets/assets.service';
 // import { stocksRoute } from '../entities/stocks';
 
 @NgModule({

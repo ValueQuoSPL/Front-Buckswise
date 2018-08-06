@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { UserMgmtDialogComponent } from '../../../../../../main/webapp/app/admin/user-management/user-management-dialog.component';
-import { UserService, User } from '../../../../../../main/webapp/app/shared';
+import { UserMgmtDialogComponent } from 'app/admin/user-management/user-management-dialog.component';
+import { UserService, User } from 'app/shared';
 
 describe('Component Tests', () => {
 

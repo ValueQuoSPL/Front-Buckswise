@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
 //import { GoalSelectComponent } from './goalselect.component';
-import { GoalSelectComponent } from './goal-select.component';
+import { GoalSelectComponent } from 'app/goal/goal-select/goal-select.component';
 
 export const goalSelectRoute: Route = 
 {

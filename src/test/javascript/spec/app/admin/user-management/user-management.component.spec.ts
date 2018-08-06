@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { UserMgmtComponent } from '../../../../../../main/webapp/app/admin/user-management/user-management.component';
-import { UserService, User } from '../../../../../../main/webapp/app/shared';
+import { UserMgmtComponent } from 'app/admin/user-management/user-management.component';
+import { UserService, User } from 'app/shared';
 
 describe('Component Tests', () => {
 

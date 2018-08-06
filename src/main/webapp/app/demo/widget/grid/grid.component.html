@@ -1,0 +1,78 @@
+<!-- 
+<div jhiDraggable
+      class="box"
+      (dragStart)="onDragStart()" 
+     (dragMove)="onDragMove($event)" 
+     (dragEnd)="onDragEnd()"
+      >
+  Normal
+</div> 
+-->
+
+<!-- 
+  <div jhiDraggableRx
+      class="box"
+      (dragStart)="onDragStart()" 
+     (dragMove)="onDragMove($event)" 
+     (dragEnd)="onDragEnd()"
+      >
+  Reactive
+</div>
+ -->
+
+  <!-- <div class="box" jhiMovable>
+    Move Me 1
+  </div>
+  <div class="box" jhiMovable [appMovableReset]="true">
+    Move Me 2
+  </div> -->
+
+  <!-- 
+    <div class="area" jhiMovableArea>
+  <div class="box" jhiMovable *ngFor="let trapped of TrappedBoxes">
+    {{ trapped }}
+  </div>
+</div>
+
+<button class="btn btn-outline-warning" (click)="Add()">Add</button>
+ -->
+
+
+ <br>   
+
+ <!-- <div class="area" style="overflow: hidden">
+   <div class="box" jhiMovable>
+     Drag
+    </div>
+ </div> -->
+ 
+ <!-- <div class="box" jhiDraggable>
+   Draggable
+
+    <div class="box helper" *jhiDraggableHelper>
+      Dragging...
+    </div>
+
+ </div> -->
+ 
+ <div class="box2" jhiMovable>
+   move
+ </div>
+
+ <section>
+   <h2> Sortable </h2>
+
+   <ul jhiSoratbleList>
+    <li class="box" jhiDraggable *ngFor=" let item of SortableList" jhiSortable>
+       {{ item }}
+    </li>
+   </ul>
+ </section>
+
+ <br>
+
+ 
+ 
+ 
+ 
+ 

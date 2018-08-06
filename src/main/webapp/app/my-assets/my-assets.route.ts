@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { mutualRoute, upRoute } from './';
+import { mutualRoute, upRoute } from 'app/my-assets';
 const UP_ROUTES = [
    mutualRoute,
    upRoute

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared';
-import { ContactService } from './contact.service';
+import { User } from 'app/shared';
+import { ContactService } from 'app/sheetal/contactus/contact.service';
 import * as $ from 'jQuery';
 
 @Component({
@@ -9,11 +9,11 @@ import * as $ from 'jQuery';
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit {
-user: User= new User();
+user: User = new User();
   constructor(private contactService: ContactService) { }
   submitUser(): void {
     this.contactService.submitUser(this.user)
-    .subscribe((data) => {
+    .subscribe(data => {
       alert('successfully');
     });
   }

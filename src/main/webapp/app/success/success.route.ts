@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { UserRouteAccessService } from '../shared';
-import { SuccessComponent } from './success.component';
+import { UserRouteAccessService } from 'app/shared';
+import { SuccessComponent } from 'app/success/success.component';
 
 export const successRoute: Route = 
 {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../../app.constants';
-import { Eightyd } from './eightyd.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Eightyd } from 'app/sheetal/main/Services/eightyd.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 

@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angu
 import { Observable } from 'rxjs/Observable';
 
 import { BuckswiseFrontEndTestModule } from '../../../test.module';
-import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../../../../../main/webapp/app/shared';
-import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
-import { RegisterComponent } from '../../../../../../main/webapp/app/account/register/register.component';
+import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
+import { Register } from 'app/account/register/register.service';
+import { RegisterComponent } from 'app/account/register/register.component';
 
 describe('Component Tests', () => {
 

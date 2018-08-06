@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SERVER_API_URL } from '../../app.constants';
-import { Stocks } from '../assets/stocks.model';
-import { FAO, SavingScheme, AltInvest, Cash, Property, ChitFund } from './assets.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Stocks } from 'app/my-assets/assets/stocks.model';
+import { FAO, SavingScheme, AltInvest, Cash, Property, ChitFund } from 'app/my-assets/assets/assets.model';
 @Injectable()
 export class AssetsService {
 

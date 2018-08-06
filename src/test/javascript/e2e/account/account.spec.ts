@@ -1,5 +1,5 @@
 import { browser, element, by } from 'protractor';
-import { NavBarPage, SignInPage, PasswordPage, SettingsPage} from './../page-objects/jhi-page-objects';
+import { NavBarPage, SignInPage, PasswordPage, SettingsPage} from '../page-objects/jhi-page-objects';
 
 describe('account', () => {
 

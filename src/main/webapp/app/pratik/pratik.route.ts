@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 
-import {
-howRoute, SpendRoute, subRoute
-} from './';
+import { howRoute, SpendRoute, subRoute} from 'app/pratik';
 
 const PRATIK_ROUTES = [
     howRoute, SpendRoute, subRoute

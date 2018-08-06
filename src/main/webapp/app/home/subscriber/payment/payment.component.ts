@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './payment.model';
-import { PaymentService } from './payment.service';
+import { User } from 'app/home/subscriber/payment/payment.model';
+import { PaymentService } from 'app/home/subscriber/payment/payment.service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 // import { SuccessComponent } from '../../success/success.component';
 import { JhiEventManager } from 'ng-jhipster';

@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
-import { UserRouteAccessService } from '../../shared';
+import { UserRouteAccessService } from 'app/shared';
 
-import { MedicalInsuranceComponent } from './medical-insurance.component';
+import { MedicalInsuranceComponent } from 'app/risk/medical-insurance/medical-insurance.component';
 
 export const medicalRoute: Route = {
     path: 'medical',
