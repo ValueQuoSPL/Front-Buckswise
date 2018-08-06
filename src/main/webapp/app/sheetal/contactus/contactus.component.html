@@ -1,125 +1,126 @@
-<div class="container-fluid">
-	<div class="jumbotron">
-	<h1 style="text-align:center">Contact Us</h1>
-	</div></div>
-			 <section id="contact">
-				<div class="container-fluid">
-				  <div class="well well-sm">
+<div class="container-fluid small-header bg-img4" >
+		<h1 style="text-align:center;color:silver">Contact Us</h1>
+		</div>
+		<!--		 <section id="contact">
+					<div class="container-fluid">
+						<div class="well well-sm">
+						 </div></div>-->
+						<div class="row">
+						<div class="col-md-7">
+							<br>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15129.13585020647!2d73.9446626!3d18.5612324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1fda670135c12f39!2sValueQuo+Solutions+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1524818980474" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
 					
-				  </div>
-				  
-				  <div class="row">
-					<div class="col-md-7">
-					  <br>
-					  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15129.13585020647!2d73.9446626!3d18.5612324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1fda670135c12f39!2sValueQuo+Solutions+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1524818980474" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+						<div class="col-md-5">
+							<h4><strong>Get in Touch</strong></h4>
+							<form>
+							<div class="form">
+									<mat-form-field>
+								<input matInput name="name"  placeholder="Name"[(ngModel)]="user.name"required>
+									</mat-form-field>	</div>
+							<div class="form">
+									<mat-form-field>
+								<input matInput id="email" type="text" name="email" value="" placeholder="E-mail"[(ngModel)]="user.email">
+									</mat-form-field>	</div>
+							<div class="form">
+									<mat-form-field>
+								<input matInput id="phone"type="text" maxlength="10" name="phone" value="" placeholder="Phone"[(ngModel)]="user.phone">
+									</mat-form-field></div>
+							<div class="form">
+									<mat-form-field>
+								<textarea matInput name="message" rows="3" placeholder="Message"[(ngModel)]="user.msg"></textarea>
+									</mat-form-field></div>
+							<button (click)="submitUser()"data-toggle="modal"data-target="#universal" class="btn btn-default" type="submit" name="button">
+								<i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+							</button>
+							<div id="universal" class="modal fade" role="dialog">
+									<div class="modal-dialog modal-dialog-centered">
+									
+											<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+	
+										</div>
+										<div class="modal-body">
+											<h3>Your Contact details submit successfully!
+											</h3>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+										</div>
+							</div>
+							</form>
+						</div>
+						</div>
 					</div>
-			  
-					<div class="col-md-5">
-						<h4><strong>Get in Touch</strong></h4>
-					  <form>
-						<div class="form-group">
-						  <input id="name" type="text"class="form-control" name="name" value="" placeholder="Name"[(ngModel)]="user.name"required>
-						</div>
-						<div class="form-group">
-						  <input id="email" type="text"class="form-control" name="email" value="" placeholder="E-mail"[(ngModel)]="user.email"required>
-						</div>
-						<div class="form-group">
-						  <input id="phone"type="text" class="form-control"maxlength="10" name="phone" value="" placeholder="Phone"[(ngModel)]="user.phone"required>
-						</div>
-						<div class="form-group">
-						  <textarea class="form-control" name="message" rows="3" placeholder="Message"[(ngModel)]="user.message"required></textarea>
-						</div>
-						<button (click)="submitUser()"data-toggle="modal"data-target="#universal" class="btn btn-default" type="submit" name="button">
-							<i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
-						</button>
-						<div id="universal" class="modal fade" role="dialog">
-								<div class="modal-dialog modal-dialog-centered">
-							  
-									  <div class="modal-content">
-									<div class="modal-header">
-									  <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-									</div>
-									<div class="modal-body">
-									  <h3>Your Contact details submit successfully!
-									  </h3>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									  </div>
+					</section>
+				<br>
+				<br>
+				
+				<div class="container second-portion">
+					<div class="row">
+						<!-- Boxes de Acoes -->
+						<div class="col-xs-12 col-sm-6 col-lg-4">
+							<div class="Boxes">							
+								<div class="icon">
+									<div class="image"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+									<div class="info">
+										<br>
+										<h3 class="title">MAIL & WEBSITE</h3>
+										<p>
+											<i class="fa fa-envelope" aria-hidden="true"></i> Contact@valuequo.com
+											<br>
+											<br>
+											<i class="fa fa-globe" aria-hidden="true"></i> www.Buckswise.com
+										</p>
+									
 									</div>
 								</div>
-									</div>
+								<div class="space"></div>
+							</div> 
 						</div>
-					  </form>
-					</div>
-				  </div>
-				</div>
-			  </section>
-			<br>
-			<br>
+							
+						<div class="col-xs-12 col-sm-6 col-lg-4">
+							<div class="Boxes">							
+								<div class="icon">
+									<div class="image"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+									<div class="info">
+										<br>
+										<h3 class="title">CONTACT</h3>
+										<p>
+											<i class="fa fa-mobile" aria-hidden="true"></i> +91 90 2222 0075
+											<br>
+											<br>
+										<!--	<i class="fa fa-mobile" aria-hidden="true"></i>  -->
+										</p>
+									</div>
+								</div>
+								<div class="space"></div>
+							</div> 
+						</div>
+							
+						<div class="col-xs-12 col-sm-6 col-lg-4">
+							<div class="Boxes">							
+								<div class="icon">
+									<div class="image"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+									<div class="info">
+										<br>
+										<h3 class="title">ADDRESS</h3>
+										<p>
+											 <i class="fa fa-map-marker" aria-hidden="true"></i> 
+											 OFFICE # 9, 7TH FLOOR, A WING, CITY VISTA, FOUNTAIN ROAD, ASHOKA NAGAR, KHARADI, PUNE, MAHARASHTRA 411014
+										</p>
+									</div>
+								</div>
+								<div class="space"></div>
+				</div> 
+			</div>		
+				<br>
+				<br>
+				
+				<br>
+				<br>
 			
-			<div class="container second-portion">
-				<div class="row">
-					<!-- Boxes de Acoes -->
-					<div class="col-xs-12 col-sm-6 col-lg-4">
-						<div class="box">							
-							<div class="icon">
-								<div class="image"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-								<div class="info">
-									<br>
-									<h3 class="title">MAIL & WEBSITE</h3>
-									<p>
-										<i class="fa fa-envelope" aria-hidden="true"></i> Contact@valuequo.com
-										<br>
-										<br>
-										<i class="fa fa-globe" aria-hidden="true"></i> www.Buckswise.com
-									</p>
-								
-								</div>
-							</div>
-							<div class="space"></div>
-						</div> 
-					</div>
-						
-					<div class="col-xs-12 col-sm-6 col-lg-4">
-						<div class="box">							
-							<div class="icon">
-								<div class="image"><i class="fa fa-mobile" aria-hidden="true"></i></div>
-								<div class="info">
-									<br>
-									<h3 class="title">CONTACT</h3>
-									<p>
-										<i class="fa fa-mobile" aria-hidden="true"></i> +91 90 2222 0075
-										<br>
-										<br>
-									<!--	<i class="fa fa-mobile" aria-hidden="true"></i>  -->
-									</p>
-								</div>
-							</div>
-							<div class="space"></div>
-						</div> 
-					</div>
-						
-					<div class="col-xs-12 col-sm-6 col-lg-4">
-						<div class="box">							
-							<div class="icon">
-								<div class="image"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-								<div class="info">
-									<br>
-									<h3 class="title">ADDRESS</h3>
-									<p>
-										 <i class="fa fa-map-marker" aria-hidden="true"></i> 
-										 OFFICE # 9, 7TH FLOOR, A WING, CITY VISTA, FOUNTAIN ROAD, ASHOKA NAGAR, KHARADI, PUNE, MAHARASHTRA 411014
-									</p>
-								</div>
-							</div>
-							<div class="space"></div>
-			</div> 
-		</div>		
-			<br>
-			<br>
-			
-			<br>
-			<br>
-		

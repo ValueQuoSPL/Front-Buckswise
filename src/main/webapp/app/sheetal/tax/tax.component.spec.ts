@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TaxComponent } from 'app/sheetal/tax/tax.component';
+import { TaxComponent } from "./tax.component";
 
-describe('TaxComponent', () => {
+describe("TaxComponent", () => {
   let component: TaxComponent;
   let fixture: ComponentFixture<TaxComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TaxComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [TaxComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TaxComponent);
@@ -19,7 +20,7 @@ describe('TaxComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

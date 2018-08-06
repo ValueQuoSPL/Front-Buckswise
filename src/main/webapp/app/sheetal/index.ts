@@ -1,16 +1,16 @@
-export * from 'app/sheetal/main/main.route';
-export * from 'app/sheetal/main/main.component';
+export * from "./main/main.route";
+export * from "./main/main.component";
 
-export * from 'app/sheetal/contactus/contact.route';
-export * from 'app/sheetal/contactus/contactus.component';
+export * from "./contactus/contact.route";
+export * from "./contactus/contactus.component";
 
-export * from 'app/sheetal/requestmeeting/meet.route';
-export * from 'app/sheetal/requestmeeting/requestmeeting.component';
+export * from "./requestmeeting/meet.route";
+export * from "./requestmeeting/requestmeeting.component";
 
-export * from 'app/sheetal/tax/tax.route';
-export * from 'app/sheetal/tax/tax.component';
+export * from "./tax/tax.route";
+export * from "./tax/tax.component";
 
-export * from 'app/sheetal/main/main.route';
-export * from 'app/sheetal/main/main.component';
+export * from "./main/main.route";
+export * from "./main/main.component";
 
-export * from 'app/sheetal/sheetal.route';
+export * from "./sheetal.route";
