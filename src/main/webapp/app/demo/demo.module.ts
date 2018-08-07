@@ -13,6 +13,7 @@ import { CustomMaterialModule } from 'app/custom-material.module';
 import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
 import { SimpleComponent } from './simple/simple.component';
 import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
+import { MobileOtpComponent } from './mobile-otp/mobile-otp.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
         NgBootstrapComponent,
         IncomeDialogComponent,
         SimpleComponent,
-        MatNavbarComponent
+        MatNavbarComponent,
+        MobileOtpComponent
         ],
     entryComponents: [MaterialComponent, IncomeDialogComponent
         ],

@@ -2,90 +2,16 @@
   This is Demo
  </p>
  
-<div class="accordion" id="accordionExample">
-
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Other Demo Component
-        </button>
-      </h5>
-    </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
+<div class="container">
+  <a class="btn btn-outline-success" routerLink='material' routerLinkActive="active">Material</a> &nbsp;
+  <a class="btn btn-outline-warning" routerLink='grid' routerLinkActive="active"> Grid Demo</a> &nbsp;
+  <a class="btn btn-outline-danger" routerLink='ngb' routerLinkActive="active"> Ng Bootstrap</a> &nbsp;
+  <a class="btn btn-outline-primary" routerLink='otp' routerLinkActive="active"> Mobile Otp</a> &nbsp;
+  <a class="btn btn-outline-dark" routerLink='simple' routerLinkActive="active"> Simple</a> &nbsp;
+  <a class="btn btn-outline-secondary" routerLink='simple' routerLinkActive="active"> Comp 6</a>
+</div>
 
 
-          <a class="btn btn-outline-warning" routerLink='grid' routerLinkActive="active"> Grid Demo</a>
-          <a class="btn btn-outline-success" routerLink='material' routerLinkActive="active">Material</a>
-          <a class="btn btn-outline-danger" routerLink='ngb' routerLinkActive="active"> Ng Bootstrap</a>
-          <a class="btn btn-outline-dark" routerLink='simple' routerLinkActive="active"> Simple</a>
-          <a class="btn btn-outline-primary"> Comp 5</a>
-          <a class="btn btn-outline-secondary"> Comp 6</a>
-  
-
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Mobile number verification
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-
-        <form action="submit()" method="post">
-            <div>
-            <div *ngIf="validnumber === 'false'" class="form-group">
-              <label for="mobile">Enter Your Mobile Number</label>
-              <input
-                      type="number"
-                      class="form-control col-md-3"
-                      id="mobile"
-                      placeholder="Enter Mobile Number"
-                      [(ngModel)]="mylogin.mobile"
-                      name="mobile"
-                      value="+91"
-                >
-            </div>
-          
-            <div *ngIf="validnumber === 'false'">
-              <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="submit()">Request OTP</a>
-            </div>
-          
-           <div class="row">
-             <div *ngIf="validnumber === 'true' && VerifyButtonClicked === 'false'" class="form-group col-md-3">
-               <label for="pass">Enter OTP</label>
-               <input type="number" class="form-control" id="pass" placeholder="otp"
-               [(ngModel)]="mylogin.verifyotp" [ngModelOptions]="{standalone: true}">
-             </div>
-             </div>
-          
-            <div id="recaptcha-container"></div>
-         
-            <div *ngIf="validnumber === 'true' && VerifyButtonClicked === 'false'">
-                <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="verify()">Verify OTP</a>
-            </div>
-          
-          <div *ngIf="VerifyButtonClicked === 'true'">
-            <div class="alert alert-success" role="alert" *ngIf="isVerify === 'true'" >
-             success
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf="isVerify === 'false'" >
-             failed
-            </div>
-          </div><br>
-          </div><br>
-         </form>
-
-      </div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 
  
-</div>

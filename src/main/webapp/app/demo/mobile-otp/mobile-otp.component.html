@@ -1,0 +1,43 @@
+<form action="submit()" method="post">
+  <div>
+  <div *ngIf="validnumber === 'false'" class="form-group">
+    <label for="mobile">Enter Your Mobile Number</label>
+    <input
+            type="number"
+            class="form-control col-md-3"
+            id="mobile"
+            placeholder="Enter Mobile Number"
+            [(ngModel)]="mylogin.mobile"
+            name="mobile"
+            value="+91"
+      >
+  </div>
+
+  <div *ngIf="validnumber === 'false'">
+    <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="submit()">Request OTP</a>
+  </div>
+
+ <div class="row">
+   <div *ngIf="validnumber === 'true' && VerifyButtonClicked === 'false'" class="form-group col-md-3">
+     <label for="pass">Enter OTP</label>
+     <input type="number" class="form-control" id="pass" placeholder="otp"
+     [(ngModel)]="mylogin.verifyotp" [ngModelOptions]="{standalone: true}">
+   </div>
+   </div>
+
+  <div id="recaptcha-container"></div>
+
+  <div *ngIf="validnumber === 'true' && VerifyButtonClicked === 'false'">
+      <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="verify()">Verify OTP</a>
+  </div>
+
+<div *ngIf="VerifyButtonClicked === 'true'">
+  <div class="alert alert-success" role="alert" *ngIf="isVerify === 'true'" >
+   success
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="isVerify === 'false'" >
+   failed
+  </div>
+</div><br>
+</div><br>
+</form>
