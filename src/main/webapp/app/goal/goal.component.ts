@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, Route } from '@angular/router';
-import { Principal } from 'app/shared';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { first } from 'rxjs/operator/first';
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
+import { Principal } from "../shared";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { first } from "rxjs/operator/first";
 
 @Component({
-  selector: 'jhi-goal',
-  templateUrl: './goal.component.html',
+  selector: "jhi-goal",
+  templateUrl: "./goal.component.html",
   styles: []
 })
 export class GoalComponent implements OnInit {
-
-  constructor( private router: Router) { }
+  constructor(private router: Router) {}
 
   // fieldArray = [];
   // resource = '';
@@ -21,11 +20,10 @@ export class GoalComponent implements OnInit {
   // IncomeSalary; IncomeAward; IncomeBonus; IncomePension;
   // IncomeSaving; IncomeDeposit; IncomeRental;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectgoals() {
-  this.router.navigate(['goalselect']);
+    this.router.navigate(["goalselect"]);
   }
 
   // btnClick = function() {
@@ -37,5 +35,4 @@ export class GoalComponent implements OnInit {
   //       name: this.resource,
   //       value: this.income
   //     });
-
 }

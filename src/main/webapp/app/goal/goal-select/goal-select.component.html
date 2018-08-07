@@ -1,671 +1,754 @@
-<div  style=" opacity: 10;
-transition: all 700ms ease;
-right: 0;
-left: 0;
-background: #fff;
--webkit-box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-z-index: 5;
-line-height: 20px;
-font-size: 0.75em;
-font-weight: 500;
-vertical-align: middle;
-border-radius: 10px;"><!--div style start-->
-  <div style="border-radius: 10px;"><!--div nav start-->
-    <nav  class="navbar navbar-expand-md navbar-dark bg-dark" style=" margin-top:0px; border-radius: 10px;">
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault"><!--div navbar1 start-->
-        <ul class="navbar-nav mr-auto"><!--start of ul-->
-          <li class="nav-item " style="margin-left:10px">
-            <a class="nav-link" >FIN HEALTH SCORE 200/1000 </a>
-          </li>
-          <li class="nav-item"  style="margin-left:250px">
-            <a class="nav-link">SURPLUS  0</a>
-          </li>
-          <li class="nav-item"  style="margin-left:200px">
-            <a class="nav-link ">NETWORTH  0</a>
-          </li>
-          <li class="nav-item"  style="margin-left:250px">
-            <a class="nav-link ">GOALS ACHIEVABLE 1 /1</a>
-          </li>
-        </ul><!--end of ul-->
-      </div><!--end of navbar1-->
-    </nav><!--end of nav-->
-  </div><!--end div nav-->
-</div><!--div style start-->
-<div><!--div goal start-->
-  <h3>Goals</h3> 
-  <div class="pull-right"><!--start of buttons -->
-    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-      <span><i class="fa fa-plus" aria-hidden="true"></i>
-        <span>Add</span>
-      </span>
-    </button>
-  <!--start of modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:1300px; max-height: 800px;"><!--start of modal-dialog-->
-      <div class="modal-content"><!--start of modal-content-->
-        <div class="modal-header"><!--start of modal-header-->
-          <h5 class="modal-title" id="exampleModalLabel">Goal Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><!--start button-->
-            <span aria-hidden="true">&times;</span>
-          </button><!--end button-->
-        </div><!--end of modal header div-->
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"><!--start of ul -->
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-            aria-controls="pills-home" aria-selected="true">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-education-tab" data-toggle="pill" href="#pills-education" role="tab" 
-            aria-controls="pills-education" aria-selected="false">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-vehicle-tab" data-toggle="pill" href="#pills-vehicle" role="tab" 
-            aria-controls="pills-vehicle" aria-selected="false">Vehicle</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-childbirth-tab" data-toggle="pill" href="#pills-childbirth" role="tab" 
-            aria-controls="pills-childbirth" aria-selected="true">Child Birth</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-merrage-tab" data-toggle="pill" href="#pills-merrage" role="tab" 
-            aria-controls="pills-merrage" aria-selected="true">Merrage</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " id="pills-business-tab" data-toggle="pill" href="#pills-business" role="tab" 
-            aria-controls="pills-business" aria-selected="true">Business</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-familysupport-tab" data-toggle="pill" href="#pills-familysupport" 
-            role="tab" aria-controls="pills-familysupport" aria-selected="true">Family Support</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-vacation-tab" data-toggle="pill" href="#pills-vacation" role="tab" 
-            aria-controls="pills-vacation" aria-selected="true">Vacation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-emergencyfund-tab" data-toggle="pill" href="#pills-emergencyfund" role="tab" 
-            aria-controls="pills-emergencyfund" aria-selected="true">Emergency Fund</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-retirementfund-tab" data-toggle="pill" href="#pills-retirementfund" role="tab" 
-            aria-controls="pills-retirementfund" aria-selected="true">Retirement Fund</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-newgoal-tab" data-toggle="pill" href="#pills-newgoal" role="tab"
-            aria-controls="pills-newgoal" aria-selected="true">New Goal</a>
-          </li>
-        </ul><!--End of ul -->
-        <div class="tab-content" id="pills-tabContent"><!--start of tabContant div-->
-          <div class="tab-pane fade show active container" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><!--start of home-tabpane div-->
-            <div class="row"><!--start of row1 div-->
-              <div class="col-md-6"><!--start of row1.col1 div-->
-                <!-- <input type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}"> -->
-                <table>
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}"></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text"  name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}"></td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td><input type="text"  name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea></td>
-                  </tr>
-                </table>
-              </div><!--end of row1.col1 div-->
-              <div class="col-md-6"><!--start of row1.col2 div-->
-                <tr>
-                    <td>Loan Requirement</td>
-                    <td><input type="text"  name="prices" [(ngModel)]="goalselect.loanrequire" [ngModelOptions]="{standalone: true}"></td>
-                </tr>
-                <tr><!--start of col4-->
-                  <td>
-                    Date of Creation
-                  </td>
-                  <td>
-                    <input type="text"  name="dob" [(ngModel)]="goalselect.creationdate" [ngModelOptions]="{standalone: true}"
-                    placeholder="Datepicker"
-                    class="form-control"
-                    bsDatepicker>
-                  </td> <!--end of col4-->
-                </tr>
-              </div><!--end of row1.col2 div-->
-            </div><!--end of row1 div-->
-            <div class="pull-right">
-              <button class="btn btn-info" (click)="saveHome()" data-dismiss="modal">Submit</button>
-              <button class="btn btn-danger"  data-dismiss="modal" (click)="clear()">Cancle</button>
-            </div>
-          </div><!--end of home-tabpane div-->      
-          <div class="tab-pane fade container" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab"><!--start of edu-tabpane div-->
-            <div class="row"><!--start of row1 div-->
-              <div class="col-md-6"><!--start of row1.col1 div-->
-                <table><!--start of table-->
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}"></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text" [(ngModel)]="Educationselect.priority"></td>
-                  </tr>
-                  <tr>
-                    <td>Goal Duration</td>
-                    <td><input type="text" [(ngModel)]="Educationselect.duration"></td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td><input type="text" [(ngModel)]="Educationselect.price"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="Educationselect.notes"></td>
-                  </tr>
-                </table><!--end of table-->
-              </div><!--end of row1.col1 div-->
-                <div class="col-md-6"><!--start of row1.col2 div-->
-                  <table><!--start of table-->
-                      <tr>
-                        <td>Loan Requirement(%)</td>
-                        <td><input type="text" [(ngModel)]="Educationselect.loanrequire"></td>
-                      </tr>
-                      <tr><!--start of tr-->
-                        <td>Date of Creation</td>
-                        <td>
-                          <input type="text"
-                          placeholder="Datepicker"
-                          class="form-control"
-                          bsDatepicker [(ngModel)]="Educationselect.creationdate">
-                        </td>
-                      </tr><!--end of tr-->
-                  </table><!--end of table-->
-                </div><!--end of row1.col2 div-->
-            </div><!--end of row1 div-->
-            <div class="pull-right"><!--start of btn div-->
-              <button class="btn btn-info" (click)="saveEducation()" data-dismiss="modal">Submit</button>
-              <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            </div><!--end of btn div-->
-          </div><!--end of edu-tabpane div-->
-          <div class="tab-pane fade container" id="pills-vehicle" role="tabpanel" 
-          aria-labelledby="pills-vehicle-tab"><!--start of vehi-tabpane div-->
-            <div class="row"><!--start of row1 div-->
-              <div class="col-md-6"><!--start of row1.col1 div-->
-                <table>
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text" [(ngModel)]="Vehicleselect.goalname" required></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text" [(ngModel)]="Vehicleselect.priority"></td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td><input type="text" [(ngModel)]="Vehicleselect.price"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="Vehicleselect.notes"></td>
-                  </tr>
-                </table>
-              </div><!--end of row1.col1 div-->
-                <div class="col-md-6"><!--start of row1.col2 div-->
-                  <tr>
-                      <td>Loan Requirement</td>
-                      <td><input type="text" [(ngModel)]="Vehicleselect.loanrequire"></td>
-                  </tr>
-                  <tr><!--start of col4-->
-                    <td>
-                      Date of Creation
-                    </td>
-                    <td>
-                      <input type="text"
-                      placeholder="Datepicker"
-                      class="form-control"
-                      bsDatepicker [(ngModel)]="Vehicleselect.creationdate">
-                    </td> <!--end of col4-->
-                  </tr>
-                </div><!--start of row1.col2 div-->
-            </div><!--end of row1 div-->
-            <div class="pull-right">
-              <button class="btn btn-info" (click)="saveVehicle()" data-dismiss="modal">Submit</button>
-              <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            </div>
-          </div><!--end of vehi-tabpane div-->
-          <div class="tab-pane fade container" id="pills-childbirth" role="tabpanel" 
-          aria-labelledby="pills-childbirth-tab"><!--start of child-tabpane div-->
-            <div class="row"><!--start of row1 div-->
-              <div class="col-md-6"><!--start of row1.col1 div-->
-                <table>
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text" [(ngModel)]="Childbirthselect.goalname"></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text" [(ngModel)]="Childbirthselect.priority"></td>
-                  </tr>
-                  <tr>
-                    <td>Amount Needed</td>
-                    <td><input type="text"  [(ngModel)]="Childbirthselect.price"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform"  [(ngModel)]="Childbirthselect.notes"></td>
-                  </tr>
-                </table>
-              </div><!--end of row1.col1 div-->
-              <div class="col-md-6"><!--start of row1.col2 div-->
-                <tr>
-                  <td>Loan Requirement</td>
-                  <td><input type="text"  [(ngModel)]="Childbirthselect.loanrequire"></td>
-                </tr>
-                <tr>
-                  <td>Date of Creation</td>
-                  <td>
-                    <input type="text"
-                    placeholder="Datepicker"
-                    class="form-control"
-                    bsDatepicker [(ngModel)]="Childbirthselect.creationdate">
-                  </td>
-                </tr>
-              </div><!--end of row1.col2 div-->
-            </div><!--start of row1 div-->
-            <div class="pull-right"><!--start of btn div-->
-                <button class="btn btn-info"(click)="saveChildbirth()" data-dismiss="modal">Submit</button>
-                <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            </div><!--end of btn div-->
-          </div><!--end of child-tabpane div-->
-          <div class="tab-pane fade container" id="pills-merrage" role="tabpanel"
-          aria-labelledby="pills-merrage-tab"><!--start of merrage-tabpane div-->
-            <div class="row"><!--start of row1 div-->
-              <div class="col-md-6"><!--start of row1.col1 div-->
-                  <table>
-                    <tr>
-                      <td>Goal Name</td>
-                      <td><input type="text" [(ngModel)]="Merrageselect.goalname"></td>
-                    </tr>
-                    <tr>
-                      <td>Priority</td>
-                      <td><input type="text" [(ngModel)]="Merrageselect.priority"></td>
-                    </tr>
-                      <tr>
-                        <td>Amount Needed</td>
-                        <td><input type="text" [(ngModel)]="Merrageselect.price"></td>
-                      </tr>
-                      <tr>
-                        <td>Notes</td>
-                        <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="Merrageselect.notes"></td>
-                      </tr>
-                    </table>
-                  </div><!--end of row1.col1 div-->
-                  <div class="col-md-6"><!--start of row1.col2 div-->
-                    <tr>
-                      <td>Loan Requirement</td>
-                      <td><input type="text" [(ngModel)]="Merrageselect.loanrequire"></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Date of Creation
-                      </td>
-                      <td>
-                        <input type="text"
-                        placeholder="Datepicker"
-                        class="form-control"
-                        bsDatepicker [(ngModel)]="Merrageselect.creationdate">
-                      </td>
-                    </tr>
-                  </div><!--end of row1.col2 div-->
-              </div><!--end of row1 div-->
-            <div class="pull-right">
-              <button class="btn btn-info" (click)="saveMerrage()" data-dismiss="modal">Submit</button>
-              <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            </div>
-          </div><!--end of merrage-tabpane div-->
-          <div class="tab-pane fade container" id="pills-business" role="tabpanel" 
-          aria-labelledby="pills-business-tab"><!--start of business-tabpane div-->
-            <div class="row"><!--start row1 div-->
-              <div class="col-md-6"><!--start row1.col1 div-->
-                <table>
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text" [(ngModel)]="Businessselect.goalname"></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text" [(ngModel)]="Businessselect.priority"></td>
-                  </tr>
-                    <tr>
-                      <td>Amount Needed</td>
-                      <td><input type="text" [(ngModel)]="Businessselect.price"></td>
-                    </tr>
-                    <tr>
-                      <td>Notes</td>
-                      <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="Businessselect.notes"></td>
-                    </tr>
-                </table>
-              </div><!--end row1.col1 div-->
-              <div class="col-md-6"><!--start row1.col1 div-->
-                <tr>
-                  <td>Loan Requirement</td>
-                  <td><input type="text" [(ngModel)]="Businessselect.loanrequire"></td>
-                </tr>
-                  <tr>
-                    <td>Date of Creation</td>
-                    <td>
-                      <input type="text"
-                      placeholder="Datepicker"
-                      class="form-control"
-                      bsDatepicker [(ngModel)]="Businessselect.creationdate">
-                    </td>
-                  </tr>
-              </div><!--end row1.col2 div-->
-            </div><!--start row1 div-->
-            <div class="pull-right">
-              <button class="btn btn-info" (click)="saveBusiness()" data-dismiss="modal">Submit</button>
-              <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            </div>
-          </div><!--end of business-tabpane div-->
-          <div class="tab-pane fade container " id="pills-familysupport" role="tabpanel" 
-          aria-labelledby="pills-familysupport-tab"><!--start of familysup-tabpane div-->
-            <div class="row"><!--start row1 div-->
-              <div class="col-md-6"><!--start row1.col1 div-->
-                <table>
-                  <tr>
-                    <td>Goal Name</td>
-                    <td><input type="text"[(ngModel)]="FamilySupportselect.goalname"></td>
-                  </tr>
-                  <tr>
-                    <td>Priority</td>
-                    <td><input type="text"[(ngModel)]="FamilySupportselect.priority"></td>
-                  </tr>
-                  <tr>
-                    <td>Amount Needed</td>
-                    <td><input type="text"[(ngModel)]="FamilySupportselect.price"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform"[(ngModel)]="FamilySupportselect.notes"></td>
-                  </tr>
-                </table>
-            </div><!--end row1.col1 div-->
-            <div class="col-md-6"><!--start row1.col2 div-->
-                <tr>
-                    <td>Loan Requirement</td>
-                    <td><input type="text" [(ngModel)]="FamilySupportselect.loanrequire"></td>
-                </tr>
-                <tr>
-                  <td>
-                    Date of Creation
-                  </td>
-                  <td>
-                    <input type="text"
-                    placeholder="Datepicker"
-                    class="form-control"
-                    bsDatepicker [(ngModel)]="FamilySupportselect.creationdate">
-                  </td>
-                </tr>
-            </div><!--end row1.col1 div-->
-          </div><!--end row1 div-->
-          <div class="pull-right">
-            <button class="btn btn-info"(click)= "saveFamilysup()" data-dismiss="modal">Submit</button>
-            <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-          </div>
-        </div><!--end of familysup-tabpane div-->
-        <div class="tab-pane fade container" id="pills-vacation" role="tabpanel"
-          aria-labelledby="pills-vacation-tab"><!--start of vacation-tabpane div-->
-          <div class="row"><!--start of row1 div-->
-            <div class="col-md-6"><!--start of row1.col1 div-->
-              <table>
-                <tr>
-                  <td>Goal Name</td>
-                  <td><input type="text" [(ngModel)]="Vacationselect.goalname"></td>
-                </tr>
-                <tr>
-                  <td>Priority</td>
-                  <td><input type="text" [(ngModel)]="Vacationselect.priority"></td>
-                </tr>
-                <tr>
-                  <td>Amount Needed</td>
-                  <td><input type="text" [(ngModel)]="Vacationselect.price"></td>
-                </tr>
-                <tr>
-                  <td>Notes</td>
-                  <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="Vacationselect.notes"></td>
-                </tr>
+<div class="row"><!--start of row1 div-->
+  <div class="col-md-2"><!--start of row1.col1 div-->
+    <label><h4><b>Select Goal</b></h4></label>
+  </div><!--end of row1.col1 div-->
+  <div class="setmar col-md-10 "><!--start of row1.col2 div-->
+    <div><!--start of select div-->
+      <mat-form-field>
+        <mat-select placeholder="Choose Goal" [(ngModel)]="goaltype">
+          <mat-option  value="home">Home</mat-option>
+          <mat-option value="education">Education</mat-option>
+          <mat-option value="vehicle">Vehicle</mat-option>
+          <mat-option value="childbirth">Childbirth</mat-option>
+          <mat-option value="merrage">Merrage</mat-option>
+          <mat-option value="business">Business</mat-option>
+          <mat-option value="familysupport">Familysupport</mat-option>
+          <mat-option value="vacation">Vacation</mat-option>
+          <mat-option value="emergencyfund">Emergencyfund</mat-option>
+          <mat-option value="retairementfund">Retairementfund</mat-option>
+          <mat-option value="newgoal">Newgoal</mat-option>
+        </mat-select>
+      </mat-form-field> 
+    </div><!--end of select div-->
+  </div><!--start of row1.col2 div-->
+</div><!--end of row1 div-->
+<div [ngSwitch]="goaltype"><!--start of ngSwitch div-->
+  <div *ngSwitchCase="'home'"><!--start of ngSwitchCaseHome div-->
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row2 div-->
+        <div class="col-md-6"><!--start of row2.col1 div-->
+          <table><!--start of home table-->
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Year to Goal" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Present Cost" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table><!--end of home table-->
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row2.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Future Cost" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Required Monthly Investment" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Fund Shortage" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row2 div-->
+      <div class="pull-right"><!--start of btn div-->
+        <button mat-raised-button  color="primary" (click)="Home()">Submit</button>
+        <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+      </div><!--end of btn div-->
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseHome div-->
+  <div *ngSwitchCase="'education'"><!--start of ngSwitchCaseEducation div-->
+    <div class="container" style="margin-top: 20px" ><!--start of edu-container div-->
+      <div class="row"><!--start of row3 div-->
+        <div class="col-md-6"><!--start of row3.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Duration" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Educationselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row3.col1 div-->
+        <div class="col-md-6"><!--start of row3.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Educationselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Educationselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row3.col2 div-->
+      </div><!--end of row3 div-->
+      <div class="pull-right">
+        <button mat-button color="primary"(click)="Education()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of edu-container div-->
+  </div><!--end of ngSwitchCaseEducation div-->
+  <div *ngSwitchCase="'vehicle'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of vehicle-container div-->
+      <div class="row"><!--start of row4 div-->
+        <div class="col-md-6"><!--start of row4.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vehicleselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vehicleselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Vehicleselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="Vehicleselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Vehicleselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr><!--start of col4-->
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Vehicleselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary"(click)="Vehicle()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseVehicle div-->
+  <div *ngSwitchCase="'childbirth'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Childbirthselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Childbirthselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Childbirthselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="Childbirthselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+                <mat-form-field>
+                  <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Childbirthselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+          </tr>
+          <tr><!--start of col4-->
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Childbirthselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary" (click)="Childbirth()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCasechildbirth div-->
+  <div *ngSwitchCase="'merrage'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+            <table>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Merrageselect.goalname" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Merrageselect.priority" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Merrageselect.price" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="Merrageselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                  </mat-form-field>
+                </td>
+              </tr>
               </table>
             </div><!--end of row1.col1 div-->
             <div class="col-md-6"><!--start of row1.col2 div-->
               <tr>
-                <td>Loan Requirement</td>
-                <td><input type="text" [(ngModel)]="Vacationselect.loanrequire"></td>
-              </tr>
-              <tr>
                 <td>
-                  Date of Creation
+                  <mat-form-field>
+                    <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Merrageselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
                 </td>
+              </tr>
+              <tr><!--start of col4-->
                 <td>
-                  <input type="text"
-                  placeholder="Datepicker"
-                  class="form-control"
-                  bsDatepicker [(ngModel)]="Vacationselect.creationdate">
+                  <div><!-- start div datepicker-->
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Merrageselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div><!-- end div datepicker-->
                 </td>
               </tr>
             </div><!--end of row1.col2 div-->
+          </div><!--end of row1 div-->
+          <div class="pull-right">
+            <button mat-button color="primary" (click)="Merrage()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseMerrage div-->
+  <div *ngSwitchCase="'business'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Businessselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Businessselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Businessselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="Businessselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Businessselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Businessselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary"(click)="Business()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseBusiness div-->
+  <div *ngSwitchCase="'familysupport'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="FamilySupportselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="FamilySupportselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="FamilySupportselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="FamilySupportselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="FamilySupportselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="FamilySupportselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary" (click)= "Familysupport()" >Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseFamilySup div-->
+  <div *ngSwitchCase="'vacation'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vacationselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vacationselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="Vacationselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="Vacationselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div><!--end of row1.col1 div-->
+          <div class="col-md-6"><!--start of row1.col2 div-->
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="Vacationselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr><!--start of col4-->
+              <td>
+                <div><!-- start div datepicker-->
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="Vacationselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div><!-- end div datepicker-->
+              </td>
+            </tr>
+          </div><!--end of row1.col2 div-->
         </div><!--end of row1 div-->
         <div class="pull-right">
-          <button class="btn btn-info"(click)="saveVacation()" data-dismiss="modal">Submit</button>
-          <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
+          <button mat-button color="primary" (click)="Vacation()">Submit</button>
+          <button mat-button color="accent" (click)="clear()">Cancel</button>
         </div>
-      </div><!--end of vacation-tabpane div-->
-        <div class="tab-pane fade container" id="pills-emergencyfund" role="tabpanel"
-          aria-labelledby="pills-emergencyfund-tab"><!--start of emergency-tabpane div-->
-          <div class="row"><!--start of row1 div-->
-            <div class="col-md-6"><!--start of row1.col1 div-->
-              <table>
-                <tr>
-                  <td>Goal Name</td>
-                  <td><input type="text"[(ngModel)]="EmergencyFundselect.goalname"></td>
-                </tr>
-                <tr>
-                  <td>Priority</td>
-                  <td><input type="text"[(ngModel)]="EmergencyFundselect.priority"></td>
-                </tr>
-                <tr>
-                  <td>Amount Needed</td>
-                  <td><input type="text"[(ngModel)]="EmergencyFundselect.price"></td>
-                </tr>
-                <tr>
-                  <td>Notes</td>
-                  <td><textarea rows="3" cols="50" name="comment" form="usrform"[(ngModel)]="EmergencyFundselect.notes"></td>
-                </tr>
-              </table>
-            </div><!--end of row1.col1 div-->
-            <div class="col-md-6"><!--startrow1.col2 div-->
-              <tr>
-                <td>Loan Requirement</td>
-                <td><input type="text"[(ngModel)]="EmergencyFundselect.loanrequire"></td>
-              </tr>
-              <tr>
-                <td>
-                  Date of Creation
-                </td>
-                <td>
-                  <input type="text"
-                  placeholder="Datepicker"
-                  class="form-control"
-                  bsDatepicker [(ngModel)]="EmergencyFundselect.creationdate">
-                </td>
-              </tr>
-            </div><!--end row1.col2 div-->
-        </div><!--end row1 div-->
-        <div class="pull-right">
-          <button class="btn btn-info"(click)="saveEmergencyFund()" data-dismiss="modal">Submit</button>
-          <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-        </div>
-        </div><!--end of emergency-tabpane div-->
-        <div class="tab-pane fade container" id="pills-retirementfund" role="tabpanel"
-          aria-labelledby="pills-retirementfund-tab"><!--start of retirement-tabpane div-->
-          <div class="row"><!--start row1 div-->
-            <div class="col-md-6"><!--start row1.col1 div-->
-              <table>
-                <tr>
-                  <td>Goal Name</td>
-                  <td><input type="text"[(ngModel)]="RetirementFundselect.goalname"></td>
-                </tr>
-                <tr>
-                    <td>Goal Priority</td>
-                    <td><input type="text"[(ngModel)]="RetirementFundselect.priority"></td>
-                  </tr>
-                  <tr>
-                <tr>
-                  <td>Goal Duration</td>
-                  <td><input type="text"[(ngModel)]="RetirementFundselect.duration"></td>
-                </tr>
-                <tr>
-                  <td>Annual Requirement</td>
-                  <td><input type="text"[(ngModel)]="RetirementFundselect.price"></td>
-                </tr>
-                    <tr>
-                      <td>Notes</td>
-                      <td><textarea rows="3" cols="50" name="comment" form="usrform"[(ngModel)]="RetirementFundselect.notes"></td>
-                    </tr>
-                </table>
-            </div><!--end row1.col1 div-->
-            <div class="col-md-6"><!--start row1.col2 div-->
-              <tr>
-                <td>Loan Requirement</td>
-                <td><input type="text"[(ngModel)]="RetirementFundselect.loanrequire"></td>
-              </tr>
-                <tr>
-                  <td>
-                    Date of Creation
-                  </td>
-                  <td>
-                    <input type="text"
-                    placeholder="Datepicker"
-                    class="form-control"
-                    bsDatepicker [(ngModel)]="RetirementFundselect.creationdate">
-                  </td> 
-                </tr>
-            </div><!--end row1.col2 div-->
-        </div>
-        <div class="pull-right">
-          <button class="btn btn-info"(click)="saveRetairementFund()" data-dismiss="modal">Submit</button>
-          <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-        </div>
-      </div><!--end of retirement-tabpane div-->
-        <div class="tab-pane fade container" id="pills-newgoal" role="tabpanel" 
-          aria-labelledby="pills-newgoal-tab"><!--start of newgoal-tabpane div-->
-          <div class="row"><!--start row1 div-->
-            <div class="col-md-6"><!--start row1.col1 div-->
-              <table>
-                <tr>
-                  <td>Goal Name</td>
-                  <td><input type="text"[(ngModel)]="NewGoalselect.goalname"></td>
-                </tr>
-                <tr>
-                  <td>Priority</td>
-                  <td><input type="text"[(ngModel)]="NewGoalselect.priority"></td>
-                </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td><input type="text"[(ngModel)]="NewGoalselect.price"></td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td><textarea rows="3" cols="50" name="comment" form="usrform" [(ngModel)]="NewGoalselect.notes"></td>
-                  </tr>
-                </table>
-              </div><!--end row1.col1 div-->
-              <div class="col-md-6"><!--start row1.col2 div-->
-                <tr>
-                  <td>
-                    <!-- <select class="selectpicker" [(ngModel)]="NewGoalselect.loantype">
-                      <option>personal</option>
-                      <option>home</option>
-                      <option>car</option>
-                    </select> -->
-                    <select [(ngModel)]="NewGoalselect.loantype">
-                        <option value="personal">personal</option>
-                        <option value="home">home</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Loan Requirement</td>
-                  <td><input type="text"[(ngModel)]="NewGoalselect.loanrequire"></td>
-                </tr>
-                <tr>
-                  <td>
-                    Date of Creation
-                  </td>
-                  <td>
-                    <input type="text"
-                    placeholder="Datepicker"
-                    class="form-control"
-                    bsDatepicker [(ngModel)]="NewGoalselect.creationdate">
-                  </td>
-                </tr>
-            </div><!--end row1.col2 div-->
-          </div><!--start row1 div-->
-          <div class="pull-right">
-            <button class="btn btn-info"(click)="saveNewGoal()" data-dismiss="modal">Submit</button>
-            <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
-          </div>
-        </div><!--end of newgoal-tabpane div-->
-      </div><!--End of tabContent div-->
-    </div> <!-- end of fade modal -->
-  </div><!--end of modal-dialog-->
-</div>  <!-- end of modal -->
-<button type="button" class="btn btn-link">
-  <span>
-    <i class="fa fa-info" aria-hidden="true"></i>
-    <span>Help</span>
-  </span>
-</button>
-<button type="button" class="btn btn-link">
-  <span>
-    <i class="fa fa-info" aria-hidden="true"></i>
-    <span>Help</span>
-  </span>
-</button>
-</div><!--end button-->
-</div><!--div goal end-->
-<div>
-  <table class="table table-hover table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Goal Name</th>
-        <th scope="col">Priority</th>
-        <th scope="col">Linked Assets</th>
-        <th scope="col">years</th>
-        <th scope="col">Fund Needed</th>
-        <th scope="col">Shortage</th>
-      </tr>
-    </thead> 
-        <!-- <tbody>
-          <tr *ngFor="let goalselect of goalselectArray">
-            <td>{{goalselect.goalname}} </td>
-            <td>{{goalselect.priority}}  </td>
-            <td> {{goalselect.price}}</td>
-            <td>{{goalselect.notes}}</td>
-            <td>{{goalselect.prices}}</td>
-            <td>{{goalselect.dob}}</td>
+      </div><!--end of home-tabpane div-->
+    </div><!--end of ngSwitchCaseVacation div-->
+  <div *ngSwitchCase="'emergencyfund'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="EmergencyFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="EmergencyFundselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="EmergencyFundselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="EmergencyFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="EmergencyFundselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
           </tr>
-        </tbody> -->
-  </table>
+          <tr><!--start of col4-->
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="EmergencyFundselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary" (click)="EmergencyFund()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseEmergency div-->
+  <div *ngSwitchCase="'retairementfund'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="RetirementFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Duration" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Annual Requirement" type="text" name="price" [(ngModel)]="RetirementFundselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput rows="3" cols="50" placeholder="Notes"  name="comment" form="usrform"  name="notes" [(ngModel)]="RetirementFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div><!--end of row1.col1 div-->
+        <div class="col-md-6"><!--start of row1.col2 div-->
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="RetirementFundselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><!-- start div datepicker-->
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="RetirementFundselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div><!-- end div datepicker-->
+            </td>
+          </tr>
+        </div><!--end of row1.col2 div-->
+      </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary" (click)="RetairementFund()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseRetaire div-->
+  <div *ngSwitchCase="'newgoal'">
+    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+      <div class="row"><!--start of row1 div-->
+        <div class="col-md-6"><!--start of row1.col1 div-->
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="NewGoalselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="NewGoalselect.priority" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Price" type="text" name="price" [(ngModel)]="NewGoalselect.price" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Notes"  name="comment" form="usrform"  name="notes" [(ngModel)]="NewGoalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div><!--end of row1.col1 div-->
+          <div class="col-md-6"><!--start of row1.col2 div-->
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Loan Requirement" type="text"  name="prices" [(ngModel)]="NewGoalselect.loanRequirement" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div><!-- start div datepicker-->
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date"  name="dob" [(ngModel)]="NewGoalselect.dateOfCreation" [ngModelOptions]="{standalone: true}">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div><!-- end div datepicker-->
+              </td>
+            </tr>
+          </div><!--end of row1.col2 div-->
+        </div><!--end of row1 div-->
+      <div class="pull-right">
+        <button mat-button color="primary"(click)="NewGoal()">Submit</button>
+        <button mat-button color="accent" (click)="clear()">Cancel</button>
+      </div>
+    </div><!--end of home-tabpane div-->
+  </div><!--end of ngSwitchCaseNewGoal div-->
+</div><!--end of ngSwitch div-->
+<div id="modalRegister" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" style="text-align-last: center">Register</h4>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
 </div>
-
-
-
-
-
-
-
+   
