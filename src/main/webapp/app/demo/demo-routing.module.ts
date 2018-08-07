@@ -5,20 +5,22 @@ import { GridComponent } from 'app/demo/widget/grid/grid.component';
 import { MaterialComponent } from 'app/demo/material/material.component';
 import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
 import { SimpleComponent } from 'app/demo/simple/simple.component';
+import { MobileOtpComponent } from 'app/demo/mobile-otp/mobile-otp.component';
 
 const MyRoute: Routes =
 [
-  { path: 'demo' , component: DemoComponent },
-  { path: 'demo/grid' , component: GridComponent },
-  { path: 'demo/material' , component: MaterialComponent },
-  { path: 'demo/ngb' , component: NgBootstrapComponent },
-  { path: 'demo/simple' , component: SimpleComponent },
-
+  { path: 'demo' , component: DemoComponent, children: [
+    { path: 'grid' , component: GridComponent },
+    { path: 'material' , component: MaterialComponent },
+    { path: 'ngb' , component: NgBootstrapComponent },
+    { path: 'simple' , component: SimpleComponent },
+    { path: 'otp' , component: MobileOtpComponent },
+  ]},
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(MyRoute, {useHash: true})
+    RouterModule.forChild(MyRoute)
   ],
   exports: [
     RouterModule
