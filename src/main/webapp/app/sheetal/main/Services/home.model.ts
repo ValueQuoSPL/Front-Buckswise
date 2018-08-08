@@ -1,11 +1,9 @@
 export class Home {
-    Homeloan;
-    Prncpalloan;
-    Rentclm;
-    Remintrst;
-    Rentclmgg;
+  homeloan;
+  prncpalloan;
+  rentclm;
+  remintrst;
+  rentclmgg;
 
-    constructor() {
-
-    }
+  constructor() {}
 }

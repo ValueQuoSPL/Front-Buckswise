@@ -1,12 +1,12 @@
-import { Route } from '@angular/router';
+import { Route } from "@angular/router";
 
-import { ContactusComponent } from 'app/sheetal/contactus/contactus.component';
+import { ContactusComponent } from "./contactus.component";
 
 export const contactRoute: Route = {
-    path: 'contact',
-    component: ContactusComponent,
-    data: {
-        authorities: [],
-        pageTitle: 'Contactus Component'
-    }
+  path: "contact",
+  component: ContactusComponent,
+  data: {
+    authorities: [],
+    pageTitle: "Contactus Component"
+  }
 };

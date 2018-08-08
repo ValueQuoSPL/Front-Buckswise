@@ -1,18 +1,16 @@
 export class Eightyc {
-    Fixed;
-    Tution;
-    Nsc;
-    Nss;
-    Post;
-    Reinvest;
-    Licpremium;
-    Equity;
-    Pf;
-    Ppf;
-    Other;
-    Tutionfee;
-    Ulip;
-    constructor() {
-
-    }
+  fixed;
+  tution;
+  nsc;
+  nss;
+  post;
+  reinvest;
+  licpremium;
+  equity;
+  pf;
+  ppf;
+  other;
+  tutionfee;
+  ulip;
+  constructor() {}
 }

@@ -1,8 +1,6 @@
 export class Eightyd {
-    Insureself;
-    Insureparents;
-    Health;
-    constructor() {
-
-    }
+  healthcheck;
+  medparents;
+  medself;
+  constructor() {}
 }

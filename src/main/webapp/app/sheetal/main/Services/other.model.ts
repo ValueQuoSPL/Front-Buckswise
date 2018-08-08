@@ -1,11 +1,9 @@
 export class Other {
-    Handicapped;
-    Medicaltreat;
-    Selfedu;
-    Nps;
-    Rgess;
-    Donation;
-    constructor() {
-
-    }
+  handicapped;
+  medicaltreat;
+  selfedu;
+  nps;
+  rgess;
+  donation;
+  constructor() {}
 }
