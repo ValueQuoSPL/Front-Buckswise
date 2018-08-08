@@ -1,5 +1,5 @@
 import { Directive, ContentChildren, QueryList, OnInit, AfterContentInit, ElementRef } from '@angular/core';
-import { MovableDirective } from './movable.directive';
+import { MovableDirective } from 'app/shared/draggable/movable.directive';
 import { Subscription } from 'rxjs';
 
 export interface Boundaries {
@@ -27,9 +27,9 @@ export class MovableAreaDirective implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     this.movables.changes.subscribe( () => {
 
-      this.subscriptions.forEach((s) => s.unsubscribe());
+      this.subscriptions.forEach(s => s.unsubscribe());
 
-      this.movables.forEach( (movable) => {
+      this.movables.forEach( movable => {
         this.subscriptions.push(movable.dragStart.subscribe( () => this.measureBoundaries(movable)));
         this.subscriptions.push(movable.dragMove.subscribe( () => this.maintainBoundaries(movable)));
       });

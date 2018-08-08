@@ -34,16 +34,12 @@ import { GoalModule } from 'app/goal/goal.module';
 import { BuckswiseFrontEndRiskModule } from 'app/risk/risk.module';
 import { RiskComponent } from 'app/risk/risk.component';
 import {
-    JhiMainComponent,
-    NavbarComponent,
-    FooterComponent,
-    ProfileService,
-    PageRibbonComponent,
-    ErrorComponent
+    JhiMainComponent, NavbarComponent, FooterComponent, ProfileService, PageRibbonComponent,
+    ErrorComponent, SidebarComponent
 } from 'app/layouts';
 import { SuccessComponent } from 'app/success/success.component';
 import { FailComponent } from 'app/fail/fail.component';
-import { DraggableModule } from './shared/draggable/draggable.module';
+import { DraggableModule } from 'app/shared/draggable/draggable.module';
 import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 
 @NgModule({
@@ -80,7 +76,7 @@ import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
         FooterComponent,
         SuccessComponent,
         FailComponent,
-        RiskComponent,
+        RiskComponent, SidebarComponent
     ],
     providers: [
         ProfileService,

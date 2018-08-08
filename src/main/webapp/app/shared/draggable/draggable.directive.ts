@@ -1,5 +1,5 @@
 import { Directive, HostBinding, Output, EventEmitter, HostListener, Input, TemplateRef, ViewContainerRef, ContentChild, ContentChildren, ElementRef } from '@angular/core';
-import { DraggableHelperDirective } from './draggable-helper.directive';
+import { DraggableHelperDirective } from 'app/shared/draggable/draggable-helper.directive';
 
 @Directive({
   selector: '[jhiDraggable]'

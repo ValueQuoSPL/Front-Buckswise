@@ -11,9 +11,9 @@ import { MaterialComponent, IncomeDialogComponent } from 'app/demo/material/mate
 // import { MaterialModule } from 'app/material.module';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
-import { SimpleComponent } from './simple/simple.component';
-import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
-import { MobileOtpComponent } from './mobile-otp/mobile-otp.component';
+import { SimpleComponent } from 'app/demo/simple/simple.component';
+import { MatNavbarComponent } from 'app/demo/mat-navbar/mat-navbar.component';
+import { MobileOtpComponent } from 'app/demo/mobile-otp/mobile-otp.component';
 
 @NgModule({
     imports: [
