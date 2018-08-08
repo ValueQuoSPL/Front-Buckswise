@@ -1,19 +1,17 @@
 export class Gross {
-    Bsalary;
-    Da;
-    Hra;
-    Conveyance;
-    Childedu;
-    Medical;
-    Lta;
-    Otherallown;
-    Bonus;
-    Rentincome;
-    Saving;
-    Bonds;
-    Convay;
+  bsalary;
+  da;
+  hra;
+  conveyance;
+  childedu;
+  medical;
+  lta;
+  otherallown;
+  bonus;
+  rentincome;
+  saving;
+  bonds;
+  conveyanceother;
 
- constructor() {
-
-    }
+  constructor() {}
 }
