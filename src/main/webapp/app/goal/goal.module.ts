@@ -1,42 +1,40 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BuckswiseFrontEndSharedModule } from 'app/shared';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { RouterModule, Route } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BuckswiseFrontEndSharedModule } from "../shared";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+// import { goalSelectRoute } from './goal-select/goal-select.route';
 //  import { GoalComponent, goalRoot } from './';
 // import { GoalSelectComponent } from './Goal-select/goalselect.component';
 // import { GoalAddComponent } from './Goal-AddButton/goalAddButton.component';
-import { GoalselectService } from 'app/goal/goal-select/goalselect.service';
+import { GoalselectService } from "./goal-select/goalselect.service";
+import { CustomMaterialModule } from "../custom-material.module";
 
-import {
+import { GoalComponent, goalRoot } from "./";
+import { GoalAddButtonComponent } from "./goal-add-button/goal-add-button.component";
+import { GoalSelectComponent } from "./goal-select/goal-select.component";
+import { CommonModule } from "@angular/common";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot([goalRoot], { useHash: true }),
+    // RouterModule.forRoot([ goalSelectRoute ], { useHash: true }),
+    BsDatepickerModule.forRoot(),
+    FormsModule,
+    CommonModule,
+    CustomMaterialModule
+  ],
+  declarations: [
     GoalComponent,
-    goalRoot,
-} from 'app/goal';
-import { GoalAddButtonComponent } from 'app/goal/goal-add-button/goal-add-button.component';
-import { GoalSelectComponent } from 'app/goal/goal-select/goal-select.component';
-import { CommonModule } from '@angular/common';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-    @NgModule({
-        imports: [
-            RouterModule.forRoot([ goalRoot ], { useHash: true }),
-            BsDatepickerModule.forRoot(),
-            FormsModule, CommonModule
-        ],
-        declarations: [
-            GoalComponent,
-            GoalAddButtonComponent,
-            GoalSelectComponent,
-            // GoalSelectComponent,
-            // GoalAddComponent
-        ],
-        entryComponents: [
-        ],
-        providers: [
-            GoalselectService,
-            NgbActiveModal
-        ]
-    })
+    GoalAddButtonComponent,
+    GoalSelectComponent
+    // GoalSelectComponent,
+    // GoalAddComponent
+  ],
+  entryComponents: [],
+  providers: [GoalselectService, NgbActiveModal]
+})
 export class GoalModule {}
 // import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // import { RouterModule } from '@angular/router';

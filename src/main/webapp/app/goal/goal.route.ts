@@ -2,6 +2,7 @@
 
 // // import {
 // //     goalSelectRoute
+
 // // } from './';
 
 // // const GOAL_ROUTES = [
@@ -12,20 +13,20 @@
 // //     path: '',
 // //     children: GOAL_ROUTES
 // // }];
-import { Route } from '@angular/router';
+import { Route } from "@angular/router";
 
-import { UserRouteAccessService } from 'app/shared';
-import { GoalComponent } from 'app/goal';
+import { UserRouteAccessService } from "../shared";
+import { GoalComponent } from "./";
 // import { GoalSelectComponent } from './Goal-select/goalselect.component';
 
 export const goalRoot: Route = {
-    path: 'goal',
-    component: GoalComponent,
-    data: {
-        authorities: [],
-        pageTitle: 'goal.title'
-    },
-   };
+  path: "goal",
+  component: GoalComponent,
+  data: {
+    authorities: [],
+    pageTitle: "goal.title"
+  }
+};
 // import { Routes } from '@angular/router';
 
 // import {
