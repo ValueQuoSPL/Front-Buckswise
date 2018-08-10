@@ -63,7 +63,7 @@ Logo styles
 ========================================================================== */
 .navbar-brand {
     &.logo {
-        padding: 5px 15px;
+        padding: -1px 15px;
         .logo-img {
             height: 45px;
             width: 70px;
@@ -71,6 +71,7 @@ Logo styles
             vertical-align: middle;
             background: url("../../../content/images/buck7.png") no-repeat center center;
             background-size: contain;
+            margin-left: 0px;
         }
     }
 }

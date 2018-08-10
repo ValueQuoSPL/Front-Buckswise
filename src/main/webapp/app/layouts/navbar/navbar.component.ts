@@ -6,6 +6,7 @@ import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { Principal, LoginModalService, LoginService } from 'app/shared';
 
 import { VERSION } from 'app/app.constants';
+import { SidebarComponent } from 'app/layouts/sidebar/sidebar.component';
 
 @Component({
     selector: 'jhi-navbar',
@@ -27,14 +28,15 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private sidebar: SidebarComponent
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
     }
 
     ngOnInit() {
-        this.profileService.getProfileInfo().then((profileInfo) => {
+        this.profileService.getProfileInfo().then(profileInfo => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
@@ -64,5 +66,9 @@ export class NavbarComponent implements OnInit {
 
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
+    }
+    toggleSidebar() {
+    // console.log('inside navbar');
+        this.sidebar.showSidebar();
     }
 }

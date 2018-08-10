@@ -6,7 +6,8 @@
                 <i class="fa fa-bars"></i>
             </a>
             <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-                <!-- <span class="logo-img"></span> -->
+                <span class="navbar-toggler-icon btn-outline-dark"(click)="toggleSidebar()" style="left: -10px" ></span> 
+                <span class="logo-img"></span>
                 <span class="navbar-title">Buckswise</span>
                     <!-- <span class="navbar-version">{{version}}</span> -->
             </a>
@@ -18,15 +19,6 @@
                         <span>
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span>Home</span>
-                        </span>
-                    </a>
-                </li>
-
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="dashboard" (click)="collapseNavbar()">
-                        <span>
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                            <span>Dashboard</span>
                         </span>
                     </a>
                 </li>

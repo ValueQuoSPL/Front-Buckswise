@@ -80,6 +80,7 @@ import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
     ],
     providers: [
         ProfileService,
+        SidebarComponent,
         PaginationConfig,
         UserRouteAccessService,
         {
