@@ -9,12 +9,11 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 // import { GoalAddComponent } from './Goal-AddButton/goalAddButton.component';
 import { GoalselectService } from "./goal-select/goalselect.service";
 import { CustomMaterialModule } from "../custom-material.module";
-
 import { GoalComponent, goalRoot } from "./";
 import { GoalAddButtonComponent } from "./goal-add-button/goal-add-button.component";
 import { GoalSelectComponent } from "./goal-select/goal-select.component";
 import { CommonModule } from "@angular/common";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   imports: [
@@ -23,7 +22,8 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
     BsDatepickerModule.forRoot(),
     FormsModule,
     CommonModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    NgbModule
   ],
   declarations: [
     GoalComponent,

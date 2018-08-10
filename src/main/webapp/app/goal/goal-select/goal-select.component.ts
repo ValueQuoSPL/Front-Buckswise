@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
 import { GoalselectService } from "./goalselect.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import {
   GoalSelect,
   EducationSelect,
@@ -277,6 +278,9 @@ export class GoalSelectComponent implements OnInit {
   }
   linkAssets() {
     this.router.navigate(["goalAdd"]);
+  }
+  openLg(content) {
+    this.modalService.open(content, { size: "lg" });
   }
 
   //   saveHome():void{

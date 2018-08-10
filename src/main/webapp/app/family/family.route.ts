@@ -1,13 +1,14 @@
-import { Route } from '@angular/router';
-
-import { UserRouteAccessService } from 'app/shared';
-import { FamilyComponent } from 'app/family';
-
+import { FamilyComponent } from "./family.component";
+import { Route } from "@angular/router";
+import { MyprofileComponent } from "../family/myprofile/myprofile.component";
+import { FamilyprofileComponent } from "../family/familyprofile/familyyprofile.component";
+import { AssumptionComponent } from "../family/assumption/assumption.component";
 export const familyRoute: Route = {
-    path: 'myfamily',
-    component: FamilyComponent,
-    data: {
-        authorities: [],
-        pageTitle: 'family.title'
-    }
+  path: "familyroute",
+  component: FamilyComponent,
+  children: [
+    { path: "familyroute/myprofile", component: MyprofileComponent },
+    { path: "familyroute/familyprofile", component: FamilyprofileComponent },
+    { path: "familyroute/assumption", component: AssumptionComponent }
+  ]
 };

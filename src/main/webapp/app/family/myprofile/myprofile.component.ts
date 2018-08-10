@@ -1,46 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { first } from 'rxjs/operator/first';
-import { last } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { Myprofile } from "../family.model";
+import { MyprofileService } from "./myprofile.service";
+import { Principal } from "../../shared";
 
 @Component({
-  selector:  'jhi-myprofile',
-  templateUrl:  './myprofile.component.html',
-  styles:  ['./myprofile.component.css']
+  selector: "jhi-myprofile",
+  templateUrl: "./myprofile.component.html",
+  styles: []
 })
 export class MyprofileComponent implements OnInit {
-
-  myprofileArray  = [];
-  fname: string;
-  mname: string;
-  lname: string;
-  occupation: string;
-  company: string;
-  success:  boolean;
-  registerAccount:  any;
+  myProfile: any;
+  output: any;
 
   constructor(
-    private router:  Router
-) { }
-
-ngOnInit() {
-  this.success  = false;
-  this.registerAccount  =  {
-
-  };
-}
-  btnClick =  function() {
-    this.router.navigateByUrl('/register');
-};
-insert() {
-  this.myprofileArray.push({
-    fname: this.fname,
-    mname: this.mname,
-    lname: this.lname
-});
-console.log(this.fname);
-console.log(this.mname);
-console.log(this.lname);
-
-}
+    private principal: Principal,
+    private MyProfileSer: MyprofileService
+  ) {}
+  ngOnInit() {
+    this.myProfile = {};
+    this.getMyProfile();
+  }
+  saveDetail() {
+    this.MyProfileSer.save(this.myProfile).subscribe(
+      responce => console.log(responce),
+      error => console.log(error)
+    );
+  }
+  getMyProfile() {
+    this.MyProfileSer.getMyProfile().subscribe(res => {
+      console.log(res);
+      this.output = res;
+      console.log("responce of myprofile service", this.output);
+    });
+  }
 }
