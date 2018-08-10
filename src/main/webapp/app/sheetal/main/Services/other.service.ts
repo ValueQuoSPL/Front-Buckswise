@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "../../../app.constants";
-import { Other } from "./other.model";
-import { Subscription } from "rxjs/Subscription";
-import { Component, OnInit } from "@angular/core";
-import { AccountService } from "../../../shared";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from '../../../app.constants';
+import { Other } from './other.model';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../../shared';
 @Injectable()
 export class OtherService {
   ServiceAPIParam: string;
@@ -19,11 +19,11 @@ export class OtherService {
   //  console.log(other.Rgess);
   //  console.log(other.Donation);
   save(other: any): Observable<any> {
-    return this.http.post(SERVER_API_URL + "api/others", other);
+    return this.http.post(SERVER_API_URL + 'api/others', other);
   }
   public getother(id) {
-    console.log("in other service", id);
-    this.ServiceAPIParam = "api/others" + "/" + id;
+    console.log('in other service', id);
+    this.ServiceAPIParam = 'api/others' + '/' + id;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }
