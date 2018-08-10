@@ -1,25 +1,32 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FamilyComponent, familyRoute } from 'app/family';
-import { FamilyserviceService } from 'app/family/familyservice.service';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CommonModule } from '@angular/common';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FamilyComponent } from "../family/family.component";
+import { familyRoute } from "./family.route";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { CommonModule } from "@angular/common";
+import { MyprofileComponent } from "../family/myprofile/myprofile.component";
+import { FamilyprofileComponent } from "../family/familyprofile/familyyprofile.component";
+import { AssumptionComponent } from "../family/assumption/assumption.component";
+import { MyprofileService } from "./myprofile/myprofile.service";
+import { FamilyprofileService } from "./familyprofile/familyprofile.service";
+import { CustomMaterialModule } from "../custom-material.module";
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([familyRoute], { useHash: true }),
-        FormsModule,
-        CommonModule,
-        BsDatepickerModule.forRoot()
-    ],
-    declarations: [
-        FamilyComponent
-    ],
-    entryComponents: [
-    ],
-    providers: [
-        FamilyserviceService
-    ]
+  imports: [
+    RouterModule.forRoot([familyRoute], { useHash: true }),
+    FormsModule,
+    CommonModule,
+    CustomMaterialModule,
+    BsDatepickerModule.forRoot()
+  ],
+  declarations: [
+    FamilyComponent,
+    MyprofileComponent,
+    FamilyprofileComponent,
+    AssumptionComponent
+  ],
+  entryComponents: [],
+  providers: [MyprofileService, FamilyprofileService]
 })
-export class FamilyModule { }
+export class FamilyModule {}

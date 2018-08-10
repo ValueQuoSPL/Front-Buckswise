@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "app/app.constants";
-import { Eightyc } from "app/sheetal/main/Services/eightyc.model";
-import { Subscription } from "rxjs/Subscription";
-import { Component, OnInit } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Eightyc } from 'app/sheetal/main/Services/eightyc.model';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
 
 @Injectable()
 export class EightycService {

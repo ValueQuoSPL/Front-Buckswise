@@ -14,7 +14,7 @@ import { GoalComponent, goalRoot } from "app/goal";
 import { GoalAddButtonComponent } from "app/goal/goal-add-button/goal-add-button.component";
 import { GoalSelectComponent } from "app/goal/goal-select/goal-select.component";
 import { CommonModule } from "@angular/common";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   imports: [
@@ -23,7 +23,8 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
     BsDatepickerModule.forRoot(),
     FormsModule,
     CommonModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    NgbModule
   ],
   declarations: [
     GoalComponent,
