@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { howRoute, SpendRoute, subRoute} from 'app/pratik';
+import { howRoute, SpendRoute, subRoute, IncomeRoute} from 'app/pratik';
 
 const PRATIK_ROUTES = [
-    howRoute, SpendRoute, subRoute
+    howRoute, SpendRoute, subRoute, IncomeRoute
 ];
 
 export const pratikState: Routes = [{

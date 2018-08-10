@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // ngx-bootstrap
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
+import { IncomeComponent } from 'app/pratik/income/income.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
         HowItWorkComponent,
         SpendingComponent,
         SubscriptionComponent,
+        IncomeComponent,
         // IncomeDialog
     ],
     providers: [

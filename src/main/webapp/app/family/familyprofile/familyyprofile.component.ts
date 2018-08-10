@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FamilyprofileService } from "./familyprofile.service";
+import { FamilyprofileService } from "app/family/familyprofile/familyprofile.service";
 
 @Component({
   selector: "jhi-familyprofile",

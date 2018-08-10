@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "../../shared";
-import { ContactService } from "./contact.service";
+import { User } from "app/shared";
+import { ContactService } from "app/sheetal/contactus/contact.service";
 import * as $ from "jQuery";
 @Component({
   selector: "jhi-contactus",

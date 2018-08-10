@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "../../../app.constants";
-import { Eightyc } from "./eightyc.model";
+import { SERVER_API_URL } from "app/app.constants";
+import { Eightyc } from "app/sheetal/main/Services/eightyc.model";
 import { Subscription } from "rxjs/Subscription";
 import { Component, OnInit } from "@angular/core";
 
@@ -25,6 +25,6 @@ export class EightycService {
   // console.log(eightyc.Tutionfee);
   // console.log(eightyc.Ulip);
   save(eightyc: any): Observable<any> {
-    return this.http.post(SERVER_API_URL + "api/eightycs", eightyc);
+    return this.http.post(SERVER_API_URL + 'api/eightycs', eightyc);
   }
 }
