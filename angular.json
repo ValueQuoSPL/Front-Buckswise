@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo-1": {
+    "Buckswise": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
@@ -36,7 +36,7 @@
       }
     }
   },
-  "defaultProject": "demo-1",
+  "defaultProject": "Buckswise",
   "cli": {
     "packageManager": "yarn"
   },

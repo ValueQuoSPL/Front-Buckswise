@@ -1,5 +1,5 @@
 <div>
-
+<br>
 <div class="container">
     <mat-expansion-panel class="accordion" [expanded]="step === 0">
         
@@ -48,22 +48,22 @@
                 <div class="modal-body">
                     <form class="example-container" #incomeAdd="ngForm">
                         <div>
-                                <mat-form-field class="example-full-width">
-                                  <input matInput required placeholder="Name" value="" [(ngModel)]="resource" name="resource-name" >
-                                  <mat-hint>Please enter your resource of income </mat-hint>
-                                </mat-form-field>
-                              </div>
-                            
-                              <div>
-                                <mat-form-field class="example-full-width">
-                                  <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="amount" name="amount-name" >
-                                  <mat-hint>Please enter amount</mat-hint>
-                                </mat-form-field>
-                              </div>
-                              <br> <br>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+                            <mat-form-field class="example-full-width">
+                                <input matInput required placeholder="Name" value="" [(ngModel)]="resource" name="resource-name" >
+                                <mat-hint>Please enter your resource of income </mat-hint>
+                            </mat-form-field>
                             </div>
+                        
+                            <div>
+                            <mat-form-field class="example-full-width">
+                                <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="amount" name="amount-name" >
+                                <mat-hint>Please enter amount</mat-hint>
+                            </mat-form-field>
+                            </div>
+                            <br> <br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+                        </div>
                     </form>
                     </div>
         </ng-template>

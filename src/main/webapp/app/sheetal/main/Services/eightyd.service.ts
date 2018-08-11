@@ -1,13 +1,13 @@
 import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SERVER_API_URL } from '../../../app.constants';
-import { Eightyd } from './eightyd.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { Eightyd } from 'app/sheetal/main/Services/eightyd.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../../shared';
+import { AccountService } from 'app/shared';
 import { Subject } from 'rxjs/Subject';
-import { accountState } from '../../../account';
+import { accountState } from 'app/account';
 
 @Injectable()
 export class EightydService {

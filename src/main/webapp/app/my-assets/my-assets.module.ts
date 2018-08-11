@@ -12,17 +12,20 @@ import {
      } from 'app/my-assets';
 import { MutualFundService } from 'app/my-assets/assets/mutual-fund.service';
 import { AssetsService } from 'app/my-assets/assets/assets.service';
-// import { stocksRoute } from '../entities/stocks';
+import { LiabilitiesComponent } from './liabilities/liabilities.component';
+import { CustomMaterialModule } from 'app/custom-material.module';
 
 @NgModule({
     imports: [
         BuckswiseFrontEndSharedModule,
         RouterModule.forChild(userprofileState),
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        CustomMaterialModule
     ],
     declarations: [
         AssetsComponent,
-        MutualFundComponent
+        MutualFundComponent,
+        LiabilitiesComponent
     ],
     providers: [
         StocksService,
