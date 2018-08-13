@@ -1,23 +1,26 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
 
 import {
   mainRoute,
   contactRoute,
   meetRoute,
-  taxRoute
-  } from 'app/sheetal';
+  taxRoute,
+  adviceRoute
+} from "app/sheetal";
 
 const SHEETAL_ROUTE = [
   mainRoute,
   contactRoute,
   meetRoute,
-  taxRoute
-
+  taxRoute,
+  adviceRoute
 ];
-export const sheetalState: Routes = [{
-    path: '',
+export const sheetalState: Routes = [
+  {
+    path: "",
     children: SHEETAL_ROUTE
-}];
+  }
+];
 // import { Route } from '@angular/router';
 // import { UserRouteAccessService } from '../shared';
 // import { SheetalComponent } from './';
