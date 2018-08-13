@@ -1,12 +1,12 @@
-import { Route } from "@angular/router";
+import { Route } from '@angular/router';
 
-import { AdviceComponent } from "./advice.component";
+import { AdviceComponent } from './advice.component';
 
 export const adviceRoute: Route = {
-  path: "advice",
+  path: 'advice',
   component: AdviceComponent,
   data: {
     authorities: [],
-    pageTitle: "advice Component"
+    pageTitle: 'advice Component'
   }
 };
