@@ -51,7 +51,7 @@
 			<mat-form-field>
 				<textarea matInput type="text"row="3" maxlength="100"name="message"#message="ngModel"value="" placeholder="Message"[(ngModel)]="user.msg"required></textarea>
 			</mat-form-field></div>
-			<button mat-stroked-button (click)="submitUser()" (click)="resetContact()" data-toggle="modal"data-target="#universal" class="btn btn-default" type="submit" name="button"[disabled]="submitform.form.invalid">
+			<button (click)="submitUser()" (click)="resetContact()" data-toggle="modal"data-target="#universal" class="btn btn-default" type="submit" name="button"[disabled]="submitform.form.invalid">
 				<i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
 			</button></div></div></form></div>
 			<div id="universal" class="modal fade" role="dialog">

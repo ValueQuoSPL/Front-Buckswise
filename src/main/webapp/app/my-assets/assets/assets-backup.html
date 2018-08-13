@@ -1,0 +1,1378 @@
+<div>
+    <br>
+        <nav>
+            <!--start of tab -->
+            <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-top:20px">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+                    aria-selected="true">Assets</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
+                    aria-selected="false">Liabilities</a>
+            </div>
+        </nav>
+        <!--end of tab -->
+    
+        <!--start of main-tab-content -->
+        <div class="tab-content" id="nav-tabContent">
+    
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!-- start of inner tab -->
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    
+                            <a class="nav-link active" id="v-pills-utility-tab" data-toggle="pill" href="#v-pills-utility" role="tab" aria-controls="v-pills-utility"
+                                aria-selected="true">Stocks</a>
+    
+                            <a class="nav-link" id="v-pills-house-tab" data-toggle="pill" href="#v-pills-house" role="tab" aria-controls="v-pills-house"
+                                aria-selected="false">Mutual Funds</a>
+    
+                            <a class="nav-link" id="v-pills-fao-tab" data-toggle="pill" href="#v-pills-fao" role="tab" aria-controls="v-pills-fao" aria-selected="false">Future and Options</a>
+    
+                            <a class="nav-link" id="v-pills-saving-schemes-tab" data-toggle="pill" href="#v-pills-saving-schemes" role="tab" aria-controls="v-pills-saving-schemes"
+                                aria-selected="false">Saving Schemes</a>
+    
+                            <a class="nav-link" id="v-pills-alternative-investment-tab" data-toggle="pill" href="#v-pills-alternative-investment" role="tab" aria-controls="v-pills-alternative-investment"
+                                aria-selected="false">Alternative Investment</a>
+    
+                            <a class="nav-link" id="v-pills-cash-tab" data-toggle="pill" href="#v-pills-cash" role="tab" aria-controls="v-pills-cash"
+                                aria-selected="false">Cash</a>
+    
+                            <a class="nav-link" id="v-pills-prop-jewel-tab" data-toggle="pill" href="#v-pills-prop-jewel" role="tab" aria-controls="v-pills-prop-jewel"
+                                aria-selected="false">Property, Jewellery & Others</a>
+    
+                            <a class="nav-link" id="v-pills-chit-fund-tab" data-toggle="pill" href="#v-pills-chit-fund" role="tab" aria-controls="v-pills-chit-fund"
+                                aria-selected="false">Chit Funds</a>
+    
+                        </div>
+                    </div>
+                    <!--start of sub-tab-content -->
+    
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+    
+    
+    
+    
+                            <!-- Stocks component  -->
+                            <div class="tab-pane fade show active" id="v-pills-utility" role="tabpanel" aria-labelledby="v-pills-utility-tab">
+                                <h3>
+                                    <p class="font-weight-bold">Stocks Details</h3>
+                                <!--start of buttons -->
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                                        <span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <span>Add</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="btn btn-link">
+                                        <span>
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                            <span>Help</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                    <!-- modal start -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Stocks Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                    <div class="modal-body">
+                                                        <jhi-alert-error></jhi-alert-error>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_company_name">Company Name</label>
+                                                            <input type="text" class="form-control" id="company_name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                            <input type="text" class="form-control" name="investor_name" id="investor_name" [(ngModel)]="stocks.investor_name" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_no_of_shares">No Of Shares</label>
+                                                            <input type="number" class="form-control" name="no_of_shares" id="no_of_shares" [(ngModel)]="stocks.no_of_shares" [ngModelOptions]="{standalone: true}"
+                                                                required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_share_price">Share Price</label>
+                                                            <input type="number" class="form-control" name="share_price" id="share_price" [(ngModel)]="stocks.share_price" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_notes">Notes</label>
+                                                            <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="stocks.notes" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+    
+                                                    </div>
+                                                    <div class="modal-footer">
+    
+                                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                                                            (click)="clear()" (click)="saveStocks()">
+                                                            <span class="fa fa-save"></span>&nbsp;
+                                                            <span>Save</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                            <span class="fa fa-ban"></span>&nbsp;
+                                                            <span>Cancel</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                                            <span>
+                                                                <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                                                <span>Reset</span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end of modal -->
+                                
+                                <!--end of buttons -->
+    
+                                <!-- table starts here -->
+                                <div>
+                                        <table class="table table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+        
+                                                    <th scope="col">Company Name</th>
+                                                    <th scope="col">Investor Name</th>
+                                                    <th scope="col">No of Shares</th>
+                                                    <th scope="col">Share Price</th>
+                                                    <th scope="col">Notes</th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+        
+                                                <tr *ngFor="let stocks of stocksArray; let i = index">
+                                                    <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                                        <td> {{stocks.id}} </td> -->
+                                                    <td> {{stocks.company_name}} </td>
+                                                    <td>{{stocks.investor_name}} </td>
+                                                    <td>{{stocks.no_of_shares}} </td>
+                                                    <td>{{stocks.share_price}} </td>
+                                                    <td>{{stocks.notes}} </td>
+                                                    <td>
+                                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+        
+                                        </table>
+                                    </div>
+                                    <!-- table ends here -->
+        
+                            </div>
+    
+                            <!-- Mutual Fund Starts Here-->
+                            <div class="tab-pane fade" id="v-pills-house" role="tabpanel" aria-labelledby="v-pills-house-tab">
+                                <h3>
+                                    <p class="font-weight-bold">Mutual Funds</h3>
+                                <!--start of buttons -->
+                                <div style="margin-top: -50px" class="pull-right">
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#MFModal">
+                                        <span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <span>Add</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#USModal">
+                                        <span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <span>Upload Statement</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="btn btn-link">
+                                        <span>
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                            <span>Help</span>
+                                        </span>
+                                    </button>
+                                    <div class="modal fade" id="MFModal" tabindex="-1" role="dialog" aria-labelledby="MFModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="MFModalLabel">Mutual Funds Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myMutualFundsLabel">Create or edit a Mutual Funds</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <jhi-alert-error></jhi-alert-error>
+                                                        <div class="form-group">
+                                                            <label for="id">ID</label>
+                                                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="mutualfund.id" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_fund_name">Fund Name</label>
+                                                            <input type="text" class="form-control" name="fund_name" id="field_fund_name" [(ngModel)]="mutualfund.fund_name" [ngModelOptions]="{standalone: true}"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                            <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="mutualfund.investor_name"
+                                                                [ngModelOptions]="{standalone: true}" required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                                            <input type="text" placeholder="" class="form-control" [(ngModel)]="mutualfund.p_date" [ngModelOptions]="{standalone: true}"
+                                                                bsDatepicker>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_no_of_units">No Of Units</label>
+                                                            <input type="number" class="form-control" name="no_of_units" id="field_no_of_units" [(ngModel)]="mutualfund.no_of_units"
+                                                                [ngModelOptions]="{standalone: true}" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_nav">Nav</label>
+                                                            <input type="text" class="form-control" name="nav" id="field_nav" [(ngModel)]="mutualfund.nav" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+    
+    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                            <span class="fa fa-ban"></span>&nbsp;
+                                                            <span>Cancel</span>
+                                                        </button>
+                                                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                                            (click)="SubmitUser()">
+                                                            <span class="fa fa-save"></span>&nbsp;
+                                                            <span>Save</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end of Popup MF details-->
+                                    <!--Start of Upload statement Popup or model-->
+                                    <div class="modal fade" id="USModal" tabindex="-1" role="dialog" aria-labelledby="USModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="USModalLabel">Upload Statement</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <jhi-alert-error></jhi-alert-error>
+                                                    <ul>
+                                                        <p>We can fetch your Mutual Fund details from the Email ID registered against
+                                                            your investment account in 4 easy steps</p>
+                                                        <li>Open the CAMS investor services link here and click on "Click Here" link
+                                                            present under the title "CAS - CAMS, KARVY, FT, SBFS". (There is
+                                                            no direct access provided to the consolidated statement page; hence,
+                                                            this is the shortest way to fetch the PDF statement).</li>
+                                                        <li>
+                                                            Follow the simple steps mentioned on the page to receive your consolidated mutual fund account statement to your email. Please
+                                                            ensure that you choose "Summary" under Statement Type.
+                                                        </li>
+                                                        <li>
+                                                            Open your email account and download the PDF received.
+                                                        </li>
+                                                        <li>
+                                                            Upload the document by clicking on "SELECT PDF" below and enter the password that you had entered while filling the details
+                                                            on CAMS.
+                                                        </li>
+                                                        <p>
+                                                            Note: Since the file you downloaded from CAMS is password protected, we require the password to read the file. We can assure
+                                                            you that we don't save the passwords you enter to open this file.
+                                                        </p>
+                                                        <p>If you have mutual fund accounts registered with more than 1 email address,
+                                                            please upload all the statements.</p>
+                                                    </ul>
+                                                    <div style="position:center" class="form-group">
+                                                        <label for="FormControlFile1">Upload Statement</label>
+                                                        <input type="file" class="form-control-file" id="FormControlFile1">
+                                                    </div>
+    
+                                                    <!-- <div class="form-group">
+                        <p-fileUpload name="myfile[]" url=" " multiple="multiple"  auto="auto">Choose File</p-fileUpload>
+                    </div> -->
+                                                </div>
+                                                <div class="modal-footer">
+    
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                        <span class="fa fa-ban"></span>&nbsp;
+                                                        <span>Cancel</span>
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary" (click)="addFieldValue()">
+                                                        <span class="fa fa-save"></span>&nbsp;
+                                                        <span>Submit</span>
+                                                    </button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end of Upload statement Popup or model-->
+                                </div>
+                                <!--end of buttons -->
+    
+    
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Fund Name</th>
+                                            <th scope="col">Investor Name</th>
+                                            <th scope="col">Purchase Date</th>
+                                            <th scope="col">No Of Units</th>
+                                            <th scope="col">Nav</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let mf of mutualfundArray; let i = index">
+                                            <!-- <td> {{mf.id}} </td> -->
+                                            <td> {{mf.fund_name}} </td>
+                                            <td>{{mf.investor_name}} </td>
+                                            <td>{{mf.p_date}} </td>
+                                            <td>{{mf.no_of_units}} </td>
+                                            <td>{{mf.nav}} </td>
+                                            <td>
+                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+    
+                                </table>
+                            </div>
+    
+                            <!-- future and options tab -->
+                            <div class="tab-pane fade" id="v-pills-fao" role="tabpanel" aria-labelledby="v-pills-fao-tab">
+                                <h3>
+                                    <p class="font-weight-bold">Future and Options</h3>
+                                <!--start of buttons -->
+                                <div style="margin-top: -50px" class="pull-right">
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#FAOModal">
+                                        <span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <span>Add</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="btn btn-link">
+                                        <span>
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                            <span>Help</span>
+                                        </span>
+                                    </button>
+                                    <div class="modal fade" id="FAOModal" tabindex="-1" role="dialog" aria-labelledby="FAOModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="FAOModalLabel">Future and Option Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                    <div class="modal-body">
+                                                        <jhi-alert-error></jhi-alert-error>
+                                                        <div class="form-group">
+                                                            <label for="id">ID</label>
+                                                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="fao.id" [ngModelOptions]="{standalone: true}" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_investment_type">Investment Type</label>
+                                                            <input type="text" class="form-control" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type"
+                                                                [ngModelOptions]="{standalone: true}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_asset_type">Asset Type</label>
+                                                            <input type="text" class="form-control" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                            <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="fao.investor_name" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_asset_name">Asset Name</label>
+                                                            <input type="text" class="form-control" name="asset_name" id="field_asset_name" [(ngModel)]="fao.asset_name" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_no_of_contracts">No of Contracts</label>
+                                                            <input type="number" class="form-control" name="no_of_contracts" id="field_no_of_contracts" [(ngModel)]="fao.no_of_contracts"
+                                                                [ngModelOptions]="{standalone: true}" required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                                            <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
+                                                        </div>
+    
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_contract_p_value">contract Purchase Value</label>
+                                                            <input type="number" class="form-control" name="contract_p_value" id="field_contract_p_value" [(ngModel)]="fao.contract_p_value"
+                                                                [ngModelOptions]="{standalone: true}" required />
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_contract_m_value">contract Market Value</label>
+                                                                    <input type="number" class="form-control" name="contract_m_value" id="field_contract_m_value" [(ngModel)]="fao.contract_m_value"
+                                                                        [ngModelOptions]="{standalone: true}" required />
+                                                                </div>
+                                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                        bsDatepicker>
+                                                                </div>
+                                                            </div>
+    
+                                                        </div>
+    
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_notes">Notes</label>
+                                                            <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+    
+    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                            <span class="fa fa-ban"></span>&nbsp;
+                                                            <span>Cancel</span>
+                                                        </button>
+                                                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                                            (click)="SaveFAO()">
+                                                            <span class="fa fa-save"></span>&nbsp;
+                                                            <span>Save</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  end of model form-->
+                                </div>
+                                <!--end of buttons -->
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Investment Type</th>
+                                            <th scope="col">Asset Type</th>
+                                            <th scope="col">Investor Name</th>
+                                            <th scope="col">Asset Name</th>
+                                            <th scope="col">No. Of Contracts</th>
+                                            <th scope="col">Purchase Date</th>
+                                            <th scope="col">Contract Purchase Value</th>
+                                            <th scope="col">Contract Market Value</th>
+                                            <th scope="col">as of date</th>
+                                            <th scope="col">Notes</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let fao of faoArray; let i = index">
+                                            <!-- <td> {{fao.id}} </td> -->
+                                            <td> {{fao.investment_type}} </td>
+                                            <td>{{fao.asset_type}} </td>
+                                            <td>{{fao.investor_name}} </td>
+                                            <td>{{fao.asset_name}} </td>
+                                            <td>{{fao.no_of_contracts}} </td>
+                                            <td>{{fao.p_date}} </td>
+                                            <td>{{fao.contract_p_value}} </td>
+                                            <td>{{fao.contract_m_value}} </td>
+                                            <td>{{fao.as_of_date}} </td>
+                                            <td>{{fao.notes}} </td>
+                                            <td>
+                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+    
+                                </table>
+                            </div>
+    
+                            <!-- saving -->
+                            <div class="tab-pane fade" id="v-pills-saving-schemes" role="tabpanel" aria-labelledby="v-pills-saving-schemes-tab">
+                                <h3>
+                                    <p class="font-weight-bold">Saving Schemes</h3>
+                                         <!--start of buttons -->
+                            <div style="margin-top: -50px" class="pull-right">
+    
+                                    <button type="button" class="btn btn-link">
+                                        <span>
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                            <span>Help</span>
+                                        </span>
+                                    </button>
+        
+                                </div>
+                                <!--end of buttons -->
+                                <div class="Container page-header" style="border:1px solid #ada1a1;">
+                                    <h4 style="text-align:center;">Select Saving Scheme to Add</h4><br>
+                                    <div class="btn-group-vertical btn-group-xs">
+                                        <button type="button" class="btn " data-toggle="modal" data-target="#SSModal">FIXED DEPOSIT</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">RECURRING DEPOSIT</button><br>
+                                        <button type="button" class="btn " data-toggle="modal" data-target="#SSModal">POST OFFICE SAVING</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">NATIONAL SAVING SCHEME</button><br>
+                                    </div>
+                                    <div class="btn-group-vertical btn-group-xs">
+                                        <button type="button" class="btn " data-toggle="modal" data-target="#SSModal">NATIONAL SAVING CERTIFICATE</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">INDIRA VIKAS PATRA</button><br>
+                                        <button type="button" class="btn " data-toggle="modal" data-target="#SSModal">KISAN VIKAS PATRA</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">MONTHLY INCOME SCHEME</button><br>
+                                    </div>
+                                    <div class="btn-group-vertical btn-group-xs">
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#SSModal">PF</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">PPF</button><br>
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#SSModal">GRATUITY</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">SUPERANNUATION</button><br>
+                                    </div>
+                                    <div class="btn-group-vertical btn-group-xs">
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#SSModal">NPS</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">GOVERNMENT BONDS</button><br>
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#SSModal">CORPORATE BONDS</button><br>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#SSModal">INFRA BONDS</button><br>
+                                    </div>
+                                </div>
+    
+                                <div class="modal fade" id="SSModal" tabindex="-1" role="dialog" aria-labelledby="SSModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="SSModalLabel">Saving Scheme Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                     <div class="modal-body">
+                                                        <jhi-alert-error></jhi-alert-error>
+                                                        <div class="form-group">
+                                                            <label for="id">ID</label>
+                                                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="savingScheme.id" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_organisation_name">Organisation Name</label>
+                                                            <input type="text" class="form-control" name="organisation_name" id="field_organisation_name" [(ngModel)]="savingScheme.organisation_name" [ngModelOptions]="{standalone: true}"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                            <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="savingScheme.investor_name"
+                                                                [ngModelOptions]="{standalone: true}" required/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label for="field_dividend_type">Dividend Type</label>
+                                                                <select class="form-control" id="field_dividend_type" name="dividend_type" [(ngModel)]="savingScheme.dividend_type"
+                                                                [ngModelOptions]="{standalone: true}" required>
+                                                                  <option>Monthly</option>
+                                                                  <option>Quarterly</option>
+                                                                  <option>Half Yearly</option>
+                                                                  <option>Yearly</option>
+                                                                  <option>Monthly Re Investment</option>
+                                                                  <option>Quarterly Re Investment</option>
+                                                                  <option>Half Yearly Re Investment</option>
+                                                                  <option>Yearly Re Investment</option>
+                                                                </select>
+                                                              </div>
+                                                            <div class="form-group">
+                                                                    <label class="form-control-label" for="field_amount_invested	">Amount Invested</label>
+                                                                    <input type="number" class="form-control" name="amount_invested" id="field_amount_invested" [(ngModel)]="savingScheme.amount_invested" [ngModelOptions]="{standalone: true}"
+                                                                        required/>
+                                                            </div>
+                                                           <div class="form-group">
+                                                                        <label class="form-control-label" for="field_rate_of_interest">Rate of Interest(%)</label>
+                                                                        <input type="number" class="form-control" name="rate_of_interest" id="field_rate_of_interest" [(ngModel)]="savingScheme.rate_of_interest" [ngModelOptions]="{standalone: true}"
+                                                                            required/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="form-control-label" for="field_tenure">Tenure(Years)</label>
+                                                                    <input type="number" class="form-control" name="tenure" id="field_tenure" [(ngModel)]="savingScheme.tenure" [ngModelOptions]="{standalone: true}"
+                                                                        required/>
+                                                        </div>
+                                                       
+                                          
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" f7or="field_start_date">Start Date</label>
+                                                            <input type="text" placeholder="" class="form-control" [(ngModel)]="savingScheme.start_date" [ngModelOptions]="{standalone: true}"
+                                                                bsDatepicker>
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label class="form-control-label" f7or="field_end_date">End Date</label>
+                                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="mutualfund.end_date" [ngModelOptions]="{standalone: true}"
+                                                                    bsDatepicker>
+                                                            </div>
+                                                            <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" for="field_fund_value">Fund Value</label>
+                                                                            <input type="number" class="form-control" name="fund_value" id="field_fund_value" [(ngModel)]="savingScheme.fund_value"
+                                                                                [ngModelOptions]="{standalone: true}" required />
+                                                                        </div>
+                                                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <div class="col-xs-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                            <input type="text" placeholder="" class="form-control" [(ngModel)]="savingScheme.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                                bsDatepicker>
+                                                                        </div>
+                                                                    </div>
+            
+                                                                </div>
+                                                       
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="field_notes">Notes</label>
+                                                            <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="savingScheme.notes" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                        </div>
+    
+    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                            <span class="fa fa-ban"></span>&nbsp;
+                                                            <span>Cancel</span>
+                                                        </button>
+                                                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                                            (click)="SavingScheme()">
+                                                            <span class="fa fa-save"></span>&nbsp;
+                                                            <span>Save</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Organisation Name</th>
+                                                    <th scope="col">Investor Name</th>
+                                                    <th scope="col"> Amount Invested</th>
+                                                    
+                                                    <th scope="col">ROI(%)</th>
+                                                    <th scope="col">Current Fund Value</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let savingScheme of savingArray; let i = index">
+                                                    <!-- <td> {{fao.id}} </td> -->
+                                                    <td> {{savingScheme.id}} </td>
+                                                    <td>{{savingScheme.organisation_name}} </td>
+                                                    <td>{{savingScheme.investor_name}} </td>
+                                                    <td>{{savingScheme.amount_invested}} </td>
+                                                    <td>{{savingScheme.rate_of_interest}} </td>
+                                                    <td>{{savingScheme.fund_value}} </td>
+                                                    <td>
+                                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+            
+                                        </table>
+                            </div>
+    
+                            <!--Alternative investment starts here-->
+                            <div class="tab-pane fade" id="v-pills-alternative-investment" role="tabpanel" aria-labelledby="v-pills-alternative-investment-tab">
+                                    <h3>
+                                            <p class="font-weight-bold">Alternative Investment</h3>
+                                                <!--start of buttons -->
+                                    <div style="margin-top: -50px" class="pull-right">
+            
+                                            <button type="button" class="btn btn-link">
+                                                <span>
+                                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                                    <span>Help</span>
+                                                </span>
+                                            </button>
+                
+                                        </div>
+                                        <!--end of buttons -->
+                                        <div class="Container page-header" style="border:1px solid #ada1a1;">
+                                            <h4 style="text-align:center;">Select Alternative Investment to Add</h4><br>
+                                            <div class="btn-group btn-group-xs" style="margin-left:200px;"  >
+                                                <button type="button" class="btn " data-toggle="modal" data-target="#AIModal" value="REIT">REIT</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#AIModal">PE/VC</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn " data-toggle="modal" data-target="#AIModal">STRUCTURED PRODUCTS</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#AIModal">ESOP</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn " data-toggle="modal" data-target="#AIModal">RSU</button>&nbsp;&nbsp;
+                                            </div><br>
+                                            <p></p>
+                                </div>
+            
+                                        <div class="modal fade" id="AIModal" tabindex="-1" role="dialog" aria-labelledby="AIModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="AIModalLabel">Saving Scheme Details</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            
+                                                            <div class="modal-body">
+                                                                <jhi-alert-error></jhi-alert-error>
+                                                                <div class="form-group">
+                                                                    <label for="id">ID</label>
+                                                                    <input type="text" class="form-control" id="field_id" name="id" [(ngModel)]="altInvest.id" [ngModelOptions]="{standalone: true}"
+                                                                    />
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_fund_name">Fund Name</label>
+                                                                    <input type="text" class="form-control" name="fund_name" id="field_fund_name" [(ngModel)]="altInvest.fund_name" [ngModelOptions]="{standalone: true}"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                                    <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="altInvest.investor_name"
+                                                                        [ngModelOptions]="{standalone: true}" required/>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="altInvest.p_date" [ngModelOptions]="{standalone: true}"
+                                                                            bsDatepicker>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="form-control-label" for="field_amount_invested	">Amount Invested</label>
+                                                                            <input type="number" class="form-control" name="amount_invested" id="field_amount_invested" [(ngModel)]="altInvest.amount_invested" [ngModelOptions]="{standalone: true}"
+                                                                                required/>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                            <div class="col-xs-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" for="field_market_value">Market Value</label>
+                                                                                    <input type="number" class="form-control" name="market_value" id="field_market_value" [(ngModel)]="altInvest.market_value"
+                                                                                        [ngModelOptions]="{standalone: true}" required />
+                                                                                </div>
+                                                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                            <div class="col-xs-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="altInvest.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                                        bsDatepicker>
+                                                                                </div>
+                                                                            </div>
+                    
+                                                                        </div>
+                                                            
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                                    <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="altInvest.notes" [ngModelOptions]="{standalone: true}"
+                                                                        required/>
+                                                                </div>
+            
+            
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                                    <span class="fa fa-ban"></span>&nbsp;
+                                                                    <span>Cancel</span>
+                                                                </button>
+                                                                <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                                                    (click)="AltInvestment()">
+                                                                    <span class="fa fa-save"></span>&nbsp;
+                                                                    <span>Save</span>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            
+                                            </div>
+                                            <table class="table table-hover table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Investor Name</th>
+                                                            <th scope="col"> Amount Invested</th>
+                                                            <th scope="col">Current Market Value</th>
+                                                            <th scope="col">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let altInvest of altInvestArray; let i = index">
+                                                            <!-- <td> {{fao.id}} </td> -->
+                                                            <td> {{altInvest.investor_name}} </td>
+                                                            <td>{{altInvest.amount_invested}} </td>
+                                                            <td>{{altInvest.market_value}} </td>
+                                                            <td>
+                                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                    
+                                                </table>
+                            </div> <!--End of alternative investment **********start of Cash-->
+                            
+                            <!-- cash -->
+                            <div class="tab-pane fade" id="v-pills-cash" role="tabpanel" aria-labelledby="v-pills-cash-tab">
+                                    <h3>
+                                        <p class="font-weight-bold">Cash Details</h3>
+                                    <!--start of buttons -->
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#cashModal">
+                                            <span>
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                <span>Add</span>
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-link">
+                                            <span>
+                                                <i class="fa fa-info" aria-hidden="true"></i>
+                                                <span>Help</span>
+                                            </span>
+                                        </button>
+    
+                                        <!-- modal start -->
+                                        <div class="modal fade" id="cashModal" tabindex="-1" role="dialog" aria-labelledby="cashModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="cashModalLabel">Cash Details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                        <div class="modal-body">
+                                                            <jhi-alert-error></jhi-alert-error>
+                                                            <!-- <div class="form-group" [hidden]="!id">
+                                                <label for="id">ID</label>
+                                                <input type="text" class="form-control" id="id" name="id"
+                                                        [(ngModel)]="stocks.id" readonly />
+                                            </div> -->
+                                            <div class="form-group">
+                                                    <label for="field_cash_source">Cash Source</label>
+                                                    <select class="form-control" id="field_cash_source" name="cash_source" [(ngModel)]="cash.cash_source"
+                                                    [ngModelOptions]="{standalone: true}" required>
+                                                    <option>--select source--</option>
+                                                    <option>In Bank</option>
+                                                    <option>Personal Possession</option>
+                                                    <option>Hand loan</option>
+                                                    <option>Other Sources</option>
+                                                    </select>
+                                                </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="field_amount">Amount</label>
+                                                                <input type="number" class="form-control" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"
+                                                                    required/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="field_notes">Notes</label>
+                                                                <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"
+                                                                />
+                                                            </div>
+    
+                                                        </div>
+                                                        <div class="modal-footer">
+    
+                                                            <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                                                                (click)="clear()" (click)="saveCashDetails()">
+                                                                <span class="fa fa-save"></span>&nbsp;
+                                                                <span>Save</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                                <span class="fa fa-ban"></span>&nbsp;
+                                                                <span>Cancel</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                                                <span>
+                                                                    <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                                                    <span>Reset</span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of modal -->
+                                    </div>
+                                    <!--end of buttons -->
+    
+                                    <!-- table starts here -->
+                                    <table class="table table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Cash Source</th>
+                                                    <th scope="col"> Amount</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let cash of cashArray; let i = index">
+                                                    <!-- <td> {{fao.id}} </td> -->
+                                                    <td> {{cash.cash_source}} </td>
+                                                    <td>{{cash.amount}} </td>
+                                                    <td>
+                                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+            
+                                        </table>
+    
+                            </div>
+    
+                            <!-- property -->
+                            <div class="tab-pane fade" id="v-pills-prop-jewel" role="tabpanel" aria-labelledby="v-pills-prop-jewel-tab">
+                                    <h3>
+                                        <p class="font-weight-bold">Property, Jewellery & Others Details</h3>
+                                    <!--start of buttons -->
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-link " data-toggle="modal" data-target="#propModal">
+                                            <span>
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                <span>Add</span>
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-link">
+                                            <span>
+                                                <i class="fa fa-info" aria-hidden="true"></i>
+                                                <span>Help</span>
+                                            </span>
+                                        </button>
+    
+                                        <!-- modal start -->
+                                        <div class="modal fade" id="propModal" tabindex="-1" role="dialog" aria-labelledby="propModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="propModalLabel">Property, Jewellery & Others Details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                                        <div class="modal-body">
+                                                            <jhi-alert-error></jhi-alert-error>
+                                                            <!-- <div class="form-group" [hidden]="!id">
+                                                <label for="id">ID</label>
+                                                <input type="text" class="form-control" id="id" name="id"
+                                                        [(ngModel)]="stocks.id" readonly />
+                                            </div> -->
+                                            <div class="form-group">
+                                                    <label class="form-control-label" for="field_prop_name">Property Name</label>
+                                                    <input type="text" class="form-control" name="prop_name" id="prop_name" [(ngModel)]="prop.prop_name" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                                            <div class="form-group">
+                                                    <label for="field_prop_type">Property Type</label>
+                                                    <select class="form-control" id="field_prop_type" name="prop_type" [(ngModel)]="prop.prop_type"
+                                                    [ngModelOptions]="{standalone: true}" required>
+                                                    <option>--select type--</option>
+                                                    <option>Residential</option>
+                                                    <option>Commercial</option>
+                                                    <option>Agriculture</option>
+                                                    <option>Vehicle</option>
+                                                    <option>Jewellery</option>
+                                                    <option>Others</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="field_prop_details">Property Details</label>
+                                                        <select class="form-control" id="field_prop_details" name="prop_details" [(ngModel)]="prop.prop_details"
+                                                        [ngModelOptions]="{standalone: true}" required>
+                                                        <option>--select type--</option>
+                                                        <option>Commercial Office/Retail</option>
+                                                        <option>Apartments</option>
+                                                        <option>Individual villa/house</option>
+                                                        <option>Land</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_current_m_value">Current Market Value</label>
+                                                                    <input type="number" class="form-control" name="current_m_value" id="field_current_m_value" [(ngModel)]="prop.current_m_value"
+                                                                        [ngModelOptions]="{standalone: true}" required />
+                                                                </div>
+                                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="prop.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                        bsDatepicker>
+                                                                </div>
+                                                            </div>
+    
+                                                        </div> 
+                                                    <div class="form-group">
+                                                                <label class="form-control-label" for="field_notes">Notes</label>
+                                                                <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="prop.notes" [ngModelOptions]="{standalone: true}"
+                                                                />
+                                                            </div>
+    
+                                                        </div>
+                                                        <div class="modal-footer">
+    
+                                                            <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                                                                (click)="clear()" (click)="saveProperty()">
+                                                                <span class="fa fa-save"></span>&nbsp;
+                                                                <span>Save</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                                                <span class="fa fa-ban"></span>&nbsp;
+                                                                <span>Cancel</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                                                <span>
+                                                                    <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                                                    <span>Reset</span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of modal -->
+                                    </div>
+                                    <!--end of buttons -->
+    
+                                    <!-- table starts here -->
+                                    <table class="table table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Property Name</th>
+                                                    <th scope="col">Property Type</th>
+                                                    <th scope="col">Current Market Value</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let prop of propArray; let i = index">
+                                                    <!-- <td> {{fao.id}} </td> -->
+                                                    <td> {{prop.prop_name}} </td>
+                                                    <td>{{prop.prop_type}} </td>
+                                                    <td>{{prop.current_m_value}} </td>
+                                                    <td>
+                                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+    
+                                        </table>
+    
+                            </div>
+    
+                            <!-- chit fund -->
+                            <div class="tab-pane fade" id="v-pills-chit-fund" role="tabpanel" aria-labelledby="v-pills-chit-fund-tab">
+            <h3>
+                <p class="font-weight-bold">Chit Fund Details</h3>
+            <!--start of buttons -->
+            <div>
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#chitModal">
+                    <span>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <span>Add</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-link">
+                    <span>
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                        <span>Help</span>
+                    </span>
+                </button>
+    
+                <!-- modal start -->
+                <div class="modal fade" id="chitModal" tabindex="-1" role="dialog" aria-labelledby="chitModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="chitModalLabel">Chit Fund Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    
+                                <div class="modal-body">
+                                    <jhi-alert-error></jhi-alert-error>
+                                    <!-- <div class="form-group" [hidden]="!id">
+                          <label for="id">ID</label>
+                          <input type="text" class="form-control" id="id" name="id"
+                                 [(ngModel)]="stocks.id" readonly />
+                      </div> -->
+                      <div class="form-group">
+                            <label class="form-control-label" for="field_chit_name">Chit Fund Name</label>
+                            <input type="text" class="form-control" name="chit_name" id="chit_name" [(ngModel)]="chit.chit_name" [ngModelOptions]="{standalone: true}"
+                            />
+                        </div>
+                        <div class="form-group">
+                                <label class="form-control-label" for="field_chit_holder_name">Chit Holder Name</label>
+                                <input type="text" class="form-control" name="chit_holder_name" id="chit_holder_name" [(ngModel)]="chit.chit_holder_name" [ngModelOptions]="{standalone: true}"
+                                />
+                            </div>
+                            <div class="form-group">
+                                    <label class="form-control-label" f7or="field_chit_start_date">Chit Start date</label>
+                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="chit.chit_start_date" [ngModelOptions]="{standalone: true}"
+                                        bsDatepicker>
+                                </div>
+                                <div class="form-group">
+                                        <label class="form-control-label" for="field_chit_value">Chit Value</label>
+                                        <input type="number" class="form-control" name="chit_value" id="chit_value" [(ngModel)]="chit.chit_value" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="form-control-label" for="field_tenure">Tenure (Months)</label>
+                                            <input type="number" class="form-control" name="tenure" id="tenure" [(ngModel)]="chit.tenure" [ngModelOptions]="{standalone: true}"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="form-control-label" for="field_m_payment">Monthly Payment</label>
+                                                <input type="number" class="form-control" name="m_payment" id="m_payment" [(ngModel)]="chit.m_payment" [ngModelOptions]="{standalone: true}"
+                                                />
+                                            </div>
+    
+                                            <div class="form-group">
+                                                    <label class="form-control-label" for="field_current_value">Current Value</label>
+                                                    <input type="text" class="form-control" name="current_value" id="current_value" [(ngModel)]="chit.current_value" [ngModelOptions]="{standalone: true}" />
+                                            </div>
+                                            <div class="checkbox form-group">
+                                                    <label class="form-control-label" for="field_isChashed"><input type="checkbox" value="" class="form-control" name="isCashed" id="isCashed" [(ngModel)]="chit.isCashed" [ngModelOptions]="{standalone: true}" >Is cashed?</label>
+                                                  </div>
+                              <div class="form-group">
+                                        <label class="form-control-label" for="field_notes">Notes</label>
+                                        <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="chit.notes" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+    
+                                </div>
+                                <div class="modal-footer">
+    
+                                    <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                                        (click)="clear()" (click)="saveChit()">
+                                        <span class="fa fa-save"></span>&nbsp;
+                                        <span>Save</span>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                                        <span class="fa fa-ban"></span>&nbsp;
+                                        <span>Cancel</span>
+                                    </button>
+                                    <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                        <span>
+                                            <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                            <span>Reset</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of modal -->
+            </div>
+            <!--end of buttons -->
+    
+            <!-- table starts here -->
+            <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Chit Fund Name</th>
+                            <th scope="col">Chit Holder Name</th>
+                            <th scope="col">Chit Start date</th>
+                            <th scope="col">Chit Value</th>
+                            <th scope="col">Tenure (Months)</th>
+                            <th scope="col">Monthly Payment</th>
+                            <th scope="col">Current Value</th>
+                            <th scope="col">Chit Value Cashed?</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let chit of chitArray; let i = index">
+                            <!-- <td> {{fao.id}} </td> -->
+                            <td> {{chit.chit_name}} </td>
+                            <td>{{chit.chit_holder_name}} </td>
+                            <td>{{chit.chit_start_date| date : format : shortDate}} </td>
+                            <td>{{chit.chit_value}} </td>
+                            <td>{{chit.tenure}} </td>
+                            <td>{{chit.m_payment}} </td>
+                            <td>{{chit.current_value}} </td>
+                            <td>{{chit.isCashed}} </td>
+                            <td>
+                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+    
+                </table>
+                            </div>
+                  
+    
+    
+    
+    
+                </div>
+                <!--end of sub-tab-content -->
+    
+            </div>
+            <!-- end of inner tab -->
+    
+        </div>
+    </div>
+        <!-- Assets ends here*****Liabilities Starts Here  -->
+    
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <!--start of buttons -->
+            <div class="row">
+                <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    
+                        <a class="nav-link active" id="v-pills-short-term-tab" data-toggle="pill" href="#v-pills-short-term" role="tab" aria-controls="v-pills-short-term"
+                            aria-selected="true">Short Term Liabilities</a>
+    
+                        <a class="nav-link" id="v-pills-long-term-tab" data-toggle="pill" href="#v-pills-long-term" role="tab" aria-controls="v-pills-long-term"
+                            aria-selected="false">Long Term Liabilities</a>
+    
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-short-term" role="tabpanel" aria-labelledby="v-pills-short-term-tab">
+                            <h3>
+                                <p class="font-weight-bold">Short Term Liabilities</h3>
+                            <!--start of buttons -->
+                            <div>
+                                 <button type="button" class="btn btn-link pull-right">
+                                    <span>
+                                        <i class="fa fa-info" aria-hidden="true"></i>
+                                        <span>Help</span>
+                                    </span>
+                                </button>                       
+                            </div>
+                            <!--end of buttons -->
+    
+                            <!-- table starts here -->
+                            <div class="container">
+                                <p>
+                                        These are your liabilities for the current financial year. Please note your liabilities are calculated based on your loans, credit cards and chit funds. In case you missed adding any of them, please enter them in the respective sections.
+                                </p><br>
+    
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Organisation Name</th>
+    
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Tenure(Months)</th>
+                                            <th scope="col">ROI(%)</th>
+                                            <th scope="col">Outstanding Amount</th>
+                                            <th scope="col">Edit</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+    
+                                        <tr *ngFor="let shortTerm of shortTermArray; let i = index">
+                                            <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                                <td> {{stocks.id}} </td> -->
+                                            <td> {{shortTerm.company_name}} </td>
+                                            <td>{{shortTerm.investor_name}} </td>
+                                            <td>{{shortTerm.no_of_shares}} </td>
+                                            <td>{{shortTerm.share_price}} </td>
+                                            <td>{{shortTerm.notes}} </td>
+                                            <td>
+                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+    
+                                </table>
+                            </div>
+                            <!-- table ends here -->
+    
+                        </div>
+                        <!-- Mutual Fund Starts Here-->
+                        <div class="tab-pane fade" id="v-pills-long-term" role="tabpanel" aria-labelledby="v-pills-long-term-tab">
+                                <h3>
+                                        <p class="font-weight-bold">Long Term Liabilities</h3>
+                                    <!--start of buttons -->
+                                    <div>
+                                         <button type="button" class="btn btn-link pull-right" >
+                                            <span>
+                                                <i class="fa fa-info" aria-hidden="true"></i>
+                                                <span>Help</span>
+                                            </span>
+                                        </button>                       
+                                    </div>
+                                    <!--end of buttons -->
+            
+                                    <!-- table starts here -->
+                                    <div class="container">
+                                        <p>
+                                                These are your liabilities post current financial year. Please note your liabilities are calculated based on your loans, credit cards and chit funds. In case you missed adding any of them, please enter them in the respective sections.                                    </p><br>
+            
+                                        <table class="table table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Organisation Name</th>
+            
+                                                    <th scope="col">Type</th>
+                                                    <th scope="col">Tenure(Months)</th>
+                                                    <th scope="col">ROI(%)</th>
+                                                    <th scope="col">Outstanding Amount</th>
+                                                    <th scope="col">Edit</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+            
+                                                <tr *ngFor="let stocks of stocksArray; let i = index">
+                                                    <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                                        <td> {{stocks.id}} </td> -->
+                                                    <td> {{stocks.company_name}} </td>
+                                                    <td>{{stocks.investor_name}} </td>
+                                                    <td>{{stocks.no_of_shares}} </td>
+                                                    <td>{{stocks.share_price}} </td>
+                                                    <td>{{stocks.notes}} </td>
+                                                    <td>
+                                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+            
+                                        </table>
+                                    </div>                 
+                                  </div>
+                        </div>
+                        </div>
+                        <!-- End of Mutual Fund Tab
+    
+        </div>
+        </div>
+        <!--end of main-tab-content -->
+    
+    </div>
+    <!--end of main div -->

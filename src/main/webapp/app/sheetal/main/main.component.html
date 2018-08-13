@@ -962,7 +962,7 @@ border-radius: 10px;">
     </div>-->
     
      <!-- Start Tax panel -->
-     <mat-expansion-panel class="accordion" [expanded]="step === 0">
+     <mat-expansion-panel>
         
       <mat-expansion-panel-header>
           <mat-panel-title>
@@ -991,12 +991,6 @@ border-radius: 10px;">
                       <div>
                         <h2>Gross</h2>
                         <div class="row pull-right" style="margin-top: -80px;">
-                            <button type="button" (click)="onGrossGet(id)" class="btn btn-link">
-                                <span>
-                                  <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
-                                  <span>Get</span>
-                                </span>
-                              </button>
                           <button type="button" class="btn btn-link" (click)="onGrossSave()" data-toggle="modal" data-target="#exampleModalCenter">
                             <span>
                               <i class="fa fa-save" aria-hidden="true"></i>
@@ -1213,43 +1207,6 @@ border-radius: 10px;">
                               <!--Body of table end-->
                             </table>           
                       </div>
-                      <div>
-                          <table border="1">
-                               <tr>
-                                 <th>Basic Salary</th>
-                                 <th>DA</th>
-                                 <th>HRA</th>
-                                 <th>Conveyance</th>
-                                 <th>Child Education</th>
-                                 <th>Medical </th>
-                                 <th>LTA</th>
-                                 <th>Other Allownces</th>
-                                 <th>Bonus</th>
-                                 <th>Rent Income</th>
-                                 <th>Savings</th>
-                                 <th>Bonds</th>
-                                 <th>conveyance other</th>
-                               </tr>
-                               <tr>
-                                  <td>{{output.bsalary}}</td>
-                                  <td>{{output.da}}</td>
-                                 <td>{{output.hra}}</td>
-                                 <td>{{output.conveyance}}</td>
-                                 <td>{{output.childedu}}</td>
-                                 <td>{{output.medical}}</td>
-                                 <td>{{output.lta}}</td>
-                                <td>{{output.otherallown}}</td>
-                                <td>{{output.bonus}}</td>
-                                <td>{{output.rentincome}}</td>
-                                <td>{{output.saving}}</td>
-                                <td>{{output.bonds}}</td>
-                                <td>{{output.conveyanceother}}</td>
-                 
-                               </tr>
-                              
-                             </table>
-                 
-                           </div>
               
               </mat-expansion-panel>     
               
@@ -1257,22 +1214,16 @@ border-radius: 10px;">
 
                       <mat-expansion-panel-header>
                           <mat-panel-title>
-                                  80C Deduction
+                                  80D Deduction
                           </mat-panel-title>
                           <mat-panel-description>
-                          80C Deduction Details
+                          80D Deduction Details
                           </mat-panel-description>
                       </mat-expansion-panel-header>
               
                       <div>
                         <h1>80C Deduction</h1>
                         <div class="row pull-right" style="margin-top: -80px;">
-                            <button type="button" (click)="onEightycGet(id)" class="btn btn-link">
-                                <span>
-                                  <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
-                                  <span>Get</span>
-                                </span>
-                              </button>
                           <button type="button" class="btn btn-link" (click)="onEightycSave()" data-toggle="modal" data-target="#eightycModelCenter">
                             <span>
                               <i class="fa fa-save" aria-hidden="true"></i>
@@ -1440,43 +1391,6 @@ border-radius: 10px;">
                               <!--Body of table end-->
                             </table>           
                       </div>
-                      <div>
-                        <table border="1">
-                             <tr>
-                               <th>Fixed Deposite in schedule bank</th>
-                               <th>Tution Fee</th>
-                               <th>NSC</th>
-                               <th>NSS</th>
-                               <th>PO saving scheme</th>
-                               <th>NSC Reinvested</th>
-                               <th>Life insurence premium </th>
-                               <th>ELSS</th>
-                               <th>PF</th>
-                               <th>PPF</th>
-                               <th>others</th>
-                               <th>tutionfee</th>
-                               <th>ulip</th>
-                             </tr>
-                             <tr>
-                                <td>{{output.fixed}}</td>
-                                <td>{{output.tution}}</td>
-                               <td>{{output.nsc}}</td>
-                               <td>{{output.nss}}</td>
-                               <td>{{output.post}}</td>
-                               <td>{{output.reinvest}}</td>
-                               <td>{{output.licpremium}}</td>
-                              <td>{{output.equity}}</td>
-                              <td>{{output.pf}}</td>
-                              <td>{{output.ppf}}</td>
-                              <td>{{output.other}}</td>
-                              <td>{{output.tutionfee}}</td>
-                              <td>{{output.ulip}}</td>
-               
-                             </tr>
-                            
-                           </table>
-               
-                         </div>
               
               </mat-expansion-panel>   
               
@@ -1685,10 +1599,10 @@ border-radius: 10px;">
 
                       <mat-expansion-panel-header>
                           <mat-panel-title>
-                              80D Deduction
+                              80C Deduction
                           </mat-panel-title>
                           <mat-panel-description>
-                          80D Deduction Details
+                          80C Deduction Details
                           </mat-panel-description>
                       </mat-expansion-panel-header>
               

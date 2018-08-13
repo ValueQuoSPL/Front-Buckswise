@@ -1,0 +1,1057 @@
+<br>
+<div class="container">
+
+    <mat-accordion>
+
+        <mat-expansion-panel class="accordion" [expanded]="step === 0">
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>Assets</mat-panel-title>
+                <mat-panel-description> Assets Details </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+        
+                <mat-accordion>
+                    <!-- stocks -->
+                    <mat-expansion-panel class="accordion" [expanded]="step === 0">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Stocks </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link"  (click)="openStocks(stocksModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                        <ng-template #stocksModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="stocksModal">Add Stocks</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                    <mat-form-field>
+                                        <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" >
+                                    </mat-form-field> &nbsp;&nbsp;
+                                    <mat-form-field>
+                                        <input matInput class="full-width" required type="text" placeholder="Investor Name" [(ngModel)]="stocks.investor_name" [ngModelOptions]="{standalone: true}" >
+                                    </mat-form-field> &nbsp;&nbsp;
+                                    <mat-form-field>
+                                        <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="No of shares" name="no_of_shares" id="no_of_shares" [(ngModel)]="stocks.no_of_shares" required />
+                                    </mat-form-field> &nbsp;&nbsp;
+                                    <mat-form-field>
+                                        <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Share Price" name="share_price" id="share_price" [(ngModel)]="stocks.share_price"required/>
+                                    </mat-form-field> &nbsp;&nbsp;
+                                    <mat-form-field>
+                                        <input matInput style="width: 100%;" type="textarea" placeholder="Notes" name="notes" id="notes" [(ngModel)]="stocks.notes"  />
+                                    </mat-form-field>
+
+                                
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                        <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                            <span>
+                                                <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                                <span>Reset</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                                
+                        </ng-template>
+                       
+                        <!-- table starts here -->
+                        <div>
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+
+                                        <th scope="col">Company Name</th>
+                                        <th scope="col">Investor Name</th>
+                                        <th scope="col">No of Shares</th>
+                                        <th scope="col">Share Price</th>
+                                        <th scope="col">Notes</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let stocks of stocksArray; let i = index">
+                                        <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                            <td> {{stocks.id}} </td> -->
+                                        <td> {{stocks.company_name}} </td>
+                                        <td>{{stocks.investor_name}} </td>
+                                        <td>{{stocks.no_of_shares}} </td>
+                                        <td>{{stocks.share_price}} </td>
+                                        <td>{{stocks.notes}} </td>
+                                        <td>
+                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </mat-expansion-panel>
+
+                    <!-- Mutual funds -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Mutual Funds </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openMutual(mutualModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                        <ng-template #mutualModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="mutualModal">Mutual Funds</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                
+                                    
+                                    <div class="form-group">
+                                            <label for="id">ID</label>
+                                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="mutualfund.id" [ngModelOptions]="{standalone: true}"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="field_fund_name">Fund Name</label>
+                                            <input type="text" class="form-control" name="fund_name" id="field_fund_name" [(ngModel)]="mutualfund.fund_name" [ngModelOptions]="{standalone: true}"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                            <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="mutualfund.investor_name"
+                                                [ngModelOptions]="{standalone: true}" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                            <input type="text" placeholder="" class="form-control" [(ngModel)]="mutualfund.p_date" [ngModelOptions]="{standalone: true}"
+                                                bsDatepicker>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="field_no_of_units">No Of Units</label>
+                                            <input type="number" class="form-control" name="no_of_units" id="field_no_of_units" [(ngModel)]="mutualfund.no_of_units"
+                                                [ngModelOptions]="{standalone: true}" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="field_nav">Nav</label>
+                                            <input type="text" class="form-control" name="nav" id="field_nav" [(ngModel)]="mutualfund.nav" [ngModelOptions]="{standalone: true}"
+                                                required/>
+                                        </div>
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                                <span class="fa fa-ban"></span>&nbsp;
+                                                <span>Cancel</span>
+                                            </button>
+                                            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                            (click)="c('Save click')">
+                                                <span class="fa fa-save"></span>&nbsp;
+                                                <span>Save</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                            </div>
+                        </ng-template> 
+
+                        <!-- table starts here -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Fund Name</th>
+                                    <th scope="col">Investor Name</th>
+                                    <th scope="col">Purchase Date</th>
+                                    <th scope="col">No Of Units</th>
+                                    <th scope="col">Nav</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let mf of mutualfundArray; let i = index">
+                                    <!-- <td> {{mf.id}} </td> -->
+                                    <td> {{mf.fund_name}} </td>
+                                    <td>{{mf.investor_name}} </td>
+                                    <td>{{mf.p_date}} </td>
+                                    <td>{{mf.no_of_units}} </td>
+                                    <td>{{mf.nav}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Saving Schemes -->
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Saving Schemes </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openSaving(savingModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                         <!-- modal start -->
+                         <ng-template #savingModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="savingModal">Saving Schemes</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                                <div class="form-group">
+                                                    <label for="id">ID</label>
+                                                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="savingScheme.id" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="field_organisation_name">Organisation Name</label>
+                                                    <input type="text" class="form-control" name="organisation_name" id="field_organisation_name" [(ngModel)]="savingScheme.organisation_name" [ngModelOptions]="{standalone: true}"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                    <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="savingScheme.investor_name"
+                                                        [ngModelOptions]="{standalone: true}" required/>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="field_dividend_type">Dividend Type</label>
+                                                        <select class="form-control" id="field_dividend_type" name="dividend_type" [(ngModel)]="savingScheme.dividend_type"
+                                                        [ngModelOptions]="{standalone: true}" required>
+                                                          <option>Monthly</option>
+                                                          <option>Quarterly</option>
+                                                          <option>Half Yearly</option>
+                                                          <option>Yearly</option>
+                                                          <option>Monthly Re Investment</option>
+                                                          <option>Quarterly Re Investment</option>
+                                                          <option>Half Yearly Re Investment</option>
+                                                          <option>Yearly Re Investment</option>
+                                                        </select>
+                                                      </div>
+                                                    <div class="form-group">
+                                                            <label class="form-control-label" for="field_amount_invested	">Amount Invested</label>
+                                                            <input type="number" class="form-control" name="amount_invested" id="field_amount_invested" [(ngModel)]="savingScheme.amount_invested" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                    </div>
+                                                   <div class="form-group">
+                                                                <label class="form-control-label" for="field_rate_of_interest">Rate of Interest(%)</label>
+                                                                <input type="number" class="form-control" name="rate_of_interest" id="field_rate_of_interest" [(ngModel)]="savingScheme.rate_of_interest" [ngModelOptions]="{standalone: true}"
+                                                                    required/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="form-control-label" for="field_tenure">Tenure(Years)</label>
+                                                            <input type="number" class="form-control" name="tenure" id="field_tenure" [(ngModel)]="savingScheme.tenure" [ngModelOptions]="{standalone: true}"
+                                                                required/>
+                                                </div>
+                                               
+                                  
+                                                <div class="form-group">
+                                                    <label class="form-control-label" f7or="field_start_date">Start Date</label>
+                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="savingScheme.start_date" [ngModelOptions]="{standalone: true}"
+                                                        bsDatepicker>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="form-control-label" f7or="field_end_date">End Date</label>
+                                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="mutualfund.end_date" [ngModelOptions]="{standalone: true}"
+                                                            bsDatepicker>
+                                                    </div>
+                                                    <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="field_fund_value">Fund Value</label>
+                                                                    <input type="number" class="form-control" name="fund_value" id="field_fund_value" [(ngModel)]="savingScheme.fund_value"
+                                                                        [ngModelOptions]="{standalone: true}" required />
+                                                                </div>
+                                                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="savingScheme.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                        bsDatepicker>
+                                                                </div>
+                                                            </div>
+    
+                                                        </div>
+                                               
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                    <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="savingScheme.notes" [ngModelOptions]="{standalone: true}"
+                                                        required/>
+                                                </div>
+
+
+                                            
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>
+
+                        <!-- table -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Organisation Name</th>
+                                    <th scope="col">Investor Name</th>
+                                    <th scope="col"> Amount Invested</th>
+                                    
+                                    <th scope="col">ROI(%)</th>
+                                    <th scope="col">Current Fund Value</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let savingScheme of savingArray; let i = index">
+                                    <!-- <td> {{fao.id}} </td> -->
+                                    <td> {{savingScheme.id}} </td>
+                                    <td>{{savingScheme.organisation_name}} </td>
+                                    <td>{{savingScheme.investor_name}} </td>
+                                    <td>{{savingScheme.amount_invested}} </td>
+                                    <td>{{savingScheme.rate_of_interest}} </td>
+                                    <td>{{savingScheme.fund_value}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Alternative Investment -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Alternative Investment </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openAlt(altModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                         <ng-template #altModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="altModal">Alternative Investment</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                    <div class="form-group">
+                                                <label for="id">ID</label>
+                                                <input type="text" class="form-control" id="field_id" name="id" [(ngModel)]="altInvest.id" [ngModelOptions]="{standalone: true}"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_fund_name">Fund Name</label>
+                                                <input type="text" class="form-control" name="fund_name" id="field_fund_name" [(ngModel)]="altInvest.fund_name" [ngModelOptions]="{standalone: true}"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                                <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="altInvest.investor_name"
+                                                    [ngModelOptions]="{standalone: true}" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                                    <input type="text" placeholder="" class="form-control" [(ngModel)]="altInvest.p_date" [ngModelOptions]="{standalone: true}"
+                                                        bsDatepicker>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="form-control-label" for="field_amount_invested	">Amount Invested</label>
+                                                        <input type="number" class="form-control" name="amount_invested" id="field_amount_invested" [(ngModel)]="altInvest.amount_invested" [ngModelOptions]="{standalone: true}"
+                                                            required/>
+                                                </div>
+                                                <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="field_market_value">Market Value</label>
+                                                                <input type="number" class="form-control" name="market_value" id="field_market_value" [(ngModel)]="altInvest.market_value"
+                                                                    [ngModelOptions]="{standalone: true}" required />
+                                                            </div>
+                                                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="altInvest.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                    bsDatepicker>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                        
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_notes">Notes</label>
+                                                <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="altInvest.notes" [ngModelOptions]="{standalone: true}"
+                                                    required/>
+                                            </div>
+
+
+                                      
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>
+
+                        <!-- table -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Investor Name</th>
+                                    <th scope="col"> Amount Invested</th>
+                                    <th scope="col">Current Market Value</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let altInvest of altInvestArray; let i = index">
+                                    <!-- <td> {{fao.id}} </td> -->
+                                    <td> {{altInvest.investor_name}} </td>
+                                    <td>{{altInvest.amount_invested}} </td>
+                                    <td>{{altInvest.market_value}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Cash -->
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Cash </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openCash(cashModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                         <ng-template #cashModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="cashModal">Cash Investment</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                        
+                                <div class="form-group">
+                                    <label for="field_cash_source">Cash Source</label>
+                                    <select class="form-control" id="field_cash_source" name="cash_source" [(ngModel)]="cash.cash_source"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <option>--select source--</option>
+                                    <option>In Bank</option>
+                                    <option>Personal Possession</option>
+                                    <option>Hand loan</option>
+                                    <option>Other Sources</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_amount">Amount</label>
+                                    <input type="number" class="form-control" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"
+                                        required/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"
+                                    />
+                                </div>
+
+                                            
+
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>
+
+                         <!-- table  -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cash Source</th>
+                                    <th scope="col"> Amount</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let cash of cashArray; let i = index">
+                                    <td> {{cash.cash_source}} </td>
+                                    <td>{{cash.amount}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Property -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Property, Jewellery & Others </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openProperty(propertyModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                        <ng-template #propertyModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="propertyModal">Property, Jewellery etc.</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                <div class="form-group">
+                                        <label class="form-control-label" for="field_prop_name">Property Name</label>
+                                        <input type="text" class="form-control" name="prop_name" id="prop_name" [(ngModel)]="prop.prop_name" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+                                <div class="form-group">
+                                        <label for="field_prop_type">Property Type</label>
+                                        <select class="form-control" id="field_prop_type" name="prop_type" [(ngModel)]="prop.prop_type"
+                                        [ngModelOptions]="{standalone: true}" required>
+                                        <option>--select type--</option>
+                                        <option>Residential</option>
+                                        <option>Commercial</option>
+                                        <option>Agriculture</option>
+                                        <option>Vehicle</option>
+                                        <option>Jewellery</option>
+                                        <option>Others</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="field_prop_details">Property Details</label>
+                                            <select class="form-control" id="field_prop_details" name="prop_details" [(ngModel)]="prop.prop_details"
+                                            [ngModelOptions]="{standalone: true}" required>
+                                            <option>--select type--</option>
+                                            <option>Commercial Office/Retail</option>
+                                            <option>Apartments</option>
+                                            <option>Individual villa/house</option>
+                                            <option>Land</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="field_current_m_value">Current Market Value</label>
+                                                        <input type="number" class="form-control" name="current_m_value" id="field_current_m_value" [(ngModel)]="prop.current_m_value"
+                                                            [ngModelOptions]="{standalone: true}" required />
+                                                    </div>
+                                                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="prop.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                            bsDatepicker>
+                                                    </div>
+                                                </div>
+
+                                            </div> 
+                                        <div class="form-group">
+                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="prop.notes" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+
+                                           
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>
+
+                         <!-- table starts here -->
+                         <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Property Name</th>
+                                        <th scope="col">Property Type</th>
+                                        <th scope="col">Current Market Value</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let prop of propArray; let i = index">
+                                        <!-- <td> {{fao.id}} </td> -->
+                                        <td> {{prop.prop_name}} </td>
+                                        <td>{{prop.prop_type}} </td>
+                                        <td>{{prop.current_m_value}} </td>
+                                        <td>
+                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Chit -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Chit Funds </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openChit(chitModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                        <ng-template #chitModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="chitModal">Chit Funds</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                  <div class="form-group">
+                                        <label class="form-control-label" for="field_chit_name">Chit Fund Name</label>
+                                        <input type="text" class="form-control" name="chit_name" id="chit_name" [(ngModel)]="chit.chit_name" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="form-control-label" for="field_chit_holder_name">Chit Holder Name</label>
+                                            <input type="text" class="form-control" name="chit_holder_name" id="chit_holder_name" [(ngModel)]="chit.chit_holder_name" [ngModelOptions]="{standalone: true}"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="form-control-label" f7or="field_chit_start_date">Chit Start date</label>
+                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="chit.chit_start_date" [ngModelOptions]="{standalone: true}"
+                                                    bsDatepicker>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label class="form-control-label" for="field_chit_value">Chit Value</label>
+                                                    <input type="number" class="form-control" name="chit_value" id="chit_value" [(ngModel)]="chit.chit_value" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="form-control-label" for="field_tenure">Tenure (Months)</label>
+                                                        <input type="number" class="form-control" name="tenure" id="tenure" [(ngModel)]="chit.tenure" [ngModelOptions]="{standalone: true}"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="form-control-label" for="field_m_payment">Monthly Payment</label>
+                                                            <input type="number" class="form-control" name="m_payment" id="m_payment" [(ngModel)]="chit.m_payment" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+                
+                                                        <div class="form-group">
+                                                                <label class="form-control-label" for="field_current_value">Current Value</label>
+                                                                <input type="text" class="form-control" name="current_value" id="current_value" [(ngModel)]="chit.current_value" [ngModelOptions]="{standalone: true}" />
+                                                        </div>
+                                                        <div class="checkbox form-group">
+                                                                <label class="form-control-label" for="field_isChashed"><input type="checkbox" value="" class="form-control" name="isCashed" id="isCashed" [(ngModel)]="chit.isCashed" [ngModelOptions]="{standalone: true}" >Is cashed?</label>
+                                                              </div>
+                                          <div class="form-group">
+                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="chit.notes" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                
+                                          
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>    
+                        
+                        <!-- table -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Chit Fund Name</th>
+                                    <th scope="col">Chit Holder Name</th>
+                                    <th scope="col">Chit Start date</th>
+                                    <th scope="col">Chit Value</th>
+                                    <th scope="col">Tenure (Months)</th>
+                                    <th scope="col">Monthly Payment</th>
+                                    <th scope="col">Current Value</th>
+                                    <th scope="col">Chit Value Cashed?</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let chit of chitArray; let i = index">
+                                    <!-- <td> {{fao.id}} </td> -->
+                                    <td> {{chit.chit_name}} </td>
+                                    <td>{{chit.chit_holder_name}} </td>
+                                    <td>{{chit.chit_start_date| date : format : shortDate}} </td>
+                                    <td>{{chit.chit_value}} </td>
+                                    <td>{{chit.tenure}} </td>
+                                    <td>{{chit.m_payment}} </td>
+                                    <td>{{chit.current_value}} </td>
+                                    <td>{{chit.isCashed}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+            
+                        </table>
+
+                    </mat-expansion-panel>
+
+                    <!-- Future and Options -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Future and Options </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                         <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openFuture(futureModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- modal start -->
+                        <ng-template #futureModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="futureModal">Future and Options</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    
+                                    <div class="form-group">
+                                        <label for="id">ID</label>
+                                        <input type="text" class="form-control" id="id" name="id" [(ngModel)]="fao.id" [ngModelOptions]="{standalone: true}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_investment_type">Investment Type</label>
+                                        <input type="text" class="form-control" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type"
+                                            [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_asset_type">Asset Type</label>
+                                        <input type="text" class="form-control" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                        <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="fao.investor_name" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_asset_name">Asset Name</label>
+                                        <input type="text" class="form-control" name="asset_name" id="field_asset_name" [(ngModel)]="fao.asset_name" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_no_of_contracts">No of Contracts</label>
+                                        <input type="number" class="form-control" name="no_of_contracts" id="field_no_of_contracts" [(ngModel)]="fao.no_of_contracts"
+                                            [ngModelOptions]="{standalone: true}" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_contract_p_value">contract Purchase Value</label>
+                                        <input type="number" class="form-control" name="contract_p_value" id="field_contract_p_value" [(ngModel)]="fao.contract_p_value"
+                                            [ngModelOptions]="{standalone: true}" required />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_contract_m_value">contract Market Value</label>
+                                                <input type="number" class="form-control" name="contract_m_value" id="field_contract_m_value" [(ngModel)]="fao.contract_m_value"
+                                                    [ngModelOptions]="{standalone: true}" required />
+                                            </div>
+                                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                    bsDatepicker>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_notes">Notes</label>
+                                        <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>
+                                       
+                                    </div> <!-- footer -->
+                                </form>
+                            </div> <!-- body -->
+                        </ng-template>     
+                        
+                        <!-- table -->
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Investment Type</th>
+                                    <th scope="col">Asset Type</th>
+                                    <th scope="col">Investor Name</th>
+                                    <th scope="col">Asset Name</th>
+                                    <th scope="col">No. Of Contracts</th>
+                                    <th scope="col">Purchase Date</th>
+                                    <th scope="col">Contract Purchase Value</th>
+                                    <th scope="col">Contract Market Value</th>
+                                    <th scope="col">as of date</th>
+                                    <th scope="col">Notes</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let fao of faoArray; let i = index">
+                                    <!-- <td> {{fao.id}} </td> -->
+                                    <td> {{fao.investment_type}} </td>
+                                    <td>{{fao.asset_type}} </td>
+                                    <td>{{fao.investor_name}} </td>
+                                    <td>{{fao.asset_name}} </td>
+                                    <td>{{fao.no_of_contracts}} </td>
+                                    <td>{{fao.p_date}} </td>
+                                    <td>{{fao.contract_p_value}} </td>
+                                    <td>{{fao.contract_m_value}} </td>
+                                    <td>{{fao.as_of_date}} </td>
+                                    <td>{{fao.notes}} </td>
+                                    <td>
+                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
