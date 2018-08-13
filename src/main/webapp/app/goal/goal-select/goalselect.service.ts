@@ -21,59 +21,59 @@ export class GoalselectService {
   constructor(private http: HttpClient) {}
   saveHome(goalselect: any): Observable<any> {
     // console.log(goalselect);
-    return this.http.post(SERVER_API_URL + "api/goal", goalselect);
+    return this.http.post(SERVER_API_URL + "api/goalset", goalselect);
   }
   saveEducation(EducationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", EducationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", EducationSelect);
   }
   saveVehicle(VacationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", VacationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", VacationSelect);
   }
   saveChildBirth(ChildBirthSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", ChildBirthSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", ChildBirthSelect);
   }
   saveMerrage(MerrageSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", MerrageSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", MerrageSelect);
   }
   saveBusiness(BusinessSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", BusinessSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", BusinessSelect);
   }
   saveFamilySupport(FamilySupportSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", FamilySupportSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", FamilySupportSelect);
   }
   saveVacation(VacationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", VacationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", VacationSelect);
   }
   saveEmergencyFund(EmergencyFundSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", EmergencyFundSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", EmergencyFundSelect);
   }
   saveRetirementFund(RetirementFundselect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", RetirementFundselect);
+    return this.http.post(SERVER_API_URL + "api/goalset", RetirementFundselect);
   }
   saveNewGoal(NewGoalSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/goal", NewGoalSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", NewGoalSelect);
   }
   //in service
   public getgoal() {
     //   console.log('in goalselect service', id);
     //  this.ServiceAPIParam = 'api/goal' + '/' + id;
     //  return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map((res)  => res);
-    return this.http.get(SERVER_API_URL + "api/goal").map(res => res);
+    return this.http.get(SERVER_API_URL + "api/goalset").map(res => res);
     //   }
   }
   public getgoalbyid(uid) {
     console.log("in service uid", uid);
-    this.ServiceAPIParam = "api/goal" + "/" + uid;
+    this.ServiceAPIParam = "api/goalset" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
     //return this.http.get(SERVER_API_URL + 'api/goal/{uid}').map((res) => res);
   }

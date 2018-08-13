@@ -5,7 +5,7 @@
   <div class="setmar col-md-10 "><!--start of row1.col2 div-->
     <div><!--start of select div-->
       <mat-form-field>
-        <mat-select placeholder="Choose Goal" [(ngModel)]="goaltype">
+        <mat-select placeholder="Choose Goal" name="goaltype" [(ngModel)]="goaltype">
           <mat-option  value="home">Home</mat-option>
           <mat-option value="education">Education</mat-option>
           <mat-option value="vehicle">Vehicle</mat-option>
@@ -76,23 +76,27 @@
           <tr>
             <td>
               <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="goalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="Required Monthly Investment" type="text" name="requiremonthinvest" [(ngModel)]="goalselect.requiremonthinvest" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="goalselect.fundshortage" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
-                <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="goalselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
-        </div><!--end of row2.col2 div-->
+          </div><!--end of row2.col2 div-->
       </div><!--end of row2 div-->
       <div class="pull-right"><!--start of btn div-->
         <button mat-raised-button color="primary" (click)="Home()">Submit</button>
@@ -166,7 +170,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Educationselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -240,10 +248,13 @@
                 <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vehicleselect.fundshortage" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </td>
-          </tr>
-          <tr>
+           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vehicleselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -317,9 +328,13 @@
               </mat-form-field>
             </td>
           </tr>
-          <tr>
+           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Childbirthselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -395,7 +410,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Merrageselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -472,7 +491,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Businessselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -547,9 +570,13 @@
               </mat-form-field>
             </td>
           </tr>
-          <tr>
+           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="FamilySupportselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -626,7 +653,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vacationselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -700,9 +731,13 @@
               </mat-form-field>
             </td>
           </tr>
-          <tr>
+           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="EmergencyFundselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -779,7 +814,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="RetirementFundselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -856,7 +895,11 @@
           </tr>
           <tr>
             <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+               <mat-form-field>
+                <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="NewGoalselect.dateofcreation">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </div><!--end of row1.col2 div-->
@@ -868,20 +911,3 @@
     </div><!--end of home-tabpane div-->
   </div><!--end of ngSwitchCaseNewGoal div-->
 </div><!-- end of ngSwitch div -->
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <mat-form-field>
-          <input matInput placeholder="userName">
-      </mat-form-field>
-    </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-light" (click)="submitInfo()">Submit</button>
-      <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-    </div>
-  </ng-template>

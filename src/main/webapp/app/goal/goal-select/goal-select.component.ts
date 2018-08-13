@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
+import { FormControl } from "@angular/forms";
 import { GoalselectService } from "./goalselect.service";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import {
   GoalSelect,
   EducationSelect,
@@ -49,6 +49,7 @@ export class GoalSelectComponent implements OnInit {
   // EMERGENCYSELECT=[];
   // RETIREMENTSELECT=[];
   // NEWGOALSELECT=[];
+
   goalselect: any;
   Educationselect: any;
   Vehicleselect: any;
@@ -109,6 +110,7 @@ export class GoalSelectComponent implements OnInit {
     console.log(this.goalselect.priority);
     console.log(this.goalselect.price);
     console.log(this.goalselect.notes);
+    console.log(this.goalselect.requiremonthinvest);
     this.goalSelectService
       .saveHome(this.goalselect)
       .subscribe(
@@ -278,9 +280,6 @@ export class GoalSelectComponent implements OnInit {
   }
   linkAssets() {
     this.router.navigate(["goalAdd"]);
-  }
-  openLg(content) {
-    this.modalService.open(content, { size: "lg" });
   }
 
   //   saveHome():void{
@@ -503,4 +502,7 @@ export class GoalSelectComponent implements OnInit {
   changeValue(valid: boolean) {
     this.isValid = valid;
   }
+  // openLg(content) {
+  //   this.modalService.open(content, { size: 'lg' });
+  // }
 }
