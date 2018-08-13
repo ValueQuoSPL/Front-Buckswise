@@ -1,23 +1,23 @@
-import { NAMED_ENTITIES } from "@angular/compiler";
-import { checkAndUpdateBinding } from "@angular/core/src/view/util";
-import { Component, OnInit } from "@angular/core";
-import { Gross } from "./Services/gross.model";
-import { GrossService } from "./Services/gross.service";
-import { Eightyc } from "./Services/eightyc.model";
-import { EightycService } from "./Services/eightyc.service";
-import { Home } from "./Services/home.model";
-import { HomeService } from "./Services/home.service";
-import { Eightyd } from "./Services/eightyd.model";
-import { EightydService } from "./Services/eightyd.service";
-import { Other } from "./Services/other.model";
-import { OtherService } from "./Services/other.service";
-// import { error } from "util";
-import { AccountService } from "../../shared";
+import { NAMED_ENTITIES } from '@angular/compiler';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+import { Component, OnInit } from '@angular/core';
+import { Gross } from './Services/gross.model';
+import { GrossService } from './Services/gross.service';
+import { Eightyc } from './Services/eightyc.model';
+import { EightycService } from './Services/eightyc.service';
+import { Home } from './Services/home.model';
+import { HomeService } from './Services/home.service';
+import { Eightyd } from './Services/eightyd.model';
+import { EightydService } from './Services/eightyd.service';
+import { Other } from './Services/other.model';
+import { OtherService } from './Services/other.service';
+// import { error } from 'util';
+import { AccountService } from '../../shared';
 
 @Component({
-  selector: "jhi-main",
-  templateUrl: "./main.component.html",
-  styleUrls: ["./main.component.css"]
+  selector: 'jhi-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
   step = 0;
@@ -104,9 +104,9 @@ export class MainComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log('user info', this.user);
         this.id = this.user.id;
-        console.log("in service", this.id);
+        console.log('in service', this.id);
       });
   }
   // gross call function
