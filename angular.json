@@ -94,11 +94,7 @@
       }
     }
   },
-<<<<<<< HEAD
   "defaultProject": "Buckswise",
-=======
-  "defaultProject": "buckswise-front-end",
->>>>>>> 319898fb5faa1a8d207cdd7ce4b6e4b670483569
   "cli": {
     "packageManager": "yarn"
   },
