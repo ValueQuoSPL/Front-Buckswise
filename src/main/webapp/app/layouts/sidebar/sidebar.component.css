@@ -16,16 +16,10 @@ padding: 20px;
 color: white;
 }
 
-
 #main-menu:hover,nav.main-menu.expanded {
 width:250px;
 overflow:visible;
 }
-
-#main-menu.expanded {
-  width:250px;
-  overflow:visible;
-  }
 
 #main-menu {
 background:#343a40 !important;

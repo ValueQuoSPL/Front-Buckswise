@@ -25,6 +25,7 @@ import { EightycService } from 'app/sheetal/main/Services/eightyc.service';
 import { HomeService } from 'app/sheetal/main/Services/home.service';
 import { OtherService } from 'app/sheetal/main/Services/other.service';
 import { AdviceComponent } from './advice/advice.component';
+import { SheetalComponent } from 'app/sheetal/sheetal.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { AdviceComponent } from './advice/advice.component';
     ContactusComponent,
     RequestmeetingComponent,
     TaxComponent,
-    AdviceComponent
+    AdviceComponent,
+    SheetalComponent
   ],
   providers: [
     GrossService,

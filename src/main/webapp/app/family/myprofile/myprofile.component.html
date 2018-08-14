@@ -2,24 +2,26 @@
   <form><!--end of form-->
     <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar-->
       <h5>Personal Information</h5>
-      <ul class="navbar-nav"><!--start ul-->
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link" (click)="saveDetail()">Save</a></button>  
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link"  href="#">Cancle</a></button>  
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link" href="#">Help</a></button>  
-        </li>
-      </ul><!--end ul-->
+      <div class="pull-right">
+          <ul class="navbar-nav "><!--start ul-->
+            <li class="nav-item">
+              <button class="btn btn-link"><a class="nav-link" (click)="saveDetail()">Save</a></button>  
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link"><a class="nav-link"  href="#">Cancel</a></button>  
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link"><a class="nav-link" href="#">Help</a></button>  
+            </li>
+          </ul><!--end ul-->
+      </div>
     </div><!--end of navbar-->
     <div class="row"><!-- start of row1-->
       <div class="col-md-3"><!-- start of row1.col1-->
         <mat-form-field>
           <input matInput placeholder="First Name" type="text" 
           id="firstName" 
-          class="form-control" 
+          
           [(ngModel)]="myProfile.firstName"
           name="firstName" 
           #firstName="ngModel"
@@ -44,7 +46,6 @@
         <mat-form-field>
           <input matInput placeholder="Middle Name"  type="text" 
           id="middleName" 
-          class="form-control" 
           [(ngModel)]="myProfile.middleName"
           name="middleName" 
           #middleName="ngModel"

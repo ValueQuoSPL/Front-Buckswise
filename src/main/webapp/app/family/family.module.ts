@@ -6,11 +6,11 @@ import { familyRoute } from './family.route';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CommonModule } from '@angular/common';
 import { MyprofileComponent } from '../family/myprofile/myprofile.component';
-import { FamilyprofileComponent } from '../family/familyprofile/familyyprofile.component';
 import { AssumptionComponent } from '../family/assumption/assumption.component';
 import { MyprofileService } from './myprofile/myprofile.service';
 import { FamilyprofileService } from './familyprofile/familyprofile.service';
 import { CustomMaterialModule } from '../custom-material.module';
+import { FamilyprofileComponent } from 'app/family/familyprofile/familyprofile.component';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { CustomMaterialModule } from '../custom-material.module';
   declarations: [
     FamilyComponent,
     MyprofileComponent,
-    FamilyprofileComponent,
-    AssumptionComponent
+    AssumptionComponent,
+    FamilyprofileComponent
   ],
   entryComponents: [],
   providers: [MyprofileService, FamilyprofileService]

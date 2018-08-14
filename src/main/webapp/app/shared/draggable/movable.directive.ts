@@ -34,7 +34,8 @@ export class MovableDirective extends DraggableDirective {
   @Input('appMovableReset') reset = false;
 
   constructor(private sanitizer: DomSanitizer,
-    public element: ElementRef, public viewContainerRef: ViewContainerRef) {
+              public element: ElementRef,
+              public viewContainerRef: ViewContainerRef) {
     super(element);
   }
 

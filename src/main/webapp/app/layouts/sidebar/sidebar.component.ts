@@ -27,11 +27,12 @@ export class SidebarComponent implements OnInit {
   }
 
   showSidebar() {
-    // console.log('inside sidebar');
-    // this.element.nativeElement.sidebar = 'sidebar;'
-    // $.getElementById('sidebar').classList.toggle('visible');
-    document.getElementById('main-menu').classList.toggle('expanded');
-    // document.getElementsByClassName('[main-menu]').classList.toggle('expanded');
+    console.log('inside sidebar');
+    // const x =  document.getElementById('main-menu').classList.toggle('expanded');
+    const x =  document.getElementById('main-menu');
+    console.log(x);
+
+      x.style.width = '-250px';
   }
 
   collapseNavbar() {

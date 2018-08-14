@@ -1,887 +1,890 @@
-<div class="row"><!--start of row1 div-->
-  <div class="col-md-2"><!--start of row1.col1 div-->
-    <label><h4><b>Select Goal</b></h4></label>
-  </div><!--end of row1.col1 div-->
-  <div class="setmar col-md-10 "><!--start of row1.col2 div-->
-    <div><!--start of select div-->
-      <mat-form-field>
-        <mat-select placeholder="Choose Goal" [(ngModel)]="goaltype">
-          <mat-option  value="home">Home</mat-option>
-          <mat-option value="education">Education</mat-option>
-          <mat-option value="vehicle">Vehicle</mat-option>
-          <mat-option value="childbirth">Childbirth</mat-option>
-          <mat-option value="merrage">Merrage</mat-option>
-          <mat-option value="business">Business</mat-option>
-          <mat-option value="familysupport">Familysupport</mat-option>
-          <mat-option value="vacation">Vacation</mat-option>
-          <mat-option value="emergencyfund">Emergencyfund</mat-option>
-          <mat-option value="retairementfund">Retairementfund</mat-option>
-          <mat-option value="newgoal">Newgoal</mat-option>
-        </mat-select>
-      </mat-form-field> 
-    </div><!--end of select div-->
-  </div><!--start of row1.col2 div-->
-</div><!--end of row1 div-->
-<div [ngSwitch]="goaltype"><!--start of ngSwitch div-->
-  <div *ngSwitchCase="'home'"><!--start of ngSwitchCaseHome div-->
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="goalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="goalselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="goalselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="goalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button>
-            </td>
-          </tr>
-        </div><!--end of row2.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-raised-button color="primary" (click)="Home()">Submit</button>
-        <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
-      </div><!--end of btn div-->
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseHome div-->
-  <div *ngSwitchCase="'education'"><!--start of ngSwitchCaseEducation div-->
-    <div class="container" style="margin-top: 20px" ><!--start of edu-container div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Educationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Educationselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Educationselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Educationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Educationselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary"(click)="Education()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of edu-container div-->
-  </div><!--end of ngSwitchCaseEducation div-->
-  <div *ngSwitchCase="'vehicle'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of vehicle-container div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vehicleselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vehicleselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vehicleselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vehicleselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment"  form="usrform"  name="notes" [(ngModel)]="Vehicleselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vehicleselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vehicleselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vehicleselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary"(click)="Vehicle()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseVehicle div-->
-  <div *ngSwitchCase="'childbirth'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Childbirthselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Childbirthselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Childbirthselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Childbirthselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Childbirthselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Childbirthselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Childbirthselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Childbirthselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary" (click)="Childbirth()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCasechildbirth div-->
-  <div *ngSwitchCase="'merrage'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Merrageselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Merrageselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Merrageselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Merrageselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Merrageselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Merrageselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Merrageselect.price" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Merrageselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary" (click)="Merrage()">Submit</button>
+<br><br>
+<div class="container accordion">
+    <div class="row"><!--start of row1 div-->
+      <div class="col-md-2"><!--start of row1.col1 div-->
+        <label><h4><b>Select Goal</b></h4></label>
+      </div><!--end of row1.col1 div-->
+      <div class="setmar col-md-10 "><!--start of row1.col2 div-->
+        <div><!--start of select div-->
+          <mat-form-field>
+            <mat-select placeholder="Choose Goal" [(ngModel)]="goaltype">
+              <mat-option  value="home">Home</mat-option>
+              <mat-option value="education">Education</mat-option>
+              <mat-option value="vehicle">Vehicle</mat-option>
+              <mat-option value="childbirth">Childbirth</mat-option>
+              <mat-option value="merrage">Merrage</mat-option>
+              <mat-option value="business">Business</mat-option>
+              <mat-option value="familysupport">Familysupport</mat-option>
+              <mat-option value="vacation">Vacation</mat-option>
+              <mat-option value="emergencyfund">Emergencyfund</mat-option>
+              <mat-option value="retairementfund">Retairementfund</mat-option>
+              <mat-option value="newgoal">Newgoal</mat-option>
+            </mat-select>
+          </mat-form-field> 
+        </div><!--end of select div-->
+      </div><!--start of row1.col2 div-->
+    </div><!--end of row1 div-->
+    <div [ngSwitch]="goaltype"><!--start of ngSwitch div-->
+      <div *ngSwitchCase="'home'"><!--start of ngSwitchCaseHome div-->
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="goalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="goalselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="goalselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="goalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="price" [(ngModel)]="goalselect.price" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button>
+                </td>
+              </tr>
+            </div><!--end of row2.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+            <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          </div><!--end of btn div-->
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseHome div-->
+      <div *ngSwitchCase="'education'"><!--start of ngSwitchCaseEducation div-->
+        <div class="container" style="margin-top: 20px" ><!--start of edu-container div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Educationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Educationselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Educationselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Educationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Educationselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary"(click)="Education()">Submit</button>
             <button mat-button color="accent" (click)="clear()">Cancel</button>
           </div>
-         </div><!--end of home-tabpane div --> 
-  </div><!--end of ngSwitchCaseMerrage div-->
-  <div *ngSwitchCase="'business'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Businessselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Businessselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Businessselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Businessselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Businessselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Businessselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Businessselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Businessselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary"(click)="Business()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseBusiness div-->
-  <div *ngSwitchCase="'familysupport'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="FamilySupportselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="FamilySupportselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="FamilySupportselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="FamilySupportselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="FamilySupportselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="FamilySupportselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="FamilySupportselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="FamilySupportselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary" (click)= "Familysupport()" >Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseFamilySup div-->
-  <div *ngSwitchCase="'vacation'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vacationselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vacationselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vacationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vacationselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Vacationselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vacationselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vacationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vacationselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary" (click)="Vacation()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
+        </div><!--end of edu-container div-->
+      </div><!--end of ngSwitchCaseEducation div-->
+      <div *ngSwitchCase="'vehicle'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of vehicle-container div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vehicleselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vehicleselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vehicleselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vehicleselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment"  form="usrform"  name="notes" [(ngModel)]="Vehicleselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vehicleselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vehicleselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vehicleselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary"(click)="Vehicle()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseVehicle div-->
+      <div *ngSwitchCase="'childbirth'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Childbirthselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Childbirthselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Childbirthselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Childbirthselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Childbirthselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Childbirthselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Childbirthselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Childbirthselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary" (click)="Childbirth()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCasechildbirth div-->
+      <div *ngSwitchCase="'merrage'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Merrageselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Merrageselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Merrageselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Merrageselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Merrageselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Merrageselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Merrageselect.price" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Merrageselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary" (click)="Merrage()">Submit</button>
+                <button mat-button color="accent" (click)="clear()">Cancel</button>
+              </div>
+             </div><!--end of home-tabpane div --> 
+      </div><!--end of ngSwitchCaseMerrage div-->
+      <div *ngSwitchCase="'business'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Businessselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Businessselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Businessselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Businessselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Businessselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Businessselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Businessselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Businessselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary"(click)="Business()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseBusiness div-->
+      <div *ngSwitchCase="'familysupport'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="FamilySupportselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="FamilySupportselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="FamilySupportselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="FamilySupportselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="FamilySupportselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="FamilySupportselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="FamilySupportselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="FamilySupportselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary" (click)= "Familysupport()" >Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseFamilySup div-->
+      <div *ngSwitchCase="'vacation'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vacationselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vacationselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vacationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vacationselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Vacationselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vacationselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vacationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vacationselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+              <button mat-button color="primary" (click)="Vacation()">Submit</button>
+              <button mat-button color="accent" (click)="clear()">Cancel</button>
+            </div>
+          </div><!--end of home-tabpane div-->
+        </div><!--end of ngSwitchCaseVacation div-->
+      <div *ngSwitchCase="'emergencyfund'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="EmergencyFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="EmergencyFundselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="EmergencyFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="EmergencyFundselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="EmergencyFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="EmergencyFundselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="EmergencyFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="EmergencyFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary" (click)="EmergencyFund()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseEmergency div-->
+      <div *ngSwitchCase="'retairementfund'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="RetirementFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="RetirementFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="RetirementFundselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="RetirementFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="RetirementFundselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="RetirementFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="RetirementFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary" (click)="RetairementFund()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseRetaire div-->
+      <div *ngSwitchCase="'newgoal'">
+        <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+          <div class="row"><!--start of row2 div-->
+            <div class="col-md-6"><!--start of row2.col1 div-->
+              <table><!--start of home table-->
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="NewGoalselect.goalname" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="NewGoalselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="NewGoalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="NewGoalselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field>
+                      <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="NewGoalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                    </mat-form-field>
+                  </td>
+                </tr>
+              </table><!--end of home table-->
+            </div><!--end of row1.col1 div-->
+            <div class="col-md-6"><!--start of row2.col2 div-->
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="NewGoalselect.futurecost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="NewGoalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="NewGoalselect.fundshortage" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
+                </td>
+              </tr>
+            </div><!--end of row1.col2 div-->
+          </div><!--end of row2 div-->
+          <div class="pull-right"><!--start of btn div-->
+            <button mat-button color="primary"(click)="NewGoal()">Submit</button>
+            <button mat-button color="accent" (click)="clear()">Cancel</button>
+          </div>
+        </div><!--end of home-tabpane div-->
+      </div><!--end of ngSwitchCaseNewGoal div-->
+    </div><!-- end of ngSwitch div -->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div><!--end of home-tabpane div-->
-    </div><!--end of ngSwitchCaseVacation div-->
-  <div *ngSwitchCase="'emergencyfund'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="EmergencyFundselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="EmergencyFundselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="EmergencyFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="EmergencyFundselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="EmergencyFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="EmergencyFundselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="EmergencyFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="EmergencyFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary" (click)="EmergencyFund()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseEmergency div-->
-  <div *ngSwitchCase="'retairementfund'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="RetirementFundselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="RetirementFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="RetirementFundselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="RetirementFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="RetirementFundselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="RetirementFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="RetirementFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary" (click)="RetairementFund()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseRetaire div-->
-  <div *ngSwitchCase="'newgoal'">
-    <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-      <div class="row"><!--start of row2 div-->
-        <div class="col-md-6"><!--start of row2.col1 div-->
-          <table><!--start of home table-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="NewGoalselect.goalname" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="NewGoalselect.priority" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="NewGoalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="NewGoalselect.presentcost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="NewGoalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table><!--end of home table-->
-        </div><!--end of row1.col1 div-->
-        <div class="col-md-6"><!--start of row2.col2 div-->
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="NewGoalselect.futurecost" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="NewGoalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field>
-                <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="NewGoalselect.fundshortage" [ngModelOptions]="{standalone: true}">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a data-toggle="modal" data-target="#modalRegister">Link to Existing Assets</a>
-            </td>
-          </tr>
-        </div><!--end of row1.col2 div-->
-      </div><!--end of row2 div-->
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-button color="primary"(click)="NewGoal()">Submit</button>
-        <button mat-button color="accent" (click)="clear()">Cancel</button>
-      </div>
-    </div><!--end of home-tabpane div-->
-  </div><!--end of ngSwitchCaseNewGoal div-->
-</div><!-- end of ngSwitch div -->
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <mat-form-field>
-          <input matInput placeholder="userName">
-      </mat-form-field>
-    </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-light" (click)="submitInfo()">Submit</button>
-      <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-    </div>
-  </ng-template>
+        <div class="modal-body">
+          <mat-form-field>
+              <input matInput placeholder="userName">
+          </mat-form-field>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-light" (click)="submitInfo()">Submit</button>
+          <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+</div>

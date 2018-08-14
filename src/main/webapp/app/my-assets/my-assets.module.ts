@@ -14,6 +14,7 @@ import { MutualFundService } from 'app/my-assets/assets/mutual-fund.service';
 import { AssetsService } from 'app/my-assets/assets/assets.service';
 import { LiabilitiesComponent } from './liabilities/liabilities.component';
 import { CustomMaterialModule } from 'app/custom-material.module';
+import { StocksComponent } from 'app/my-assets/mutual-fund/mutual-fund.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { CustomMaterialModule } from 'app/custom-material.module';
     declarations: [
         AssetsComponent,
         MutualFundComponent,
-        LiabilitiesComponent
+        LiabilitiesComponent,
+        StocksComponent
     ],
     providers: [
         StocksService,
