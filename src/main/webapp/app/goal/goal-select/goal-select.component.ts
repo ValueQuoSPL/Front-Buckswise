@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, Route } from "@angular/router";
-import { GoalselectService } from "./goalselect.service";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { Router, Route } from '@angular/router';
+import { GoalselectService } from './goalselect.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {
   GoalSelect,
   EducationSelect,
@@ -14,14 +14,14 @@ import {
   EmergencyFundSelect,
   RetirementFundSelect,
   NewGoalSelect
-} from "./goalselect.model";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService } from "../../shared";
+} from './goalselect.model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService } from '../../shared';
 
 @Component({
-  selector: "jhi-goal-select",
-  templateUrl: "./goal-select.component.html",
-  styles: ["./goal-select.component.css"]
+  selector: 'jhi-goal-select',
+  templateUrl: './goal-select.component.html',
+  styles: ['./goal-select.component.css']
 })
 export class GoalSelectComponent implements OnInit {
   // goalselect: GoalSelect = new GoalSelect();
@@ -35,7 +35,7 @@ export class GoalSelectComponent implements OnInit {
   // EmergencyFundselect:EmergencyFundSelect=new EmergencyFundSelect();
   // RetirementFundselect:RetirementFundSelect=new RetirementFundSelect();
   // NewGoalselect:NewGoalSelect=new NewGoalSelect();
-  selectedday = "";
+  selectedday = '';
   isValid: boolean;
   // goalselectArray = [];
   // HOMESELECT=[];
@@ -101,13 +101,13 @@ export class GoalSelectComponent implements OnInit {
 
   // }
   Home() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
 
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.goalselect.goaltype);
-    console.log("after adding uid", this.goalselect.uid);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.goalselect.goaltype);
+    console.log('after adding uid', this.goalselect.uid);
     console.log(this.goalselect.goalname);
     console.log(this.goalselect.priority);
     console.log(this.goalselect.price);
@@ -118,104 +118,104 @@ export class GoalSelectComponent implements OnInit {
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
 
   Education() {
-    console.log("the value of type is", this.goaltype);
-    console.log("after adding uid", this.goalselect.uid);
+    console.log('the value of type is', this.goaltype);
+    console.log('after adding uid', this.goalselect.uid);
     console.log(this.Educationselect.goalname);
     console.log(this.Educationselect.priority);
     console.log(this.Educationselect.price);
     console.log(this.Educationselect.notes);
     this.Educationselect.goaltype = this.goaltype;
     this.Educationselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Educationselect.type);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Educationselect.type);
     this.goalSelectService
       .saveEducation(this.Educationselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Vehicle() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.Vehicleselect.goaltype = this.goaltype;
     this.Vehicleselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Vehicleselect.type);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Vehicleselect.type);
     this.goalSelectService
       .saveVehicle(this.Vehicleselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Childbirth() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.Childbirthselect.goaltype = this.goaltype;
     this.Childbirthselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Childbirthselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Childbirthselect.goaltype);
     this.goalSelectService
       .saveChildBirth(this.Childbirthselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Merrage() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.Merrageselect.goaltype = this.goaltype;
     this.Merrageselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Merrageselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Merrageselect.goaltype);
     this.goalSelectService
       .saveMerrage(this.Merrageselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Business() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.Businessselect.goaltype = this.goaltype;
     this.Businessselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Businessselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Businessselect.goaltype);
     this.goalSelectService
       .saveBusiness(this.Businessselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Familysupport() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.FamilySupportselect.goaltype = this.goaltype;
     this.FamilySupportselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.FamilySupportselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.FamilySupportselect.goaltype);
     this.goalSelectService
       .saveFamilySupport(this.FamilySupportselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   Vacation() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.Vacationselect.goaltype = this.goaltype;
     this.Vacationselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.Vacationselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.Vacationselect.goaltype);
     console.log(this.goalselect.goalname);
     console.log(this.goalselect.priority);
     console.log(this.goalselect.price);
@@ -226,42 +226,42 @@ export class GoalSelectComponent implements OnInit {
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   EmergencyFund() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.EmergencyFundselect.goaltype = this.goaltype;
     this.EmergencyFundselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.EmergencyFundselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.EmergencyFundselect.goaltype);
     this.goalSelectService
       .saveEmergencyFund(this.EmergencyFundselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   RetairementFund() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.RetirementFundselect.goaltype = this.goaltype;
     this.RetirementFundselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding type", this.RetirementFundselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding type', this.RetirementFundselect.goaltype);
     this.goalSelectService
       .saveRetirementFund(this.RetirementFundselect)
       .subscribe(
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   NewGoal() {
-    console.log("the value of type is", this.goaltype);
+    console.log('the value of type is', this.goaltype);
     this.NewGoalselect.goaltype = this.goaltype;
     this.NewGoalselect.uid = this.uid;
-    console.log("inside saveHome details");
-    console.log("after adding goaltype", this.NewGoalselect.goaltype);
+    console.log('inside saveHome details');
+    console.log('after adding goaltype', this.NewGoalselect.goaltype);
     console.log(this.goalselect.goalname);
     console.log(this.goalselect.priority);
     console.log(this.goalselect.price);
@@ -272,18 +272,18 @@ export class GoalSelectComponent implements OnInit {
         responce => console.log(responce),
         error => console.log(error)
       );
-    console.log("outside saveHome details");
+    console.log('outside saveHome details');
   }
   AddGoal() {
-    console.log("in addgoal");
+    console.log('in addgoal');
     // this.router.navigate(['goal']);
     this.isValid = false;
   }
   linkAssets() {
-    this.router.navigate(["goalAdd"]);
+    this.router.navigate(['goalAdd']);
   }
   openLg(content) {
-    this.modalService.open(content, { size: "lg" });
+    this.modalService.open(content, { size: 'lg' });
   }
 
   //   saveHome():void{
@@ -473,7 +473,7 @@ export class GoalSelectComponent implements OnInit {
   //   });
   //   }
   selectChange(event: any) {
-    console.log("in selectchange method");
+    console.log('in selectchange method');
     this.selectedday = event.target.value;
   }
   FetchId(): Promise<any> {
@@ -482,9 +482,9 @@ export class GoalSelectComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log('user info', this.user);
         this.uid = this.user.id;
-        console.log("in service", this.uid);
+        console.log('in service', this.uid);
       });
   }
   getgoal() {
@@ -496,7 +496,7 @@ export class GoalSelectComponent implements OnInit {
     });
   }
   getgoalbyid(uid) {
-    console.log("in main ts", uid);
+    console.log('in main ts', uid);
     this.goalSelectService.getgoalbyid(uid).subscribe(res => {
       console.log(res);
       this.output = res;

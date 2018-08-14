@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Principal } from "app/shared";
-import { Stocks } from "app/my-assets/assets/stocks.model";
-import { Observable } from "rxjs/Observable";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { JhiEventManager } from "ng-jhipster";
-import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
-import { MutualFundService } from "app/my-assets/assets/mutual-fund.service";
-import { StocksService } from "app/my-assets/assets/stocks.service";
-import { MutualFund } from "app/my-assets/assets/mutual-fund.model";
-import { AssetsService } from "app/my-assets/assets/assets.service";
+import { Component, OnInit } from '@angular/core';
+import { Principal } from 'app/shared';
+import { Stocks } from 'app/my-assets/assets/stocks.model';
+import { Observable } from 'rxjs/Observable';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { JhiEventManager } from 'ng-jhipster';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { MutualFundService } from 'app/my-assets/assets/mutual-fund.service';
+import { StocksService } from 'app/my-assets/assets/stocks.service';
+import { MutualFund } from 'app/my-assets/assets/mutual-fund.model';
+import { AssetsService } from 'app/my-assets/assets/assets.service';
 import {
   FAO,
   SavingScheme,
@@ -16,13 +16,13 @@ import {
   Cash,
   Property,
   ChitFund
-} from "app/my-assets/assets/assets.model";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+} from 'app/my-assets/assets/assets.model';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: "jhi-assets",
-  templateUrl: "./assets.component.html",
-  styleUrls: ["assets.css"]
+  selector: 'jhi-assets',
+  templateUrl: './assets.component.html',
+  styleUrls: ['assets.css']
 })
 export class AssetsComponent implements OnInit {
   account: Account;
@@ -66,9 +66,9 @@ export class AssetsComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -76,10 +76,10 @@ export class AssetsComponent implements OnInit {
 
   // stocks
   openStocks(stocksModal) {
-    console.log("income modal open");
+    console.log('income modal open');
 
     this.modalService
-      .open(stocksModal, { ariaLabelledBy: "stocksModal" })
+      .open(stocksModal, { ariaLabelledBy: 'stocksModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -102,14 +102,14 @@ export class AssetsComponent implements OnInit {
     });
 
     this.stocksService.SaveStocks(this.stocks).subscribe(data => {
-      alert("Added new stocks details");
+      alert('Added new stocks details');
     });
   }
 
   openMutual(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
     this.modalService
-      .open(content, { ariaLabelledBy: "mutualModal" })
+      .open(content, { ariaLabelledBy: 'mutualModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -132,14 +132,14 @@ export class AssetsComponent implements OnInit {
     });
 
     this.mutualFundService.SubmitUser(this.mutualfund).subscribe(data => {
-      alert("Added new MF details");
+      alert('Added new MF details');
     });
   }
 
   openFuture(content) {
-    console.log("future modal open");
+    console.log('future modal open');
     this.modalService
-      .open(content, { ariaLabelledBy: "futureModal" })
+      .open(content, { ariaLabelledBy: 'futureModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -168,15 +168,15 @@ export class AssetsComponent implements OnInit {
     });
 
     this.assetsService.SaveFAO(this.fao).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
     });
   }
 
   openSaving(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
 
     this.modalService
-      .open(content, { ariaLabelledBy: "savingModal" })
+      .open(content, { ariaLabelledBy: 'savingModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -207,14 +207,14 @@ export class AssetsComponent implements OnInit {
     this.assetsService
       .SavingSchemeDetails(this.savingScheme)
       .subscribe(data => {
-        alert("Added new Future and objective details");
+        alert('Added new Future and objective details');
       });
   }
 
   openAlt(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
 
-    this.modalService.open(content, { ariaLabelledBy: "altModal" }).result.then(
+    this.modalService.open(content, { ariaLabelledBy: 'altModal' }).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
         this.AltInvestment();
@@ -235,15 +235,15 @@ export class AssetsComponent implements OnInit {
     });
 
     this.assetsService.AltInvestDetails(this.altInvest).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
     });
   }
 
   openCash(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
 
     this.modalService
-      .open(content, { ariaLabelledBy: "cashModal" })
+      .open(content, { ariaLabelledBy: 'cashModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -263,15 +263,15 @@ export class AssetsComponent implements OnInit {
     });
 
     this.assetsService.CashDetails(this.cash).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
     });
   }
 
   openProperty(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
 
     this.modalService
-      .open(content, { ariaLabelledBy: "propertyModal" })
+      .open(content, { ariaLabelledBy: 'propertyModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -294,15 +294,15 @@ export class AssetsComponent implements OnInit {
     });
 
     this.assetsService.PropertyDetails(this.cash).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
     });
   }
 
   openChit(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
 
     this.modalService
-      .open(content, { ariaLabelledBy: "chitModal" })
+      .open(content, { ariaLabelledBy: 'chitModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -328,21 +328,21 @@ export class AssetsComponent implements OnInit {
     });
 
     this.assetsService.ChitFundDetails(this.chit).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
     });
   }
 
   clear() {
-    this.activeModal.dismiss("cancel");
+    this.activeModal.dismiss('cancel');
   }
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
   }
   resetFieldValue() {
-    this.stocks.company_name = "";
-    this.stocks.investor_name = "";
+    this.stocks.company_name = '';
+    this.stocks.investor_name = '';
     this.stocks.no_of_shares = 0;
     this.stocks.share_price = 0;
-    this.stocks.notes = "";
+    this.stocks.notes = '';
   }
 }

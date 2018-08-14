@@ -45,7 +45,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate   #editForm="ngForm">
                                     
                                     <mat-form-field>
                                         <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" >
@@ -155,7 +155,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                 
                                     
                                     <div class="form-group">
@@ -194,7 +194,7 @@
                                                 <span class="fa fa-ban"></span>&nbsp;
                                                 <span>Cancel</span>
                                             </button>
-                                            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal" (click)="clear()"
+                                            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
                                             (click)="c('Save click')">
                                                 <span class="fa fa-save"></span>&nbsp;
                                                 <span>Save</span>
@@ -267,7 +267,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
                                                 <div class="form-group">
                                                     <label for="id">ID</label>
@@ -434,7 +434,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
                                     <div class="form-group">
                                                 <label for="id">ID</label>
@@ -563,7 +563,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                         
                                 <div class="form-group">
                                     <label for="field_cash_source">Cash Source</label>
@@ -662,7 +662,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
                                 <div class="form-group">
                                         <label class="form-control-label" for="field_prop_name">Property Name</label>
@@ -793,7 +793,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
                                   <div class="form-group">
                                         <label class="form-control-label" for="field_chit_name">Chit Fund Name</label>
@@ -878,7 +878,7 @@
                                     <!-- <td> {{fao.id}} </td> -->
                                     <td> {{chit.chit_name}} </td>
                                     <td>{{chit.chit_holder_name}} </td>
-                                    <td>{{chit.chit_start_date| date : format : shortDate}} </td>
+                                    <td>{{chit.chit_start_date| date : 'shortDate'}} </td>
                                     <td>{{chit.chit_value}} </td>
                                     <td>{{chit.tenure}} </td>
                                     <td>{{chit.m_payment}} </td>
@@ -926,7 +926,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  " #editForm="ngForm">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
                                     <div class="form-group">
                                         <label for="id">ID</label>

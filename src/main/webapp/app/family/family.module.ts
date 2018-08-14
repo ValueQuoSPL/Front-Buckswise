@@ -1,16 +1,17 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { FamilyComponent } from "../family/family.component";
-import { familyRoute } from "./family.route";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-import { CommonModule } from "@angular/common";
-import { MyprofileComponent } from "../family/myprofile/myprofile.component";
-import { AssumptionComponent } from "../family/assumption/assumption.component";
-import { MyprofileService } from "./myprofile/myprofile.service";
-import { FamilyprofileService } from "./familyprofile/familyprofile.service";
-import { CustomMaterialModule } from "../custom-material.module";
-import { FamilyprofileComponent } from "app/family/familyprofile/familyprofile.component";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FamilyComponent } from '../family/family.component';
+import { familyRoute } from './family.route';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CommonModule } from '@angular/common';
+import { MyprofileComponent } from '../family/myprofile/myprofile.component';
+import { AssumptionComponent } from '../family/assumption/assumption.component';
+import { MyprofileService } from './myprofile/myprofile.service';
+import { FamilyprofileService } from './familyprofile/familyprofile.service';
+import { CustomMaterialModule } from '../custom-material.module';
+import { FamilyprofileComponent } from 'app/family/familyprofile/familyprofile.component';
+import { FamilyserviceService } from 'app/family/familyservice.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,6 @@ import { FamilyprofileComponent } from "app/family/familyprofile/familyprofile.c
     FamilyprofileComponent
   ],
   entryComponents: [],
-  providers: [MyprofileService, FamilyprofileService]
+  providers: [MyprofileService, FamilyprofileService, FamilyserviceService]
 })
 export class FamilyModule {}
