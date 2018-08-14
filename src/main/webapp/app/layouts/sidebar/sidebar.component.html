@@ -1,18 +1,15 @@
 <div>
-    
- 
   <div class="container-fluid" >
       <div class="row">
-        <nav class="main-menu ">
+        <nav id="main-menu" >
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
                     <i class="fa logo-img"></i>                    
                 </a>
-                
             </div>
-            <ul>
-                <li>
-                    <a routerLink="myfamily" routerLinkActive="active">
+            <ul (click)="showSidebar()"> 
+                <li >
+                    <a routerLink="familyroute" routerLinkActive="active"  >
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text" >
                             Profile
@@ -28,7 +25,7 @@
                     </a>
                 </li>
                 <li class="has-subnav">
-                    <a routerLink="spend" routerLinkActive="active">
+                    <a routerLink="income" routerLinkActive="active">
                         <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
                             Income
@@ -54,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="assets" routerLinkActive="active">
+                    <a routerLink="liability" routerLinkActive="active">
                         <i class="fa fa-font fa-2x"></i>
                         <span class="nav-text">
                             Liabilities
@@ -70,7 +67,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="tax" routerLinkActive="active">
+                    <a routerLink="main" routerLinkActive="active">
                         <i class="fa fa-map-marker fa-2x"></i>
                         <span class="nav-text">
                             Tax
@@ -86,7 +83,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="family" routerLinkActive="active">
+                    <a routerLink="advice" routerLinkActive="active">
                         <i class="fa fa-info fa-2x"></i>
                         <span class="nav-text">
                             Advice

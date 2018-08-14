@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
-import { Principal } from "../shared";
+import { Principal } from "app/shared";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { first } from "rxjs/operator/first";
 

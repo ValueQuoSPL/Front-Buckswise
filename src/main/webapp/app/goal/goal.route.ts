@@ -1,22 +1,6 @@
-// // import { Routes } from '@angular/router';
-
-// // import {
-// //     goalSelectRoute
-
-// // } from './';
-
-// // const GOAL_ROUTES = [
-// //     goalSelectRoute
-// // ];
-
-// // export const goalState: Routes = [{
-// //     path: '',
-// //     children: GOAL_ROUTES
-// // }];
 import { Route } from "@angular/router";
-
-import { UserRouteAccessService } from "../shared";
-import { GoalComponent } from "./";
+import { UserRouteAccessService } from "app/shared";
+import { GoalComponent } from "app/goal";
 // import { GoalSelectComponent } from './Goal-select/goalselect.component';
 
 export const goalRoot: Route = {

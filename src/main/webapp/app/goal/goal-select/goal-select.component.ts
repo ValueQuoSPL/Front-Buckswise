@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
 import { GoalselectService } from "./goalselect.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import {
   GoalSelect,
   EducationSelect,
@@ -34,7 +35,7 @@ export class GoalSelectComponent implements OnInit {
   // EmergencyFundselect:EmergencyFundSelect=new EmergencyFundSelect();
   // RetirementFundselect:RetirementFundSelect=new RetirementFundSelect();
   // NewGoalselect:NewGoalSelect=new NewGoalSelect();
-  selectedday: string = "";
+  selectedday = "";
   isValid: boolean;
   // goalselectArray = [];
   // HOMESELECT=[];
@@ -70,9 +71,10 @@ export class GoalSelectComponent implements OnInit {
     private router: Router,
     private goalSelectService: GoalselectService,
     private ActiveModal: NgbActiveModal,
-    private account: AccountService
+    private account: AccountService,
+    private modalService: NgbModal
   ) {
-    // this.EducationSelect = new EducationSelect("Educationselect");
+    // this.EducationSelect = new EducationSelect('Educationselect');
   }
   ngOnInit() {
     this.FetchId();
@@ -92,7 +94,7 @@ export class GoalSelectComponent implements OnInit {
 
   // clear()
   // {
-  //   this.ActiveModal.dismiss("cancle");
+  //   this.ActiveModal.dismiss('cancle');
   // }
   // Add(){
   //   // this.router.navigateByUrl('goalAdd');
@@ -280,6 +282,9 @@ export class GoalSelectComponent implements OnInit {
   linkAssets() {
     this.router.navigate(["goalAdd"]);
   }
+  openLg(content) {
+    this.modalService.open(content, { size: "lg" });
+  }
 
   //   saveHome():void{
   // this.goalselectArray.push({
@@ -308,11 +313,11 @@ export class GoalSelectComponent implements OnInit {
   //       CreationDate:this.Educationselect.creationdate
   //     })
 
-  //     console.log("inside saveEducation");
+  //     console.log('inside saveEducation');
   //     this.goalSelectService.saveEducation(this.EDUCATIONSELECT).subscribe(data =>
   //     {
-  //       alert("Data saved successfully");
-  //       console.log("Data saved successfully");
+  //       alert('Data saved successfully');
+  //       console.log('Data saved successfully');
   //     });
   //   }
   //   saveVehicle():void
@@ -325,11 +330,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.Vehicleselect.loanrequire,
   //       CreationDate:this.Vehicleselect.creationdate
   //     })
-  //   console.log("inside saveVehicle");
+  //   console.log('inside saveVehicle');
   //   this.goalSelectService.saveVehicle(this.VEHICLESELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   // saveChildbirth():void
@@ -342,11 +347,11 @@ export class GoalSelectComponent implements OnInit {
   //     loanRequire:this.Childbirthselect.loanrequire,
   //     CreationDate:this.Childbirthselect.creationdate
   //   })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveChildbirth(this.CHILDBIRTHSELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   //   saveMerrage(): void
@@ -359,11 +364,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.Merrageselect.loanrequire,
   //       CreationDate:this.Merrageselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveMerrage(this.MERRAGESELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //     });
   //   }
   //   saveBusiness():void{
@@ -375,11 +380,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.Businessselect.loanrequire,
   //       CreationDate:this.Businessselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveBusiness(this.BUSINESSSELECT).subscribe(data =>
   //   {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   // saveFamilysup():void
@@ -392,11 +397,11 @@ export class GoalSelectComponent implements OnInit {
   //     loanRequire:this.FamilySupportselect.loanrequire,
   //     CreationDate:this.FamilySupportselect.creationdate
   //   })
-  // console.log("inside saveChildBirth");
+  // console.log('inside saveChildBirth');
   // this.goalSelectService.saveFamilysup(this.FAMILYSUPSELECT).subscribe(data =>
   //   {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   // saveVacation():void
@@ -409,11 +414,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.Vacationselect.loanrequire,
   //       CreationDate:this.Vacationselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveVacation(this.VACATIONSELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   //   saveEmergencyFund():void
@@ -426,11 +431,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.EmergencyFundselect.loanrequire,
   //       CreationDate:this.EmergencyFundselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveEmergencyFund(this.EMERGENCYSELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   //   saveRetairementFund():void
@@ -444,11 +449,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.RetirementFundselect.loanrequire,
   //       CreationDate:this.RetirementFundselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveRetairementFund(this.RETIREMENTSELECT).subscribe(data =>
   //     {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   // }
   //   saveNewGoal():void{
@@ -460,11 +465,11 @@ export class GoalSelectComponent implements OnInit {
   //       loanRequire:this.NewGoalselect.loanrequire,
   //       CreationDate:this.NewGoalselect.creationdate
   //     })
-  //   console.log("inside saveChildBirth");
+  //   console.log('inside saveChildBirth');
   //   this.goalSelectService.saveNewGoal(this.NEWGOALSELECT).subscribe(data =>
   //   {
-  //     alert("Data saved successfully");
-  //     console.log("Data saved successfully");
+  //     alert('Data saved successfully');
+  //     console.log('Data saved successfully');
   //   });
   //   }
   selectChange(event: any) {

@@ -11,7 +11,7 @@ import { Eightyd } from "./Services/eightyd.model";
 import { EightydService } from "./Services/eightyd.service";
 import { Other } from "./Services/other.model";
 import { OtherService } from "./Services/other.service";
-import { error } from "util";
+// import { error } from 'util';
 import { AccountService } from "../../shared";
 
 @Component({
@@ -20,6 +20,7 @@ import { AccountService } from "../../shared";
   styleUrls: ["./main.component.css"]
 })
 export class MainComponent implements OnInit {
+  step = 0;
   public ServiceAPIParam: any;
   // public id= 11;
   public id;
@@ -213,6 +214,21 @@ export class MainComponent implements OnInit {
   onHomeGet(id) {
     //  console.log('in main ts', id);
     this.homeService.gethome(id).subscribe(res => {
+      console.log(res);
+      this.output = res;
+      console.log(this.output);
+    });
+  }
+  onEightycGet(id) {
+    //  console.log('in main ts', id);
+    this.eightycService.geteightyc(id).subscribe(res => {
+      console.log(res);
+      this.output = res;
+      console.log(this.output);
+    });
+  }
+  onGrossGet(id) {
+    this.grossService.getgross(id).subscribe(res => {
       console.log(res);
       this.output = res;
       console.log(this.output);

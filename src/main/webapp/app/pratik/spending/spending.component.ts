@@ -50,7 +50,6 @@ export interface DialogData {
   styleUrls: ["./spending.component.css"]
 })
 export class SpendingComponent implements OnInit {
-  totalIncome: number;
   totalUtility: number;
   totalHousehold: number;
   totalTravel: number;
@@ -84,7 +83,6 @@ export class SpendingComponent implements OnInit {
 
   dynamicLoanArray: any = [];
   newLoanArray: any[];
-  dynamicIncome: any = [];
   dynamicUtilityArray: any = [];
   dynamicHousehold: any = [];
   dynamicTravel: any = [];
@@ -131,14 +129,12 @@ export class SpendingComponent implements OnInit {
   ];
 
   //   Table Arrays
-  IncomeArray: any = [];
   UtilityArray: any = [];
   HouseholdArray: any = [];
   TravelArray: any = [];
   MiscArray: any = [];
 
   // object creation
-  income: Income = new Income();
   utility: Utility = new Utility();
   house: House = new House();
   loan: Loan = new Loan();
@@ -158,7 +154,6 @@ export class SpendingComponent implements OnInit {
 
   constructor(
     private account: AccountService,
-    private incomeService: IncomeService,
     private utilityService: UtilityService,
     private houseService: HouseService,
     private travelService: TravelService,
@@ -176,23 +171,12 @@ export class SpendingComponent implements OnInit {
   ngOnInit() {
     console.log("inside onInit()");
     this.getUserid();
-    // this.calcIncomeTotal();
-    this.totalIncome = 0;
     // this.calcUtilityTotal();
     this.totalUtility = 0;
     // this.calcHouseholdTotal();
     this.totalHousehold = 0;
     this.totalTravel = 0;
     this.totalMisc = 0;
-
-    // for income
-    this.income.incomeSalary = 0;
-    this.income.incomeAward = 0;
-    this.income.incomeBonus = 0;
-    this.income.incomeDeposit = 0;
-    this.income.incomePension = 0;
-    this.income.incomeRental = 0;
-    this.income.incomeSaving = 0;
 
     // for utility
     this.utility.electricity = 0;
@@ -335,72 +319,6 @@ export class SpendingComponent implements OnInit {
         // this.authenticationState.next(this.userIdentity);
         // return null;
       });
-  }
-
-  // income
-  openIncome(incomeContent) {
-    console.log("income modal open");
-
-    this.modalService
-      .open(incomeContent, { ariaLabelledBy: "incomeModal" })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.AddIncome();
-          // console.log('add income success');
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.inputForm.value);
-  }
-  calcIncomeTotal() {
-    this.totalIncome = 0;
-    for (let i = 0; i < this.dynamicIncome.length; i++) {
-      const value1 = this.dynamicIncome[i].value;
-      // console.log(this.totalIncome);
-      this.totalIncome = this.totalIncome + value1;
-    }
-    console.log(this.dynamicIncome);
-    console.log(this.totalIncome);
-  }
-  AddIncome() {
-    this.dynamicIncome.push({
-      name: this.resource,
-      value: this.amount
-    });
-    this.calcIncomeTotal();
-    this.clear();
-  }
-  deleteFieldValue(index) {
-    this.dynamicIncome.splice(index, 1);
-    this.calcIncomeTotal();
-  }
-  onIncomeSave(): void {
-    this.income.dynamicIncome = this.dynamicIncome;
-    this.incomeService.PutIncome(this.income).subscribe(data => {
-      alert("Your data saved");
-    });
-  }
-  onIncomeGet() {
-    console.log("inside onIncomeGet()");
-    this.incomeService.GetIncome().subscribe((response: any[]) => {
-      this.IncomeArray = response;
-      this.income.incomeSalary = this.IncomeArray.incomeSalary;
-      this.income.incomeAward = this.IncomeArray.incomeAward;
-      this.income.incomeBonus = this.IncomeArray.incomeBonus;
-      this.income.incomePension = this.IncomeArray.incomePension;
-      this.income.incomeSaving = this.IncomeArray.incomeSaving;
-      this.income.incomeDeposit = this.IncomeArray.incomeDeposit;
-      this.income.incomeRental = this.IncomeArray.incomeRental;
-      this.dynamicIncome = this.IncomeArray.dynamicIncome;
-      console.log(response);
-    });
-    console.log("onIncomeGet() success");
   }
 
   // utility

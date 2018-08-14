@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../../shared";
 import { ContactService } from "./contact.service";
 import * as $ from "jQuery";
-
 @Component({
   selector: "jhi-contactus",
   templateUrl: "./contactus.component.html",
@@ -20,11 +19,11 @@ export class ContactusComponent implements OnInit {
       .subscribe(response => console.log(response));
   }
   // resetContact() {
-  //     this.user.name = '';
-  //     this.user.email = '';
-  //     this.user.phone = '';
-  //     this.user.message = '';
-  //   }
+  //   this.user.name = '';
+  //  this.user.email = '';
+  // this.user.phone = '';
+  // this.user.message = '';
+  //  }
 
   ngOnInit() {
     //    Validation for name

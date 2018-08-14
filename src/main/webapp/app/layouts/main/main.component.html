@@ -1,20 +1,23 @@
 
 <span [ngSwitch]="isAuthenticated()">
-    <p *ngSwitchCase="false">
+    <p *ngSwitchCase="true">
+
         <router-outlet name="navbar"></router-outlet>
-        <br> 
-        <div style=" margin-left: -60px; margin-top: 62px; margin-right: 0px;">
+
+        <div  *ngSwitchCase="true" style=" margin-left: 0px; margin-top: 58px; margin-right: 0px;">
             <router-outlet></router-outlet>
-            <!-- <router-outlet name="popup"></router-outlet> -->
         </div>     
 
     </p>
-    <p *ngSwitchCase="true">
+    <p *ngSwitchCase="false">
        
-        <router-outlet name="navbar" ></router-outlet>
-        <jhi-sidebar class="myclass"></jhi-sidebar>
-        
-        <div style=" margin-left: 60px; margin-top: -40px; margin-right: 0px;">
+        <router-outlet name="navbar"></router-outlet>
+
+        <jhi-sidebar ></jhi-sidebar>
+
+        <br><br>
+
+        <div *ngSwitchCase="false" style=" margin-left: 60px; margin-top: -43px; margin-right: 0px;">
             <router-outlet></router-outlet>
         </div>
 

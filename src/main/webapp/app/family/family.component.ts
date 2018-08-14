@@ -12,10 +12,12 @@ import { Familyprofile, Assumption } from "app/family/family.modal";
   styles: ["./family.component.css"]
 })
 export class FamilyComponent implements OnInit {
-  MyProfile = []; //   array of myprofile
-  FamilyProfile = []; //   array of familyprofile
-  Assumption = []; //   array of Assumption
+  panelOpenState = false;
+  step = 0;
 
+  MyProfile: any = [];
+  FamilyProfile: any = [];
+  Assumption: any = [];
   myProfile: Myprofile = new Myprofile();
   familyProfile: Familyprofile = new Familyprofile();
   assumption: Assumption = new Assumption();

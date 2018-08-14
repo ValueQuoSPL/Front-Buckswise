@@ -1,8 +1,8 @@
 import { Route } from "@angular/router";
 
-import { UserRouteAccessService } from "../../shared";
-//import { GoalSelectComponent } from './goalselect.component';
-import { GoalAddButtonComponent } from "./goal-add-button.component";
+import { UserRouteAccessService } from "app/shared";
+// import { GoalSelectComponent } from './goalselect.component';
+import { GoalAddButtonComponent } from "app/goal/goal-add-button/goal-add-button.component";
 
 export const goalAddRoute: Route = {
   path: "goalAdd",

@@ -5,10 +5,18 @@ import { SERVER_API_URL } from "../../../app.constants";
 import { Gross } from "./gross.model";
 import { Subscription } from "rxjs/Subscription";
 import { Component, OnInit } from "@angular/core";
+import { AccountService } from "../../../shared";
 
 @Injectable()
 export class GrossService {
-  constructor(private http: HttpClient) {}
+  ID;
+  userID;
+  // temp: any = [];
+  user;
+  // id: any;
+  model: Gross = new Gross();
+  ServiceAPIParam: string;
+  constructor(private http: HttpClient, private account: AccountService) {}
 
   // public ServiceGross(gross) {
 
@@ -27,5 +35,21 @@ export class GrossService {
   // console.log(gross.Convay);
   save(gross: any): Observable<any> {
     return this.http.post(SERVER_API_URL + "api/grosses", gross);
+  }
+  FetchID(): Promise<any> {
+    return this.account
+      .get()
+      .toPromise()
+      .then(response => {
+        this.user = response.body;
+        console.log("user info", this.user);
+        this.userID = this.user.id;
+        console.log("in service", this.userID);
+      });
+  }
+  public getgross(id) {
+    console.log("in getgross service", id);
+    this.ServiceAPIParam = "api/grosses" + "/" + id;
+    return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

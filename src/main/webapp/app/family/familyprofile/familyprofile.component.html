@@ -1,110 +1,162 @@
-<div class="container">
-    <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;">
-        <h5>Enter Relationship Details<span class="glyphicons glyphicons-remove-circle"></span></h5>
+<div class="container"><!--start of container div -->
+  <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar3 div -->
+    <h5>Enter Relationship Details<span class="glyphicons glyphicons-remove-circle"></span></h5>
+  </div><!--end of navbar3 div -->
+  <mat-form-field>
+      <mat-select placeholder="Choose Relation" >
+        <mat-option  value="Mother">Mother</mat-option>
+        <mat-option value="Father">Father</mat-option>
+        <mat-option  value="Spouce">Spouce</mat-option>
+        <mat-option value="Son">Son</mat-option>
+        <mat-option  value="Daughter">Daughter</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <div class="row"><!--start of row2-->
+      <div class="col-md-4">
+        <mat-form-field>
+            <input matInput placeholder="First Name"
+            type="text" 
+            id="familyfirstName"
+            class="form-control" 
+            [(ngModel)]="familyProfile.familyfirstName"
+            name="familyfirstName" 
+            #familyfirstName="ngModel"
+            minlength="5" 
+            maxlength="10" 
+            pattern="^[_'.@A-Za-z0-9-]*$"
+            required>
+          </mat-form-field>
+          <div *ngIf=" familyfirstName.touched && !familyfirstName.valid">
+              <div *ngIf="familyfirstName.errors.required">
+                  firstName is required
+              </div>
+              <div *ngIf="familyfirstName.errors.minlength">
+                  name should be min {{familyfirstName.errors.minlength.requiredLength}} char
+              </div>
+              <div *ngIf="familyfirstName.errors.pattern"> 
+                  pattern not match
+              </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput placeholder="Middle Name" type="text" 
+                id="familymiddlename" 
+                class="form-control" 
+                [(ngModel)]="familyProfile.familymiddlename"
+                name="familymiddlename" 
+                #familymiddlename="ngModel"
+                minlength="5" 
+                maxlength="10" 
+                pattern="^[_'.@A-Za-z0-9-]*$"
+                required>
+              </mat-form-field>
+              <div *ngIf="familymiddlename.touched && !familymiddlename.valid">
+                <div *ngIf="familymiddlename.errors.required">
+                  Middlename is required
+                </div>
+                <div *ngIf="familymiddlename.errors.minlength">
+                    name should be min {{familymiddlename.errors.minlength.requiredLength}} char
+                </div>
+                <div *ngIf="familymiddlename.errors.pattern"> 
+                    pattern not match
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput placeholder="Last Name"  type="text" 
+                id="familylastname" 
+                class="form-control" 
+                [(ngModel)]="familyProfile.familylastname"
+                name="familylastname" 
+                #familylastname="ngModel"
+                minlength="5" 
+                maxlength="10"
+                pattern="^[_'.@A-Za-z0-9-]*$"
+                required>
+              </mat-form-field>
+              <div *ngIf="familylastname.touched && !familylastname.valid">
+                  <div *ngIf="familylastname.errors.required">
+                    Lastname is required
+                  </div>
+                  <div *ngIf="familylastname.errors.minlength">
+                      name should be min {{familylastname.errors.minlength.requiredLength}} char
+                  </div>
+                  <div *ngIf="familylastname.errors.pattern"> 
+                      pattern not match
+                  </div>
+              </div>
+        </div>
+      </div><!--end of row2-->
+      <div class="row">
+        <div class="col-md-6">
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dateOfBirth" [(ngModel)]="familyProfile.dateOfBirth">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-checkbox>Is Earning?</mat-checkbox>
+          </div>
+        <div class="col-md-2"></div>
       </div>
       <div class="row">
-          <div class="col-md-6">
-              <label for="exampleFormControlInput1">RelationShip</label>
-              <select>
-                  <option value="volvo">mother</option>
-                  <option value="saab">father</option>
-                  <option value="volvo">spouse</option>
-                  <option value="saab">son</option>
-                  <option value="saab">Daughter</option>
-              </select>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-4 col-form-label">First name</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="firstname" placeholder="firstName">
-                    </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput placeholder="Email"type="text" 
+                id="familyemail" 
+                class="form-control" 
+                [(ngModel)]="familyProfile.familyemail"
+                name="familyemail" 
+                #familyemail="ngModel"
+                minlength="5" 
+                maxlength="10" 
+                pattern="^[_'.@A-Za-z0-9-]*$"
+                required>
+              </mat-form-field>
+              <div *ngIf=" familyemail.touched && !familyemail.valid">
+                  <div *ngIf="familyemail.errors.required">
+                    Email is required
                   </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-4 col-form-label">Middle Name</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="middlename" placeholder="MiddleName">
-                    </div>
+                  <div *ngIf="familyemail.errors.minlength">
+                      Email should be min {{familyemail.errors.minlength.requiredLength}} char
                   </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-4 col-form-label">Last Name</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="lastname" placeholder="Lastname">
-                    </div>
-                  </div>
-            </div>
-
-              <div class="col-md-6">
-                  <div class="form-group row">
-                      <label for="inputPassword" class="col-md-2 col-form-label">Occupation</label>
-                      <div class="col-md-8">
-                        <input type="text" class="form-control" id="lastname" placeholder="">
-                      </div>
-                    </div>
-              </div>
-                                <div class="col-md-6">
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">&nbsp;
-                          <label class="form-check-label" for="inlineCheckbox1">&nbsp;<h5>Is Earning?</h5></label>
-                        </div>
+                  <div *ngIf="familyemail.errors.pattern"> 
+                      pattern not match
                   </div>
               </div>
-          <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Date Of Birth</label>
-               
-                    <div class="col-md-6">
-                        <select>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                          </select>
-                          <select >
-                            <option value="">may</option>
-                            <option value="">june</option>
-                          </select>
-                          <select>
-                            <option value="">2018</option>
-                            <option value="">2017</option>
-                          </select>
-                    </div>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput placeholder="Mobile Number"type="text" 
+                id="phonenumber" 
+                class="form-control" 
+                [(ngModel)]="familyProfile.phonenumber"
+                name="phonenumber" 
+                #phonenumber="ngModel"
+                minlength="5" 
+                maxlength="10" 
+                pattern="^[_'.@A-Za-z0-9-]*$"
+                required>
+              </mat-form-field>
+              <div *ngIf=" phonenumber.touched && !phonenumber.valid">
+                  <div *ngIf="familyemail.errors.required">
+                    Email is required
                   </div>
-                
-            </div>
-
-          </div>
-          <div class="col-md-6">
-              <div class="form-group row">
-                  <label for="inputPassword" class="col-md-2 col-form-label">Email</label>
-                  <div class="col-md-9">
-                    <input type="text" class="form-control" id="lastname" placeholder="">
+                  <div *ngIf="phonenumber.errors.minlength">
+                      Email should be min {{phonenumber.errors.minlength.requiredLength}} char
                   </div>
-                </div>
-          </div>
-          <div class="col-md-6">
-              <div class="form-group row">
-                  <label for="inputPassword" class="col-md-3 col-form-label">Phone Number</label>
-                  <div class="col-md-2">
-                    <input type="text" class="form-control" id="lastname" placeholder="contrycode">
+                  <div *ngIf="phonenumber.errors.pattern"> 
+                      pattern not match
                   </div>
-                  <div class="col-md-2">
-                      <input type="text" class="form-control" id="lastname" placeholder="areacode">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" id="lastname" placeholder="Number">
-                      </div>
-                </div>
-          </div>
-          <div class="float-right">
-            <tr>
-              <td><button class="btn btn-primary">Submit</button></td>&nbsp;&nbsp;
-              <td><button class="btn btn-danger">Cancle</button></td>
-            </tr>
-          </div>
-</div>
+              </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="pull-right"><!--start of btn div-->
+        <button mat-raised-button color="primary" (click)="saveFamilyProfile()">Save</button>
+        <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+      </div><!--end of btn div-->
+    </div><!--end of container div -->

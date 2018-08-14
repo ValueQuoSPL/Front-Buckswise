@@ -5,10 +5,20 @@ import { SERVER_API_URL } from "../../../app.constants";
 import { Eightyc } from "./eightyc.model";
 import { Subscription } from "rxjs/Subscription";
 import { Component, OnInit } from "@angular/core";
+import { AccountService } from "../../../shared";
 
 @Injectable()
 export class EightycService {
-  constructor(private http: HttpClient) {}
+  ID;
+  userID;
+  // temp: any = [];
+  user;
+  // id: any;
+  model: Eightyc = new Eightyc();
+
+  ServiceAPIParam: string;
+
+  constructor(private http: HttpClient, private account: AccountService) {}
 
   // public ServiceEightyc(eightyc) {
   // console.log(eightyc.Fixed);
@@ -26,5 +36,21 @@ export class EightycService {
   // console.log(eightyc.Ulip);
   save(eightyc: any): Observable<any> {
     return this.http.post(SERVER_API_URL + "api/eightycs", eightyc);
+  }
+  FetchID(): Promise<any> {
+    return this.account
+      .get()
+      .toPromise()
+      .then(response => {
+        this.user = response.body;
+        console.log("user info", this.user);
+        this.userID = this.user.id;
+        console.log("in service", this.userID);
+      });
+  }
+  public geteightyc(id) {
+    console.log("in geteightyc service", id);
+    this.ServiceAPIParam = "api/eightycs" + "/" + id;
+    return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

@@ -5,7 +5,7 @@
   "projects": {
     "Buckswise": {
       "root": "",
-      "sourceRoot": "src/main/webapp",
+      "sourceRoot": "src",
       "projectType": "application",
       "architect": {
         "build": {
@@ -22,21 +22,83 @@
             ],
             "styles": [
               "src/main/webapp/content/scss/vendor.scss",
-              "src/main/webapp/content/scss/global.scss",
-              "./node_modules/font-awesome/css/fontawesome.min.css"
+              "src/main/webapp/content/scss/global.scss"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.slim.min.js",
-              "./node_modules/popper.js/dist/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "src/main/webapp/app/gridstack/js/gridstack.js"
             ]
           },
           "configurations": {}
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "buckswise-front-end:build"
+          },
+          "configurations": {}
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "buckswise-front-end:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/main/webapp/src/test/javascript/spec/entry.ts",
+            "karmaConfig": "src/test/javascript/karma.conf.js",
+            "polyfills": "src/main/webapp/app/polyfills.ts",
+            "scripts": [],
+            "styles": [
+              "src/main/webapp/content/scss/vendor.scss",
+              "src/main/webapp/content/scss/global.scss"
+            ],
+            "assets": [
+              "src/main/webapp/content",
+              "src/main/webapp/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "../../../tsconfig.json",
+              "../../../tsconfig-aot.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
+    },
+    "buckswise-front-end-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "src/test/javascript/protractor.conf.js",
+            "devServerTarget": "buckswise-front-end:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [],
+            "exclude": []
+          }
         }
       }
     }
   },
+<<<<<<< HEAD
   "defaultProject": "Buckswise",
+=======
+  "defaultProject": "buckswise-front-end",
+>>>>>>> 319898fb5faa1a8d207cdd7ce4b6e4b670483569
   "cli": {
     "packageManager": "yarn"
   },
@@ -46,7 +108,7 @@
       "inlineTemplate": false,
       "spec": false,
       "prefix": "jhi",
-      "styleExt": "scss"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "spec": false,

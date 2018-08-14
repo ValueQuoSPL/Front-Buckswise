@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RequestmeetingComponent } from "./requestmeeting.component";
+import { RequestmeetingComponent } from "app/sheetal/requestmeeting/requestmeeting.component";
 
 describe("RequestmeetingComponent", () => {
   let component: RequestmeetingComponent;
