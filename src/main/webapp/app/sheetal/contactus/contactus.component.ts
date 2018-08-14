@@ -2,13 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import { User } from "../../shared";
 import { ContactService } from "./contact.service";
 import * as $ from "jQuery";
+
 @Component({
   selector: "jhi-contactus",
   templateUrl: "./contactus.component.html",
   styleUrls: ["./contactus.component.css", "../../css/universal.css"]
 })
 export class ContactusComponent implements OnInit {
-  user: User = new User();
+  // user: User = new User();
+  resetContact: any;
+  mobile: any;
+  user: any;
   constructor(private contactService: ContactService) {}
   submitUser() {
     this.contactService

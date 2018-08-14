@@ -149,6 +149,7 @@ export class SpendingComponent implements OnInit {
   general: General = new General();
   credit: Credit = new Credit();
   uid: any;
+  premium_mode: any;
 
   // for material dialog
   panelOpenState = false;

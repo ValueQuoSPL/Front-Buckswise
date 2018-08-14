@@ -23,10 +23,7 @@ export class IncomeService {
   public PutIncome(income) {
     console.log(income);
     console.log("putIncome service");
-    return this.http.put(
-      "https://demologin-79c13.firebaseio.com/income.json",
-      income
-    );
+    return this.http.post(SERVER_API_URL + "api/income/income", income);
   }
 
   public GetIncome() {
@@ -48,8 +45,8 @@ export class UtilityService {
 
   public PutUtility(utility) {
     console.log(utility);
-    return this.http.put(
-      "https://demologin-79c13.firebaseio.com/utility.json",
+    return this.http.post(
+      SERVER_API_URL + "api/expense-utility/utility",
       utility
     );
   }
@@ -65,8 +62,8 @@ export class HouseService {
 
   public PutHouse(house) {
     console.log(house);
-    return this.http.put(
-      "https://demologin-79c13.firebaseio.com/household.json",
+    return this.http.post(
+      SERVER_API_URL + "api/expensehousehold/household",
       house
     );
   }
@@ -167,8 +164,8 @@ export class MiscService {
 
   public PutMisc(misc) {
     console.log(misc);
-    return this.http.put(
-      "https://demologin-79c13.firebaseio.com/misc.json",
+    return this.http.post(
+      SERVER_API_URL + "api/miscellaneous/miscellenous",
       misc
     );
   }

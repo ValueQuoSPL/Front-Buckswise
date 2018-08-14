@@ -16,6 +16,7 @@
     ],
     "jhiPrefix": "jhi",
     "enableTranslation": false,
-    "skipServer": true
+    "skipServer": true,
+    "herokuDeployType": "git"
   }
 }

@@ -56,6 +56,7 @@ export class General {
   policy_no;
   proposer_name;
   userid;
+  premium_mode: any;
   generalModelArray: any = [];
 }
 export class Health {

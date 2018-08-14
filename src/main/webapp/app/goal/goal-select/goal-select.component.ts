@@ -64,6 +64,8 @@ export class GoalSelectComponent implements OnInit {
   user: any;
   public uid: any;
   public output: any;
+  clear: any;
+
   constructor(
     private router: Router,
     private goalSelectService: GoalselectService,

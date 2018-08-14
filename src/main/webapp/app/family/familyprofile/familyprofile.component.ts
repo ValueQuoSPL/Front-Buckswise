@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'jhi-familyprofile',
-  templateUrl: './familyprofile.component.html',
-  styles: ['./familyprofile.component.html']
+  selector: "jhi-familyprofile",
+  templateUrl: "./familyprofile.component.html",
+  styles: ["./familyprofile.component.html"]
 })
-export class FamilyprofileComponent implements OnInit {
+export class FamilysprofileComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

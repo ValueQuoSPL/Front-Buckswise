@@ -1,14 +1,16 @@
 <!-- <jhi-success-payment [payDetail]="paymentDetail"></jhi-success-payment> -->
-
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
             <h5>PayUMoney Payment Request Form</h5>
         <form #form action="https://sandboxsecure.payu.in/_payment" method="POST">
-                <input type="hidden" name="key" value="{{paymentDetail.key}}">    
-                <input type="hidden" name="hash_string" value="{{paymentDetail.hashString}}"  />
-                <input type="hidden" name="hash" value="{{paymentDetail.hash}}" />
-                <input type="hidden" name="txnid" value="{{paymentDetail.txnid}}" />
+            <div *ngFor="let payment of paymentDetail">
+                <input type="hidden" name="key" value="{{payment.key}}">    
+                <input type="hidden" name="hash_string" value="{{payment.hashString}}"  />
+                <input type="hidden" name="hash" value="{{payment.hash}}" />
+                <input type="hidden" name="txnid" value="{{payment.txnid}}" /> 
+            </div>    
+                
                 <table>
                     <p>Mandatory Parameters</p>
                     <tr>
