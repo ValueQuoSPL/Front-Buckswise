@@ -13,18 +13,22 @@ import {
     questionnaireRoute,
     riskRoute
      } from 'app/risk';
+import { CustomMaterialModule } from 'app/custom-material.module';
+import { RiskComponent } from 'app/risk/risk.component';
 
 // import { QuestionnaireComponent } from './questinnaire/questionnaire.component';
      @NgModule({
     imports: [
         BuckswiseFrontEndSharedModule,
         RouterModule.forRoot([riskRoute], {useHash: true}),
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        CustomMaterialModule
     ],
     declarations: [
         LifeInsuranceComponent,
         MedicalInsuranceComponent,
-        QuestionnaireComponent
+        QuestionnaireComponent,
+        RiskComponent
     ],
     providers: [
         NgbActiveModal,

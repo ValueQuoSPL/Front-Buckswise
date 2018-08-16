@@ -1,8 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { BuckswiseFrontEndSharedModule, UserService } from 'app/shared';
-
+import { UserMgmtComponent } from 'app/admin';
 import {
     Register,
     ActivateService,
@@ -18,12 +17,15 @@ import {
     SettingsComponent,
     accountState
 } from 'app/account';
-import { UserMgmtComponent } from 'app/admin';
+import { CustomMaterialModule } from 'app/custom-material.module';
+import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 
 @NgModule({
     imports: [
         BuckswiseFrontEndSharedModule,
-        RouterModule.forChild(accountState)
+        RouterModule.forChild(accountState),
+        CustomMaterialModule,
+        CustomDirectiveModule
     ],
     declarations: [
         ActivateComponent,

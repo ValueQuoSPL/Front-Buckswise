@@ -9,12 +9,12 @@ export class DraggableRxDirective implements OnInit {
   @HostBinding('class.draggable') draggable = true;
   @HostBinding('class.dragging') dragging = false;
 
-  @Output() dragStart = new EventEmitter<PointerEvent>();
-  @Output() dragMove = new EventEmitter<PointerEvent>();
-  @Output() dragEnd = new EventEmitter<PointerEvent>();
+  @Output() dragStart = new EventEmitter();
+  @Output() dragMove = new EventEmitter();
+  @Output() dragEnd = new EventEmitter();
 
   private pointerDown = new Subject<PointerEvent>();
-  private pointerMove= new Subject<PointerEvent>();
+  private pointerMove = new Subject<PointerEvent>();
   private pointerUp = new Subject<PointerEvent>();
 
   @HostListener('mousedown', ['$event'])
@@ -36,7 +36,7 @@ export class DraggableRxDirective implements OnInit {
 
     // for drag start
     this.pointerDown.asObservable()
-    .subscribe((event) => {
+    .subscribe(event => {
       this.dragging = true;
       this.dragStart.emit(event);
     });
@@ -46,12 +46,12 @@ export class DraggableRxDirective implements OnInit {
       switchMap(() => this.pointerMove),
       takeUntil(this.pointerUp),
       repeat()
-    ).subscribe((event) => this.dragMove.emit(event));
+    ).subscribe(event => this.dragMove.emit(event));
 
     // for drag end
     this.pointerDown.pipe(
       switchMap(() => this.pointerUp.pipe(take(1))))
-      .subscribe((event) => {
+      .subscribe(event => {
         this.dragging = false;
         this.dragEnd.emit(event);
       }

@@ -92,7 +92,6 @@ import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
     FooterComponent,
     SuccessComponent,
     FailComponent,
-    RiskComponent,
     SidebarComponent
   ],
   providers: [
