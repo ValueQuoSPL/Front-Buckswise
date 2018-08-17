@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class RiskComponent implements OnInit {
 
     account: Account;
+    step = 0;
 
     constructor(private principal: Principal,
       private router: Router) {}

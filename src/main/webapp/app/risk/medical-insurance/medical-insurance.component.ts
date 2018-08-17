@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Principal } from "app/shared";
-import { Router } from "@angular/router";
-import { RiskService } from "app/risk/risk.service";
-import { MedicalInsurance } from "app/risk/risk.model";
+import { Component, OnInit } from '@angular/core';
+import { Principal } from 'app/shared';
+import { Router } from '@angular/router';
+import { RiskService } from 'app/risk/risk.service';
+import { MedicalInsurance } from 'app/risk/risk.model';
 
 @Component({
-  selector: "jhi-medical-insurance",
-  templateUrl: "./medical-insurance.component.html"
+  selector: 'jhi-medical-insurance',
+  templateUrl: './medical-insurance.component.html'
 })
 export class MedicalInsuranceComponent implements OnInit {
   account: Account;
@@ -17,6 +17,7 @@ export class MedicalInsuranceComponent implements OnInit {
   clear: any;
   resetFieldValue: any;
   deleteFieldValue: any;
+  closeResult: string;
 
   constructor(
     private principal: Principal,
@@ -39,7 +40,7 @@ export class MedicalInsuranceComponent implements OnInit {
     this.riskService
       .SaveMedicalInsurance(this.medicalInsurance)
       .subscribe(data => {
-        alert("Added new stocks details");
+        alert('Added new stocks details');
       });
   }
 }

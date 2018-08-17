@@ -8,13 +8,13 @@ export class DraggableDirective {
   @HostBinding('class.draggable') draggable = true;
   @HostBinding('class.dragging') dragging = false;
 
-  @Output() dragStart = new EventEmitter<PointerEvent>();
-  @Output() dragMove = new EventEmitter<PointerEvent>();
-  @Output() dragEnd = new EventEmitter<PointerEvent>();
+  @Output() dragStart = new EventEmitter();
+  @Output() dragMove = new EventEmitter();
+  @Output() dragEnd = new EventEmitter();
 
-  @ContentChild(DraggableHelperDirective) helper: DraggableHelperDirective;
+  // @ContentChild(DraggableHelperDirective) helper: DraggableHelperDirective;
 
-  constructor(public element: ElementRef) {}
+  constructor() {}
 
   @HostListener('mousedown', ['$event'])
   onPointerDown(event): void {

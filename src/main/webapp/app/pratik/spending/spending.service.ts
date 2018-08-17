@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "app/app.constants";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from 'app/app.constants';
 import {
   Utility,
   Credit,
@@ -13,29 +13,33 @@ import {
   Loan,
   Misc,
   Travel
-} from "app/pratik/spending/spending.model";
+} from 'app/pratik/spending/spending.model';
 
 @Injectable()
 export class IncomeService {
   response: Observable<any>;
   constructor(private http: HttpClient) {}
 
-  public PutIncome(income) {
+  public PostIncome(income) {
     console.log(income);
-    console.log("putIncome service");
-    return this.http.post(SERVER_API_URL + "api/income/income", income);
+    console.log('putIncome service');
+    return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
 
-  public GetIncome() {
-    console.log("getIncome service");
-    return this.request();
+  public PutIncome(income) {
+    // console.log(income);
+    console.log('update income service');
+    return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
-  request() {
-    const url = "https://demologin-79c13.firebaseio.com/income.json";
-    this.response = this.http.get(url, { observe: "body" });
-    console.log("inside request");
-    console.log(this.response);
-    return this.response;
+
+  public GetIncome(uid) {
+    return this.request(uid);
+  }
+  request(uid) {
+    const url = SERVER_API_URL + 'api/income/getincome/' + uid;
+    const response = this.http.get(url, { observe: 'body' });
+    console.log('service success responce returned');
+    return response;
   }
 }
 
@@ -46,13 +50,14 @@ export class UtilityService {
   public PutUtility(utility) {
     console.log(utility);
     return this.http.post(
-      SERVER_API_URL + "api/expense-utility/utility",
+      SERVER_API_URL + 'api/expense-utility/utility',
       utility
     );
   }
-  public GetUtility() {
-    console.log("getIncome service");
-    return this.http.get("https://demologin-79c13.firebaseio.com/utility.json");
+  public GetUtility(uid) {
+    console.log('getIncome service');
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -63,15 +68,14 @@ export class HouseService {
   public PutHouse(house) {
     console.log(house);
     return this.http.post(
-      SERVER_API_URL + "api/expensehousehold/household",
+      SERVER_API_URL + 'api/expensehousehold/household',
       house
     );
   }
-  public GetHouse() {
-    console.log("gethouse service");
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/household.json"
-    );
+  public GetHouse(uid) {
+    console.log('gethouse service');
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -81,10 +85,11 @@ export class CreditService {
 
   public PutCredit(credit) {
     console.log(credit);
-    return this.http.post(SERVER_API_URL + "api/creditcard/credit", credit);
+    return this.http.post(SERVER_API_URL + 'api/creditcard/credit', credit);
   }
-  public GetCredit() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/credit.json");
+  public GetCredit(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -95,14 +100,13 @@ export class GeneralService {
   public PutGeneral(general) {
     console.log(general);
     return this.http.post(
-      SERVER_API_URL + "api/general-insurance/general",
+      SERVER_API_URL + 'api/general-insurance/general',
       general
     );
   }
-  public GetGeneral() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_general.json"
-    );
+  public GetGeneral(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -113,14 +117,13 @@ export class HealthService {
   public PutHealth(health) {
     console.log(health);
     return this.http.post(
-      SERVER_API_URL + "api/health-insurance/health",
+      SERVER_API_URL + 'api/health-insurance/health',
       health
     );
   }
-  public GetHealth() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_health.json"
-    );
+  public GetHealth(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -131,14 +134,13 @@ export class LifeService {
   public PutLife(life) {
     console.log(life);
     return this.http.post(
-      SERVER_API_URL + "api/insurancepayment/insuance-payment",
+      SERVER_API_URL + 'api/insurancepayment/insuance-payment',
       life
     );
   }
-  public GetLife() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_life.json"
-    );
+  public GetLife(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -149,12 +151,13 @@ export class LoanService {
   public PutLoan(loan) {
     console.log(loan);
     return this.http.put(
-      "https://demologin-79c13.firebaseio.com/loan.json",
+      'https://demologin-79c13.firebaseio.com/loan.json',
       loan
     );
   }
-  public GetLoan() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/loan.json");
+  public GetLoan(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -165,12 +168,13 @@ export class MiscService {
   public PutMisc(misc) {
     console.log(misc);
     return this.http.post(
-      SERVER_API_URL + "api/miscellaneous/miscellenous",
+      SERVER_API_URL + 'api/miscellaneous/miscellenous',
       misc
     );
   }
-  public GetMisc() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/misc.json");
+  public GetMisc(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }
 
@@ -181,13 +185,14 @@ export class TravelService {
   public PutTravel(travel) {
     console.log(travel);
     return this.http.put(
-      "https://demologin-79c13.firebaseio.com/travel.json",
+      'https://demologin-79c13.firebaseio.com/travel.json',
       travel
     );
   }
 
-  public GetTravel() {
-    console.log("gethouse service");
-    return this.http.get("https://demologin-79c13.firebaseio.com/travel.json");
+  public GetTravel(uid) {
+    console.log('gethouse service');
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
   }
 }

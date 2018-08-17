@@ -1,17 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
-import { ProfileService } from "app/layouts/profiles/profile.service";
-import { Principal, LoginModalService, LoginService } from "app/shared";
+import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { Principal, LoginModalService, LoginService } from 'app/shared';
 
-import { VERSION } from "app/app.constants";
-import { SidebarComponent } from "app/layouts/sidebar/sidebar.component";
+import { VERSION } from 'app/app.constants';
 
 @Component({
-  selector: "jhi-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["navbar.scss"]
+  selector: 'jhi-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['navbar.scss']
 })
 export class NavbarComponent implements OnInit {
   inProduction: boolean;
@@ -27,9 +26,8 @@ export class NavbarComponent implements OnInit {
     private loginModalService: LoginModalService,
     private profileService: ProfileService,
     private router: Router,
-    private sidebar: SidebarComponent
   ) {
-    this.version = VERSION ? "v" + VERSION : "";
+    this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
   }
 
@@ -55,7 +53,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.collapseNavbar();
     this.loginService.logout();
-    this.router.navigate([""]);
+    this.router.navigate(['']);
   }
 
   toggleNavbar() {
@@ -67,6 +65,6 @@ export class NavbarComponent implements OnInit {
   }
   toggleSidebar() {
     // console.log('inside navbar');
-    this.sidebar.showSidebar();
+    // this.sidebar.showSidebar();
   }
 }

@@ -24,7 +24,7 @@ export class SortableListDirective implements AfterContentInit {
   }
 
   private measureClientRects(): any {
-    this.clientRects = this.sortables.map(sortable => sortable.element.nativeElement.getBoundingClientRect());
+    // this.clientRects = this.sortables.map(sortable => sortable.element.nativeElement.getBoundingClientRect());
   }
 
   private detectSorting(): any {

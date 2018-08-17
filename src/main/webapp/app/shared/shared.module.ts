@@ -15,11 +15,13 @@ import {
     Principal,
     HasAnyAuthorityDirective,
 } from 'app/shared';
+import { CustomMaterialModule } from 'app/custom-material.module';
 
 @NgModule({
     imports: [
         BuckswiseFrontEndSharedLibsModule,
-        BuckswiseFrontEndSharedCommonModule
+        BuckswiseFrontEndSharedCommonModule,
+        CustomMaterialModule
     ],
     declarations: [
         JhiLoginModalComponent,
