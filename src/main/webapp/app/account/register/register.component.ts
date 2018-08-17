@@ -65,11 +65,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.registerAccount.langKey = 'en';
             this.registerService.save(this.registerAccount)
                 .subscribe(
-                    (data)  => {
+                    data  => {
                         this.systemMailOtp = data;
                         this.success = true;
                     },
-                    (response) => {
+                    response => {
                         this.processError(response);
                     }
                 );
@@ -115,7 +115,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         //         (res: HttpResponse<User[]>) => this.onSuccess(res.body, res.headers),
         //         (res: HttpResponse<any>) => this.onError(res.body)
         // );
-        this.registerService.getUsers().subscribe((data) => this.users = data );
+        this.registerService.getUsers().subscribe(data => this.users = data );
 
         console.log('calling loadAll() of user management');
         this.userMgmt.loadAll();

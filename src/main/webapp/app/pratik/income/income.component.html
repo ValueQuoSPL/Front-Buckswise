@@ -46,13 +46,7 @@
                                 </button>
                             </div>
                         </div>
-                        
-                        <button type="button" class="btn btn-link" (click)="onIncomeGet()">
-                            <span>
-                                <i class="far fa-arrow-alt-circle-down"></i>
-                                <span>Get</span>
-                            </span>
-                        </button>
+                    
                     </div>
                 </div>
             
@@ -153,10 +147,11 @@
                         <tfoot>
                                 <tr >
                                 <th scope="col">Total</th>
-                                <th >
-                                    {{income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome}}
+                                <th *ngIf="!loadIncome"> {{totalIncome}} </th>
+                                <th *ngIf="loadIncome">
+                                    {{ income.incomeSalary + income.incomeAward + income.incomeBonus + income.incomePension + income.incomeSaving + income.incomeDeposit + income.incomeRental + dynamicTotal }}
                                 </th>
-                                <th> {{(income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome) * 12 }}
+                                <th> {{( income.incomeSalary + +income.incomeAward + income.incomeBonus + income.incomePension +   +income.incomeSaving +income.incomeDeposit + income.incomeRental + dynamicTotal ) * 12 }}
                                 </th>
                                 </tr>
                         </tfoot>
