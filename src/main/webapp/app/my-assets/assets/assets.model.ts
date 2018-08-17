@@ -25,6 +25,7 @@ export class SavingScheme {
     public organisation_name: string;
     public investor_name: string;
     public dividend_type: string;
+    public scheme_type: string;
     public amount_invested: number;
     public rate_of_interest: number;
     public tenure: number;

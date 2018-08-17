@@ -46,6 +46,34 @@ export class AssetsComponent implements OnInit {
   savingArray = [];
   step = 0;
   closeResult: string;
+  schemesArray = [
+    {viewValue: 'FIXED DEPOSIT'},
+    {viewValue: 'RECURRING DEPOSIT'},
+    {viewValue: 'POST OFFICE SAVING'},
+    {viewValue: 'NATIONAL SAVING SCHEME'},
+    {viewValue: 'NATIONAL SAVINGS CERTIFICATE'},
+    {viewValue: 'INDIRA VIKAS PATRA'},
+    {viewValue: 'KISAN VIKAS PATRA'},
+    {viewValue: 'MONTHLY INCOME SCHEME'},
+    {viewValue: 'PF'},
+    {viewValue: 'PPF'},
+    {viewValue: 'GRATUITY'},
+    {viewValue: 'SUPERANNUATION'},
+    {viewValue: 'NPS'},
+    {viewValue: 'GOVERNMENT BONDS'},
+    {viewValue: 'CORPORATE BONDS'},
+    {viewValue: 'INFRA BONDS'}
+  ];
+  dividendArray = [
+    {name: 'Monthly'},
+    {name: 'Quarterly'},
+    {name: 'Half Yearly'},
+    {name: 'Yearly'},
+    {name: 'Monthly Re Investment'},
+    {name: 'Quarterly Re Investment'},
+    {name: 'Half Yearly Re Investment'},
+    {name: 'Yearly Re Investment'},
+  ];
 
   constructor(
     private principal: Principal,
@@ -62,6 +90,8 @@ export class AssetsComponent implements OnInit {
     this.principal.identity().then(account => {
       this.account = account;
     });
+
+    // tslint:disable-next-line:max-line-length
   }
 
   private getDismissReason(reason: any): string {
@@ -173,7 +203,7 @@ export class AssetsComponent implements OnInit {
   }
 
   openSaving(content) {
-    console.log('mutual modal open');
+    console.log('saving modal open');
 
     this.modalService
       .open(content, { ariaLabelledBy: 'savingModal' })
