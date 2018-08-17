@@ -233,6 +233,7 @@ export class IncomeComponent implements OnInit {
     this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PostIncome(this.income).subscribe(data => {
       alert('Your data saved');
+      this.isIncomeData = true;
     });
   }
 
