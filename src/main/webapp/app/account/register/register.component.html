@@ -139,7 +139,8 @@
                             </small>
                         </div>
                     </div>
-    
+
+                    <re-captcha (resolved)="resolved($event)" siteKey="6LdjNGoUAAAAAF19XxCrlQfq7XshPNBJ6HaFjNKU"></re-captcha>
                     <ng-container *ngIf="registerForm.form.invalid; else elseTemplate">
                         <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-outline-danger">Register</button>
                     </ng-container>
