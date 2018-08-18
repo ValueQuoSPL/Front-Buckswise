@@ -1,4 +1,4 @@
-<div class="container"><!--start of container-->
+<div class="container" *ngIf="!isValid"><!--start of container-->
   <form><!--end of form-->
     <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar-->
       <h5>Personal Information</h5>
@@ -111,7 +111,7 @@
       </div><!--end of row2.col2-->
       <div class="col-md-3"><!--start of row2.col3-->
         <mat-form-field>
-          <mat-select placeholder="Choose Marrital Status" name="marital" [(ngModel)]="myProfile.marital">
+          <mat-select placeholder="Choose Marrital Status" name="maritalStatus" [(ngModel)]="myProfile.maritalStatus">
             <mat-option value="single">Single</mat-option>
             <mat-option value="married">Married</mat-option>
           </mat-select>
@@ -225,7 +225,7 @@
       </div><!-- end of row3.col3-->
       <div class="col-md-3"><!--start of row3.col4-->
         <mat-form-field>
-          <mat-select placeholder="How Did You Know About Us?" name="howyouknow" [(ngModel)]="myProfile.howyouknow">
+          <mat-select placeholder="How Did You Know About Us?" name="howDidYouKnow" [(ngModel)]="myProfile.howDidYouKnow">
             <mat-option  value="advertiesment">Advertiesment</mat-option>
             <mat-option value="byfriend">ByFriend</mat-option>
           </mat-select>
@@ -407,3 +407,157 @@
     </div><!--end of row5-->
   </form><!--end of form-->
 </div><!--end of container-->
+<div class="container background" *ngIf="isValid" style="background-color:#e9ece5;">
+  <div class="navbar navbar-expand-lg navbar-light navb" style="background-color:#a8b6bf"><!--start of navbar-->
+    <h5>Personal Information</h5>
+    </div><!--End of navbar-->
+    <!-- <div> -->
+      <!-- <table *ngFor="let profile of output">
+        <tr>
+            <td><h5>FirstName:</h5></td>&nbsp;
+          <td><h5>{{profile.firstName}}</h5></td>
+        </tr>
+        <tr>
+            <td><h5>MiddleName:</h5></td>&nbsp;
+          <td>{{profile.middleName}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>LastName:</h5></td>&nbsp;
+          <td>{{profile.lastName}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Address:</h5></td>&nbsp;
+          <td>{{profile.address}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Alternative:</h5></td>&nbsp;
+          <td>{{profile.alternateNumber}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>City:</h5></td>&nbsp;
+          <td>{{profile.city}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Company:</h5></td>&nbsp;
+          <td>{{profile.company}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Country:</h5></td>&nbsp;
+          <td>{{profile.country}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Date Of Birth:</h5></td>&nbsp;
+          <td>{{profile.dob}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Gender:</h5></td>&nbsp;
+          <td>{{profile.gender}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>How Did You Know:</h5></td>&nbsp;
+          <td>{{profile.howDidYouKnow}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Marital Status:</h5></td>&nbsp;
+          <td>{{profile.maritalStatus}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Mobile Number:</h5></td>&nbsp;
+          <td>{{profile.mobileNumber}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Occupation:</h5></td>&nbsp;
+          <td>{{profile.occupation}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Pan:</h5></td>&nbsp;
+          <td>{{profile.pan}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>Pin:</h5></td>&nbsp;
+          <td>{{profile.pin}}</td><br><br>
+        </tr>
+        <tr>
+            <td><h5>State:</h5></td>&nbsp;
+          <td>{{profile.state}}</td><br><br>
+        </tr>
+      </table> -->
+    <!-- </div>  -->
+    <div *ngFor="let profile of output">
+      <div class="row">
+        <div class="col-md-4">
+            <h5>FirstName:&nbsp;{{profile.firstName}}</h5>   
+        </div>
+        <div class="col-md-4">
+            <h5>MiddleName:&nbsp;{{profile.middleName}}</h5>
+            <h5></h5>
+        </div>
+        <div class="col-md-4">
+            <h5>LastName:&nbsp;{{profile.lastName}}</h5>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+              <h5>Gender:&nbsp;{{profile.gender}}</h5>   
+          </div>
+          <div class="col-md-4">
+              <h5>MaritalStatus:&nbsp;{{profile.maritalStatus}}</h5>
+              <h5></h5>
+          </div>
+          <div class="col-md-4">
+              <h5>Date Of Birth:&nbsp;{{profile.dob}}</h5>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Occupation:&nbsp;{{profile.occupation}}</h5>   
+            </div>
+            <div class="col-md-4">
+                <h5>Mobile:&nbsp;{{profile.mobileNumber}}</h5>
+                <h5></h5>
+            </div>
+            <div class="col-md-4">
+                <h5>Alternamte Number:&nbsp;{{profile.alternateNumber}}</h5>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>company:&nbsp;{{profile.company}}</h5>   
+              </div>
+              <div class="col-md-4">
+                  <h5>How Did You Know:&nbsp;{{profile.howDidYouKnow}}</h5>
+                  <h5></h5>
+              </div>
+              <div class="col-md-4">
+                  <h5>Address:&nbsp;{{profile.address}}</h5>   
+              </div>
+            </div>
+            <div class="navbar navbar-expand-lg navbar-light navb"  style="background-color:#a8b6bf"><!--start of navbar-->
+              <h5>Cammunication Information</h5>
+              </div><!--End of navbar-->
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Email-Id:&nbsp;{{profile.emailId}}</h5>  
+                </div>
+                <div class="col-md-4">
+                    <h5>Pan:&nbsp;{{profile.pan}}</h5>
+                    <h5></h5>
+                </div>
+                <div class="col-md-4">
+                    <h5>City:&nbsp;{{profile.city}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <h5>State:&nbsp;{{profile.state}}</h5>
+                      <h5></h5>
+                  </div>
+                  <div class="col-md-4">
+                      <h5>Country:&nbsp;{{profile.country}}</h5>
+                  </div>
+                  <div class="col-md-4">
+                      <h5>Pin:&nbsp;{{profile.pin}}</h5>
+                  </div>
+                </div>
+    </div>
+ </div>

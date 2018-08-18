@@ -7,6 +7,7 @@ import { FamilyprofileComponent } from "app/family/familyprofile/familyyprofile.
 
 @Injectable()
 export class FamilyprofileService {
+  ServiceAPIParam: any;
   constructor(private http: HttpClient) {}
 
   save(familyProfile: any): Observable<any> {
@@ -14,5 +15,10 @@ export class FamilyprofileService {
   }
   public getFamilyProfile() {
     return this.http.get(SERVER_API_URL + "api/familyprofiles").map(res => res);
+  }
+  public getFamilyProfileByUid(uid) {
+    console.log("in getFamilyProfileByUid service uid", uid);
+    this.ServiceAPIParam = "api/familyprofiles" + "/" + uid;
+    return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }
