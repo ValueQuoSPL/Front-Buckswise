@@ -11,7 +11,7 @@ import { Eightyd } from "./Services/eightyd.model";
 import { EightydService } from "./Services/eightyd.service";
 import { Other } from "./Services/other.model";
 import { OtherService } from "./Services/other.service";
-// import { error } from "util";
+// import { error } from 'util';
 import { AccountService } from "../../shared";
 
 @Component({

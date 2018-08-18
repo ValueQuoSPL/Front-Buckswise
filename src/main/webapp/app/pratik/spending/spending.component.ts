@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NAMED_ENTITIES } from '@angular/compiler';
-import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+import { Component, OnInit, Inject } from "@angular/core";
+import { NAMED_ENTITIES } from "@angular/compiler";
+import { checkAndUpdateBinding } from "@angular/core/src/view/util";
 import {
   Utility,
   Credit,
@@ -12,7 +12,7 @@ import {
   Loan,
   Misc,
   Travel
-} from 'app/pratik/spending/spending.model';
+} from "app/pratik/spending/spending.model";
 
 // tslint:disable-next-line:max-line-length
 import {
@@ -26,18 +26,18 @@ import {
   HealthService,
   GeneralService,
   CreditService
-} from 'app/pratik/spending/spending.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+} from "app/pratik/spending/spending.service";
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material";
 // import { IncomeDialog } from 'app/pratik/spending/dialog/dialog';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import {
   FormControl,
   FormGroup,
   FormBuilder,
   Validators
-} from '@angular/forms';
-import * as $ from 'jQuery';
-import { AccountService } from 'app/shared/auth/account.service';
+} from "@angular/forms";
+import * as $ from "jQuery";
+import { AccountService } from "app/shared/auth/account.service";
 
 export interface DialogData {
   animal: string;
@@ -45,9 +45,9 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'jhi-spending',
-  templateUrl: './spending.component.html',
-  styleUrls: ['./spending.component.css']
+  selector: "jhi-spending",
+  templateUrl: "./spending.component.html",
+  styleUrls: ["./spending.component.css"]
 })
 export class SpendingComponent implements OnInit {
   totalUtility: number;
@@ -68,8 +68,8 @@ export class SpendingComponent implements OnInit {
   healthDate = new FormControl(new Date());
   generalDate = new FormControl(new Date());
 
-  resource_react = new FormControl('');
-  amount_react = new FormControl('');
+  resource_react = new FormControl("");
+  amount_react = new FormControl("");
 
   //  inputForm = new FormGroup({
   //   name: new FormControl(''),
@@ -77,8 +77,8 @@ export class SpendingComponent implements OnInit {
   // });
 
   inputForm = this.fb.group({
-    name: ['', Validators.required],
-    value: ['']
+    name: ["", Validators.required],
+    value: [""]
   });
 
   dynamicLoanArray: any = [];
@@ -94,38 +94,38 @@ export class SpendingComponent implements OnInit {
 
   //  Dropdown Arrays
   LoanTypeArray = [
-    { name: 'Home Loan' },
-    { name: 'Personal Loan' },
-    { name: 'Auto Loan' },
-    { name: 'Educational Loan' },
-    { name: 'Property Loan' },
-    { name: 'Gold Loan' },
-    { name: 'Hand Loan' }
+    { name: "Home Loan" },
+    { name: "Personal Loan" },
+    { name: "Auto Loan" },
+    { name: "Educational Loan" },
+    { name: "Property Loan" },
+    { name: "Gold Loan" },
+    { name: "Hand Loan" }
   ];
   InterestTypeArray = [
-    { name: 'Fixed' },
-    { name: 'Floating' },
-    { name: 'Fixed-Floating' }
+    { name: "Fixed" },
+    { name: "Floating" },
+    { name: "Fixed-Floating" }
   ];
   PolicyTypeArray = [
-    { name: 'Child Policy' },
-    { name: 'Retirement Policy' },
-    { name: 'Saving Policy' },
-    { name: 'Investment Policy' },
-    { name: 'Term Policy' }
+    { name: "Child Policy" },
+    { name: "Retirement Policy" },
+    { name: "Saving Policy" },
+    { name: "Investment Policy" },
+    { name: "Term Policy" }
   ];
   PremiumTypeArray = [
-    { name: 'Single' },
-    { name: 'Monthly' },
-    { name: 'Quarterly' },
-    { name: 'Half Yearly' },
-    { name: 'Yearly' }
+    { name: "Single" },
+    { name: "Monthly" },
+    { name: "Quarterly" },
+    { name: "Half Yearly" },
+    { name: "Yearly" }
   ];
   CardTypeArray = [
-    { name: 'Gold' },
-    { name: 'Platinum' },
-    { name: 'Silver' },
-    { name: 'Titanium ' }
+    { name: "Gold" },
+    { name: "Platinum" },
+    { name: "Silver" },
+    { name: "Titanium " }
   ];
 
   //   Table Arrays
@@ -145,6 +145,7 @@ export class SpendingComponent implements OnInit {
   general: General = new General();
   credit: Credit = new Credit();
   uid: any;
+  premium_mode: any;
 
   // for material dialog
   panelOpenState = false;
@@ -168,7 +169,7 @@ export class SpendingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('inside onInit()');
+    console.log("inside onInit()");
     this.getUserid();
     // this.calcUtilityTotal();
     this.totalUtility = 0;
@@ -226,72 +227,72 @@ export class SpendingComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
 
   clear() {
-    this.resource = '';
-    this.amount = '';
-    this.expense = '';
+    this.resource = "";
+    this.amount = "";
+    this.expense = "";
 
-    this.loan.amnt = '';
-    this.loan.applicant = '';
+    this.loan.amnt = "";
+    this.loan.applicant = "";
     this.loan.check = false;
-    this.loan.intrest_type = '';
-    this.loan.ldate = '';
-    this.loan.lender = '';
-    this.loan.loan_type = '';
-    this.loan.rdate = '';
-    this.loan.roi = '';
-    this.loan.tenure = '';
+    this.loan.intrest_type = "";
+    this.loan.ldate = "";
+    this.loan.lender = "";
+    this.loan.loan_type = "";
+    this.loan.rdate = "";
+    this.loan.roi = "";
+    this.loan.tenure = "";
 
-    this.life.ins_name = '';
-    this.life.issuer = '';
-    this.life.policy_name = '';
-    this.life.policy_term = '';
-    this.life.premium = '';
-    this.life.premium_mode = '';
-    this.life.premium_term = '';
-    this.life.proposer_name = '';
-    this.life.start_date = '';
-    this.life.sum = '';
-    this.life.type = '';
+    this.life.ins_name = "";
+    this.life.issuer = "";
+    this.life.policy_name = "";
+    this.life.policy_term = "";
+    this.life.premium = "";
+    this.life.premium_mode = "";
+    this.life.premium_term = "";
+    this.life.proposer_name = "";
+    this.life.start_date = "";
+    this.life.sum = "";
+    this.life.type = "";
 
-    this.health.ins_name = '';
-    this.health.issuer = '';
-    this.health.policy_name = '';
-    this.health.policy_no = '';
-    this.health.policy_term = '';
-    this.health.premium = '';
-    this.health.premium_mode = '';
-    this.health.proposer_name = '';
-    this.health.start_date = '';
-    this.health.sum = '';
+    this.health.ins_name = "";
+    this.health.issuer = "";
+    this.health.policy_name = "";
+    this.health.policy_no = "";
+    this.health.policy_term = "";
+    this.health.premium = "";
+    this.health.premium_mode = "";
+    this.health.proposer_name = "";
+    this.health.start_date = "";
+    this.health.sum = "";
 
-    this.general.generalModelArray = '';
-    this.general.ins_obj = '';
-    this.general.issuer = '';
-    this.general.policy_name = '';
-    this.general.policy_no = '';
-    this.general.policy_term = '';
-    this.general.premium = '';
-    this.general.proposer_name = '';
-    this.general.start_date = '';
-    this.general.sum = '';
+    this.general.generalModelArray = "";
+    this.general.ins_obj = "";
+    this.general.issuer = "";
+    this.general.policy_name = "";
+    this.general.policy_no = "";
+    this.general.policy_term = "";
+    this.general.premium = "";
+    this.general.proposer_name = "";
+    this.general.start_date = "";
+    this.general.sum = "";
 
-    this.credit.balance = '';
-    this.credit.balance = '';
-    this.credit.issuer = '';
-    this.credit.limit = '';
-    this.credit.monthly_pay = '';
-    this.credit.monthly_usage = '';
-    this.credit.roi = '';
-    this.credit.type = '';
+    this.credit.balance = "";
+    this.credit.balance = "";
+    this.credit.issuer = "";
+    this.credit.limit = "";
+    this.credit.monthly_pay = "";
+    this.credit.monthly_usage = "";
+    this.credit.roi = "";
+    this.credit.type = "";
   }
 
   getUserid() {
@@ -302,28 +303,19 @@ export class SpendingComponent implements OnInit {
       .then(response => {
         const account = response.body;
         if (account) {
-          this.uid = account;
-          console.log(this.uid);
-          // this.authenticated = true;
+          this.uid = account.id;
+          console.log("from spending userid is : ", this.uid);
         } else {
-          // this.userIdentity = null;
-          // this.authenticated = false;
+          console.log("cannot get user details check login ");
         }
-        // this.authenticationState.next(this.userIdentity);
-        // return this.userIdentity;
       })
-      .catch(err => {
-        // this.userIdentity = null;
-        // this.authenticated = false;
-        // this.authenticationState.next(this.userIdentity);
-        // return null;
-      });
+      .catch(err => {});
   }
 
   // utility
   openUtility(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
+      .open(content, { ariaLabelledBy: "expense-modal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -356,14 +348,15 @@ export class SpendingComponent implements OnInit {
     this.calcUtilityTotal();
   }
   SaveUtility(): void {
+    this.utility.userid = this.uid;
     this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PutUtility(this.utility).subscribe(data => {
-      alert('Your utility data saved');
+      alert("Your utility data saved");
     });
   }
   GetUtility(): void {
-    console.log('inside GetUtility()');
-    this.utilityService.GetUtility().subscribe((response: any[]) => {
+    console.log("inside GetUtility()");
+    this.utilityService.GetUtility(this.uid).subscribe((response: any[]) => {
       this.UtilityArray = response;
       this.utility.electricity = this.UtilityArray.electricity;
       this.utility.gas = this.UtilityArray.gas;
@@ -376,13 +369,13 @@ export class SpendingComponent implements OnInit {
       this.utility.news = this.UtilityArray.news;
       this.dynamicUtilityArray = this.UtilityArray.dynamicUtility;
     });
-    console.log('GetUtility() success');
+    console.log("GetUtility() success");
   }
 
   // household
   openHousehold(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
+      .open(content, { ariaLabelledBy: "expense-modal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -415,14 +408,15 @@ export class SpendingComponent implements OnInit {
     this.calcHouseholdTotal();
   }
   SaveHousehold(): void {
+    this.house.userid = this.uid;
     this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PutHouse(this.house).subscribe(data => {
-      alert('Your household data saved');
+      alert("Your household data saved");
     });
   }
   GetHousehold(): void {
-    console.log('inside getHousehold()');
-    this.houseService.GetHouse().subscribe((response: any[]) => {
+    console.log("inside getHousehold()");
+    this.houseService.GetHouse(this.uid).subscribe((response: any[]) => {
       this.HouseholdArray = response;
       this.house.milk = this.HouseholdArray.milk;
       this.house.fruit = this.HouseholdArray.fruit;
@@ -440,13 +434,13 @@ export class SpendingComponent implements OnInit {
       this.house.property = this.HouseholdArray.property;
       this.dynamicHousehold = this.HouseholdArray.dynamicHousehold;
     });
-    console.log('getHousehold() success');
+    console.log("getHousehold() success");
   }
 
   // loan
   openLoan(loanModal) {
     this.modalService
-      .open(loanModal, { ariaLabelledBy: 'loanModal' })
+      .open(loanModal, { ariaLabelledBy: "loanModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -476,25 +470,25 @@ export class SpendingComponent implements OnInit {
     this.dynamicLoanArray.splice(index, 1);
   }
   onLoanSave(): void {
+    this.loan.userid = this.uid;
     this.loan.loanModelArray = this.dynamicLoanArray;
     this.loanService.PutLoan(this.loan.loanModelArray).subscribe(data => {
-      alert('Loan Added successfully');
+      alert("Loan Added successfully");
     });
   }
   onGetLoan(): void {
-    console.log('inside getLoan()');
-    this.loanService.GetLoan().subscribe((response: any[]) => {
+    console.log("inside getLoan()");
+    this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
       this.dynamicLoanArray = response;
-      console.log(' from direct response to dynamicLoanArray ');
       console.log(this.dynamicLoanArray);
     });
-    console.log('getLoan() success');
+    console.log("getLoan() success");
   }
 
   // life insurance
   openLife(lifeModal) {
     this.modalService
-      .open(lifeModal, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeModal, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -527,24 +521,25 @@ export class SpendingComponent implements OnInit {
     this.dynamicLifeArray.splice(index, 1);
   }
   onLifeSave(): void {
+    this.life.userid = this.uid;
     this.life.lifeModelArray = this.dynamicLifeArray;
     this.lifeService.PutLife(this.life.lifeModelArray).subscribe(data => {
-      alert('success');
+      alert("success");
     });
-    console.log('in life save');
+    console.log("in life save");
   }
   onGetLife(): void {
-    this.lifeService.GetLife().subscribe((response: any[]) => {
+    this.lifeService.GetLife(this.uid).subscribe((response: any[]) => {
       this.dynamicLifeArray = response;
       console.log(this.dynamicLifeArray);
     });
-    console.log('getLife() success');
+    console.log("getLife() success");
   }
 
   // health insurance
   openHealth(healthModal) {
     this.modalService
-      .open(healthModal, { ariaLabelledBy: 'healthModal' })
+      .open(healthModal, { ariaLabelledBy: "healthModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -575,25 +570,26 @@ export class SpendingComponent implements OnInit {
     this.dynamicHealth.splice(index, 1);
   }
   onHealthSave(): void {
+    this.health.userid = this.uid;
     this.health.healthModelArray = this.dynamicHealth;
     this.healthService
       .PutHealth(this.health.healthModelArray)
       .subscribe(data => {
-        alert('Health Insurance saved');
+        alert("Health Insurance saved");
       });
   }
   onGetHealth(): void {
-    this.healthService.GetHealth().subscribe((response: any[]) => {
+    this.healthService.GetHealth(this.uid).subscribe((response: any[]) => {
       this.dynamicHealth = response;
       console.log(this.dynamicHealth);
     });
-    console.log('getHealth() success');
+    console.log("getHealth() success");
   }
 
   // general insurance
   openGeneral(generalModal) {
     this.modalService
-      .open(generalModal, { ariaLabelledBy: 'generalModal' })
+      .open(generalModal, { ariaLabelledBy: "generalModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -623,26 +619,27 @@ export class SpendingComponent implements OnInit {
     this.dynamicGeneral.splice(index, 1);
   }
   onGeneralSave(): void {
+    this.general.userid = this.uid;
     this.general.generalModelArray = this.dynamicGeneral;
     this.generalService
       .PutGeneral(this.general.generalModelArray)
       .subscribe(data => {
-        alert('General Insurance saved');
+        alert("General Insurance saved");
       });
-    console.log('in general save');
+    console.log("in general save");
   }
   onGetGeneral(): void {
-    this.generalService.GetGeneral().subscribe((response: any[]) => {
+    this.generalService.GetGeneral(this.uid).subscribe((response: any[]) => {
       this.dynamicGeneral = response;
       console.log(this.dynamicGeneral);
     });
-    console.log('getGeneral() success');
+    console.log("getGeneral() success");
   }
 
   // credit card
   openCredit(creditModal) {
     this.modalService
-      .open(creditModal, { ariaLabelledBy: 'creditModal' })
+      .open(creditModal, { ariaLabelledBy: "creditModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -667,27 +664,28 @@ export class SpendingComponent implements OnInit {
     this.dynamicCredit.splice(index, 1);
   }
   onCreditSave(): void {
+    this.credit.userid = this.uid;
     this.credit.creditModelArray = this.dynamicCredit;
     this.creditService
       .PutCredit(this.credit.creditModelArray)
       .subscribe(data => {
-        alert('success');
+        alert("success");
       });
-    console.log('in credit save');
+    console.log("in credit save");
   }
   onGetCredit(): void {
-    console.log('inside getCredit()');
-    this.creditService.GetCredit().subscribe((response: any[]) => {
+    console.log("inside getCredit()");
+    this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
       this.dynamicCredit = response;
       console.log(this.dynamicCredit);
     });
-    console.log('getCredit() success');
+    console.log("getCredit() success");
   }
 
   // travel
   openTravel(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
+      .open(content, { ariaLabelledBy: "expense-modal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -720,14 +718,15 @@ export class SpendingComponent implements OnInit {
     this.calcTravelTotal();
   }
   SaveTravel(): void {
+    this.travel.userid = this.uid;
     this.travel.dynamicTravel = this.dynamicTravel;
     this.travelService.PutTravel(this.travel).subscribe(data => {
-      alert('Your travel data saved');
+      alert("Your travel data saved");
     });
   }
   GetTravel(): void {
-    console.log('inside getTravel()');
-    this.travelService.GetTravel().subscribe((response: any[]) => {
+    console.log("inside getTravel()");
+    this.travelService.GetTravel(this.uid).subscribe((response: any[]) => {
       this.TravelArray = response;
       this.travel.food = this.TravelArray.food;
       this.travel.entertainment = this.TravelArray.entertainment;
@@ -736,13 +735,13 @@ export class SpendingComponent implements OnInit {
       this.travel.hobby = this.TravelArray.hobby;
       this.dynamicTravel = this.TravelArray.dynamicTravel;
     });
-    console.log('getTravel() success');
+    console.log("getTravel() success");
   }
 
   // misc
   openMisc(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
+      .open(content, { ariaLabelledBy: "expense-modal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -775,14 +774,15 @@ export class SpendingComponent implements OnInit {
     this.calcMiscTotal();
   }
   SaveMisc(): void {
+    this.misc.userid = this.uid;
     this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PutMisc(this.misc).subscribe(data => {
-      alert('Your Misc data saved');
+      alert("Your Misc data saved");
     });
   }
   GetMisc(): void {
-    console.log('inside getMisc()');
-    this.miscService.GetMisc().subscribe((response: any[]) => {
+    console.log("inside getMisc()");
+    this.miscService.GetMisc(this.uid).subscribe((response: any[]) => {
       this.MiscArray = response;
       this.misc.shoes = this.MiscArray.shoes;
       this.misc.pet = this.MiscArray.pet;
@@ -793,7 +793,7 @@ export class SpendingComponent implements OnInit {
       this.misc.cloth = this.MiscArray.cloth;
       this.dynamicMisc = this.MiscArray.dynamicMisc;
     });
-    console.log('getMisc() success');
+    console.log("getMisc() success");
   }
 }
 

@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { BuckswiseFrontEndSharedModule } from "app/shared";
 import { CustomMaterialModule } from "app/custom-material.module";
 import { MatInputModule } from "@angular/material";
+import { SheetalComponent } from ".././sheetal/sheetal.component";
 
 import {
   MainComponent,
@@ -24,6 +25,7 @@ import { EightydService } from "app/sheetal/main/Services/eightyd.service";
 import { EightycService } from "app/sheetal/main/Services/eightyc.service";
 import { HomeService } from "app/sheetal/main/Services/home.service";
 import { OtherService } from "app/sheetal/main/Services/other.service";
+import { AdviceComponent } from "./advice/advice.component";
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { OtherService } from "app/sheetal/main/Services/other.service";
     MainComponent,
     ContactusComponent,
     RequestmeetingComponent,
-    TaxComponent
+    TaxComponent,
+    AdviceComponent,
+    SheetalComponent
   ],
   providers: [
     GrossService,

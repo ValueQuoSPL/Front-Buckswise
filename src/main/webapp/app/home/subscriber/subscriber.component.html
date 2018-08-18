@@ -1,3 +1,4 @@
+<br><br>
 <div class="row">
     <div class="col-md-9">
         <div [ngSwitch]="isAuthenticated()">
@@ -5,9 +6,10 @@
                 <jhi-payment></jhi-payment>
             </div>
             <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>Oops you didnt Sign In </span>
-                <a class="alert-link" (click)="login()">sign in</a><span>Please Sign-in to continue</span>
+                <span>Oops you are not Signed In </span>
+                Please <a class="alert-link" (click)="login()">Click here</a><span> to sign-in now.</span>
             </div>
+            <br>
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>You don't have an account yet?</span>
                 <a class="alert-link" (click)="register()">Register a new account</a>

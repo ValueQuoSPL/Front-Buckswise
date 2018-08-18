@@ -1,9 +1,11 @@
-<h3>
-    <p class="font-weight-bold">Life Insurance</h3>
+<br><br>
+<div class="container">
+    <h3>
+<p class="font-weight-bold">Life Insurance</h3>
 <!--start of buttons -->
 <div>
     <div class="pull-right">
-    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#lifeModal">
+    <button type="button" class="btn btn-link"  (click)="openLife(lifeModal)" >
         <span>
             <i class="fa fa-plus" aria-hidden="true"></i>
             <span>Add New</span>
@@ -15,26 +17,18 @@
             <span>Help</span>
         </span>
     </button>
-</div>
+    </div>
     <!-- modal start -->
-    <div class="modal fade" id="lifeModal" tabindex="-1" role="dialog" aria-labelledby="lifeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="lifeModalLabel">Life Insurance Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-                    <div class="modal-body">
-                        <jhi-alert-error></jhi-alert-error>
-                        <!-- <div class="form-group" [hidden]="!id">
-              <label for="id">ID</label>
-              <input type="text" class="form-control" id="id" name="id"
-                     [(ngModel)]="stocks.id" readonly />
-          </div> -->
+    <ng-template #lifeModal let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title" id="lifeModal">Life Insurance Risk</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="editForm" role="form" novalidate #editForm="ngForm">
+       
                         <div class="form-group">
                             <label class="form-control-label" for="field_risk_coverage">Risk Coverage for</label>
                             <input type="text" class="form-control" id="risk_coverage" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
@@ -50,14 +44,14 @@
                             <label class="form-control-label" for="field_no_of_shares">Which of your goals need to be fulfilled without fail? You can add it to the insurance cover by checking the boxes below</label>
                            
                             <nav>
-                                    <!--start of tab -->
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-top:20px">
-                                        <a class="nav-item nav-link active" id="nav-fg-tab" data-toggle="tab" href="#nav-fg" role="tab" aria-controls="nav-fg"
-                                            aria-selected="true">Future goals</a>
-                                        <a class="nav-item nav-link" id="nav-nil-tab" data-toggle="tab" href="#nav-nil" role="tab" aria-controls="nav-nil"
-                                            aria-selected="false">Non Insured Liabilities</a>
-                                    </div>
-                                </nav>
+                                <!--start of tab -->
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-top:20px">
+                                    <a class="nav-item nav-link active" id="nav-fg-tab" data-toggle="tab" href="#nav-fg" role="tab" aria-controls="nav-fg"
+                                        aria-selected="true">Future goals</a>
+                                    <a class="nav-item nav-link" id="nav-nil-tab" data-toggle="tab" href="#nav-nil" role="tab" aria-controls="nav-nil"
+                                        aria-selected="false">Non Insured Liabilities</a>
+                                </div>
+                            </nav>
     
                                 <div class="tab-content" id="nav-tabContent">
                                   <div class="tab-pane fade show active" id="nav-fg" role="tabpanel" aria-labelledby="nav-fg-tab">
@@ -73,7 +67,7 @@
                                                     </thead>
                                                     <tbody>
                                             
-                                                        <tr *ngFor="let goal of goalArray; let i = index">
+                                                        <tr *ngFor="let goal of dynamicGoalArray; let i = index">
                                                             <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
                                                 <td> {{stocks.id}} </td> -->
                                                             <td> {{goal.goal_name}} </td>
@@ -131,28 +125,20 @@
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
-                             (click)="saveLifeInsurance()">
+                        (click)="c('Save click')">
                             <span class="fa fa-save"></span>&nbsp;
                             <span>Save</span>
                         </button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
                             <span class="fa fa-ban"></span>&nbsp;
                             <span>Cancel</span>
                         </button>
-                        <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
-                            <span>
-                                <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
-                                <span>Reset</span>
-                            </span>
-                        </button>
+
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
+   </ng-template>
     <!-- end of modal -->
-</div>
-<!--end of buttons -->
 
 <!-- table starts here -->
 <div>
@@ -180,4 +166,6 @@
         </tbody>
 
     </table>
+</div>
+
 </div>

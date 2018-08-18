@@ -1,34 +1,34 @@
+
 <div class="container">
-  
- 
-    <p></p>
-    <div class="margin">
-    <div class="row  b ">
-    <div class="col-md-4">
-        <div class="card-body card" style="width: 22rem;  height: 22rem;">
-            <h5 class="card-title">LIFE INSURANCE</h5>
-            <p class="card-text">In this section, we calculate the life insurance cover required for you using Expense Replacement method. Please select the percentage of your current expenses to be replaced in case any emergency befalls you.</p>
-            <a  class="btn btn-primary" routerLink="/life">Get Started</a>
-          </div>
-  </div>
-  
-    <div class="col-md-4">
-        <div class="card-body card" style="width: 22rem; height: 22rem;">
-            <h5 class="card-title">MEDICAL INSURANCE</h5>
-            <p class="card-text">In this section, we calculate the medical insurance cover required for you in a scientific manner. Please select your preferences and the family members you want to include in your medical insurance policy.</p>
-            <a href="#" class="btn btn-primary" routerLink="/medical">Get Started</a>
-          </div>
-   </div>
-   
-    <div class="col-md-4">
-        <div class="card-body card" style="width: 22rem;  height: 22rem;">
-            <h5 class="card-title">QUESTIONNAIRE</h5>
-            <p class="card-text">Please select the answers to the questions asked. The answers are used to assess your risk appetite.</p>
-            <a  style="margin-top: 50px;" href="#" class="btn btn-primary" routerLink="/questionnaire">Get Started</a>
-          </div>
-   </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="step === 0">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Risk Management</mat-panel-title>
+                <mat-panel-description>Maintain Your Risks Here</mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="step === 0">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Life Insurance</mat-panel-title>
+                        <mat-panel-description>Check Your Life Insurance Risk</mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <jhi-life-insurance></jhi-life-insurance>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Medical Insurance</mat-panel-title>
+                        <mat-panel-description>Check Your Medical Insurance Risk</mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <jhi-medical-insurance></jhi-medical-insurance>
+
+                </mat-expansion-panel>
+
+            </mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

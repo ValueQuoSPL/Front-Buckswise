@@ -1,9 +1,12 @@
-ul.li:hover{
-    background-color: blue;
+ul.li:hover {
+  background-color: blue;
 }
-.b{
-    background-color: white;
+.b {
+  background-color: white;
 }
-.margin{
-    margin-top: 900px;
+.margin {
+  margin-top: 900px;
+}
+.accordion {
+  background: rgb(255, 255, 255);
 }

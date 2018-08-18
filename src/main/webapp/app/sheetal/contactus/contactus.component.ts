@@ -8,7 +8,10 @@ import * as $ from "jQuery";
   styleUrls: ["./contactus.component.css", "../../css/universal.css"]
 })
 export class ContactusComponent implements OnInit {
-  user: User = new User();
+  // user: User = new User();
+  resetContact: any;
+  mobile: any;
+  user: any;
   constructor(private contactService: ContactService) {}
   submitUser() {
     this.contactService
