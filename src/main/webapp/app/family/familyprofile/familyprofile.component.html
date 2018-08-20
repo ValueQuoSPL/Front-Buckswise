@@ -1,9 +1,9 @@
-<div class="container"><!--start of container div -->
+<div class="container"  ><!--start of container div -->
   <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar3 div -->
     <h5>Enter Relationship Details<span class="glyphicons glyphicons-remove-circle"></span></h5>
   </div><!--end of navbar3 div -->
   <mat-form-field>
-      <mat-select placeholder="Choose Relation" >
+      <mat-select placeholder="Choose Relation" name="relationship" [(ngModel)]="familyProfile.relationship">
         <mat-option  value="Mother">Mother</mat-option>
         <mat-option value="Father">Father</mat-option>
         <mat-option  value="Spouce">Spouce</mat-option>
@@ -16,24 +16,24 @@
         <mat-form-field>
             <input matInput placeholder="First Name"
             type="text" 
-            id="familyfirstName"
+            id="firstname"
             class="form-control" 
-            [(ngModel)]="familyProfile.familyfirstName"
-            name="familyfirstName" 
-            #familyfirstName="ngModel"
+            [(ngModel)]="familyProfile.firstname"
+            name="firstname" 
+            #firstname="ngModel"
             minlength="5" 
             maxlength="10" 
             pattern="^[_'.@A-Za-z0-9-]*$"
             required>
           </mat-form-field>
-          <div *ngIf=" familyfirstName.touched && !familyfirstName.valid">
-              <div *ngIf="familyfirstName.errors.required">
+          <div *ngIf=" firstname.touched && !firstname.valid">
+              <div *ngIf="firstname.errors.required">
                   firstName is required
               </div>
-              <div *ngIf="familyfirstName.errors.minlength">
-                  name should be min {{familyfirstName.errors.minlength.requiredLength}} char
+              <div *ngIf="firstname.errors.minlength">
+                  name should be min {{firstname.errors.minlength.requiredLength}} char
               </div>
-              <div *ngIf="familyfirstName.errors.pattern"> 
+              <div *ngIf="firstname.errors.pattern"> 
                   pattern not match
               </div>
           </div>
@@ -41,24 +41,24 @@
         <div class="col-md-4">
             <mat-form-field>
                 <input matInput placeholder="Middle Name" type="text" 
-                id="familymiddlename" 
+                id="middlename" 
                 class="form-control" 
-                [(ngModel)]="familyProfile.familymiddlename"
-                name="familymiddlename" 
-                #familymiddlename="ngModel"
+                [(ngModel)]="familyProfile.middlename"
+                name="middlename" 
+                #middlename="ngModel"
                 minlength="5" 
                 maxlength="10" 
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
               </mat-form-field>
-              <div *ngIf="familymiddlename.touched && !familymiddlename.valid">
-                <div *ngIf="familymiddlename.errors.required">
+              <div *ngIf="middlename.touched && !middlename.valid">
+                <div *ngIf="middlename.errors.required">
                   Middlename is required
                 </div>
-                <div *ngIf="familymiddlename.errors.minlength">
-                    name should be min {{familymiddlename.errors.minlength.requiredLength}} char
+                <div *ngIf="middlename.errors.minlength">
+                    name should be min {{middlename.errors.minlength.requiredLength}} char
                 </div>
-                <div *ngIf="familymiddlename.errors.pattern"> 
+                <div *ngIf="middlename.errors.pattern"> 
                     pattern not match
                 </div>
             </div>
@@ -66,24 +66,24 @@
         <div class="col-md-4">
             <mat-form-field>
                 <input matInput placeholder="Last Name"  type="text" 
-                id="familylastname" 
+                id="lastname" 
                 class="form-control" 
-                [(ngModel)]="familyProfile.familylastname"
-                name="familylastname" 
-                #familylastname="ngModel"
+                [(ngModel)]="familyProfile.lastname"
+                name="lastname" 
+                #lastname="ngModel"
                 minlength="5" 
                 maxlength="10"
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
               </mat-form-field>
-              <div *ngIf="familylastname.touched && !familylastname.valid">
-                  <div *ngIf="familylastname.errors.required">
+              <div *ngIf="lastname.touched && !lastname.valid">
+                  <div *ngIf="lastname.errors.required">
                     Lastname is required
                   </div>
-                  <div *ngIf="familylastname.errors.minlength">
-                      name should be min {{familylastname.errors.minlength.requiredLength}} char
+                  <div *ngIf="lastname.errors.minlength">
+                      name should be min {{lastname.errors.minlength.requiredLength}} char
                   </div>
-                  <div *ngIf="familylastname.errors.pattern"> 
+                  <div *ngIf="lastname.errors.pattern"> 
                       pattern not match
                   </div>
               </div>
@@ -106,24 +106,24 @@
         <div class="col-md-4">
             <mat-form-field>
                 <input matInput placeholder="Email"type="text" 
-                id="familyemail" 
+                id="email" 
                 class="form-control" 
-                [(ngModel)]="familyProfile.familyemail"
-                name="familyemail" 
-                #familyemail="ngModel"
+                [(ngModel)]="familyProfile.email"
+                name="email" 
+                #email="ngModel"
                 minlength="5" 
                 maxlength="10" 
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
               </mat-form-field>
-              <div *ngIf=" familyemail.touched && !familyemail.valid">
-                  <div *ngIf="familyemail.errors.required">
+              <div *ngIf=" email.touched && !email.valid">
+                  <div *ngIf="email.errors.required">
                     Email is required
                   </div>
-                  <div *ngIf="familyemail.errors.minlength">
+                  <div *ngIf="email.errors.minlength">
                       Email should be min {{familyemail.errors.minlength.requiredLength}} char
                   </div>
-                  <div *ngIf="familyemail.errors.pattern"> 
+                  <div *ngIf="email.errors.pattern"> 
                       pattern not match
                   </div>
               </div>
@@ -141,7 +141,7 @@
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
               </mat-form-field>
-              <div *ngIf=" phonenumber.touched && !phonenumber.valid">
+              <div *ngIf="phonenumber.touched && !phonenumber.valid">
                   <div *ngIf="familyemail.errors.required">
                     Email is required
                   </div>
@@ -153,10 +153,14 @@
                   </div>
               </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="pull-right"><!--start of btn div-->
+            <button mat-raised-button color="primary"  (click)="saveFamilyProfile()">Save</button>
+            <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          </div><!--end of btn div-->
       </div>
-      <div class="pull-right"><!--start of btn div-->
-        <button mat-raised-button color="primary" (Click)="saveFamilyProfile()">Save</button>
-        <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
-      </div><!--end of btn div-->
+      
     </div><!--end of container div -->
+
+<!-- <div *ngIf="!isValid">
+    <h1>hi this is family profile</h1>
+</div> -->

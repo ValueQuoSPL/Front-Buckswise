@@ -1,30 +1,48 @@
 
-<mat-accordion  style="background-color:#edd9c0;">
-    <mat-expansion-panel style="background-color:#edd9c0;">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-            <h5>MyProfile Profile</h5>
-        </mat-panel-title>
-        <mat-panel-description style="background-color:#edd9c0;">
-          Fill your Profile here
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-     <jhi-myprofile style="background-color:#edd9c0;"></jhi-myprofile>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <mat-accordion style="background-color:#c9d8c5;">
-      <mat-expansion-panel style="background-color:#c9d8c5;">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h5>Family Profile</h5>
-          </mat-panel-title>
-          <mat-panel-description style="background-color:#c9d8c5;"> 
-              Fill your  Family Profile here
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-       <jhi-familyprofile style="background-color:#e3e3e3;"></jhi-familyprofile>
+<div class="container">
+<mat-accordion>
+
+      <mat-expansion-panel class="accordion" [expanded]="step === 0" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h5> Profile</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+              Profile Details
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-accordion>
+
+            <mat-expansion-panel class="accordion" [expanded]="step === 0" >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h5>My Profile</h5>
+                </mat-panel-title>
+                <mat-panel-description>
+                  Fill your Profile here
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+            <jhi-myprofile></jhi-myprofile>
+            </mat-expansion-panel>
+        
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h5>Family Profile</h5>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Fill your  Family Profile here
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+            <jhi-familyprofile></jhi-familyprofile>
+            </mat-expansion-panel>
+
+            </mat-accordion>
+
       </mat-expansion-panel>
+
     </mat-accordion>
-  
+</div>

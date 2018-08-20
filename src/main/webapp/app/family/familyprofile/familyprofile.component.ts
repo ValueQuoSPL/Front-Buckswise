@@ -1,3 +1,4 @@
+import { log } from "util";
 import { Component, OnInit } from "@angular/core";
 import { FamilyprofileService } from "./familyprofile.service";
 import { Principal } from "../../shared";
@@ -30,6 +31,8 @@ export class FamilyprofileComponent implements OnInit {
   saveFamilyProfile() {
     console.log("in family profile");
     this.familyProfile.uid = this.uid;
+    console.log("save " + this.familyProfile.uid);
+
     this.Familypro.save(this.familyProfile).subscribe(
       responce => console.log(responce),
       error => console.log(error)
@@ -60,7 +63,7 @@ export class FamilyprofileComponent implements OnInit {
       this.output = res;
       console.log("responce of familyprofile service", this.output);
       if (this.output.uid === null) {
-        this.isValid = false;
+        this.isValid = true;
         console.log(this.isValid);
       } else {
         this.isValid = true;

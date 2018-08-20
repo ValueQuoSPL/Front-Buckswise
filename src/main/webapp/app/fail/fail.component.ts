@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "jhi-fail",
   templateUrl: "./fail.component.html",
-  styles: ["./fail.component.css"]
+  styles: []
 })
 export class FailComponent implements OnInit {
   constructor() {}

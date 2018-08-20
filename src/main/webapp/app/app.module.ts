@@ -53,6 +53,10 @@ import { SuccessComponent } from "app/success/success.component";
 import { FailComponent } from "app/fail/fail.component";
 import { DraggableModule } from "app/shared/draggable/draggable.module";
 import { CustomDirectiveModule } from "app/shared/directive/directive.module";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+// import { ServiceWorkerModule } from '@angular/service-worker';
+// import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -78,7 +82,9 @@ import { CustomDirectiveModule } from "app/shared/directive/directive.module";
     BuckswiseAppSheetalModule,
     DraggableModule,
     CustomDirectiveModule,
-    DashBoardModule
+    DashBoardModule,
+    FontAwesomeModule
+    // ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   declarations: [
     JhiMainComponent,
@@ -88,12 +94,10 @@ import { CustomDirectiveModule } from "app/shared/directive/directive.module";
     FooterComponent,
     SuccessComponent,
     FailComponent,
-    RiskComponent,
     SidebarComponent
   ],
   providers: [
     ProfileService,
-    SidebarComponent,
     PaginationConfig,
     UserRouteAccessService,
     {
