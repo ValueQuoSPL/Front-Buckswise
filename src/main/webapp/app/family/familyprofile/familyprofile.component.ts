@@ -14,6 +14,7 @@ export class FamilyprofileComponent implements OnInit {
 
   ngOnInit() {
     this.familyProfile = {};
+    console.log('inside family profile');
     // this.getFamilyProfile();
   }
   saveFamilyProfile() {
