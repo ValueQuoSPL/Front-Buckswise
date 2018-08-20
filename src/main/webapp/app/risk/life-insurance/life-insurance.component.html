@@ -29,99 +29,101 @@
             <div class="modal-body">
                 <form name="editForm" role="form" novalidate #editForm="ngForm">
        
-                        <div class="form-group">
-                            <label class="form-control-label" for="field_risk_coverage">Risk Coverage for</label>
-                            <input type="text" class="form-control" id="risk_coverage" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label" for="field_expense_cover">How much of this Expense(%) would you want to be replaced through an insurance cover?</label>
-                            <input type="text" class="form-control" name="expense_cover" id="expense_cover" [(ngModel)]="lifeInsurance.expense_cover" [ngModelOptions]="{standalone: true}"
-                                required/>
-                        </div>
-                        <div class="form-group">
-                            <div style="border-style: solid;border-width:2px; border-color: rgb(228, 219, 219);">
-                            <label class="form-control-label" for="field_no_of_shares">Which of your goals need to be fulfilled without fail? You can add it to the insurance cover by checking the boxes below</label>
-                           
-                            <nav>
-                                <!--start of tab -->
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-top:20px">
-                                    <a class="nav-item nav-link active" id="nav-fg-tab" data-toggle="tab" href="#nav-fg" role="tab" aria-controls="nav-fg"
-                                        aria-selected="true">Future goals</a>
-                                    <a class="nav-item nav-link" id="nav-nil-tab" data-toggle="tab" href="#nav-nil" role="tab" aria-controls="nav-nil"
-                                        aria-selected="false">Non Insured Liabilities</a>
-                                </div>
-                            </nav>
-    
-                                <div class="tab-content" id="nav-tabContent">
-                                  <div class="tab-pane fade show active" id="nav-fg" role="tabpanel" aria-labelledby="nav-fg-tab">
-                                        <div>
-                                                <table class="table table-hover table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Goal Name</th>
-                                            
-                                                            <th scope="col">Total Fund Needed</th>
-                                                            <th scope="col"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                            
-                                                        <tr *ngFor="let goal of dynamicGoalArray; let i = index">
-                                                            <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
-                                                <td> {{stocks.id}} </td> -->
-                                                            <td> {{goal.goal_name}} </td>
-                                                            <td>{{goal.fund_needed}} </td>
-                                                            <td> </td>
-                                                            
-                                                            <td>
-                                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                            
-                                                </table>
-                                            </div>
-                                   </div>
-                                   <div class="tab-pane" id="nav-nil" role="tabpanel" aria-labelledby="nav-nil-tab">
-                                        <div>
-                                                <table class="table table-hover table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Liability Type</th>
-                                            
-                                                            <th scope="col">Oraganisation Name</th>
-                                                            <th scope="col">Outstanding Amount</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                            
-                                                        <tr *ngFor="let liabilitiy of liabilitiyArray; let i = index">
-                                                            <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
-                                                <td> {{stocks.id}} </td> -->
-                                                            <td> {{liabilitiy.liabilitiy_type}} </td>
-                                                            <td>{{liabilitiy.org_name}} </td>
-                                                            <td> {{liabilitiy.outAmount}}</td>
-                                                            
-                                                            <td>
-                                                                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                            
-                                                </table>
-                                            </div>
-                                    </div>
-                                    </div>
-                                </div>
-                        <div class="form-group">
-                            <label class="form-control-label" for="field_total">Total</label>
-                            <input type="number" class="form-control" name="total" id="total" [(ngModel)]="total" [ngModelOptions]="{standalone: true}"
-                                required/>
-                        </div>
-                       
+                       <mat-form-field>
+                           <input matInput type="text" placeholder="Risk Coverage for" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}" required>
+                       </mat-form-field>
+                       <mat-form-field style="width: 100%;">
+                            <mat-label>How much of Expense would you want to be replaced through insurance cover?</mat-label>
+                           <input matInput type="number" placeholder="Amount in Percentage(%)" [(ngModel)]="lifeInsurance.expense_cover" [ngModelOptions]="{standalone: true}" required>
+                       </mat-form-field>
 
-                    </div>
+                       <mat-card>
+                           <mat-card-header>
+                               <mat-card-title>Which of your goals need to be fulfilled without fail? You can add it to the insurance cover by checking the boxes below</mat-card-title>
+                           </mat-card-header>
+                           <mat-card-content>
+                                <mat-accordion>
+                                    <mat-expansion-panel [expanded]="true">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>Future Goals</mat-panel-title>
+                                            <mat-panel-description></mat-panel-description>
+                                        </mat-expansion-panel-header>
+        
+                                        <div>
+                                            <table class="table table-hover table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Goal Name</th>
+                                        
+                                                        <th scope="col">Total Fund Needed</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                        
+                                                    <tr *ngFor="let goal of dynamicGoalArray; let i = index">
+                                                        <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                                            <td> {{stocks.id}} </td> -->
+                                                        <td> {{goal.goal_name}} </td>
+                                                        <td>{{goal.fund_needed}} </td>
+                                                        <td> </td>
+                                                        
+                                                        <td>
+                                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                        
+                                            </table>
+                                        </div>
+        
+                                    </mat-expansion-panel>
+                                    <mat-expansion-panel [hideToggle]="false">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>Non Insured Liabilities</mat-panel-title>
+                                            <mat-panel-description></mat-panel-description>
+                                        </mat-expansion-panel-header>
+        
+                                        <div>
+                                            <table class="table table-hover table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Liability Type</th>
+                                        
+                                                        <th scope="col">Oraganisation Name</th>
+                                                        <th scope="col">Outstanding Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                        
+                                                    <tr *ngFor="let liabilitiy of liabilitiyArray; let i = index">
+                                                        <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
+                                            <td> {{stocks.id}} </td> -->
+                                                        <td> {{liabilitiy.liabilitiy_type}} </td>
+                                                        <td>{{liabilitiy.org_name}} </td>
+                                                        <td> {{liabilitiy.outAmount}}</td>
+                                                        
+                                                        <td>
+                                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                        
+                                            </table>
+                                        </div>
+        
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                            </mat-card-content>
+                       </mat-card>
+
+                       <mat-form-field style="width: 100%;">
+                            <mat-label>Total</mat-label>
+                            <input matInput type="number"  name="total" id="total" [(ngModel)]="total" [ngModelOptions]="{standalone: true}"
+                                required/>
+                       </mat-form-field>
+
+                       
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
