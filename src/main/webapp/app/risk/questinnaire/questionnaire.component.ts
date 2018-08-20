@@ -14,7 +14,7 @@ export class QuestionnaireComponent implements OnInit {
       private router: Router) {}
 
     ngOnInit() {
-        this.principal.identity().then((account) => {
+        this.principal.identity().then(account => {
             this.account = account;
         });
       }

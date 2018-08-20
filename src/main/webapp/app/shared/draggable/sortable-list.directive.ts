@@ -1,17 +1,22 @@
 import { log } from 'util';
 import { DraggableDirective } from 'app/shared/draggable/draggable.directive';
-import { Directive, QueryList, ContentChildren, AfterContentInit, OnInit } from '@angular/core';
+import {
+  Directive,
+  QueryList,
+  ContentChildren,
+  AfterContentInit,
+  OnInit
+} from '@angular/core';
 
 @Directive({
   selector: '[jhiSortableList]'
 })
 export class SortableListDirective implements AfterContentInit {
-
-  @ContentChildren(DraggableDirective ) sortables: QueryList <DraggableDirective>;
+  @ContentChildren(DraggableDirective) sortables: QueryList<DraggableDirective>;
 
   private clientRects: ClientRect[];
 
-  constructor() { }
+  constructor() {}
 
   ngAfterContentInit(): void {
     console.log('hi');
@@ -30,5 +35,4 @@ export class SortableListDirective implements AfterContentInit {
   private detectSorting(): any {
     console.log('Detect Sorting...');
   }
-
 }

@@ -1,4 +1,11 @@
-import { Directive, HostBinding, Output, EventEmitter, HostListener, OnInit } from '@angular/core';
+import {
+  Directive,
+  HostBinding,
+  Output,
+  EventEmitter,
+  HostListener,
+  OnInit
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, repeat, take } from 'rxjs/operators';
 
@@ -33,30 +40,27 @@ export class DraggableRxDirective implements OnInit {
   }
 
   ngOnInit() {
-
     // for drag start
-    this.pointerDown.asObservable()
-    .subscribe(event => {
+    this.pointerDown.asObservable().subscribe(event => {
       this.dragging = true;
       this.dragStart.emit(event);
     });
 
     // for drag move
-    this.pointerDown.pipe(
-      switchMap(() => this.pointerMove),
-      takeUntil(this.pointerUp),
-      repeat()
-    ).subscribe(event => this.dragMove.emit(event));
+    this.pointerDown
+      .pipe(
+        switchMap(() => this.pointerMove),
+        takeUntil(this.pointerUp),
+        repeat()
+      )
+      .subscribe(event => this.dragMove.emit(event));
 
     // for drag end
-    this.pointerDown.pipe(
-      switchMap(() => this.pointerUp.pipe(take(1))))
+    this.pointerDown
+      .pipe(switchMap(() => this.pointerUp.pipe(take(1))))
       .subscribe(event => {
         this.dragging = false;
         this.dragEnd.emit(event);
-      }
-      );
-
+      });
   }
-
 }

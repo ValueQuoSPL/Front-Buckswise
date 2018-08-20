@@ -1,4 +1,16 @@
-import { Directive, HostBinding, Output, EventEmitter, HostListener, Input, TemplateRef, ViewContainerRef, ContentChild, ContentChildren, ElementRef } from '@angular/core';
+import {
+  Directive,
+  HostBinding,
+  Output,
+  EventEmitter,
+  HostListener,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+  ContentChild,
+  ContentChildren,
+  ElementRef
+} from '@angular/core';
 import { DraggableHelperDirective } from 'app/shared/draggable/draggable-helper.directive';
 
 @Directive({
@@ -38,12 +50,11 @@ export class DraggableDirective {
   onPointerUp(event): void {
     if (this.dragging === true) {
       this.dragEnd.emit(event);
-    this.dragging = false;
+      this.dragging = false;
     }
 
     // remove the helper
     // 1 // this.viewContainerRef.clear();
     // 2 // this.helper.onDragEnd();
   }
-
 }

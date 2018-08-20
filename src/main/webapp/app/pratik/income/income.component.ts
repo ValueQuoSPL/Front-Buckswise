@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Income } from 'app/pratik/spending/spending.model';
 import { IncomeService } from 'app/pratik/spending/spending.service';
 import { AccountService, LoginModalService, Principal } from 'app/shared';
-import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbModalRef
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-income',
@@ -73,8 +77,7 @@ export class IncomeComponent implements OnInit {
           console.log('cannot get user details check login ');
         }
       })
-      .catch(err => {
-      });
+      .catch(err => {});
   }
 
   clear() {
@@ -126,28 +129,22 @@ export class IncomeComponent implements OnInit {
       } else if (this.IncomeArray[i].name === 'incomeAward') {
         this.income.incomeAward = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeAward);
-      } else
-      if (this.IncomeArray[i].name === 'incomeBonus') {
+      } else if (this.IncomeArray[i].name === 'incomeBonus') {
         this.income.incomeBonus = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeBonus);
-      } else
-      if (this.IncomeArray[i].name === 'incomePension') {
+      } else if (this.IncomeArray[i].name === 'incomePension') {
         this.income.incomePension = +this.IncomeArray[i].amount;
         // console.log(this.income.incomePension);
-      } else
-      if (this.IncomeArray[i].name === 'incomeSaving') {
+      } else if (this.IncomeArray[i].name === 'incomeSaving') {
         this.income.incomeSaving = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeSaving);
-      } else
-      if (this.IncomeArray[i].name === 'incomeDeposit') {
+      } else if (this.IncomeArray[i].name === 'incomeDeposit') {
         this.income.incomeDeposit = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeDeposit);
-      } else
-      if (this.IncomeArray[i].name === 'incomeRental') {
+      } else if (this.IncomeArray[i].name === 'incomeRental') {
         this.income.incomeRental = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeRental);
-      } else
-      if (this.IncomeArray[i].name !== 'userid') {
+      } else if (this.IncomeArray[i].name !== 'userid') {
         this.dynamicIncome.push({
           name: this.IncomeArray[i].name,
           value: this.IncomeArray[i].amount
@@ -193,7 +190,7 @@ export class IncomeComponent implements OnInit {
     for (let j = 0; j < this.IncomeArray.length; j++) {
       if (this.IncomeArray[j].name !== 'userid') {
         // console.log(this.IncomeArray[j].name, this.IncomeArray[j].amount);
-        this.totalIncome   = +this.totalIncome + +this.IncomeArray[j].amount;
+        this.totalIncome = +this.totalIncome + +this.IncomeArray[j].amount;
       }
     }
     console.log(this.totalIncome);
@@ -203,8 +200,8 @@ export class IncomeComponent implements OnInit {
     this.totalIncome = 0;
     this.dynamicTotal = 0;
     for (let j = 0; j < this.dynamicIncome.length; j++) {
-        this.totalIncome   = +this.totalIncome + +this.dynamicIncome[j].value;
-        this.dynamicTotal   = +this.dynamicTotal + +this.dynamicIncome[j].value;
+      this.totalIncome = +this.totalIncome + +this.dynamicIncome[j].value;
+      this.dynamicTotal = +this.dynamicTotal + +this.dynamicIncome[j].value;
     }
     console.log(this.totalIncome);
     console.log(this.dynamicTotal);
@@ -244,5 +241,4 @@ export class IncomeComponent implements OnInit {
       alert('Your data saved');
     });
   }
-
 }

@@ -1,22 +1,38 @@
-<h4><b>Select Asset of Goal</b></h4>
 <div class="row"><!--start of row1 div-->
-    <div class="col-md-10 "><!--start of row1.col2 div-->
-      <div><!--start of select div-->
-        <mat-form-field>
-          <mat-select placeholder="Choose Goal" [(ngModel)]="goaltype">
-            <mat-option  value="home">Home</mat-option>
-            <mat-option value="education">Education</mat-option>
-            <mat-option value="vehicle">Vehicle</mat-option>
-            <mat-option value="childbirth">Childbirth</mat-option>
-            <mat-option value="merrage">Merrage</mat-option>
-            <mat-option value="business">Business</mat-option>
-            <mat-option value="familysupport">Familysupport</mat-option>
-            <mat-option value="vacation">Vacation</mat-option>
-            <mat-option value="emergencyfund">Emergencyfund</mat-option>
-            <mat-option value="retairementfund">Retairementfund</mat-option>
-            <mat-option value="newgoal">Newgoal</mat-option>
-          </mat-select>
-        </mat-form-field> 
-      </div><!--end of select div-->
-    </div><!--start of row1.col2 div-->
-  </div><!--end of row1 div-->
+  <div class="col-md-6"><!--start of row1.col1 div-->
+    <label><h6><b>Select Asset Type</b></h6></label>
+  </div><!--end of row1.col1 div-->
+  <div class="setmar col-md-6"><!--start of row1.col2 div-->
+    <div><!--start of select div-->
+      <mat-form-field>
+        <mat-select placeholder="Choose Assets" name="assettype" [(ngModel)]="assettype">
+          <mat-option  value="Stock">Stock</mat-option>
+          <mat-option value="Mutual Fund">Mutual Fund</mat-option>
+          <mat-option value="Chit Fund">Chit Fund</mat-option>
+          <mat-option value="Future and Option">Future and Option</mat-option>
+          <mat-option value="Saving Scheme">Saving Scheme</mat-option>
+          <mat-option value="Alternative Investment">Alternative Investment</mat-option>
+          <mat-option value="cash">Cash</mat-option>
+          <mat-option value="physical goods">Physical Goods</mat-option>
+          <mat-option value="Property and household">Property and Household</mat-option>
+        </mat-select>
+      </mat-form-field> 
+    </div><!--end of select div-->
+  </div><!--start of row1.col2 div-->
+</div><!--end of row1 div-->
+<div class="row">
+  <h6>Available Asset to map</h6>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>Asset Name</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <th>Value</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <th>Value to Map</th>
+    </tr>
+  </table>
+</div>
+<div class="pull-right"><!--start of btn div-->
+  <button mat-button color="primary">Submit</button>
+  <button mat-button color="accent">Cancel</button>
+</div>

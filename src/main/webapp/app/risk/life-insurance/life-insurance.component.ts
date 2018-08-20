@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { LifeInsurance } from 'app/risk/risk.model';
 import { RiskService } from 'app/risk/risk.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { CreditService, LoanService } from 'app/pratik/spending/spending.service';
+import {
+  CreditService,
+  LoanService
+} from 'app/pratik/spending/spending.service';
 import { GoalselectService } from 'app/goal/goal-select/goalselect.service';
 
 @Component({
@@ -66,7 +69,6 @@ export class LifeInsuranceComponent implements OnInit {
       console.log(this.dynamicCreditArray);
     });
     console.log('getCredit() success');
-
   }
 
   getLoan(uid) {

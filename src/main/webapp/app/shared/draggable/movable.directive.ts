@@ -26,10 +26,7 @@ export class MovableDirective extends DraggableDirective {
 
   // tslint:disable-next-line:no-input-rename
   @Input('appMovableReset') reset = false;
-  constructor(
-    private sanitizer: DomSanitizer,
-    public element: ElementRef,
-    ) {
+  constructor(private sanitizer: DomSanitizer, public element: ElementRef) {
     super();
   }
 

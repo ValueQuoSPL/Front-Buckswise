@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     private principal: Principal,
     private loginModalService: LoginModalService,
     private profileService: ProfileService,
-    private router: Router,
+    private router: Router
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;

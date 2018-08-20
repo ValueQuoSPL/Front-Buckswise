@@ -47,32 +47,32 @@ export class AssetsComponent implements OnInit {
   step = 0;
   closeResult: string;
   schemesArray = [
-    {viewValue: 'FIXED DEPOSIT'},
-    {viewValue: 'RECURRING DEPOSIT'},
-    {viewValue: 'POST OFFICE SAVING'},
-    {viewValue: 'NATIONAL SAVING SCHEME'},
-    {viewValue: 'NATIONAL SAVINGS CERTIFICATE'},
-    {viewValue: 'INDIRA VIKAS PATRA'},
-    {viewValue: 'KISAN VIKAS PATRA'},
-    {viewValue: 'MONTHLY INCOME SCHEME'},
-    {viewValue: 'PF'},
-    {viewValue: 'PPF'},
-    {viewValue: 'GRATUITY'},
-    {viewValue: 'SUPERANNUATION'},
-    {viewValue: 'NPS'},
-    {viewValue: 'GOVERNMENT BONDS'},
-    {viewValue: 'CORPORATE BONDS'},
-    {viewValue: 'INFRA BONDS'}
+    { viewValue: 'FIXED DEPOSIT' },
+    { viewValue: 'RECURRING DEPOSIT' },
+    { viewValue: 'POST OFFICE SAVING' },
+    { viewValue: 'NATIONAL SAVING SCHEME' },
+    { viewValue: 'NATIONAL SAVINGS CERTIFICATE' },
+    { viewValue: 'INDIRA VIKAS PATRA' },
+    { viewValue: 'KISAN VIKAS PATRA' },
+    { viewValue: 'MONTHLY INCOME SCHEME' },
+    { viewValue: 'PF' },
+    { viewValue: 'PPF' },
+    { viewValue: 'GRATUITY' },
+    { viewValue: 'SUPERANNUATION' },
+    { viewValue: 'NPS' },
+    { viewValue: 'GOVERNMENT BONDS' },
+    { viewValue: 'CORPORATE BONDS' },
+    { viewValue: 'INFRA BONDS' }
   ];
   dividendArray = [
-    {name: 'Monthly'},
-    {name: 'Quarterly'},
-    {name: 'Half Yearly'},
-    {name: 'Yearly'},
-    {name: 'Monthly Re Investment'},
-    {name: 'Quarterly Re Investment'},
-    {name: 'Half Yearly Re Investment'},
-    {name: 'Yearly Re Investment'},
+    { name: 'Monthly' },
+    { name: 'Quarterly' },
+    { name: 'Half Yearly' },
+    { name: 'Yearly' },
+    { name: 'Monthly Re Investment' },
+    { name: 'Quarterly Re Investment' },
+    { name: 'Half Yearly Re Investment' },
+    { name: 'Yearly Re Investment' }
   ];
 
   constructor(

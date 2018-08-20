@@ -7,22 +7,20 @@ import { Router } from '@angular/router';
   templateUrl: './risk.component.html'
 })
 export class RiskComponent implements OnInit {
+  account: Account;
+  step = 0;
 
-    account: Account;
-    step = 0;
+  constructor(private principal: Principal, private router: Router) {}
 
-    constructor(private principal: Principal,
-      private router: Router) {}
-
-    ngOnInit() {
-        this.principal.identity().then(account => {
-            this.account = account;
-        });
-      }
-     gotoLife() {
-         this.router.navigate(['life']);
-     }
-     gotoMedical() {
-        this.router.navigate(['medical']);
-    }
+  ngOnInit() {
+    this.principal.identity().then(account => {
+      this.account = account;
+    });
+  }
+  gotoLife() {
+    this.router.navigate(['life']);
+  }
+  gotoMedical() {
+    this.router.navigate(['medical']);
+  }
 }

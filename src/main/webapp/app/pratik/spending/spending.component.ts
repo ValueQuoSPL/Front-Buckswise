@@ -309,8 +309,7 @@ export class SpendingComponent implements OnInit {
           console.log('cannot get user details check login ');
         }
       })
-      .catch(err => {
-      });
+      .catch(err => {});
   }
 
   // utility
