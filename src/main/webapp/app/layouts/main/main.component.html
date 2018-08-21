@@ -1,5 +1,9 @@
 
 <span [ngSwitch]="isAuthenticated()">
+<<<<<<< HEAD
+=======
+    <!-- without log in -->
+>>>>>>> 6d625b710840b7d92a33189b6f8c11f20cbf644a
     <p *ngSwitchCase="false">
 
         <router-outlet name="navbar"></router-outlet>
@@ -9,13 +13,18 @@
         </div>     
 
     </p>
+<<<<<<< HEAD
+=======
+
+    <!-- after log in -->
+>>>>>>> 6d625b710840b7d92a33189b6f8c11f20cbf644a
     <p *ngSwitchCase="true">
        
         <router-outlet name="navbar"></router-outlet>
 
         <jhi-sidebar ></jhi-sidebar>
 
-        <br><br>
+        <br><br> <br> <br>
 
         <div *ngSwitchCase="true" style=" margin-left: 60px; margin-top: -43px; margin-right: 0px;">
             <router-outlet></router-outlet>

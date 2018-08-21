@@ -1,9 +1,13 @@
-.margin{
-    margin-left: 800px;
+.margin {
+  margin-left: 800px;
 }
-.color{
-    background-color:lightskyblue;
+.color {
+  background-color: #3b3a36;
 }
-.navb{
-    height: 20px;
+.navb {
+  height: 15px;
+  margin-bottom: 15px;
+}
+.background {
+  background-color: #e9ece5;
 }

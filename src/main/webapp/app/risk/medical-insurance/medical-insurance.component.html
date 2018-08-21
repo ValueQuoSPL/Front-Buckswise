@@ -5,7 +5,7 @@
 <!--start of buttons -->
 <div>
     <div class="pull-right">
-    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#medicalModal">
+    <button type="button" class="btn btn-link" (click)="openMedical(lifeModal)">
         <span>
             <i class="fa fa-plus" aria-hidden="true"></i>
             <span>Add New</span>
@@ -19,6 +19,59 @@
     </button>
 </div>
     <!-- modal start -->
+    <ng-template #lifeModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="lifeModal">Life Insurance Risk</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="modal-body">
+                <mat-form-field style="width: 100%;">
+                    <mat-select placeholder="Hospital Type" name="hosp_type" [(ngModel)]="medicalInsurance.hosp_type">
+                            <mat-option>Corporate</mat-option>
+                            <mat-option>Private</mat-option>
+                            <mat-option>Charitable</mat-option>
+                            <mat-option>Government</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-select placeholder="Room Type" name="room_type" [(ngModel)]="medicalInsurance.room_type">
+                            <mat-option>Single(Private)</mat-option>
+                            <mat-option>Twin Sharing</mat-option>
+                            <mat-option>Charitable</mat-option>
+                            <mat-option>General</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <input matInput name="family_members" id="family_members" [(ngModel)]="medicalInsurance.family_members"
+                            type="text"
+                            required
+                            placeholder="Family Members">
+                    <span matPrefix></span>
+                </mat-form-field>
+           
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                (click)="c('Save click')">
+                    <span class="fa fa-save"></span>&nbsp;
+                    <span>Save</span>
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="c('Save click')">
+                    <span class="fa fa-ban"></span>&nbsp;
+                    <span>Cancel</span>
+                </button>
+                <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                    <span>
+                        <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                        <span>Reset</span>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </ng-template>
     <div class="modal fade" id="medicalModal" tabindex="-1" role="dialog" aria-labelledby="medicalModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -28,60 +81,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-                    <div class="modal-body">
-                        <jhi-alert-error></jhi-alert-error>
-                        <!-- <div class="form-group" [hidden]="!id">
-              <label for="id">ID</label>
-              <input type="text" class="form-control" id="id" name="id"
-                     [(ngModel)]="stocks.id" readonly />
-          </div> -->
-          <div class="form-group">
-            <label for="field_hosp_type">Hospital Type</label>
-            <select class="form-control" id="field_hosp_type" name="hosp_type" [(ngModel)]="medicalInsurance.hosp_type"
-            [ngModelOptions]="{standalone: true}" required>
-              <option>--select type--</option>
-              <option>Corporate</option>
-              <option>Private</option>
-              <option>Charitable</option>
-              <option>Government</option>
-             </select>
-          </div>
-          <div class="form-group">
-            <label for="field_room_type">Room Type</label>
-            <select class="form-control" id="field_room_type" name="room_type" [(ngModel)]="medicalInsurance.room_type"
-            [ngModelOptions]="{standalone: true}" required>
-              <option>--select type--</option>
-              <option>Single</option>
-              <option>Twin Sharing</option>
-              <option>General</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="field_family_members">Family Members</label>
-            <input type="text" class="form-control" name="family_members" id="family_members" [(ngModel)]="medicalInsurance.family_members" [ngModelOptions]="{standalone: true}"
-                required/>
-        </div>
-          <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
-                            (click)="MedicalInsurance()">
-                            <span class="fa fa-save"></span>&nbsp;
-                            <span>Save</span>
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-                            <span class="fa fa-ban"></span>&nbsp;
-                            <span>Cancel</span>
-                        </button>
-                        <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
-                            <span>
-                                <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
-                                <span>Reset</span>
-                            </span>
-                        </button>
-                    </div>
-                </form>
+                
             </div>
         </div>
     </div>

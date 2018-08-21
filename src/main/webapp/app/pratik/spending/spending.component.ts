@@ -303,22 +303,13 @@ export class SpendingComponent implements OnInit {
       .then(response => {
         const account = response.body;
         if (account) {
-          this.uid = account;
-          console.log(this.uid);
-          // this.authenticated = true;
+          this.uid = account.id;
+          console.log("from spending userid is : ", this.uid);
         } else {
-          // this.userIdentity = null;
-          // this.authenticated = false;
+          console.log("cannot get user details check login ");
         }
-        // this.authenticationState.next(this.userIdentity);
-        // return this.userIdentity;
       })
-      .catch(err => {
-        // this.userIdentity = null;
-        // this.authenticated = false;
-        // this.authenticationState.next(this.userIdentity);
-        // return null;
-      });
+      .catch(err => {});
   }
 
   // utility
@@ -357,6 +348,7 @@ export class SpendingComponent implements OnInit {
     this.calcUtilityTotal();
   }
   SaveUtility(): void {
+    this.utility.userid = this.uid;
     this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PutUtility(this.utility).subscribe(data => {
       alert("Your utility data saved");
@@ -364,7 +356,7 @@ export class SpendingComponent implements OnInit {
   }
   GetUtility(): void {
     console.log("inside GetUtility()");
-    this.utilityService.GetUtility().subscribe((response: any[]) => {
+    this.utilityService.GetUtility(this.uid).subscribe((response: any[]) => {
       this.UtilityArray = response;
       this.utility.electricity = this.UtilityArray.electricity;
       this.utility.gas = this.UtilityArray.gas;
@@ -416,6 +408,7 @@ export class SpendingComponent implements OnInit {
     this.calcHouseholdTotal();
   }
   SaveHousehold(): void {
+    this.house.userid = this.uid;
     this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PutHouse(this.house).subscribe(data => {
       alert("Your household data saved");
@@ -423,7 +416,7 @@ export class SpendingComponent implements OnInit {
   }
   GetHousehold(): void {
     console.log("inside getHousehold()");
-    this.houseService.GetHouse().subscribe((response: any[]) => {
+    this.houseService.GetHouse(this.uid).subscribe((response: any[]) => {
       this.HouseholdArray = response;
       this.house.milk = this.HouseholdArray.milk;
       this.house.fruit = this.HouseholdArray.fruit;
@@ -477,6 +470,7 @@ export class SpendingComponent implements OnInit {
     this.dynamicLoanArray.splice(index, 1);
   }
   onLoanSave(): void {
+    this.loan.userid = this.uid;
     this.loan.loanModelArray = this.dynamicLoanArray;
     this.loanService.PutLoan(this.loan.loanModelArray).subscribe(data => {
       alert("Loan Added successfully");
@@ -484,9 +478,8 @@ export class SpendingComponent implements OnInit {
   }
   onGetLoan(): void {
     console.log("inside getLoan()");
-    this.loanService.GetLoan().subscribe((response: any[]) => {
+    this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
       this.dynamicLoanArray = response;
-      console.log(" from direct response to dynamicLoanArray ");
       console.log(this.dynamicLoanArray);
     });
     console.log("getLoan() success");
@@ -528,6 +521,7 @@ export class SpendingComponent implements OnInit {
     this.dynamicLifeArray.splice(index, 1);
   }
   onLifeSave(): void {
+    this.life.userid = this.uid;
     this.life.lifeModelArray = this.dynamicLifeArray;
     this.lifeService.PutLife(this.life.lifeModelArray).subscribe(data => {
       alert("success");
@@ -535,7 +529,7 @@ export class SpendingComponent implements OnInit {
     console.log("in life save");
   }
   onGetLife(): void {
-    this.lifeService.GetLife().subscribe((response: any[]) => {
+    this.lifeService.GetLife(this.uid).subscribe((response: any[]) => {
       this.dynamicLifeArray = response;
       console.log(this.dynamicLifeArray);
     });
@@ -576,6 +570,7 @@ export class SpendingComponent implements OnInit {
     this.dynamicHealth.splice(index, 1);
   }
   onHealthSave(): void {
+    this.health.userid = this.uid;
     this.health.healthModelArray = this.dynamicHealth;
     this.healthService
       .PutHealth(this.health.healthModelArray)
@@ -584,7 +579,7 @@ export class SpendingComponent implements OnInit {
       });
   }
   onGetHealth(): void {
-    this.healthService.GetHealth().subscribe((response: any[]) => {
+    this.healthService.GetHealth(this.uid).subscribe((response: any[]) => {
       this.dynamicHealth = response;
       console.log(this.dynamicHealth);
     });
@@ -624,6 +619,7 @@ export class SpendingComponent implements OnInit {
     this.dynamicGeneral.splice(index, 1);
   }
   onGeneralSave(): void {
+    this.general.userid = this.uid;
     this.general.generalModelArray = this.dynamicGeneral;
     this.generalService
       .PutGeneral(this.general.generalModelArray)
@@ -633,7 +629,7 @@ export class SpendingComponent implements OnInit {
     console.log("in general save");
   }
   onGetGeneral(): void {
-    this.generalService.GetGeneral().subscribe((response: any[]) => {
+    this.generalService.GetGeneral(this.uid).subscribe((response: any[]) => {
       this.dynamicGeneral = response;
       console.log(this.dynamicGeneral);
     });
@@ -668,6 +664,7 @@ export class SpendingComponent implements OnInit {
     this.dynamicCredit.splice(index, 1);
   }
   onCreditSave(): void {
+    this.credit.userid = this.uid;
     this.credit.creditModelArray = this.dynamicCredit;
     this.creditService
       .PutCredit(this.credit.creditModelArray)
@@ -678,7 +675,7 @@ export class SpendingComponent implements OnInit {
   }
   onGetCredit(): void {
     console.log("inside getCredit()");
-    this.creditService.GetCredit().subscribe((response: any[]) => {
+    this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
       this.dynamicCredit = response;
       console.log(this.dynamicCredit);
     });
@@ -721,6 +718,7 @@ export class SpendingComponent implements OnInit {
     this.calcTravelTotal();
   }
   SaveTravel(): void {
+    this.travel.userid = this.uid;
     this.travel.dynamicTravel = this.dynamicTravel;
     this.travelService.PutTravel(this.travel).subscribe(data => {
       alert("Your travel data saved");
@@ -728,7 +726,7 @@ export class SpendingComponent implements OnInit {
   }
   GetTravel(): void {
     console.log("inside getTravel()");
-    this.travelService.GetTravel().subscribe((response: any[]) => {
+    this.travelService.GetTravel(this.uid).subscribe((response: any[]) => {
       this.TravelArray = response;
       this.travel.food = this.TravelArray.food;
       this.travel.entertainment = this.TravelArray.entertainment;
@@ -776,6 +774,7 @@ export class SpendingComponent implements OnInit {
     this.calcMiscTotal();
   }
   SaveMisc(): void {
+    this.misc.userid = this.uid;
     this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PutMisc(this.misc).subscribe(data => {
       alert("Your Misc data saved");
@@ -783,7 +782,7 @@ export class SpendingComponent implements OnInit {
   }
   GetMisc(): void {
     console.log("inside getMisc()");
-    this.miscService.GetMisc().subscribe((response: any[]) => {
+    this.miscService.GetMisc(this.uid).subscribe((response: any[]) => {
       this.MiscArray = response;
       this.misc.shoes = this.MiscArray.shoes;
       this.misc.pet = this.MiscArray.pet;

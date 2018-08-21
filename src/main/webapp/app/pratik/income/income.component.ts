@@ -1,8 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Income } from "app/pratik/spending/spending.model";
 import { IncomeService } from "app/pratik/spending/spending.service";
-import { AccountService } from "app/shared";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService, LoginModalService, Principal } from "app/shared";
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbModalRef
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "jhi-income",
@@ -14,20 +18,31 @@ export class IncomeComponent implements OnInit {
   amount: any;
   dynamicIncome: any = [];
   IncomeArray: any = [];
+  tempIncomeArray: any = [];
   totalIncome: number;
   income: Income = new Income();
   closeResult: string;
   step = 0;
   uid: any;
+  modalRef: NgbModalRef;
+  account: Account;
+  isIncomeData;
+  loadIncome = false;
+  dynamicTotal: number;
 
   constructor(
-    private account: AccountService,
+    private accountService: AccountService,
     private modalService: NgbModal,
-    private incomeService: IncomeService
+    private incomeService: IncomeService,
+    private loginModalService: LoginModalService,
+    private principal: Principal
   ) {}
 
   ngOnInit() {
+    console.log("income start");
+    this.getUserid();
     this.totalIncome = 0;
+    this.dynamicTotal = 0;
     this.income.incomeSalary = 0;
     this.income.incomeAward = 0;
     this.income.incomeBonus = 0;
@@ -35,19 +50,31 @@ export class IncomeComponent implements OnInit {
     this.income.incomePension = 0;
     this.income.incomeRental = 0;
     this.income.incomeSaving = 0;
+    this.isAuthenticated();
+  }
+
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 
   getUserid() {
     // retrieve the userIdentity data from the server, update the identity object, and then resolve.
-    return this.account
+    return this.accountService
       .get()
       .toPromise()
       .then(response => {
         const account = response.body;
         if (account) {
-          this.uid = account;
-          console.log(this.uid);
+          this.uid = account.id;
+          console.log("from income userid is : ", this.uid);
+          // this.isIncomeComplete(this.uid);
+          this.onIncomeGet(this.uid);
         } else {
+          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
@@ -58,7 +85,80 @@ export class IncomeComponent implements OnInit {
     this.amount = "";
   }
 
-  private getDismissReason(reason: any): string {
+  reset() {
+    prompt("All saved data of Income will be lost. Are you sure to continue");
+    this.totalIncome = 0;
+    this.income.incomeSalary = 0;
+    this.income.incomeAward = 0;
+    this.income.incomeBonus = 0;
+    this.income.incomeDeposit = 0;
+    this.income.incomePension = 0;
+    this.income.incomeRental = 0;
+    this.income.incomeSaving = 0;
+  }
+
+  isIncomeComplete(uid) {
+    console.log("checking income data is filled or not");
+    this.onIncomeGet(uid);
+  }
+
+  onIncomeGet(uid) {
+    console.log("calling service to get income data");
+    this.incomeService.GetIncome(this.uid).subscribe((response: any[]) => {
+      this.tempIncomeArray = response;
+      console.log("From tempIncomeArray : ", this.tempIncomeArray);
+      if (this.tempIncomeArray.length === 0) {
+        console.log("income data is empty");
+        this.isIncomeData = false;
+      } else {
+        console.log("income data is filled");
+        this.fillIncomeData();
+        this.isIncomeData = true;
+      }
+    });
+  }
+
+  fillIncomeData() {
+    this.IncomeArray = this.tempIncomeArray;
+    console.log(this.IncomeArray);
+    for (let i = 0; i < this.IncomeArray.length; i++) {
+      // console.log('from IncomeArray : ', this.IncomeArray[i]);
+      if (this.IncomeArray[i].name === "incomeSalary") {
+        this.income.incomeSalary = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeSalary);
+      } else if (this.IncomeArray[i].name === "incomeAward") {
+        this.income.incomeAward = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeAward);
+      } else if (this.IncomeArray[i].name === "incomeBonus") {
+        this.income.incomeBonus = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeBonus);
+      } else if (this.IncomeArray[i].name === "incomePension") {
+        this.income.incomePension = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomePension);
+      } else if (this.IncomeArray[i].name === "incomeSaving") {
+        this.income.incomeSaving = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeSaving);
+      } else if (this.IncomeArray[i].name === "incomeDeposit") {
+        this.income.incomeDeposit = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeDeposit);
+      } else if (this.IncomeArray[i].name === "incomeRental") {
+        this.income.incomeRental = +this.IncomeArray[i].amount;
+        // console.log(this.income.incomeRental);
+      } else if (this.IncomeArray[i].name !== "userid") {
+        this.dynamicIncome.push({
+          name: this.IncomeArray[i].name,
+          value: this.IncomeArray[i].amount
+        });
+        this.calcTotalIncome();
+        this.calcIncomeTotal();
+        // this.clear();
+        console.log(this.dynamicIncome);
+      }
+    }
+    this.loadIncome = true;
+  }
+
+  getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -68,7 +168,6 @@ export class IncomeComponent implements OnInit {
     }
   }
 
-  // income
   openIncome(incomeContent) {
     console.log("income modal open");
 
@@ -86,15 +185,30 @@ export class IncomeComponent implements OnInit {
       );
   }
 
+  calcTotalIncome() {
+    this.totalIncome = 0;
+    for (let j = 0; j < this.IncomeArray.length; j++) {
+      if (this.IncomeArray[j].name !== "userid") {
+        // console.log(this.IncomeArray[j].name, this.IncomeArray[j].amount);
+        this.totalIncome = +this.totalIncome + +this.IncomeArray[j].amount;
+      }
+    }
+    console.log(this.totalIncome);
+  }
+
   calcIncomeTotal() {
     this.totalIncome = 0;
-    for (let i = 0; i < this.dynamicIncome.length; i++) {
-      const value1 = this.dynamicIncome[i].value;
-      // console.log(this.totalIncome);
-      this.totalIncome = this.totalIncome + value1;
+    this.dynamicTotal = 0;
+    for (let j = 0; j < this.dynamicIncome.length; j++) {
+      this.totalIncome = +this.totalIncome + +this.dynamicIncome[j].value;
+      this.dynamicTotal = +this.dynamicTotal + +this.dynamicIncome[j].value;
     }
-    console.log(this.dynamicIncome);
     console.log(this.totalIncome);
+    console.log(this.dynamicTotal);
+  }
+
+  calcTotal(data) {
+    console.log(data);
   }
 
   AddIncome() {
@@ -111,27 +225,20 @@ export class IncomeComponent implements OnInit {
     this.calcIncomeTotal();
   }
 
-  onIncomeSave(): void {
+  saveIncome(): void {
+    this.income.userid = this.uid;
+    this.income.dynamicIncome = this.dynamicIncome;
+    this.incomeService.PostIncome(this.income).subscribe(data => {
+      alert("Your data saved");
+      this.isIncomeData = true;
+    });
+  }
+
+  updateIncome() {
+    this.income.userid = this.uid;
     this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PutIncome(this.income).subscribe(data => {
       alert("Your data saved");
     });
-  }
-
-  onIncomeGet() {
-    console.log("inside onIncomeGet()");
-    this.incomeService.GetIncome().subscribe((response: any[]) => {
-      this.IncomeArray = response;
-      this.income.incomeSalary = this.IncomeArray.incomeSalary;
-      this.income.incomeAward = this.IncomeArray.incomeAward;
-      this.income.incomeBonus = this.IncomeArray.incomeBonus;
-      this.income.incomePension = this.IncomeArray.incomePension;
-      this.income.incomeSaving = this.IncomeArray.incomeSaving;
-      this.income.incomeDeposit = this.IncomeArray.incomeDeposit;
-      this.income.incomeRental = this.IncomeArray.incomeRental;
-      this.dynamicIncome = this.IncomeArray.dynamicIncome;
-      console.log(response);
-    });
-    console.log("onIncomeGet() success");
   }
 }

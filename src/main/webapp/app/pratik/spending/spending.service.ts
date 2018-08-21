@@ -20,22 +20,26 @@ export class IncomeService {
   response: Observable<any>;
   constructor(private http: HttpClient) {}
 
-  public PutIncome(income) {
+  public PostIncome(income) {
     console.log(income);
     console.log("putIncome service");
     return this.http.post(SERVER_API_URL + "api/income/income", income);
   }
 
-  public GetIncome() {
-    console.log("getIncome service");
-    return this.request();
+  public PutIncome(income) {
+    // console.log(income);
+    console.log("update income service");
+    return this.http.post(SERVER_API_URL + "api/income/income", income);
   }
-  request() {
-    const url = "https://demologin-79c13.firebaseio.com/income.json";
-    this.response = this.http.get(url, { observe: "body" });
-    console.log("inside request");
-    console.log(this.response);
-    return this.response;
+
+  public GetIncome(uid) {
+    return this.request(uid);
+  }
+  request(uid) {
+    const url = SERVER_API_URL + "api/income/getincome/" + uid;
+    const response = this.http.get(url, { observe: "body" });
+    console.log("service success responce returned");
+    return response;
   }
 }
 
@@ -50,9 +54,10 @@ export class UtilityService {
       utility
     );
   }
-  public GetUtility() {
+  public GetUtility(uid) {
     console.log("getIncome service");
-    return this.http.get("https://demologin-79c13.firebaseio.com/utility.json");
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -67,11 +72,10 @@ export class HouseService {
       house
     );
   }
-  public GetHouse() {
+  public GetHouse(uid) {
     console.log("gethouse service");
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/household.json"
-    );
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -83,8 +87,9 @@ export class CreditService {
     console.log(credit);
     return this.http.post(SERVER_API_URL + "api/creditcard/credit", credit);
   }
-  public GetCredit() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/credit.json");
+  public GetCredit(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -99,10 +104,9 @@ export class GeneralService {
       general
     );
   }
-  public GetGeneral() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_general.json"
-    );
+  public GetGeneral(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -117,10 +121,9 @@ export class HealthService {
       health
     );
   }
-  public GetHealth() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_health.json"
-    );
+  public GetHealth(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -135,10 +138,9 @@ export class LifeService {
       life
     );
   }
-  public GetLife() {
-    return this.http.get(
-      "https://demologin-79c13.firebaseio.com/ins_life.json"
-    );
+  public GetLife(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -153,8 +155,9 @@ export class LoanService {
       loan
     );
   }
-  public GetLoan() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/loan.json");
+  public GetLoan(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -169,8 +172,9 @@ export class MiscService {
       misc
     );
   }
-  public GetMisc() {
-    return this.http.get("https://demologin-79c13.firebaseio.com/misc.json");
+  public GetMisc(uid) {
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }
 
@@ -186,8 +190,9 @@ export class TravelService {
     );
   }
 
-  public GetTravel() {
+  public GetTravel(uid) {
     console.log("gethouse service");
-    return this.http.get("https://demologin-79c13.firebaseio.com/travel.json");
+    const url = SERVER_API_URL + "api/" + uid;
+    return this.http.get(url);
   }
 }

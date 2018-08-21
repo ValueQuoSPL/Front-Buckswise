@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styles: []
 })
 export class GoalAddButtonComponent implements OnInit {
-  goaltype: any;
   constructor() {}
 
   ngOnInit() {}

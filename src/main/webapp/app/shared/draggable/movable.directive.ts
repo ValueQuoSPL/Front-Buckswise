@@ -19,20 +19,6 @@ interface Position {
   selector: "[jhiMovable]"
 })
 export class MovableDirective extends DraggableDirective {
-  // constructor(private draggable: DraggableDirective) { }
-
-  // ngOnInit() {
-  //   this.draggable.dragStart.subscribe(
-  //     () => this.onDragStart()
-  //   );
-  // }
-  @HostBinding("style.transform")
-  get transform(): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      `translateX(${this.position.x}px) translateY(${this.position.y}px)`
-    );
-  }
-
   @HostBinding("class.movable") movable = true;
 
   public position: Position = { x: 0, y: 0 };
@@ -40,13 +26,15 @@ export class MovableDirective extends DraggableDirective {
 
   // tslint:disable-next-line:no-input-rename
   @Input("appMovableReset") reset = false;
+  constructor(private sanitizer: DomSanitizer, public element: ElementRef) {
+    super();
+  }
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    public element: ElementRef,
-    public viewContainerRef: ViewContainerRef
-  ) {
-    super(element);
+  @HostBinding("style.transform")
+  get transform(): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      `translateX(${this.position.x}px) translateY(${this.position.y}px)`
+    );
   }
 
   @HostListener("dragStart", ["$event"])

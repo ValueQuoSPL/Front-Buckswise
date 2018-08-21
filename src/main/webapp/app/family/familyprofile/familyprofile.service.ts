@@ -3,15 +3,23 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { SERVER_API_URL } from "app/app.constants";
 import { Myprofile } from "app/family/family.model";
+import { FamilyprofileComponent } from "app/family/familyprofile/familyyprofile.component";
 
 @Injectable()
 export class FamilyprofileService {
+  ServiceAPIParam: any;
   constructor(private http: HttpClient) {}
 
   save(familyProfile: any): Observable<any> {
+    console.log(familyProfile);
     return this.http.post(SERVER_API_URL + "api/familyprofiles", familyProfile);
   }
   public getFamilyProfile() {
     return this.http.get(SERVER_API_URL + "api/familyprofiles").map(res => res);
+  }
+  public getFamilyProfileByUid(uid) {
+    console.log("in getFamilyProfileByUid service uid", uid);
+    this.ServiceAPIParam = "api/familyprofiles" + "/" + uid;
+    return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

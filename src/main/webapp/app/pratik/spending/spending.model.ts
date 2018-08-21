@@ -1,4 +1,5 @@
 export class Utility {
+  userid;
   electricity;
   gas;
   water;
@@ -11,6 +12,7 @@ export class Utility {
   dynamicUtility: any = [];
 }
 export class Travel {
+  userid;
   food;
   entertainment;
   dineout;
@@ -19,6 +21,7 @@ export class Travel {
   dynamicTravel: any = [];
 }
 export class Credit {
+  userid;
   issuer;
   limit;
   monthly_usage;
@@ -26,10 +29,10 @@ export class Credit {
   type;
   roi;
   balance;
-  userid;
   creditModelArray: any = [];
 }
 export class Life {
+  userid;
   type;
   ins_name;
   policy_name;
@@ -46,6 +49,7 @@ export class Life {
   constructor() {}
 }
 export class General {
+  userid;
   ins_obj;
   policy_name;
   premium;
@@ -55,11 +59,11 @@ export class General {
   sum;
   policy_no;
   proposer_name;
-  userid;
   premium_mode: any;
   generalModelArray: any = [];
 }
 export class Health {
+  userid;
   ins_name;
   policy_name;
   premium;
@@ -70,10 +74,10 @@ export class Health {
   policy_no;
   proposer_name;
   premium_mode;
-  userid;
   healthModelArray: any = [];
 }
 export class House {
+  userid;
   milk;
   fruit;
   rent;
@@ -91,17 +95,19 @@ export class House {
   dynamicHousehold: any = [];
 }
 export class Income {
-  incomeSalary: 0;
-  incomeAward: 0;
-  incomeBonus: 0;
-  incomePension: 0;
-  incomeSaving: 0;
-  incomeDeposit: 0;
-  incomeRental: 0;
+  userid;
+  incomeSalary: number;
+  incomeAward: number;
+  incomeBonus: number;
+  incomePension: number;
+  incomeSaving: number;
+  incomeDeposit: number;
+  incomeRental: number;
   dynamicIncome: any = [];
   constructor() {}
 }
 export class Loan {
+  userid;
   loan_type;
   lender;
   applicant: "";
@@ -116,6 +122,7 @@ export class Loan {
   constructor() {}
 }
 export class Misc {
+  userid;
   shoes;
   pet;
   electronics;
