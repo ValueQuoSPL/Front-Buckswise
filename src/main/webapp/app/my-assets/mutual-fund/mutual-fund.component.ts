@@ -3,19 +3,19 @@
 // import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 // import { JhiEventManager } from 'ng-jhipster';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs/Subscription";
+import { JhiEventManager, JhiParseLinks, JhiAlertService } from "ng-jhipster";
 
-import { Stocks } from 'app/my-assets/mutual-fund/stocks.model';
-import { StocksService } from 'app/my-assets/mutual-fund/stocks.service';
-import { ITEMS_PER_PAGE, Principal } from 'app/shared';
+import { Stocks } from "app/my-assets/mutual-fund/stocks.model";
+import { StocksService } from "app/my-assets/mutual-fund/stocks.service";
+import { ITEMS_PER_PAGE, Principal } from "app/shared";
 
 @Component({
-  selector: 'jhi-stocks',
-  templateUrl: './mutual-fund.component.html'
+  selector: "jhi-stocks",
+  templateUrl: "./mutual-fund.component.html"
 })
 export class StocksComponent implements OnInit, OnDestroy {
   currentAccount: any;
@@ -70,11 +70,11 @@ export class StocksComponent implements OnInit, OnDestroy {
     }
   }
   transition() {
-    this.router.navigate(['/stocks'], {
+    this.router.navigate(["/stocks"], {
       queryParams: {
         page: this.page,
         size: this.itemsPerPage,
-        sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+        sort: this.predicate + "," + (this.reverse ? "asc" : "desc")
       }
     });
     this.loadAll();
@@ -83,10 +83,10 @@ export class StocksComponent implements OnInit, OnDestroy {
   clear() {
     this.page = 0;
     this.router.navigate([
-      '/stocks',
+      "/stocks",
       {
         page: this.page,
-        sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+        sort: this.predicate + "," + (this.reverse ? "asc" : "desc")
       }
     ]);
     this.loadAll();
@@ -108,22 +108,22 @@ export class StocksComponent implements OnInit, OnDestroy {
   }
   registerChangeInStocks() {
     this.eventSubscriber = this.eventManager.subscribe(
-      'stocksListModification',
+      "stocksListModification",
       response => this.loadAll()
     );
   }
 
   sort() {
-    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-    if (this.predicate !== 'id') {
-      result.push('id');
+    const result = [this.predicate + "," + (this.reverse ? "asc" : "desc")];
+    if (this.predicate !== "id") {
+      result.push("id");
     }
     return result;
   }
 
   private onSuccess(data, headers) {
-    this.links = this.parseLinks.parse(headers.get('link'));
-    this.totalItems = headers.get('X-Total-Count');
+    this.links = this.parseLinks.parse(headers.get("link"));
+    this.totalItems = headers.get("X-Total-Count");
     this.queryCount = this.totalItems;
     // this.page = pagingParams.page;
     this.stocks = data;
@@ -132,12 +132,12 @@ export class StocksComponent implements OnInit, OnDestroy {
     this.jhiAlertService.error(error.message, null, null);
   }
   goBack() {
-    this.router.navigate(['mutual-fund']);
+    this.router.navigate(["mutual-fund"]);
   }
 }
 @Component({
-  selector: 'jhi-mutual-fund',
-  templateUrl: './mutual-fund.component.html',
+  selector: "jhi-mutual-fund",
+  templateUrl: "./mutual-fund.component.html",
   styles: []
 })
 export class MutualFundComponent implements OnInit {
@@ -160,9 +160,9 @@ export class MutualFundComponent implements OnInit {
   clear() {}
 
   gotoStocks() {
-    this.router.navigate(['stocks'], {});
+    this.router.navigate(["stocks"], {});
   }
   gotouser() {
-    this.router.navigate(['userprofile']);
+    this.router.navigate(["userprofile"]);
   }
 }

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Myprofile } from '../family.model';
-import { MyprofileService } from './myprofile.service';
-import { Principal } from '../../shared';
-import { AccountService } from '../../shared';
+import { Component, OnInit } from "@angular/core";
+import { Myprofile } from "../family.model";
+import { MyprofileService } from "./myprofile.service";
+import { Principal } from "../../shared";
+import { AccountService } from "../../shared";
 
 @Component({
-  selector: 'jhi-myprofile',
-  templateUrl: './myprofile.component.html',
-  styles: ['./myprofile.component.css']
+  selector: "jhi-myprofile",
+  templateUrl: "./myprofile.component.html",
+  styles: ["./myprofile.component.css"]
 })
 export class MyprofileComponent implements OnInit {
   myProfile: any;
@@ -36,14 +36,14 @@ export class MyprofileComponent implements OnInit {
     this.MyProfileSer.getMyProfile().subscribe(res => {
       console.log(res);
       this.output = res;
-      console.log('responce of myprofile service', this.output);
+      console.log("responce of myprofile service", this.output);
     });
   }
   getMyProfilebyid(uid) {
     this.MyProfileSer.getMyProfileByUid(this.uid).subscribe(res => {
       console.log(res);
       this.output = res;
-      console.log('responce of myprofile service', this.output);
+      console.log("responce of myprofile service", this.output);
       if (this.output.uid === null) {
         this.isValid = false;
         console.log(this.isValid);
@@ -59,9 +59,9 @@ export class MyprofileComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log('user info', this.user);
+        console.log("user info", this.user);
         this.uid = this.user.id;
-        console.log('in fetchid method', this.uid);
+        console.log("in fetchid method", this.uid);
         this.getMyProfilebyid(this.uid);
       });
   }

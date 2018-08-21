@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, Route } from '@angular/router';
-import { Principal } from '../shared';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { first } from 'rxjs/operator/first';
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
+import { Principal } from "../shared";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { first } from "rxjs/operator/first";
 
 @Component({
-  selector: 'jhi-goal',
-  templateUrl: './goal.component.html',
+  selector: "jhi-goal",
+  templateUrl: "./goal.component.html",
   styles: []
 })
 export class GoalComponent implements OnInit {
@@ -23,7 +23,7 @@ export class GoalComponent implements OnInit {
   ngOnInit() {}
 
   selectgoals() {
-    this.router.navigate(['goalselect']);
+    this.router.navigate(["goalselect"]);
   }
 
   // btnClick = function() {

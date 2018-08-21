@@ -8,10 +8,7 @@ import * as $ from "jQuery";
   styleUrls: ["./contactus.component.css", "../../css/universal.css"]
 })
 export class ContactusComponent implements OnInit {
-  // user: User = new User();
-  resetContact: any;
-  mobile: any;
-  user: any;
+  user: User = new User();
   constructor(private contactService: ContactService) {}
   submitUser() {
     this.contactService
@@ -19,11 +16,11 @@ export class ContactusComponent implements OnInit {
       .subscribe(response => console.log(response));
   }
   // resetContact() {
-  //   this.user.name = '';
-  //  this.user.email = '';
-  // this.user.phone = '';
-  // this.user.message = '';
-  //  }
+  //     this.user.name = '';
+  //     this.user.email = '';
+  //     this.user.phone = '';
+  //     this.user.message = '';
+  //   }
 
   ngOnInit() {
     //    Validation for name

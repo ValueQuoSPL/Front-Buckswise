@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'jhi-fail',
-  templateUrl: './fail.component.html',
+  selector: "jhi-fail",
+  templateUrl: "./fail.component.html",
   styles: []
 })
 export class FailComponent implements OnInit {

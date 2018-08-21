@@ -1,11 +1,11 @@
-import { Route } from '@angular/router';
-import { IncomeComponent } from 'app/pratik/income/income.component';
+import { Route } from "@angular/router";
+import { IncomeComponent } from "app/pratik/income/income.component";
 
 export const IncomeRoute: Route = {
-  path: 'income',
+  path: "income",
   component: IncomeComponent,
   data: {
     authorities: [],
-    pageTitle: 'Income'
+    pageTitle: "Income"
   }
 };

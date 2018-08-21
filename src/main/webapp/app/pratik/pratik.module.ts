@@ -1,14 +1,14 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import {
   HowItWorkComponent,
   SpendingComponent,
   SubscriptionComponent,
   pratikState
-} from 'app/pratik';
-import { CommonModule } from '@angular/common';
+} from "app/pratik";
+import { CommonModule } from "@angular/common";
 
 import {
   IncomeService,
@@ -21,16 +21,16 @@ import {
   HealthService,
   GeneralService,
   CreditService
-} from 'app/pratik/spending/spending.service';
+} from "app/pratik/spending/spending.service";
 
 // material
-import { CustomMaterialModule } from 'app/custom-material.module';
+import { CustomMaterialModule } from "app/custom-material.module";
 // ng-bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // ngx-bootstrap
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
-import { IncomeComponent } from 'app/pratik/income/income.component';
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { CustomDirectiveModule } from "app/shared/directive/directive.module";
+import { IncomeComponent } from "app/pratik/income/income.component";
 
 @NgModule({
   imports: [
