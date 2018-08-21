@@ -82,7 +82,9 @@
                     <tr>
                         <td> Post Tax Take Home Salary of # </td>
                         <td><input jhiNumberOnly type="number"  [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
-                        <td><input jhiNumberOnly type="number"  [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
+                        <td>{{income.incomeSalary * 12}}</td>
+                        <td><input jhiNumberOnly type="number" [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
+                        <td>{{income.incomeSalary / 12}}</td>
                     </tr>
                     <tr>
                     <td> Performance award / bonus </td>

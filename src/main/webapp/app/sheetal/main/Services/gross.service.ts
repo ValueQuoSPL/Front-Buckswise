@@ -34,6 +34,7 @@ export class GrossService {
   // console.log(gross.Bonds);
   // console.log(gross.Convay);
   save(gross: any): Observable<any> {
+    console.log("gross");
     return this.http.post(SERVER_API_URL + "api/grosses", gross);
   }
   FetchID(): Promise<any> {
