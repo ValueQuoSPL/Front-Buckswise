@@ -78,88 +78,6 @@
                         </div>
                     </form>
                     </div>
-<<<<<<< HEAD
-        </ng-template>
-        
-        <!-- Table -->
-        <table class="table table-hover table-sm">
-                <thead>
-                    <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Monthly Amount</th>
-                    <th scope="col">Yearly Amount</th>
-                    <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> Post Tax Take Home Salary of # </td>
-                        <td><input jhiNumberOnly type="number"  [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
-                        <td>{{income.incomeSalary * 12}}</td>
-                        <td><input jhiNumberOnly type="number" [(ngModel)]="income.incomeSalary" name="income-salary" > </td>
-                        <td>{{income.incomeSalary / 12}}</td>
-                    </tr>
-                    <tr>
-                    <td> Performance award / bonus </td>
-                    <td> <input jhiNumberOnly type="number" id="21" [(ngModel)]="income.incomeAward"  name="income-award"  > </td>
-                    <td> {{income.incomeAward * 12}} </td>
-                    </tr>
-                    <tr>
-                    <td> Sign-up bonus </td>
-                    <td> <input jhiNumberOnly type="number" id="31" [(ngModel)]="income.incomeBonus"  name="income-bonus"  > </td>
-                    <td> {{income.incomeBonus * 12}}    </td>
-                    </tr>
-                    <tr>
-                    <td> Pensions </td>
-                    <td> <input jhiNumberOnly type="number" id="41" [(ngModel)]="income.incomePension"  name="income-pension"  > </td>
-                    <td> {{income.incomePension * 12}}  </td>
-                    </tr>
-                    <tr>
-                    <td> Interest earned on savings </td>
-                    <td> <input jhiNumberOnly type="number" id="51" [(ngModel)]="income.incomeSaving"  name="income-saving"  > </td>
-                    <td> {{income.incomeSaving * 12}}  </td>
-                    </tr>
-                    <tr>
-                    <td> Income from investments(Deposites, Securities) </td>
-                    <td> <input jhiNumberOnly type="number" id="61" [(ngModel)]="income.incomeDeposit"  name="income-deposit"  > </td>
-                    <td> {{income.incomeDeposit * 12}} </td>
-                    </tr>
-                    <tr>
-                    <td> Rental Income </td>
-                    <td> <input jhiNumberOnly type="number" id="71" [(ngModel)]="income.incomeRental"  name="income-rental"  > </td>
-                    <td> {{income.incomeRental * 12}} </td>
-                    </tr>
-                    <!-- </tbody>
-                    <tbody *ngIf="incomeStatus === saved">
-                    <tr *ngFor="let field of IncomeArray">
-                        <td> {{field.name}} </td>
-                        <td><input  type="number" value="{{field.value}}"    > </td>
-                        <td><input  type="number" value="{{field.value * 12}}"    disabled> </td>
-                    </tr>
-                    </tbody> -->
-                    <tr *ngFor="let field of dynamicIncome; let i = index">
-                        <td> {{field.name}} </td>
-                        <td><input  type="number" value="{{field.value}}"    disabled> </td>
-                        <td>{{field.value * 12}} </td>
-                        <td><button class="btn btn-outline-info"  type="button" (click)="deleteFieldValue(i)" >
-                        <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                        <tr >
-                        <th scope="col">Total</th>
-                        <th >
-                            {{income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome}}
-                        </th>
-                        <th> {{(income.incomeSalary + income.incomeAward + income.incomeSaving + income.incomeRental + income.incomeBonus + income.incomePension + income.incomeDeposit + totalIncome) * 12 }}
-                        </th>
-                        </tr>
-                </tfoot>
-        </table>
-    
-      </mat-expansion-panel>
-=======
                 </ng-template>
                 
                 <!-- Table -->
@@ -240,5 +158,4 @@
             </mat-expansion-panel>
         </div>      
     </div>
->>>>>>> 6d625b710840b7d92a33189b6f8c11f20cbf644a
 </div>
