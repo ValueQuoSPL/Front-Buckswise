@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { LogsComponent } from 'app/admin/logs/logs.component';
+import { LogsComponent } from './logs.component';
 
 export const logsRoute: Route = {
     path: 'logs',

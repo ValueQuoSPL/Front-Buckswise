@@ -21,6 +21,8 @@ import {
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { MobileOtpComponent } from './mobile-otp/mobile-otp.component';
+import { MyloginService } from 'app/account/mobile-otp/mylogin.service';
 
 @NgModule({
   imports: [
@@ -37,7 +39,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     PasswordStrengthBarComponent,
     PasswordResetInitComponent,
     PasswordResetFinishComponent,
-    SettingsComponent
+    SettingsComponent,
+    MobileOtpComponent
   ],
   providers: [
     Register,
@@ -46,7 +49,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     PasswordResetInitService,
     PasswordResetFinishService,
     UserMgmtComponent,
-    UserService
+    UserService,
+    MyloginService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
