@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { IncomeComponent } from 'app/pratik/income/income.component';
+import { CanDeactivateGuard } from '../can-deactivate-guard.service';
 
 export const IncomeRoute: Route = {
   path: 'income',
@@ -7,5 +8,6 @@ export const IncomeRoute: Route = {
   data: {
     authorities: [],
     pageTitle: 'Income'
-  }
+  },
+  canDeactivate: [CanDeactivateGuard]
 };

@@ -110,14 +110,14 @@ export class Loan {
   userid;
   loan_type;
   lender;
-  applicant: "";
+  applicant: '';
   amnt;
-  ldate: "";
+  ldate: '';
   check: boolean;
   tenure;
-  intrest_type: "";
+  intrest_type: '';
   roi;
-  rdate: "";
+  rdate: '';
   loanModelArray: any = [];
   constructor() {}
 }

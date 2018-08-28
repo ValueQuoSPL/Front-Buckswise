@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <!-- <label for="password">Password</label> -->
                     <mat-form-field style="width: 100%;">
-                            <input matInput type="password"  name="password" id="password" placeholder="Your password" [(ngModel)]="password">
+                            <input matInput type="password"  name="password" id="password" placeholder="Your password" [(ngModel)]="password" (keyup.enter)="login()">
                     </mat-form-field>
                 </div>
                 <div class="form-check">
@@ -34,7 +34,7 @@
             
             </form>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" (click)="login()" >Sign in</button>
+                <button type="submit" class="btn btn-primary" (click)="login()"  >Sign in</button>
             </div>
             <p></p>
             <div class="alert alert-warning">
