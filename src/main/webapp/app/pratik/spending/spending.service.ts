@@ -26,10 +26,11 @@ export class IncomeService {
     return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
 
-  public PutIncome(income) {
+  public PutIncome(income, uid) {
     // console.log(income);
     console.log('update income service');
-    return this.http.post(SERVER_API_URL + 'api/income/income', income);
+    const url = SERVER_API_URL + 'api/income/income/' + uid;
+    return this.http.post(url, income);
   }
 
   public GetIncome(uid) {

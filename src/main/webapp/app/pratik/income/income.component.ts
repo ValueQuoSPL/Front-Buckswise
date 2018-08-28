@@ -238,7 +238,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     console.log('inside update income');
     this.income.userid = this.uid;
     this.income.dynamicIncome = this.dynamicIncome;
-    this.incomeService.PutIncome(this.income).subscribe(data => {
+    this.incomeService.PutIncome(this.income, this.uid).subscribe(data => {
       alert('Your data saved');
       this.changesSaved = true;
     });
