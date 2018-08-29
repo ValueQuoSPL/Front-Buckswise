@@ -1,18 +1,11 @@
+import { AccountService, LoginModalService, Principal } from 'app/shared';
 import { Component, OnInit, Inject } from '@angular/core';
 import { NAMED_ENTITIES } from '@angular/compiler';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
-import {
-  Utility,
-  Credit,
-  General,
-  Health,
-  House,
-  Income,
-  Life,
-  Loan,
-  Misc,
-  Travel
-} from 'app/pratik/spending/spending.model';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Utility, Credit, General, Health, House, Income, Life, Loan, Misc, Travel} from 'app/pratik/spending/spending.model';
 
 // tslint:disable-next-line:max-line-length
 import {
@@ -27,17 +20,7 @@ import {
   GeneralService,
   CreditService
 } from 'app/pratik/spending/spending.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 // import { IncomeDialog } from 'app/pratik/spending/dialog/dialog';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from '@angular/forms';
-import * as $ from 'jQuery';
-import { AccountService } from 'app/shared/auth/account.service';
 
 export interface DialogData {
   animal: string;
@@ -152,8 +135,11 @@ export class SpendingComponent implements OnInit {
   animal: string;
   name: string;
 
+  account: Account;
+
   constructor(
-    private account: AccountService,
+    private principal: Principal,
+    private accountService: AccountService,
     private utilityService: UtilityService,
     private houseService: HouseService,
     private travelService: TravelService,
@@ -169,11 +155,12 @@ export class SpendingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('inside onInit()');
+    console.log('inside income Init()');
     this.getUserid();
-    // this.calcUtilityTotal();
+    this.principal.identity().then(account => {
+      this.account = account;
+    });
     this.totalUtility = 0;
-    // this.calcHouseholdTotal();
     this.totalHousehold = 0;
     this.totalTravel = 0;
     this.totalMisc = 0;
@@ -223,16 +210,6 @@ export class SpendingComponent implements OnInit {
     this.misc.charity = 0;
     this.misc.gift = 0;
     this.misc.cloth = 0;
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
   clear() {
@@ -295,9 +272,19 @@ export class SpendingComponent implements OnInit {
     this.credit.type = '';
   }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   getUserid() {
     // retrieve the userIdentity data from the server, update the identity object, and then resolve.
-    return this.account
+    return this.accountService
       .get()
       .toPromise()
       .then(response => {

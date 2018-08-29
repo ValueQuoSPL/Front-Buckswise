@@ -22,24 +22,28 @@ export class IncomeService {
 
   public PostIncome(income) {
     console.log(income);
-    console.log('save income service');
+    console.log('putIncome service');
     return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
 
   public PutIncome(income, uid) {
-    console.log(income);
+    // console.log(income);
     console.log('update income service');
     const url = SERVER_API_URL + 'api/income/putincome/' + uid;
     return this.http.put(url, income);
   }
 
   public GetIncome(uid) {
-    return this.request(uid);
-  }
-  request(uid) {
     const url = SERVER_API_URL + 'api/income/getincome/' + uid;
     const response = this.http.get(url, { observe: 'body' });
     console.log('service success responce returned');
+    return response;
+  }
+
+  public DeleteIncome(income, uid) {
+    console.log(income);
+    const url = SERVER_API_URL + 'api/income/deleteincome' + uid;
+    const response = this.http.delete(url, { observe: 'body' });
     return response;
   }
 }
