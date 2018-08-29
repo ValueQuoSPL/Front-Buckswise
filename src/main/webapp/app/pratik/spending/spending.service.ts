@@ -22,15 +22,15 @@ export class IncomeService {
 
   public PostIncome(income) {
     console.log(income);
-    console.log('putIncome service');
+    console.log('save income service');
     return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
 
   public PutIncome(income, uid) {
-    // console.log(income);
+    console.log(income);
     console.log('update income service');
-    const url = SERVER_API_URL + 'api/income/income/' + uid;
-    return this.http.post(url, income);
+    const url = SERVER_API_URL + 'api/income/putincome/' + uid;
+    return this.http.put(url, income);
   }
 
   public GetIncome(uid) {

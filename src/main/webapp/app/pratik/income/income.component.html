@@ -24,23 +24,23 @@
                 <div>
                     <div class="pull-right">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <button type="button" class="btn btn-link" data-toggle="modal" (click)="openIncome(incomeContent)">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> &nbsp;
+                                    <i class="fa fa-plus" aria-hidden="true"></i> 
                                     <span>Add</span>
                                 </button>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <span [ngSwitch]="isIncomeData">
                                     <p *ngSwitchCase="true">
                                         <button type="button" class="btn btn-link" (click)="updateIncome()">
-                                            <i class="fa fa-save" aria-hidden="true"></i> &nbsp;
+                                            <i class="fa fa-save" aria-hidden="true"> </i> 
                                             <span>Update</span>
                                         </button>
                                     </p>
                                     <p *ngSwitchCase="false">
                                         <button type="button" class="btn btn-link" (click)="saveIncome()">
-                                            <i class="fa fa-save" aria-hidden="true"></i> &nbsp;
+                                            <i class="fa fa-save" aria-hidden="true"></i> 
                                             <span>Save</span>
                                         </button>
                                     </p>
@@ -183,16 +183,22 @@
                                     <td> {{field.name}} </td>
                                     <td>{{field.value }} </td>
                                     <td>{{field.value * 12}} </td>
-                                    <td><button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(i)" >
-                                    <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+                                    <td>
+                                        <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, incomeEditContent)" >
+                                            <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                                        </button>
+                                        <button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(i)" >
+                                            <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                     <tr >
                                     <th scope="col">Total</th>
-                                    <th *ngIf="!loadIncome"> {{totalIncome}} </th>
-                                    <th *ngIf="loadIncome">
+                                    <!-- <th *ngIf="!loadIncome"> {{totalIncome}} </th>
+                                    <th *ngIf="loadIncome"> -->
+                                    <th>
                                         {{ income.incomeSalary + income.incomeAward + income.incomeBonus + income.incomePension + income.incomeSaving + income.incomeDeposit + income.incomeRental + dynamicTotal }}
                                     </th>
                                     <th> {{( income.incomeSalary + +income.incomeAward + income.incomeBonus + income.incomePension +   +income.incomeSaving +income.incomeDeposit + income.incomeRental + dynamicTotal ) * 12 }}

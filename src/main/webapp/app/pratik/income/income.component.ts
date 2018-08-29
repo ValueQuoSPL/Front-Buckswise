@@ -10,6 +10,10 @@ import {
 import { CanComponentDeactivate } from '../can-deactivate-guard.service';
 import { Observable } from 'rxjs';
 
+class NewIncome {
+  dynamicIncome: any = [];
+  userid;
+}
 @Component({
   selector: 'jhi-income',
   templateUrl: './income.component.html',
@@ -23,6 +27,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   tempIncomeArray: any = [];
   totalIncome: number;
   income: Income = new Income();
+  newIncome: NewIncome = new NewIncome();
   closeResult: string;
   step = 0;
   uid: any;
@@ -58,8 +63,11 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.income.incomePension = 0;
     this.income.incomeRental = 0;
     this.income.incomeSaving = 0;
-    this.isAuthenticated();
     this.changesSaved = false;
+
+    this.principal.identity().then(account => {
+      this.account = account;
+    });
   }
 
   isAuthenticated() {
@@ -208,12 +216,21 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   }
 
   AddIncome() {
-    console.log('inside add income');
     this.dynamicIncome.push({
       name: this.resource,
       value: this.amount
     });
     this.calcIncomeTotal();
+
+    this.newIncome.dynamicIncome.pop();
+    this.newIncome.dynamicIncome.push({
+      name: this.resource,
+      value: this.amount
+    });
+    console.log(this.uid);
+    this.newIncome.userid = this.uid;
+
+    this.incomeService.PostIncome(this.newIncome).subscribe();
     this.clear();
   }
 
@@ -226,7 +243,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   saveIncome(): void {
     console.log('inside save Income');
     this.income.userid = this.uid;
-    this.income.dynamicIncome = this.dynamicIncome;
+    // this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PostIncome(this.income).subscribe(data => {
       alert('Your data saved');
       this.isIncomeData = true;
@@ -289,6 +306,26 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
       );
     }
     this.changesSaved = false;
+  }
+
+  onEditDynamicField(index, modal) {
+    console.log(index);
+    this.nameField = this.dynamicIncome[index].name;
+      this.editField = this.dynamicIncome[index].value;
+
+    {
+      this.modalService
+      .open(modal, { ariaLabelledBy: 'incomeEditContent' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.dynamicIncome[index].value = this.editField;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+    }
   }
 
   FillEditIncome(nameField) {
