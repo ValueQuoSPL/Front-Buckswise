@@ -14,9 +14,11 @@ class NewIncome {
   dynamicIncome: any = [];
   userid;
 }
+
 class RemoveIncome {
   name;
 }
+
 @Component({
   selector: "jhi-income",
   templateUrl: "./income.component.html",
@@ -241,6 +243,8 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     console.log("inside delete income");
     this.removeIncome = this.dynamicIncome[index].name;
     console.log(this.dynamicIncome[index].name);
+    this.removeIncome.name = this.dynamicIncome[index].name;
+    console.log(this.removeIncome);
     this.incomeService
       .DeleteIncome(this.removeIncome, this.uid)
       .subscribe(responce => {
@@ -365,54 +369,54 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
     for (let i = 0; i < this.IncomeArray.length; i++) {
       if (this.IncomeArray[i].name === "incomeSalary") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeSalary !== +this.IncomeArray[i].amount) {
-          console.log(this.IncomeArray[i].name, " is changed");
-          console.log(this.income.incomeSalary, "new");
-          console.log(this.IncomeArray[i].amount, "old ");
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomeAward") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeAward !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomeBonus") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeBonus !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomePension") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomePension !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomeSaving") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeSaving !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomeDeposit") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeDeposit !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name === "incomeRental") {
-        console.log(this.IncomeArray[i].name);
+        // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeRental !== +this.IncomeArray[i].amount) {
           return false;
         }
       } else if (this.IncomeArray[i].name !== "userid") {
         for (let j = 0; j < this.dynamicIncome.length; j++) {
+          // console.log('dynamic', j, this.dynamicIncome[j].name);
           if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
             if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
+              // console.log('change found in dynamic');
               return false;
             }
           }
         }
-      } else {
-        return true;
+        // console.log('change not found in dynamic');
       }
+      // console.log('change not found in any income');
+      return true;
     }
   }
 

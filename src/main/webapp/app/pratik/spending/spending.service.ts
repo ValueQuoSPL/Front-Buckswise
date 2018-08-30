@@ -21,14 +21,10 @@ export class IncomeService {
   constructor(private http: HttpClient) {}
 
   public PostIncome(income) {
-    console.log(income);
-    console.log("putIncome service");
     return this.http.post(SERVER_API_URL + "api/income/income", income);
   }
 
   public PutIncome(income, uid) {
-    // console.log(income);
-    console.log("update income service");
     const url = SERVER_API_URL + "api/income/putincome/" + uid;
     return this.http.put(url, income);
   }
@@ -36,7 +32,6 @@ export class IncomeService {
   public GetIncome(uid) {
     const url = SERVER_API_URL + "api/income/getincome/" + uid;
     const response = this.http.get(url, { observe: "body" });
-    console.log("service success responce returned");
     return response;
   }
 
@@ -52,16 +47,19 @@ export class IncomeService {
 export class UtilityService {
   constructor(private http: HttpClient) {}
 
-  public PutUtility(utility) {
+  public PostUtility(utility) {
     console.log(utility);
-    return this.http.post(
-      SERVER_API_URL + "api/expense-utility/utility",
-      utility
-    );
+    const url = SERVER_API_URL + "api/expense-utility/utility";
+    return this.http.post(url, utility);
+  }
+  public PutUtility(utility, uid) {
+    console.log(utility);
+    const url = SERVER_API_URL + "api/expense-utility/pututility/" + uid;
+    return this.http.put(url, utility);
   }
   public GetUtility(uid) {
-    console.log("getIncome service");
-    const url = SERVER_API_URL + "api/" + uid;
+    console.log("get utility service");
+    const url = SERVER_API_URL + "api/expense-utility/getutility/" + uid;
     return this.http.get(url);
   }
 }
