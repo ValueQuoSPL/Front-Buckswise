@@ -33,7 +33,6 @@ export interface DialogData {
   styleUrls: ['./spending.component.css']
 })
 export class SpendingComponent implements OnInit {
-  totalUtility: number;
   totalHousehold: number;
   totalTravel: number;
   totalMisc: number;
@@ -66,7 +65,6 @@ export class SpendingComponent implements OnInit {
 
   dynamicLoanArray: any = [];
   newLoanArray: any[];
-  dynamicUtilityArray: any = [];
   dynamicHousehold: any = [];
   dynamicTravel: any = [];
   dynamicMisc: any = [];
@@ -112,7 +110,6 @@ export class SpendingComponent implements OnInit {
   ];
 
   //   Table Arrays
-  UtilityArray: any = [];
   HouseholdArray: any = [];
   TravelArray: any = [];
   MiscArray: any = [];
@@ -140,7 +137,6 @@ export class SpendingComponent implements OnInit {
   constructor(
     private principal: Principal,
     private accountService: AccountService,
-    private utilityService: UtilityService,
     private houseService: HouseService,
     private travelService: TravelService,
     private miscService: MiscService,
@@ -160,21 +156,9 @@ export class SpendingComponent implements OnInit {
     this.principal.identity().then(account => {
       this.account = account;
     });
-    this.totalUtility = 0;
     this.totalHousehold = 0;
     this.totalTravel = 0;
     this.totalMisc = 0;
-
-    // for utility
-    this.utility.electricity = 0;
-    this.utility.gas = 0;
-    this.utility.internet = 0;
-    this.utility.mobile = 0;
-    this.utility.news = 0;
-    this.utility.telephone = 0;
-    this.utility.tv = 0;
-    this.utility.vcd = 0;
-    this.utility.water = 0;
 
     // household
     this.house.milk = 0;
@@ -297,66 +281,6 @@ export class SpendingComponent implements OnInit {
         }
       })
       .catch(err => {});
-  }
-
-  // utility
-  openUtility(content) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.AddUtility();
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  calcUtilityTotal() {
-    this.totalUtility = 0;
-    for (let i = 0; i < this.dynamicUtilityArray.length; i++) {
-      const value1 = this.dynamicUtilityArray[i].value;
-      // console.log(this.totalUtility);
-      this.totalUtility = this.totalUtility + value1;
-    }
-    console.log(this.totalUtility);
-  }
-  AddUtility() {
-    this.dynamicUtilityArray.push({
-      name: this.resource,
-      value: this.expense
-    });
-    this.calcUtilityTotal();
-    this.clear();
-  }
-  RemoveUtility(index) {
-    this.dynamicUtilityArray.splice(index, 1);
-    this.calcUtilityTotal();
-  }
-  SaveUtility(): void {
-    this.utility.userid = this.uid;
-    this.utility.dynamicUtility = this.dynamicUtilityArray;
-    this.utilityService.PutUtility(this.utility).subscribe(data => {
-      alert('Your utility data saved');
-    });
-  }
-  GetUtility(): void {
-    console.log('inside GetUtility()');
-    this.utilityService.GetUtility(this.uid).subscribe((response: any[]) => {
-      this.UtilityArray = response;
-      this.utility.electricity = this.UtilityArray.electricity;
-      this.utility.gas = this.UtilityArray.gas;
-      this.utility.water = this.UtilityArray.water;
-      this.utility.telephone = this.UtilityArray.telephone;
-      this.utility.mobile = this.UtilityArray.mobile;
-      this.utility.internet = this.UtilityArray.internet;
-      this.utility.tv = this.UtilityArray.tv;
-      this.utility.vcd = this.UtilityArray.vcd;
-      this.utility.news = this.UtilityArray.news;
-      this.dynamicUtilityArray = this.UtilityArray.dynamicUtility;
-    });
-    console.log('GetUtility() success');
   }
 
   // household
