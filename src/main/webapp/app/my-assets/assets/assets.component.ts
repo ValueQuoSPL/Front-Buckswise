@@ -9,6 +9,7 @@ import { MutualFundService } from "app/my-assets/assets/mutual-fund.service";
 import { StocksService } from "app/my-assets/assets/stocks.service";
 import { MutualFund } from "app/my-assets/assets/mutual-fund.model";
 import { AssetsService } from "app/my-assets/assets/assets.service";
+import { AccountService, LoginModalService } from "app/shared";
 import {
   FAO,
   SavingScheme,
@@ -25,6 +26,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ["assets.css"]
 })
 export class AssetsComponent implements OnInit {
+  uid: any;
   account: Account;
   stocks: Stocks = new Stocks();
   isSaving: boolean;
@@ -76,6 +78,7 @@ export class AssetsComponent implements OnInit {
   ];
 
   constructor(
+    private accountService: AccountService,
     private principal: Principal,
     public activeModal: NgbActiveModal,
     private stocksService: StocksService,
@@ -90,10 +93,8 @@ export class AssetsComponent implements OnInit {
     this.principal.identity().then(account => {
       this.account = account;
     });
-
     // tslint:disable-next-line:max-line-length
   }
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from 'app/app.constants';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import { SERVER_API_URL } from "app/app.constants";
 import {
   Utility,
   Credit,
@@ -13,7 +13,7 @@ import {
   Loan,
   Misc,
   Travel
-} from 'app/pratik/spending/spending.model';
+} from "app/pratik/spending/spending.model";
 
 @Injectable()
 export class IncomeService {
@@ -22,28 +22,28 @@ export class IncomeService {
 
   public PostIncome(income) {
     console.log(income);
-    console.log('putIncome service');
-    return this.http.post(SERVER_API_URL + 'api/income/income', income);
+    console.log("putIncome service");
+    return this.http.post(SERVER_API_URL + "api/income/income", income);
   }
 
   public PutIncome(income, uid) {
     // console.log(income);
-    console.log('update income service');
-    const url = SERVER_API_URL + 'api/income/putincome/' + uid;
+    console.log("update income service");
+    const url = SERVER_API_URL + "api/income/putincome/" + uid;
     return this.http.put(url, income);
   }
 
   public GetIncome(uid) {
-    const url = SERVER_API_URL + 'api/income/getincome/' + uid;
-    const response = this.http.get(url, { observe: 'body' });
-    console.log('service success responce returned');
+    const url = SERVER_API_URL + "api/income/getincome/" + uid;
+    const response = this.http.get(url, { observe: "body" });
+    console.log("service success responce returned");
     return response;
   }
 
   public DeleteIncome(income, uid) {
     console.log(income);
-    const url = SERVER_API_URL + 'api/income/deleteincome' + uid;
-    const response = this.http.delete(url, { observe: 'body' });
+    const url = SERVER_API_URL + "api/income/deleteincome/" + uid;
+    const response = this.http.delete(url, { observe: "body" });
     return response;
   }
 }
@@ -55,13 +55,13 @@ export class UtilityService {
   public PutUtility(utility) {
     console.log(utility);
     return this.http.post(
-      SERVER_API_URL + 'api/expense-utility/utility',
+      SERVER_API_URL + "api/expense-utility/utility",
       utility
     );
   }
   public GetUtility(uid) {
-    console.log('getIncome service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    console.log("getIncome service");
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -73,13 +73,13 @@ export class HouseService {
   public PutHouse(house) {
     console.log(house);
     return this.http.post(
-      SERVER_API_URL + 'api/expensehousehold/household',
+      SERVER_API_URL + "api/expensehousehold/household",
       house
     );
   }
   public GetHouse(uid) {
-    console.log('gethouse service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    console.log("gethouse service");
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -90,10 +90,10 @@ export class CreditService {
 
   public PutCredit(credit) {
     console.log(credit);
-    return this.http.post(SERVER_API_URL + 'api/creditcard/credit', credit);
+    return this.http.post(SERVER_API_URL + "api/creditcard/credit", credit);
   }
   public GetCredit(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -105,12 +105,12 @@ export class GeneralService {
   public PutGeneral(general) {
     console.log(general);
     return this.http.post(
-      SERVER_API_URL + 'api/general-insurance/general',
+      SERVER_API_URL + "api/general-insurance/general",
       general
     );
   }
   public GetGeneral(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -122,12 +122,12 @@ export class HealthService {
   public PutHealth(health) {
     console.log(health);
     return this.http.post(
-      SERVER_API_URL + 'api/health-insurance/health',
+      SERVER_API_URL + "api/health-insurance/health",
       health
     );
   }
   public GetHealth(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -139,12 +139,12 @@ export class LifeService {
   public PutLife(life) {
     console.log(life);
     return this.http.post(
-      SERVER_API_URL + 'api/insurancepayment/insuance-payment',
+      SERVER_API_URL + "api/insurancepayment/insuance-payment",
       life
     );
   }
   public GetLife(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -156,12 +156,12 @@ export class LoanService {
   public PutLoan(loan) {
     console.log(loan);
     return this.http.put(
-      'https://demologin-79c13.firebaseio.com/loan.json',
+      "https://demologin-79c13.firebaseio.com/loan.json",
       loan
     );
   }
   public GetLoan(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -173,12 +173,12 @@ export class MiscService {
   public PutMisc(misc) {
     console.log(misc);
     return this.http.post(
-      SERVER_API_URL + 'api/miscellaneous/miscellenous',
+      SERVER_API_URL + "api/miscellaneous/miscellenous",
       misc
     );
   }
   public GetMisc(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
@@ -190,14 +190,14 @@ export class TravelService {
   public PutTravel(travel) {
     console.log(travel);
     return this.http.put(
-      'https://demologin-79c13.firebaseio.com/travel.json',
+      "https://demologin-79c13.firebaseio.com/travel.json",
       travel
     );
   }
 
   public GetTravel(uid) {
-    console.log('gethouse service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    console.log("gethouse service");
+    const url = SERVER_API_URL + "api/" + uid;
     return this.http.get(url);
   }
 }
