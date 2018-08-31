@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { House } from 'app/pratik/spending/spending.model';
 import { HouseService } from 'app/pratik/spending/spending.service';
 
+class NewHousehold {
+  dynamicHousehold: any = [];
+  userid;
+}
+
 @Component({
   selector: 'jhi-household',
   templateUrl: './household.component.html',
@@ -26,8 +31,8 @@ export class HouseholdComponent implements OnInit {
   HouseholdArray: any = [];
   tempHouseholdArray: any = [];
   dynamicHousehold: any = [];
-
   house: House = new House();
+  newHouse: NewHousehold = new NewHousehold();
 
   constructor(
     private renderer: Renderer,
@@ -187,6 +192,15 @@ export class HouseholdComponent implements OnInit {
       value: this.expense
     });
     this.calcHouseholdTotal();
+    this.newHouse.dynamicHousehold.pop();
+    this.newHouse.dynamicHousehold.push({
+      name: this.resource,
+      value: this.expense
+    });
+    console.log(this.uid);
+    this.newHouse.userid = this.uid;
+
+    this.houseService.PostHouse(this.newHouse).subscribe();
     this.clear();
   }
 

@@ -74,7 +74,7 @@ export class HouseService {
   public PutHouse(house, uid) {
     console.log(house);
     const url = SERVER_API_URL + 'api/expensehousehold/puthousehold/' + uid ;
-    return this.http.post(url, house );
+    return this.http.put(url, house );
   }
   public GetHouse(uid) {
     console.log('gethouse service');

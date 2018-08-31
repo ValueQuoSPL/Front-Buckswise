@@ -5,11 +5,17 @@ import { Observable } from 'rxjs';
 import { Utility} from '../spending.model';
 import { UtilityService } from '../spending.service';
 
+class NewUtility {
+  dynamicUtilityArray: any = [];
+  userid;
+}
+
 @Component({
   selector: 'jhi-utility',
   templateUrl: './utility.component.html',
   styleUrls: ['./utility.component.css']
 })
+
 export class UtilityComponent implements OnInit {
   uid;
   amount;
@@ -26,8 +32,8 @@ export class UtilityComponent implements OnInit {
   UtilityArray: any = [];
   tempUtilityArray: any = [];
   dynamicUtilityArray: any = [];
-
   utility: Utility = new Utility();
+  newUtility: NewUtility = new NewUtility();
 
   constructor(
     private utilityService: UtilityService,
@@ -113,7 +119,17 @@ export class UtilityComponent implements OnInit {
       name: this.resource,
       value: this.expense
     });
+
     this.calcUtilityTotal();
+    this.newUtility.dynamicUtilityArray.pop();
+    this.newUtility.dynamicUtilityArray.push({
+      name: this.resource,
+      value: this.expense
+    });
+    console.log(this.uid);
+    this.newUtility.userid = this.uid;
+
+    this.utilityService.PostUtility(this.newUtility).subscribe();
     this.clear();
   }
 
@@ -129,7 +145,7 @@ export class UtilityComponent implements OnInit {
 
   SaveUtility(): void {
     this.utility.userid = this.uid;
-    this.utility.dynamicUtility = this.dynamicUtilityArray;
+    // this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PostUtility(this.utility).subscribe(data => {
       alert('Your utility data saved');
       this.isUtilityData = true;
