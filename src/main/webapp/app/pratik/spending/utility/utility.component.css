@@ -1,18 +1,18 @@
 .topbar {
-    opacity: 10;
-      transition: all 700ms ease;
-      right: 0;
-      left: 0;
-      background: #fff;
-      -webkit-box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);
-              box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-      z-index: 5;
-      line-height: 20px;
-      font-size: 0.75em;
-      font-weight: 500;
-      vertical-align: middle;
-      border-radius: 10px;
-    }
+  opacity: 10;
+  transition: all 700ms ease;
+  right: 0;
+  left: 0;
+  background: #fff;
+  -webkit-box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  line-height: 20px;
+  font-size: 0.75em;
+  font-weight: 500;
+  vertical-align: middle;
+  border-radius: 10px;
+}
 
 .nav-shadow {
   opacity: 10;
@@ -20,10 +20,10 @@
   right: 0;
   left: 0;
   background: #fff;
-  -webkit-box-shadow: 9px 7px 18px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 9px 7px 18px -4px rgba(0,0,0,0.75);
-  box-shadow: 9px 7px 18px -4px rgba(0,0,0,0.75);
-      z-index: 5;
+  -webkit-box-shadow: 9px 7px 18px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 7px 18px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 7px 18px -4px rgba(0, 0, 0, 0.75);
+  z-index: 5;
   line-height: 20px;
   font-size: 0.75em;
   font-weight: 500;

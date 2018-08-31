@@ -118,6 +118,7 @@ export class Loan {
   intrest_type: '';
   roi;
   rdate: '';
+  id;
   loanModelArray: any = [];
   constructor() {}
 }

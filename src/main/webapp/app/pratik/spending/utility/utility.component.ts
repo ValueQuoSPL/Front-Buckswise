@@ -11,7 +11,6 @@ import { UtilityService } from '../spending.service';
   styleUrls: ['./utility.component.css']
 })
 export class UtilityComponent implements OnInit {
-
   uid;
   amount;
   expense;
@@ -30,10 +29,11 @@ export class UtilityComponent implements OnInit {
 
   utility: Utility = new Utility();
 
-  constructor(private utilityService: UtilityService,
-              private modalService: NgbModal,
-              private accountService: AccountService
-              ) { }
+  constructor(
+    private utilityService: UtilityService,
+    private modalService: NgbModal,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
     console.log('inside utility Init()');
@@ -52,7 +52,10 @@ export class UtilityComponent implements OnInit {
   }
 
   getUserid() {
-    return this.accountService.get().toPromise().then(response => {
+    return this.accountService
+      .get()
+      .toPromise()
+      .then(response => {
         const account = response.body;
         if (account) {
           this.uid = account.id;
@@ -309,7 +312,7 @@ export class UtilityComponent implements OnInit {
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     console.log('inside can deactivate');
     this.dataChanged = this.isFieldChanged();
-    if ( !this.dataChanged && !this.changesSaved ) {
+    if (!this.dataChanged && !this.changesSaved) {
       console.log(this.dataChanged, 'dataChanged');
       console.log(this.changesSaved, 'changesSaved');
       return confirm('Do you want to leave this page Before changes saved ?');
@@ -317,5 +320,4 @@ export class UtilityComponent implements OnInit {
       return true;
     }
   }
-
 }

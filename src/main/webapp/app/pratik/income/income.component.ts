@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Income } from 'app/pratik/spending/spending.model';
 import { IncomeService } from 'app/pratik/spending/spending.service';
 import { AccountService, LoginModalService, Principal } from 'app/shared';
-import { NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbModalRef
+} from '@ng-bootstrap/ng-bootstrap';
 import { CanComponentDeactivate } from '../can-deactivate-guard.service';
 import { Observable } from 'rxjs';
 
@@ -38,7 +42,6 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   isIncomeData;
   loadIncome = false;
   dynamicTotal: number;
-
   nameField;
   editField;
 
@@ -239,15 +242,15 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
   deleteFieldValue(index) {
     console.log('inside delete income');
-
+    this.removeIncome = this.dynamicIncome[index].name;
     console.log(this.dynamicIncome[index].name);
     this.removeIncome.name = this.dynamicIncome[index].name;
     console.log(this.removeIncome);
-    this.incomeService.DeleteIncome(this.removeIncome, this.uid).subscribe(
-      responce => {
+    this.incomeService
+      .DeleteIncome(this.removeIncome, this.uid)
+      .subscribe(responce => {
         console.log(responce);
-      }
-    );
+      });
 
     this.dynamicIncome.splice(index, 1);
     this.calcIncomeTotal();
@@ -279,44 +282,38 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     if (nameField === 'salary') {
       this.nameField = 'Post Tax Take Home Salary';
       this.editField = this.income.incomeSalary;
-    } else
-    if (nameField === 'award') {
+    } else if (nameField === 'award') {
       this.nameField = 'Performance award / bonus';
       this.editField = this.income.incomeAward;
-    } else
-    if (nameField === 'bonus') {
+    } else if (nameField === 'bonus') {
       this.nameField = 'Sign-up Bonus';
       this.editField = this.income.incomeBonus;
-    } else
-    if (nameField === 'pension') {
+    } else if (nameField === 'pension') {
       this.nameField = 'Pensions';
       this.editField = this.income.incomePension;
-    } else
-    if (nameField === 'saving') {
+    } else if (nameField === 'saving') {
       this.nameField = 'Interest Earned on Saving';
       this.editField = this.income.incomeSaving;
-    } else
-    if (nameField === 'deposit') {
+    } else if (nameField === 'deposit') {
       this.nameField = 'Income from investments(Deposites, Securities)';
       this.editField = this.income.incomeDeposit;
-    } else
-    if (nameField === 'rental') {
+    } else if (nameField === 'rental') {
       this.nameField = 'Rental Income';
       this.editField = this.income.incomeRental;
     }
     {
       this.modalService
-      .open(modal, { ariaLabelledBy: 'incomeEditContent' })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.FillEditIncome(nameField);
-          // console.log('add income success');
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
+        .result.then(
+          result => {
+            this.closeResult = `Closed with: ${result}`;
+            this.FillEditIncome(nameField);
+            // console.log('add income success');
+          },
+          reason => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          }
+        );
     }
     this.changesSaved = false;
   }
@@ -324,22 +321,21 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   onEditDynamicField(index, modal) {
     console.log(index);
     this.nameField = this.dynamicIncome[index].name;
-      this.editField = this.dynamicIncome[index].value;
+    this.editField = this.dynamicIncome[index].value;
 
     {
       this.modalService
-      .open(modal, { ariaLabelledBy: 'incomeEditContent' })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.dynamicIncome[index].value = this.editField;
-              this.calcIncomeTotal();
-
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
+        .result.then(
+          result => {
+            this.closeResult = `Closed with: ${result}`;
+            this.dynamicIncome[index].value = this.editField;
+            this.calcIncomeTotal();
+          },
+          reason => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          }
+        );
     }
   }
 
@@ -348,28 +344,22 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     if (nameField === 'salary') {
       this.income.incomeSalary = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'award') {
+    } else if (nameField === 'award') {
       this.income.incomeAward = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'bonus') {
+    } else if (nameField === 'bonus') {
       this.income.incomeBonus = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'pension') {
+    } else if (nameField === 'pension') {
       this.income.incomePension = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'saving') {
+    } else if (nameField === 'saving') {
       this.income.incomeSaving = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'deposit') {
+    } else if (nameField === 'deposit') {
       this.income.incomeDeposit = this.editField;
       this.editField = '';
-    } else
-    if (nameField === 'rental') {
+    } else if (nameField === 'rental') {
       this.income.incomeRental = this.editField;
       this.editField = '';
     }
@@ -379,7 +369,6 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     console.log('inside isFieldChanged');
 
     for (let i = 0; i < this.IncomeArray.length; i++) {
-
       if (this.IncomeArray[i].name === 'incomeSalary') {
         // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeSalary !== +this.IncomeArray[i].amount) {
@@ -435,7 +424,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     console.log('inside can deactivate');
     this.dataChanged = this.isFieldChanged();
-    if ( !this.dataChanged && !this.changesSaved ) {
+    if (!this.dataChanged && !this.changesSaved) {
       console.log(this.dataChanged, 'dataChanged');
       console.log(this.changesSaved, 'changesSaved');
       return confirm('Do you want to leave this page Before changes saved ?');
