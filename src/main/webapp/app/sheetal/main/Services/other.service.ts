@@ -9,6 +9,10 @@ import { AccountService } from "app/shared";
 @Injectable()
 export class OtherService {
   ServiceAPIParam: string;
+  user;
+  userID;
+  id;
+
   constructor(private http: HttpClient, private account: AccountService) {}
 
   // public ServiceOther(other) {
@@ -21,6 +25,17 @@ export class OtherService {
   save(other: any): Observable<any> {
     return this.http.post(SERVER_API_URL + "api/others", other);
   }
+  // FetchID(): Promise<any> {
+  //   return this.account
+  //     .get()
+  //     .toPromise()
+  //     .then(response => {
+  //       this.user = response.body;
+  //       console.log('user info', this.user);
+  //       this.userID = this.user.id;
+  //       console.log('in service', this.userID);
+  //     });
+  // }
   public getother(id) {
     console.log("in other service", id);
     this.ServiceAPIParam = "api/others" + "/" + id;

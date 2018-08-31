@@ -11,7 +11,7 @@ import { accountState } from "app/account";
 
 @Injectable()
 export class EightydService {
-  ID;
+  id;
   userID;
   // temp: any = [];
   user;
@@ -34,27 +34,10 @@ export class EightydService {
   save(eightyd: any): Observable<any> {
     return this.http.post(SERVER_API_URL + "api/eightds", eightyd);
   }
-  FetchID(): Promise<any> {
-    return this.account
-      .get()
-      .toPromise()
-      .then(response => {
-        this.user = response.body;
-        console.log("user info", this.user);
-        this.userID = this.user.id;
-        console.log("in service", this.userID);
-      });
-  }
+
   public geteightyd(id) {
     console.log("in geteightyd service", id);
     this.ServiceAPIParam = "api/eightds" + "/" + id;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
-    //   // return this.http.get(SERVER_API_URL + 'api/eightds/{id}').map((res) => res);
-    //   }
-    // public geteightyd(id)  {
-    // console.log('in geteightyd service', id);
-    //  this.ServiceAPIParam = 'api/eightds' + '/' + id;
-    //  return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map((res)  => res);
-    // return this.http.get(SERVER_API_URL + 'api/eightds/{id}').map((res) => res);
   }
 }

@@ -31,8 +31,16 @@ export class MainComponent implements OnInit {
   other: Other = new Other();
   output: any = [];
   data: any;
+  out: any;
+  homeout: any;
+  eightydout: any;
+  otherout: any;
   user;
   public userID: any;
+  // valid: boolean =true;
+  valid = true;
+  uid: any;
+  accountService: any;
 
   constructor(
     private grossService: GrossService,
@@ -44,9 +52,8 @@ export class MainComponent implements OnInit {
   ) {}
   // conso
   ngOnInit() {
-    // this.id = this.eightydService.returnid();
-    // console.log('id in main ts', this.id);
     this.FetchID();
+
     // for gross
     this.gross.bsalary = 0;
     this.gross.da = 0;
@@ -106,9 +113,15 @@ export class MainComponent implements OnInit {
         this.user = response.body;
         console.log("user info", this.user);
         this.id = this.user.id;
-        console.log("in service", this.id);
+        console.log("Id from backend : ", this.id);
+        this.onGrossGet(this.id);
+        this.onEightycGet(this.id);
+        this.onHomeGet(this.id);
+        this.onEightydGet(this.id);
+        this.onOtherGet(this.id);
       });
   }
+
   // gross call function
   onGrossSave() {
     this.grossService
@@ -195,42 +208,43 @@ export class MainComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
-  onEightydGet(id) {
-    //  console.log('in main ts', id);
-    this.eightydService.geteightyd(id).subscribe(res => {
+  onGrossGet(id) {
+    this.grossService.getgross(id).subscribe(res => {
       console.log(res);
       this.output = res;
       console.log(this.output);
     });
+    // this.onEightycGet(this.id);
   }
-  onOtherGet(id) {
+  onEightycGet(id) {
     //  console.log('in main ts', id);
-    this.otherService.getother(id).subscribe(res => {
+    this.eightycService.geteightyc(id).subscribe(res => {
       console.log(res);
-      this.output = res;
-      console.log(this.output);
+      this.out = res;
+      console.log(this.out);
     });
   }
   onHomeGet(id) {
     //  console.log('in main ts', id);
     this.homeService.gethome(id).subscribe(res => {
       console.log(res);
-      this.output = res;
+      this.homeout = res;
       console.log(this.output);
     });
   }
-  onEightycGet(id) {
-    //  console.log('in main ts', id);
-    this.eightycService.geteightyc(id).subscribe(res => {
+  onEightydGet(id) {
+    console.log("in main ts", id);
+    this.eightydService.geteightyd(id).subscribe(res => {
       console.log(res);
-      this.output = res;
+      this.eightydout = res;
       console.log(this.output);
     });
   }
-  onGrossGet(id) {
-    this.grossService.getgross(id).subscribe(res => {
+  onOtherGet(id) {
+    console.log("in main ts", id);
+    this.otherService.getother(id).subscribe(res => {
       console.log(res);
-      this.output = res;
+      this.otherout = res;
       console.log(this.output);
     });
   }
