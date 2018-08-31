@@ -66,6 +66,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.income.incomeRental = 0;
     this.income.incomeSaving = 0;
     this.changesSaved = false;
+    this.dataChanged = true;
 
     this.principal.identity().then(account => {
       this.account = account;
@@ -416,19 +417,19 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
         }
       } else if (this.IncomeArray[i].name !== 'userid') {
           for (let j = 0; j < this.dynamicIncome.length; j++) {
-            // console.log('dynamic', j, this.dynamicIncome[j].name);
+            //  console.log('dynamic', j, this.dynamicIncome[j].name);
             if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
               if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
-                // console.log('change found in dynamic');
+                //  console.log('change found in dynamic');
                 return false;
                 }
               }
             }
-            // console.log('change not found in dynamic');
+            //  console.log('change not found in dynamic');
           }
-            // console.log('change not found in any income');
-      return true;
      }
+    //  console.log('change not found in any income');
+     return true;
    }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {

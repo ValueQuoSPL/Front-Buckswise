@@ -1,0 +1,170 @@
+<!-- expense modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="expense-modal">Add Extra Expense</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form class="example-container" #incomeAdd="ngForm">
+          <div>
+                  <mat-form-field class="example-full-width">
+                      <input required matInput required placeholder="Name" value="" [(ngModel)]="resource" name="resource-name" >
+                      <mat-hint >Please enter your resource of expense </mat-hint>
+                  </mat-form-field>
+                  </div>
+              
+                  <div>
+                  <mat-form-field class="example-full-width">
+                      <input required matInput required jhiNumberOnly placeholder="Amount" type="number" value="" name="expense"
+                      [(ngModel)]="expense" 
+                      >
+                      <mat-hint >Please enter amount</mat-hint>
+                  </mat-form-field>
+                  </div>
+                  <br> <br>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+              </div>
+      </form>
+      </div>
+</ng-template>
+
+<!--start of buttons -->
+<div>
+<div class="float-right">
+<button type="button" class="btn btn-link" data-toggle="modal" (click)="openHousehold(content)">
+        <span>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>Add</span>
+        </span>
+</button>
+<button type="button" class="btn btn-link" (click)="SaveHousehold()">
+        <span>
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span>Save</span>
+        </span>
+</button>
+<button type="button" class="btn btn-link" (click)="GetHousehold()">
+        <span>
+            <i class="far fa-arrow-alt-circle-down"></i>
+            <span>Get</span>
+        </span>
+</button>
+</div>
+</div>
+
+<!--start of household table -->
+<table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Monthly Amount</th>
+        <th scope="col">Yearly Amount</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Milk </td>
+        <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="house.milk"  [ngModelOptions]="{standalone: true}"   > </td>
+        <td> {{house.milk * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Veg / Non Veg / Fruits </td>
+        <td> <input required jhiNumberOnly type="number" id="21" [(ngModel)]="house.fruit"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.fruit * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Rent </td>
+        <td> <input required jhiNumberOnly type="number" id="31" [(ngModel)]="house.rent" [ngModelOptions]="{standalone: true}"   > </td>
+        <td> {{house.rent * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Fuel </td>
+        <td> <input required jhiNumberOnly type="number" id="41" [(ngModel)]="house.fuel"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.fuel * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Medical expenses </td>
+        <td> <input required jhiNumberOnly type="number" id="51" [(ngModel)]="house.medical"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.medical * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Monthly Society Maintainance </td>
+        <td> <input required jhiNumberOnly type="number" id="61" [(ngModel)]="house.society"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.society * 12}}</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Auto Maintainance </td>
+        <td> <input required jhiNumberOnly type="number" id="71" [(ngModel)]="house.auto"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.auto * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Education  </td>
+        <td> <input required jhiNumberOnly type="number" id="81" [(ngModel)]="house.edu"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.edu * 12}}</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Groceries and Supplies </td>
+        <td> <input required jhiNumberOnly type="number" id="91" [(ngModel)]="house.grocery"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.grocery * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Maid / Cook / Nanny / Driver </td>
+        <td> <input required jhiNumberOnly type="number" id="101" [(ngModel)]="house.servent"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.servent * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Laundry / Dhobi </td>
+        <td> <input required jhiNumberOnly type="number" id="111" [(ngModel)]="house.laundry"  [ngModelOptions]="{standalone: true}"  > </td>
+        <td> {{house.laundry * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Video / CD Rentals </td>
+        <td> <input required jhiNumberOnly type="number" id="121" [(ngModel)]="house.vcd" [ngModelOptions]="{standalone: true}"   > </td>
+        <td> {{house.vcd * 12}} </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> Personal care (haircut / Salon / spa / gym etc.) </td>
+        <td> <input required jhiNumberOnly type="number" id="131" [(ngModel)]="house.selfcare" [ngModelOptions]="{standalone: true}"   > </td>
+        <td> {{house.selfcare * 12}} </td>
+        <td></td>
+      </tr>
+      <tr>
+          <td> Property Tax </td>
+          <td> <input required jhiNumberOnly type="number" id="141" [(ngModel)]="house.property" [ngModelOptions]="{standalone: true}"   > </td>
+          <td> {{house.property * 12}} </td>
+          <td> </td>
+      </tr>
+      <tr *ngFor="let field of dynamicHousehold; let i = index">
+        <td> {{field.name}} </td>
+        <td><input required jhiNumberOnly type="number" value="{{field.value}}" disabled> </td>
+        <td>{{field.value * 12}} </td>
+        <td><button class="btn btn-outline-info"  type="button" (click)="RemoveHousehold(i)" >
+          <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+          <tr>
+            <th scope="col">Total</th>
+            <th> {{house.milk+house.fruit+house.rent+house.fuel+house.medical+house.society+house.auto+house.edu+house.grocery+house.servent+house.laundry+house.vcd+house.selfcare+house.property + totalHousehold}} </th>
+            <th> {{ (house.milk+house.fruit+house.rent+house.fuel+house.medical+house.society+house.auto+house.edu+house.grocery+house.servent+house.laundry+house.vcd+house.selfcare+house.property + totalHousehold)*12}} </th>
+            <th></th>
+          </tr>
+    </tfoot>
+</table>
