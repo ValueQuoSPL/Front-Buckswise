@@ -389,7 +389,8 @@ export class SpendingComponent implements OnInit {
       tenure: this.loan.tenure,
       itype: this.loan.intrest_type,
       roi: this.loan.roi,
-      rdate: this.repDate.value
+      rdate: this.repDate.value,
+      userid: this.uid
     });
     this.clear();
   }

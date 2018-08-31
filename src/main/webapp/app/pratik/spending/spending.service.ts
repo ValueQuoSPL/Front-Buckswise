@@ -153,10 +153,7 @@ export class LoanService {
 
   public PutLoan(loan) {
     console.log(loan);
-    return this.http.put(
-      "https://demologin-79c13.firebaseio.com/loan.json",
-      loan
-    );
+    return this.http.post(SERVER_API_URL + "api/loananddebt/loan-debt", loan);
   }
   public GetLoan(uid) {
     const url = SERVER_API_URL + "api/" + uid;

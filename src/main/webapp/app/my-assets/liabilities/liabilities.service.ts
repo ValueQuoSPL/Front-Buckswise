@@ -11,4 +11,11 @@ export class LiabilitiesService {
     const url = SERVER_API_URL + "api/loananddebt/getloandebt/" + uid;
     return this._http.get(url, { observe: "body" });
   }
+
+  // update the loan information
+  updateloan(loan, uid) {
+    console.log("underservice of loan", loan);
+    const url = SERVER_API_URL + "api/loananddebt/putloandebt/" + uid;
+    return this._http.put(url, loan);
+  }
 }

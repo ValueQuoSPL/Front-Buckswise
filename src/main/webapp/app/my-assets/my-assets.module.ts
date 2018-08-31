@@ -15,9 +15,15 @@ import { AssetsService } from "app/my-assets/assets/assets.service";
 import { LiabilitiesComponent } from "./liabilities/liabilities.component";
 import { CustomMaterialModule } from "app/custom-material.module";
 import { StocksComponent } from "app/my-assets/mutual-fund/mutual-fund.component";
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from "../../../../../node_modules/@angular/forms";
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BuckswiseFrontEndSharedModule,
     RouterModule.forChild(userprofileState),
     BsDatepickerModule.forRoot(),
