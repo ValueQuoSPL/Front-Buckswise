@@ -205,7 +205,7 @@ export class HouseholdComponent implements OnInit {
   }
 
   RemoveHousehold(index, id) {
-    this.houseService.DeleteHouse(id, this.uid).subscribe(
+    this.houseService.DeleteHouse(id).subscribe(
       responce => {
         console.log(responce);
       }
@@ -316,10 +316,6 @@ export class HouseholdComponent implements OnInit {
   FillEdithouse(nameField) {
     console.log('inside fill edit house');
     if (nameField === 'milk') {
-      console.log('milk');
-      console.log(this.house.milk);
-      console.log(this.editField);
-
       this.house.milk = this.editField;
       this.editField = '';
     } else

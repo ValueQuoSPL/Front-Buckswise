@@ -198,7 +198,7 @@
         <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, content)" >
           <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
         </td>
-        <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveHousehold(i)" >
+        <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveHousehold(i, field.id)" >
           <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
         </td>
       </tr>
@@ -313,7 +313,7 @@
         <td> {{field.name}} </td>
         <td><input required jhiNumberOnly type="number" value="{{field.value}}" disabled> </td>
         <td>{{field.value * 12}} </td>
-        <td><button class="btn btn-outline-info"  type="button" (click)="RemoveHousehold(i)" >
+        <td><button class="btn btn-outline-info"  type="button" (click)="RemoveHousehold(i, field.id)" >
           <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
         </td>
       </tr>

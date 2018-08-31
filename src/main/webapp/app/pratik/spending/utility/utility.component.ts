@@ -134,7 +134,7 @@ export class UtilityComponent implements OnInit {
   }
 
   RemoveUtility(index, id) {
-    this.utilityService.DeleteUtility(id, this.uid).subscribe(
+    this.utilityService.DeleteUtility(id).subscribe(
       responce => {
         console.log(responce);
       }
