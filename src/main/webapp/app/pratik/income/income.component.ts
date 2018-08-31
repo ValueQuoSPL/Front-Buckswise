@@ -242,15 +242,15 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
   deleteFieldValue(index) {
     console.log('inside delete income');
-    this.removeIncome = this.dynamicIncome[index].name;
+
     console.log(this.dynamicIncome[index].name);
     this.removeIncome.name = this.dynamicIncome[index].name;
     console.log(this.removeIncome);
-    this.incomeService
-      .DeleteIncome(this.removeIncome, this.uid)
-      .subscribe(responce => {
+    this.incomeService.DeleteIncome(this.removeIncome, this.uid).subscribe(
+      responce => {
         console.log(responce);
-      });
+      }
+    );
 
     this.dynamicIncome.splice(index, 1);
     this.calcIncomeTotal();

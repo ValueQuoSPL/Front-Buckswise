@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, AfterViewInit, OnInit, Inject, Renderer, ElementRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService, Principal } from 'app/shared';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { HouseService } from 'app/pratik/spending/spending.service';
   templateUrl: './household.component.html',
   styleUrls: ['../spending.component.css']
 })
-export class HouseholdComponent implements OnInit {
+export class HouseholdComponent implements OnInit, AfterViewInit {
   uid;
   amount;
   expense;
@@ -30,6 +30,8 @@ export class HouseholdComponent implements OnInit {
   house: House = new House();
 
   constructor(
+    private renderer: Renderer,
+    private elementRef: ElementRef,
     private principal: Principal,
     private houseService: HouseService,
     private modalService: NgbModal,
@@ -56,6 +58,10 @@ export class HouseholdComponent implements OnInit {
     this.house.vcd = 0;
     this.house.selfcare = 0;
     this.house.property = 0;
+  }
+
+  ngAfterViewInit() {
+    this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#resource'), 'focus', []);
   }
 
   isAuthenticated() {
@@ -93,6 +99,7 @@ export class HouseholdComponent implements OnInit {
   }
   // household
   openHousehold(content) {
+    // this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#resource'), 'focus', []);
     this.modalService
       .open(content, { ariaLabelledBy: 'expense-modal' })
       .result.then(
