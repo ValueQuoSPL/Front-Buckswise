@@ -25,6 +25,7 @@ export class AuditsComponent implements OnInit, OnDestroy {
     reverse: boolean;
     toDate: string;
     totalItems: number;
+    orderProp;
 
     constructor(
         private auditsService: AuditsService,

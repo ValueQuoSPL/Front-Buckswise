@@ -10,15 +10,15 @@ import {
   ContentChild,
   ContentChildren,
   ElementRef
-} from "@angular/core";
-import { DraggableHelperDirective } from "app/shared/draggable/draggable-helper.directive";
+} from '@angular/core';
+import { DraggableHelperDirective } from 'app/shared/draggable/draggable-helper.directive';
 
 @Directive({
-  selector: "[jhiDraggable]"
+  selector: '[jhiDraggable]'
 })
 export class DraggableDirective {
-  @HostBinding("class.draggable") draggable = true;
-  @HostBinding("class.dragging") dragging = false;
+  @HostBinding('class.draggable') draggable = true;
+  @HostBinding('class.dragging') dragging = false;
 
   @Output() dragStart = new EventEmitter();
   @Output() dragMove = new EventEmitter();
@@ -28,7 +28,7 @@ export class DraggableDirective {
 
   constructor() {}
 
-  @HostListener("mousedown", ["$event"])
+  @HostListener('mousedown', ['$event'])
   onPointerDown(event): void {
     this.dragging = true;
     event.stopPropagation();
@@ -39,14 +39,14 @@ export class DraggableDirective {
     // 2 // this.helper.onDragStart();
   }
 
-  @HostListener("document:mousemove", ["$event"])
+  @HostListener('document:mousemove', ['$event'])
   onPointerMove(event): void {
     if (this.dragging === true) {
       this.dragMove.emit(event);
     }
   }
 
-  @HostListener("document:mouseup", ["$event"])
+  @HostListener('document:mouseup', ['$event'])
   onPointerUp(event): void {
     if (this.dragging === true) {
       this.dragEnd.emit(event);

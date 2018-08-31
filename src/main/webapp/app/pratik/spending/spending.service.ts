@@ -21,25 +21,22 @@ export class IncomeService {
   constructor(private http: HttpClient) {}
 
   public PostIncome(income) {
-    console.log(income);
-    console.log('putIncome service');
     return this.http.post(SERVER_API_URL + 'api/income/income', income);
   }
 
-  public PutIncome(income) {
-    // console.log(income);
-    console.log('update income service');
-    return this.http.post(SERVER_API_URL + 'api/income/income', income);
+  public PutIncome(income, uid) {
+    const url = SERVER_API_URL + 'api/income/putincome/' + uid;
+    return this.http.put(url, income);
   }
 
   public GetIncome(uid) {
-    return this.request(uid);
-  }
-  request(uid) {
     const url = SERVER_API_URL + 'api/income/getincome/' + uid;
-    const response = this.http.get(url, { observe: 'body' });
-    console.log('service success responce returned');
-    return response;
+    return this.http.get(url, { observe: 'body' });
+  }
+
+  public DeleteIncome(id, uid) {
+    const url = SERVER_API_URL + 'api/income/deleteincome/' + uid;
+    return this.http.delete(url, id);
   }
 }
 
@@ -47,17 +44,21 @@ export class IncomeService {
 export class UtilityService {
   constructor(private http: HttpClient) {}
 
-  public PutUtility(utility) {
-    console.log(utility);
-    return this.http.post(
-      SERVER_API_URL + 'api/expense-utility/utility',
-      utility
-    );
+  public PostUtility(utility) {
+    const url = SERVER_API_URL + 'api/expense-utility/utility';
+    return this.http.post(url, utility);
+  }
+  public PutUtility(utility, uid) {
+    const url = SERVER_API_URL + 'api/expense-utility/pututility/' + uid;
+    return this.http.put(url, utility);
   }
   public GetUtility(uid) {
-    console.log('getIncome service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/expense-utility/getutility/' + uid;
     return this.http.get(url);
+  }
+  public DeleteUtility(utility, uid) {
+    const url = SERVER_API_URL + 'api/expense-utility/deleteutility/' + uid;
+    return this.http.delete(url, { observe: 'body' });
   }
 }
 
@@ -65,17 +66,24 @@ export class UtilityService {
 export class HouseService {
   constructor(private http: HttpClient) {}
 
+  public PostHouse(house) {
+    console.log(house);
+    const url = SERVER_API_URL + 'api/expensehousehold/household' ;
+    return this.http.post(url, house );
+  }
   public PutHouse(house) {
     console.log(house);
-    return this.http.post(
-      SERVER_API_URL + 'api/expensehousehold/household',
-      house
-    );
+    const url = SERVER_API_URL + 'api/expensehousehold/puthousehold' ;
+    return this.http.post(url, house );
   }
   public GetHouse(uid) {
     console.log('gethouse service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/expensehousehold/get/' + uid;
     return this.http.get(url);
+  }
+  public DeleteHouse(house, uid) {
+    const url = SERVER_API_URL + 'api/expensehousehold/household' + uid;
+    return this.http.delete(url, { observe: 'body' });
   }
 }
 
@@ -150,10 +158,7 @@ export class LoanService {
 
   public PutLoan(loan) {
     console.log(loan);
-    return this.http.put(
-      'https://demologin-79c13.firebaseio.com/loan.json',
-      loan
-    );
+    return this.http.post(SERVER_API_URL + 'api/loananddebt/loan-debt', loan);
   }
   public GetLoan(uid) {
     const url = SERVER_API_URL + 'api/' + uid;

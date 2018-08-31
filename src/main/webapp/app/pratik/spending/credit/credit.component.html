@@ -1,0 +1,105 @@
+
+<div> <!--start of buttons -->
+  <div class="float-right">
+  <button type="button" class="btn btn-link" data-toggle="modal" (click)="openCredit(creditModal)">
+          <span>
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              <span>Add</span>
+          </span>
+  </button>
+  <button type="button" class="btn btn-link" (click)="onCreditSave()">
+          <span>
+              <i class="fa fa-save" aria-hidden="true"></i>
+              <span>Save</span>
+          </span>
+  </button>
+  <button type="button" class="btn btn-link" (click)="onGetCredit()">
+          <span>
+              <i class="far fa-arrow-alt-circle-down"></i>
+              <span>Get</span>
+          </span>
+  </button>
+  </div>
+</div>
+
+<!-- credit table -->
+<div>
+  <table class="table table-hover table-sm">
+      <thead>
+          <tr>
+              <th scope="col">Type </th>
+              <th scope="col">Bank</th>
+              <th scope="col">ROI</th>
+              <th scope="col">Outstanding Balance </th>
+              <th scope="col">Action </th>
+          </tr>
+      </thead>
+      <tbody>
+
+          <tr *ngFor="let field of dynamicCredit; let i = index">
+              <td> {{ field.type }}</td>
+              <td> {{ field.bank }} </td>
+              <td> {{ field.roi }} </td>
+              <td> {{ field.balance }} </td>
+
+              <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveCredit(i)" >
+                  <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<!-- credit modal -->
+<ng-template #creditModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="creditModal">Add Credit card </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form class="example-container" #incomeAdd="ngForm">
+          <!-- form start-->
+          <div class="row">
+                  <div class="col-md-6">
+
+                      <mat-form-field>
+                          <input required matInput placeholder="Card issuer(Bank)" name="insname" [(ngModel)]="credit.issuer" >
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input required matInput jhiNumberOnly placeholder="Card Limit" name="insname21" [(ngModel)]="credit.limit" >
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input required matInput jhiNumberOnly placeholder="Average Monthly usage" name="insndame21" [(ngModel)]="credit.monthly_usage" >
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input required matInput jhiNumberOnly placeholder="Monthly payment" name="insnme" [(ngModel)]="credit.monthly_pay" >
+                      </mat-form-field>
+
+                  </div>
+
+                  <!-- right start -->
+                  <div class="col-md-6">
+
+                      <mat-form-field>
+                          <mat-select placeholder="Select card type" name="type3vd" [(ngModel)]="credit.type">
+                              <mat-option *ngFor="let type of CardTypeArray" [value]="type.name">
+                              {{type.name}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input required matInput jhiNumberOnly placeholder="Rate of Interest" name="roi" [(ngModel)]="credit.roi" >
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input required matInput jhiNumberOnly placeholder="Outstanding balance" name="insnme" [(ngModel)]="credit.balance" >
+                      </mat-form-field>
+                  </div>  <!-- right end-->
+              </div>  <!-- form end -->
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+  </div>
+</ng-template>
