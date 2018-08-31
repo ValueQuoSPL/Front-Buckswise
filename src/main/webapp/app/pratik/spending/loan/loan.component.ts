@@ -68,7 +68,7 @@ export class LoanComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from utility userid is : ', this.uid);
+          console.log('from loan userid is : ', this.uid);
           // this.GetUtility();
         } else {
           console.log('cannot get user details check login ');

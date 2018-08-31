@@ -31,15 +31,12 @@ export class IncomeService {
 
   public GetIncome(uid) {
     const url = SERVER_API_URL + 'api/income/getincome/' + uid;
-    const response = this.http.get(url, { observe: 'body' });
-    return response;
+    return this.http.get(url, { observe: 'body' });
   }
 
-  public DeleteIncome(income, uid) {
-    console.log(income);
+  public DeleteIncome(id, uid) {
     const url = SERVER_API_URL + 'api/income/deleteincome/' + uid;
-    const response = this.http.delete(url, { observe: 'body' });
-    return response;
+    return this.http.delete(url, id);
   }
 }
 
@@ -48,19 +45,20 @@ export class UtilityService {
   constructor(private http: HttpClient) {}
 
   public PostUtility(utility) {
-    console.log(utility);
     const url = SERVER_API_URL + 'api/expense-utility/utility';
     return this.http.post(url, utility);
   }
   public PutUtility(utility, uid) {
-    console.log(utility);
     const url = SERVER_API_URL + 'api/expense-utility/pututility/' + uid;
     return this.http.put(url, utility);
   }
   public GetUtility(uid) {
-    console.log('get utility service');
     const url = SERVER_API_URL + 'api/expense-utility/getutility/' + uid;
     return this.http.get(url);
+  }
+  public DeleteUtility(utility, uid) {
+    const url = SERVER_API_URL + 'api/expense-utility/deleteutility/' + uid;
+    return this.http.delete(url, { observe: 'body' });
   }
 }
 
@@ -68,17 +66,24 @@ export class UtilityService {
 export class HouseService {
   constructor(private http: HttpClient) {}
 
+  public PostHouse(house) {
+    console.log(house);
+    const url = SERVER_API_URL + 'api/expensehousehold/household' ;
+    return this.http.post(url, house );
+  }
   public PutHouse(house) {
     console.log(house);
-    return this.http.post(
-      SERVER_API_URL + 'api/expensehousehold/household',
-      house
-    );
+    const url = SERVER_API_URL + 'api/expensehousehold/puthousehold' ;
+    return this.http.post(url, house );
   }
   public GetHouse(uid) {
     console.log('gethouse service');
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/expensehousehold/get/' + uid;
     return this.http.get(url);
+  }
+  public DeleteHouse(house, uid) {
+    const url = SERVER_API_URL + 'api/expensehousehold/household' + uid;
+    return this.http.delete(url, { observe: 'body' });
   }
 }
 

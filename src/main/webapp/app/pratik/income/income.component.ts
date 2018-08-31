@@ -139,7 +139,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.IncomeArray = this.tempIncomeArray;
     console.log('inside fill income data');
     for (let i = 0; i < this.IncomeArray.length; i++) {
-      // console.log('from IncomeArray : ', this.IncomeArray[i]);
+       console.log('from IncomeArray : ', this.IncomeArray[i]);
       if (this.IncomeArray[i].name === 'incomeSalary') {
         this.income.incomeSalary = +this.IncomeArray[i].amount;
         // console.log(this.income.incomeSalary);
@@ -163,6 +163,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
         // console.log(this.income.incomeRental);
       } else if (this.IncomeArray[i].name !== 'userid') {
         this.dynamicIncome.push({
+          id: this.IncomeArray[i].id,
           name: this.IncomeArray[i].name,
           value: this.IncomeArray[i].amount
         });
@@ -240,13 +241,14 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.clear();
   }
 
-  deleteFieldValue(index) {
+  deleteFieldValue(index, id) {
     console.log('inside delete income');
 
     console.log(this.dynamicIncome[index].name);
+    console.log(id);
     this.removeIncome.name = this.dynamicIncome[index].name;
     console.log(this.removeIncome);
-    this.incomeService.DeleteIncome(this.removeIncome, this.uid).subscribe(
+    this.incomeService.DeleteIncome(id, this.uid).subscribe(
       responce => {
         console.log(responce);
       }

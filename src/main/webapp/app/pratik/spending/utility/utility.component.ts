@@ -59,7 +59,7 @@ export class UtilityComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from utility userid is : ', this.uid);
+          // console.log('from utility userid is : ', this.uid);
           this.GetUtility();
         } else {
           console.log('cannot get user details check login ');
@@ -105,7 +105,7 @@ export class UtilityComponent implements OnInit {
       // console.log(this.totalUtility);
       this.totalUtility = +this.totalUtility + value1;
     }
-    console.log(this.totalUtility);
+    // console.log(this.totalUtility);
   }
 
   AddUtility() {
@@ -133,10 +133,10 @@ export class UtilityComponent implements OnInit {
   }
 
   GetUtility(): void {
-    console.log('inside GetUtility()');
+    // console.log('inside GetUtility()');
     this.utilityService.GetUtility(this.uid).subscribe((response: any[]) => {
       this.UtilityArray = response;
-      console.log(this.UtilityArray);
+      // console.log(this.UtilityArray);
       if (this.UtilityArray.length === 0) {
         this.isUtilityData = false;
       } else {
@@ -147,7 +147,7 @@ export class UtilityComponent implements OnInit {
   }
 
   FillUtilityData() {
-    console.log('inside fill utility data');
+    // console.log('inside fill utility data');
     for (let i = 0; i < this.UtilityArray.length; i++) {
       // console.log('from UtilityArray : ', this.UtilityArray[i]);
       if (this.UtilityArray[i].name === 'electricity') {
@@ -185,7 +185,7 @@ export class UtilityComponent implements OnInit {
       }
     }
     this.loadUtility = true;
-    console.log(this.UtilityArray);
+    // console.log(this.UtilityArray);
     this.calcUtilityTotal();
   }
 
