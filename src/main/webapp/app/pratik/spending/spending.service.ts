@@ -56,9 +56,9 @@ export class UtilityService {
     const url = SERVER_API_URL + 'api/expense-utility/getutility/' + uid;
     return this.http.get(url);
   }
-  public DeleteUtility(utility, uid) {
+  public DeleteUtility(id, uid) {
     const url = SERVER_API_URL + 'api/expense-utility/deleteutility/' + uid;
-    return this.http.delete(url, { observe: 'body' });
+    return this.http.delete(url, id);
   }
 }
 
@@ -71,9 +71,9 @@ export class HouseService {
     const url = SERVER_API_URL + 'api/expensehousehold/household' ;
     return this.http.post(url, house );
   }
-  public PutHouse(house) {
+  public PutHouse(house, uid) {
     console.log(house);
-    const url = SERVER_API_URL + 'api/expensehousehold/puthousehold' ;
+    const url = SERVER_API_URL + 'api/expensehousehold/puthousehold/' + uid ;
     return this.http.post(url, house );
   }
   public GetHouse(uid) {
@@ -81,9 +81,9 @@ export class HouseService {
     const url = SERVER_API_URL + 'api/expensehousehold/get/' + uid;
     return this.http.get(url);
   }
-  public DeleteHouse(house, uid) {
+  public DeleteHouse(id, uid) {
     const url = SERVER_API_URL + 'api/expensehousehold/household' + uid;
-    return this.http.delete(url, { observe: 'body' });
+    return this.http.delete(url, id);
   }
 }
 

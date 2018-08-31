@@ -1,5 +1,5 @@
 <!-- expense modal -->
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #housecontent let-c="close" let-d="dismiss">
   <div class="modal-header">
       <h4 class="modal-title" id="expense-modal">Add Extra Expense</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -31,27 +31,64 @@
       </div>
 </ng-template>
 
+<!-- modal, edit dialog -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="houseEditContent">Utility Edit</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+    <form class="example-container" #incomeAdd="ngForm">
+        <div>
+                <mat-label>{{ nameField }}</mat-label>
+            </div>
+        
+            <div>
+            <mat-form-field class="example-full-width">
+                <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                <mat-hint>Please enter amount</mat-hint>
+            </mat-form-field>
+            </div>
+            <br> <br>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+        </div>
+    </form>
+    </div>
+</ng-template>
+
 <!--start of buttons -->
 <div>
     <div class="float-right">
-    <button type="button" class="btn btn-link" data-toggle="modal" (click)="openHousehold(content)">
+    <button type="button" class="btn btn-link" data-toggle="modal" (click)="openHousehold(housecontent)">
             <span>
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Add</span>
             </span>
     </button>
-    <button type="button" class="btn btn-link" (click)="SaveHousehold()">
-            <span>
-                <i class="fa fa-save" aria-hidden="true"></i>
-                <span>Save</span>
-            </span>
-    </button>
-    <button type="button" class="btn btn-link" (click)="GetHousehold()">
-            <span>
-                <i class="far fa-arrow-alt-circle-down"></i>
-                <span>Get</span>
-            </span>
-    </button>
+
+
+    <span [ngSwitch]="isHouseData">
+        <p *ngSwitchCase="true">
+            <button type="button" class="btn btn-link" (click)="UpdateHousehold()">
+                <span>
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                    <span>Update</span>
+                </span>
+        </button>
+        </p>
+        <p *ngSwitchCase="false">
+            <button type="button" class="btn btn-link" (click)="SaveHousehold()">
+                <span>
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    <span>Save</span>
+                </span>
+        </button>
+        </p>
+
+      </span>
   </div>
 </div>
 
@@ -156,10 +193,10 @@
       </tr>
       <tr *ngFor="let field of dynamicHousehold; let i = index">
         <td> {{field.name}} </td>
-        <td><input required jhiNumberOnly type="number" value="{{field.value}}" disabled> </td>
+        <td>{{field.value }} </td>
         <td>{{field.value * 12}} </td>
-        <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i)" >
-          <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+        <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, content)" >
+          <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
         </td>
         <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveHousehold(i)" >
           <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>

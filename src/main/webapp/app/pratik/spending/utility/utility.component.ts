@@ -117,7 +117,12 @@ export class UtilityComponent implements OnInit {
     this.clear();
   }
 
-  RemoveUtility(index) {
+  RemoveUtility(index, id) {
+    this.utilityService.DeleteUtility(id, this.uid).subscribe(
+      responce => {
+        console.log(responce);
+      }
+    );
     this.dynamicUtilityArray.splice(index, 1);
     this.calcUtilityTotal();
   }
@@ -179,6 +184,7 @@ export class UtilityComponent implements OnInit {
         // console.log(this.utility.utilityRental);
       } else if (this.UtilityArray[i].name !== 'userid') {
         this.dynamicUtilityArray.push({
+          id: this.UtilityArray[i].id,
           name: this.UtilityArray[i].name,
           value: this.UtilityArray[i].amount
         });
@@ -308,6 +314,16 @@ export class UtilityComponent implements OnInit {
         }
       );
     }
+  }
+
+  UpdateUtility() {
+    console.log('inside update utility');
+    this.utility.userid = this.uid;
+    this.utility.dynamicUtility = this.dynamicUtilityArray;
+    this.utilityService.PutUtility(this.utility, this.uid).subscribe(data => {
+      alert('Your data saved');
+      this.changesSaved = true;
+    });
   }
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     console.log('inside can deactivate');

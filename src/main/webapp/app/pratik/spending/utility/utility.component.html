@@ -71,7 +71,7 @@
 
         <span [ngSwitch]="isUtilityData">
             <p *ngSwitchCase="true">
-                <button type="button" class="btn btn-link" (click)="SaveUtility()">
+                <button type="button" class="btn btn-link" (click)="UpdateUtility()">
                     <span>
                         <i class="fa fa-save" aria-hidden="true"></i>
                         <span>Update</span>
@@ -201,7 +201,7 @@
                     <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, utilityEditContent)" >
                         <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                     </button>
-                    <button class="btn btn-outline-danger"  type="button" (click)="RemoveUtility(i)" >
+                    <button class="btn btn-outline-danger"  type="button" (click)="RemoveUtility(i, field.id)" >
                         <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
                     </button>
                 </td>

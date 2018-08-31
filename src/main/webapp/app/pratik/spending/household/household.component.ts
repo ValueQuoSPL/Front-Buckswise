@@ -19,12 +19,12 @@ export class HouseholdComponent implements OnInit {
   editField;
   closeResult;
   totalHousehold;
-  loadUtility: boolean;
+  loadhouse: boolean;
   dataChanged: boolean;
   changesSaved: boolean;
   isHouseData: boolean;
   HouseholdArray: any = [];
-  tempUtilityArray: any = [];
+  tempHouseholdArray: any = [];
   dynamicHousehold: any = [];
 
   house: House = new House();
@@ -97,22 +97,46 @@ export class HouseholdComponent implements OnInit {
   }
 
   FillHouseholdData() {
-    console.log('success');
-    // this.house.milk = this.HouseholdArray.milk;
-      // this.house.fruit = this.HouseholdArray.fruit;
-      // this.house.rent = this.HouseholdArray.rent;
-      // this.house.fuel = this.HouseholdArray.fuel;
-      // this.house.medical = this.HouseholdArray.medical;
-      // this.house.society = this.HouseholdArray.society;
-      // this.house.auto = this.HouseholdArray.auto;
-      // this.house.edu = this.HouseholdArray.edu;
-      // this.house.grocery = this.HouseholdArray.grocery;
-      // this.house.servent = this.HouseholdArray.servent;
-      // this.house.laundry = this.HouseholdArray.laundry;
-      // this.house.vcd = this.HouseholdArray.vcd;
-      // this.house.selfcare = this.HouseholdArray.selfcare;
-      // this.house.property = this.HouseholdArray.property;
-      // this.dynamicHousehold = this.HouseholdArray.dynamicHousehold;
+    for (let i = 0; i < this.HouseholdArray.length; i++) {
+      if (this.HouseholdArray[i].name === 'milk') {
+        this.house.milk = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'fruit') {
+        this.house.fruit = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'rent') {
+        this.house.rent = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'fuel') {
+        this.house.fuel = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'medical') {
+        this.house.medical = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'society') {
+        this.house.society = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'auto') {
+        this.house.auto = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'edu') {
+        this.house.vcd = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'grocery') {
+        this.house.grocery = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'servent') {
+        this.house.servent = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'laundry') {
+        this.house.laundry = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'vcd') {
+        this.house.vcd = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'selfcare') {
+        this.house.selfcare = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name === 'property') {
+        this.house.property = +this.HouseholdArray[i].amount;
+      } else if (this.HouseholdArray[i].name !== 'userid') {
+        this.dynamicHousehold.push({
+          id: this.HouseholdArray[i].id,
+          name: this.HouseholdArray[i].name,
+          value: this.HouseholdArray[i].amount
+        });
+      }
+    }
+    this.loadhouse = true;
+    // console.log(this.HouseholdArray);
+    this.calcHouseholdTotal();
   }
 
   clear() {
@@ -130,7 +154,7 @@ export class HouseholdComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  // household
+
   openHousehold(content) {
     this.modalService
       .open(content, { ariaLabelledBy: 'expense-modal' })
@@ -146,15 +170,17 @@ export class HouseholdComponent implements OnInit {
         }
       );
   }
+
   calcHouseholdTotal() {
     this.totalHousehold = 0;
     for (let i = 0; i < this.dynamicHousehold.length; i++) {
       const value1 = +this.dynamicHousehold[i].value;
-      // console.log(this.totalUtility);
+      // console.log(this.totalhouse);
       this.totalHousehold = +this.totalHousehold + value1;
     }
     // console.log(this.totalHousehold);
   }
+
   AddHousehold() {
     this.dynamicHousehold.push({
       name: this.resource,
@@ -163,10 +189,17 @@ export class HouseholdComponent implements OnInit {
     this.calcHouseholdTotal();
     this.clear();
   }
-  RemoveHousehold(index) {
+
+  RemoveHousehold(index, id) {
+    this.houseService.DeleteHouse(id, this.uid).subscribe(
+      responce => {
+        console.log(responce);
+      }
+    );
     this.dynamicHousehold.splice(index, 1);
     this.calcHouseholdTotal();
   }
+
   SaveHousehold(): void {
     this.house.userid = this.uid;
     this.house.dynamicHousehold = this.dynamicHousehold;
@@ -177,4 +210,178 @@ export class HouseholdComponent implements OnInit {
     });
   }
 
+  UpdateHousehold() {
+    console.log('inside update income');
+    this.house.userid = this.uid;
+    this.house.dynamicHousehold = this.dynamicHousehold;
+    this.houseService.PutHouse(this.house, this.uid).subscribe(data => {
+      alert('Your data saved');
+      this.changesSaved = true;
+    });
+  }
+
+  isFieldChanged() {
+    return true;
+  }
+
+  onEditStaticField(nameField, modal) {
+    console.log('inside edit household');
+    if (nameField === 'milk') {
+      this.nameField = 'Milk ';
+      this.editField = this.house.milk;
+    } else
+    if (nameField === 'fruit') {
+      this.nameField = 'Veg / Non Veg / Fruits';
+      this.editField = this.house.fruit;
+    } else
+    if (nameField === 'rent') {
+      this.nameField = 'Rent';
+      this.editField = this.house.rent;
+    } else
+    if (nameField === 'fuel') {
+      this.nameField = 'Fuel';
+      this.editField = this.house.fuel;
+    } else
+    if (nameField === 'medical') {
+      this.nameField = 'Medical expenses';
+      this.editField = this.house.medical;
+    } else
+    if (nameField === 'society') {
+      this.nameField = 'Monthly Society Maintainance';
+      this.editField = this.house.society;
+    } else
+    if (nameField === 'auto') {
+      this.nameField = 'Auto Maintainance';
+      this.editField = this.house.auto;
+    } else
+    if (nameField === 'edu') {
+      this.nameField = 'Education';
+      this.editField = this.house.edu;
+    } else
+    if (nameField === 'grocery') {
+      this.nameField = 'Groceries and Supplies';
+      this.editField = this.house.grocery;
+    } else
+    if (nameField === 'servent') {
+      this.nameField = 'Maid / Cook / Nanny / Driver';
+      this.editField = this.house.servent;
+    } else
+    if (nameField === 'laundry') {
+      this.nameField = 'Laundry / Dhobi	';
+      this.editField = this.house.laundry;
+    } else
+    if (nameField === 'vcd') {
+      this.nameField = 'Video / CD Rentals	';
+      this.editField = this.house.vcd;
+    } else
+    if (nameField === 'selfcare') {
+      this.nameField = 'Personal care (haircut / Salon / spa / gym etc.)';
+      this.editField = this.house.selfcare;
+    } else
+    if (nameField === 'property') {
+      this.nameField = 'Property Tax';
+      this.editField = this.house.property;
+    }
+    {
+      this.modalService
+      .open(modal, { ariaLabelledBy: 'houseEditContent' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEdithouse(nameField);
+          // console.log('add house success');
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+    }
+    this.changesSaved = false;
+  }
+
+  FillEdithouse(nameField) {
+    console.log('inside fill edit house');
+    if (nameField === 'milk') {
+      console.log('milk');
+      console.log(this.house.milk);
+      console.log(this.editField);
+
+      this.house.milk = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'fruit') {
+      this.house.fruit = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'rent') {
+      this.house.rent = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'fuel') {
+      this.house.fuel = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'society') {
+      this.house.society = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'auto') {
+      this.house.auto = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'edu') {
+      this.house.edu = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'vcd') {
+      this.house.vcd = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'grocery') {
+      this.house.grocery = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'servent') {
+      this.house.servent = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'laundry') {
+      this.house.laundry = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'selfcare') {
+      this.house.selfcare = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'property') {
+      this.house.property = this.editField;
+      this.editField = '';
+    } else
+    if (nameField === 'medical') {
+      this.house.medical = this.editField;
+      this.editField = '';
+    }
+  }
+
+  editDynamicField(index, modal) {
+    console.log(index);
+    this.nameField = this.dynamicHousehold[index].name;
+      this.editField = this.dynamicHousehold[index].value;
+
+    {
+      this.modalService
+      .open(modal, { ariaLabelledBy: 'incomeEditContent' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.dynamicHousehold[index].value = this.editField;
+              this.calcHouseholdTotal();
+
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+    }
+  }
 }
