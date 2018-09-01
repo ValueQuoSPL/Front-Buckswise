@@ -19,13 +19,10 @@ export class LoanComponent implements OnInit {
   nameField;
   editField;
   closeResult;
-  totalUtility;
-  loadUtility: boolean;
   dataChanged: boolean;
+  isLoanData: boolean;
   changesSaved: boolean;
-  isUtilityData: boolean;
-  newLoanArray: any[];
-  dynamicLoanArray: any = [];
+  dynamicLoanArray: any =  [];
   loanDate = new FormControl(new Date());
   repDate = new FormControl(new Date());
   loan: Loan = new Loan();
@@ -45,6 +42,7 @@ export class LoanComponent implements OnInit {
     { name: 'Floating' },
     { name: 'Fixed-Floating' }
   ];
+  getloan: any;
 
   constructor(
     private loanService: LoanService,
@@ -63,20 +61,6 @@ export class LoanComponent implements OnInit {
     return this.principal.isAuthenticated();
   }
 
-  getUserid() {
-    return this.accountService.get().toPromise().then(response => {
-        const account = response.body;
-        if (account) {
-          this.uid = account.id;
-          console.log('from loan userid is : ', this.uid);
-          // this.GetUtility();
-        } else {
-          console.log('cannot get user details check login ');
-        }
-      })
-      .catch(err => {});
-  }
-
   clear() {
     this.resource = '';
     this.amount = '';
@@ -93,7 +77,6 @@ export class LoanComponent implements OnInit {
     this.loan.roi = '';
     this.loan.tenure = '';
   }
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -103,7 +86,20 @@ export class LoanComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  // loan
+  getUserid() {
+    return this.accountService.get().toPromise().then(response => {
+        const account = response.body;
+        if (account) {
+          this.uid = account.id;
+          console.log('from loan userid is : ', this.uid);
+          this.getLoanandDebt(this.uid);
+        } else {
+          console.log('cannot get user details check login ');
+        }
+      })
+      .catch(err => {});
+  }
+
   openLoan(loanModal) {
     this.modalService
       .open(loanModal, { ariaLabelledBy: 'loanModal' })
@@ -117,6 +113,7 @@ export class LoanComponent implements OnInit {
         }
       );
   }
+
   AddLoan() {
     this.dynamicLoanArray.push({
       ltype: this.loan.loan_type,
@@ -132,23 +129,94 @@ export class LoanComponent implements OnInit {
     });
     this.clear();
   }
-  RemoveLoan(index) {
-    this.dynamicLoanArray.splice(index, 1);
-  }
+
   onLoanSave(): void {
+    this.isLoanData = true;
     this.loan.userid = this.uid;
     this.loan.loanModelArray = this.dynamicLoanArray;
-    this.loanService.PutLoan(this.loan.loanModelArray).subscribe(data => {
+    this.loanService.PutLoan(this.loan.loanModelArray, this.uid).subscribe(data => {
       alert('Loan Added successfully');
     });
   }
-  onGetLoan(): void {
-    console.log('inside getLoan()');
-    this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
-      this.dynamicLoanArray = response;
-      console.log(this.dynamicLoanArray);
+
+  getLoanandDebt(uid) {
+    this.loanService.GetLoan(this.uid).subscribe(data => {
+      this.dynamicLoanArray = data;
+      console.log('return from loandebts' + this.dynamicLoanArray);
+      if (this.dynamicLoanArray.length === 0) {
+        this.isLoanData = false;
+      } else {
+        this.isLoanData = true;
+      }
     });
-    console.log('getLoan() success');
+  }
+
+  onEditLoan(id, loanModal) {
+    this.editLoan(id);
+    this.modalService
+      .open(loanModal, { ariaLabelledBy: 'loanModal' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.fillLoan(id);
+          // this.updateLoan(this.uid, id);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  editLoan(id) {
+    for (let i = 0; i < this.dynamicLoanArray.length; i++) {
+      if (this.dynamicLoanArray[i].id === id) {
+        this.loan.loan_type = this.dynamicLoanArray[i].ltype;
+        this.loan.lender = this.dynamicLoanArray[i].lenderName;
+        this.loan.applicant = this.dynamicLoanArray[i].appName;
+        this.loan.amnt = this.dynamicLoanArray[i].amount;
+        this.loan.ldate = this.dynamicLoanArray[i].ldate;
+        this.loan.check = this.dynamicLoanArray[i].checkType;
+        this.loan.tenure = this.dynamicLoanArray[i].tenure;
+        this.loan.intrest_type = this.dynamicLoanArray[i].itype;
+        this.loan.roi = this.dynamicLoanArray[i].roi;
+        this.loan.rdate = this.dynamicLoanArray[i].rdate;
+      }
+    }
+  }
+
+  fillLoan(id) {
+    for (let i = 0; i < this.getloan.length; i++) {
+      if (this.dynamicLoanArray[i].id === id) {
+        this.dynamicLoanArray[i].id = this.loan.id;
+        this.dynamicLoanArray[i].ltype = this.loan.loan_type;
+        this.dynamicLoanArray[i].lenderName = this.loan.lender;
+        this.dynamicLoanArray[i].appName = this.loan.applicant;
+        this.dynamicLoanArray[i].amount = this.loan.amnt;
+        this.dynamicLoanArray[i].ldate = this.loan.ldate;
+        this.dynamicLoanArray[i].checkType = this.loan.check;
+        this.dynamicLoanArray[i].tenure = this.loan.tenure;
+        this.dynamicLoanArray[i].itype = this.loan.intrest_type;
+        this.dynamicLoanArray[i].roi = this.loan.roi;
+        this.dynamicLoanArray[i].rdate = this.loan.rdate;
+      }
+    }
+  }
+  updateLoan(uid, id) {
+    this.loan.userid = this.uid;
+    this.loan.id = id;
+    console.log(this.loan);
+    this.loanService.PutLoan(this.loan, this.uid).subscribe(data => {
+      alert('Your data saved');
+    });
+  }
+
+  RemoveLoan(index, id) {
+    this.loanService.DeleteLoan(id).subscribe(
+      responce => {
+        console.log(responce);
+      }
+    );
+    this.dynamicLoanArray.splice(index, 1);
   }
 
 }

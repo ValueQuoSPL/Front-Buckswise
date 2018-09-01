@@ -199,15 +199,15 @@ export class LoanService {
   constructor(private http: HttpClient) {}
 
   public PostLoan(data) {
-    const url = SERVER_API_URL + 'api/' ;
+    const url = SERVER_API_URL + 'api/loananddebt/loandebt/' ;
     return this.http.post(url, data );
   }
   public PutLoan(data, uid) {
-    const url = SERVER_API_URL + 'api/' + uid ;
+    const url = SERVER_API_URL + 'api/loananddebt/putloandebt/' + uid ;
     return this.http.put(url, data );
   }
   public GetLoan(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/loananddebt/getloandebt/' + uid;
     return this.http.get(url);
   }
   public DeleteLoan(id) {
