@@ -110,13 +110,21 @@ export class MiscService {
 export class CreditService {
   constructor(private http: HttpClient) {}
 
-  public PutCredit(credit) {
-    console.log(credit);
-    return this.http.post(SERVER_API_URL + 'api/creditcard/credit', credit);
+  public PostCredit(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutCredit(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
   }
   public GetCredit(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteCredit(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
 
@@ -124,16 +132,21 @@ export class CreditService {
 export class GeneralService {
   constructor(private http: HttpClient) {}
 
-  public PutGeneral(general) {
-    console.log(general);
-    return this.http.post(
-      SERVER_API_URL + 'api/general-insurance/general',
-      general
-    );
+  public PostGeneral(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutGeneral(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
   }
   public GetGeneral(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteGeneral(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
 
@@ -141,16 +154,21 @@ export class GeneralService {
 export class HealthService {
   constructor(private http: HttpClient) {}
 
-  public PutHealth(health) {
-    console.log(health);
-    return this.http.post(
-      SERVER_API_URL + 'api/health-insurance/health',
-      health
-    );
+  public PostHealth(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutHealth(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
   }
   public GetHealth(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteHealth(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
 
@@ -158,16 +176,21 @@ export class HealthService {
 export class LifeService {
   constructor(private http: HttpClient) {}
 
-  public PutLife(life) {
-    console.log(life);
-    return this.http.post(
-      SERVER_API_URL + 'api/insurancepayment/insuance-payment',
-      life
-    );
+  public PostLife(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutLife(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
   }
   public GetLife(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteLife(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
 
@@ -175,13 +198,21 @@ export class LifeService {
 export class LoanService {
   constructor(private http: HttpClient) {}
 
-  public PutLoan(loan) {
-    console.log(loan);
-    return this.http.post(SERVER_API_URL + 'api/loananddebt/loan-debt', loan);
+  public PostLoan(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutLoan(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
   }
   public GetLoan(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteLoan(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
 
@@ -189,17 +220,20 @@ export class LoanService {
 export class TravelService {
   constructor(private http: HttpClient) {}
 
-  public PutTravel(travel) {
-    console.log(travel);
-    return this.http.put(
-      'https://demologin-79c13.firebaseio.com/travel.json',
-      travel
-    );
+  public PostTravel(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
   }
-
+  public PutTravel(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
+  }
   public GetTravel(uid) {
-    console.log('gethouse service');
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
+  }
+  public DeleteTravel(id) {
+    const url = SERVER_API_URL + 'api/' + id;
+    return this.http.delete(url);
   }
 }
