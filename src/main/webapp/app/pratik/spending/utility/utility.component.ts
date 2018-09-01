@@ -6,7 +6,7 @@ import { Utility} from '../spending.model';
 import { UtilityService } from '../spending.service';
 
 class NewUtility {
-  dynamicUtilityArray: any = [];
+  dynamicUtility: any = [];
   userid;
 }
 
@@ -121,14 +121,14 @@ export class UtilityComponent implements OnInit {
     });
 
     this.calcUtilityTotal();
-    this.newUtility.dynamicUtilityArray.pop();
-    this.newUtility.dynamicUtilityArray.push({
+    this.newUtility.dynamicUtility.pop();
+    this.newUtility.dynamicUtility.push({
       name: this.resource,
       value: this.expense
     });
     console.log(this.uid);
     this.newUtility.userid = this.uid;
-
+    console.log(this.newUtility);
     this.utilityService.PostUtility(this.newUtility).subscribe();
     this.clear();
   }

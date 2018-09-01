@@ -34,7 +34,7 @@
 <!-- modal, edit dialog -->
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h4 class="modal-title" id="houseEditContent">Utility Edit</h4>
+        <h4 class="modal-title" id="houseEditContent">Household Edit</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -62,33 +62,30 @@
 <!--start of buttons -->
 <div>
     <div class="float-right">
-    <button type="button" class="btn btn-link" data-toggle="modal" (click)="openHousehold(housecontent)">
-            <span>
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <span>Add</span>
-            </span>
-    </button>
-
-
-    <span [ngSwitch]="isHouseData">
-        <p *ngSwitchCase="true">
-            <button type="button" class="btn btn-link" (click)="UpdateHousehold()">
-                <span>
-                    <i class="far fa-arrow-alt-circle-down"></i>
-                    <span>Update</span>
-                </span>
-        </button>
-        </p>
-        <p *ngSwitchCase="false">
-            <button type="button" class="btn btn-link" (click)="SaveHousehold()">
-                <span>
-                    <i class="fa fa-save" aria-hidden="true"></i>
-                    <span>Save</span>
-                </span>
-        </button>
-        </p>
-
-      </span>
+      <button type="button" class="btn btn-link" data-toggle="modal" (click)="openHousehold(housecontent)">
+              <span>
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                  <span>Add</span>
+              </span>
+      </button>
+      <span [ngSwitch]="isHouseData">
+          <p *ngSwitchCase="true">
+              <button type="button" class="btn btn-link" (click)="UpdateHousehold()">
+                  <span>
+                      <i class="far fa-arrow-alt-circle-down"></i>
+                      <span>Update</span>
+                  </span>
+          </button>
+          </p>
+          <p *ngSwitchCase="false">
+              <button type="button" class="btn btn-link" (click)="SaveHousehold()">
+                  <span>
+                      <i class="fa fa-save" aria-hidden="true"></i>
+                      <span>Save</span>
+                  </span>
+          </button>
+          </p>
+        </span>
   </div>
 </div>
 

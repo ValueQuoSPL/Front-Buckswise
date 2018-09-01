@@ -67,22 +67,41 @@ export class HouseService {
   constructor(private http: HttpClient) {}
 
   public PostHouse(house) {
-    console.log(house);
     const url = SERVER_API_URL + 'api/expensehousehold/household' ;
     return this.http.post(url, house );
   }
   public PutHouse(house, uid) {
-    console.log(house);
     const url = SERVER_API_URL + 'api/expensehousehold/puthousehold/' + uid ;
     return this.http.put(url, house );
   }
   public GetHouse(uid) {
-    console.log('gethouse service');
     const url = SERVER_API_URL + 'api/expensehousehold/get/' + uid;
     return this.http.get(url);
   }
   public DeleteHouse(id) {
-    const url = SERVER_API_URL + 'api/expensehousehold/household' + id;
+    const url = SERVER_API_URL + 'api/expensehousehold/household/' + id;
+    return this.http.delete(url);
+  }
+}
+
+@Injectable()
+export class MiscService {
+  constructor(private http: HttpClient) {}
+
+  public PostMisc(data) {
+    const url = SERVER_API_URL + 'api/' ;
+    return this.http.post(url, data );
+  }
+  public PutMisc(data, uid) {
+    const url = SERVER_API_URL + 'api/' + uid ;
+    return this.http.put(url, data );
+  }
+  public GetMisc(uid) {
+    const url = SERVER_API_URL + 'api/' + uid;
+    return this.http.get(url);
+  }
+  public DeleteMisc(id) {
+    const url = SERVER_API_URL + 'api/' + id;
     return this.http.delete(url);
   }
 }
@@ -161,23 +180,6 @@ export class LoanService {
     return this.http.post(SERVER_API_URL + 'api/loananddebt/loan-debt', loan);
   }
   public GetLoan(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
-    return this.http.get(url);
-  }
-}
-
-@Injectable()
-export class MiscService {
-  constructor(private http: HttpClient) {}
-
-  public PutMisc(misc) {
-    console.log(misc);
-    return this.http.post(
-      SERVER_API_URL + 'api/miscellaneous/miscellenous',
-      misc
-    );
-  }
-  public GetMisc(uid) {
     const url = SERVER_API_URL + 'api/' + uid;
     return this.http.get(url);
   }

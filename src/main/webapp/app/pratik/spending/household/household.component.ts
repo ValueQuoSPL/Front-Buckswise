@@ -216,7 +216,7 @@ export class HouseholdComponent implements OnInit {
 
   SaveHousehold(): void {
     this.house.userid = this.uid;
-    this.house.dynamicHousehold = this.dynamicHousehold;
+    // this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PostHouse(this.house).subscribe(data => {
       alert('Your household data saved');
       this.isHouseData = true;
