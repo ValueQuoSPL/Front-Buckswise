@@ -96,12 +96,27 @@ export class LoanComponent implements OnInit {
         if (account) {
           this.uid = account.id;
           // console.log('from loan userid is : ', this.uid);
-          this.getLoanandDebt(this.uid);
+          this.getLoanandDebt();
         } else {
           console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
+  }
+
+  getLoanandDebt() {
+    this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
+      this.dynamicLoanArray = response;
+      console.log('return from loandebts' + this.dynamicLoanArray);
+      if (this.dynamicLoanArray.length === 0) {
+        this.isLoanData = false;
+        console.log(this.isLoanData);
+      } else {
+        this.isLoanData = true;
+        console.log(this.isLoanData);
+      }
+    });
+    console.log(this.isLoanData);
   }
 
   openLoan(loanModal) {
@@ -143,18 +158,6 @@ export class LoanComponent implements OnInit {
       .subscribe(data => {
         alert('Loan Added successfully');
       });
-  }
-
-  getLoanandDebt(uid) {
-    this.loanService.GetLoan(this.uid).subscribe(data => {
-      this.dynamicLoanArray = data;
-      // console.log('return from loandebts' + this.dynamicLoanArray);
-      if (this.dynamicLoanArray.length === 0) {
-        this.isLoanData = false;
-      } else {
-        this.isLoanData = true;
-      }
-    });
   }
 
   onEditLoan(id, loanModal) {

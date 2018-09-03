@@ -56,12 +56,27 @@ export class CreditComponent implements OnInit {
         if (account) {
           this.uid = account.id;
           // console.log('from credit userid is : ', this.uid);
-          // this.GetUtility();
+          this.onGetCredit();
         } else {
           // console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
+  }
+
+  onGetCredit(): void {
+    console.log('inside getCredit()');
+    this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
+      this.dynamicCredit = response;
+      console.log('creditdatais', this.dynamicCredit);
+      if (this.dynamicCredit.length === 0) {
+        this.isCreditData = false;
+      } else {
+        this.isCreditData = true;
+        // this.FillUtilityData();
+      }
+    });
+    // console.log('getCredit() success');
   }
 
   clear() {
@@ -197,12 +212,5 @@ export class CreditComponent implements OnInit {
       });
     // console.log('in credit save');
   }
-  onGetCredit(): void {
-    // console.log('inside getCredit()');
-    this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
-      this.dynamicCredit = response;
-      // console.log('creditdatais', this.dynamicCredit);
-    });
-    // console.log('getCredit() success');
-  }
+
 }

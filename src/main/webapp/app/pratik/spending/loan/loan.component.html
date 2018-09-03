@@ -84,7 +84,7 @@
           </span>
   </button>
 
-<span [ngSwitch]="">
+<span [ngSwitch]="isLoanData">
     <div *ngSwitchCase="true">
             <button type="button" class="btn btn-link" (click)="UpdateLoan()">
                     <span>
@@ -106,8 +106,6 @@
 
   </div>
 </div>
-
-
 
 
 <!-- loan table -->
