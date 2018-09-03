@@ -154,7 +154,7 @@
         </tr>
         <tr *ngFor="let field of dynamicMisc; let i = index">
             <td> {{field.name}} </td>
-            <td><input required  type="number" value="{{field.value}}" disabled> </td>
+            <td>{{field.value }}</td>
             <td>{{field.value * 12}}</td>
             <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" >
               <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
@@ -231,7 +231,10 @@
             <td> {{field.name}} </td>
             <td><input required  type="number" value="{{field.value}}" disabled> </td>
             <td>{{field.value * 12}}</td>
-            <td><button class="btn btn-outline-info"  type="button" (click)="RemoveMisc(i, field.id)" >
+            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" >
+              <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+            </td>
+            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveMisc(i, field.id)" >
               <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
             </td>
           </tr>

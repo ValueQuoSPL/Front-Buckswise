@@ -1,17 +1,17 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
-import { Misc } from "app/pratik/spending/spending.model";
-import { MiscService } from "app/pratik/spending/spending.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService, Principal } from 'app/shared';
+import { Observable } from 'rxjs';
+import { Misc } from 'app/pratik/spending/spending.model';
+import { MiscService } from 'app/pratik/spending/spending.service';
 class NewMisc {
   dynamicMisc: any = [];
   userid;
 }
 @Component({
-  selector: "jhi-misc",
-  templateUrl: "./misc.component.html",
-  styleUrls: ["../spending.component.css"]
+  selector: 'jhi-misc',
+  templateUrl: './misc.component.html',
+  styleUrls: ['../spending.component.css']
 })
 export class MiscComponent implements OnInit {
   uid;
@@ -39,7 +39,7 @@ export class MiscComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("inside misc Init()");
+    // console.log('inside misc Init()');
     this.getUserid();
     this.totalMisc = 0;
 
@@ -64,32 +64,32 @@ export class MiscComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log("from misc userid is : ", this.uid);
+          // console.log('from misc userid is : ', this.uid);
           this.GetMisc();
         } else {
-          console.log("cannot get user details check login ");
+          // console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
   }
   clear() {
-    this.resource = "";
-    this.amount = "";
-    this.expense = "";
+    this.resource = '';
+    this.amount = '';
+    this.expense = '';
   }
 
   GetMisc(): void {
-    console.log("inside get misc()");
+    // console.log('inside get misc()');
     this.miscService.GetMisc(this.uid).subscribe((response: any[]) => {
       this.MiscArray = response;
-      console.log(this.MiscArray);
+      // console.log(this.MiscArray);
       if (this.MiscArray.length === 0) {
-        console.log("empty");
+        // console.log('empty');
 
         this.isMiscData = false;
       } else {
         this.isMiscData = true;
-        console.log("full");
+        // console.log('full');
 
         this.FillMiscData();
       }
@@ -97,21 +97,21 @@ export class MiscComponent implements OnInit {
   }
   FillMiscData() {
     for (let i = 0; i < this.MiscArray.length; i++) {
-      if (this.MiscArray[i].name === "shoes") {
+      if (this.MiscArray[i].name === 'shoes') {
         this.misc.shoes = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "pet") {
+      } else if (this.MiscArray[i].name === 'pet') {
         this.misc.pet = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "electronics") {
+      } else if (this.MiscArray[i].name === 'electronics') {
         this.misc.electronics = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "furniture") {
+      } else if (this.MiscArray[i].name === 'furniture') {
         this.misc.furniture = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "charity") {
+      } else if (this.MiscArray[i].name === 'charity') {
         this.misc.charity = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "gift") {
+      } else if (this.MiscArray[i].name === 'gift') {
         this.misc.gift = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name === "cloth") {
+      } else if (this.MiscArray[i].name === 'cloth') {
         this.misc.cloth = +this.MiscArray[i].amount;
-      } else if (this.MiscArray[i].name !== "userid") {
+      } else if (this.MiscArray[i].name !== 'userid') {
         this.dynamicMisc.push({
           id: this.MiscArray[i].id,
           name: this.MiscArray[i].name,
@@ -120,15 +120,15 @@ export class MiscComponent implements OnInit {
       }
     }
     this.loadMisc = true;
-    // console.log(this.MiscArray);
+    // // console.log(this.MiscArray);
     this.calcMiscTotal();
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -136,7 +136,7 @@ export class MiscComponent implements OnInit {
   // misc
   openMisc(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: "expense-modal" })
+      .open(content, { ariaLabelledBy: 'expense-modal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -152,10 +152,10 @@ export class MiscComponent implements OnInit {
     this.totalMisc = 0;
     for (let i = 0; i < this.dynamicMisc.length; i++) {
       const value1 = +this.dynamicMisc[i].value;
-      // console.log(this.totalIncome);
+      // // console.log(this.totalIncome);
       this.totalMisc = +this.totalMisc + value1;
     }
-    console.log(this.totalMisc);
+    // console.log(this.totalMisc);
   }
 
   AddMisc() {
@@ -169,7 +169,7 @@ export class MiscComponent implements OnInit {
       name: this.resource,
       value: this.expense
     });
-    console.log(this.uid);
+    // console.log(this.uid);
     this.newMisc.userid = this.uid;
 
     this.miscService.PostMisc(this.newMisc).subscribe();
@@ -178,7 +178,7 @@ export class MiscComponent implements OnInit {
 
   RemoveMisc(index, id) {
     this.miscService.DeleteMisc(id).subscribe(responce => {
-      console.log(responce);
+      // console.log(responce);
     });
     this.dynamicMisc.splice(index, 1);
     this.calcMiscTotal();
@@ -188,16 +188,16 @@ export class MiscComponent implements OnInit {
     this.misc.userid = this.uid;
     // this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PostMisc(this.misc).subscribe(data => {
-      alert("Your Misc data saved");
+      alert('Your Misc data saved');
     });
   }
 
   UpdateMisc() {
-    console.log("inside update income");
+    // console.log('inside update income');
     this.misc.userid = this.uid;
     this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PutMisc(this.misc, this.uid).subscribe(data => {
-      alert("Your data saved");
+      alert('Your data saved');
       this.changesSaved = true;
     });
   }
@@ -207,37 +207,37 @@ export class MiscComponent implements OnInit {
   }
 
   onEditStaticField(nameField, modal) {
-    console.log("inside edit misc");
-    if (nameField === "shoes") {
-      this.nameField = "Shoes ";
+    // console.log('inside edit misc');
+    if (nameField === 'shoes') {
+      this.nameField = 'Shoes ';
       this.editField = this.misc.shoes;
-    } else if (nameField === "pet") {
-      this.nameField = "Pet Care";
+    } else if (nameField === 'pet') {
+      this.nameField = 'Pet Care';
       this.editField = this.misc.pet;
-    } else if (nameField === "electronics") {
-      this.nameField = "Electronics";
+    } else if (nameField === 'electronics') {
+      this.nameField = 'Electronics';
       this.editField = this.misc.electronics;
-    } else if (nameField === "furniture") {
-      this.nameField = "Furniture";
+    } else if (nameField === 'furniture') {
+      this.nameField = 'Furniture';
       this.editField = this.misc.furniture;
-    } else if (nameField === "charity") {
-      this.nameField = "Charity";
+    } else if (nameField === 'charity') {
+      this.nameField = 'Charity';
       this.editField = this.misc.charity;
-    } else if (nameField === "cloth") {
-      this.nameField = "cloth";
+    } else if (nameField === 'cloth') {
+      this.nameField = 'cloth';
       this.editField = this.misc.cloth;
-    } else if (nameField === "autgifto") {
-      this.nameField = "gift";
+    } else if (nameField === 'autgifto') {
+      this.nameField = 'gift';
       this.editField = this.misc.gift;
     }
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "miscModal" })
+        .open(modal, { ariaLabelledBy: 'miscModal' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
             this.FillEditMisc(nameField);
-            // console.log('add misc success');
+            // // console.log('add misc success');
           },
           reason => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -248,38 +248,38 @@ export class MiscComponent implements OnInit {
   }
 
   FillEditMisc(nameField) {
-    console.log("inside fill edit misc");
-    if (nameField === "shoes") {
+    // console.log('inside fill edit misc');
+    if (nameField === 'shoes') {
       this.misc.shoes = this.editField;
-      this.editField = "";
-    } else if (nameField === "pet") {
+      this.editField = '';
+    } else if (nameField === 'pet') {
       this.misc.pet = this.editField;
-      this.editField = "";
-    } else if (nameField === "electronics") {
+      this.editField = '';
+    } else if (nameField === 'electronics') {
       this.misc.electronics = this.editField;
-      this.editField = "";
-    } else if (nameField === "furniture") {
+      this.editField = '';
+    } else if (nameField === 'furniture') {
       this.misc.furniture = this.editField;
-      this.editField = "";
-    } else if (nameField === "charity") {
+      this.editField = '';
+    } else if (nameField === 'charity') {
       this.misc.charity = this.editField;
-      this.editField = "";
-    } else if (nameField === "gift") {
+      this.editField = '';
+    } else if (nameField === 'gift') {
       this.misc.gift = this.editField;
-      this.editField = "";
-    } else if (nameField === "cloth") {
+      this.editField = '';
+    } else if (nameField === 'cloth') {
       this.misc.cloth = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
 
   editDynamicField(index, modal) {
-    console.log(index);
+    // console.log(index);
     this.nameField = this.dynamicMisc[index].name;
     this.editField = this.dynamicMisc[index].value;
 
     {
-      this.modalService.open(modal, { ariaLabelledBy: "editMisc" }).result.then(
+      this.modalService.open(modal, { ariaLabelledBy: 'editMisc' }).result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
           this.dynamicMisc[index].value = this.editField;

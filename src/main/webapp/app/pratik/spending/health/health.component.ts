@@ -138,7 +138,7 @@ export class HealthComponent implements OnInit {
     this.health.userid = this.uid;
     this.health.healthModelArray = this.dynamicHealth;
     this.healthService
-      .PutHealth(this.health.healthModelArray)
+      .PutHealth(this.health.healthModelArray, this.uid)
       .subscribe(data => {
         alert('Health Insurance saved');
       });

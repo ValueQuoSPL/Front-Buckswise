@@ -140,7 +140,7 @@ export class LifeComponent implements OnInit {
   onLifeSave(): void {
     this.life.userid = this.uid;
     this.life.lifeModelArray = this.dynamicLifeArray;
-    this.lifeService.PutLife(this.life.lifeModelArray).subscribe(data => {
+    this.lifeService.PutLife(this.life.lifeModelArray, this.uid).subscribe(data => {
       alert('success');
     });
     console.log('in life save');

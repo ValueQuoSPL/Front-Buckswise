@@ -137,7 +137,7 @@ export class GeneralComponent implements OnInit {
     this.general.userid = this.uid;
     this.general.generalModelArray = this.dynamicGeneral;
     this.generalService
-      .PutGeneral(this.general.generalModelArray)
+      .PutGeneral(this.general.generalModelArray, this.uid)
       .subscribe(data => {
         alert('General Insurance saved');
       });

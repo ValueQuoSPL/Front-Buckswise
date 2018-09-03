@@ -1,14 +1,14 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
-import { Credit } from "app/pratik/spending/spending.model";
-import { CreditService } from "app/pratik/spending/spending.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService, Principal } from 'app/shared';
+import { Observable } from 'rxjs';
+import { Credit } from 'app/pratik/spending/spending.model';
+import { CreditService } from 'app/pratik/spending/spending.service';
 
 @Component({
-  selector: "jhi-credit",
-  templateUrl: "./credit.component.html",
-  styleUrls: ["../spending.component.css"]
+  selector: 'jhi-credit',
+  templateUrl: './credit.component.html',
+  styleUrls: ['../spending.component.css']
 })
 export class CreditComponent implements OnInit {
   uid;
@@ -30,10 +30,10 @@ export class CreditComponent implements OnInit {
   _credit: any = [];
 
   CardTypeArray = [
-    { name: "Gold" },
-    { name: "Platinum" },
-    { name: "Silver" },
-    { name: "Titanium " }
+    { name: 'Gold' },
+    { name: 'Platinum' },
+    { name: 'Silver' },
+    { name: 'Titanium ' }
   ];
   constructor(
     private creditService: CreditService,
@@ -43,7 +43,7 @@ export class CreditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("inside credit Init()");
+    // console.log('inside credit Init()');
     this.getUserid();
   }
 
@@ -55,28 +55,28 @@ export class CreditComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log("from credit userid is : ", this.uid);
+          // console.log('from credit userid is : ', this.uid);
           // this.GetUtility();
         } else {
-          console.log("cannot get user details check login ");
+          // console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
   }
 
   clear() {
-    this.resource = "";
-    this.amount = "";
-    this.expense = "";
+    this.resource = '';
+    this.amount = '';
+    this.expense = '';
 
-    this.credit.balance = "";
-    this.credit.balance = "";
-    this.credit.issuer = "";
-    this.credit.limit = "";
-    this.credit.monthly_pay = "";
-    this.credit.monthly_usage = "";
-    this.credit.roi = "";
-    this.credit.type = "";
+    this.credit.balance = '';
+    this.credit.balance = '';
+    this.credit.issuer = '';
+    this.credit.limit = '';
+    this.credit.monthly_pay = '';
+    this.credit.monthly_usage = '';
+    this.credit.roi = '';
+    this.credit.type = '';
   }
 
   isAuthenticated() {
@@ -84,22 +84,22 @@ export class CreditComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   editCredit(id) {
-    console.log("creditId:", id);
+    // console.log('creditId:', id);
     this._credit = this.dynamicCredit;
     for (let i = 0; i < this._credit.length; i++) {
       if (this._credit[i].id === id) {
         (this.credit.id = this._credit[i].id),
           (this.credit.balance = this._credit[i].balance);
         this.credit.issuer = this._credit[i].bank;
-        console.log("underedit", this.credit.bank);
+        // console.log('underedit', this.credit.bank);
         this.credit.roi = this._credit[i].roi;
         this.credit.type = this._credit[i].type;
         this.credit.limit = this._credit[i].lt;
@@ -127,9 +127,9 @@ export class CreditComponent implements OnInit {
   updateCredit(uid, id) {
     this.dynamicCredit.userid = this.uid;
     this.dynamicCredit.id = id;
-    console.log("dynamicdata:", this.dynamicCredit);
+    // console.log('dynamicdata:', this.dynamicCredit);
     this.creditService.update(this.dynamicCredit, this.uid).subscribe(data => {
-      alert("data saved");
+      alert('data saved');
     });
   }
 
@@ -137,7 +137,7 @@ export class CreditComponent implements OnInit {
   openCredit(id, creditModal) {
     this.editCredit(id);
     this.modalService
-      .open(creditModal, { ariaLabelledBy: "creditModal" })
+      .open(creditModal, { ariaLabelledBy: 'creditModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -155,7 +155,7 @@ export class CreditComponent implements OnInit {
   opnCredit(creditModal) {
     // this.editCredit(id);
     this.modalService
-      .open(creditModal, { ariaLabelledBy: "creditModal" })
+      .open(creditModal, { ariaLabelledBy: 'creditModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -188,16 +188,16 @@ export class CreditComponent implements OnInit {
     this.creditService
       .PutCredit(this.credit.creditModelArray)
       .subscribe(data => {
-        alert("success");
+        alert('success');
       });
-    console.log("in credit save");
+    // console.log('in credit save');
   }
   onGetCredit(): void {
-    console.log("inside getCredit()");
+    // console.log('inside getCredit()');
     this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
       this.dynamicCredit = response;
-      console.log("creditdatais", this.dynamicCredit);
+      // console.log('creditdatais', this.dynamicCredit);
     });
-    console.log("getCredit() success");
+    // console.log('getCredit() success');
   }
 }

@@ -71,7 +71,12 @@
 
     <span [ngSwitch]="isTravelData">
       <p *ngSwitchCase="true">
-      
+        <button type="button" class="btn btn-link" (click)="UpdateTravel()">
+          <span>
+              <i class="fa fa-save" aria-hidden="true"></i>
+              <span>Update</span>
+          </span>
+        </button>
       </p>
       <p *ngSwitchCase="false">
           <button type="button" class="btn btn-link" (click)="SaveTravel()">
@@ -83,12 +88,7 @@
       </p>
     </span>
 
-    <button type="button" class="btn btn-link" (click)="GetTravel()">
-            <span>
-                <i class="far fa-arrow-alt-circle-down"></i>
-                <span>Get</span>
-            </span>
-    </button>
+
     </div>
 </div>
 
@@ -103,6 +103,7 @@
         <th scope="col">Monthly Amount</th>
         <th scope="col">Yearly Amount</th>
         <th scope="col">Actions</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -122,7 +123,7 @@
       </tr>
       <tr>
         <td> Dining out </td>
-        <td> {{travel.dineout } </td>
+        <td> {{travel.dineout }} </td>
         <td> {{travel.dineout * 12}} </td>
         <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('food', editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
         <td></td>
@@ -137,8 +138,8 @@
       <tr>
         <td> Hobbies </td>
         <td> {{travel.hobby }} </td>
-        <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('food', editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
         <td> {{travel.hobby * 12}} </td>
+        <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('food', editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
         <td></td>
       </tr>
       <tr *ngFor="let field of dynamicTravel; let i = index">
@@ -207,8 +208,8 @@
             <td> {{field.name}} </td>
             <td><input required  type="number" value="{{field.value}}"    disabled> </td>
             <td>{{field.value * 12}} </td>
-            <td><button class="btn btn-outline-info"  type="button" (click)="RemoveTravel(i, field.id)" >
-              <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
+            <td><button class="btn btn-outline-info"  type="button" (click)="RemoveTravel(i, field.id)" ><span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
             </td>
           </tr>
         </tbody>
@@ -217,7 +218,8 @@
                 <th scope="col">Total</th>
                 <th> {{travel.food+ travel.entertainment+ travel.dineout+ travel.vacation+ travel.hobby+ totalTravel}}</th>
                 <th> {{ (travel.food+travel.entertainment+travel.dineout+travel.vacation+travel.hobby + totalTravel) * 12}}</th>
-                    <th></th>
+                <th></th>
+                <th></th>
               </tr>
         </tfoot>
     </table>
