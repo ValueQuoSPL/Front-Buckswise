@@ -133,11 +133,6 @@ export class CreditComponent implements OnInit {
     });
   }
 
-  deleteCredit(id) {
-    this.creditService.delete(id).subscribe(data => {
-      alert("deleted");
-    });
-  }
   // credit card
   openCredit(id, creditModal) {
     this.editCredit(id);
@@ -149,7 +144,6 @@ export class CreditComponent implements OnInit {
           // this.AddCredit();
           this.fillCredit(id);
           this.updateCredit(this.uid, id);
-          this.deleteCredit(id);
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
