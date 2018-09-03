@@ -7,18 +7,26 @@
               <span>Add</span>
           </span>
   </button>
-  <button type="button" class="btn btn-link" (click)="onCreditSave()">
-          <span>
-              <i class="fa fa-save" aria-hidden="true"></i>
-              <span>Save</span>
-          </span>
-  </button>
-  <button type="button" class="btn btn-link" (click)="onGetCredit()">
-          <span>
-              <i class="far fa-arrow-alt-circle-down"></i>
-              <span>Get</span>
-          </span>
-  </button>
+
+  <span [ngSwitch]="">
+    <div *ngSwitchCase="true">
+            <button type="button" class="btn btn-link" (click)="updateCredit()">
+                    <span>
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        <span>Update</span>
+                    </span>
+            </button>
+    </div>
+    <div *ngSwitchCase="false">
+            <button type="button" class="btn btn-link" (click)="onCreditSave()">
+                    <span>
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        <span>Save</span>
+                    </span>
+            </button>
+    </div>
+  </span>
+
   </div>
 </div>
 

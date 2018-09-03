@@ -122,7 +122,7 @@ export class CreditService {
     const url = SERVER_API_URL + 'api/creditcard/putcredit/' + uid;
     return this.http.put(url, dynamicCredit);
   }
-  public delete(id) {
+  public DeleteCredit(id) {
     const url = SERVER_API_URL + 'api/creditcard/deletecredit/' + id;
     return this.http.delete(url);
   }
@@ -211,7 +211,7 @@ export class LoanService {
     return this.http.get(url);
   }
   public DeleteLoan(id) {
-    const url = SERVER_API_URL + 'api/delete/' + id;
+    const url = SERVER_API_URL + 'api/loananddebt/delete/' + id;
     return this.http.delete(url);
   }
 }

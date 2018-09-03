@@ -124,9 +124,9 @@ export class CreditComponent implements OnInit {
     }
   }
   // update credit
-  updateCredit(uid, id) {
+  updateCredit() {
     this.dynamicCredit.userid = this.uid;
-    this.dynamicCredit.id = id;
+    // this.dynamicCredit.id = id;
     // console.log('dynamicdata:', this.dynamicCredit);
     this.creditService.update(this.dynamicCredit, this.uid).subscribe(data => {
       alert('data saved');
@@ -143,7 +143,7 @@ export class CreditComponent implements OnInit {
           this.closeResult = `Closed with: ${result}`;
           // this.AddCredit();
           this.fillCredit(id);
-          this.updateCredit(this.uid, id);
+          // this.updateCredit(this.uid, id);
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -179,7 +179,11 @@ export class CreditComponent implements OnInit {
     });
     this.clear();
   }
-  RemoveCredit(index) {
+
+  RemoveCredit(index, id) {
+    this.creditService.DeleteCredit(id).subscribe(responce => {
+      // console.log(responce);
+    });
     this.dynamicCredit.splice(index, 1);
   }
   onCreditSave(): void {

@@ -207,9 +207,9 @@ export class LoanComponent implements OnInit {
       }
     }
   }
-  updateLoan(uid, id) {
+  updateLoan() {
     this.loan.userid = this.uid;
-    this.loan.id = id;
+    // this.loan.id = id;
     // console.log(this.loan);
     this.loanService.PutLoan(this.loan, this.uid).subscribe(data => {
       alert('Your data saved');
