@@ -147,7 +147,7 @@
         <td>{{field.value }} </td>
         <td>{{field.value * 12}} </td>
         <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
-        <td><button class="btn btn-outline-info"  type="button" (click)="RemoveTravel(i, field.id)" >
+        <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveTravel(i, field.id)" >
           <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
         </td>
       </tr>
@@ -157,7 +157,8 @@
             <th scope="col">Total</th>
             <th> {{travel.food+ travel.entertainment+ travel.dineout+ travel.vacation+ travel.hobby+ totalTravel}}</th>
             <th> {{ (travel.food+travel.entertainment+travel.dineout+travel.vacation+travel.hobby + totalTravel) * 12}}</th>
-                <th></th>
+            <th></th>
+            <th></th>
           </tr>
     </tfoot>
 </table>
@@ -171,6 +172,7 @@
             <th scope="col">Monthly Amount</th>
             <th scope="col">Yearly Amount</th>
             <th scope="col">Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -179,11 +181,13 @@
             <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="travel.food"  [ngModelOptions]="{standalone: true}"   > </td>
             <td> {{travel.food * 12}} </td>
             <td></td>
+            <td></td>
           </tr>
           <tr>
             <td> Entertainment (movies, plays, etc.) </td>
             <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="travel.entertainment" [ngModelOptions]="{standalone: true}"    > </td>
             <td> {{travel.entertainment * 12}} </td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
@@ -191,11 +195,13 @@
             <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="travel.dineout"  [ngModelOptions]="{standalone: true}"   > </td>
             <td> {{travel.dineout * 12}} </td>
             <td></td>
+            <td></td>
           </tr>
           <tr>
             <td> Travel / Vacation </td>
             <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="travel.vacation"  [ngModelOptions]="{standalone: true}"   > </td>
             <td> {{travel.vacation * 12}} </td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
@@ -203,13 +209,14 @@
             <td> <input required jhiNumberOnly type="number" id="10" [(ngModel)]="travel.hobby"  [ngModelOptions]="{standalone: true}"   > </td>
             <td> {{travel.hobby * 12}} </td>
             <td></td>
+            <td></td>
           </tr>
           <tr *ngFor="let field of dynamicTravel; let i = index">
             <td> {{field.name}} </td>
             <td><input required  type="number" value="{{field.value}}"    disabled> </td>
             <td>{{field.value * 12}} </td>
             <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editTravel)" >  <span> <i class="fa fa-edit" aria-hidden="true"></i></span>  </button>     </td>            
-            <td><button class="btn btn-outline-info"  type="button" (click)="RemoveTravel(i, field.id)" ><span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveTravel(i, field.id)" ><span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
             </td>
           </tr>
         </tbody>

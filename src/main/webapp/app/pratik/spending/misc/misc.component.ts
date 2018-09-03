@@ -177,8 +177,9 @@ export class MiscComponent implements OnInit {
   }
 
   RemoveMisc(index, id) {
+    console.log(id);
+
     this.miscService.DeleteMisc(id).subscribe(responce => {
-      // console.log(responce);
     });
     this.dynamicMisc.splice(index, 1);
     this.calcMiscTotal();
@@ -186,6 +187,7 @@ export class MiscComponent implements OnInit {
 
   SaveMisc(): void {
     this.misc.userid = this.uid;
+    this.isMiscData = true;
     // this.misc.dynamicMisc = this.dynamicMisc;
     this.miscService.PostMisc(this.misc).subscribe(data => {
       alert('Your Misc data saved');

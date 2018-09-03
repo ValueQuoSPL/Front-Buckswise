@@ -100,6 +100,7 @@
           <th scope="col">Monthly Amount</th>
           <th scope="col">Yearly Amount</th>
           <th scope="col">Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -156,21 +157,20 @@
             <td> {{field.name}} </td>
             <td>{{field.value }}</td>
             <td>{{field.value * 12}}</td>
-            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" >
-              <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" ><span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
             </td>
-            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveMisc(i, field.id)" >
-              <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveMisc(i, field.id)" ><span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
             </td>
           </tr>
         </tbody>
         <tfoot>
-              <tr>
-                <th scope="col">Total</th>
-                <th> {{misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth + totalMisc}} </th>
-                <th> {{ (misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth)*12 + totalMisc}} </th>
-                  <th> </th>
-                </tr>
+            <tr>
+              <th scope="col">Total</th>
+              <th> {{misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth + totalMisc}} </th>
+              <th> {{ (misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth)*12 + totalMisc}} </th>
+              <th> </th>
+              <th> </th>
+            </tr>
         </tfoot>
     </table>
   </div>
@@ -182,6 +182,7 @@
           <th scope="col">Monthly Amount</th>
           <th scope="col">Yearly Amount</th>
           <th scope="col">Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -190,11 +191,13 @@
           <td> <input required jhiNumberOnly type="number" id="11" [(ngModel)]="misc.shoes"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.shoes * 12}} </td>
           <td> </td>
+          <td> </td>
         </tr>
         <tr>
           <td> Pet Care </td>
           <td> <input required jhiNumberOnly type="number" id="21" [(ngModel)]="misc.pet"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.pet * 12}} </td>
+          <td> </td>
           <td> </td>
         </tr>
         <tr>
@@ -202,11 +205,13 @@
           <td> <input required jhiNumberOnly type="number" id="31" [(ngModel)]="misc.electronics"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.electronics * 12}} </td>
           <td> </td>
+          <td> </td>
         </tr>
         <tr>
           <td> Furniture </td>
           <td> <input required jhiNumberOnly type="number" id="41" [(ngModel)]="misc.furniture"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.furniture * 12}} </td>
+          <td> </td>
           <td> </td>
         </tr>
         <tr>
@@ -214,11 +219,13 @@
           <td> <input required jhiNumberOnly type="number" id="51" [(ngModel)]="misc.charity"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.charity * 12}}</td>
           <td> </td>
+          <td> </td>
         </tr>
         <tr>
           <td> Gifts </td>
           <td> <input required jhiNumberOnly type="number" id="61" [(ngModel)]="misc.gift"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.gift * 12}} </td>
+          <td> </td>
           <td> </td>
         </tr>
         <tr>
@@ -226,26 +233,26 @@
           <td> <input required jhiNumberOnly type="number" id="71" [(ngModel)]="misc.cloth"  [ngModelOptions]="{standalone: true}"   > </td>
           <td> {{misc.cloth * 12}} </td>
           <td> </td>
+          <td> </td>
         </tr>
         <tr *ngFor="let field of dynamicMisc; let i = index">
             <td> {{field.name}} </td>
             <td><input required  type="number" value="{{field.value}}" disabled> </td>
             <td>{{field.value * 12}}</td>
-            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" >
-              <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-info"  type="button" (click)="editDynamicField(i, editMisc)" ><span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
             </td>
-            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveMisc(i, field.id)" >
-              <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
+            <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveMisc(i, field.id)" ><span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
             </td>
           </tr>
         </tbody>
         <tfoot>
-              <tr>
-                <th scope="col">Total</th>
-                <th> {{misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth + totalMisc}} </th>
-                <th> {{ (misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth)*12 + totalMisc}} </th>
-                  <th> </th>
-                </tr>
+            <tr>
+              <th scope="col">Total</th>
+              <th> {{misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth + totalMisc}} </th>
+              <th> {{ (misc.shoes+misc.pet+misc.electronics+misc.furniture+misc.charity+misc.gift+misc.cloth)*12 + totalMisc}} </th>
+              <th> </th>
+              <th> </th>
+            </tr>
         </tfoot>
     </table>
   </div>

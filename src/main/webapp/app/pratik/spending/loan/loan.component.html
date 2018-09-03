@@ -138,7 +138,7 @@
                                         <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                                     </button>
                         </td>
-                        <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveLoan(i, field.id)" >
+                        <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveLoan(i, field.id)" >
                             <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                         </td>
                     </tr>
@@ -165,10 +165,14 @@
                         <td> {{ field.amnt }} </td>
                         <td> {{ field.tenure }} </td>
                         <td> {{ field.roi }} </td>
-                        <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveLoan(i, field.id)" >
+                        <td>
+                            <button class="btn btn-outline-info" type="button" (click)="onEditLoan(l.id, loanModal)">
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                            </button>
+                        </td>
+                        <td><button class="btn btn-outline-danger"  type="button" (click)="RemoveLoan(i, field.id)" >
                             <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                         </td>                       
-                         <td></td>
                     </tr>
                 </tbody>
             </table>
