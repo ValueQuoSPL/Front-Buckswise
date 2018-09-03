@@ -22,7 +22,7 @@ export class CreditComponent implements OnInit {
   loadUtility: boolean;
   dataChanged: boolean;
   changesSaved: boolean;
-  isUtilityData: boolean;
+  isCreditData: boolean;
   UtilityArray: any = [];
   tempUtilityArray: any = [];
   dynamicCredit: any = [];
@@ -188,6 +188,7 @@ export class CreditComponent implements OnInit {
   }
   onCreditSave(): void {
     this.credit.userid = this.uid;
+    this.isCreditData = true;
     this.credit.creditModelArray = this.dynamicCredit;
     this.creditService
       .PutCredit(this.credit.creditModelArray)
