@@ -129,6 +129,53 @@ export class CreditService {
 }
 
 @Injectable()
+export class LoanService {
+  constructor(private http: HttpClient) {}
+
+  public PostLoan(data) {
+    const url = SERVER_API_URL + 'api/loananddebt/loan-debt';
+    return this.http.post(url, data);
+  }
+  public PutLoan(data, uid) {
+    const url = SERVER_API_URL + 'api/loananddebt/putloandebt/' + uid;
+    return this.http.put(url, data);
+  }
+  public GetLoan(uid) {
+    const url = SERVER_API_URL + 'api/loananddebt/getloandebt/' + uid;
+    return this.http.get(url);
+  }
+  public DeleteLoan(id) {
+    const url = SERVER_API_URL + 'api/loananddebt/delete/' + id;
+    return this.http.delete(url);
+  }
+}
+
+@Injectable()
+export class TravelService {
+  constructor(private http: HttpClient) {}
+
+  public PostTravel(data) {
+    const url =
+      SERVER_API_URL + 'api/expense-entermntandtravel/entermentandtravel';
+    return this.http.post(url, data);
+  }
+  public PutTravel(data, uid) {
+    const url =
+      SERVER_API_URL + 'api/expense-entermntandtravel/puttravel/' + uid;
+    return this.http.put(url, data);
+  }
+  public GetTravel(uid) {
+    const url = SERVER_API_URL + 'api/expense-entermntandtravel/get/' + uid;
+    return this.http.get(url);
+  }
+  public DeleteTravel(id) {
+    const url =
+      SERVER_API_URL + 'api/expense-entermntandtravel/deleteEntTravel/' + id;
+    return this.http.delete(url);
+  }
+}
+
+@Injectable()
 export class GeneralService {
   constructor(private http: HttpClient) {}
 
@@ -190,53 +237,6 @@ export class LifeService {
   }
   public DeleteLife(id) {
     const url = SERVER_API_URL + 'api/' + id;
-    return this.http.delete(url);
-  }
-}
-
-@Injectable()
-export class LoanService {
-  constructor(private http: HttpClient) {}
-
-  public PostLoan(data) {
-    const url = SERVER_API_URL + 'api/loananddebt/loandebt/';
-    return this.http.post(url, data);
-  }
-  public PutLoan(data, uid) {
-    const url = SERVER_API_URL + 'api/loananddebt/putloandebt/' + uid;
-    return this.http.put(url, data);
-  }
-  public GetLoan(uid) {
-    const url = SERVER_API_URL + 'api/loananddebt/getloandebt/' + uid;
-    return this.http.get(url);
-  }
-  public DeleteLoan(id) {
-    const url = SERVER_API_URL + 'api/loananddebt/delete/' + id;
-    return this.http.delete(url);
-  }
-}
-
-@Injectable()
-export class TravelService {
-  constructor(private http: HttpClient) {}
-
-  public PostTravel(data) {
-    const url =
-      SERVER_API_URL + 'api/expense-entermntandtravel/entermentandtravel';
-    return this.http.post(url, data);
-  }
-  public PutTravel(data, uid) {
-    const url =
-      SERVER_API_URL + 'api/expense-entermntandtravel/puttravel/' + uid;
-    return this.http.put(url, data);
-  }
-  public GetTravel(uid) {
-    const url = SERVER_API_URL + 'api/expense-entermntandtravel/get/' + uid;
-    return this.http.get(url);
-  }
-  public DeleteTravel(id) {
-    const url =
-      SERVER_API_URL + 'api/expense-entermntandtravel/deleteEntTravel/' + id;
     return this.http.delete(url);
   }
 }

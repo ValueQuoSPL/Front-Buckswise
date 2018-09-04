@@ -159,13 +159,15 @@ export class CreditComponent implements OnInit {
         this.dynamicCredit[i].usage = this.credit.monthly_usage;
       }
     }
+    this.updateCredit(id);
   }
   // update credit
-  updateCredit() {
+  updateCredit(id) {
     this.dynamicCredit.userid = this.uid;
-    // this.dynamicCredit.id = id;
+    this.dynamicCredit.id = id;
     // // console.log('dynamicdata:', this.dynamicCredit);
     this.creditService.update(this.dynamicCredit, this.uid).subscribe(data => {
+      this.clear();
       alert('data saved');
     });
   }
@@ -182,6 +184,7 @@ export class CreditComponent implements OnInit {
           this.AddCredit();
         },
         reason => {
+          this.clear();
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
@@ -197,6 +200,7 @@ export class CreditComponent implements OnInit {
       balance: this.credit.balance,
       userid: this.uid
     });
+    this.onCreditSave();
     this.clear();
   }
 
@@ -210,10 +214,10 @@ export class CreditComponent implements OnInit {
     this.credit.userid = this.uid;
     this.isCreditData = true;
     this.credit.creditModelArray = this.dynamicCredit;
-    this.creditService
-      .PutCredit(this.credit.creditModelArray)
-      .subscribe(data => {
+    this.creditService.PutCredit(this.credit.creditModelArray).subscribe(data => {
+      this.clear();
         alert('success');
+        this.onGetCredit();
       });
     // // console.log('in credit save');
   }
