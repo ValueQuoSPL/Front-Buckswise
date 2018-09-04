@@ -7,7 +7,12 @@
               <span>Add</span>
           </span>
   </button>
-
+  <!-- <button type="button" class="btn btn-link" (click)="onGetCredit()">
+        <span>
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span>Get</span>
+        </span>
+</button> -->
   <span [ngSwitch]="isCreditData">
     <div *ngSwitchCase="true">
             <button type="button" class="btn btn-link" (click)="updateCredit()">

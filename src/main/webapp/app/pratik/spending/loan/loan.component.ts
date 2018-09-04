@@ -23,6 +23,7 @@ export class LoanComponent implements OnInit {
   isLoanData: boolean;
   changesSaved: boolean;
   dynamicLoanArray: any = [];
+  tempLoanArray: any = [];
   loanDate = new FormControl(new Date());
   repDate = new FormControl(new Date());
   loan: Loan = new Loan();
@@ -42,7 +43,6 @@ export class LoanComponent implements OnInit {
     { name: 'Floating' },
     { name: 'Fixed-Floating' }
   ];
-  getloan: any;
 
   constructor(
     private loanService: LoanService,
@@ -80,10 +80,13 @@ export class LoanComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
+      this.clear();
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      this.clear();
       return 'by clicking on a backdrop';
     } else {
+      this.clear();
       return `with: ${reason}`;
     }
   }
@@ -106,17 +109,18 @@ export class LoanComponent implements OnInit {
 
   getLoanandDebt() {
     this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
+      // console.log(response);
       this.dynamicLoanArray = response;
-      console.log('return from loandebts' + this.dynamicLoanArray);
+      // console.log(this.dynamicLoanArray);
       if (this.dynamicLoanArray.length === 0) {
         this.isLoanData = false;
-        console.log(this.isLoanData);
+        // console.log(this.isLoanData);
       } else {
         this.isLoanData = true;
-        console.log(this.isLoanData);
+        // console.log(this.isLoanData);
       }
     });
-    console.log(this.isLoanData);
+    // console.log(this.isLoanData);
   }
 
   openLoan(loanModal) {
@@ -125,10 +129,12 @@ export class LoanComponent implements OnInit {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
+          // console.log(this.closeResult);
           this.AddLoan();
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          this.clear();
         }
       );
   }
@@ -136,9 +142,9 @@ export class LoanComponent implements OnInit {
   AddLoan() {
     this.dynamicLoanArray.push({
       ltype: this.loan.loan_type,
-      lender: this.loan.lender,
+      lenderName: this.loan.lender,
       app: this.loan.applicant,
-      amnt: this.loan.amnt,
+      amount: this.loan.amnt,
       ldate: this.loanDate.value,
       check: this.loan.check,
       tenure: this.loan.tenure,
@@ -161,7 +167,7 @@ export class LoanComponent implements OnInit {
   }
 
   onEditLoan(id, loanModal) {
-    this.editLoan(id);
+    this.fillModal(id);
     this.modalService
       .open(loanModal, { ariaLabelledBy: 'loanModal' })
       .result.then(
@@ -176,31 +182,34 @@ export class LoanComponent implements OnInit {
       );
   }
 
-  editLoan(id) {
-    for (let i = 0; i < this.dynamicLoanArray.length; i++) {
-      if (this.dynamicLoanArray[i].id === id) {
-        this.loan.loan_type = this.dynamicLoanArray[i].ltype;
-        this.loan.lender = this.dynamicLoanArray[i].lenderName;
-        this.loan.applicant = this.dynamicLoanArray[i].appName;
-        this.loan.amnt = this.dynamicLoanArray[i].amount;
-        this.loan.ldate = this.dynamicLoanArray[i].ldate;
-        this.loan.check = this.dynamicLoanArray[i].checkType;
-        this.loan.tenure = this.dynamicLoanArray[i].tenure;
-        this.loan.intrest_type = this.dynamicLoanArray[i].itype;
-        this.loan.roi = this.dynamicLoanArray[i].roi;
-        this.loan.rdate = this.dynamicLoanArray[i].rdate;
+  fillModal(id) {
+    this.tempLoanArray = this.dynamicLoanArray;
+    for (let i = 0; i < this.tempLoanArray.length; i++) {
+      if (this.tempLoanArray[i].id === id) {
+        this.loan.loan_type = this.tempLoanArray[i].ltype;
+        this.loan.lender = this.tempLoanArray[i].lenderName;
+        this.loan.applicant = this.tempLoanArray[i].appName;
+        this.loan.amnt = this.tempLoanArray[i].amount;
+        this.loan.ldate = this.tempLoanArray[i].ldate;
+        this.loan.check = this.tempLoanArray[i].checkType;
+        this.loan.tenure = this.tempLoanArray[i].tenure;
+        this.loan.intrest_type = this.tempLoanArray[i].itype;
+        this.loan.roi = this.tempLoanArray[i].roi;
+        this.loan.rdate = this.tempLoanArray[i].rdate;
       }
     }
   }
 
   fillLoan(id) {
-    for (let i = 0; i < this.getloan.length; i++) {
+    for (let i = 0; i < this.dynamicLoanArray.length; i++) {
       if (this.dynamicLoanArray[i].id === id) {
         this.dynamicLoanArray[i].id = this.loan.id;
         this.dynamicLoanArray[i].ltype = this.loan.loan_type;
         this.dynamicLoanArray[i].lenderName = this.loan.lender;
+        // console.log(this.dynamicLoanArray[i].lenderName);
         this.dynamicLoanArray[i].appName = this.loan.applicant;
         this.dynamicLoanArray[i].amount = this.loan.amnt;
+        // console.log(this.dynamicLoanArray[i].amount);
         this.dynamicLoanArray[i].ldate = this.loan.ldate;
         this.dynamicLoanArray[i].checkType = this.loan.check;
         this.dynamicLoanArray[i].tenure = this.loan.tenure;
@@ -209,12 +218,12 @@ export class LoanComponent implements OnInit {
         this.dynamicLoanArray[i].rdate = this.loan.rdate;
       }
     }
+    this.clear();
   }
-  updateLoan() {
+  UpdateLoan() {
     this.loan.userid = this.uid;
-    // this.loan.id = id;
-    // console.log(this.loan);
-    this.loanService.PutLoan(this.loan, this.uid).subscribe(data => {
+    this.loan.loanModelArray = this.dynamicLoanArray;
+    this.loanService.PutLoan(this.loan , this.uid).subscribe(data => {
       alert('Your data saved');
     });
   }

@@ -43,7 +43,7 @@ export class CreditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log('inside credit Init()');
+    // // console.log('inside credit Init()');
     this.getUserid();
   }
 
@@ -55,28 +55,29 @@ export class CreditComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          // console.log('from credit userid is : ', this.uid);
+          // // console.log('from credit userid is : ', this.uid);
           this.onGetCredit();
         } else {
-          // console.log('cannot get user details check login ');
+          // // console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
   }
 
   onGetCredit(): void {
-    console.log('inside getCredit()');
+    // console.log('inside getCredit()');
     this.creditService.GetCredit(this.uid).subscribe((response: any[]) => {
+      // // console.log(response);
       this.dynamicCredit = response;
-      console.log('creditdatais', this.dynamicCredit);
+      // console.log('credit detais', this.dynamicCredit);
       if (this.dynamicCredit.length === 0) {
         this.isCreditData = false;
+        // console.log(this.isCreditData);
       } else {
         this.isCreditData = true;
-        // this.FillUtilityData();
+        // console.log(this.isCreditData);
       }
     });
-    // console.log('getCredit() success');
   }
 
   clear() {
@@ -99,22 +100,43 @@ export class CreditComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
+      this.clear();
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      this.clear();
       return 'by clicking on a backdrop';
     } else {
+      this.clear();
       return `with: ${reason}`;
     }
   }
+
+    // credit card
+    openCredit(id, creditModal) {
+      // console.log(id);
+      this.editCredit(id);
+      this.modalService
+        .open(creditModal, { ariaLabelledBy: 'creditModal' })
+        .result.then(
+          result => {
+            this.closeResult = `Closed with: ${result}`;
+            console.log(this.closeResult);
+            this.fillCredit(id);
+          },
+          reason => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          }
+        );
+    }
+
   editCredit(id) {
-    // console.log('creditId:', id);
+    // // console.log('creditId:', id);
     this._credit = this.dynamicCredit;
     for (let i = 0; i < this._credit.length; i++) {
       if (this._credit[i].id === id) {
         (this.credit.id = this._credit[i].id),
           (this.credit.balance = this._credit[i].balance);
         this.credit.issuer = this._credit[i].bank;
-        // console.log('underedit', this.credit.bank);
         this.credit.roi = this._credit[i].roi;
         this.credit.type = this._credit[i].type;
         this.credit.limit = this._credit[i].lt;
@@ -142,28 +164,10 @@ export class CreditComponent implements OnInit {
   updateCredit() {
     this.dynamicCredit.userid = this.uid;
     // this.dynamicCredit.id = id;
-    // console.log('dynamicdata:', this.dynamicCredit);
+    // // console.log('dynamicdata:', this.dynamicCredit);
     this.creditService.update(this.dynamicCredit, this.uid).subscribe(data => {
       alert('data saved');
     });
-  }
-
-  // credit card
-  openCredit(id, creditModal) {
-    this.editCredit(id);
-    this.modalService
-      .open(creditModal, { ariaLabelledBy: 'creditModal' })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          // this.AddCredit();
-          this.fillCredit(id);
-          // this.updateCredit(this.uid, id);
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
   }
 
   // for Add button
@@ -174,6 +178,7 @@ export class CreditComponent implements OnInit {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
+          console.log(this.closeResult);
           this.AddCredit();
         },
         reason => {
@@ -197,7 +202,7 @@ export class CreditComponent implements OnInit {
 
   RemoveCredit(index, id) {
     this.creditService.DeleteCredit(id).subscribe(responce => {
-      // console.log(responce);
+      // // console.log(responce);
     });
     this.dynamicCredit.splice(index, 1);
   }
@@ -210,7 +215,7 @@ export class CreditComponent implements OnInit {
       .subscribe(data => {
         alert('success');
       });
-    // console.log('in credit save');
+    // // console.log('in credit save');
   }
 
 }

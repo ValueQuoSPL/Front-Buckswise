@@ -127,12 +127,12 @@
                     <!-- loan_type lender applicant amnt ldate check tenure intrest_type roi rdate -->
                     <tr *ngFor="let field of dynamicLoanArray; let i = index">
                         <td> {{ field.ltype }}</td>
-                        <td> {{ field.lender }} </td>
-                        <td> {{ field.amnt }} </td>
+                        <td> {{ field.lenderName }} </td>
+                        <td> {{ field.amount }} </td>
                         <td> {{ field.tenure }} </td>
                         <td> {{ field.roi }} </td>
                         <td>
-                                <button class="btn btn-outline-info" type="button" (click)="onEditLoan(l.id, loanModal)">
+                                <button class="btn btn-outline-info" type="button" (click)="onEditLoan(field.id, loanModal)">
                                         <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                                     </button>
                         </td>
@@ -159,12 +159,12 @@
                     <!-- loan_type lender applicant amnt ldate check tenure intrest_type roi rdate -->
                     <tr *ngFor="let field of dynamicLoanArray; let i = index">
                         <td> {{ field.ltype }}</td>
-                        <td> {{ field.lender }} </td>
-                        <td> {{ field.amnt }} </td>
+                        <td> {{ field.lenderName }} </td>
+                        <td> {{ field.amount }} </td>
                         <td> {{ field.tenure }} </td>
                         <td> {{ field.roi }} </td>
                         <td>
-                            <button class="btn btn-outline-info" type="button" (click)="onEditLoan(l.id, loanModal)">
+                            <button class="btn btn-outline-info" type="button" (click)="onEditLoan(field.id, loanModal)">
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                             </button>
                         </td>
