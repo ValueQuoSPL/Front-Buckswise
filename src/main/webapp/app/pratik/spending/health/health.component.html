@@ -6,18 +6,6 @@
               <span>Add</span>
           </span>
   </button>
-  <button type="button" class="btn btn-link" (click)="onHealthSave()">
-          <span>
-              <i class="fa fa-save" aria-hidden="true"></i>
-              <span>Save</span>
-          </span>
-  </button>
-  <button type="button" class="btn btn-link" (click)="onGetHealth()">
-          <span>
-              <i class="far fa-arrow-alt-circle-down"></i>
-              <span>Get</span>
-          </span>
-  </button>
   </div>
 </div>
 
@@ -41,7 +29,10 @@
               <td> {{ field.premium }} </td>
               <td> {{ field.premiumTerm }} </td>
               <td> {{ field.sum }} </td>
-              <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveHealth(i)" >
+              <td><button class="btn btn-sm btn-outline-info"  type="button" (click)="onEditHealth(field.id, healthModal)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+              </td>
+              <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveHealth(i, field.id)" >
                   <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
               </td>
           </tr>

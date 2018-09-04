@@ -53,7 +53,7 @@ export class HealthComponent implements OnInit {
     private accountService: AccountService) { }
 
   ngOnInit() {
-    console.log('inside health Init()');
+    // console.log('inside health Init()');
     this.getUserid();
   }
 
@@ -66,10 +66,10 @@ export class HealthComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from health userid is : ', this.uid);
+          // console.log('from health userid is : ', this.uid);
             this.onGetHealth();
         } else {
-          console.log('cannot get user details check login ');
+          // console.log('cannot get user details check login ');
         }
       })
       .catch(err => {});
@@ -129,6 +129,7 @@ export class HealthComponent implements OnInit {
       pMode: this.health.premium_mode,
       userid: this.uid
     });
+    // console.log(this.healthDate.value);
     this.health.healthModelArray.pop();
     this.health.healthModelArray.push({
       iName: this.health.ins_name,
@@ -147,18 +148,20 @@ export class HealthComponent implements OnInit {
     this.clear();
   }
   RemoveHealth(index, id) {
+    console.log(id);
     const res = confirm('Are you sure?');
     if (res) {
       this.healthService.DeleteHealth(id).subscribe(responce => {
-        // // console.log(responce);
+        // // // console.log(responce);
       });
       this.dynamicHealth.splice(index, 1);
     }
   }
   onHealthSave(): void {
     this.health.userid = this.uid;
-    console.log(this.health.userid);
+    // // console.log(this.health.userid);
     // this.health.healthModelArray = this.dynamicHealth;
+    // // console.log(this.health.healthModelArray);
     this.healthService.PostHealth(this.health.healthModelArray)
       .subscribe(data => {
         alert('Health Insurance saved');
@@ -168,15 +171,15 @@ export class HealthComponent implements OnInit {
   onGetHealth(): void {
     this.healthService.GetHealth(this.uid).subscribe((response: any[]) => {
       this.dynamicHealth = response;
-      console.log(this.dynamicHealth);
+      // console.log(this.dynamicHealth);
     });
-    console.log('getHealth() success');
+    // // console.log('getHealth() success');
   }
 
-  onEdithealth(id, healthModal) {
-    console.log('edit');
+  onEditHealth(id, healthModal) {
+    // console.log('edit');
     this.fillModal(id);
-    console.log('modal', healthModal);
+    // console.log('modal', healthModal);
     this.modalService
       .open(healthModal, { ariaLabelledBy: 'healthModal' })
       .result.then(
@@ -190,20 +193,20 @@ export class HealthComponent implements OnInit {
       );
   }
   fillModal(id) {
-    console.log('fill');
+    // console.log('fill');
     this.tempHealthArray = this.dynamicHealth;
     for (let i = 0; i < this.tempHealthArray.length; i++) {
       if (this.tempHealthArray[i].id === id) {
-        this.health.ins_name = this.tempHealthArray[i].insuranceName;
-        this.health.policy_name = this.tempHealthArray[i].pName;
+        this.health.ins_name = this.tempHealthArray[i].insureName;
+        this.health.policy_name = this.tempHealthArray[i].policyName;
         this.health.premium = this.tempHealthArray[i].premium;
-        this.health.policy_term = this.tempHealthArray[i].pterm;
+        this.health.policy_term = this.tempHealthArray[i].premiumTerm;
         this.health.issuer = this.tempHealthArray[i].issuer;
-        this.health.start_date = this.tempHealthArray[i].sDate;
+        this.health.start_date = this.tempHealthArray[i].date;
         this.health.proposer_name = this.tempHealthArray[i].premiumName;
         this.health.sum = this.tempHealthArray[i].sum;
-        this.health.policy_no = this.tempHealthArray[i].term;
-        this.health.premium_mode = this.tempHealthArray[i].pMode;
+        this.health.policy_no = this.tempHealthArray[i].policyNumber;
+        this.health.premium_mode = this.tempHealthArray[i].policyMode;
       }
     }
   }
@@ -211,16 +214,16 @@ export class HealthComponent implements OnInit {
     for (let i = 0; i < this.dynamicHealth.length; i++) {
       if (this.dynamicHealth[i].id === id) {
         this.dynamicHealth[i].id = this.health.id;
-        this.dynamicHealth[i].insuranceName = this.health.ins_name;
-        this.dynamicHealth[i].pName = this.health.policy_name;
+        this.dynamicHealth[i].insureName = this.health.ins_name;
+        this.dynamicHealth[i].policyName = this.health.policy_name;
         this.dynamicHealth[i].premium = this.health.premium;
-        this.dynamicHealth[i].pterm = this.health.policy_term;
+        this.dynamicHealth[i].premiumTerm = this.health.policy_term;
         this.dynamicHealth[i].issuer = this.health.issuer;
         this.dynamicHealth[i].sDate = this.health.start_date;
         this.dynamicHealth[i].premiumName = this.health.proposer_name;
         this.dynamicHealth[i].sum = this.health.sum;
-        this.dynamicHealth[i].term = this.health.policy_no;
-        this.dynamicHealth[i].pMode = this.health.premium_mode;
+        this.dynamicHealth[i].policyNumber = this.health.policy_no;
+        this.dynamicHealth[i].policyMode = this.health.premium_mode;
       }
     }
     this.Updatehealth(id);
