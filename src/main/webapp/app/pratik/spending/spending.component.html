@@ -1,7 +1,7 @@
 <div class="container">
     <mat-accordion >
         <!-- Start expense panel -->
-        <mat-expansion-panel class="accordion" [expanded]="step === 0">
+        <mat-expansion-panel class="accordion" [expanded]="true">
 
             <mat-expansion-panel-header>
                 <mat-panel-title> Expense </mat-panel-title>
@@ -45,7 +45,7 @@
             </ng-template>
 
             <!-- utilities -->
-            <mat-expansion-panel class="accordion" [expanded]="step === 0">
+            <mat-expansion-panel class="accordion" >
                 <!-- header -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Utilities </mat-panel-title>
@@ -81,7 +81,7 @@
             </mat-expansion-panel>   
             
             <!-- Insurance -->
-            <mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
 
                     <mat-expansion-panel-header>
                         <mat-panel-title>Insurance</mat-panel-title>
@@ -90,7 +90,7 @@
 
                     <mat-accordion>
                         <!-- life -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel >
                             <mat-expansion-panel-header>
                                     <mat-panel-title>Life Insurance</mat-panel-title>
                                     <mat-panel-description>Add your other Life insurance</mat-panel-description>
@@ -101,7 +101,7 @@
                         </mat-expansion-panel>
 
                         <!-- health -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel [expanded]="true">
                             <mat-expansion-panel-header>
                                     <mat-panel-title>Health Insurance</mat-panel-title>
                                     <mat-panel-description>Add your other Health insurance</mat-panel-description>

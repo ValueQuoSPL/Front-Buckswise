@@ -86,18 +86,7 @@
               <span>Add</span>
           </span>
   </button>
-  <button type="button" class="btn btn-link" (click)="onLifeSave()">
-          <span>
-              <i class="fa fa-save" aria-hidden="true"></i>
-              <span>Save</span>
-          </span>
-  </button>
-  <button type="button" class="btn btn-link" (click)="onGetLife()">
-          <span>
-              <i class="far fa-arrow-alt-circle-down"></i>
-              <span>Get</span>
-          </span>
-  </button>
+
   </div>
 </div>
 
@@ -118,13 +107,16 @@
           <tbody>
               <!-- loan_type lender applicant amnt ldate check tenure intrest_type roi rdate -->
               <tr *ngFor="let field of dynamicLifeArray; let i = index">
-                  <td> {{ field.iName }}</td>
+                  <td> {{ field.insuranceName }}</td>
                   <td> {{ field.pName }} </td>
                   <td> {{ field.premium }} </td>
                   <td> {{ field.term }} </td>
                   <td> {{ field.pterm }} </td>
                   <td> {{ field.sum }} </td>
-                  <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveLifeInsurance(i)" >
+                  <td><button class="btn btn-sm btn-outline-info"  type="button" (click)="onEditLife(field.id, lifeModal)" >
+                      <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                  </td>
+                  <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveLifeInsurance(i, field.id)" >
                       <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                   </td>
               </tr>

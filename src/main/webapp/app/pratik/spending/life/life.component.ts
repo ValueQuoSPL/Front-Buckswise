@@ -26,7 +26,7 @@ export class LifeComponent implements OnInit {
   changesSaved: boolean;
   isUtilityData: boolean;
   UtilityArray: any = [];
-  tempUtilityArray: any = [];
+  tempLifeArray: any = [];
   dynamicLifeArray: any = [];
   life: Life = new Life();
 
@@ -46,6 +46,7 @@ export class LifeComponent implements OnInit {
     { name: 'Half Yearly' },
     { name: 'Yearly' }
   ];
+  isLifeData: boolean;
   constructor(
     private lifeService: LifeService,
     private principal: Principal,
@@ -53,7 +54,7 @@ export class LifeComponent implements OnInit {
     private accountService: AccountService) { }
 
   ngOnInit() {
-    console.log('inside life Init()');
+    // console.log('inside life Init()');
     this.getUserid();
   }
 
@@ -66,8 +67,8 @@ export class LifeComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from life userid is : ', this.uid);
-          // this.GetUtility();
+          // console.log('from life userid is : ', this.uid);
+          this.onGetLife();
         } else {
           console.log('cannot get user details check login ');
         }
@@ -130,27 +131,116 @@ export class LifeComponent implements OnInit {
       sum: this.life.sum,
       premium: this.life.premium,
       term: this.life.premium_term,
-      userid: this.uid.id
+      userid: this.uid
     });
+    this.life.lifeModelArray.pop();
+    this.life.lifeModelArray.push({
+      iName: this.life.type,
+      issuer: this.life.issuer,
+      ins_name: this.life.ins_name,
+      prName: this.life.proposer_name,
+      sDate: this.lifeDate.value,
+      pterm: this.life.policy_term,
+      pMode: this.life.premium_mode,
+      pName: this.life.policy_name,
+      sum: this.life.sum,
+      premium: this.life.premium,
+      term: this.life.premium_term,
+      userid: this.uid
+    });
+    this.onLifeSave();
     this.clear();
-  }
-  RemoveLifeInsurance(index) {
-    this.dynamicLifeArray.splice(index, 1);
   }
   onLifeSave(): void {
     this.life.userid = this.uid;
-    this.life.lifeModelArray = this.dynamicLifeArray;
-    this.lifeService.PutLife(this.life.lifeModelArray, this.uid).subscribe(data => {
-      alert('success');
+    this.lifeService.PostLife(this.life.lifeModelArray).subscribe(data => {
+      alert('Your Life Insurance is Saved');
+      this.onGetLife();
     });
-    console.log('in life save');
   }
   onGetLife(): void {
     this.lifeService.GetLife(this.uid).subscribe((response: any[]) => {
       this.dynamicLifeArray = response;
-      console.log(this.dynamicLifeArray);
+      // console.log(this.dynamicLifeArray);
+      if (this.dynamicLifeArray.length === 0) {
+        this.isLifeData = false;
+      } else {
+        this.isLifeData = true;
+      }
     });
-    console.log('getLife() success');
+  }
+  RemoveLifeInsurance(index, id) {
+    const res = confirm('Are you Sure?');
+    // console.log(res);
+
+    if (res) {
+      this.lifeService.DeleteLife(id).subscribe(responce => {
+        // // console.log(responce);
+      });
+      this.dynamicLifeArray.splice(index, 1);
+    }
+  }
+  onEditLife(id, lifeModal) {
+    // console.log('edit');
+    this.fillModal(id);
+    // console.log('modal', lifeModal);
+    this.modalService
+      .open(lifeModal, { ariaLabelledBy: 'lifeModal' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.fillLifeArray(id);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  fillModal(id) {
+    // console.log('fill');
+    this.tempLifeArray = this.dynamicLifeArray;
+    for (let i = 0; i < this.tempLifeArray.length; i++) {
+      if (this.tempLifeArray[i].id === id) {
+        this.life.type = this.tempLifeArray[i].name;
+        this.life.ins_name = this.tempLifeArray[i].insuranceName;
+        this.life.policy_name = this.tempLifeArray[i].pName;
+        this.life.premium = this.tempLifeArray[i].premium;
+        this.life.policy_term = this.tempLifeArray[i].pterm;
+        this.life.issuer = this.tempLifeArray[i].issuer;
+        this.life.start_date = this.tempLifeArray[i].sDate;
+        this.life.proposer_name = this.tempLifeArray[i].premiumName;
+        this.life.sum = this.tempLifeArray[i].sum;
+        this.life.premium_term = this.tempLifeArray[i].term;
+        this.life.premium_mode = this.tempLifeArray[i].pMode;
+      }
+    }
+  }
+  fillLifeArray(id) {
+    for (let i = 0; i < this.dynamicLifeArray.length; i++) {
+      if (this.dynamicLifeArray[i].id === id) {
+        this.dynamicLifeArray[i].id = this.life.id;
+        this.dynamicLifeArray[i].name = this.life.type;
+        this.dynamicLifeArray[i].insuranceName = this.life.ins_name;
+        this.dynamicLifeArray[i].pName = this.life.policy_name;
+        this.dynamicLifeArray[i].premium = this.life.premium;
+        this.dynamicLifeArray[i].pterm = this.life.policy_term;
+        this.dynamicLifeArray[i].issuer = this.life.issuer;
+        this.dynamicLifeArray[i].sDate = this.life.start_date;
+        this.dynamicLifeArray[i].premiumName = this.life.proposer_name;
+        this.dynamicLifeArray[i].sum = this.life.sum;
+        this.dynamicLifeArray[i].term = this.life.premium_term;
+        this.dynamicLifeArray[i].pMode = this.life.premium_mode;
+      }
+    }
+    this.Updatelife(id);
+  }
+  Updatelife(id) {
+    this.life.id = id;
+    this.life.userid = this.uid;
+    this.lifeService.PutLife(this.life , this.uid).subscribe(res => {
+      this.clear();
+      alert('Your data saved');
+    });
   }
 
 }

@@ -36,10 +36,10 @@
       <tbody>
 
           <tr *ngFor="let field of dynamicHealth; let i = index">
-              <td> {{ field.iName }}</td>
-              <td> {{ field.pName }} </td>
+              <td> {{ field.insureName }}</td>
+              <td> {{ field.policyName }} </td>
               <td> {{ field.premium }} </td>
-              <td> {{ field.pterm }} </td>
+              <td> {{ field.premiumTerm }} </td>
               <td> {{ field.sum }} </td>
               <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveHealth(i)" >
                   <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>

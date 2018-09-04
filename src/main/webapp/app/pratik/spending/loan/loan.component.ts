@@ -196,7 +196,6 @@ export class LoanComponent implements OnInit {
         }
       );
   }
-
   fillModal(id) {
     this.tempLoanArray = this.dynamicLoanArray;
     for (let i = 0; i < this.tempLoanArray.length; i++) {
@@ -214,7 +213,6 @@ export class LoanComponent implements OnInit {
       }
     }
   }
-
   fillLoan(id) {
     for (let i = 0; i < this.dynamicLoanArray.length; i++) {
       if (this.dynamicLoanArray[i].id === id) {

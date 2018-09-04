@@ -36,6 +36,9 @@ import { LoanComponent } from './spending/loan/loan.component';
 import { CreditComponent } from './spending/credit/credit.component';
 import { TravelComponent } from './spending/travel/travel.component';
 import { MiscComponent } from './spending/misc/misc.component';
+import { LifeComponent } from 'app/pratik/spending/life/life.component';
+import { GeneralComponent } from 'app/pratik/spending/general/general.component';
+import { HealthComponent } from 'app/pratik/spending/health/health.component';
 
 @NgModule({
   imports: [
@@ -60,7 +63,10 @@ import { MiscComponent } from './spending/misc/misc.component';
     LoanComponent,
     CreditComponent,
     TravelComponent,
-    MiscComponent
+    MiscComponent,
+    LifeComponent,
+    HealthComponent,
+    GeneralComponent
   ],
   providers: [
     IncomeService,

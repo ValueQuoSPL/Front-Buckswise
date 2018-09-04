@@ -202,7 +202,7 @@ export class HealthService {
   constructor(private http: HttpClient) {}
 
   public PostHealth(data) {
-    const url = SERVER_API_URL + 'api/';
+    const url = SERVER_API_URL + 'api/health-insurance/health';
     return this.http.post(url, data);
   }
   public PutHealth(data, uid) {
@@ -210,7 +210,7 @@ export class HealthService {
     return this.http.put(url, data);
   }
   public GetHealth(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/health-insurance/get/' + uid;
     return this.http.get(url);
   }
   public DeleteHealth(id) {
@@ -224,7 +224,7 @@ export class LifeService {
   constructor(private http: HttpClient) {}
 
   public PostLife(data) {
-    const url = SERVER_API_URL + 'api/';
+    const url = SERVER_API_URL + 'api/life/postlife';
     return this.http.post(url, data);
   }
   public PutLife(data, uid) {
@@ -232,7 +232,7 @@ export class LifeService {
     return this.http.put(url, data);
   }
   public GetLife(uid) {
-    const url = SERVER_API_URL + 'api/' + uid;
+    const url = SERVER_API_URL + 'api/life/getlife/' + uid;
     return this.http.get(url);
   }
   public DeleteLife(id) {
