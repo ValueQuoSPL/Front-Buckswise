@@ -1,4 +1,4 @@
-import { DemoComponent } from 'app/demo/demo.component';
+import { DemoComponent } from 'app/pratik/demo/demo.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { errorRoute, navbarRoute} from 'app/layouts';

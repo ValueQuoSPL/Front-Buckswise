@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MyloginService } from 'app/demo/mylogin.service';
-import { Mylogin } from 'app/demo/mylogin.model';
+import { MyloginService } from '../mylogin.service';
+import { Mylogin } from '../mylogin.model';
 
 @Component({
   selector: 'jhi-mobile-otp',
