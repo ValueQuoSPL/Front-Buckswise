@@ -1,44 +1,3 @@
-import { DashBoardModule } from 'app/dashboard/dashboard.module';
-import './vendor.ts';
-
-import { NgModule, Injector } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import {
-  Ng2Webstorage,
-  LocalStorageService,
-  SessionStorageService
-} from 'ngx-webstorage';
-import { JhiEventManager } from 'ng-jhipster';
-import { AuthInterceptor } from 'app/blocks/interceptor/auth.interceptor';
-import { AuthExpiredInterceptor } from 'app/blocks/interceptor/auth-expired.interceptor';
-import { ErrorHandlerInterceptor } from 'app/blocks/interceptor/errorhandler.interceptor';
-import { NotificationInterceptor } from 'app/blocks/interceptor/notification.interceptor';
-import {
-  BuckswiseFrontEndSharedModule,
-  UserRouteAccessService
-} from 'app/shared';
-import { BuckswiseFrontEndAppRoutingModule } from 'app/app-routing.module';
-import { BuckswiseFrontEndHomeModule } from 'app/home/home.module';
-
-import { BuckswiseFrontEndPratikModule } from 'app/pratik/pratik.module';
-import { BuckswiseAppSheetalModule } from 'app/sheetal/sheetal.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BuckswiseFrontEndAdminModule } from 'app/admin/admin.module';
-import { BuckswiseFrontEndAccountModule } from 'app/account/account.module';
-import { BuckswiseFrontEndEntityModule } from 'app/entities/entity.module';
-import { PaginationConfig } from 'app/blocks/config/uib-pagination.config';
-
-import { Routes } from '@angular/router';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BuckswiseFrontEndMyAssetsModule } from 'app/my-assets/my-assets.module';
-import { FamilyModule } from 'app/family/family.module';
-import { GoalModule } from 'app/goal/goal.module';
-import { BuckswiseFrontEndRiskModule } from 'app/risk/risk.module';
-import { RiskComponent } from 'app/risk/risk.component';
 import {
   JhiMainComponent,
   NavbarComponent,
@@ -46,16 +5,47 @@ import {
   ProfileService,
   PageRibbonComponent,
   ErrorComponent,
-  SidebarComponent
+  SidebarComponent,
+  SidenavComponent
 } from 'app/layouts';
+import './vendor.ts';
+import { JhiEventManager } from 'ng-jhipster';
+import { NgModule, Injector } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AuthInterceptor } from 'app/blocks/interceptor/auth.interceptor';
+import { AuthExpiredInterceptor } from 'app/blocks/interceptor/auth-expired.interceptor';
+import { Ng2Webstorage, LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { ErrorHandlerInterceptor } from 'app/blocks/interceptor/errorhandler.interceptor';
+import { NotificationInterceptor } from 'app/blocks/interceptor/notification.interceptor';
+import { PaginationConfig } from 'app/blocks/config/uib-pagination.config';
+import { BuckswiseFrontEndHomeModule } from 'app/home/home.module';
+import { BuckswiseFrontEndAppRoutingModule } from 'app/app-routing.module';
+import { BuckswiseFrontEndSharedModule, UserRouteAccessService} from 'app/shared';
+import { BuckswiseFrontEndAdminModule } from 'app/admin/admin.module';
+
+import { BuckswiseFrontEndPratikModule } from 'app/pratik/pratik.module';
+import { BuckswiseAppSheetalModule } from 'app/sheetal/sheetal.module';
+import { BuckswiseFrontEndAccountModule } from 'app/account/account.module';
+import { BuckswiseFrontEndEntityModule } from 'app/entities/entity.module';
+import { DashBoardModule } from 'app/dashboard/dashboard.module';
+import { BuckswiseFrontEndMyAssetsModule } from 'app/my-assets/my-assets.module';
+import { FamilyModule } from 'app/family/family.module';
+import { GoalModule } from 'app/goal/goal.module';
+import { BuckswiseFrontEndRiskModule } from 'app/risk/risk.module';
 import { SuccessComponent } from 'app/success/success.component';
 import { FailComponent } from 'app/fail/fail.component';
 import { DraggableModule } from 'app/shared/draggable/draggable.module';
 import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-// import { ServiceWorkerModule } from '@angular/service-worker';
-// import { environment } from '../environments/environment';
+import { CustomMaterialModule } from 'app/custom-material.module';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -68,7 +58,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BuckswiseFrontEndAdminModule,
     BuckswiseFrontEndAccountModule,
     BuckswiseFrontEndEntityModule,
-
+    FlexLayoutModule,
     BuckswiseFrontEndMyAssetsModule,
     BuckswiseFrontEndRiskModule,
     FamilyModule,
@@ -80,8 +70,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BuckswiseAppSheetalModule,
     DraggableModule,
     CustomDirectiveModule,
+    CustomMaterialModule,
     DashBoardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    // BuckswiseFrontEndprimengModule
     // ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   declarations: [
@@ -92,7 +84,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     SuccessComponent,
     FailComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidenavComponent,
+    SpinnerComponent
   ],
   providers: [
     ProfileService,

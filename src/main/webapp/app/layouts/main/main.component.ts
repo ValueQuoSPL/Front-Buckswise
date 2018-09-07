@@ -3,17 +3,20 @@ import { Router, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 
 import { Title } from '@angular/platform-browser';
 import { Principal } from 'app/shared';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'jhi-main',
     templateUrl: './main.component.html',
     styleUrls: [
         'main.css'
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JhiMainComponent implements OnInit {
 
     loginStatus = false;
+    spinner = true;
 
     constructor(
         private titleService: Title,
@@ -34,6 +37,7 @@ export class JhiMainComponent implements OnInit {
             if (event instanceof NavigationEnd) {
                 this.titleService.setTitle(this.getPageTitle(this.router.routerState.snapshot.root));
             }
+            this.spinner = false;
         });
     }
     isAuthenticated() {

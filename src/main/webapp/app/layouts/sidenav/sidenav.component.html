@@ -1,0 +1,61 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+
+      <jhi-sidebar></jhi-sidebar>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="fixed-top" id="toolbar">
+      <div *ngIf="(isHandset$ | async)" >
+        <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <span aria-label="Side nav toggle icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+        <a routerLink="/" routerLinkAciveOptions="active">
+            <span>Mobile</span>
+        </a>
+      </div>
+
+      <div *ngIf="!(isHandset$ | async)" style="margin-left: 15%;" id="desktop" [ngClass]="slide" class="animated">
+        <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
+          <span aria-label="Side nav toggle icon">
+            <i class="fa fa-bars"></i>
+          </span>
+        </button>
+        <a routerLink="/" routerLinkAciveOptions="active">
+          <span>Desktop</span>
+      </a>
+      </div>
+      
+<!-- <router-outlet name="navbar"></router-outlet> -->
+      <jhi-navbar></jhi-navbar>
+    </mat-toolbar>
+    
+    <router-outlet></router-outlet>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+      Sidenav content
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+      <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+      <p>Events:</p>
+      <div class="example-events">
+        <div *ngFor="let e of events">{{e}}</div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+   -->

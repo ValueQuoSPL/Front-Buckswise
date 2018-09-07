@@ -12,4 +12,15 @@ eg $input-color: red;
 @import "node_modules/font-awesome/scss/font-awesome";
 // @import 'node_modules/font-awesome/css/fontawesome';
 
+/* ==========================================================================
+PrimeNG and it's third-party dependencies resources
+========================================================================== */
+
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~primeng-extensions/resources/primeng-extensions.min.css";
+ @import "~primeng/resources/themes/darkness/theme.css";
+ @import "~quill/dist/quill.core.css";
+ @import "~quill/dist/quill.snow.css";
+
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */

@@ -8,3 +8,4 @@ export * from 'app/layouts/profiles/page-ribbon.component';
 export * from 'app/layouts/profiles/profile.service';
 export * from 'app/layouts/profiles/profile-info.model';
 export * from 'app/layouts/sidebar/sidebar.component';
+export * from 'app/layouts/sidenav/sidenav.component';

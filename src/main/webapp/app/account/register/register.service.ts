@@ -37,4 +37,7 @@ export class Register {
     activate(key) {
         this.http.get(SERVER_API_URL + 'api/activate', key);
     }
+    validate() {
+        console.log('travelling to backend');
+    }
 }

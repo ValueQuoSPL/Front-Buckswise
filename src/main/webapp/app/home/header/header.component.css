@@ -31,7 +31,7 @@
   .header-intro .header-intro-body {
     display: table-cell;
     vertical-align: middle;
-    padding: 300px 0 300px;
+    padding: 300px 1 300px;
     width: 100%;
     position: relative;
     z-index: 1; }
