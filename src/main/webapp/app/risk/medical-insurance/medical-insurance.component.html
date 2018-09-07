@@ -30,18 +30,19 @@
             <div class="modal-body">
                 <mat-form-field style="width: 100%;">
                     <mat-select placeholder="Hospital Type" name="hosp_type" [(ngModel)]="medicalInsurance.hosp_type">
-                            <mat-option>Corporate</mat-option>
-                            <mat-option>Private</mat-option>
-                            <mat-option>Charitable</mat-option>
-                            <mat-option>Government</mat-option>
+      
+                            <mat-option value="corporate">Corporate</mat-option>
+                            <mat-option value="private">Private</mat-option>
+                            <mat-option value="charitable">Charitable</mat-option>
+                            <mat-option value="government">Government</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-select placeholder="Room Type" name="room_type" [(ngModel)]="medicalInsurance.room_type">
-                            <mat-option>Single(Private)</mat-option>
-                            <mat-option>Twin Sharing</mat-option>
-                            <mat-option>Charitable</mat-option>
-                            <mat-option>General</mat-option>
+                            <mat-option value="private">Single(Private)</mat-option>
+                            <mat-option value="twin">Twin Sharing</mat-option>
+                            <mat-option value="charitable">Charitable</mat-option>
+                            <mat-option value="general">General</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
@@ -102,15 +103,19 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let medical of medicalArray; let i = index">
+            <tr *ngFor="let medical of riskmedical; let i = index">
                 <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
     <td> {{stocks.id}} </td> -->
                 <td> {{medical.hosp_type}} </td>
                 <td>{{medical.room_type}} </td>
                 <td>{{medical.family_members}} </td>
-               
                 <td>
-                    <button class="btn btn-outline-danger" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                    <button class="btn btn-outline-info" type="button" (click)="opnMedical(medical.id,lifeModal)">
+                        <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button" (click)="deleteField(i, medical.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
