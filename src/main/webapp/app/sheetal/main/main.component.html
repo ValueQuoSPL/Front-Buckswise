@@ -475,7 +475,7 @@
                           </mat-panel-description>
                       </mat-expansion-panel-header>
               
-                      <div *ngIf="!valid" >
+                      <div>
                         <h1>80C Deduction</h1>
                         <div class="row pull-right" style="margin-top: -80px;">
                             <button type="button" (click)="onEightycGet(id)" class="btn btn-link">
@@ -651,10 +651,42 @@
                               <!--Body of table end-->
                             </table>           
                       </div></div></div>
+                      <!-- modal, edit dialog -->
+                <ng-template #eightycEditContent let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="eightycEditContent">Eightyc Add</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                  <form class="example-container" #eightycAdd="ngForm">
+                      <div>
+                              <mat-label>{{ nameField }}</mat-label>
+                          </div>
+                      
+                          <div>
+                          <mat-form-field class="example-full-width">
+                              <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                              <mat-hint>Please enter amount</mat-hint>
+                          </mat-form-field>
+                          </div>
+                          <br> <br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="eightycAdd.form.invalid">Add</button>
+                      </div>
+                  </form>
+                  </div>
+              </ng-template>
                       <div *ngIf="valid" class="card">
                         <div class="card-header">
                           Investment Other than Home
                         </div>
+                        <button type="button" class="btn btn-link" (click)="updateHome()">
+                          <i class="fa fa-save" aria-hidden="true"> </i> 
+                          <span>Update</span>
+                      </button> 
+
                         <div class="card-body">
                           <table class="table table-hover table-sm">
                             <thead class="thead-light">
@@ -676,8 +708,8 @@
                                 <td>
                                   {{out.fixed}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Fixed Deposit in Schedule Bank', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Tution Fees</td>
@@ -686,8 +718,8 @@
                                 <td>
                                   {{out.tution}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Tution Fees', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Deposite in NSC</td>
@@ -698,8 +730,8 @@
                                 <td>
                                   {{out.nsc}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Deposite in NSC', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Deposite in NSS</td>
@@ -708,8 +740,8 @@
                                 <td>
                                   {{out.nss}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Deposite in NSS', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Deposite in Post Office saving Scheme</td>
@@ -718,8 +750,8 @@
                                 <td>
                                   {{out.post}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Post Office saving Scheme', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Interest on NSC Reinvested(Upto 5th Completed year only)</td>
@@ -728,8 +760,8 @@
                                 <td>
                                   {{out.reinvest}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Interest on NSC Reinvested', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Life Insurance Premium</td>
@@ -740,8 +772,8 @@
                                 <td>
                                   {{out.licpremium}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Life Insurance Premium', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Equity linked Savings Scheme (ELSS)</td>
@@ -750,9 +782,8 @@
                                 <td>
                                   {{out.equity}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
-                              </tr>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Equity linked Savings Scheme', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               <tr>
                                 <td scope="row">Provident Fund</td>
                                 <td></td>
@@ -760,8 +791,8 @@
                                 <td>
                                   {{out.pf}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Provident Fund', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Public Provident Fund</td>
@@ -770,8 +801,8 @@
                                 <td>
                                   {{out.ppf}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Public Provident Fund', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                               <tr>
                                 <td scope="row">Others</td>
@@ -780,19 +811,19 @@
                                 <td>
                                   {{out.other}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Others', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
-                              <tr>
+                              <!-- <tr>
                                 <td scope="row">Tution Fees</td>
                                 <td></td>
                                 <td></td>
                                 <td>
                                   {{out.tutionfee}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
-                              </tr>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Tution Fees', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                              </tr> -->
                               <tr>
                                 <td scope="row">ULIP of UTI/LIC</td>
                                 <td></td>
@@ -800,8 +831,8 @@
                                 <td>
                                   {{out.ulip}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('ULIP of UTI/LIC', eightycEditContent)" >
+                                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -991,10 +1022,41 @@
                                             </div>
 
                         </div></div>
+                         <!-- modal, edit dialog -->
+                <ng-template #homeEditContent let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="homeEditContent">Eightyd Add</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                  <form class="example-container" #homeAdd="ngForm">
+                      <div>
+                              <mat-label>{{ nameField }}</mat-label>
+                          </div>
+                      
+                          <div>
+                          <mat-form-field class="example-full-width">
+                              <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                              <mat-hint>Please enter amount</mat-hint>
+                          </mat-form-field>
+                          </div>
+                          <br> <br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="homeAdd.form.invalid">Add</button>
+                      </div>
+                  </form>
+                  </div>
+              </ng-template>
                         <div *ngIf="valid" class="card">
                           <div class="card-header">
                            Home Deduction
-                          </div>       
+                          </div>  
+                          <button type="button" class="btn btn-link" (click)="updateHome()">
+                            <i class="fa fa-save" aria-hidden="true"> </i> 
+                            <span>Update</span>
+                        </button>      
         <div class="card-body">
           <table class="table table-hover table-sm">
             <thead class="thead-light">
@@ -1018,8 +1080,9 @@
                 <td>
                     {{homeout.homeloan}}
                 </td>
-                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Housing Loan', homeEditContent)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+              
               </tr>
             </tbody>
             <!--Body of table end-->
@@ -1042,8 +1105,9 @@
                 <td>
                   {{homeout.prncpalloan}}
                 </td>
-                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Pricipal Loan', homeEditContent)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+              
               </tr>
             </tbody>
             <!--Body of table end-->
@@ -1066,8 +1130,8 @@
                 <td>
                   {{homeout.rentclm}}
                 </td>
-                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Rent Claimed', homeEditContent)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
               </tr>
             </tbody>
             <!--Body of table end-->
@@ -1090,8 +1154,8 @@
                 <td>
                   {{homeout.remintrst}}
                 </td>
-                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Remaining Interest', homeEditContent)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
               </tr>
             </tbody>
             <!--Body of table end-->
@@ -1114,8 +1178,8 @@
                 <td>
                   {{homeout.rentclmgg}}
                 </td>
-                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Mentioned the Rent claimed', homeEditContent)" >
+                  <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
               </tr>
             </tbody>
             <!--Body of table end-->
@@ -1137,15 +1201,23 @@
                           </mat-panel-description>
                       </mat-expansion-panel-header>
               
-                      <div *ngIf="!valid">
+                      <div >
                         <h3>80D deduction </h3>
                         <div class="row pull-right" style="margin-top: -80px;">
-                          <button type="button" (click)="onEightydGet(id)" class="btn btn-link">
+                          <!-- <button type="button" (click)="onEightydGet(id)" class="btn btn-link">
                             <span>
                               <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
                               <span>Get</span>
                             </span>
-                          </button>
+                          </button> -->
+                          <!-- <div class="col-md-3">
+                            <span [ngSwitch]="isIncomeData">
+                                <p *ngif="valid"> -->
+                                    <button type="button" class="btn btn-link" (click)="updateEightyd()">
+                                        <i class="fa fa-save" aria-hidden="true"> </i> 
+                                        <span>Update</span>
+                                    </button>
+                                </p>
                           <button type="button" class="btn btn-link" (click)="onEightydSave()" data-toggle="modal" data-target="#eightydModelCenter">
                             <span>
                               <i class="fa fa-save" aria-hidden="true"></i>
@@ -1234,11 +1306,41 @@
                       </div>
                         
                       </div>
-                      <div *ngIf="valid" class="card">
+                      <!-- modal, edit dialog -->
+                <ng-template #eightydEditContent let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="eightydEditContent">Eightyd Add</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                  <form class="example-container" #eightydAdd="ngForm">
+                      <div>
+                              <mat-label>{{ nameField }}</mat-label>
+                          </div>
+                      
+                          <div>
+                          <mat-form-field class="example-full-width">
+                              <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                              <mat-hint>Please enter amount</mat-hint>
+                          </mat-form-field>
+                          </div>
+                          <br> <br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="eightydAdd.form.invalid">Add</button>
+                      </div>
+                  </form>
+                  </div>
+              </ng-template>
+                      <div  class="card">
                         <div class="card-header">
                          80D Deduction
                         </div>   
-                        
+                          <button type="button" class="btn btn-link" (click)="updateEightyd()">
+                            <i class="fa fa-save" aria-hidden="true"> </i> 
+                            <span>Update</span>
+                        </button> 
                       <div class="card-body">
                         <table class="table table-hover table-sm">
                           <thead class="thead-light">
@@ -1255,14 +1357,16 @@
                             <!--Body of table start-->
                             <tr>
                               <td scope="row">Medical Insurance for Self</td>
-                              <td> </td>
+                              <td> id</td>
                               <td></td>
                               <td>
                                 {{eightydout.medself}}
+                                <!-- {{eightydout.id}} -->
                                 
                               </td>
-                              <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                              <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('Medical Insurance for Self', eightydEditContent )" >
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                                </td>
                             </tr>
                             <tr>
                               <td scope="row">Medical Insurance for Parents</td>
@@ -1271,8 +1375,9 @@
                               <td>
                                 {{eightydout.medparents}}
                               </td>
-                              <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                              <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('Medical Insurance for Parents', eightydEditContent)" >
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                                </td>
                             </tr>
                             <tr>
                               <td scope="row">Preventive Health Checkup</td>
@@ -1281,8 +1386,9 @@
                               <td>
                                 {{eightydout.healthcheck}}
                               </td>
-                              <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                              <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('Preventive Health Checkup', eightydEditContent)" >
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                                </td>
                             </tr>
                           </tbody>
                           <!--Body of table end-->
@@ -1492,10 +1598,40 @@
                         </div>
                       </div>
                       </div>
-                       
+                       <!-- modal, edit dialog -->
+                <ng-template #otherEditContent let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="otherEditContent">Eightyd Add</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                  <form class="example-container" #otherAdd="ngForm">
+                      <div>
+                              <mat-label>{{ nameField }}</mat-label>
+                          </div>
+                      
+                          <div>
+                          <mat-form-field class="example-full-width">
+                              <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                              <mat-hint>Please enter amount</mat-hint>
+                          </mat-form-field>
+                          </div>
+                          <br> <br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="otherAdd.form.invalid">Add</button>
+                      </div>
+                  </form>
+                  </div>
+              </ng-template>
                       <div *ngIf="valid" class="card-body">
                           <table class="table table-hover table-sm">
                             <thead class="thead-light">
+                                <button type="button" class="btn btn-link" (click)="updateEightyd()">
+                                    <i class="fa fa-save" aria-hidden="true"> </i> 
+                                    <span>Update</span>
+                                </button> 
                               <tr>
                                 <!--Head of table start-->
                                 <th scope="col">Deduction Under Section 80DD</th>
@@ -1514,9 +1650,11 @@
                                 <td></td>
                                 <td>
                                     {{otherout.handicapped}}
+                                    {{otherout.id}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Handicapped', otherEditContent,otherout.id)" >
+                                    <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                                
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -1538,9 +1676,10 @@
                                 <td></td>
                                 <td>
                                     {{otherout.medicaltreat}}
+                                    
                                   </td>
-                                  <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                  <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Treatment', otherEditContent)" >
+                                      <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -1563,8 +1702,8 @@
                                 <td>
                                     {{otherout.selfedu}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Repayment', otherEditContent)" >
+                                    <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -1587,8 +1726,8 @@
                                 <td>
                                     {{otherout.nps}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('nps', otherEditContent)" >
+                                    <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -1611,8 +1750,8 @@
                                 <td>
                                     {{otherout.rgess}}
                                 </td>
-                                <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                  <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('rgess', otherEditContent)" >
+                                    <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->
@@ -1635,8 +1774,8 @@
                                 <td>
                                     {{otherout.donation}}
                                       </td>
-                                      <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
-                                        <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                                      <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('donation', otherEditContent)" >
+                                          <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                               </tr>
                             </tbody>
                             <!--Body of table end-->

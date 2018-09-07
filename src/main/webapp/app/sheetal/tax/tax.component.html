@@ -1,65 +1,71 @@
-<div><!-- nav tab coding -->
-
-    <!--Tax Box-->   
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <div class="box">
-                <div class="box-icon">
-                   <span class="fa fa-paper-plane fa-fw fa-lg"></span>
-                </div>
-                <div class="info">
-                    <h1 class="text-center">Tax</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-                   <!-- <a href="" class="btn">Tax</a>
-				   <button type="button" class="btn btn-danger submit"><i class="fa fa-paper-plane" aria-hidden="false"></i> <h2>Start Now</h2></button>-->
-                </div>
-            </div>
-        </div>
-        <!---button close-->
-		<br>
-		<br>
-		<div class="row pull-right" style="margin-top:300px;">
-		
+    <mat-expansion-panel class="accordion" [expanded]="step === 0">   
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            Tax
+            </mat-panel-title>
+            <mat-panel-description>
+              Fill your Tax details
+            </mat-panel-description>
+        </mat-expansion-panel-header>
 
-	<br>
-	<br>
-	<button type="button" class="btn btn-link" routerLink="/main">
-  <span>
-    <i class="fa fa-clipboard" aria-hidden="true"></i> <h5>Edit</h5>
-  </span>
-  </button>
+      <!-- start Tax content -->
+         <mat-accordion>
+            <mat-expansion-panel class="accordion" [expanded]="step === 0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                            Gross Income
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    Gross Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+               
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                            80C Deduction
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    80C Deduction Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                            Home Deduction
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    Home Deduction Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <jhi-home></jhi-home>
+            </mat-expansion-panel>   
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        80D Deduction
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    80D Deduction Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header> 
+                <jhi-eightyd></jhi-eightyd>     
+            </mat-expansion-panel> 
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Other Deduction
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    Other Deduction Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <jhi-other></jhi-other>
+            </mat-expansion-panel>     
+        </mat-accordion> 
+    </mat-expansion-panel> <!-- end tax panel -->
 </div>
-			  <br>
-			  <br>
-	<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col"></th>
-      <th scope="col"><h5>Name</h5></th>
-      <th scope="col"><h5>Age</h5></th>
-      <th scope="col"><h5>Income</h5></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td><h5>Mark</h5></td>
-      <td><h5>24</h5></td>
-      <td><h5>0</h5></td>
-    </tr>
-   <!--- <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>--->
- 

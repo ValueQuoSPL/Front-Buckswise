@@ -12,7 +12,12 @@ import { EightydService } from "./Services/eightyd.service";
 import { Other } from "./Services/other.model";
 import { OtherService } from "./Services/other.service";
 // import { error } from 'util';
-import { AccountService } from "../../shared";
+import { AccountService } from "app/shared";
+import {
+  NgbModalRef,
+  NgbModal,
+  ModalDismissReasons
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "jhi-main",
@@ -20,6 +25,7 @@ import { AccountService } from "../../shared";
   styleUrls: ["./main.component.css"]
 })
 export class MainComponent implements OnInit {
+  [x: string]: any;
   step = 0;
   public ServiceAPIParam: any;
   // public id= 11;
@@ -41,8 +47,16 @@ export class MainComponent implements OnInit {
   valid = true;
   uid: any;
   accountService: any;
+  modalRef: NgbModalRef;
+  nameField: any;
+  editField;
+  closeResult: string;
+
+  changesSaved: boolean;
+  dataChanged: boolean;
 
   constructor(
+    private modalService: NgbModal,
     private grossService: GrossService,
     private eightycService: EightycService,
     private homeService: HomeService,
@@ -112,13 +126,15 @@ export class MainComponent implements OnInit {
       .then(response => {
         this.user = response.body;
         console.log("user info", this.user);
-        this.id = this.user.id;
-        console.log("Id from backend : ", this.id);
-        this.onGrossGet(this.id);
-        this.onEightycGet(this.id);
-        this.onHomeGet(this.id);
-        this.onEightydGet(this.id);
-        this.onOtherGet(this.id);
+        this.uid = this.user.id;
+        // console.log('Id from backend : ', this.uid);
+        // this.onGrossGet(this.id);
+        // this.onEightycGet(this.id);
+        // this.onHomeGet(this.id);
+        // this.onEightydGet(this.id);
+        // this.onOtherGet(this.id);
+        this.eightyd.uid = this.uid;
+        this.onEightydGet(this.uid);
       });
   }
 
@@ -232,9 +248,9 @@ export class MainComponent implements OnInit {
       console.log(this.output);
     });
   }
-  onEightydGet(id) {
-    console.log("in main ts", id);
-    this.eightydService.geteightyd(id).subscribe(res => {
+  onEightydGet(uid) {
+    console.log("in main ts", uid);
+    this.eightydService.geteightyd(uid).subscribe(res => {
       console.log(res);
       this.eightydout = res;
       console.log(this.output);
@@ -247,5 +263,264 @@ export class MainComponent implements OnInit {
       this.otherout = res;
       console.log(this.output);
     });
+  }
+  // updateEightyd() {
+  //   console.log('inside update eightyd');
+  //   this.eightyd.FetchID = this.id;
+  //   this.eightydService.PutEightyd(this.eightyd, this.id).subscribe(data => {
+  //     alert('Your data saved');
+  //     this.changesSaved = true;
+  //   });
+  // }
+
+  onEditStaticField(nameField, modal) {
+    console.log("inside edit eightyd");
+    this.nameField = nameField;
+    console.log("inside edit eightyd", nameField);
+    if (nameField === "Medical Insurance for Self") {
+      this.nameField = "Amount of Medical for self";
+      this.editField = this.eightydout.medself;
+    } else if (nameField === "Medical Insurance for Parents ") {
+      this.nameField = "Amount of Medical for Parents";
+      this.editField = this.eightydout.medparents;
+    } else if (nameField === "Preventive Health Checkup") {
+      this.nameField = "Amount of Preventive health checkup";
+      this.editField = this.eightydout.healthcheck;
+    }
+    this.modalService
+      .open(modal, { ariaLabelledBy: "eightydEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditEightyd(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  FillEditEightyd(nameField) {
+    console.log("inside fill edit eightyd");
+    if (nameField === "Medical Insurance for Self") {
+      this.eightydout.medself = this.editField;
+      this.editField = "";
+    } else if (nameField === "Medical Insurance for Parents") {
+      this.eightydout.medparents = this.editField;
+      this.editField = "";
+    } else if (nameField === "Preventive Health Checkup") {
+      this.eightydout.healthcheck = this.editField;
+      this.editField = "";
+    }
+  }
+  onEditOtherField(nameField, modal) {
+    console.log("inside edit other");
+    this.nameField = nameField;
+    console.log("inside edit other", nameField);
+    if (nameField === "Medical Handicapped") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.handicapped;
+    } else if (nameField === "Medical Treatment") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.medicaltreat;
+    } else if (nameField === "Repayment") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.selfedu;
+    } else if (nameField === "nps") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.nps;
+    } else if (nameField === "rgess") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.rgess;
+    } else if (nameField === "donation") {
+      this.nameField = "Amount";
+      this.editField = this.otherout.donation;
+    }
+    this.modalService
+      .open(modal, { ariaLabelledBy: "otherEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditOther(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  FillEditOther(nameField) {
+    console.log("inside fill edit other");
+    if (nameField === "Medical Handicapped") {
+      this.otherout.handicapped = this.editField;
+      this.editField = "";
+    } else if (nameField === "Medical Treatment") {
+      this.otherout.medicaltreat = this.editField;
+      this.editField = "";
+    } else if (nameField === "Repayment") {
+      this.otherout.selfedu = this.editField;
+      this.editField = "";
+    } else if (nameField === "nps") {
+      this.otherout.nps = this.editField;
+      this.editField = "";
+    } else if (nameField === "rgess") {
+      this.otherout.rgess = this.editField;
+      this.editField = "";
+    } else if (nameField === "donation") {
+      this.otherout.donation = this.editField;
+      this.editField = "";
+    }
+  }
+  onEditHomeField(nameField, modal) {
+    console.log("inside home other");
+    this.nameField = nameField;
+    console.log("inside edit home", nameField);
+    if (nameField === "Housing Loan") {
+      this.nameField = "Amount";
+      this.editField = this.homeout.homeloan;
+    } else if (nameField === "Pricipal Loan") {
+      this.nameField = "Amount";
+      this.editField = this.homeout.prncpalloan;
+    } else if (nameField === "Rent Claimed") {
+      this.nameField = "Amount";
+      this.editField = this.homeout.rentclm;
+    } else if (nameField === "Remaining Interest") {
+      this.nameField = "Amount";
+      this.editField = this.homeout.remintrst;
+    } else if (nameField === "Mentioned the Rent claimed") {
+      this.nameField = "Amount";
+      this.editField = this.homeout.rentclmgg;
+    }
+    this.modalService
+      .open(modal, { ariaLabelledBy: "homeEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditHome(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  FillEditHome(nameField) {
+    console.log("inside fill edit home");
+    if (nameField === "Housing Loan") {
+      this.homeout.homeloan = this.editField;
+      this.editField = "";
+    } else if (nameField === "Pricipal Loan") {
+      this.homeout.prncpalloan = this.editField;
+      this.editField = "";
+    } else if (nameField === "Rent Claimed") {
+      this.homeout.rentclm = this.editField;
+      this.editField = "";
+    } else if (nameField === "Remaining Interest") {
+      this.homeout.remintrst = this.editField;
+      this.editField = "";
+    } else if (nameField === "Mentioned the Rent claimed") {
+      this.homeout.rentclmgg = this.editField;
+      this.editField = "";
+    }
+  }
+  onEditEightycField(nameField, modal) {
+    console.log("inside edit eightyc");
+    this.nameField = nameField;
+    console.log("inside edit eightyc", nameField);
+    if (nameField === "Fixed Deposit in Schedule Bank") {
+      this.nameField = "Amount";
+      this.editField = this.out.fixed;
+    } else if (nameField === "Tution Fees") {
+      this.nameField = "Amount";
+      this.editField = this.out.tution;
+    } else if (nameField === "Deposite in NSC") {
+      this.nameField = "Amount";
+      this.editField = this.out.nsc;
+    } else if (nameField === "Deposite in NSS") {
+      this.nameField = "Amount";
+      this.editField = this.out.nss;
+    } else if (nameField === "Post Office saving Scheme") {
+      this.nameField = "Amount";
+      this.editField = this.out.post;
+    } else if (nameField === "Interest on NSC Reinvested") {
+      this.nameField = "Amount";
+      this.editField = this.out.reinvest;
+    } else if (nameField === "Life Insurance Premium") {
+      this.nameField = "Amount";
+      this.editField = this.out.licpremium;
+    } else if (nameField === "Equity linked Savings Scheme") {
+      this.nameField = "Amount";
+      this.editField = this.out.equity;
+    } else if (nameField === "Provident Fund") {
+      this.nameField = "Amount";
+      this.editField = this.out.pf;
+    } else if (nameField === "Public Provident Fund") {
+      this.nameField = "Amount";
+      this.editField = this.out.ppf;
+    } else if (nameField === "Others") {
+      this.nameField = "Amount";
+      this.editField = this.out.other;
+    } else if (nameField === "ULIP of UTI/LIC") {
+      this.nameField = "Amount";
+      this.editField = this.out.ulip;
+    }
+    this.modalService
+      .open(modal, { ariaLabelledBy: "eightycEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditEightyc(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  FillEditEightyc(nameField) {
+    console.log("inside fill edit eightyc");
+    if (nameField === "Fixed Deposit in Schedule Bank") {
+      this.out.fixed = this.editField;
+      this.editField = "";
+    } else if (nameField === "Tution Fees") {
+      this.out.tution = this.editField;
+      this.editField = "";
+    } else if (nameField === "Deposite in NSC") {
+      this.out.nsc = this.editField;
+      this.editField = "";
+    } else if (nameField === "Deposite in NSS") {
+      this.out.nss = this.editField;
+      this.editField = "";
+    } else if (nameField === "Post Office saving Scheme") {
+      this.out.post = this.editField;
+      this.editField = "";
+    } else if (nameField === "Interest on NSC Reinvested") {
+      this.out.reinvest = this.editField;
+      this.editField = "";
+    } else if (nameField === "Life Insurance Premium") {
+      this.out.licpremium = this.editField;
+      this.editField = "";
+    } else if (nameField === "Equity linked Savings Scheme") {
+      this.out.equity = this.editField;
+      this.editField = "";
+    } else if (nameField === "Provident Fund") {
+      this.out.pf = this.editField;
+      this.editField = "";
+    } else if (nameField === "Public Provident Fund") {
+      this.out.ppf = this.editField;
+      this.editField = "";
+    } else if (nameField === "Others") {
+      this.out.other = this.editField;
+      this.editField = "";
+    } else if (nameField === "ULIP of UTI/LIC") {
+      this.out.ulip = this.editField;
+      this.editField = "";
+    }
   }
 }
