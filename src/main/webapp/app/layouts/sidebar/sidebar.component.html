@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <div class="container-fluid" >
       <div class="row">
         <nav id="main-menu" >
@@ -7,18 +7,48 @@
                     <i class="fa logo-img"></i>                    
                 </a>
             </div>
-            <ul > 
-                <li >
-                    <a routerLink="familyroute" routerLinkActive="active"  >
-                        <i class="fa fa-user fa-2x"></i>
-                        <span class="nav-text" >
-                            Profile
+            
+        
+            <ul class="logout">
+                <li>
+                    <a href="#">
+                            <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
                         </span>
                     </a>
-                </li>
-                <li class="has-subnav">
+                </li>  
+            </ul>
+        </nav>
+        
+      </div>
+  </div>
+
+</div>
+   -->
+
+<nav id="main-menu" >
+            <!-- <div class="navbar-header" style="background-color: white">
+                <a class="navbar-brand" href="/" >
+                    <i class="fa logo-img" style="color: magenta"> BucksWise</i>                    
+                </a>
+            </div> -->
+            <mat-toolbar>
+                <span>BucksWise</span>
+            </mat-toolbar>
+    <div class="navbar-header">
+        <ul> 
+            <li>
+                <a routerLink="familyroute" routerLinkActive="active"  >
+                    <i class="fa fa-user fa-2x"></i>
+                    <span class="nav-text" >
+                        Profile
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
                     <a routerLink="dashboard" routerLinkActive="active">
-                        <i class="fa fa-tachometer fa-2x"></i>
+                        <i class="fa fa-tachometer-alt fa-2x"></i>
                         
                         <span class="nav-text">
                             Dashboard
@@ -91,22 +121,12 @@
                         </span>
                     </a>
                 </li>
-            </ul>
-        
-            <ul class="logout">
-                <li>
-                    <a href="#">
-                            <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
-                            Logout
-                        </span>
-                    </a>
-                </li>  
-            </ul>
-        </nav>
-        
-      </div>
-  </div>
+        </ul>
+    </div>
+</nav>
 
-</div>
+
+
+
   
+   

@@ -1,24 +1,37 @@
 
 <div> <!--start of buttons -->
   <div class="float-right">
-  <button type="button" class="btn btn-link" data-toggle="modal" (click)="openCredit(creditModal)">
+  <button type="button" class="btn btn-link" data-toggle="modal" (click)="opnCredit(creditModal)">
           <span>
               <i class="fa fa-plus" aria-hidden="true"></i>
               <span>Add</span>
           </span>
   </button>
-  <button type="button" class="btn btn-link" (click)="onCreditSave()">
-          <span>
-              <i class="fa fa-save" aria-hidden="true"></i>
-              <span>Save</span>
-          </span>
-  </button>
-  <button type="button" class="btn btn-link" (click)="onGetCredit()">
-          <span>
-              <i class="far fa-arrow-alt-circle-down"></i>
-              <span>Get</span>
-          </span>
-  </button>
+  <!-- <button type="button" class="btn btn-link" (click)="onGetCredit()">
+        <span>
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span>Get</span>
+        </span>
+</button> -->
+  <!-- <span [ngSwitch]="isCreditData">
+    <div *ngSwitchCase="true">
+            <button type="button" class="btn btn-link" (click)="updateCredit()">
+                    <span>
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        <span>Update</span>
+                    </span>
+            </button>
+    </div>
+    <div *ngSwitchCase="false">
+            <button type="button" class="btn btn-link" (click)="onCreditSave()">
+                    <span>
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        <span>Save</span>
+                    </span>
+            </button>
+    </div>
+  </span> -->
+
   </div>
 </div>
 
@@ -41,8 +54,12 @@
               <td> {{ field.bank }} </td>
               <td> {{ field.roi }} </td>
               <td> {{ field.balance }} </td>
-
-              <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveCredit(i)" >
+              <td>
+                <button class="btn btn-outline-info" type="button" (click)="openCredit(field.id, creditModal)">
+                    <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                </button>
+              </td>       
+              <td><button class="btn  btn-outline-danger"  type="button" (click)="RemoveCredit(i)" >
                   <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
               </td>
           </tr>

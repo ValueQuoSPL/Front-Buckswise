@@ -6,18 +6,7 @@
               <span>Add</span>
           </span>
   </button>
-  <button type="button" class="btn btn-link" (click)="onGeneralSave()">
-          <span>
-              <i class="fa fa-save" aria-hidden="true"></i>
-              <span>Save</span>
-          </span>
-  </button>
-  <button type="button" class="btn btn-link" (click)="onGetGeneral()">
-          <span>
-              <i class="far fa-arrow-alt-circle-down"></i>
-              <span>Get</span>
-          </span>
-  </button>
+
   </div>
   </div>
 
@@ -39,14 +28,17 @@
           <tbody>
 
               <tr *ngFor="let field of dynamicGeneral; let i = index">
-                  <td> {{ field.iName }}</td>
-                  <td> {{ field.pName }} </td>
+                  <td> {{ field.insureName }}</td>
+                  <td> {{ field.policyName }} </td>
                   <td> {{ field.premium }} </td>
                   <td> {{ field.issuer }} </td>
-                  <td> {{ field.pterm }} </td>
-                  <td> {{ field.pdate | date : 'shortDate'}} </td>
+                  <td> {{ field.premiumTerm }} </td>
+                  <td> {{ field.policyDate | date : 'shortDate'}} </td>
                   <td> {{ field.sum }} </td>
-                  <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveGeneral(i)" >
+                  <td><button class="btn btn-sm btn-outline-info"  type="button" (click)="onEditGeneral(field.id, generalModal)" >
+                      <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                  </td>
+                  <td><button class="btn btn-sm btn-outline-danger"  type="button" (click)="RemoveGeneral(i, field.id)" >
                       <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                   </td>
               </tr>

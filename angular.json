@@ -51,6 +51,7 @@
             "polyfills": "src/main/webapp/app/polyfills.ts",
             "scripts": [],
             "styles": [
+              "src/main/webapp/app/css/animate.css",
               "src/main/webapp/content/scss/vendor.scss",
               "src/main/webapp/content/scss/global.scss"
             ],

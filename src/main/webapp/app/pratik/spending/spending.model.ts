@@ -29,9 +29,12 @@ export class Credit {
   type;
   roi;
   balance;
+  bank;
+  id;
   creditModelArray: any = [];
 }
 export class Life {
+  id;
   userid;
   type;
   ins_name;
@@ -49,6 +52,7 @@ export class Life {
   constructor() {}
 }
 export class General {
+  id;
   userid;
   ins_obj;
   policy_name;
@@ -63,6 +67,7 @@ export class General {
   generalModelArray: any = [];
 }
 export class Health {
+  id;
   userid;
   ins_name;
   policy_name;
@@ -110,14 +115,14 @@ export class Loan {
   userid;
   loan_type;
   lender;
-  applicant: '';
+  applicant: "";
   amnt;
-  ldate: '';
+  ldate: "";
   check: boolean;
   tenure;
-  intrest_type: '';
+  intrest_type: "";
   roi;
-  rdate: '';
+  rdate: "";
   id;
   loanModelArray: any = [];
   constructor() {}

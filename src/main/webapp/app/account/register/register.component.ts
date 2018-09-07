@@ -66,6 +66,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   resolved(captchaResponse: string) {
     console.log(captchaResponse);
     this.registerAccount.gcaptcha = captchaResponse;
+    this.registerService.validate();
   }
 
   register() {
