@@ -3,17 +3,17 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { BuckswiseFrontEndSharedModule } from 'app/shared';
 
-import { DemoComponent } from 'app/demo/demo.component';
-import { DemoRoutingModule } from 'app/demo/demo-routing.module';
-import { MyloginService } from 'app/demo/mylogin.service';
-import { WidgetModule } from 'app/demo/widget/widget.module';
-import { MaterialComponent, IncomeDialogComponent } from 'app/demo/material/material.component';
+import { DemoComponent } from './demo.component';
+import { DemoRoutingModule } from './demo-routing.module';
+import { MyloginService } from './mylogin.service';
+import { WidgetModule } from './widget/widget.module';
+import { MaterialComponent, IncomeDialogComponent } from './material/material.component';
 // import { MaterialModule } from 'app/material.module';
 import { CustomMaterialModule } from 'app/custom-material.module';
-import { NgBootstrapComponent } from 'app/demo/ng-bootstrap/ng-bootstrap.component';
-import { SimpleComponent } from 'app/demo/simple/simple.component';
-import { MatNavbarComponent } from 'app/demo/mat-navbar/mat-navbar.component';
-import { MobileOtpComponent } from 'app/demo/mobile-otp/mobile-otp.component';
+import { NgBootstrapComponent } from './ng-bootstrap/ng-bootstrap.component';
+import { SimpleComponent } from './simple/simple.component';
+import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
+import { MobileOtpComponent } from './mobile-otp/mobile-otp.component';
 
 @NgModule({
     imports: [

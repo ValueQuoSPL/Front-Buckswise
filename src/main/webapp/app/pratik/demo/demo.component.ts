@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Mylogin } from 'app/demo/mylogin.model';
-import { MyloginService } from 'app/demo/mylogin.service';
+import { Mylogin } from './mylogin.model';
+import { MyloginService } from './mylogin.service';
 
 @Component({
   selector: 'jhi-demo',

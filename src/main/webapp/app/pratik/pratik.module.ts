@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BuckswiseFrontEndDemoModule } from 'app/pratik/demo/demo.module';
 
 import {
   IncomeService,
@@ -49,6 +50,7 @@ import { HealthComponent } from 'app/pratik/spending/health/health.component';
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
     CustomDirectiveModule,
+    BuckswiseFrontEndDemoModule,
     // material
     CustomMaterialModule,
     NgbModule
