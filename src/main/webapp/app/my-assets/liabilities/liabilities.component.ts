@@ -112,7 +112,7 @@ export class LiabilitiesComponent implements OnInit {
   getLoanandDebt(uid) {
     this.liabilitiesService.getloan(this.uid).subscribe(data => {
       this.getloan = data;
-      console.log('return from loandebts' + this.getloan);
+      // console.log('return from loandebts' + this.getloan);
     });
   }
 

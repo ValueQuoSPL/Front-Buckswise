@@ -64,13 +64,13 @@
                                                     <tr *ngFor="let goal of dynamicGoalArray; let i = index">
                                                         <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
                                             <td> {{stocks.id}} </td> -->
-                                                        <td> {{goal.goal_name}} </td>
-                                                        <td>{{goal.fund_needed}} </td>
+                                                        <td> {{goal.goalname}} </td>
+                                                        <td>{{goal.futurecost}} </td>
                                                         <td> </td>
-                                                        
+<!--                                                         
                                                         <td>
                                                             <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                                        </td>
+                                                        </td> -->
                                                     </tr>
                                                 </tbody>
                                         
@@ -95,18 +95,16 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                        
-                                                    <tr *ngFor="let liabilitiy of liabilitiyArray; let i = index">
-                                                        <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
-                                            <td> {{stocks.id}} </td> -->
-                                                        <td> {{liabilitiy.liabilitiy_type}} </td>
-                                                        <td>{{liabilitiy.org_name}} </td>
-                                                        <td> {{liabilitiy.outAmount}}</td>
-                                                        
+                                                        <tr *ngFor="let l of liability">
+                                                                <td> {{l.ltype}} </td>
+                                                                <td>{{l.lenderName}} </td>
+                                                                <td> {{l.outstandingpricipal}}</td>
+                                                        </tr>  
+                                                                        
                                                         <td>
                                                             <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
                                                         </td>
-                                                    </tr>
+                                                
                                                 </tbody>
                                         
                                             </table>
@@ -117,11 +115,12 @@
                             </mat-card-content>
                        </mat-card>
 
-                       <mat-form-field style="width: 100%;">
+                       <div style="width: 100%;">
                             <mat-label>Total</mat-label>
-                            <input matInput type="number"  name="total" id="total" [(ngModel)]="total" [ngModelOptions]="{standalone: true}"
-                                required/>
-                       </mat-form-field>
+                            {{lifeInsurance.total }}
+                            <!-- <input matInput type="number"  name="total" id="total" [(ngModel)]="total" [ngModelOptions]="{standalone: true}"
+                                required/> -->
+                            </div>
 
                        
                     <div class="modal-footer">
@@ -155,14 +154,20 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let lifeInsurance of lifeArray; let i = index">
+            <tr *ngFor="let lifeInsurance of goalLife; let i = index">
                 <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
     <td> {{stocks.id}} </td> -->
                 <td> {{lifeInsurance.risk_coverage}} </td>
                 <td>{{lifeInsurance.expense_cover}} </td>
-                <td>{{lifeInsurance.total_yearly_expenses}} </td>
+                <td>{{lifeInsurance.total}} </td>
+                <td>{{lifeInsurance.id}} </td>
                 <td>
-                    <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                    <button class="btn btn-outline-info" type="button" (click)="opnLife(lifeInsurance.id,lifeModal)">
+                        <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-default" type="button" (click)="deleteField(i, lifeInsurance.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
