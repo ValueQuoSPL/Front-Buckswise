@@ -1,78 +1,78 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SERVER_API_URL } from 'app/app.constants';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { SERVER_API_URL } from "app/app.constants";
 import {
   LifeInsurance,
   MedicalInsurance,
   Questionnaire
-} from 'app/risk/risk.model';
+} from "app/risk/risk.model";
 @Injectable()
 export class RiskService {
   constructor(private http: HttpClient) {}
   public SaveLifeInsurance(lifeInsurance) {
     console.log(lifeInsurance);
     return this.http.post<LifeInsurance[]>(
-      SERVER_API_URL + 'api/risk-life-insurances',
+      SERVER_API_URL + "api/risk-life-insurances",
       lifeInsurance
     );
   }
   public SaveMedicalInsurance(medicalInsurance) {
     return this.http.post<MedicalInsurance[]>(
-      SERVER_API_URL + 'api/risk-medical-insurances',
+      SERVER_API_URL + "api/risk-medical-insurances",
       medicalInsurance
     );
   }
   public SaveQuestionnaire(questionnaire) {
     return this.http.post<Questionnaire[]>(
-      SERVER_API_URL + 'api/',
+      SERVER_API_URL + "api/",
       questionnaire
     );
   }
 
   // get method
   public getLifeInsurance(uid) {
-    const url = SERVER_API_URL + 'api/getRiskLifeInsurance/' + uid;
+    const url = SERVER_API_URL + "api/getRiskLifeInsurance/" + uid;
     return this.http.get(url);
   }
 
   // update method
   public updatelifeInsurance(goalLife) {
-    const url = SERVER_API_URL + 'api/risk-life-insurances';
+    const url = SERVER_API_URL + "api/risk-life-insurances";
     return this.http.put(url, goalLife);
   }
 
   // delete method
   public delete(id) {
-    const url = SERVER_API_URL + 'api/risk-life-insurances/' + id;
+    const url = SERVER_API_URL + "api/risk-life-insurances/" + id;
     return this.http.delete(url);
   }
 
   // get medical insurance
   public getMedicalInsurance(uid) {
-    const url = SERVER_API_URL + 'api/getRiskMedicalInsurance/' + uid;
+    const url = SERVER_API_URL + "api/getRiskMedicalInsurance/" + uid;
     return this.http.get(url);
   }
 
   // update Medical Insurance
   public updateMedicalInsurance(riskmedical) {
-    console.log('update', riskmedical);
-    const url = SERVER_API_URL + 'api/risk-medical-insurances';
+    console.log("update", riskmedical);
+    const url = SERVER_API_URL + "api/risk-medical-insurances";
     return this.http.put(url, riskmedical);
   }
 
   // delete Medical Insurance
   public deleteMedicalInsurance(id) {
-    const url = SERVER_API_URL + 'api/risk-medical-insurances/' + id;
+    const url = SERVER_API_URL + "api/risk-medical-insurances/" + id;
     return this.http.delete(url);
   }
 
   public getid(id) {
-    const url = SERVER_API_URL + 'api/risk-medical-insurances/' + id;
+    const url = SERVER_API_URL + "api/risk-medical-insurances/" + id;
     return this.http.get(url);
   }
 
   public getbyid(id) {
-    const url = SERVER_API_URL + 'api/risk-life-insurances/' + id;
+    const url = SERVER_API_URL + "api/risk-life-insurances/" + id;
     return this.http.get(url);
   }
 }

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Principal, AccountService } from 'app/shared';
-import { Router } from '@angular/router';
-import { RiskService } from 'app/risk/risk.service';
-import { MedicalInsurance } from 'app/risk/risk.model';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from "@angular/core";
+import { Principal, AccountService } from "app/shared";
+import { Router } from "@angular/router";
+import { RiskService } from "app/risk/risk.service";
+import { MedicalInsurance } from "app/risk/risk.model";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'jhi-medical-insurance',
-  templateUrl: './medical-insurance.component.html',
-  styleUrls: ['./medical-insurance.component.css']
+  selector: "jhi-medical-insurance",
+  templateUrl: "./medical-insurance.component.html",
+  styleUrls: ["./medical-insurance.component.css"]
 })
 export class MedicalInsuranceComponent implements OnInit {
   account: Account;
@@ -41,7 +41,7 @@ export class MedicalInsuranceComponent implements OnInit {
   }
 
   getUserid() {
-    console.log('inside get uid');
+    console.log("inside get uid");
     // retrieve the userIdentity data from the server, update the identity object, and then resolve.
     return this.accountService
       .get()
@@ -50,10 +50,10 @@ export class MedicalInsuranceComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from life userid is : ', this.uid);
+          console.log("from life userid is : ", this.uid);
           this.onGetMedical();
         } else {
-          console.log('cannot get user details check login ');
+          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
@@ -61,7 +61,7 @@ export class MedicalInsuranceComponent implements OnInit {
 
   openMedical(lifeContent) {
     this.modalService
-      .open(lifeContent, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeContent, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -76,9 +76,9 @@ export class MedicalInsuranceComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -91,11 +91,11 @@ export class MedicalInsuranceComponent implements OnInit {
       room_type: this.medicalInsurance.room_type,
       family_members: this.medicalInsurance.family_members
     });
-    console.log('medical', this.medicalInsurance);
+    console.log("medical", this.medicalInsurance);
     this.riskService
       .SaveMedicalInsurance(this.medicalInsurance)
       .subscribe(data => {
-        alert('Added new stocks details');
+        alert("Added new stocks details");
         this.onGetMedical();
       });
   }
@@ -103,16 +103,16 @@ export class MedicalInsuranceComponent implements OnInit {
   onGetMedical() {
     this.riskService.getMedicalInsurance(this.uid).subscribe(data => {
       this.riskmedical = data;
-      console.log('riskmedical', this.riskmedical);
+      console.log("riskmedical", this.riskmedical);
     });
   }
 
   opnMedical(id, lifeModal) {
-    console.log('in medical');
+    console.log("in medical");
     this.tempId = id;
     this.getid(this.tempId);
     this.modalService
-      .open(lifeModal, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeModal, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -128,23 +128,23 @@ export class MedicalInsuranceComponent implements OnInit {
     this.riskService
       .updateMedicalInsurance(this.medicalInsurance)
       .subscribe(data => {
-        alert('data saved');
+        alert("data saved");
         this.onGetMedical();
       });
   }
 
   deleteField(index, id) {
     this.riskService.deleteMedicalInsurance(id).subscribe(data => {
-      alert('deleted');
+      alert("deleted");
     });
     this.riskmedical.splice(index, 1);
   }
 
   getid(tempId) {
-    console.log('in gitid');
+    console.log("in gitid");
     this.riskService.getid(tempId).subscribe(data => {
       this.result = data;
-      console.log('getidresult', this.result);
+      console.log("getidresult", this.result);
       this.medicalInsurance.id = this.result.id;
       this.medicalInsurance.userid = this.result.userid;
       this.medicalInsurance.family_members = this.result.family_members;

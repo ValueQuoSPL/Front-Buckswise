@@ -1,15 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService, Principal } from 'app/shared';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { Life } from 'app/pratik/spending/spending.model';
-import { LifeService } from 'app/pratik/spending/spending.service';
+import { Component, OnInit, Inject } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService, Principal } from "app/shared";
+import { Observable } from "rxjs";
+import { FormControl } from "@angular/forms";
+import { Life } from "app/pratik/spending/spending.model";
+import { LifeService } from "app/pratik/spending/spending.service";
 
 @Component({
-  selector: 'jhi-life',
-  templateUrl: './life.component.html',
-  styleUrls: ['../spending.component.css']
+  selector: "jhi-life",
+  templateUrl: "./life.component.html",
+  styleUrls: ["../spending.component.css"]
 })
 export class LifeComponent implements OnInit {
   uid;
@@ -33,25 +33,26 @@ export class LifeComponent implements OnInit {
   lifeDate = new FormControl(new Date());
 
   PolicyTypeArray = [
-    { name: 'Child Policy' },
-    { name: 'Retirement Policy' },
-    { name: 'Saving Policy' },
-    { name: 'Investment Policy' },
-    { name: 'Term Policy' }
+    { name: "Child Policy" },
+    { name: "Retirement Policy" },
+    { name: "Saving Policy" },
+    { name: "Investment Policy" },
+    { name: "Term Policy" }
   ];
   PremiumTypeArray = [
-    { name: 'Single' },
-    { name: 'Monthly' },
-    { name: 'Quarterly' },
-    { name: 'Half Yearly' },
-    { name: 'Yearly' }
+    { name: "Single" },
+    { name: "Monthly" },
+    { name: "Quarterly" },
+    { name: "Half Yearly" },
+    { name: "Yearly" }
   ];
   isLifeData: boolean;
   constructor(
     private lifeService: LifeService,
     private principal: Principal,
     private modalService: NgbModal,
-    private accountService: AccountService) { }
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
     // console.log('inside life Init()');
@@ -63,42 +64,45 @@ export class LifeComponent implements OnInit {
   }
 
   getUserid() {
-    return this.accountService.get().toPromise().then(response => {
+    return this.accountService
+      .get()
+      .toPromise()
+      .then(response => {
         const account = response.body;
         if (account) {
           this.uid = account.id;
           // console.log('from life userid is : ', this.uid);
           this.onGetLife();
         } else {
-          console.log('cannot get user details check login ');
+          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
   }
 
   clear() {
-    this.resource = '';
-    this.amount = '';
-    this.expense = '';
+    this.resource = "";
+    this.amount = "";
+    this.expense = "";
 
-    this.life.ins_name = '';
-    this.life.issuer = '';
-    this.life.policy_name = '';
-    this.life.policy_term = '';
-    this.life.premium = '';
-    this.life.premium_mode = '';
-    this.life.premium_term = '';
-    this.life.proposer_name = '';
-    this.life.start_date = '';
-    this.life.sum = '';
-    this.life.type = '';
+    this.life.ins_name = "";
+    this.life.issuer = "";
+    this.life.policy_name = "";
+    this.life.policy_term = "";
+    this.life.premium = "";
+    this.life.premium_mode = "";
+    this.life.premium_term = "";
+    this.life.proposer_name = "";
+    this.life.start_date = "";
+    this.life.sum = "";
+    this.life.type = "";
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -106,7 +110,7 @@ export class LifeComponent implements OnInit {
   // life insurance
   openLife(lifeModal) {
     this.modalService
-      .open(lifeModal, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeModal, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -154,7 +158,7 @@ export class LifeComponent implements OnInit {
   onLifeSave(): void {
     this.life.userid = this.uid;
     this.lifeService.PostLife(this.life.lifeModelArray).subscribe(data => {
-      alert('Your Life Insurance is Saved');
+      alert("Your Life Insurance is Saved");
       this.onGetLife();
     });
   }
@@ -170,7 +174,7 @@ export class LifeComponent implements OnInit {
     });
   }
   RemoveLifeInsurance(index, id) {
-    const res = confirm('Are you Sure?');
+    const res = confirm("Are you Sure?");
     // console.log(res);
 
     if (res) {
@@ -185,7 +189,7 @@ export class LifeComponent implements OnInit {
     this.fillModal(id);
     // console.log('modal', lifeModal);
     this.modalService
-      .open(lifeModal, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeModal, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -237,10 +241,9 @@ export class LifeComponent implements OnInit {
   Updatelife(id) {
     this.life.id = id;
     this.life.userid = this.uid;
-    this.lifeService.PutLife(this.life , this.uid).subscribe(res => {
+    this.lifeService.PutLife(this.life, this.uid).subscribe(res => {
       this.clear();
-      alert('Your data saved');
+      alert("Your data saved");
     });
   }
-
 }

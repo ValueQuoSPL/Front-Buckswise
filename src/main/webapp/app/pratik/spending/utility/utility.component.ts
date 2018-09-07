@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService } from 'app/shared';
-import { Observable } from 'rxjs';
-import { Utility } from '../spending.model';
-import { UtilityService } from '../spending.service';
+import { Component, OnInit, Inject } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService } from "app/shared";
+import { Observable } from "rxjs";
+import { Utility } from "../spending.model";
+import { UtilityService } from "../spending.service";
 
 class NewUtility {
   dynamicUtility: any = [];
@@ -11,9 +11,9 @@ class NewUtility {
 }
 
 @Component({
-  selector: 'jhi-utility',
-  templateUrl: './utility.component.html',
-  styleUrls: ['./utility.component.css']
+  selector: "jhi-utility",
+  templateUrl: "./utility.component.html",
+  styleUrls: ["./utility.component.css"]
 })
 export class UtilityComponent implements OnInit {
   uid;
@@ -74,16 +74,16 @@ export class UtilityComponent implements OnInit {
   }
 
   clear() {
-    this.resource = '';
-    this.amount = '';
-    this.expense = '';
+    this.resource = "";
+    this.amount = "";
+    this.expense = "";
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -91,7 +91,7 @@ export class UtilityComponent implements OnInit {
 
   openUtility(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'expense-modal' })
+      .open(content, { ariaLabelledBy: "expense-modal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -144,7 +144,7 @@ export class UtilityComponent implements OnInit {
     this.utility.userid = this.uid;
     // this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PostUtility(this.utility).subscribe(data => {
-      alert('Your utility data saved');
+      alert("Your utility data saved");
       this.isUtilityData = true;
       this.changesSaved = true;
     });
@@ -168,34 +168,34 @@ export class UtilityComponent implements OnInit {
     // // console.log('inside fill utility data');
     for (let i = 0; i < this.UtilityArray.length; i++) {
       // // console.log('from UtilityArray : ', this.UtilityArray[i]);
-      if (this.UtilityArray[i].name === 'electricity') {
+      if (this.UtilityArray[i].name === "electricity") {
         this.utility.electricity = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilitySalary);
-      } else if (this.UtilityArray[i].name === 'gas') {
+      } else if (this.UtilityArray[i].name === "gas") {
         this.utility.gas = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityAward);
-      } else if (this.UtilityArray[i].name === 'water') {
+      } else if (this.UtilityArray[i].name === "water") {
         this.utility.water = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityBonus);
-      } else if (this.UtilityArray[i].name === 'telephone') {
+      } else if (this.UtilityArray[i].name === "telephone") {
         this.utility.telephone = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityPension);
-      } else if (this.UtilityArray[i].name === 'mobile') {
+      } else if (this.UtilityArray[i].name === "mobile") {
         this.utility.mobile = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilitySaving);
-      } else if (this.UtilityArray[i].name === 'internet') {
+      } else if (this.UtilityArray[i].name === "internet") {
         this.utility.internet = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityDeposit);
-      } else if (this.UtilityArray[i].name === 'tv') {
+      } else if (this.UtilityArray[i].name === "tv") {
         this.utility.tv = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityRental);
-      } else if (this.UtilityArray[i].name === 'vcd') {
+      } else if (this.UtilityArray[i].name === "vcd") {
         this.utility.vcd = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityRental);
-      } else if (this.UtilityArray[i].name === 'news') {
+      } else if (this.UtilityArray[i].name === "news") {
         this.utility.news = +this.UtilityArray[i].amount;
         // // console.log(this.utility.utilityRental);
-      } else if (this.UtilityArray[i].name !== 'userid') {
+      } else if (this.UtilityArray[i].name !== "userid") {
         this.dynamicUtilityArray.push({
           id: this.UtilityArray[i].id,
           name: this.UtilityArray[i].name,
@@ -214,37 +214,37 @@ export class UtilityComponent implements OnInit {
 
   onEditStaticField(nameField, modal) {
     // console.log('inside edit utility');
-    if (nameField === 'electricity') {
-      this.nameField = 'Electricity';
+    if (nameField === "electricity") {
+      this.nameField = "Electricity";
       this.editField = this.utility.electricity;
-    } else if (nameField === 'gas') {
-      this.nameField = 'Gas';
+    } else if (nameField === "gas") {
+      this.nameField = "Gas";
       this.editField = this.utility.gas;
-    } else if (nameField === 'water') {
-      this.nameField = 'Water';
+    } else if (nameField === "water") {
+      this.nameField = "Water";
       this.editField = this.utility.water;
-    } else if (nameField === 'telephone') {
-      this.nameField = 'Telephone';
+    } else if (nameField === "telephone") {
+      this.nameField = "Telephone";
       this.editField = this.utility.telephone;
-    } else if (nameField === 'mobile') {
-      this.nameField = 'Mobile';
+    } else if (nameField === "mobile") {
+      this.nameField = "Mobile";
       this.editField = this.utility.mobile;
-    } else if (nameField === 'internet') {
-      this.nameField = 'Internet';
+    } else if (nameField === "internet") {
+      this.nameField = "Internet";
       this.editField = this.utility.internet;
-    } else if (nameField === 'tv') {
-      this.nameField = 'Satellite TV';
+    } else if (nameField === "tv") {
+      this.nameField = "Satellite TV";
       this.editField = this.utility.tv;
-    } else if (nameField === 'vcd') {
-      this.nameField = 'Video / CD Rentals';
+    } else if (nameField === "vcd") {
+      this.nameField = "Video / CD Rentals";
       this.editField = this.utility.vcd;
-    } else if (nameField === 'news') {
-      this.nameField = 'Rental utility';
+    } else if (nameField === "news") {
+      this.nameField = "Rental utility";
       this.editField = this.utility.news;
     }
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: 'utilityEditContent' })
+        .open(modal, { ariaLabelledBy: "utilityEditContent" })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -261,33 +261,33 @@ export class UtilityComponent implements OnInit {
 
   FillEditUtility(nameField) {
     // console.log('inside fill edit utility');
-    if (nameField === 'electricity') {
+    if (nameField === "electricity") {
       this.utility.electricity = this.editField;
-      this.editField = '';
-    } else if (nameField === 'gas') {
+      this.editField = "";
+    } else if (nameField === "gas") {
       this.utility.gas = this.editField;
-      this.editField = '';
-    } else if (nameField === 'water') {
+      this.editField = "";
+    } else if (nameField === "water") {
       this.utility.water = this.editField;
-      this.editField = '';
-    } else if (nameField === 'telephone') {
+      this.editField = "";
+    } else if (nameField === "telephone") {
       this.utility.telephone = this.editField;
-      this.editField = '';
-    } else if (nameField === 'mobile') {
+      this.editField = "";
+    } else if (nameField === "mobile") {
       this.utility.mobile = this.editField;
-      this.editField = '';
-    } else if (nameField === 'internet') {
+      this.editField = "";
+    } else if (nameField === "internet") {
       this.utility.internet = this.editField;
-      this.editField = '';
-    } else if (nameField === 'tv') {
+      this.editField = "";
+    } else if (nameField === "tv") {
       this.utility.tv = this.editField;
-      this.editField = '';
-    } else if (nameField === 'vcd') {
+      this.editField = "";
+    } else if (nameField === "vcd") {
       this.utility.vcd = this.editField;
-      this.editField = '';
-    } else if (nameField === 'news') {
+      this.editField = "";
+    } else if (nameField === "news") {
       this.utility.news = this.editField;
-      this.editField = '';
+      this.editField = "";
     }
   }
 
@@ -298,7 +298,7 @@ export class UtilityComponent implements OnInit {
 
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
+        .open(modal, { ariaLabelledBy: "incomeEditContent" })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -317,7 +317,7 @@ export class UtilityComponent implements OnInit {
     this.utility.userid = this.uid;
     this.utility.dynamicUtility = this.dynamicUtilityArray;
     this.utilityService.PutUtility(this.utility, this.uid).subscribe(data => {
-      alert('Your data saved');
+      alert("Your data saved");
       this.changesSaved = true;
     });
   }
@@ -327,7 +327,7 @@ export class UtilityComponent implements OnInit {
     if (!this.dataChanged && !this.changesSaved) {
       // console.log(this.dataChanged, 'dataChanged');
       // console.log(this.changesSaved, 'changesSaved');
-      return confirm('Do you want to leave this page Before changes saved ?');
+      return confirm("Do you want to leave this page Before changes saved ?");
     } else {
       return true;
     }

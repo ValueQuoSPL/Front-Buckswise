@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'jhi-spinner',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.css']
+  selector: "jhi-spinner",
+  templateUrl: "./spinner.component.html",
+  styleUrls: ["./spinner.css"]
 })
 export class SpinnerComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

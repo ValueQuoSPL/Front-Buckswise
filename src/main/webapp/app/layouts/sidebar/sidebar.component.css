@@ -25,11 +25,10 @@ nav.main-menu.expanded {
 
 #side-menu {
   background: #353d47 !important;
-
 }
 
 #main-menu {
-  background:#353d47 !important;
+  background: #353d47 !important;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -46,7 +45,6 @@ nav.main-menu.expanded {
 #main-menu > ul {
   margin: 7px 0;
   color: white;
-
 }
 
 #main-menu li {
@@ -89,21 +87,21 @@ nav.main-menu.expanded {
 }
 
 #main-menu > ul.logout {
-  position:absolute;
+  position: absolute;
   left: 0;
   bottom: 0;
 }
 
 .no-touch .scrollable.hover {
   overflow-y: hidden;
-} 
+}
 
 .no-touch .scrollable.hover:hover {
   overflow-y: auto;
   overflow: visible;
 }
 
- a:hover,
+a:hover,
 a:focus {
   text-decoration: none;
 }
