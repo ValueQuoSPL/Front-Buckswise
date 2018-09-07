@@ -49,11 +49,11 @@ export class SidenavComponent implements OnInit {
     if (!this.toggler) {
       this.toggler = true;
       x.style = 'margin-left: 5px;';
-      this.slide = 'slideInLeft';
+      this.slide = 'slideInRight';
     } else {
       this.toggler = false;
       x.style = 'margin-left: 15%;';
-      this.slide = 'slideInRight';
+      this.slide = 'slideInLeft';
 
     }
   }

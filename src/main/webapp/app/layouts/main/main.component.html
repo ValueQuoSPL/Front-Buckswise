@@ -1,35 +1,28 @@
-<!-- 
+
 <span [ngSwitch]="isAuthenticated()">
    
-    <p *ngSwitchCase="false">
+    <div *ngSwitchCase="false">
 
-        <router-outlet name="navbar"></router-outlet>
-
-        <div  *ngSwitchCase="false" style=" margin-left: 0px; margin-top: 58px; margin-right: 0px;">
-            <router-outlet></router-outlet>
-        </div>     
-
-    </p>
-
-  
-    <p *ngSwitchCase="true">
-       
-        <router-outlet name="navbar"></router-outlet>
-
-        <jhi-sidebar ></jhi-sidebar>
-
-        <br><br> <br> <br>
-
-        <div *ngSwitchCase="true" style=" margin-left: 60px; margin-top: -43px; margin-right: 0px;">
-            <router-outlet></router-outlet>
+        <div style="margin-bottom: 14px">
+            <router-outlet name="navbar"></router-outlet>
         </div>
 
-    </p>
-    <jhi-footer></jhi-footer>
+        <br><br>
+        <router-outlet ></router-outlet>
+        <jhi-footer></jhi-footer>
+
+    </div>
+
+  
+    <div *ngSwitchCase="true">
+       
+        <jhi-sidenav></jhi-sidenav>
+
+    </div>
     
 </span>
 
 
- -->
- <jhi-sidenav></jhi-sidenav>
+
+
 

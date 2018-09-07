@@ -1,7 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Principal, LoginService, LoginModalService } from 'app/shared';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { Router } from '@angular/router';
 import { VERSION } from 'app/app.constants';
@@ -20,10 +20,20 @@ export class SidebarComponent implements OnInit {
   swaggerEnabled: boolean;
   modalRef: NgbModalRef;
   version: string;
+  isLogin = false;
+  account: Account;
 
-  constructor() {}
+  constructor( private principal: Principal, private modalService: NgbModal, private loginModalService: LoginModalService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.principal.identity().then(account => {
+      this.account = account;
+    });
+  }
+
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
 
   showSidebar() {
     console.log('inside sidebar');
@@ -36,5 +46,11 @@ export class SidebarComponent implements OnInit {
 
   collapseNavbar() {
     this.isNavbarCollapsed = true;
+  }
+
+  Login() {
+    // console.log(this.modalRef);
+    this.modalRef = this.loginModalService.open();
+    // console.log(this.modalRef);
   }
 }
