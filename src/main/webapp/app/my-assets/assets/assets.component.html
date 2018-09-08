@@ -1,27 +1,20 @@
-
-<div class="container">
-
+<!-- <div class="container">
     <mat-accordion>
-
         <mat-expansion-panel class="accordion" [expanded]="step === 0">
-
             <mat-expansion-panel-header>
                 <mat-panel-title>Assets</mat-panel-title>
                 <mat-panel-description> Assets Details </mat-panel-description>
             </mat-expansion-panel-header>
-
             <div>
-        
                 <mat-accordion>
                     <!-- stocks -->
-                    <mat-expansion-panel class="accordion" [expanded]="step === 0">
+                    <!-- <mat-expansion-panel class="accordion" [expanded]="step === 0">
                         <mat-expansion-panel-header>
                             <mat-panel-title> Stocks </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
                         </mat-expansion-panel-header>
-
                         <!--start of buttons -->
-                        <div class="pull-right">
+                        <!-- <div class="pull-right">
                             <button type="button" class="btn btn-link"  (click)="openStocks(stocksModal)" >
                                 <span>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -34,10 +27,9 @@
                                     <span>Help</span>
                                 </span>
                             </button>
-                        </div>
-
+                        </div> -->
                         <!-- modal start -->
-                        <ng-template #stocksModal let-c="close" let-d="dismiss">
+                        <!-- <ng-template #stocksModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="stocksModal">Add Stocks</h4>
                                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -45,8 +37,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate   #editForm="ngForm">
-                                    
+                                <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
                                     <mat-form-field>
                                         <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" >
                                     </mat-form-field> &nbsp;&nbsp;
@@ -62,10 +53,7 @@
                                     <mat-form-field>
                                         <input matInput style="width: 100%;" type="textarea" placeholder="Notes" name="notes" id="notes" [(ngModel)]="stocks.notes"  />
                                     </mat-form-field>
-
-                                
                                     <div class="modal-footer">
-
                                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
                                         (click)="c('Save click')">
                                             <span class="fa fa-save"></span>&nbsp;
@@ -83,55 +71,102 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                                
-                        </ng-template>
-                       
+                            </div>    
+                        </ng-template> -->
+                         <!-- end of modal start -->
+                         <!-- edit modal start -->
+                         <!-- <ng-template #editStocksModal let-c="close" let-d="dismiss">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="editStocksModal">Add Stocks</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
+                                        <mat-form-field>
+                                            <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" >
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput class="full-width" required type="text" placeholder="Investor Name" [(ngModel)]="stocks.investor_name" [ngModelOptions]="{standalone: true}" >
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="No of shares" name="no_of_shares" id="no_of_shares" [(ngModel)]="stocks.no_of_shares" required />
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Share Price" name="share_price" id="share_price" [(ngModel)]="stocks.share_price"required/>
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="textarea" placeholder="Notes" name="notes" id="notes" [(ngModel)]="stocks.notes"  />
+                                        </mat-form-field>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                            (click)="c('Save click')">
+                                                <span class="fa fa-save"></span>&nbsp;
+                                                <span>Save</span>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                                <span class="fa fa-ban"></span>&nbsp;
+                                                <span>Cancel</span>
+                                            </button>
+                                            <button type="button" class="btn btn-warning" (click)="resetFieldValue()">
+                                                <span>
+                                                    <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+                                                    <span>Reset</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>    
+                            </ng-template> -->
+                         <!-- end of edit modal -->
                         <!-- table starts here -->
-                        <div>
+                        <!-- <div>
                             <table class="table table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-
+                                        <th scope="col">id</th>
                                         <th scope="col">Company Name</th>
                                         <th scope="col">Investor Name</th>
                                         <th scope="col">No of Shares</th>
                                         <th scope="col">Share Price</th>
                                         <th scope="col">Notes</th>
-                                        <th scope="col"></th>
+                                        <th scope="col">Update</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr *ngFor="let stocks of stocksArray; let i = index">
-                                        <!-- <td><a [routerLink]="['../stocks', stocks.id ]">{{stocks.id}}</a></td>
-                            <td> {{stocks.id}} </td> -->
+                                </thead> -->
+                                <!-- (click)="getStockId(stocks.id)" -->
+                                <!-- <tbody>
+                                    <tr *ngFor="let stocks of out; let i = index">
+                                        <td> {{stocks.id}} </td>
                                         <td> {{stocks.company_name}} </td>
                                         <td>{{stocks.investor_name}} </td>
                                         <td>{{stocks.no_of_shares}} </td>
                                         <td>{{stocks.share_price}} </td>
-                                        <td>{{stocks.notes}} </td>
+                                        <td>{{stocks.notes}}</td>
                                         <td>
-                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                            <button class="btn btn-outline-info" type="button" (click)="openEditStocks(editStocksModal,stocks.id)" >
+                                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                                            </button>             
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-outline-danger" type="button"  (click)="opendeleteStocks(stocks.id)">
+                                                <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
+                                            </button>             
                                         </td>
                                     </tr>
                                 </tbody>
-
                             </table>
                         </div>
-
-                    </mat-expansion-panel>
-
+                    </mat-expansion-panel> --> -->
                     <!-- Mutual funds -->
-                    <mat-expansion-panel >
+                    <!-- <mat-expansion-panel >
                         <mat-expansion-panel-header>
                             <mat-panel-title> Mutual Funds </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
-                        </mat-expansion-panel-header>
-
+                        </mat-expansion-panel-header> -->
                         <!--start of buttons -->
-                        <div class="pull-right">
+                        <!-- <div class="pull-right">
                             <button type="button" class="btn btn-link" (click)="openMutual(mutualModal)" >
                                 <span>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -144,10 +179,9 @@
                                     <span>Help</span>
                                 </span>
                             </button>
-                        </div>
-
+                        </div> -->
                         <!-- modal start -->
-                        <ng-template #mutualModal let-c="close" let-d="dismiss">
+                        <!-- <ng-template #mutualModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="mutualModal">Mutual Funds</h4>
                                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -156,97 +190,86 @@
                             </div>
                             <div class="modal-body ">
                                 <div class=" rowjustify-content-center">
-                                        <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                                    
-                                                <div class="form-group">
-                                                        <mat-form-field style="width: 90%;">
-                                                            <input matInput placeholder="ID" type="text" id="id" name="id" [(ngModel)]="mutualfund.id" [ngModelOptions]="{standalone: true}"/>
-                                                        </mat-form-field>
-                                                </div>
-                                                <div class="form-group">
-                                                    <mat-form-field style="width: 90%;">
-                                                        <input matInput type="text" 
-                                                        placeholder="Fund Name"  name="fund_name" id="field_fund_name" [(ngModel)]="mutualfund.fund_name" [ngModelOptions]="{standalone: true}" required>
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="form-group">
-                                                    <mat-form-field style="width: 90%;">
-                                                        <input matInput type="text" name="investor_name" placeholder="Investor Name" id="field_investor_name" [(ngModel)]="mutualfund.investor_name" [ngModelOptions]="{standalone: true}" required/>
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="form-group">
-                                                    <mat-form-field style="width: 90%;">
-                                                        <input matInput type="text" placeholder="Select Date"  [(ngModel)]="mutualfund.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker required>
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="form-group">
-                                                    <mat-form-field style="width: 90%;">
-                                                        <input matInput jhiNumberOnly type="number" placeholder="No of units"  name="no_of_units" id="field_no_of_units" [(ngModel)]="mutualfund.no_of_units" [ngModelOptions]="{standalone: true}" required />
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="form-group">
-                                                    <mat-form-field style="width: 90%;">
-                                                        <input matInput  type="text" placeholder="NAV"  name="nav" id="field_no_of_units" [(ngModel)]="mutualfund.nav" [ngModelOptions]="{standalone: true}" required />
-                                                    </mat-form-field>
-                                                </div>
-                                                
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
-                                                        <span class="fa fa-ban"></span>&nbsp;
-                                                        <span>Cancel</span>
-                                                    </button>
-                                                    <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
-                                                    (click)="c('Save click')">
-                                                        <span class="fa fa-save"></span>&nbsp;
-                                                        <span>Save</span>
-                                                    </button>
-                                                </div>
-                                            </form>
+                                    <form name="editForm" role="form" novalidate  #editForm="ngForm">
+                                        <mat-form-field>
+                                            <input matInput class="full-width" required type="number" jhiNumberOnly placeholder="mutualfundid" [(ngModel)]="mutualfund.mutualfundid" [ngModelOptions]="{standalone: true}" >
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput class="full-width" requiredtype="number" jhiNumberOnly  placeholder="MFScheme" [(ngModel)]="mutualfund.mfscheme" [ngModelOptions]="{standalone: true}" >
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput class="full-width" required type="number" jhiNumberOnly  placeholder="Folio Number" [(ngModel)]="mutualfund.folionumber" [ngModelOptions]="{standalone: true}" >
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Holding Days" name="holdingdays" id="holdingdays" [(ngModel)]="mutualfund.holdingdays" required />
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Purches Price" name="purchesprice" id="purchesprice" [(ngModel)]="mutualfund.purchesprice"required/>
+                                        </mat-form-field> &nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="current value" name="currentvalue" id="currentvalue" [(ngModel)]="mutualfund.currentvalue"  />
+                                        </mat-form-field>&nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Gain/Loss" name="gainloss" id="gainloss" [(ngModel)]="mutualfund.gainloss"/>
+                                        </mat-form-field>&nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="Absolute Return(%)" name="absolutereturn" id="absolutereturn" [(ngModel)]="mutualfund.absolutereturn"  />
+                                        </mat-form-field>&nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="CAGR(%)" name="cagr" id="cagr" [(ngModel)]="mutualfund.cagr"/>
+                                        </mat-form-field>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                                <span class="fa fa-ban"></span>&nbsp;
+                                                <span>Cancel</span>
+                                            </button>
+                                            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
+                                                (click)="c('Save click')" (click)="update()">
+                                                <span class="fa fa-save"></span>&nbsp;
+                                                <span>Save</span>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                                
                             </div>
-                        </ng-template> 
-
+                        </ng-template>  -->
                         <!-- table starts here -->
-                        <table class="table table-hover table-sm">
+                        <!-- <table class="table table-hover table-sm">
                             <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Fund Name</th>
-                                    <th scope="col">Investor Name</th>
-                                    <th scope="col">Purchase Date</th>
-                                    <th scope="col">No Of Units</th>
-                                    <th scope="col">Nav</th>
-                                    <th scope="col">Action</th>
+                                <tr> -->
+                                    <!-- <th scope="col">MutualFundID</th> -->
+                                    <!-- <th scope="col">MFScheme</th>
+                                    <th scope="col">Folio Number</th>
+                                    <th scope="col">Holding Days</th>
+                                    <th scope="col">Purches Price</th>
+                                    <th scope="col">Current Value</th>
+                                    <th scope="col">Gain/Loss</th>
+                                    <th scope="col">Absolute Return(%)</th>
+                                    <th scope="col">CAGR(%)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let mf of mutualfundArray; let i = index">
-                                    <!-- <td> {{mf.id}} </td> -->
-                                    <td> {{mf.fund_name}} </td>
-                                    <td>{{mf.investor_name}} </td>
-                                    <td>{{mf.p_date}} </td>
-                                    <td>{{mf.no_of_units}} </td>
-                                    <td>{{mf.nav}} </td>
-                                    <td>
-                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                    </td>
+                                <tr *ngFor="let mf of output; let i = index">
+                                    <td>{{mf.mfscheme}}</td>
+                                    <td>{{mf.folionumber}}</td>
+                                    <td>{{mf.holdingdays}}</td>
+                                    <td>{{mf.purchesprice}}</td>
+                                    <td>{{mf.currentvalue}}</td>
+                                    <td>{{mf.gainloss}}</td>
+                                    <td>{{mf.absolutereturn}}</td>
+                                    <td>{{mf.cagr}}</td>
                                 </tr>
                             </tbody>
-
-                            </table>
-
-                    </mat-expansion-panel>
-
+                        </table>
+                    </mat-expansion-panel> -->
                     <!-- Saving Schemes -->
-                    <mat-expansion-panel>
+                    <!-- <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title> Saving Schemes </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
-                        </mat-expansion-panel-header>
-
+                        </mat-expansion-panel-header> -->
                         <!--start of buttons -->
-                        <div class="pull-right">
+                        <!-- <div class="pull-right">
                             <button type="button" class="btn btn-link" (click)="openSaving(savingModal)" >
                                 <span>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -259,10 +282,10 @@
                                     <span>Help</span>
                                 </span>
                             </button>
-                        </div>
+                        </div> -->
 
                          <!-- modal start -->
-                         <ng-template #savingModal let-c="close" let-d="dismiss">
+                         <!-- <ng-template #savingModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="savingModal">Saving Schemes</h4>
                                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -273,70 +296,296 @@
                                 <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="ID"  id="id" name="id" [(ngModel)]="savingScheme.id" [ngModelOptions]="{standalone: true}"/>
+                                            <mat-form-field>
+                                                <input matInput type="text" placeholder="ID"  id="id" name="id" [(ngModel)]="savingScheme.num" [ngModelOptions]="{standalone: true}"/>
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <mat-select placeholder="Choose Saving Scheme" [(ngModel)]="savingScheme.scheme_type"  name="scheme_type">
-                                                    <mat-option *ngFor="let scheme of schemesArray" [value]="scheme.viewValue">
+                                            <mat-form-field>
+                                                <mat-select 
+                                                    placeholder="Choose Saving Scheme" 
+                                                    [(ngModel)]="savingScheme.type" 
+                                                    name="scheme_type"
+                                                    >
+                                                    <mat-option *ngFor="let scheme of schemesArray" 
+                                                    [value]="scheme.viewValue">
                                                     {{scheme.viewValue}}
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Investor Name" name="investor_name" id="field_investor_name" [(ngModel)]="savingScheme.investor_name"
-                                                [ngModelOptions]="{standalone: true}" required/>
+                                            <mat-form-field>
+                                                <input 
+                                                    matInput
+                                                    type="text" 
+                                                    placeholder="Investor Name"
+                                                    name="investor_name" 
+                                                    id="field_investor_name" 
+                                                    [(ngModel)]="savingScheme.investor_name"
+                                                    [ngModelOptions]="{standalone: true}" 
+                                                    required
+                                                />
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput jhiNumberOnly type="number" placeholder="Rate of Interest" name="rate_of_interest" id="field_rate_of_interest" [(ngModel)]="savingScheme.rate_of_interest" [ngModelOptions]="{standalone: true}"
-                                                required/>    
+                                            <mat-form-field>
+                                                <input 
+                                                    matInput 
+                                                    jhiNumberOnly 
+                                                    type="number" 
+                                                    placeholder="Rate of Interest"
+                                                    name="rate_of_interest" 
+                                                    id="field_rate_of_interest" 
+                                                    [(ngModel)]="savingScheme.rate_of_interest"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    required
+                                                />    
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                    <input matInput type="text" placeholder="Start Date"  [(ngModel)]="savingScheme.start_date" [ngModelOptions]="{standalone: true}"
-                                                    bsDatepicker>
-    
+                                            <mat-form-field>
+                                                    <input 
+                                                        matInput 
+                                                        type="text"
+                                                        placeholder="Start Date"
+                                                        [(ngModel)]="savingScheme.start_date" 
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        bsDatepicker
+                                                    />
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                    <input matInput type="number" placeholder="Fund Value" name="fund_value" id="field_fund_value" [(ngModel)]="savingScheme.fund_value"
-                                                    [ngModelOptions]="{standalone: true}" required />
-            
+                                            <mat-form-field>
+                                                    <input 
+                                                        matInput
+                                                        type="number"
+                                                        placeholder="Fund Value"
+                                                        name="fund_value"
+                                                        id="field_fund_value"
+                                                        [(ngModel)]="savingScheme.fund_value"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        required
+                                                    />
                                             </mat-form-field>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Organisation Name" name="organisation_name" id="field_organisation_name" [(ngModel)]="savingScheme.organisation_name" 
-                                                required>
+                                            <mat-form-field>
+                                                <input 
+                                                    matInput
+                                                    type="text"
+                                                    placeholder="Organisation Name"
+                                                    name="organisation_name"
+                                                    id="field_organisation_name"
+                                                    [(ngModel)]="savingScheme.organisation_name" 
+                                                    required
+                                                />
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <mat-select placeholder="Choose Divident Type" [(ngModel)]="savingScheme.dividend_type" name="dividend_type">
+                                            <mat-form-field>
+                                                <mat-select 
+                                                    placeholder="Choose Divident Type"
+                                                    [(ngModel)]="savingScheme.dividend_type"
+                                                    name="dividend_type"
+                                                >
                                                     <mat-option *ngFor="let type of dividendArray" [value]="type.name">
                                                     {{type.name}}
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Amount Invested" name="amount_invested" id="field_amount_invested" [(ngModel)]="savingScheme.amount_invested" [ngModelOptions]="{standalone: true}"
+                                            <mat-form-field>
+                                                <input matInput 
+                                                type="number"
+                                                placeholder="Amount Invested"
+                                                name="amount_invested"
+                                                id="field_amount_invested"
+                                                [(ngModel)]="savingScheme.amount_invested"
+                                                [ngModelOptions]="{standalone: true}"
                                                 required/>
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Tenure in Years" name="tenure" id="field_tenure" [(ngModel)]="savingScheme.tenure" [ngModelOptions]="{standalone: true}"
-                                                required/>
+                                            <mat-form-field>
+                                                <input 
+                                                    matInput 
+                                                    type="number" 
+                                                    placeholder="Tenure in Years" 
+                                                    name="tenure" id="field_tenure" 
+                                                    [(ngModel)]="savingScheme.tenure" 
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    required
+                                                />
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                    <input matInput type="text" placeholder="End Date"  [(ngModel)]="mutualfund.end_date" [ngModelOptions]="{standalone: true}"
-                                                    bsDatepicker>
-        
+                                            <mat-form-field>
+                                                    <input 
+                                                        matInput type="text" 
+                                                        placeholder="End Date"
+                                                        [(ngModel)]="savingScheme.end_date" 
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        bsDatepicker
+                                                    >
                                             </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                    <input matInput type="text" placeholder="As of Date"  [(ngModel)]="savingScheme.as_of_date" [ngModelOptions]="{standalone: true}"
-                                                    bsDatepicker>
-            
+                                            <mat-form-field>
+                                                <input 
+                                                    matInput 
+                                                    type="text" 
+                                                    placeholder="As of Date"
+                                                    [(ngModel)]="savingScheme.as_of_date" 
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    bsDatepicker
+                                                >
                                             </mat-form-field>
-
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        (click)="c('Save click')">
+                                            <span class="fa fa-save"></span>&nbsp;
+                                            <span>Save</span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                                            <span class="fa fa-ban"></span>&nbsp;
+                                            <span>Cancel</span>
+                                        </button>                                    -->
+                                    <!-- </div>footer -->
+                                <!-- </form> -->
+                            <!-- </div><!-- body -->
+                        <!-- </ng-template> --> -->
+                        <!-- table -->
+                        <!-- <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Organisation Name</th>
+                                    <th scope="col">Investor Name</th>
+                                    <th scope="col"> Amount Invested</th>
+                                    <th scope="col">ROI(%)</th>
+                                    <th scope="col">Current Fund Value</th>
+                                </tr>
+                            </thead>
+                            <tbody> -->
+                                <!-- <tr *ngFor="let savingScheme of saving; let i = index">
+                                    <td> {{savingScheme.num}} </td>
+                                    <td> {{savingScheme.organisation_name}} </td>
+                                    <td>{{savingScheme.investor_name}} </td>
+                                    <td>{{savingScheme.amount_invested}} </td>
+                                    <td>{{savingScheme.rate_of_interest}} </td>
+                                    <td>{{savingScheme.fund_value}} </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </mat-expansion-panel> -->
+                    <!-- Alternative Investment -->
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> Alternative Investment </mat-panel-title>
+                            <mat-panel-description> 00 </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <!--start of buttons -->
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" (click)="openAlt(altModal)" >
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Add</span>
+                                </span>
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span>
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span>Help</span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- modal start -->
+                         <ng-template #altModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="altModal">Alternative Investment</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm">    
+                                    <div class="form-group">
+                                        <label for="id">ID</label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="field_id" 
+                                            name="id" 
+                                            [(ngModel)]="altInvest.num" 
+                                            [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label 
+                                            class="form-control-label" 
+                                            for="field_fund_name">Fund Name
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            name="fund_name" 
+                                            id="field_fund_name" 
+                                            [(ngModel)]="altInvest.fund_name" 
+                                            [ngModelOptions]="{standalone: true}"
+                                            required
+                                        >
+                                    </div>
+                                    <div class="form-group">
+                                        <label 
+                                            class="form-control-label" 
+                                            for="field_investor_name">Investor Name
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            name="investor_name" 
+                                            id="field_investor_name" 
+                                            [(ngModel)]="altInvest.investor_name"
+                                            [ngModelOptions]="{standalone: true}" 
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label 
+                                            class="form-control-label" 
+                                            for="field_p_date">Purchase Date
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            placeholder="" 
+                                            class="form-control" 
+                                            [(ngModel)]="altInvest.p_date" 
+                                            [ngModelOptions]="{standalone: true}"
+                                            bsDatepicker
+                                        >
+                                        </div>
+                                        <div class="form-group">
+                                            <label 
+                                                class="form-control-label" 
+                                                for="field_amount_invested">Amount Invested
+                                            </label>
+                                            <input 
+                                                type="number" 
+                                                class="form-control" 
+                                                name="amount_invested" 
+                                                id="field_amount_invested" 
+                                                [(ngModel)]="altInvest.amount_invested" 
+                                                [ngModelOptions]="{standalone: true}"
+                                                required
+                                            />
+                                        </div>
+                                                <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="field_market_value">Market Value</label>
+                                                                <input type="number" class="form-control" name="market_value" id="field_market_value" [(ngModel)]="altInvest.market_value"
+                                                                    [ngModelOptions]="{standalone: true}" required />
+                                                            </div>
+                                                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="altInvest.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                                    bsDatepicker>
+                                                            </div>
+                                                        </div>
 
+                                                    </div>
+                                        
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_notes">Notes</label>
+                                                <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="altInvest.notes" [ngModelOptions]="{standalone: true}"
+                                                    required/>
+                                            </div>
                                     <div class="modal-footer">
 
                                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
@@ -358,122 +607,6 @@
                         <table class="table table-hover table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Organisation Name</th>
-                                    <th scope="col">Investor Name</th>
-                                    <th scope="col"> Amount Invested</th>
-                                    
-                                    <th scope="col">ROI(%)</th>
-                                    <th scope="col">Current Fund Value</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let savingScheme of savingArray; let i = index">
-                                    <!-- <td> {{fao.id}} </td> -->
-                                    <td> {{savingScheme.id}} </td>
-                                    <td>{{savingScheme.organisation_name}} </td>
-                                    <td>{{savingScheme.investor_name}} </td>
-                                    <td>{{savingScheme.amount_invested}} </td>
-                                    <td>{{savingScheme.rate_of_interest}} </td>
-                                    <td>{{savingScheme.fund_value}} </td>
-                                    <td>
-                                        <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-
-                    </mat-expansion-panel>
-
-                    <!-- Alternative Investment -->
-                    <mat-expansion-panel >
-                        <mat-expansion-panel-header>
-                            <mat-panel-title> Alternative Investment </mat-panel-title>
-                            <mat-panel-description> 00 </mat-panel-description>
-                        </mat-expansion-panel-header>
-
-                        <!--start of buttons -->
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-link" (click)="openAlt(altModal)" >
-                                <span>
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    <span>Add</span>
-                                </span>
-                            </button>
-                            <button type="button" class="btn btn-link">
-                                <span>
-                                    <i class="fa fa-info" aria-hidden="true"></i>
-                                    <span>Help</span>
-                                </span>
-                            </button>
-                        </div>
-
-                        <!-- modal start -->
-                         <ng-template #altModal let-c="close" let-d="dismiss">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="altModal">Alternative Investment</h4>
-                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text"  id="field_id" name="id" [(ngModel)]="altInvest.id" [ngModelOptions]="{standalone: true}" placeholder="ID"  />
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text"  name="fund_name" id="field_fund_name" [(ngModel)]="altInvest.fund_name" [ngModelOptions]="{standalone: true}" required placeholder="Fund Name">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text"  name="investor_name" id="field_investor_name" [(ngModel)]="altInvest.investor_name" [ngModelOptions]="{standalone: true}" required placeholder="Investor Name"/>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Purchase Date"  [(ngModel)]="altInvest.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Amount Invested"  name="amount_invested" id="field_amount_invested" [(ngModel)]="altInvest.amount_invested" [ngModelOptions]="{standalone: true}" required/>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Market Value" name="market_value" id="field_market_value" [(ngModel)]="altInvest.market_value" [ngModelOptions]="{standalone: true}" required />
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="As of Date"  [(ngModel)]="altInvest.as_of_date" [ngModelOptions]="{standalone: true}"  bsDatepicker>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="textarea" placeholder="Notes" name="notes" id="field_notes" [(ngModel)]="altInvest.notes">
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                    
-
-                                <div class="modal-footer">
-
-                                    <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
-                                    (click)="c('Save click')">
-                                        <span class="fa fa-save"></span>&nbsp;
-                                        <span>Save</span>
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
-                                        <span class="fa fa-ban"></span>&nbsp;
-                                        <span>Cancel</span>
-                                    </button>
-                                    
-                                </div> <!-- footer -->
-                                </form>
-                            </div> <!-- body -->
-                        </ng-template>
-
-                        <!-- table -->
-                        <table class="table table-hover table-sm">
-                            <thead>
-                                <tr>
                                     <th scope="col">Investor Name</th>
                                     <th scope="col"> Amount Invested</th>
                                     <th scope="col">Current Market Value</th>
@@ -481,11 +614,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let altInvest of altInvestArray; let i = index">
+                                <tr *ngFor="let altInvest of alternateinvest; let i = index">
                                     <!-- <td> {{fao.id}} </td> -->
                                     <td> {{altInvest.investor_name}} </td>
                                     <td>{{altInvest.amount_invested}} </td>
-                                    <td>{{altInvest.market_value}} </td>
+                                    <td>{{altInvest.market_value}}</td>
                                     <td>
                                         <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
                                     </td>
@@ -529,25 +662,29 @@
                             </div>
                             <div class="modal-body">
                                 <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                                
-                                    <mat-form-field style="width: 100%;">
-                                        <mat-select name="cash_source" [(ngModel)]="cash.cash_source" placeholder="Cash Source">
-                                            <mat-option>In Bank</mat-option>
-                                            <mat-option>Personal Possession</mat-option>
-                                            <mat-option>Hand loan</mat-option>
-                                            <mat-option>Other Sources</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                    <mat-form-field style="width: 100%;">
-                                        <input matInput jhiNumberOnly type="number" placeholder="Amount" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"required/>    
-                                    </mat-form-field> <br>
-                                    <mat-form-field style="width: 100%;">
-                                        <input matInput type="text" placeholder="Notes" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"/>
-                                    </mat-form-field>
-
+                                        
+                                <div class="form-group">
+                                    <label for="field_cash_source">Cash Source</label>
+                                    <select class="form-control" id="field_cash_source" name="cash_source" [(ngModel)]="cash.cash_source"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <option>--select source--</option>
+                                    <option>In Bank</option>
+                                    <option>Personal Possession</option>
+                                    <option>Hand loan</option>
+                                    <option>Other Sources</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_amount">Amount</label>
+                                    <input type="number" class="form-control" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"
+                                        required/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"
+                                    />
+                                </div>
                                     <div class="modal-footer">
-
                                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
                                         (click)="c('Save click')">
                                             <span class="fa fa-save"></span>&nbsp;
@@ -573,7 +710,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let cash of cashArray; let i = index">
+                                <tr *ngFor="let cash of CashDetails; let i = index">
                                     <td> {{cash.cash_source}} </td>
                                     <td>{{cash.amount}} </td>
                                     <td>
@@ -619,42 +756,59 @@
                             </div>
                             <div class="modal-body">
                                 <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                                    <mat-form-field style="width: 100%;">
-                                            <input matInput placeholder="Property Name" type="text"  name="prop_name" id="prop_name" [(ngModel)]="prop.prop_name" [ngModelOptions]="{standalone: true}"                                        />
-                                    </mat-form-field>
-                                    <mat-form-field style="width: 100%;">
-                                        <mat-select name="field_prop_type" [(ngModel)]="prop.prop_type" placeholder="Property Type">
-                                            <mat-option>Residential</mat-option>
-                                            <mat-option>Commercial</mat-option>
-                                            <mat-option>Agriculture</mat-option>
-                                            <mat-option>Vehicle</mat-option>
-                                            <mat-option>Jewellery</mat-option>
-                                            <mat-option>Others</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <mat-form-field style="width: 100%;">
-                                        <mat-select name="prop_details" placeholder="Property Details" [(ngModel)]="prop.prop_details">
-                                            <mat-option>Commercial Office/Retail</mat-option>
-                                            <mat-option>Apartments</mat-option>
-                                            <mat-option>Individual villa/house</mat-option>
-                                            <mat-option>Land</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <mat-form-field style="width: 100%;">
-                                            <input matInput placeholder="Current Value" type="number"   name="current_m_value" id="field_current_m_value" [(ngModel)]="prop.current_m_value"
-                                        [ngModelOptions]="{standalone: true}" required />
-                                    </mat-form-field>
-                                    <mat-form-field style="width: 100%;">
-                                            <input matInput  placeholder="As of Date" type="text"  [(ngModel)]="prop.as_of_date" [ngModelOptions]="{standalone: true}"
-                                            bsDatepicker>
-                                        </mat-form-field>
-                                    <mat-form-field style="width: 100%;">
-                                        <input matInput placeholder="Notes" type="textarea"  name="notes" id="notes" [(ngModel)]="prop.notes" [ngModelOptions]="{standalone: true}"/>
-                                    </mat-form-field>
                                     
+                                <div class="form-group">
+                                        <label class="form-control-label" for="field_prop_name">Property Name</label>
+                                        <input type="text" class="form-control" name="prop_name" id="prop_name" [(ngModel)]="prop.prop_name" [ngModelOptions]="{standalone: true}"
+                                        />
+                                    </div>
+                                <div class="form-group">
+                                        <label for="field_prop_type">Property Type</label>
+                                        <select class="form-control" id="field_prop_type" name="prop_type" [(ngModel)]= "prop.prop_type"
+                                        [ngModelOptions]="{standalone: true}" required>
+                                        <option>--select type--</option>
+                                        <option>Residential</option>
+                                        <option>Commercial</option>
+                                        <option>Agriculture</option>
+                                        <option>Vehicle</option>
+                                        <option>Jewellery</option>
+                                        <option>Others</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="field_prop_details">Property Details</label>
+                                            <select class="form-control" id="field_prop_details" name="prop_details" [(ngModel)]="prop.prop_details"
+                                            [ngModelOptions]="{standalone: true}" required>
+                                            <option>--select type--</option>
+                                            <option>Commercial Office/Retail</option>
+                                            <option>Apartments</option>
+                                            <option>Individual villa/house</option>
+                                            <option>Land</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="field_current_m_value">Current Market Value</label>
+                                                        <input type="number" class="form-control" name="current_m_value" id="field_current_m_value" [(ngModel)]="prop.current_m_value"
+                                                            [ngModelOptions]="{standalone: true}" required />
+                                                    </div>
+                                                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="prop.as_of_date" [ngModelOptions]="{standalone: true}"
+                                                            bsDatepicker>
+                                                    </div>
+                                                </div>
 
+                                            </div> 
+                                        <div class="form-group">
+                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="prop.notes" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
                                     <div class="modal-footer">
-
                                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
                                         (click)="c('Save click')">
                                             <span class="fa fa-save"></span>&nbsp;
@@ -681,15 +835,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let prop of propArray; let i = index">
-                                        <!-- <td> {{fao.id}} </td> -->
+                                    <tr *ngFor="let prop of propertyDetail; let i = index">
                                         <td> {{prop.prop_name}} </td>
                                         <td>{{prop.prop_type}} </td>
                                         <td>{{prop.current_m_value}} </td>
                                         <td>
                                             <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
                                         </td>
-                                    </tr>
+                                    </tr> 
                                 </tbody>
 
                             </table>
@@ -718,7 +871,6 @@
                                 </span>
                             </button>
                         </div>
-
                         <!-- modal start -->
                         <ng-template #chitModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
@@ -728,41 +880,51 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                                
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Chit Fund Name"  name="chit_name" id="chit_name" [(ngModel)]="chit.chit_name" [ngModelOptions]="{standalone: true}"/>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Chit Holder Name"  name="chit_holder_name" id="chit_holder_name" [(ngModel)]="chit.chit_holder_name" [ngModelOptions]="{standalone: true}"/>
-                                            </mat-form-field >
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Chit Start Date"   [(ngModel)]="chit.chit_start_date" [ngModelOptions]="{standalone: true}"bsDatepicker>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Chit Value"  name="chit_value" id="chit_value" [(ngModel)]="chit.chit_value" [ngModelOptions]="{standalone: true}"/>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Tenure (Months)"  name="tenure" id="tenure" [(ngModel)]="chit.tenure" [ngModelOptions]="{standalone: true}"/>
-                                            </mat-form-field >
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="number" placeholder="Monthly Paymrnt"  name="m_payment" id="m_payment" [(ngModel)]="chit.m_payment" [ngModelOptions]="{standalone: true}"/>
-                                            </mat-form-field >
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput type="text" placeholder="Current value"  name="current_value" id="current_value" [(ngModel)]="chit.current_value" [ngModelOptions]="{standalone: true}" />
-                                            </mat-form-field>
-                                        
-                                            <mat-checkbox name="isCashed" id="isCashed" [(ngModel)]="chit.isCashed"> Is Cashed? </mat-checkbox>
-                                            
-                                        </div>
+                                <form name="editForm" role="form" novalidate  #editForm="ngForm"> 
+                                  <div class="form-group">
+                                        <label class="form-control-label" for="field_chit_name">Chit Fund Name</label>
+                                        <input type="text" class="form-control" name="chit_name" id="chit_name" [(ngModel)]="chit.chit_name" [ngModelOptions]="{standalone: true}"
+                                        />
                                     </div>
-                                    <mat-form-field style="width: 100%;">
-                                        <textarea matInput  placeholder="Notes" name="notes" id="notes" [(ngModel)]="chit.notes" ></textarea>
-                                    </mat-form-field>
+                                    <div class="form-group">
+                                            <label class="form-control-label" for="field_chit_holder_name">Chit Holder Name</label>
+                                            <input type="text" class="form-control" name="chit_holder_name" id="chit_holder_name" [(ngModel)]="chit.chit_holder_name" [ngModelOptions]="{standalone: true}"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="form-control-label" f7or="field_chit_start_date">Chit Start date</label>
+                                                <input type="text" placeholder="" class="form-control" [(ngModel)]="chit.chit_start_date" [ngModelOptions]="{standalone: true}"
+                                                    bsDatepicker>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label class="form-control-label" for="field_chit_value">Chit Value</label>
+                                                    <input type="number" class="form-control" name="chit_value" id="chit_value" [(ngModel)]="chit.chit_value" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="form-control-label" for="field_tenure">Tenure (Months)</label>
+                                                        <input type="number" class="form-control" name="tenure" id="tenure" [(ngModel)]="chit.tenure" [ngModelOptions]="{standalone: true}"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="form-control-label" for="field_m_payment">Monthly Payment</label>
+                                                            <input type="number" class="form-control" name="m_payment" id="m_payment" [(ngModel)]="chit.m_payment" [ngModelOptions]="{standalone: true}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label class="form-control-label" for="field_current_value">Current Value</label>
+                                                                <input type="text" class="form-control" name="current_value" id="current_value" [(ngModel)]="chit.current_value" [ngModelOptions]="{standalone: true}" />
+                                                        </div>
+                                                        <div class="checkbox form-group">
+                                                                <label class="form-control-label" for="field_isChashed"><input type="checkbox" value="" class="form-control" name="isCashed" id="isCashed" [(ngModel)]="chit.isCashed" [ngModelOptions]="{standalone: true}" >Is cashed?</label>
+                                                              </div>
+                                          <div class="form-group">
+                                                    <label class="form-control-label" for="field_notes">Notes</label>
+                                                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="chit.notes" [ngModelOptions]="{standalone: true}"
+                                                    />
+                                                </div>
+                
+                                          
 
                                     <div class="modal-footer">
 
@@ -797,8 +959,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let chit of chitArray; let i = index">
-                                    <!-- <td> {{fao.id}} </td> -->
+                                <tr *ngFor="let chit of chitfund; let i = index">
                                     <td> {{chit.chit_name}} </td>
                                     <td>{{chit.chit_holder_name}} </td>
                                     <td>{{chit.chit_start_date| date : 'shortDate'}} </td>
@@ -848,55 +1009,81 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-
                             <div class="modal-body">
                                 <form name="editForm" role="form" novalidate  #editForm="ngForm">
                                     
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="ID" [(ngModel)]="fao.id" [ngModelOptions]="{standalone: true}">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="Investment Type" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="Asset Type" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="Investor Name" name="investor_name" id="field_investor_name" [(ngModel)]="fao.investor_name">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="Asset Name" name="asset_name" id="field_asset_name" [(ngModel)]="fao.asset_name">
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="No of Contracts" name="no_of_contracts" id="field_no_of_contracts" [(ngModel)]="fao.no_of_contracts">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="Purchase Date" [(ngModel)]="fao.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="contract Purchase Value" name="contract_p_value" id="field_contract_p_value" [(ngModel)]="fao.contract_p_value">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="contract Market Value" name="contract_m_value" id="field_contract_m_value" [(ngModel)]="fao.contract_m_value">
-                                            </mat-form-field>
-                                            <mat-form-field style="width: 100%;">
-                                                <input matInput required placeholder="As of Date" [(ngModel)]="fao.as_of_date" [ngModelOptions]="{standalone: true}"
-                                                bsDatepicker>
-                                            </mat-form-field>
+                                    <div class="form-group">
+                                        <label for="id">ID</label>
+                                        <input type="text" class="form-control" id="id" name="id" [(ngModel)]="fao.num" [ngModelOptions]="{standalone: true}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_investment_type">Investment Type</label>
+                                        <input type="text" class="form-control" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type"
+                                            [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_asset_type">Asset Type</label>
+                                        <input type="text" class="form-control" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_investor_name">Investor Name</label>
+                                        <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="fao.investor_name" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_asset_name">Asset Name</label>
+                                        <input type="text" class="form-control" name="asset_name" id="field_asset_name" [(ngModel)]="fao.asset_name" [ngModelOptions]="{standalone: true}"
+                                            required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_no_of_contracts">No of Contracts</label>
+                                        <input type="number" class="form-control" name="no_of_contracts" id="field_no_of_contracts" [(ngModel)]="fao.no_of_contracts"
+                                            [ngModelOptions]="{standalone: true}" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
+                                        <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_contract_p_value">contract Purchase Value</label>
+                                        <input type="number" class="form-control" name="contract_p_value" id="field_contract_p_value" [(ngModel)]="fao.contract_p_value"
+                                            [ngModelOptions]="{standalone: true}" required />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="field_contract_m_value">contract Market Value</label>
+                                                <input type="number" 
+                                                class="form-control"
+                                                name="contract_m_value"
+                                                id="field_contract_m_value"
+                                                [(ngModel)]="fao.contract_m_value"
+                                                [ngModelOptions]="{standalone: true}" 
+                                                required />
+                                            </div>
+                                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
+                                                <input type="text" 
+                                                        placeholder="" 
+                                                        class="form-control"
+                                                         [(ngModel)]="fao.as_of_date"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        bsDatepicker>
+                                            </div>
                                         </div>
                                     </div>
-                                    <mat-form-field style="width: 100%;">
-                                        <textarea matInput placeholder="Notes" type="text"   name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                                    </mat-form-field>
-
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="field_notes">Notes</label>
+                                        <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"/>
+                                    </div>
                                     <div class="modal-footer">
-
-                                        <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                                        <button type="submit" class="btn btn-primary" 
+                                        [disabled]="editForm.form.invalid || isSaving"
+                                         class="btn btn-primary"
                                         (click)="c('Save click')">
                                             <span class="fa fa-save"></span>&nbsp;
                                             <span>Save</span>
@@ -904,13 +1091,11 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
                                             <span class="fa fa-ban"></span>&nbsp;
                                             <span>Cancel</span>
-                                        </button>
-                                       
+                                        </button>  
                                     </div> <!-- footer -->
                                 </form>
                             </div> <!-- body -->
-                        </ng-template>     
-                        
+                        </ng-template>
                         <!-- table -->
                         <table class="table table-hover table-sm">
                             <thead>
@@ -930,10 +1115,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let fao of faoArray; let i = index">
-                                    <!-- <td> {{fao.id}} </td> -->
+                                <tr *ngFor="let fao of Future; let i = index">
+                                    <td> {{fao.num}} </td>
                                     <td> {{fao.investment_type}} </td>
-                                    <td>{{fao.asset_type}} </td>
+                                    <td>{{fao.asset_type}} </td>num
                                     <td>{{fao.investor_name}} </td>
                                     <td>{{fao.asset_name}} </td>
                                     <td>{{fao.no_of_contracts}} </td>
@@ -947,14 +1132,10 @@
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
-
                     </mat-expansion-panel>
-
                 </mat-accordion>
-
             </div>
         </mat-expansion-panel>
     </mat-accordion>
-</div>
+</div> -->

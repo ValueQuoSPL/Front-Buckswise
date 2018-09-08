@@ -20,4 +20,9 @@ export class MyprofileService {
     this.ServiceAPIParam = "api/myprofile" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
+  public updateProfile(myProfile: any): Observable<any> {
+    console.log("update family profile", myProfile);
+
+    return this.http.put(SERVER_API_URL + "api/myprofile", myProfile);
+  }
 }

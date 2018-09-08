@@ -1,3 +1,9 @@
-.navb{
-    height: 20px;
+.navb {
+  height: 20px;
+}
+.color {
+  color: red;
+}
+.col {
+  background-color: #4abdac;
 }

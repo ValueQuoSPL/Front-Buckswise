@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
-import { Principal } from "app/shared";
+import { Principal, LoginModalService } from "app/shared";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Myprofile } from "app/family/family.modal";
 import { FamilyserviceService } from "app/family/familyservice.service";
 import { Familyprofile, Assumption } from "app/family/family.modal";
-
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: "jhi-family",
   templateUrl: "./family.component.html",
@@ -22,17 +22,22 @@ export class FamilyComponent implements OnInit {
   familyProfile: Familyprofile = new Familyprofile();
   assumption: Assumption = new Assumption();
   servers: any;
+  modalRef: NgbModalRef;
 
   constructor(
     private principal: Principal,
     private familyservice: FamilyserviceService,
-    private router: Router
+    private router: Router,
+    private loginModalService: LoginModalService
   ) {}
 
   ngOnInit() {
     //    this.principal.identity().then((account)  =>  {
     //        this.account  =  account;
     //    });
+  }
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
   }
   //    getClick()
   //    {
@@ -111,5 +116,8 @@ export class FamilyComponent implements OnInit {
       alert("Data saved successfully");
       console.log("Data saved successfully");
     });
+  }
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 }
