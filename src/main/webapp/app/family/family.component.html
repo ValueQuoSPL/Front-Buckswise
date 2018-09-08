@@ -1,48 +1,59 @@
-
 <div class="container">
-<mat-accordion>
-
-      <mat-expansion-panel class="accordion" [expanded]="step === 0" >
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                <h5> Profile</h5>
-            </mat-panel-title>
-            <mat-panel-description>
-              Profile Details
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-      
-          <mat-accordion>
-
-            <mat-expansion-panel class="accordion" [expanded]="step === 0" >
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <h5>My Profile</h5>
-                </mat-panel-title>
-                <mat-panel-description>
-                  Fill your Profile here
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-          
-            <jhi-myprofile></jhi-myprofile>
-            </mat-expansion-panel>
-        
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h5>Family Profile</h5>
-                </mat-panel-title>
-                <mat-panel-description>
-                    Fill your  Family Profile here
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-          
-            <jhi-familyprofile></jhi-familyprofile>
-            </mat-expansion-panel>
-
-            </mat-accordion>
-
-      </mat-expansion-panel>
-
-    </mat-accordion>
+    <div>
+        <div [ngSwitch]="isAuthenticated()">
+            <div *ngSwitchCase="true">
+                <div class="container">
+                    <mat-accordion  class="container" >
+                          <mat-expansion-panel class="accordion" [expanded]="step === 0" >
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h5> Profile</h5>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  Profile Details
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+                          
+                              <mat-accordion>
+                    
+                                <mat-expansion-panel class="accordion" [expanded]="step === 0">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <h5>My Profile</h5>
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                      Fill your Profile here
+                                    </mat-panel-description>
+                                  </mat-expansion-panel-header>
+                              
+                                <jhi-myprofile></jhi-myprofile>
+                                </mat-expansion-panel>
+                            
+                                <mat-expansion-panel>
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                      <h5>Family Profile</h5>
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Fill your  Family Profile here
+                                    </mat-panel-description>
+                                  </mat-expansion-panel-header>
+                              
+                                <jhi-familyprofile></jhi-familyprofile>
+                                </mat-expansion-panel>
+                    
+                                </mat-accordion>
+                    
+                          </mat-expansion-panel>
+                    
+                        </mat-accordion>
+                    </div>
+            </div>
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>Oops you are not Signed In </span>
+                Please <a class="alert-link" (click)="login()">Click here</a><span> to sign-in now.</span>
+            </div>
+            <br>
+        </div>
+    </div>
 </div>

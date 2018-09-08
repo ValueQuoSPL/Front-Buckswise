@@ -1,25 +1,17 @@
 <div class="container" *ngIf="!isValid"><!--start of container-->
   <form><!--end of form-->
-    <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar-->
-      <h5>Personal Information</h5>
-      <ul class="navbar-nav"><!--start ul-->
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link" (click)="saveDetail()">Save</a></button>  
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link"  href="#">Cancle</a></button>  
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-link"><a class="nav-link" href="#">Help</a></button>  
-        </li>
-      </ul><!--end ul-->
-    </div><!--end of navbar-->
+    <div class="row">
+        <h5>Personal Information</h5>&nbsp;&nbsp;
+          <span style="margin-left: 560px"><a class="nav-link" *ngIf="show" (click)="saveDetail()">Save</a></span>
+          <span><a class="nav-link"  *ngIf="!show" (click)="update()">Update</a></span>
+          <span><a class="nav-link"  href="#">Cancle</a></span>
+          <span><a class="nav-link" href="#">Help</a></span>
+    </div>     
     <div class="row"><!-- start of row1-->
       <div class="col-md-3"><!-- start of row1.col1-->
         <mat-form-field>
           <input matInput placeholder="First Name" type="text" 
-          id="firstName" 
-          class="form-control" 
+          id="firstName"  
           [(ngModel)]="myProfile.firstName"
           name="firstName" 
           #firstName="ngModel"
@@ -43,8 +35,7 @@
       <div class="col-md-3"><!-- start of row1.col2-->
         <mat-form-field>
           <input matInput placeholder="Middle Name"  type="text" 
-          id="middleName" 
-          class="form-control" 
+          id="middleName"     
           [(ngModel)]="myProfile.middleName"
           name="middleName" 
           #middleName="ngModel"
@@ -69,7 +60,7 @@
         <mat-form-field>
           <input matInput placeholder="Last Name"  type="text" 
           id="lastName" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.lastName"
           name="lastName" 
           #lastName="ngModel"
@@ -119,9 +110,8 @@
       </div><!-- end of row2.col3-->
       <div class="col-md-3"><!--start of row2.col4-->
         <mat-form-field>
-          <input matInput placeholder="Mobile Number" type="text" 
-          id="mobileNumber" 
-          class="form-control" 
+          <input matInput jhiNumberOnly placeholder="Mobile Number"
+          id="mobileNumber"
           [(ngModel)]="myProfile.mobileNumber"
           name="mobileNumber" 
           #mobileNumber="ngModel"
@@ -147,9 +137,8 @@
     <div class="row"><!-- start of row3-->
       <div class="col-md-3"><!-- start of row3.col1-->
         <mat-form-field>
-          <input matInput placeholder="Alternamte Number" type="text" 
-          id="alternateNumber" 
-          class="form-control" 
+          <input matInput jhiNumberOnly placeholder="Alternamte Number"
+          id="alternateNumber"
           [(ngModel)]="myProfile.alternateNumber"
           name="alternateNumber" 
           #alternateNumber="ngModel"
@@ -175,7 +164,7 @@
         <mat-form-field>
           <input matInput placeholder="Occupation"  type="text" 
           id="occupation" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.occupation"
           name="occupation" 
           #occupation="ngModel"
@@ -201,7 +190,7 @@
         <mat-form-field>
           <input matInput placeholder="Company"  type="text" 
           id="company" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.company"
           name="company" 
           #company="ngModel"
@@ -232,8 +221,8 @@
         </mat-form-field> 
       </div><!--end of row3.col4-->
     </div><!--end of row3-->
-    <div class="navbar navbar-expand-lg navbar-light"style="background-color: #e3f2fd;"><!--start of navbar-->
-      <h5>Cammunication Information</h5>
+    <div class="navbar navbar-expand-lg navbar-light"><!--start of navbar-->
+      <h5><strong>Cammunication Information</strong></h5>
     </div><!--end of navbar-->
     <div class="row"><!-- start of row4-->
       <div class="col-md-3"><!-- start of row4.col1-->
@@ -244,8 +233,7 @@
       <div class="col-md-3"><!-- start of row4.col2-->
         <mat-form-field>
           <input matInput placeholder="Email" type="text" 
-          id="emailId" 
-          class="form-control" 
+          id="emailId"    
           [(ngModel)]="myProfile.emailId"
           name="emailId" 
           #emailId="ngModel"
@@ -267,15 +255,14 @@
         </div>
         <div *ngIf="emailId.errors.pattern"> 
           email pattern not match
-  </div>
-        
-      </div> 
+        </div>
+        </div> 
       </div><!-- end of row4.col2-->
       <div class="col-md-3"><!-- start of row4.col3-->
         <mat-form-field>
           <input matInput placeholder="PAN Number" type="text" 
           id="pan" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.pan"
           name="pan" 
           #pan="ngModel"
@@ -305,7 +292,7 @@
         <mat-form-field>
           <input matInput placeholder="Country" type="text" 
           id="country" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.country"
           name="country" 
           #country="ngModel"
@@ -331,7 +318,7 @@
         <mat-form-field>
           <input matInput placeholder="state" type="text" 
           id="state" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.state"
           name="state" 
           #state="ngModel"
@@ -357,7 +344,7 @@
         <mat-form-field>
           <input matInput placeholder="City" type="text" 
           id="city" 
-          class="form-control" 
+             
           [(ngModel)]="myProfile.city"
           name="city" 
           #city="ngModel"
@@ -383,7 +370,7 @@
         <mat-form-field>
             <input matInput placeholder="PIN" type="text" 
             id="pin" 
-            class="form-control" 
+               
             [(ngModel)]="myProfile.pin"
             name="pin" 
             #pin="ngModel"
@@ -407,93 +394,21 @@
     </div><!--end of row5-->
   </form><!--end of form-->
 </div><!--end of container-->
-<div class="container background" *ngIf="isValid" style="background-color:#e9ece5;">
-  <div class="navbar navbar-expand-lg navbar-light navb" style="background-color:#a8b6bf"><!--start of navbar-->
-    <h5>Personal Information</h5>
-    </div><!--End of navbar-->
-    <!-- <div> -->
-      <!-- <table *ngFor="let profile of output">
-        <tr>
-            <td><h5>FirstName:</h5></td>&nbsp;
-          <td><h5>{{profile.firstName}}</h5></td>
-        </tr>
-        <tr>
-            <td><h5>MiddleName:</h5></td>&nbsp;
-          <td>{{profile.middleName}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>LastName:</h5></td>&nbsp;
-          <td>{{profile.lastName}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Address:</h5></td>&nbsp;
-          <td>{{profile.address}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Alternative:</h5></td>&nbsp;
-          <td>{{profile.alternateNumber}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>City:</h5></td>&nbsp;
-          <td>{{profile.city}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Company:</h5></td>&nbsp;
-          <td>{{profile.company}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Country:</h5></td>&nbsp;
-          <td>{{profile.country}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Date Of Birth:</h5></td>&nbsp;
-          <td>{{profile.dob}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Gender:</h5></td>&nbsp;
-          <td>{{profile.gender}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>How Did You Know:</h5></td>&nbsp;
-          <td>{{profile.howDidYouKnow}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Marital Status:</h5></td>&nbsp;
-          <td>{{profile.maritalStatus}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Mobile Number:</h5></td>&nbsp;
-          <td>{{profile.mobileNumber}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Occupation:</h5></td>&nbsp;
-          <td>{{profile.occupation}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Pan:</h5></td>&nbsp;
-          <td>{{profile.pan}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>Pin:</h5></td>&nbsp;
-          <td>{{profile.pin}}</td><br><br>
-        </tr>
-        <tr>
-            <td><h5>State:</h5></td>&nbsp;
-          <td>{{profile.state}}</td><br><br>
-        </tr>
-      </table> -->
-    <!-- </div>  -->
+<div class="container background" *ngIf="isValid">
+    <div>
+        <h5><strong>Personal Information<span><button class="btn btn-link" (click)="editDetail()">Edit</button> </span></h5></strong>
+    </div>
     <div *ngFor="let profile of output">
       <div class="row">
         <div class="col-md-4">
-            <h5>FirstName:&nbsp;{{profile.firstName}}</h5>   
+            FirstName:&nbsp;{{profile.firstName}}  
         </div>
         <div class="col-md-4">
-            <h5>MiddleName:&nbsp;{{profile.middleName}}</h5>
+            MiddleName:&nbsp;{{profile.middleName}}
             <h5></h5>
         </div>
         <div class="col-md-4">
-            <h5>LastName:&nbsp;{{profile.lastName}}</h5>
+            LastName:&nbsp;{{profile.lastName}}
         </div>
       </div>
       <div class="row">
@@ -505,7 +420,7 @@
               <h5></h5>
           </div>
           <div class="col-md-4">
-              <h5>Date Of Birth:&nbsp;{{profile.dob}}</h5>
+              <h5>Date Of Birth:&nbsp;{{profile.dob | date: 'd/M/y'}}</h5>
           </div>
         </div>
         <div class="row">
@@ -532,9 +447,7 @@
                   <h5>Address:&nbsp;{{profile.address}}</h5>   
               </div>
             </div>
-            <div class="navbar navbar-expand-lg navbar-light navb"  style="background-color:#a8b6bf"><!--start of navbar-->
-              <h5>Cammunication Information</h5>
-              </div><!--End of navbar-->
+           <h5><strong>Cammunication Information</h5></strong>
             <div class="row">
                 <div class="col-md-4">
                     <h5>Email-Id:&nbsp;{{profile.emailId}}</h5>  
@@ -559,5 +472,5 @@
                       <h5>Pin:&nbsp;{{profile.pin}}</h5>
                   </div>
                 </div>
-    </div>
- </div>
+              </div>
+            </div>

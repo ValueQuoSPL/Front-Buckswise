@@ -1,0 +1,138 @@
+<!--start of buttons -->
+<div class="pull-right">
+    <button type="button" class="btn btn-link" (click)="openCash(cashModal)" >
+        <span>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>Add</span>
+        </span>
+    </button>
+    <button type="button" class="btn btn-link">
+        <span>
+            <i class="fa fa-info" aria-hidden="true"></i>
+            <span>Help</span>
+        </span>
+    </button>
+</div>
+<!-- modal start -->
+<ng-template #cashModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="cashModal">Cash Investment</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form name="editForm" role="form" novalidate  #editForm="ngForm">        
+            <div class="form-group">
+                <label for="field_cash_source">Cash Source</label>
+                <select class="form-control" id="field_cash_source" name="cash_source" [(ngModel)]="cash.cash_source"
+                [ngModelOptions]="{standalone: true}" required>
+                    <option>--select source--</option>
+                    <option>In Bank</option>
+                    <option>Personal Possession</option>
+                    <option>Hand loan</option>
+                    <option>Other Sources</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_amount">Amount</label>
+                <input type="number" class="form-control" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"
+                    required/>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_notes">Notes</label>
+                <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"
+                />
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                (click)="c('Save click')">
+                    <span class="fa fa-save"></span>&nbsp;
+                    <span>Save</span>
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                    <span class="fa fa-ban"></span>&nbsp;
+                    <span>Cancel</span>
+                </button>    
+            </div> <!-- footer -->
+        </form>
+    </div> <!-- body -->
+</ng-template>
+<ng-template #editCashModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="editCashModal">Cash Investment</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form name="editForm" role="form" novalidate  #editForm="ngForm">        
+                <div class="form-group">
+                    <label for="field_cash_source">Cash Source</label>
+                    <select class="form-control" id="field_cash_source" name="cash_source" [(ngModel)]="cash.cash_source"
+                    [ngModelOptions]="{standalone: true}" required>
+                        <option>--select source--</option>
+                        <option>In Bank</option>
+                        <option>Personal Possession</option>
+                        <option>Hand loan</option>
+                        <option>Other Sources</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="amount" [(ngModel)]="cash.amount" [ngModelOptions]="{standalone: true}"
+                        required/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"
+                    />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary"
+                    (click)="c('Save click')">
+                        <span class="fa fa-save"></span>&nbsp;
+                        <span>Save</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
+                        <span class="fa fa-ban"></span>&nbsp;
+                        <span>Cancel</span>
+                    </button>    
+                </div> <!-- footer -->
+            </form>
+        </div> <!-- body -->
+</ng-template>
+<!-- table  -->
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Cash Source</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cash of CashDetails; let i = index">
+            <td> {{cash.cash_source}} </td>
+            <td>{{cash.amount}} </td>
+            <td>
+                <button 
+                class="btn btn-outline-info" 
+                type="button" 
+                (click)="openEditCash(editCashModal,cash.id)">
+                <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                </button>             
+            </td>
+            <td>
+                <button 
+                    class="btn btn-outline-danger" 
+                    type="button"
+                    (click)="opendeleteCash(cash.id)"
+                    >
+                    <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

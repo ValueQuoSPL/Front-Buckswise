@@ -66,10 +66,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   resolved(captchaResponse: string) {
     console.log(captchaResponse);
     this.registerAccount.gcaptcha = captchaResponse;
-    this.registerService.validate();
+    // this.registerService.validate(captchaResponse)
+    //   .subscribe( data => {
+    //     console.log('response of c:', data);
+    //   })
   }
 
   register() {
+    const resp = grecaptcha.getResponse();
+    const x = resp.length;
+    console.log("length", x);
+    if (x === 0) {
+      document.getElementById("g-recaptcha-error").innerHTML =
+        '<span style = "color:red;">Please Verify the Captcha</span>';
+    }
+    this.registerAccount.gcaptcha = resp;
     this.submitEvent = true;
     if (this.registerAccount.password !== this.confirmPassword) {
       this.doNotMatch = "ERROR";
@@ -81,6 +92,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.registerAccount.langKey = "en";
       this.registerService.save(this.registerAccount).subscribe(
         data => {
+          console.log("register", data);
           this.systemMailOtp = data;
           this.success = true;
         },

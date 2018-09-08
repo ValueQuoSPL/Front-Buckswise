@@ -103,7 +103,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   }
 
   show() {
-
     let x;
     x = document.getElementById('desktop');
 
