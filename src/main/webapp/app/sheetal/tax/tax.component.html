@@ -1,71 +1,79 @@
 <div class="container">
-    <mat-expansion-panel class="accordion" [expanded]="step === 0">   
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-            Tax
-            </mat-panel-title>
-            <mat-panel-description>
-              Fill your Tax details
-            </mat-panel-description>
-        </mat-expansion-panel-header>
+        <mat-expansion-panel class="accordion" [expanded]="step === 0">
+           
+         <mat-expansion-panel-header>
+             <mat-panel-title>
+             Tax
+             </mat-panel-title>
+             <mat-panel-description>
+                 Fill your Tax details
+             </mat-panel-description>
+         </mat-expansion-panel-header>
+   
+         <!-- start Tax content -->
+         <div> 
+             <mat-accordion>
+   
+                 <mat-expansion-panel class="accordion" [expanded]="step === 0">
+   
+                         <mat-expansion-panel-header>
+                             <mat-panel-title>
+                                     Gross Income
+                             </mat-panel-title>
+                             <mat-panel-description>
+                             Gross Details
+                             </mat-panel-description>
+                         </mat-expansion-panel-header>
+                         <jhi-gross></jhi-gross>
+                        </mat-expansion-panel>  
+                        <mat-expansion-panel>
 
-      <!-- start Tax content -->
-         <mat-accordion>
-            <mat-expansion-panel class="accordion" [expanded]="step === 0">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            Gross Income
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    Gross Details
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-               
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            80C Deduction
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    80C Deduction Details
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            Home Deduction
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    Home Deduction Details
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <jhi-home></jhi-home>
-            </mat-expansion-panel>   
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        80D Deduction
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    80D Deduction Details
-                    </mat-panel-description>
-                </mat-expansion-panel-header> 
-                <jhi-eightyd></jhi-eightyd>     
-            </mat-expansion-panel> 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Other Deduction
-                    </mat-panel-title>
-                    <mat-panel-description>
-                    Other Deduction Details
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <jhi-other></jhi-other>
-            </mat-expansion-panel>     
-        </mat-accordion> 
-    </mat-expansion-panel> <!-- end tax panel -->
-</div>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                            80C Deduction
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                    80C Deduction Details
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <jhi-eightyc></jhi-eightyc>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel>
+
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                    Home Deduction
+                                            </mat-panel-title>
+                                            <mat-panel-description>
+                                            Home Deduction Details
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+                                        <jhi-home></jhi-home>
+                                        </mat-expansion-panel>
+                                        <mat-expansion-panel>
+
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                        Other Deduction
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                                Other Deduction Details
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <jhi-other></jhi-other>
+                                            </mat-expansion-panel>
+                                        <mat-expansion-panel>
+
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                            80D Deduction
+                                                    </mat-panel-title>
+                                                    <mat-panel-description>
+                                                    80D Deduction Details
+                                                    </mat-panel-description>
+                                                </mat-expansion-panel-header>
+                                                <jhi-eightyd></jhi-eightyd>
+                                                </mat-expansion-panel>
+                                               
+                        </mat-accordion>
+                        </div>   

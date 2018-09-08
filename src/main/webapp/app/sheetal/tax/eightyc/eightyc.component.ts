@@ -9,6 +9,7 @@ import {
 } from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: "jhi-eightyc",
+  providers: [EightycService],
   templateUrl: "./eightyc.component.html",
   styles: []
 })
