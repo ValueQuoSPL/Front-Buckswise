@@ -1,28 +1,15 @@
 /* ==========================================================================
 Navbar
 ========================================================================== */
+
 .navbar-version {
   font-size: 10px;
   color: #ccc;
 }
 
-.bd-example {
-  padding: 1.5rem;
-  margin-right: 0;
-  margin-left: 0;
-  border-width: 0.2rem;
-}
-.bd-example {
-  position: relative;
-  padding: 1rem;
-  margin: 0rem -15px 0;
-  width: 272%;
-}
-
 .jh-navbar {
   background-color: #3f51b5;
-  padding: 0px 1px 3px 0px;
-  margin-left: 50%;
+  padding: 0.2em 1em;
   .profile-image {
     margin: -10px 0px;
     height: 40px;
@@ -78,16 +65,15 @@ Logo styles
 ========================================================================== */
 .navbar-brand {
   &.logo {
-    padding: -1px 15px;
+    padding: 5px 15px;
     .logo-img {
       height: 45px;
       width: 70px;
       display: inline-block;
       vertical-align: middle;
-      background: url("../../../content/images/buck7.png") no-repeat center
-        center;
+      background: url("../../../content/images/logo-jhipster.png") no-repeat
+        center center;
       background-size: contain;
-      margin-left: 0px;
     }
   }
 }
