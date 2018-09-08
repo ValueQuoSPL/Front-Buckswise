@@ -25,15 +25,30 @@
         </a>
       </div>
 
-      <div *ngIf="!(isHandset$ | async)" style="margin-left: 15%;" id="desktop" [ngClass]="slide" class="animated">
-        <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
-          <span aria-label="Side nav toggle icon">
-            <i class="fa fa-bars"></i>
-          </span>
-        </button>
-        <a routerLink="/" routerLinkAciveOptions="active">
-          <span>Desktop</span>
-      </a>
+      <div *ngIf="!(isHandset$ | async)" id="desktop" [ngClass]="slide" class="animated">
+        <div *ngIf="!isSafari">
+          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
+            <span aria-label="Side nav toggle icon">
+              <i class="fa fa-bars"></i>
+            </span>
+          </button>
+          <a routerLink="/" routerLinkAciveOptions="active">
+            <span>Desktop !safari</span>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="!(isHandset$ | async)"   id="desktop" [ngClass]="slide" class="animated">
+        <div *ngIf="isSafari">
+          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
+            <span aria-label="Side nav toggle icon">
+              <i class="fa fa-bars"></i>
+            </span>
+          </button>
+          <a routerLink="/" routerLinkAciveOptions="active">
+            <span>Desktop Safari</span>
+          </a>
+        </div>
       </div>
       
 <!-- <router-outlet name="navbar"></router-outlet> -->

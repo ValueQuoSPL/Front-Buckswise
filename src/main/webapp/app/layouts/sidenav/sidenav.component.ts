@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {
   BreakpointObserver,
   Breakpoints,
@@ -14,15 +14,18 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css', '../../css/animate.css']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, AfterViewInit {
   events: string[] = [];
   opened: boolean;
   toggler = false;
   slide = 'slideInLeft';
+  button: HTMLElement;
+  flag = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
+  isSafari: boolean;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router,
@@ -37,6 +40,55 @@ export class SidenavComponent implements OnInit {
         );
       }
     });
+
+    // Opera 8.0+
+    // tslint:disable-next-line:
+    const isOpera = (!!window['opr'] && !! window['opr'].addons) || !!window['opera'] || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Firefox 1.0+
+    // tslint:disable-next-line:prefer-const
+    let InstallTrigger: any;
+    const isFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Safari 3.0+ '[object HTMLElementConstructor]'
+    // tslint:disable-next-line:max-line-length
+    this.isSafari = /constructor/i.test(window['HTMLElement']) || (function(p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window['safari'] || window['safari'].pushNotification);
+
+    // Internet Explorer 6-11
+    const isIE = /*@cc_on!@*/false || !!document['documentMode'];
+
+    // Edge 20+
+    const isEdge = !isIE && !!window['StyleMedia'];
+
+    // Chrome 1+
+    // const isChrome = !!window.chrome && !!window.chrome.webstore;
+    // tslint:disable-next-line:no-unused-expression
+    const isChrome = !!window['chrome'] && !!window['chrome']['webstore'];
+
+    // Blink engine detection
+    const isBlink = (isChrome || isOpera) && !!window['CSS'];
+
+    let output = 'Detecting browsers by ducktyping:<hr>';
+    output += ' Firefox: ' + isFirefox ;
+    output += ' Chrome: ' + isChrome ;
+    output += ' Safari: ' + this.isSafari ;
+    output += ' Opera: ' + isOpera ;
+    output += ' IE: ' + isIE ;
+    output += ' Edge: ' + isEdge ;
+    output += ' Blink: ' + isBlink ;
+
+    console.log('browser : ', output);
+  }
+
+  ngAfterViewInit() {
+    let x;
+    x = document.getElementById('desktop');
+
+    if (this.flag === true) {
+      this.flag = false;
+      x.style = 'margin-left: 18%;';
+      console.log('left 18%');
+    }
   }
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
@@ -51,18 +103,31 @@ export class SidenavComponent implements OnInit {
   }
 
   show() {
-    console.log('hi');
+
     let x;
     x = document.getElementById('desktop');
+
+    if (this.flag === true) {
+      this.flag = false;
+      x.style = 'margin-left: 18%;';
+      console.log('left 18%');
+    }
 
     if (!this.toggler) {
       this.toggler = true;
       x.style = 'margin-left: 5px;';
+      if (this.isSafari) {
+        x.style = 'margin-left: 0%;';
+      }
       this.slide = 'slideInRight';
+      console.log('left');
     } else {
       this.toggler = false;
-      x.style = 'margin-left: 15%;';
+      if (this.isSafari) {
+        x.style = 'margin-left: 18%;';
+      }
       this.slide = 'slideInLeft';
+      console.log('right');
 
     }
   }
