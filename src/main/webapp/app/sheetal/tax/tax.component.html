@@ -8,7 +8,6 @@
               Fill your Tax details
             </mat-panel-description>
         </mat-expansion-panel-header>
-
       <!-- start Tax content -->
          <mat-accordion>
             <mat-expansion-panel class="accordion" [expanded]="step === 0">
@@ -20,7 +19,7 @@
                     Gross Details
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-               
+               <jhi-gross></jhi-gross>
             </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -31,7 +30,7 @@
                     80C Deduction Details
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                
+                <jhi-eightyc></jhi-eightyc>
             </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>

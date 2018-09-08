@@ -37,7 +37,6 @@ import {
 import { BuckswiseFrontEndAdminModule } from "app/admin/admin.module";
 
 import { BuckswiseFrontEndPratikModule } from "app/pratik/pratik.module";
-import { BuckswiseAppSheetalModule } from "app/sheetal/sheetal.module";
 import { BuckswiseFrontEndAccountModule } from "app/account/account.module";
 import { BuckswiseFrontEndEntityModule } from "app/entities/entity.module";
 import { DashBoardModule } from "app/dashboard/dashboard.module";
@@ -53,6 +52,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CustomMaterialModule } from "app/custom-material.module";
 import { SpinnerComponent } from "./spinner/spinner.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { BuckswiseTaxModule } from "../app/sheetal/tax/tax.module";
 
 @NgModule({
   imports: [
@@ -73,13 +73,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     BsDatepickerModule.forRoot(),
     GoalModule,
     BuckswiseFrontEndPratikModule,
-    BuckswiseAppSheetalModule,
-    BuckswiseAppSheetalModule,
     DraggableModule,
     CustomDirectiveModule,
     CustomMaterialModule,
     DashBoardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BuckswiseTaxModule
     // BuckswiseFrontEndprimengModule
     // ServiceWorkerModule.register('/ngsw-worker.js')
   ],
