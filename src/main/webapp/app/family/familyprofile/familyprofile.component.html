@@ -21,7 +21,7 @@
             [(ngModel)]="familyProfile.firstname"
             name="firstname" 
             #firstname="ngModel"
-            minlength="5" 
+            minlength="2" 
             maxlength="10" 
             pattern="^[_'.@A-Za-z0-9-]*$"
             required>
@@ -45,7 +45,7 @@
                 [(ngModel)]="familyProfile.middlename"
                 name="middlename" 
                 #middlename="ngModel"
-                minlength="5" 
+                minlength="2" 
                 maxlength="10" 
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
@@ -69,7 +69,7 @@
                 [(ngModel)]="familyProfile.lastname"
                 name="lastname" 
                 #lastname="ngModel"
-                minlength="5" 
+                minlength="2" 
                 maxlength="10"
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
@@ -109,7 +109,7 @@
                 name="email" 
                 #email="ngModel"
                 minlength="5" 
-                maxlength="10" 
+                maxlength="30" 
                 pattern="^[_'.@A-Za-z0-9-]*$"
                 required>
               </mat-form-field>

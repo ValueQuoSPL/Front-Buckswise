@@ -7,10 +7,11 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import {
   // AssetsComponent,
   MutualFundComponent,
-  mutualRoute
+  mutualRoute,
+  liRoute
 } from "app/my-assets";
 import { myasstsRoute } from "./my-assets.route";
-// import { AssetsService } from "app/my-assets/assets/assets.service";
+// import { AssetsService } from 'app/my-assets/assets/assets.service';
 import { LiabilitiesComponent } from "./liabilities/liabilities.component";
 import { CustomMaterialModule } from "app/custom-material.module";
 import { StockComponent } from "app/my-assets/stocks/stocks.component";
@@ -34,6 +35,7 @@ import { FutureOptionService } from "./future-option/futureoption.service";
   imports: [
     BuckswiseFrontEndSharedModule,
     RouterModule.forRoot([myasstsRoute], { useHash: true }),
+    RouterModule.forRoot([liRoute], { useHash: true }),
     BsDatepickerModule.forRoot(),
     CustomMaterialModule
   ],

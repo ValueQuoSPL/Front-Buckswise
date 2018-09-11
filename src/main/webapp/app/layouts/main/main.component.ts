@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy } from "@angular/core";
 export class JhiMainComponent implements OnInit {
   loginStatus = false;
   spinner = true;
+  isSafari;
 
   constructor(
     private titleService: Title,
@@ -41,6 +42,51 @@ export class JhiMainComponent implements OnInit {
       }
       this.spinner = false;
     });
+
+    // Opera 8.0+
+    // tslint:disable-next-line:
+    const isOpera =
+      (!!window["opr"] && !!window["opr"].addons) ||
+      !!window["opera"] ||
+      navigator.userAgent.indexOf(" OPR/") >= 0;
+
+    // Firefox 1.0+
+    // tslint:disable-next-line:prefer-const
+    let InstallTrigger: any;
+    const isFirefox = typeof InstallTrigger !== "undefined";
+
+    // Safari 3.0+ '[object HTMLElementConstructor]'
+    // tslint:disable-next-line:max-line-length
+    this.isSafari =
+      /constructor/i.test(window["HTMLElement"]) ||
+      (function(p) {
+        return p.toString() === "[object SafariRemoteNotification]";
+      })(!window["safari"] || window["safari"].pushNotification);
+
+    // Internet Explorer 6-11
+    const isIE = /*@cc_on!@*/ false || !!document["documentMode"];
+
+    // Edge 20+
+    const isEdge = !isIE && !!window["StyleMedia"];
+
+    // Chrome 1+
+    // const isChrome = !!window.chrome && !!window.chrome.webstore;
+    // tslint:disable-next-line:no-unused-expression
+    const isChrome = !!window["chrome"] && !!window["chrome"]["webstore"];
+
+    // Blink engine detection
+    const isBlink = (isChrome || isOpera) && !!window["CSS"];
+
+    let output = "Detecting browsers by ducktyping:<hr>";
+    output += " Firefox: " + isFirefox;
+    output += " Chrome: " + isChrome;
+    output += " Safari: " + this.isSafari;
+    output += " Opera: " + isOpera;
+    output += " IE: " + isIE;
+    output += " Edge: " + isEdge;
+    output += " Blink: " + isBlink;
+
+    console.log("browser : ", output);
   }
   isAuthenticated() {
     return this.principal.isAuthenticated();
