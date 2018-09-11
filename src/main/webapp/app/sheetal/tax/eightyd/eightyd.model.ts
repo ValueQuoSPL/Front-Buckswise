@@ -1,7 +1,7 @@
 export class Eightyd {
-  healthcheck;
-  medparents;
-  medself;
+  healthcheck: any;
+  medparents: any;
+  medself: any;
   uid: any;
   FetchID: any;
   constructor() {}

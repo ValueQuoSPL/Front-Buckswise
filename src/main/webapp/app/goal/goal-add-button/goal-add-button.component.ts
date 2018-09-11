@@ -10,3 +10,6 @@ export class GoalAddButtonComponent implements OnInit {
 
   ngOnInit() {}
 }
+// onNoClick(): void {
+//   this.dialogRef.close();
+// }

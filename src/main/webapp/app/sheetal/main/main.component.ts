@@ -51,7 +51,6 @@ export class MainComponent implements OnInit {
   nameField: any;
   editField;
   closeResult: string;
-
   changesSaved: boolean;
   dataChanged: boolean;
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Other } from "./other.model";
 
 @Component({
   selector: "jhi-other",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styles: []
 })
 export class OtherComponent implements OnInit {
+  other: Other = new Other();
   constructor() {}
 
   ngOnInit() {}

@@ -48,9 +48,9 @@ export class GrossService {
         console.log("in service", this.userID);
       });
   }
-  public getgross(id) {
-    console.log("in getgross service", id);
-    this.ServiceAPIParam = "api/grosses" + "/" + id;
+  public getgross(uid) {
+    console.log("in getgross service", uid);
+    this.ServiceAPIParam = "api/grosses" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }
