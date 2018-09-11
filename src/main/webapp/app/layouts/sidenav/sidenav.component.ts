@@ -86,8 +86,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
     if (this.flag === true) {
       this.flag = false;
-      x.style = 'margin-left: 18%;';
-      console.log('left 18%');
+      x.style = 'margin-left: 16%;';
+      console.log('left 16%');
     }
   }
 
@@ -108,8 +108,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
     if (this.flag === true) {
       this.flag = false;
-      x.style = 'margin-left: 18%;';
-      console.log('left 18%');
+      x.style = 'margin-left: 16%;';
+      console.log('left 16%');
     }
 
     if (!this.toggler) {
@@ -123,7 +123,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     } else {
       this.toggler = false;
       if (this.isSafari) {
-        x.style = 'margin-left: 18%;';
+        x.style = 'margin-left: 16%;';
       }
       this.slide = 'slideInLeft';
       console.log('right');

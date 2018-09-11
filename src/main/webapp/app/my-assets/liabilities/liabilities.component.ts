@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: "jhi-liabilities",
-  templateUrl: "./liabilities.component.html",
+  selector: 'jhi-liabilities',
+  templateUrl: './liabilities.component.html',
   styles: []
 })
 export class LiabilitiesComponent implements OnInit {
@@ -16,9 +16,9 @@ export class LiabilitiesComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -26,10 +26,10 @@ export class LiabilitiesComponent implements OnInit {
 
   // income
   openShortTerm(incomeContent) {
-    console.log("income modal open");
+    console.log('income modal open');
 
     this.modalService
-      .open(incomeContent, { ariaLabelledBy: "incomeModal" })
+      .open(incomeContent, { ariaLabelledBy: 'incomeModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
