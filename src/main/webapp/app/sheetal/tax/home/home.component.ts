@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Home } from "./home.model";
 
 @Component({
   selector: 'jhi-home',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class HomeComponent implements OnInit {
+  home: Home = new Home();
   constructor() {}
 
   ngOnInit() {}

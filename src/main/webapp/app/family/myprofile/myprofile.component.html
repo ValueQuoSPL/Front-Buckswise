@@ -15,7 +15,7 @@
           [(ngModel)]="myProfile.firstName"
           name="firstName" 
           #firstName="ngModel"
-          minlength="5" 
+          minlength="2" 
           maxlength="10" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
@@ -39,7 +39,7 @@
           [(ngModel)]="myProfile.middleName"
           name="middleName" 
           #middleName="ngModel"
-          minlength="5" 
+          minlength="2" 
           maxlength="10" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
@@ -64,7 +64,7 @@
           [(ngModel)]="myProfile.lastName"
           name="lastName" 
           #lastName="ngModel"
-          minlength="5" 
+          minlength="2" 
           maxlength="10" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
@@ -142,7 +142,7 @@
           [(ngModel)]="myProfile.alternateNumber"
           name="alternateNumber" 
           #alternateNumber="ngModel"
-          minlength="10" 
+          minlength="6" 
           maxlength="10" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
@@ -323,7 +323,7 @@
           name="state" 
           #state="ngModel"
           minlength="5" 
-          maxlength="10" 
+          maxlength="20" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
         </mat-form-field>
@@ -348,8 +348,8 @@
           [(ngModel)]="myProfile.city"
           name="city" 
           #city="ngModel"
-          minlength="5" 
-          maxlength="10" 
+          minlength="4" 
+          maxlength="25" 
           pattern="^[_'.@A-Za-z0-9-]*$"
           required>
         </mat-form-field>

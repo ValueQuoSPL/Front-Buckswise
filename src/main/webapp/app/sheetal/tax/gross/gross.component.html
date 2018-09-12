@@ -1,1 +1,439 @@
-<h1>hii</h1>
+<div *ngIf="!valid">
+    <div class="row pull-right" style="margin-top: -80px;">
+        <button type="button" (click)="onGrossGet(id)" class="btn btn-link">
+            <span>
+              <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
+              <span>Get</span>
+            </span>
+        </button>
+        <button type="button" class="btn btn-link" (click)="onGrossSave()" data-toggle="modal" data-target="#exampleModalCenter">
+            <span>
+            <i class="fa fa-save" aria-hidden="true"></i>
+            <span> Save</span>
+            </span>
+        </button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Gross Amount</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Your Gross Amount saved successfully</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="resetGross()" class="btn btn-link">
+            <span>
+            <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
+            <span> Reset</span>
+            </span>
+        </button>
+        <button type="button" class="btn btn-link">
+            <span>
+            <i class="fa fa-info" aria-hidden="true"></i>
+            <span> Help</span>
+            </span>
+        </button>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Income from salaries (Per Annum)
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-sm">
+                <thead class="thead-light">
+                    <tr>
+                         <!--Head of table start-->
+                        <th scope="col">Name</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Basic Salary</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="bsalary" [(ngModel)]="gross.bsalary">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">DA</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="da" [(ngModel)]="gross.da">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">HRA(Click checkbox if you are staying in metro city)</td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="hra" [(ngModel)]="gross.hra">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Conveyance</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="conveyance" [(ngModel)]="gross.conveyance">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Children Education</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="childedu" [(ngModel)]="gross.childedu">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Medical</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="medical" [(ngModel)]="gross.medical">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">LTA(Click checkbox if you are claiming for the current year)</td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="lta" [(ngModel)]="gross.lta">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Other Allownces</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="otherallown" [(ngModel)]="gross.otherallown">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Bonus</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="number" value="0" name="bonus" [(ngModel)]="gross.bonus">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><br>
+<div *ngIf="!valid"class="card">
+    <div class="card-header">
+    Income from House Properties
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <!--Head of table start-->
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">Rental Income</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    <input type="number" value="0" name="rentincome" [(ngModel)]="gross.rentincome">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div><br>
+<div *ngIf="!valid" class="card">
+    <div class="card-header">Income from other Sources
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light"><!--Head of table start-->
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead><!--Head of table end-->
+            <tbody>
+            <!--Body of table start-->
+            <tr>
+              <td scope="row">interest From Saving(FD,RD etc)</td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="number" value="0" name="saving" [(ngModel)]="gross.saving">
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Interest From Bonds</td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="number" value="0" name="bonds" [(ngModel)]="gross.bonds">
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Conveyance</td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="number" value="0" name="convay" [(ngModel)]="gross.conveyanceother">
+              </td>
+            </tr>
+          </tbody>
+          <!--Body of table end-->
+        </table>           
+  </div>
+  </div>
+  <div *ngIf="valid" class="card">
+    <div class="card-header">
+      Income from salaries (Per Annum)
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <!--Head of table start-->
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody><!--Body of table start-->
+                <tr>
+                    <td scope="row">Basic Salary</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.bsalary}}
+                    </td>
+                    <a 
+                        href="#"
+                        data-toggle="tooltip" 
+                        data-placement="left" 
+                        title="Edit">
+                    <i 
+                        class="fa fa-pencil"
+                        style="font-size:18px"></i>
+                    </a>
+                </tr>
+                <tr>
+                    <td scope="row">DA</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.da}}
+                    </td>
+                    <a 
+                        href="#"
+                        data-toggle="tooltip" 
+                        data-placement="left" 
+                        title="Edit">
+                        <i 
+                            class="fa fa-pencil"
+                            style="font-size:18px">
+                        </i>
+                    </a>
+                </tr>
+                <tr>
+                    <td scope="row">HRA(Click checkbox if you are staying in metro city)</td>
+                    <td>
+                    <input type="checkbox">
+                    </td>
+                    <td></td>
+                    <td>{{output.hra}}</td>
+                    <a 
+                        href="#" 
+                        data-toggle="tooltip" 
+                        data-placement="left" 
+                        title="Edit">
+                        <i class="fa fa-pencil"
+                        style="font-size:18px">
+                        </i>
+                    </a>
+                </tr>
+                <tr>
+                    <td scope="row">Conveyance</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{output.conveyance}}</td>
+                    <a 
+                        href="#"
+                        data-toggle="tooltip" 
+                        data-placement="left" 
+                        title="Edit">
+                        <i 
+                        class="fa fa-pencil"
+                        style="font-size:18px">
+                        </i>
+                    </a>
+                </tr>
+                <tr>
+                    <td scope="row">Children Education</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.childedu}}                           
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                        <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+                <tr>
+                    <td scope="row">Medical</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.medical}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+                <tr>
+                    <td scope="row">LTA(Click checkbox if you are claiming for the current year)</td>
+                    <td>
+                    <input type="checkbox">
+                    </td>
+                    <td></td>
+                    <td>{{output.lta}}</td>
+                    <a 
+                        href=#  
+                        data-toggle="tooltip" 
+                        data-placement="left" 
+                        title="Edit">
+                        <i 
+                            class="fa fa-pencil"
+                            style="font-size:18px">
+                        </i>
+                    </a>
+                </tr>
+                <tr>
+                    <td scope="row">Other Allownces</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.otherallown}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+                <tr>
+                    <td scope="row">Bonus</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.bonus}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div><br>
+    <div *ngIf="valid" class="card">
+        <div class="card-header">Income from House Properties
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <!--Head of table start-->
+                        <th scope="col">Name</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">Rental Income</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.rentincome}}
+                    </td>
+                    <a href="#"  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div><br>
+<div *ngIf="valid" class="card">
+    <div class="card-header">
+      Income from other Sources
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <!--Head of table start-->
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">interest From Saving(FD,RD etc)</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.saving}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+                <tr>
+                    <td scope="row">Interest From Bonds</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.bonds}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+                <tr>
+                    <td scope="row">Conveyance</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    {{output.conveyanceother}}
+                    </td>
+                    <a href=#  data-toggle="tooltip" data-placement="left" title="Edit">
+                    <i class="fa fa-pencil"style="font-size:18px"></i></a>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

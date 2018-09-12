@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BuckswiseFrontEndSharedModule } from 'app/shared';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { MatInputModule } from '@angular/material';
-import { SheetalComponent } from '.././sheetal/sheetal.component';
+import { SheetalComponent } from './sheetal.component';
 
 import {
   MainComponent,
