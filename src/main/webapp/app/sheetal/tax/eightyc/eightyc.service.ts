@@ -38,9 +38,15 @@ export class EightycService {
     return this.http.post(SERVER_API_URL + 'api/eightycs', eightyc);
   }
 
+<<<<<<< HEAD
   public geteightyc(id) {
     console.log('in geteightyc service', id);
     this.ServiceAPIParam = 'api/eightycs' + '/' + id;
+=======
+  public geteightyc(uid) {
+    console.log("in geteightyc service", uid);
+    this.ServiceAPIParam = "api/eightycs" + "/" + uid;
+>>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

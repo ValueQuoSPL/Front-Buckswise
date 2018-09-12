@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Home } from "./home.model";
+import { Component, OnInit } from '@angular/core';
+import { Home } from './home.model';
 
 @Component({
   selector: 'jhi-home',

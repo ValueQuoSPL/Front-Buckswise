@@ -8,23 +8,29 @@ import {
   ModalDismissReasons
 } from '@ng-bootstrap/ng-bootstrap';
 @Component({
+<<<<<<< HEAD
   selector: 'jhi-eightyc',
   providers: [EightycService],
   templateUrl: './eightyc.component.html',
+=======
+  selector: "jhi-eightyc",
+  templateUrl: "./eightyc.component.html",
+>>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
   styles: []
 })
 export class EightycComponent implements OnInit {
-  out: any;
-  eightyc: Eightyc = new Eightyc();
-  account: any;
   user: any;
   userID: any;
+  account: any;
+  out: any;
+  eightyc: Eightyc = new Eightyc();
+  uid: any;
 
   constructor(
     private eightycService: EightycService,
     private accountService: AccountService
   ) {}
-  // for eightyc
+  // // for eightyc
 
   ngOnInit() {
     this.FetchID();
@@ -35,36 +41,43 @@ export class EightycComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
+<<<<<<< HEAD
         console.log('user info', this.user);
         this.userID = this.user.id;
         console.log('in service', this.userID);
+=======
+        console.log("user info", this.user);
+        this.eightyc.userID = this.user.id;
+        this.uid = this.eightyc.userID;
+        console.log("in service", this.uid);
+>>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
       });
   }
-  // eightyc call function
-  onEightycSave() {
-    this.eightycService
-      .save(this.eightyc)
-      .subscribe(response => console.log(response));
-  }
-  // EightyC Reset
-  resetEightyc() {
-    this.eightyc.fixed = 0;
-    this.eightyc.tution = 0;
-    this.eightyc.nsc = 0;
-    this.eightyc.nss = 0;
-    this.eightyc.post = 0;
-    this.eightyc.reinvest = 0;
-    this.eightyc.licpremium = 0;
-    this.eightyc.equity = 0;
-    this.eightyc.pf = 0;
-    this.eightyc.ppf = 0;
-    this.eightyc.other = 0;
-    this.eightyc.tutionfee = 0;
-    this.eightyc.ulip = 0;
-  }
-  onEightycGet(id) {
+  // // eightyc call function
+  // onEightycSave() {
+  //   this.eightycService
+  //     .save(this.eightyc)
+  //     .subscribe(response => console.log(response));
+  // }
+  // // EightyC Reset
+  // resetEightyc() {
+  //   this.eightyc.fixed = 0;
+  //   this.eightyc.tution = 0;
+  //   this.eightyc.nsc = 0;
+  //   this.eightyc.nss = 0;
+  //   this.eightyc.post = 0;
+  //   this.eightyc.reinvest = 0;
+  //   this.eightyc.licpremium = 0;
+  //   this.eightyc.equity = 0;
+  //   this.eightyc.pf = 0;
+  //   this.eightyc.ppf = 0;
+  //   this.eightyc.other = 0;
+  //   this.eightyc.tutionfee = 0;
+  //   this.eightyc.ulip = 0;
+  // }
+  onEightycGet(uid) {
     //  console.log('in main ts', id);
-    this.eightycService.geteightyc(id).subscribe(res => {
+    this.eightycService.geteightyc(uid).subscribe(res => {
       console.log(res);
       this.out = res;
       console.log(this.out);

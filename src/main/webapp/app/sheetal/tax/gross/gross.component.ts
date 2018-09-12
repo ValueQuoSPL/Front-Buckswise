@@ -18,6 +18,7 @@ export class GrossComponent implements OnInit {
   uid: any;
   output: any;
   gross: Gross = new Gross();
+  grossout: any;
   constructor(
     private modalService: NgbModal,
     private grossService: GrossService,
@@ -25,6 +26,7 @@ export class GrossComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.FetchID();
     this.gross.bsalary = 0;
     this.gross.da = 0;
     this.gross.hra = 0;
@@ -39,6 +41,19 @@ export class GrossComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
+  onGrossGet(uid) {
+    console.log('in main ts', uid);
+    this.grossService.getgross(uid).subscribe(res => {
+      console.log(res);
+      this.grossout = res;
+      console.log('onEightydGet response ', this.grossout);
+    });
+  }
+  onGrossSave() {
+    this.grossService
+      .save(this.gross)
+      .subscribe(response => console.log(response));
+  }
   FetchID(): Promise<any> {
     return this.account
       .get()
@@ -47,20 +62,21 @@ export class GrossComponent implements OnInit {
         this.user = response.body;
         console.log('user info', this.user);
         this.gross.uid = this.user.id;
+        console.log('uid is', this.gross.uid);
         this.uid = this.gross.uid;
         this.onGrossGet(this.uid);
       });
   }
-  onGrossGet(uid) {
-    this.grossService.getgross(this.uid).subscribe(res => {
-      console.log(res);
-      this.output = res;
-      console.log(this.output);
-    });
-  }
-  onGrossSave() {
-    this.grossService
-      .save(this.gross)
-      .subscribe(response => console.log(response));
-  }
+  // onGrossGet(uid) {
+  //   this.grossService.getgross(this.uid).subscribe(res => {
+  //     console.log(res);
+  //     this.output = res;
+  //     console.log(this.output);
+  //   });
+  // }
+  // onGrossSave() {
+  //   this.grossService
+  //     .save(this.gross)
+  //     .subscribe(response => console.log(response));
+  // }
 }
