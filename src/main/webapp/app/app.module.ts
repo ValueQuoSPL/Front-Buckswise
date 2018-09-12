@@ -14,7 +14,7 @@ import { NgModule, Injector } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+// import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -70,7 +70,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BuckswiseFrontEndRiskModule,
     FamilyModule,
     FormsModule,
-    BsDatepickerModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
     GoalModule,
     BuckswiseFrontEndPratikModule,
     BuckswiseAppSheetalModule,

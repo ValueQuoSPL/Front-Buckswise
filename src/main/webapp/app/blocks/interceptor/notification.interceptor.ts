@@ -18,7 +18,7 @@ export class NotificationInterceptor implements HttpInterceptor {
             if (event instanceof HttpResponse) {
                 const arr = event.headers.keys();
                 let alert = null;
-                arr.forEach((entry) => {
+                arr.forEach(entry => {
                     if (entry.endsWith('app-alert')) {
                         alert = event.headers.get(entry);
                     }

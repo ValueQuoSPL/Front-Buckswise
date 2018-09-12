@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "jhi-eightyd",
-  templateUrl: "./eightyd.component.html",
+  selector: 'jhi-eightyd',
+  templateUrl: './eightyd.component.html',
   styles: []
 })
 export class EightydComponent implements OnInit {

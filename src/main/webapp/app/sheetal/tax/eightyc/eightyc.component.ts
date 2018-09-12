@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Eightyc } from "./eightyc.model";
-import { EightycService } from "./eightyc.service";
-import { AccountService } from "app/shared";
+import { Component, OnInit } from '@angular/core';
+import { Eightyc } from './eightyc.model';
+import { EightycService } from './eightyc.service';
+import { AccountService } from 'app/shared';
 import {
   NgbModalRef,
   NgbModal,
   ModalDismissReasons
-} from "@ng-bootstrap/ng-bootstrap";
+} from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: "jhi-eightyc",
+  selector: 'jhi-eightyc',
   providers: [EightycService],
-  templateUrl: "./eightyc.component.html",
+  templateUrl: './eightyc.component.html',
   styles: []
 })
 export class EightycComponent implements OnInit {
@@ -35,9 +35,9 @@ export class EightycComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log('user info', this.user);
         this.userID = this.user.id;
-        console.log("in service", this.userID);
+        console.log('in service', this.userID);
       });
   }
   // eightyc call function

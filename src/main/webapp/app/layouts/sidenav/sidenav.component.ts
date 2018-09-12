@@ -84,10 +84,10 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     let x;
     x = document.getElementById('desktop');
 
-    if (this.flag === true) {
+    if (this.isSafari === true) {
       this.flag = false;
       x.style = 'margin-left: 16%;';
-      console.log('left 16%');
+      console.log('safari left 16%');
     }
   }
 

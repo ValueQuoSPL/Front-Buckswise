@@ -1,11 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { BuckswiseFrontEndFamilyModule } from 'app/entities/family/family.module';
+// import { BuckswiseFrontEndFamilyModule } from 'app/entities/family/family.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
-        BuckswiseFrontEndFamilyModule,
+        // BuckswiseFrontEndFamilyModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

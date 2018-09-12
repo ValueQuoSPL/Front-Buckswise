@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "jhi-assumption",
-  templateUrl: "./assumption.component.html",
+  selector: 'jhi-assumption',
+  templateUrl: './assumption.component.html',
   styles: []
 })
 export class AssumptionComponent implements OnInit {

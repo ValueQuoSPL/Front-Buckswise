@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { Principal } from "app/shared";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Principal } from 'app/shared';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "jhi-risk",
-  templateUrl: "./risk.component.html"
+  selector: 'jhi-risk',
+  templateUrl: './risk.component.html'
 })
 export class RiskComponent implements OnInit {
   account: Account;
@@ -18,9 +18,9 @@ export class RiskComponent implements OnInit {
     });
   }
   gotoLife() {
-    this.router.navigate(["life"]);
+    this.router.navigate(['life']);
   }
   gotoMedical() {
-    this.router.navigate(["medical"]);
+    this.router.navigate(['medical']);
   }
 }

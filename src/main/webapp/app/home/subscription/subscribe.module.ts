@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { SubscriptionComponent } from './subscription.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+// import { BsDatepickeModule } from 'ngx-bootstrap/datepicker';
 import { CommonModule } from '@angular/common';
 import { subscribeRoute } from 'app/home/subscription/subscribe.route';
 
@@ -11,7 +11,7 @@ import { subscribeRoute } from 'app/home/subscription/subscribe.route';
         RouterModule.forRoot([subscribeRoute], { useHash: true }),
         FormsModule,
         CommonModule,
-        BsDatepickerModule.forRoot()
+        // BsDatepickerModule.forRoot()
     ],
     declarations: [
         // SubscriptionComponent

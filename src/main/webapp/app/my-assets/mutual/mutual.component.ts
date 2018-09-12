@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { AccountService } from "../../shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { MutualFund } from "app/my-assets/mutual/mutual.modal";
-import { MutualfundService } from "./mutual.service";
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { MutualFund } from 'app/my-assets/mutual/mutual.modal';
+import { MutualfundService } from './mutual.service';
 
 @Component({
-  selector: "jhi-mutualfund",
-  templateUrl: "./mutual.component.html",
+  selector: 'jhi-mutualfund',
+  templateUrl: './mutual.component.html',
   styles: []
 })
 export class MutualfundComponent implements OnInit {
@@ -36,10 +36,10 @@ export class MutualfundComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info mutualfund", this.user);
+        console.log('user info mutualfund', this.user);
         this.mutualfund.userid = this.user.id;
         this.uid = this.mutualfund.userid;
-        console.log("in fetchid method", this.uid);
+        console.log('in fetchid method', this.uid);
 
         // this.getMyProfilebyid(this.uid);
         // this.getStockById(this.uid)
@@ -48,17 +48,17 @@ export class MutualfundComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   openMutual(mutualModel) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
     this.modalService
-      .open(mutualModel, { ariaLabelledBy: "mutualModal" })
+      .open(mutualModel, { ariaLabelledBy: 'mutualModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -72,11 +72,11 @@ export class MutualfundComponent implements OnInit {
   }
   openEditMutual(editMutualModal, id) {
     this.commonid = id;
-    console.log("editMutualModal common id is", this.commonid);
-    console.log("editMutualModal modal open", id);
+    console.log('editMutualModal common id is', this.commonid);
+    console.log('editMutualModal modal open', id);
     this.getMutualFundByid(this.commonid);
     this.modalService
-      .open(editMutualModal, { ariaLabelledBy: "editMutualModal" })
+      .open(editMutualModal, { ariaLabelledBy: 'editMutualModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -89,24 +89,24 @@ export class MutualfundComponent implements OnInit {
   }
   saveMutual(): void {
     this.mutualFundService.SubmitUser(this.mutualfund).subscribe(data => {
-      alert("Added new MF details");
+      alert('Added new MF details');
       this.getMutualFundByUid(this.uid);
     });
   }
   getMutualFundByUid(uid) {
     this.mutualFundService.getMutualFund(this.uid).subscribe(res => {
-      console.log("this is responce of mufund", res);
+      console.log('this is responce of mufund', res);
       this.output = res;
-      console.log("responce of getMutualFundByUid service", this.output);
+      console.log('responce of getMutualFundByUid service', this.output);
     });
     // this.getSavingSchemeUid(this.uid2);
   }
   getMutualFundByid(commonid) {
     this.mutualFundService.getMutualFundByid(this.commonid).subscribe(res => {
-      console.log("this is responce of getMutualFundByid", res);
+      console.log('this is responce of getMutualFundByid', res);
       this.getdata = res;
       console.log(
-        "this is responce of getMutualFundByid getdata",
+        'this is responce of getMutualFundByid getdata',
         this.getdata
       );
       this.mutualfund.id = this.getdata[0].id;
@@ -114,7 +114,7 @@ export class MutualfundComponent implements OnInit {
       this.mutualfund.folionumber = this.getdata[0].folionumber;
       this.mutualfund.holdingdays = this.getdata[0].holdingdays;
       console.log(
-        "this is responce of getMutualFundByid holidays",
+        'this is responce of getMutualFundByid holidays',
         this.mutualfund.holdingdays
       );
       this.mutualfund.purchesprice = this.getdata[0].purchesprice;
@@ -127,34 +127,34 @@ export class MutualfundComponent implements OnInit {
   }
   opendeleteStocks(id) {
     this.commonid = id;
-    console.log("opendeleteStocks common id is", this.commonid);
-    console.log("opendeleteStocks modal open", id);
+    console.log('opendeleteStocks common id is', this.commonid);
+    console.log('opendeleteStocks modal open', id);
     this.delete(this.commonid);
   }
   update(commonid) {
-    console.log("inside update id is ", this.commonid);
+    console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.mutualfund.id = this.commonid;
     // this.newid= this.stocks.id;
     // this.getStockId(this.newid);
-    console.log("inside update", this.mutualfund);
+    console.log('inside update', this.mutualfund);
     this.mutualFundService.UpdateMutualFund(this.mutualfund).subscribe(data => {
-      alert("Added new mutualfund details");
+      alert('Added new mutualfund details');
       this.getMutualFundByUid(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
-      console.log("inside delete id is ", this.commonid);
+    this.conformkey = confirm('really Want to delete?');
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
+      console.log('inside delete id is ', this.commonid);
       // this.getStockId(this.id)
       this.mutualfund.id = this.commonid;
-      console.log("inside delete", this.mutualfund);
+      console.log('inside delete', this.mutualfund);
       this.mutualFundService
         .DeleteMutualFund(this.mutualfund.id)
         .subscribe(data => {
-          confirm("delete mutualfund details");
+          confirm('delete mutualfund details');
           this.getMutualFundByUid(this.uid);
         });
     } else {

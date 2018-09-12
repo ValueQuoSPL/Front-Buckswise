@@ -95,7 +95,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
         if (account) {
           this.uid = account.id;
           // console.log('from income userid is : ', this.uid);
-          this.onIncomeGet(this.uid);
+          this.onIncomeGet();
         } else {
           // console.log('cannot get user details check login ');
         }
@@ -103,15 +103,14 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
       .catch(err => {});
   }
 
-  onIncomeGet(uid) {
-    // console.log('inside onIncomeGet');
+  onIncomeGet() {
+    console.log('inside onIncomeGet');
     this.incomeService.GetIncome(this.uid).subscribe((response: any[]) => {
       this.tempIncomeArray = response;
       if (this.tempIncomeArray.length === 0) {
-        // console.log('income data is empty');
         this.isIncomeData = false;
       } else {
-        // console.log('income data already exist');
+        console.log('data received filling model');
         this.fillIncomeData();
         this.isIncomeData = true;
       }
@@ -137,9 +136,10 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
   fillIncomeData() {
     this.IncomeArray = this.tempIncomeArray;
-    // console.log('inside fill income data');
+    console.log('inside fill income data');
+    this.dynamicIncome.splice(0, this.dynamicIncome.length);
     for (let i = 0; i < this.IncomeArray.length; i++) {
-      // console.log('from IncomeArray : ', this.IncomeArray[i]);
+       // console.log('from IncomeArray : ', this.IncomeArray[i]);
       if (this.IncomeArray[i].name === 'incomeSalary') {
         this.income.incomeSalary = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeSalary);
@@ -173,7 +173,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
       }
     }
     this.loadIncome = true;
-    // console.log(this.IncomeArray);
+    console.log('after fill', this.dynamicIncome);
   }
 
   getDismissReason(reason: any): string {
@@ -227,30 +227,30 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
       name: this.resource,
       value: this.amount
     });
-    this.calcIncomeTotal();
-
     this.newIncome.dynamicIncome.pop();
     this.newIncome.dynamicIncome.push({
       name: this.resource,
       value: this.amount
     });
-    // console.log(this.uid);
     this.newIncome.userid = this.uid;
-
-    this.incomeService.PostIncome(this.newIncome).subscribe();
+    this.incomeService.PostIncome(this.newIncome).subscribe(data => {
+      console.log(data);
+      console.log('field added to db calling getIncome');
+      this.onIncomeGet();
+    });
     this.clear();
   }
 
   deleteFieldValue(index, id) {
-    // console.log('inside delete income');
 
-    // console.log(this.dynamicIncome[index].name);
-    // console.log(id);
-    this.removeIncome.name = this.dynamicIncome[index].name;
-    // console.log(this.removeIncome);
-    this.incomeService.DeleteIncome(id).subscribe(responce => {
-      // console.log(responce);
-    });
+    if (id) {
+      console.log(id);
+      this.removeIncome.name = this.dynamicIncome[index].name;
+      this.incomeService.DeleteIncome(id).subscribe(
+        responce => {
+        }
+      );
+    }
 
     this.dynamicIncome.splice(index, 1);
     this.calcIncomeTotal();
@@ -405,21 +405,21 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
           return false;
         }
       } else if (this.IncomeArray[i].name !== 'userid') {
-        for (let j = 0; j < this.dynamicIncome.length; j++) {
-          //  // console.log('dynamic', j, this.dynamicIncome[j].name);
-          if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
-            if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
-              //  // console.log('change found in dynamic');
-              return false;
+          for (let j = 0; j < this.dynamicIncome.length; j++) {
+            //  // console.log('dynamic', j, this.dynamicIncome[j].name);
+            if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
+              if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
+                //  // console.log('change found in dynamic');
+                return false;
+                }
+              }
             }
+            //  // console.log('change not found in dynamic');
           }
-        }
-        //  // console.log('change not found in dynamic');
-      }
-    }
+     }
     //  // console.log('change not found in any income');
-    return true;
-  }
+     return true;
+   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     // console.log('inside can deactivate');
