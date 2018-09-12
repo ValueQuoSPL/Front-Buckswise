@@ -303,9 +303,9 @@ export class GoalSelectComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log("user goal info", this.user);
         this.uid = this.user.id;
-        console.log("in fetchid method", this.uid);
+        console.log("in fetchid method in goal", this.uid);
         this.getgoalbyid(this.uid);
       });
   }
@@ -338,14 +338,30 @@ export class GoalSelectComponent implements OnInit {
   //   this.modalService.open(content, { size: 'lg' });
   // }
 
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(GoalAddButtonComponent,
+  //     {
+  //        width: "550px"
+  //   });
+  //     this.dialogRef.afterClosed().subscribe(result => {
+  //       console.log("The dialog was closed");
+  //       dialogRef.afterClosed().subscribe(result => {
+  //         console.log('The dialog was closed');
+  //     });
+  //   }
+  // }
   openDialog(): void {
     const dialogRef = this.dialog.open(GoalAddButtonComponent, {
       width: "550px"
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+      this.animal = result;
     });
   }
-  closeDialog() {
-    const dialogRef = this.dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-    });
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

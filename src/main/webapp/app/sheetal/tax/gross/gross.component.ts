@@ -67,4 +67,16 @@ export class GrossComponent implements OnInit {
         this.onGrossGet(this.uid);
       });
   }
+  // onGrossGet(uid) {
+  //   this.grossService.getgross(this.uid).subscribe(res => {
+  //     console.log(res);
+  //     this.output = res;
+  //     console.log(this.output);
+  //   });
+  // }
+  // onGrossSave() {
+  //   this.grossService
+  //     .save(this.gross)
+  //     .subscribe(response => console.log(response));
+  // }
 }
