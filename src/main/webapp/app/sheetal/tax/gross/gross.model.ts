@@ -1,4 +1,5 @@
 export class Gross {
+  uid;
   bsalary;
   da;
   hra;

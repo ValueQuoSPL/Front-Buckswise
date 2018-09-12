@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { OtherService } from "app/sheetal/tax/other/other.service";
+import { Other } from "./other.model";
 
 @Component({
   selector: "jhi-other",
-  providers: [OtherService],
   templateUrl: "./other.component.html",
   styles: []
 })
 export class OtherComponent implements OnInit {
+  other: Other = new Other();
   constructor() {}
 
   ngOnInit() {}
