@@ -20,6 +20,7 @@ export class FutureOptionComponent implements OnInit {
   out: any;
   FutureOptionDetails: any;
   fao: FAO = new FAO();
+  isSaving;
 
   constructor(
     private account: AccountService,

@@ -33,6 +33,10 @@ export class LifeInsuranceComponent implements OnInit {
   dynamicLoanArray: any = [];
   dynamicCreditArray: any = [];
 
+  goalLife;
+  liability;
+  i;
+
   constructor(
     private principal: Principal,
     private router: Router,
@@ -117,5 +121,23 @@ export class LifeInsuranceComponent implements OnInit {
     this.riskService.SaveLifeInsurance(this.lifeInsurance).subscribe(data => {
       alert('Added new stocks details');
     });
+  }
+
+  opnLife(id, lifeContent) {
+    console.log('income modal open');
+
+    this.modalService
+      .open(lifeContent, { ariaLabelledBy: 'lifeModal' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  deleteField(index, id) {
+
   }
 }

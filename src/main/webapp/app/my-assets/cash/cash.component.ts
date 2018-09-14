@@ -20,6 +20,7 @@ export class CashComponent implements OnInit {
   out: any;
   CashDetails: any;
   cash: Cash = new Cash();
+  isSaving;
 
   constructor(
     private account: AccountService,

@@ -20,6 +20,8 @@ export class StockComponent implements OnInit {
   out: any;
   getid: any;
   stocks: Stocks = new Stocks();
+  isSaving;
+
   constructor(
     private stockService: StockService,
     private account: AccountService,
@@ -29,6 +31,14 @@ export class StockComponent implements OnInit {
 
   ngOnInit() {
     this.FetchId();
+  }
+  resetFieldValue() {
+    this.stocks.company_name = '';
+    this.stocks.id = null;
+    this.stocks.investor_name = '';
+    this.stocks.no_of_shares = null;
+    this.stocks.notes = '';
+    this.stocks.share_price = null;
   }
   FetchId(): Promise<any> {
     return this.account

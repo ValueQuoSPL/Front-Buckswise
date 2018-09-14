@@ -19,6 +19,7 @@ export class ChitFundComponent implements OnInit {
   getdata: any;
   chitfundDetails: any;
   chitfund: ChitFund = new ChitFund();
+  isSaving;
 
   constructor(
     private account: AccountService,

@@ -20,6 +20,8 @@ export class MedicalInsuranceComponent implements OnInit {
   deleteFieldValue: any;
   closeResult: string;
 
+  riskmedical;
+
   constructor(
     private principal: Principal,
     private router: Router,
@@ -33,6 +35,22 @@ export class MedicalInsuranceComponent implements OnInit {
     });
   }
   openMedical(lifeContent) {
+    console.log('income modal open');
+
+    this.modalService
+      .open(lifeContent, { ariaLabelledBy: 'lifeModal' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.MedicalInsurance();
+          // console.log('add income success');
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  opnMedical(id, lifeContent) {
     console.log('income modal open');
 
     this.modalService
@@ -69,5 +87,9 @@ export class MedicalInsuranceComponent implements OnInit {
       .subscribe(data => {
         alert('Added new stocks details');
       });
+  }
+
+  deleteField(index, id) {
+
   }
 }

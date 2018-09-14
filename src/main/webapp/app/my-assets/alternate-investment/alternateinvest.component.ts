@@ -19,6 +19,7 @@ export class AlternativeComponent implements OnInit {
   out: any;
   alternateinvest: any;
   altInvest: AltInvest = new AltInvest();
+  isSaving;
 
   constructor(
     private account: AccountService,

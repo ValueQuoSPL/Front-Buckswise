@@ -20,6 +20,7 @@ export class PropertyComponent implements OnInit {
   out: any;
   propertyDetail: any;
   property: Property = new Property();
+  isSaving;
 
   constructor(
     private account: AccountService,

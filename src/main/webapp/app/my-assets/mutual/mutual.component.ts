@@ -19,6 +19,7 @@ export class MutualComponent implements OnInit {
   conformkey: any;
   closeResult: any;
   mutualfund: MutualFund = new MutualFund();
+  isSaving;
 
   constructor(
     private account: AccountService,
@@ -80,7 +81,7 @@ export class MutualComponent implements OnInit {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          this.update(this.commonid);
+          this.update();
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -131,7 +132,7 @@ export class MutualComponent implements OnInit {
     console.log('opendeleteStocks modal open', id);
     this.delete(this.commonid);
   }
-  update(commonid) {
+  update() {
     console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.mutualfund.id = this.commonid;

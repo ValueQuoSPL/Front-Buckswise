@@ -20,6 +20,7 @@ export class SavingSchemeComponent implements OnInit {
   commonid: any;
   getdata: any;
   savingScheme: SavingScheme = new SavingScheme();
+  isSaving;
 
   schemesArray = [
     { viewValue: 'FIXED DEPOSIT' },
