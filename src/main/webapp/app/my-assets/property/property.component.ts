@@ -20,6 +20,7 @@ export class PropertyComponent implements OnInit {
   out: any;
   propertyDetail: any;
   property: Property = new Property();
+  isSaving;
 
   constructor(
     private account: AccountService,
@@ -137,8 +138,8 @@ export class PropertyComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.property.id = this.commonid;

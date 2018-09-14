@@ -9,4 +9,5 @@ export class MutualFund {
   public cagr?: string;
   public userid?: string;
   public id?: number;
+  mutualfundid;
 }

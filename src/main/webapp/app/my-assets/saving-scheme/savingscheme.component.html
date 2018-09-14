@@ -354,7 +354,7 @@
                 <button 
                 class="btn btn-outline-info" 
                 type="button" 
-                (click)="openEditStocks(editStocksModal,stocks.id)">
+                (click)="openEditSaving(editsavingModal,saving.id)">
                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                 </button>             
             </td>
@@ -362,7 +362,7 @@
                 <button 
                     class="btn btn-outline-danger" 
                     type="button"
-                    (click)="opendeleteStocks(stocks.id)"
+                    (click)="delete(saving.id)"
                     >
                     <span><i class="fa fa-trash" aria-hidden="true"></i></span>
                 </button>

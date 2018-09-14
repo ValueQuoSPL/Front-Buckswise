@@ -341,10 +341,10 @@ export class GoalSelectComponent implements OnInit {
   // openDialog(): void {
   //   const dialogRef = this.dialog.open(GoalAddButtonComponent,
   //     {
-  //        width: "550px"
+  //        width: '550px'
   //   });
   //     this.dialogRef.afterClosed().subscribe(result => {
-  //       console.log("The dialog was closed");
+  //       console.log('The dialog was closed');
   //       dialogRef.afterClosed().subscribe(result => {
   //         console.log('The dialog was closed');
   //     });

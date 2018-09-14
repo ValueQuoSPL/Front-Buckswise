@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { RouterModule, Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BuckswiseFrontEndSharedModule } from "../shared";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+// import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 // import { goalSelectRoute } from './goal-select/goal-select.route';
 //  import { GoalComponent, goalRoot } from './';
 // import { GoalSelectComponent } from './Goal-select/goalselect.component';
@@ -20,7 +20,7 @@ import { MatDialogModule } from "@angular/material";
   imports: [
     RouterModule.forRoot([goalRoot], { useHash: true }),
     // RouterModule.forRoot([ goalSelectRoute ], { useHash: true }),
-    BsDatepickerModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
     FormsModule,
     CommonModule,
     CustomMaterialModule,

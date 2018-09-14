@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FamilyComponent } from "../family/family.component";
 import { familyRoute } from "./family.route";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+// import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CommonModule } from "@angular/common";
 import { MyprofileComponent } from "../family/myprofile/myprofile.component";
 import { AssumptionComponent } from "../family/assumption/assumption.component";
@@ -20,8 +20,8 @@ import { CustomDirectiveModule } from "../shared/directive/directive.module";
     FormsModule,
     CommonModule,
     CustomMaterialModule,
-    CustomDirectiveModule,
-    BsDatepickerModule.forRoot()
+    CustomDirectiveModule
+    // BsDatepickerModule.forRoot()
   ],
   declarations: [
     FamilyComponent,

@@ -69,7 +69,6 @@
                                                         <td> </td>
 <!--                                                         
                                                         <td>
-                                                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
                                                         </td> -->
                                                     </tr>
                                                 </tbody>
@@ -95,7 +94,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                        <tr *ngFor="let l of liability">
+                                                        <tr *ngFor="let l of liability; let i = index">
                                                                 <td> {{l.ltype}} </td>
                                                                 <td>{{l.lenderName}} </td>
                                                                 <td> {{l.outstandingpricipal}}</td>

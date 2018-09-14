@@ -19,6 +19,7 @@ export class ChitFundComponent implements OnInit {
   getdata: any;
   chitfundDetails: any;
   chitfund: ChitFund = new ChitFund();
+  isSaving;
 
   constructor(
     private account: AccountService,
@@ -134,8 +135,8 @@ export class ChitFundComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.chitfund.id = this.commonid;

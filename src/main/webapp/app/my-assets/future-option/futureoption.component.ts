@@ -20,6 +20,7 @@ export class FutureOptionComponent implements OnInit {
   out: any;
   FutureOptionDetails: any;
   fao: FAO = new FAO();
+  isSaving;
 
   constructor(
     private account: AccountService,
@@ -139,8 +140,8 @@ export class FutureOptionComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.fao.id = this.commonid;

@@ -18,7 +18,7 @@ export class MyprofileComponent implements OnInit {
   uid: any;
   isValid: boolean;
   date = new FormControl(new Date());
-  show: boolean = true;
+  show = true;
   constructor(
     private principal: Principal,
     private MyProfileSer: MyprofileService,

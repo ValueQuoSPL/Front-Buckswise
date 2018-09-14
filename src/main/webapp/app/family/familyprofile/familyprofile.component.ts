@@ -18,8 +18,8 @@ export class FamilyprofileComponent implements OnInit {
   user: any;
   uid: number;
   isValid: boolean;
-  show: boolean = true;
-  earncheck: string = "notearning";
+  show = true;
+  earncheck = "notearning";
   date = new FormControl(new Date());
 
   constructor(

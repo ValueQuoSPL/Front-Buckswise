@@ -20,6 +20,7 @@ export class SavingSchemeComponent implements OnInit {
   commonid: any;
   getdata: any;
   savingScheme: SavingScheme = new SavingScheme();
+  isSaving;
 
   schemesArray = [
     { viewValue: "FIXED DEPOSIT" },
@@ -168,8 +169,8 @@ export class SavingSchemeComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.savingScheme.id = this.commonid;

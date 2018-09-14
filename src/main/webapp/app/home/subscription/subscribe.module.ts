@@ -1,24 +1,22 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 // import { SubscriptionComponent } from './subscription.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CommonModule } from '@angular/common';
-import { subscribeRoute } from 'app/home/subscription/subscribe.route';
+// import { BsDatepickeModule } from 'ngx-bootstrap/datepicker';
+import { CommonModule } from "@angular/common";
+import { subscribeRoute } from "app/home/subscription/subscribe.route";
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([subscribeRoute], { useHash: true }),
-        FormsModule,
-        CommonModule,
-        BsDatepickerModule.forRoot()
-    ],
-    declarations: [
-        // SubscriptionComponent
-    ],
-    entryComponents: [
-    ],
-    providers: [
-    ]
+  imports: [
+    RouterModule.forRoot([subscribeRoute], { useHash: true }),
+    FormsModule,
+    CommonModule
+    // BsDatepickerModule.forRoot()
+  ],
+  declarations: [
+    // SubscriptionComponent
+  ],
+  entryComponents: [],
+  providers: []
 })
-export class SubscriptionModule { }
+export class SubscriptionModule {}

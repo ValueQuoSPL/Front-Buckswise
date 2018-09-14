@@ -14,7 +14,7 @@ import { StocksService } from "app/my-assets/mutual-fund/stocks.service";
 import { ITEMS_PER_PAGE, Principal } from "app/shared";
 
 @Component({
-  selector: "jhi-stocks",
+  selector: "jhi-mutual-stocks",
   templateUrl: "./mutual-fund.component.html"
 })
 export class StocksComponent implements OnInit, OnDestroy {

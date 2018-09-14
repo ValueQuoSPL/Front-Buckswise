@@ -25,6 +25,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
+
   isSafari: boolean;
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -91,10 +92,10 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     let x;
     x = document.getElementById("desktop");
 
-    if (this.flag === true) {
+    if (this.isSafari === true) {
       this.flag = false;
       x.style = "margin-left: 16%;";
-      console.log("left 16%");
+      console.log("safari left 16%");
     }
   }
 

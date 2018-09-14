@@ -63,19 +63,25 @@
                     required
                 />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label 
                     class="form-control-label" 
-                    for="field_p_date">Purchase Date
+                    for="field_p_date"> Date
                 </label>
                 <input 
-                    type="text" 
-                    placeholder="" 
+                    typ   e="text" 
+                    placehol="" 
                     class="form-control" 
-                    [(ngModel)]="altInvest.p_date" 
-                    [ngModelOptions]="{standalone: true}"
+                    
                     bsDatepicker>
-            </div>
+            </div> -->
+            <mat-form-field style="width: 100%;">
+                <input required matInput [matDatepicker]="picker1" placeholder="Purchase Date" 
+                [(ngModel)]="altInvest.p_date" 
+                    [ngModelOptions]="{standalone: true}">
+                <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                <mat-datepicker #picker1 ></mat-datepicker>
+            </mat-form-field>
             <div class="form-group">
                 <label 
                     class="form-control-label" 

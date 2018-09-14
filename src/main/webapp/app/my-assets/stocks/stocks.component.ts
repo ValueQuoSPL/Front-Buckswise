@@ -4,10 +4,10 @@ import { StockService } from "app/my-assets/stocks/stocks.service";
 import { AccountService } from "../../shared";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-// import {MutualFundService} from "./mutual.service";
+// import {MutualFundService} from './mutual.service';
 
 @Component({
-  selector: "jhi-stocks",
+  selector: "jhi-stock",
   templateUrl: "./stocks.component.html",
   styles: []
 })
@@ -20,6 +20,8 @@ export class StockComponent implements OnInit {
   out: any;
   getid: any;
   stocks: Stocks = new Stocks();
+  isSaving;
+
   constructor(
     private stockService: StockService,
     private account: AccountService,
@@ -29,6 +31,14 @@ export class StockComponent implements OnInit {
 
   ngOnInit() {
     this.FetchId();
+  }
+  resetFieldValue() {
+    this.stocks.company_name = "";
+    this.stocks.id = null;
+    this.stocks.investor_name = "";
+    this.stocks.no_of_shares = null;
+    this.stocks.notes = "";
+    this.stocks.share_price = null;
   }
   FetchId(): Promise<any> {
     return this.account
@@ -132,8 +142,8 @@ export class StockComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.stocks.id = this.commonid;

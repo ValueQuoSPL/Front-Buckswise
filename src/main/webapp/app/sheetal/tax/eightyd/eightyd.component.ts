@@ -18,7 +18,7 @@ export class EightydComponent implements OnInit {
   uid: any;
   eightydout: any;
   eightyd: Eightyd = new Eightyd();
-
+  uid1: any;
   constructor(
     private modalService: NgbModal,
     private eightydService: EightydService,
@@ -52,9 +52,9 @@ export class EightydComponent implements OnInit {
       .then(response => {
         this.user = response.body;
         console.log("user info", this.user);
-        this.uid = this.user.id;
-        this.eightyd.uid = this.uid;
-        // this.onEightydGet(this.uid);
+        this.eightyd.uid = this.user.id;
+        this.uid = this.eightyd.uid;
+        this.onEightydGet(this.uid);
       });
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!valid">
+<div>
     <div class="row pull-right" style="margin-top: -80px;">
         <button type="button" (click)="onGrossGet(id)" class="btn btn-link">
             <span>
@@ -140,7 +140,7 @@
         </div>
     </div>
 </div><br>
-<div *ngIf="!valid"class="card">
+<div class="card">
     <div class="card-header">
     Income from House Properties
     </div>
@@ -168,7 +168,7 @@
         </table>
     </div>
 </div><br>
-<div *ngIf="!valid" class="card">
+<div class="card">
     <div class="card-header">Income from other Sources
     </div>
     <div class="card-body">
@@ -204,7 +204,7 @@
               <td></td>
               <td></td>
               <td>
-                <input type="number" value="0" name="convay" [(ngModel)]="gross.conveyanceother">
+                <input type="number" value="0" name="conveyanceother" [(ngModel)]="gross.conveyanceother">
               </td>
             </tr>
           </tbody>
@@ -212,7 +212,7 @@
         </table>           
   </div>
   </div>
-  <div *ngIf="valid" class="card">
+  <div class="card">
     <div class="card-header">
       Income from salaries (Per Annum)
     </div>
@@ -358,7 +358,7 @@
         </table>
     </div>
 </div><br>
-    <div *ngIf="valid" class="card">
+    <div class="card">
         <div class="card-header">Income from House Properties
         </div>
         <div class="card-body">

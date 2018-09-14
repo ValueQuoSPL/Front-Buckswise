@@ -1,14 +1,17 @@
 
 <div class="container">
     <div [ngSwitch]="isAuthenticated()">
+        <br>
         <div class="alert alert-warning" *ngSwitchCase="false">
+            <br>
             <span>You are not signed in. <br> If you want to sign in</span>
             <a class="alert-link" (click)="login()">Click here</a>
         </div>
 
         <div *ngSwitchCase="true">
             
-            <mat-expansion-panel class="accordion" [expanded]="step === 0">
+            <mat-expansion-panel class="accordion" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
                 
                 <!-- Header -->
                 <mat-expansion-panel-header>
@@ -16,7 +19,7 @@
                     Income
                     </mat-panel-title>
                     <mat-panel-description>
-                        Fill your income details
+                        {{panelOpenState ? 'Fill your income details' : 'Click to expand' }}
                     </mat-panel-description>
                 </mat-expansion-panel-header>
             
@@ -259,7 +262,7 @@
                                     <td> {{field.name}} </td>
                                     <td><input  type="number" value="{{field.value}}"    disabled> </td>
                                     <td>{{field.value * 12}} </td>
-                                    <td><button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(i)" >
+                                    <td><button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(field.id, i)" >
                                     <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                                     </td>
                                 </tr>
@@ -280,6 +283,10 @@
                     </div>
                 </span>
             </mat-expansion-panel>
-        </div>      
+        </div>  
+        
+        <div *ngSwitchDefault>
+            hi
+        </div>
     </div>
 </div>

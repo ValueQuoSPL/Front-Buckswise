@@ -10,7 +10,7 @@ import { MutualfundService } from "./mutual.service";
   templateUrl: "./mutual.component.html",
   styles: []
 })
-export class MutualfundComponent implements OnInit {
+export class MutualComponent implements OnInit {
   user: any;
   uid: any;
   output: any;
@@ -19,6 +19,7 @@ export class MutualfundComponent implements OnInit {
   conformkey: any;
   closeResult: any;
   mutualfund: MutualFund = new MutualFund();
+  isSaving;
 
   constructor(
     private account: AccountService,
@@ -80,7 +81,7 @@ export class MutualfundComponent implements OnInit {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          this.update(this.commonid);
+          this.update();
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -131,7 +132,7 @@ export class MutualfundComponent implements OnInit {
     console.log("opendeleteStocks modal open", id);
     this.delete(this.commonid);
   }
-  update(commonid) {
+  update() {
     console.log("inside update id is ", this.commonid);
     // this.getStockId(this.id)
     this.mutualfund.id = this.commonid;
@@ -145,8 +146,8 @@ export class MutualfundComponent implements OnInit {
   }
   delete(commonid) {
     this.conformkey = confirm("really Want to delete?");
-    if (this.conformkey == true) {
-      // this.conformkey = "You pressed OK!";
+    if (this.conformkey === true) {
+      // this.conformkey = 'You pressed OK!';
       console.log("inside delete id is ", this.commonid);
       // this.getStockId(this.id)
       this.mutualfund.id = this.commonid;

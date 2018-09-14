@@ -22,7 +22,8 @@
             ],
             "styles": [
               "src/main/webapp/content/scss/vendor.scss",
-              "src/main/webapp/content/scss/global.scss"
+              "src/main/webapp/content/scss/global.scss",
+              "app/main/webapp/app/css/all.css"
             ],
             "scripts": [
               "src/main/webapp/app/gridstack/js/gridstack.js"
