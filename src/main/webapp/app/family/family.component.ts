@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, Route } from "@angular/router";
-import { Principal, LoginModalService } from "app/shared";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { Myprofile } from "app/family/family.modal";
-import { FamilyserviceService } from "app/family/familyservice.service";
-import { Familyprofile, Assumption } from "app/family/family.modal";
-import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { Router, Route } from '@angular/router';
+import { Principal, LoginModalService } from 'app/shared';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Myprofile } from 'app/family/family.modal';
+import { FamilyserviceService } from 'app/family/familyservice.service';
+import { Familyprofile, Assumption } from 'app/family/family.modal';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: "jhi-family",
-  templateUrl: "./family.component.html",
-  styles: ["./family.component.css"]
+  selector: 'jhi-family',
+  templateUrl: './family.component.html',
+  styles: ['./family.component.css']
 })
 export class FamilyComponent implements OnInit {
   panelOpenState = false;
@@ -92,10 +92,10 @@ export class FamilyComponent implements OnInit {
       occup: this.familyProfile.occup,
       check: this.familyProfile.check
     });
-    console.log("inside familyprofile details");
+    console.log('inside familyprofile details');
     this.familyservice.saveFPdetail(this.FamilyProfile).subscribe(data => {
-      alert("Data saved successfully");
-      console.log("Data saved successfully");
+      alert('Data saved successfully');
+      console.log('Data saved successfully');
     });
   }
   saveAssumption(): void {
@@ -111,10 +111,10 @@ export class FamilyComponent implements OnInit {
       AgeOfRetirement: this.assumption.AgeOfRetirement,
       LifeExpentancy: this.assumption.LifeExpentancy
     });
-    console.log("inside Assumption details");
+    console.log('inside Assumption details');
     this.familyservice.saveAssumption(this.Assumption).subscribe(data => {
-      alert("Data saved successfully");
-      console.log("Data saved successfully");
+      alert('Data saved successfully');
+      console.log('Data saved successfully');
     });
   }
   login() {

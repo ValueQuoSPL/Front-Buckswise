@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "../../app.constants";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from '../../app.constants';
 
 @Injectable()
 export class ContactService {
@@ -12,6 +12,6 @@ export class ContactService {
   // console.log(user.phone);
   // console.log(user.message);
   save(user: any): Observable<any> {
-    return this.http.post(SERVER_API_URL + "api/contactuses", user);
+    return this.http.post(SERVER_API_URL + 'api/contactuses', user);
   }
 }

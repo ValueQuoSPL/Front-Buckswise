@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { AccountService, Principal } from "app/shared";
-import { DashboardService } from "app/dashboard/dashboard.service";
-import { SavingScheme } from "app/my-assets/saving-scheme/savingscheme.modal";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService, Principal } from 'app/shared';
+import { DashboardService } from 'app/dashboard/dashboard.service';
+import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
 
 @Component({
-  selector: "jhi-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"]
+  selector: 'jhi-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   uid: any;
@@ -75,11 +75,11 @@ export class DashboardComponent implements OnInit {
   }
 
   onLiabilityEdit() {
-    this.router.navigate(["assets"]);
+    this.router.navigate(['assets']);
   }
 
   onAssetEdit() {
-    this.router.navigate(["asstesroute"]);
+    this.router.navigate(['asstesroute']);
   }
 
   public chartClicked(e: any): void {
@@ -204,14 +204,14 @@ export class DashboardComponent implements OnInit {
   ) {
     // console.log(total);
     this.pieChartableLabels.push(
-      "MutualFund",
-      "stock",
-      "saving",
-      "chit",
-      "cash",
-      "alterInvest",
-      "pcj",
-      "fao"
+      'MutualFund',
+      'stock',
+      'saving',
+      'chit',
+      'cash',
+      'alterInvest',
+      'pcj',
+      'fao'
     );
     this.pieChartData.push(
       total,
@@ -223,6 +223,6 @@ export class DashboardComponent implements OnInit {
       totalPCJ,
       totalFAO
     );
-    this.pieChartType = "pie";
+    this.pieChartType = 'pie';
   }
 }

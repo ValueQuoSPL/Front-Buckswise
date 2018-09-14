@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 import {
   mainRoute,
@@ -6,7 +6,7 @@ import {
   meetRoute,
   taxRoute,
   adviceRoute
-} from "app/sheetal";
+} from 'app/sheetal';
 
 const SHEETAL_ROUTE = [
   mainRoute,
@@ -17,7 +17,7 @@ const SHEETAL_ROUTE = [
 ];
 export const sheetalState: Routes = [
   {
-    path: "",
+    path: '',
     children: SHEETAL_ROUTE
   }
 ];

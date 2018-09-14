@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "../../../app.constants";
-import { Eightyc } from "./eightyc.model";
-import { Subscription } from "rxjs/Subscription";
-import { Component, OnInit } from "@angular/core";
-import { AccountService } from "../../../shared";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from '../../../app.constants';
+import { Eightyc } from './eightyc.model';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../../shared';
 
 @Injectable()
 export class EightycService {
@@ -35,12 +35,12 @@ export class EightycService {
   // console.log(eightyc.Tutionfee);
   // console.log(eightyc.Ulip);
   save(eightyc: any): Observable<any> {
-    return this.http.post(SERVER_API_URL + "api/eightycs", eightyc);
+    return this.http.post(SERVER_API_URL + 'api/eightycs', eightyc);
   }
 
   public geteightyc(id) {
-    console.log("in geteightyc service", id);
-    this.ServiceAPIParam = "api/eightycs" + "/" + id;
+    console.log('in geteightyc service', id);
+    this.ServiceAPIParam = 'api/eightycs' + '/' + id;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

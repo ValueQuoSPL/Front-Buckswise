@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Cash } from "./cash.modal";
-import { AccountService } from "../../shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { CashService } from "./cash.service";
+import { Component, OnInit } from '@angular/core';
+import { Cash } from './cash.modal';
+import { AccountService } from '../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CashService } from './cash.service';
 
 @Component({
-  selector: "jhi-cash",
-  templateUrl: "./cash.component.html",
+  selector: 'jhi-cash',
+  templateUrl: './cash.component.html',
   styles: []
 })
 export class CashComponent implements OnInit {
@@ -38,9 +38,9 @@ export class CashComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info of cash", this.user);
+        console.log('user info of cash', this.user);
         this.cash.userid = this.user.id;
-        console.log("in fetchid method", this.cash.userid);
+        console.log('in fetchid method', this.cash.userid);
         this.uid = this.cash.userid;
         // this.getMyProfilebyid(this.uid);
         // this. getAltInvestment(this.uid)
@@ -49,17 +49,17 @@ export class CashComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   openCash(content) {
-    console.log("cashModal modal open");
+    console.log('cashModal modal open');
     this.modalService
-      .open(content, { ariaLabelledBy: "cashModal" })
+      .open(content, { ariaLabelledBy: 'cashModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -73,11 +73,11 @@ export class CashComponent implements OnInit {
   }
   openEditCash(editCashModal, id) {
     this.commonid = id;
-    console.log("editCashModal common id is", this.commonid);
-    console.log("editCashModal modal open", id);
+    console.log('editCashModal common id is', this.commonid);
+    console.log('editCashModal modal open', id);
     this.getCashId(this.commonid);
     this.modalService
-      .open(editCashModal, { ariaLabelledBy: "editCashModal" })
+      .open(editCashModal, { ariaLabelledBy: 'editCashModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -90,27 +90,27 @@ export class CashComponent implements OnInit {
   }
   opendeleteCash(id) {
     this.commonid = id;
-    console.log("opendeleteStocks common id is", this.commonid);
-    console.log("opendeleteStocks modal open", id);
+    console.log('opendeleteStocks common id is', this.commonid);
+    console.log('opendeleteStocks modal open', id);
     this.delete(this.commonid);
   }
   saveCashDetails() {
     this.cashservice.CashDetails(this.cash).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
       this.getCashDetailsByuid(this.uid);
     });
   }
   getCashDetailsByuid(uid) {
     this.cashservice.getCashDetailsByuid(this.uid).subscribe(res => {
-      console.log("this is responce of getCashDetailsByuid", res);
+      console.log('this is responce of getCashDetailsByuid', res);
       this.CashDetails = res;
-      console.log("responce of getCashDetailsByuid service", this.CashDetails);
+      console.log('responce of getCashDetailsByuid service', this.CashDetails);
     });
     // this.getsavePropertyByuid(this.uid5);
   }
   getCashId(commonid) {
     this.cashservice.getCashById(this.commonid).subscribe(res => {
-      console.log("this is responce of getStockId ", res);
+      console.log('this is responce of getStockId ', res);
       this.getdata = res;
       this.cash.cash_source = this.getdata.cash_source;
       this.cash.amount = this.getdata.amount;
@@ -118,27 +118,27 @@ export class CashComponent implements OnInit {
     });
   }
   update(commonid) {
-    console.log("inside update id is ", this.commonid);
+    console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.cash.id = this.commonid;
     // this.newid= this.stocks.id;
     // this.getStockId(this.newid);
-    console.log("inside update", this.cash);
+    console.log('inside update', this.cash);
     this.cashservice.UpdateCash(this.cash).subscribe(data => {
-      alert("Added new stocks details");
+      alert('Added new stocks details');
       this.getCashDetailsByuid(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm("really Want to delete?");
+    this.conformkey = confirm('really Want to delete?');
     if (this.conformkey === true) {
       // this.conformkey = 'You pressed OK!';
-      console.log("inside delete id is ", this.commonid);
+      console.log('inside delete id is ', this.commonid);
       // this.getStockId(this.id)
       this.cash.id = this.commonid;
-      console.log("inside delete", this.cash);
+      console.log('inside delete', this.cash);
       this.cashservice.DeleteStock(this.cash.id).subscribe(data => {
-        confirm("delete stocks details");
+        confirm('delete stocks details');
         this.getCashDetailsByuid(this.uid);
       });
     } else {

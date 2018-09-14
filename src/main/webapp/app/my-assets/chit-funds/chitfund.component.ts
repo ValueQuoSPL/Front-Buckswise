@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ChitFund } from "./chitfund.modal";
-import { AccountService } from "../../shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { ChitFundService } from "./chitfund.service";
+import { Component, OnInit } from '@angular/core';
+import { ChitFund } from './chitfund.modal';
+import { AccountService } from '../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ChitFundService } from './chitfund.service';
 
 @Component({
-  selector: "jhi-chitfund",
-  templateUrl: "./chitfund.component.html",
+  selector: 'jhi-chitfund',
+  templateUrl: './chitfund.component.html',
   styles: []
 })
 export class ChitFundComponent implements OnInit {
@@ -37,26 +37,26 @@ export class ChitFundComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info of chitfund", this.user);
+        console.log('user info of chitfund', this.user);
         this.chitfund.userid = this.user.id;
-        console.log("in fetchid method", this.chitfund.userid);
+        console.log('in fetchid method', this.chitfund.userid);
         this.uid = this.chitfund.userid;
         this.getChitByuid(this.uid);
       });
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   openChit(content) {
-    console.log("chitModal modal open");
+    console.log('chitModal modal open');
     this.modalService
-      .open(content, { ariaLabelledBy: "chitModal" })
+      .open(content, { ariaLabelledBy: 'chitModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -70,11 +70,11 @@ export class ChitFundComponent implements OnInit {
   }
   openEditchit(editChitModal, id) {
     this.commonid = id;
-    console.log("editChitModal common id is", this.commonid);
-    console.log("editChitModal modal open", id);
+    console.log('editChitModal common id is', this.commonid);
+    console.log('editChitModal modal open', id);
     this.getChitById(this.commonid);
     this.modalService
-      .open(editChitModal, { ariaLabelledBy: "editChitModal" })
+      .open(editChitModal, { ariaLabelledBy: 'editChitModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -87,7 +87,7 @@ export class ChitFundComponent implements OnInit {
   }
   getChitById(commonid) {
     this.chitfundService.getChitById(this.commonid).subscribe(res => {
-      console.log("this is responce of getStockId ", res);
+      console.log('this is responce of getStockId ', res);
       this.getdata = res;
       this.chitfund.chit_name = this.getdata.chit_name;
       this.chitfund.chit_holder_name = this.getdata.chit_holder_name;
@@ -103,46 +103,46 @@ export class ChitFundComponent implements OnInit {
   }
   opendeleteChit(id) {
     this.commonid = id;
-    console.log("opendeleteStocks common id is", this.commonid);
-    console.log("opendeleteStocks modal open", id);
+    console.log('opendeleteStocks common id is', this.commonid);
+    console.log('opendeleteStocks modal open', id);
     this.delete(this.commonid);
   }
   saveChit() {
     this.chitfundService.ChitFundDetails(this.chitfund).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
       this.getChitByuid(this.uid);
     });
   }
   getChitByuid(uid) {
     this.chitfundService.getChitByuid(this.uid).subscribe(res => {
-      console.log("this is responce of getChitByuid", res);
+      console.log('this is responce of getChitByuid', res);
       this.chitfundDetails = res;
-      console.log("responce of getChitByuid service", this.chitfundDetails);
+      console.log('responce of getChitByuid service', this.chitfundDetails);
     });
     // this.getFAOByUid(this.uid7)
   }
   update(commonid) {
-    console.log("inside update id is ", this.commonid);
+    console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.chitfund.id = this.commonid;
     // this.newid= this.stocks.id;
     // this.getStockId(this.newid);
-    console.log("inside update", this.chitfund);
+    console.log('inside update', this.chitfund);
     this.chitfundService.UpdateChit(this.chitfund).subscribe(data => {
-      alert("Added new chit details");
+      alert('Added new chit details');
       this.getChitByuid(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm("really Want to delete?");
+    this.conformkey = confirm('really Want to delete?');
     if (this.conformkey === true) {
       // this.conformkey = 'You pressed OK!';
-      console.log("inside delete id is ", this.commonid);
+      console.log('inside delete id is ', this.commonid);
       // this.getStockId(this.id)
       this.chitfund.id = this.commonid;
-      console.log("inside delete", this.chitfund);
+      console.log('inside delete', this.chitfund);
       this.chitfundService.DeleteChit(this.chitfund.id).subscribe(data => {
-        confirm("delete chit details");
+        confirm('delete chit details');
         this.getChitByuid(this.uid);
       });
     } else {

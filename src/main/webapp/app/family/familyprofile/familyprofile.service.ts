@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { SERVER_API_URL } from "app/app.constants";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_API_URL } from 'app/app.constants';
 
 @Injectable()
 export class FamilyprofileService {
@@ -10,19 +10,19 @@ export class FamilyprofileService {
 
   save(familyProfile: any): Observable<any> {
     console.log(familyProfile);
-    return this.http.post(SERVER_API_URL + "api/familyprofiles", familyProfile);
+    return this.http.post(SERVER_API_URL + 'api/familyprofiles', familyProfile);
   }
   public getFamilyProfile() {
-    return this.http.get(SERVER_API_URL + "api/familyprofiles").map(res => res);
+    return this.http.get(SERVER_API_URL + 'api/familyprofiles').map(res => res);
   }
   public getFamilyProfileByUid(uid) {
-    console.log("in getFamilyProfileByUid service uid", uid);
-    this.ServiceAPIParam = "api/familyprofiles" + "/" + uid;
+    console.log('in getFamilyProfileByUid service uid', uid);
+    this.ServiceAPIParam = 'api/familyprofiles' + '/' + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
   public updateProfile(familyProfile: any): Observable<any> {
-    console.log("update family profile", familyProfile);
+    console.log('update family profile', familyProfile);
 
-    return this.http.put(SERVER_API_URL + "api/familyprofile", familyProfile);
+    return this.http.put(SERVER_API_URL + 'api/familyprofile', familyProfile);
   }
 }

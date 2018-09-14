@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Stocks } from "app/my-assets/stocks/stocks.modal";
-import { StockService } from "app/my-assets/stocks/stocks.service";
-import { AccountService } from "../../shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { Stocks } from 'app/my-assets/stocks/stocks.modal';
+import { StockService } from 'app/my-assets/stocks/stocks.service';
+import { AccountService } from '../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // import {MutualFundService} from './mutual.service';
 
 @Component({
-  selector: "jhi-stock",
-  templateUrl: "./stocks.component.html",
+  selector: 'jhi-stock',
+  templateUrl: './stocks.component.html',
   styles: []
 })
 export class StockComponent implements OnInit {
@@ -33,11 +33,11 @@ export class StockComponent implements OnInit {
     this.FetchId();
   }
   resetFieldValue() {
-    this.stocks.company_name = "";
+    this.stocks.company_name = '';
     this.stocks.id = null;
-    this.stocks.investor_name = "";
+    this.stocks.investor_name = '';
     this.stocks.no_of_shares = null;
-    this.stocks.notes = "";
+    this.stocks.notes = '';
     this.stocks.share_price = null;
   }
   FetchId(): Promise<any> {
@@ -46,9 +46,9 @@ export class StockComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info of stock", this.user);
+        console.log('user info of stock', this.user);
         this.stocks.userid = this.user.id;
-        console.log("in fetchid method", this.stocks.userid);
+        console.log('in fetchid method', this.stocks.userid);
         this.uid = this.stocks.userid;
         // this.getMyProfilebyid(this.uid);
         this.getStockById(this.uid);
@@ -56,18 +56,18 @@ export class StockComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   // stocks
   openStocks(stocksModal) {
-    console.log("openStocks modal open");
+    console.log('openStocks modal open');
     this.modalService
-      .open(stocksModal, { ariaLabelledBy: "stocksModal" })
+      .open(stocksModal, { ariaLabelledBy: 'stocksModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -80,11 +80,11 @@ export class StockComponent implements OnInit {
   }
   openEditStocks(editStocksModal, id) {
     this.commonid = id;
-    console.log("editStocksModal common id is", this.commonid);
-    console.log("editStocksModal modal open", id);
+    console.log('editStocksModal common id is', this.commonid);
+    console.log('editStocksModal modal open', id);
     this.getStockId(this.commonid);
     this.modalService
-      .open(editStocksModal, { ariaLabelledBy: "editStocksModal" })
+      .open(editStocksModal, { ariaLabelledBy: 'editStocksModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -97,29 +97,29 @@ export class StockComponent implements OnInit {
   }
   opendeleteStocks(id) {
     this.commonid = id;
-    console.log("opendeleteStocks common id is", this.commonid);
-    console.log("opendeleteStocks modal open", id);
+    console.log('opendeleteStocks common id is', this.commonid);
+    console.log('opendeleteStocks modal open', id);
     this.delete(this.commonid);
   }
   getStockById(uid) {
     this.stockService.getStockById(this.uid).subscribe(res => {
-      console.log("this is responce of stack", res);
+      console.log('this is responce of stack', res);
       this.out = res;
-      console.log("responce of stocks service", this.out);
+      console.log('responce of stocks service', this.out);
     });
     // this.getMutualFundByUid(this.uid1);
   }
   saveStocks() {
     this.stockService.SaveStocks(this.stocks).subscribe(data => {
-      alert("Added new stocks details");
+      alert('Added new stocks details');
       this.getStockById(this.uid);
     });
   }
   getStockId(commonid) {
     this.stockService.getStockId(this.commonid).subscribe(res => {
-      console.log("this is responce of getStockId ", res);
+      console.log('this is responce of getStockId ', res);
       this.getid = res;
-      console.log("this is responce of getStockId ", this.getid);
+      console.log('this is responce of getStockId ', this.getid);
       this.stocks.id = this.getid.id;
       this.stocks.company_name = this.getid.company_name;
       this.stocks.investor_name = this.getid.investor_name;
@@ -129,27 +129,27 @@ export class StockComponent implements OnInit {
     });
   }
   update(commonid) {
-    console.log("inside update id is ", this.commonid);
+    console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.stocks.id = this.commonid;
     // this.newid= this.stocks.id;
     // this.getStockId(this.newid);
-    console.log("inside update", this.stocks);
+    console.log('inside update', this.stocks);
     this.stockService.UpdateStock(this.stocks).subscribe(data => {
-      alert("Added new stocks details");
+      alert('Added new stocks details');
       this.getStockById(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm("really Want to delete?");
+    this.conformkey = confirm('really Want to delete?');
     if (this.conformkey === true) {
       // this.conformkey = 'You pressed OK!';
-      console.log("inside delete id is ", this.commonid);
+      console.log('inside delete id is ', this.commonid);
       // this.getStockId(this.id)
       this.stocks.id = this.commonid;
-      console.log("inside delete", this.stocks);
+      console.log('inside delete', this.stocks);
       this.stockService.DeleteStock(this.stocks.id).subscribe(data => {
-        confirm("delete stocks details");
+        confirm('delete stocks details');
         this.getStockById(this.uid);
       });
     } else {

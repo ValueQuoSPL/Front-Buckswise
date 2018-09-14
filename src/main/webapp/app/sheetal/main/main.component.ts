@@ -1,28 +1,28 @@
-import { NAMED_ENTITIES } from "@angular/compiler";
-import { checkAndUpdateBinding } from "@angular/core/src/view/util";
-import { Component, OnInit } from "@angular/core";
-import { Gross } from "./Services/gross.model";
-import { GrossService } from "./Services/gross.service";
-import { Eightyc } from "./Services/eightyc.model";
-import { EightycService } from "./Services/eightyc.service";
-import { Home } from "./Services/home.model";
-import { HomeService } from "./Services/home.service";
-import { Eightyd } from "./Services/eightyd.model";
-import { EightydService } from "./Services/eightyd.service";
-import { Other } from "./Services/other.model";
-import { OtherService } from "./Services/other.service";
+import { NAMED_ENTITIES } from '@angular/compiler';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+import { Component, OnInit } from '@angular/core';
+import { Gross } from './Services/gross.model';
+import { GrossService } from './Services/gross.service';
+import { Eightyc } from './Services/eightyc.model';
+import { EightycService } from './Services/eightyc.service';
+import { Home } from './Services/home.model';
+import { HomeService } from './Services/home.service';
+import { Eightyd } from './Services/eightyd.model';
+import { EightydService } from './Services/eightyd.service';
+import { Other } from './Services/other.model';
+import { OtherService } from './Services/other.service';
 // import { error } from 'util';
-import { AccountService } from "app/shared";
+import { AccountService } from 'app/shared';
 import {
   NgbModalRef,
   NgbModal,
   ModalDismissReasons
-} from "@ng-bootstrap/ng-bootstrap";
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: "jhi-main",
-  templateUrl: "./main.component.html",
-  styleUrls: ["./main.component.css"]
+  selector: 'jhi-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
   [x: string]: any;
@@ -124,7 +124,7 @@ export class MainComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log('user info', this.user);
         this.uid = this.user.id;
         // console.log('Id from backend : ', this.uid);
         // this.onGrossGet(this.id);
@@ -248,7 +248,7 @@ export class MainComponent implements OnInit {
     });
   }
   onEightydGet(uid) {
-    console.log("in main ts", uid);
+    console.log('in main ts', uid);
     this.eightydService.geteightyd(uid).subscribe(res => {
       console.log(res);
       this.eightydout = res;
@@ -256,7 +256,7 @@ export class MainComponent implements OnInit {
     });
   }
   onOtherGet(id) {
-    console.log("in main ts", id);
+    console.log('in main ts', id);
     this.otherService.getother(id).subscribe(res => {
       console.log(res);
       this.otherout = res;
@@ -273,21 +273,21 @@ export class MainComponent implements OnInit {
   // }
 
   onEditStaticField(nameField, modal) {
-    console.log("inside edit eightyd");
+    console.log('inside edit eightyd');
     this.nameField = nameField;
-    console.log("inside edit eightyd", nameField);
-    if (nameField === "Medical Insurance for Self") {
-      this.nameField = "Amount of Medical for self";
+    console.log('inside edit eightyd', nameField);
+    if (nameField === 'Medical Insurance for Self') {
+      this.nameField = 'Amount of Medical for self';
       this.editField = this.eightydout.medself;
-    } else if (nameField === "Medical Insurance for Parents ") {
-      this.nameField = "Amount of Medical for Parents";
+    } else if (nameField === 'Medical Insurance for Parents ') {
+      this.nameField = 'Amount of Medical for Parents';
       this.editField = this.eightydout.medparents;
-    } else if (nameField === "Preventive Health Checkup") {
-      this.nameField = "Amount of Preventive health checkup";
+    } else if (nameField === 'Preventive Health Checkup') {
+      this.nameField = 'Amount of Preventive health checkup';
       this.editField = this.eightydout.healthcheck;
     }
     this.modalService
-      .open(modal, { ariaLabelledBy: "eightydEditContent" })
+      .open(modal, { ariaLabelledBy: 'eightydEditContent' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -300,52 +300,52 @@ export class MainComponent implements OnInit {
   }
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
 
   FillEditEightyd(nameField) {
-    console.log("inside fill edit eightyd");
-    if (nameField === "Medical Insurance for Self") {
+    console.log('inside fill edit eightyd');
+    if (nameField === 'Medical Insurance for Self') {
       this.eightydout.medself = this.editField;
-      this.editField = "";
-    } else if (nameField === "Medical Insurance for Parents") {
+      this.editField = '';
+    } else if (nameField === 'Medical Insurance for Parents') {
       this.eightydout.medparents = this.editField;
-      this.editField = "";
-    } else if (nameField === "Preventive Health Checkup") {
+      this.editField = '';
+    } else if (nameField === 'Preventive Health Checkup') {
       this.eightydout.healthcheck = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
   onEditOtherField(nameField, modal) {
-    console.log("inside edit other");
+    console.log('inside edit other');
     this.nameField = nameField;
-    console.log("inside edit other", nameField);
-    if (nameField === "Medical Handicapped") {
-      this.nameField = "Amount";
+    console.log('inside edit other', nameField);
+    if (nameField === 'Medical Handicapped') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.handicapped;
-    } else if (nameField === "Medical Treatment") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Medical Treatment') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.medicaltreat;
-    } else if (nameField === "Repayment") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Repayment') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.selfedu;
-    } else if (nameField === "nps") {
-      this.nameField = "Amount";
+    } else if (nameField === 'nps') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.nps;
-    } else if (nameField === "rgess") {
-      this.nameField = "Amount";
+    } else if (nameField === 'rgess') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.rgess;
-    } else if (nameField === "donation") {
-      this.nameField = "Amount";
+    } else if (nameField === 'donation') {
+      this.nameField = 'Amount';
       this.editField = this.otherout.donation;
     }
     this.modalService
-      .open(modal, { ariaLabelledBy: "otherEditContent" })
+      .open(modal, { ariaLabelledBy: 'otherEditContent' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -357,49 +357,49 @@ export class MainComponent implements OnInit {
       );
   }
   FillEditOther(nameField) {
-    console.log("inside fill edit other");
-    if (nameField === "Medical Handicapped") {
+    console.log('inside fill edit other');
+    if (nameField === 'Medical Handicapped') {
       this.otherout.handicapped = this.editField;
-      this.editField = "";
-    } else if (nameField === "Medical Treatment") {
+      this.editField = '';
+    } else if (nameField === 'Medical Treatment') {
       this.otherout.medicaltreat = this.editField;
-      this.editField = "";
-    } else if (nameField === "Repayment") {
+      this.editField = '';
+    } else if (nameField === 'Repayment') {
       this.otherout.selfedu = this.editField;
-      this.editField = "";
-    } else if (nameField === "nps") {
+      this.editField = '';
+    } else if (nameField === 'nps') {
       this.otherout.nps = this.editField;
-      this.editField = "";
-    } else if (nameField === "rgess") {
+      this.editField = '';
+    } else if (nameField === 'rgess') {
       this.otherout.rgess = this.editField;
-      this.editField = "";
-    } else if (nameField === "donation") {
+      this.editField = '';
+    } else if (nameField === 'donation') {
       this.otherout.donation = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
   onEditHomeField(nameField, modal) {
-    console.log("inside home other");
+    console.log('inside home other');
     this.nameField = nameField;
-    console.log("inside edit home", nameField);
-    if (nameField === "Housing Loan") {
-      this.nameField = "Amount";
+    console.log('inside edit home', nameField);
+    if (nameField === 'Housing Loan') {
+      this.nameField = 'Amount';
       this.editField = this.homeout.homeloan;
-    } else if (nameField === "Pricipal Loan") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Pricipal Loan') {
+      this.nameField = 'Amount';
       this.editField = this.homeout.prncpalloan;
-    } else if (nameField === "Rent Claimed") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Rent Claimed') {
+      this.nameField = 'Amount';
       this.editField = this.homeout.rentclm;
-    } else if (nameField === "Remaining Interest") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Remaining Interest') {
+      this.nameField = 'Amount';
       this.editField = this.homeout.remintrst;
-    } else if (nameField === "Mentioned the Rent claimed") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Mentioned the Rent claimed') {
+      this.nameField = 'Amount';
       this.editField = this.homeout.rentclmgg;
     }
     this.modalService
-      .open(modal, { ariaLabelledBy: "homeEditContent" })
+      .open(modal, { ariaLabelledBy: 'homeEditContent' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -411,67 +411,67 @@ export class MainComponent implements OnInit {
       );
   }
   FillEditHome(nameField) {
-    console.log("inside fill edit home");
-    if (nameField === "Housing Loan") {
+    console.log('inside fill edit home');
+    if (nameField === 'Housing Loan') {
       this.homeout.homeloan = this.editField;
-      this.editField = "";
-    } else if (nameField === "Pricipal Loan") {
+      this.editField = '';
+    } else if (nameField === 'Pricipal Loan') {
       this.homeout.prncpalloan = this.editField;
-      this.editField = "";
-    } else if (nameField === "Rent Claimed") {
+      this.editField = '';
+    } else if (nameField === 'Rent Claimed') {
       this.homeout.rentclm = this.editField;
-      this.editField = "";
-    } else if (nameField === "Remaining Interest") {
+      this.editField = '';
+    } else if (nameField === 'Remaining Interest') {
       this.homeout.remintrst = this.editField;
-      this.editField = "";
-    } else if (nameField === "Mentioned the Rent claimed") {
+      this.editField = '';
+    } else if (nameField === 'Mentioned the Rent claimed') {
       this.homeout.rentclmgg = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
   onEditEightycField(nameField, modal) {
-    console.log("inside edit eightyc");
+    console.log('inside edit eightyc');
     this.nameField = nameField;
-    console.log("inside edit eightyc", nameField);
-    if (nameField === "Fixed Deposit in Schedule Bank") {
-      this.nameField = "Amount";
+    console.log('inside edit eightyc', nameField);
+    if (nameField === 'Fixed Deposit in Schedule Bank') {
+      this.nameField = 'Amount';
       this.editField = this.out.fixed;
-    } else if (nameField === "Tution Fees") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Tution Fees') {
+      this.nameField = 'Amount';
       this.editField = this.out.tution;
-    } else if (nameField === "Deposite in NSC") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Deposite in NSC') {
+      this.nameField = 'Amount';
       this.editField = this.out.nsc;
-    } else if (nameField === "Deposite in NSS") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Deposite in NSS') {
+      this.nameField = 'Amount';
       this.editField = this.out.nss;
-    } else if (nameField === "Post Office saving Scheme") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Post Office saving Scheme') {
+      this.nameField = 'Amount';
       this.editField = this.out.post;
-    } else if (nameField === "Interest on NSC Reinvested") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Interest on NSC Reinvested') {
+      this.nameField = 'Amount';
       this.editField = this.out.reinvest;
-    } else if (nameField === "Life Insurance Premium") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Life Insurance Premium') {
+      this.nameField = 'Amount';
       this.editField = this.out.licpremium;
-    } else if (nameField === "Equity linked Savings Scheme") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Equity linked Savings Scheme') {
+      this.nameField = 'Amount';
       this.editField = this.out.equity;
-    } else if (nameField === "Provident Fund") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Provident Fund') {
+      this.nameField = 'Amount';
       this.editField = this.out.pf;
-    } else if (nameField === "Public Provident Fund") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Public Provident Fund') {
+      this.nameField = 'Amount';
       this.editField = this.out.ppf;
-    } else if (nameField === "Others") {
-      this.nameField = "Amount";
+    } else if (nameField === 'Others') {
+      this.nameField = 'Amount';
       this.editField = this.out.other;
-    } else if (nameField === "ULIP of UTI/LIC") {
-      this.nameField = "Amount";
+    } else if (nameField === 'ULIP of UTI/LIC') {
+      this.nameField = 'Amount';
       this.editField = this.out.ulip;
     }
     this.modalService
-      .open(modal, { ariaLabelledBy: "eightycEditContent" })
+      .open(modal, { ariaLabelledBy: 'eightycEditContent' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -483,43 +483,43 @@ export class MainComponent implements OnInit {
       );
   }
   FillEditEightyc(nameField) {
-    console.log("inside fill edit eightyc");
-    if (nameField === "Fixed Deposit in Schedule Bank") {
+    console.log('inside fill edit eightyc');
+    if (nameField === 'Fixed Deposit in Schedule Bank') {
       this.out.fixed = this.editField;
-      this.editField = "";
-    } else if (nameField === "Tution Fees") {
+      this.editField = '';
+    } else if (nameField === 'Tution Fees') {
       this.out.tution = this.editField;
-      this.editField = "";
-    } else if (nameField === "Deposite in NSC") {
+      this.editField = '';
+    } else if (nameField === 'Deposite in NSC') {
       this.out.nsc = this.editField;
-      this.editField = "";
-    } else if (nameField === "Deposite in NSS") {
+      this.editField = '';
+    } else if (nameField === 'Deposite in NSS') {
       this.out.nss = this.editField;
-      this.editField = "";
-    } else if (nameField === "Post Office saving Scheme") {
+      this.editField = '';
+    } else if (nameField === 'Post Office saving Scheme') {
       this.out.post = this.editField;
-      this.editField = "";
-    } else if (nameField === "Interest on NSC Reinvested") {
+      this.editField = '';
+    } else if (nameField === 'Interest on NSC Reinvested') {
       this.out.reinvest = this.editField;
-      this.editField = "";
-    } else if (nameField === "Life Insurance Premium") {
+      this.editField = '';
+    } else if (nameField === 'Life Insurance Premium') {
       this.out.licpremium = this.editField;
-      this.editField = "";
-    } else if (nameField === "Equity linked Savings Scheme") {
+      this.editField = '';
+    } else if (nameField === 'Equity linked Savings Scheme') {
       this.out.equity = this.editField;
-      this.editField = "";
-    } else if (nameField === "Provident Fund") {
+      this.editField = '';
+    } else if (nameField === 'Provident Fund') {
       this.out.pf = this.editField;
-      this.editField = "";
-    } else if (nameField === "Public Provident Fund") {
+      this.editField = '';
+    } else if (nameField === 'Public Provident Fund') {
       this.out.ppf = this.editField;
-      this.editField = "";
-    } else if (nameField === "Others") {
+      this.editField = '';
+    } else if (nameField === 'Others') {
       this.out.other = this.editField;
-      this.editField = "";
-    } else if (nameField === "ULIP of UTI/LIC") {
+      this.editField = '';
+    } else if (nameField === 'ULIP of UTI/LIC') {
       this.out.ulip = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
 }

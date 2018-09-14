@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Gross } from "./gross.model";
-import { GrossService } from "./gross.service";
-import { AccountService } from "app/shared";
+import { Component, OnInit } from '@angular/core';
+import { Gross } from './gross.model';
+import { GrossService } from './gross.service';
+import { AccountService } from 'app/shared';
 import {
   NgbModalRef,
   NgbModal,
   ModalDismissReasons
-} from "@ng-bootstrap/ng-bootstrap";
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: "jhi-gross",
-  templateUrl: "./gross.component.html",
+  selector: 'jhi-gross',
+  templateUrl: './gross.component.html',
   styles: []
 })
 export class GrossComponent implements OnInit {
@@ -42,11 +42,11 @@ export class GrossComponent implements OnInit {
     this.gross.conveyanceother = 0;
   }
   onGrossGet(uid) {
-    console.log("in main ts", uid);
+    console.log('in main ts', uid);
     this.grossService.getgross(uid).subscribe(res => {
       console.log(res);
       this.grossout = res;
-      console.log("onEightydGet response ", this.grossout);
+      console.log('onEightydGet response ', this.grossout);
     });
   }
   onGrossSave() {
@@ -60,9 +60,9 @@ export class GrossComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
+        console.log('user info', this.user);
         this.gross.uid = this.user.id;
-        console.log("uid is", this.gross.uid);
+        console.log('uid is', this.gross.uid);
         this.uid = this.gross.uid;
         this.onGrossGet(this.uid);
       });

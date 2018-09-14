@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Income } from "app/pratik/spending/spending.model";
-import { IncomeService } from "app/pratik/spending/spending.service";
-import { AccountService, LoginModalService, Principal } from "app/shared";
+import { Component, OnInit } from '@angular/core';
+import { Income } from 'app/pratik/spending/spending.model';
+import { IncomeService } from 'app/pratik/spending/spending.service';
+import { AccountService, LoginModalService, Principal } from 'app/shared';
 import {
   NgbModal,
   ModalDismissReasons,
   NgbModalRef
-} from "@ng-bootstrap/ng-bootstrap";
-import { CanComponentDeactivate } from "../can-deactivate-guard.service";
-import { Observable } from "rxjs";
+} from '@ng-bootstrap/ng-bootstrap';
+import { CanComponentDeactivate } from '../can-deactivate-guard.service';
+import { Observable } from 'rxjs';
 
 class NewIncome {
   dynamicIncome: any = [];
@@ -20,9 +20,9 @@ class RemoveIncome {
 }
 
 @Component({
-  selector: "jhi-income",
-  templateUrl: "./income.component.html",
-  styleUrls: ["./income.css"]
+  selector: 'jhi-income',
+  templateUrl: './income.component.html',
+  styleUrls: ['./income.css']
 })
 export class IncomeComponent implements OnInit, CanComponentDeactivate {
   resource: any;
@@ -105,13 +105,13 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   }
 
   onIncomeGet() {
-    console.log("inside onIncomeGet");
+    console.log('inside onIncomeGet');
     this.incomeService.GetIncome(this.uid).subscribe((response: any[]) => {
       this.tempIncomeArray = response;
       if (this.tempIncomeArray.length === 0) {
         this.isIncomeData = false;
       } else {
-        console.log("data received filling model");
+        console.log('data received filling model');
         this.fillIncomeData();
         this.isIncomeData = true;
       }
@@ -119,12 +119,12 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   }
 
   clear() {
-    this.resource = "";
-    this.amount = "";
+    this.resource = '';
+    this.amount = '';
   }
 
   reset() {
-    prompt("All saved data of Income will be lost. Are you sure to continue");
+    prompt('All saved data of Income will be lost. Are you sure to continue');
     this.totalIncome = 0;
     this.income.incomeSalary = 0;
     this.income.incomeAward = 0;
@@ -137,32 +137,32 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
   fillIncomeData() {
     this.IncomeArray = this.tempIncomeArray;
-    console.log("inside fill income data");
+    console.log('inside fill income data');
     this.dynamicIncome.splice(0, this.dynamicIncome.length);
     for (let i = 0; i < this.IncomeArray.length; i++) {
       // console.log('from IncomeArray : ', this.IncomeArray[i]);
-      if (this.IncomeArray[i].name === "incomeSalary") {
+      if (this.IncomeArray[i].name === 'incomeSalary') {
         this.income.incomeSalary = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeSalary);
-      } else if (this.IncomeArray[i].name === "incomeAward") {
+      } else if (this.IncomeArray[i].name === 'incomeAward') {
         this.income.incomeAward = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeAward);
-      } else if (this.IncomeArray[i].name === "incomeBonus") {
+      } else if (this.IncomeArray[i].name === 'incomeBonus') {
         this.income.incomeBonus = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeBonus);
-      } else if (this.IncomeArray[i].name === "incomePension") {
+      } else if (this.IncomeArray[i].name === 'incomePension') {
         this.income.incomePension = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomePension);
-      } else if (this.IncomeArray[i].name === "incomeSaving") {
+      } else if (this.IncomeArray[i].name === 'incomeSaving') {
         this.income.incomeSaving = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeSaving);
-      } else if (this.IncomeArray[i].name === "incomeDeposit") {
+      } else if (this.IncomeArray[i].name === 'incomeDeposit') {
         this.income.incomeDeposit = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeDeposit);
-      } else if (this.IncomeArray[i].name === "incomeRental") {
+      } else if (this.IncomeArray[i].name === 'incomeRental') {
         this.income.incomeRental = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeRental);
-      } else if (this.IncomeArray[i].name !== "userid") {
+      } else if (this.IncomeArray[i].name !== 'userid') {
         this.dynamicIncome.push({
           id: this.IncomeArray[i].id,
           name: this.IncomeArray[i].name,
@@ -174,14 +174,14 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
       }
     }
     this.loadIncome = true;
-    console.log("after fill", this.dynamicIncome);
+    console.log('after fill', this.dynamicIncome);
   }
 
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -191,7 +191,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     // console.log('income modal open');
 
     this.modalService
-      .open(incomeContent, { ariaLabelledBy: "incomeModal" })
+      .open(incomeContent, { ariaLabelledBy: 'incomeModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -207,7 +207,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   calcTotalIncome() {
     this.totalIncome = 0;
     for (let j = 0; j < this.IncomeArray.length; j++) {
-      if (this.IncomeArray[j].name !== "userid") {
+      if (this.IncomeArray[j].name !== 'userid') {
         // // console.log(this.IncomeArray[j].name, this.IncomeArray[j].amount);
         this.totalIncome = +this.totalIncome + +this.IncomeArray[j].amount;
       }
@@ -236,7 +236,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.newIncome.userid = this.uid;
     this.incomeService.PostIncome(this.newIncome).subscribe(data => {
       console.log(data);
-      console.log("field added to db calling getIncome");
+      console.log('field added to db calling getIncome');
       this.onIncomeGet();
     });
     this.clear();
@@ -258,7 +258,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.income.userid = this.uid;
     // this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PostIncome(this.income).subscribe(data => {
-      alert("Your data saved");
+      alert('Your data saved');
       this.isIncomeData = true;
       this.changesSaved = true;
     });
@@ -269,38 +269,38 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     this.income.userid = this.uid;
     this.income.dynamicIncome = this.dynamicIncome;
     this.incomeService.PutIncome(this.income, this.uid).subscribe(data => {
-      alert("Your data saved");
+      alert('Your data saved');
       this.changesSaved = true;
     });
   }
 
   onEditStaticField(nameField, modal) {
     // console.log('inside edit income');
-    if (nameField === "salary") {
-      this.nameField = "Post Tax Take Home Salary";
+    if (nameField === 'salary') {
+      this.nameField = 'Post Tax Take Home Salary';
       this.editField = this.income.incomeSalary;
-    } else if (nameField === "award") {
-      this.nameField = "Performance award / bonus";
+    } else if (nameField === 'award') {
+      this.nameField = 'Performance award / bonus';
       this.editField = this.income.incomeAward;
-    } else if (nameField === "bonus") {
-      this.nameField = "Sign-up Bonus";
+    } else if (nameField === 'bonus') {
+      this.nameField = 'Sign-up Bonus';
       this.editField = this.income.incomeBonus;
-    } else if (nameField === "pension") {
-      this.nameField = "Pensions";
+    } else if (nameField === 'pension') {
+      this.nameField = 'Pensions';
       this.editField = this.income.incomePension;
-    } else if (nameField === "saving") {
-      this.nameField = "Interest Earned on Saving";
+    } else if (nameField === 'saving') {
+      this.nameField = 'Interest Earned on Saving';
       this.editField = this.income.incomeSaving;
-    } else if (nameField === "deposit") {
-      this.nameField = "Income from investments(Deposites, Securities)";
+    } else if (nameField === 'deposit') {
+      this.nameField = 'Income from investments(Deposites, Securities)';
       this.editField = this.income.incomeDeposit;
-    } else if (nameField === "rental") {
-      this.nameField = "Rental Income";
+    } else if (nameField === 'rental') {
+      this.nameField = 'Rental Income';
       this.editField = this.income.incomeRental;
     }
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "incomeEditContent" })
+        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -322,7 +322,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "incomeEditContent" })
+        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -338,27 +338,27 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
 
   FillEditIncome(nameField) {
     // console.log('inside fill edit income');
-    if (nameField === "salary") {
+    if (nameField === 'salary') {
       this.income.incomeSalary = this.editField;
-      this.editField = "";
-    } else if (nameField === "award") {
+      this.editField = '';
+    } else if (nameField === 'award') {
       this.income.incomeAward = this.editField;
-      this.editField = "";
-    } else if (nameField === "bonus") {
+      this.editField = '';
+    } else if (nameField === 'bonus') {
       this.income.incomeBonus = this.editField;
-      this.editField = "";
-    } else if (nameField === "pension") {
+      this.editField = '';
+    } else if (nameField === 'pension') {
       this.income.incomePension = this.editField;
-      this.editField = "";
-    } else if (nameField === "saving") {
+      this.editField = '';
+    } else if (nameField === 'saving') {
       this.income.incomeSaving = this.editField;
-      this.editField = "";
-    } else if (nameField === "deposit") {
+      this.editField = '';
+    } else if (nameField === 'deposit') {
       this.income.incomeDeposit = this.editField;
-      this.editField = "";
-    } else if (nameField === "rental") {
+      this.editField = '';
+    } else if (nameField === 'rental') {
       this.income.incomeRental = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
 
@@ -366,42 +366,42 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     // console.log('inside isFieldChanged');
 
     for (let i = 0; i < this.IncomeArray.length; i++) {
-      if (this.IncomeArray[i].name === "incomeSalary") {
+      if (this.IncomeArray[i].name === 'incomeSalary') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeSalary !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomeAward") {
+      } else if (this.IncomeArray[i].name === 'incomeAward') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeAward !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomeBonus") {
+      } else if (this.IncomeArray[i].name === 'incomeBonus') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeBonus !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomePension") {
+      } else if (this.IncomeArray[i].name === 'incomePension') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomePension !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomeSaving") {
+      } else if (this.IncomeArray[i].name === 'incomeSaving') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeSaving !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomeDeposit") {
+      } else if (this.IncomeArray[i].name === 'incomeDeposit') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeDeposit !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name === "incomeRental") {
+      } else if (this.IncomeArray[i].name === 'incomeRental') {
         // // console.log(this.IncomeArray[i].name);
         if (+this.income.incomeRental !== +this.IncomeArray[i].amount) {
           return false;
         }
-      } else if (this.IncomeArray[i].name !== "userid") {
+      } else if (this.IncomeArray[i].name !== 'userid') {
         for (let j = 0; j < this.dynamicIncome.length; j++) {
           //  // console.log('dynamic', j, this.dynamicIncome[j].name);
           if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
@@ -424,7 +424,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     if (!this.dataChanged && !this.changesSaved) {
       // console.log(this.dataChanged, 'dataChanged');
       // console.log(this.changesSaved, 'changesSaved');
-      return confirm("Do you want to leave this page Before changes saved ?");
+      return confirm('Do you want to leave this page Before changes saved ?');
     } else {
       return true;
     }

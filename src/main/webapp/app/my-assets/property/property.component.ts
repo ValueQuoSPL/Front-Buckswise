@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Property } from "./property.modal";
-import { AccountService } from "../../shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { PropertyService } from "./property.service";
+import { Component, OnInit } from '@angular/core';
+import { Property } from './property.modal';
+import { AccountService } from '../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { PropertyService } from './property.service';
 
 @Component({
-  selector: "jhi-property",
-  templateUrl: "./property.component.html",
+  selector: 'jhi-property',
+  templateUrl: './property.component.html',
   styles: []
 })
 export class PropertyComponent implements OnInit {
@@ -38,9 +38,9 @@ export class PropertyComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info of cash", this.user);
+        console.log('user info of cash', this.user);
         this.property.userid = this.user.id;
-        console.log("in fetchid method", this.property.userid);
+        console.log('in fetchid method', this.property.userid);
         this.uid = this.property.userid;
         // this.getMyProfilebyid(this.uid);
         // this. getAltInvestment(this.uid)
@@ -50,17 +50,17 @@ export class PropertyComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
   openProperty(content) {
-    console.log("mutual modal open");
+    console.log('mutual modal open');
     this.modalService
-      .open(content, { ariaLabelledBy: "propertyModal" })
+      .open(content, { ariaLabelledBy: 'propertyModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -74,11 +74,11 @@ export class PropertyComponent implements OnInit {
   }
   openEditProperty(editpropertyModal, id) {
     this.commonid = id;
-    console.log("editChitModal common id is", this.commonid);
-    console.log("editChitModal modal open", id);
+    console.log('editChitModal common id is', this.commonid);
+    console.log('editChitModal modal open', id);
     this.getPropertyById(this.commonid);
     this.modalService
-      .open(editpropertyModal, { ariaLabelledBy: "editpropertyModal" })
+      .open(editpropertyModal, { ariaLabelledBy: 'editpropertyModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -91,30 +91,30 @@ export class PropertyComponent implements OnInit {
   }
   opendeleteProperty(id) {
     this.commonid = id;
-    console.log("opendeleteProperty common id is", this.commonid);
-    console.log("opendeleteProperty modal open", id);
+    console.log('opendeleteProperty common id is', this.commonid);
+    console.log('opendeleteProperty modal open', id);
     this.delete(this.commonid);
   }
   saveProperty() {
-    console.log("this is responce of SavepropertyDetail", this.property);
+    console.log('this is responce of SavepropertyDetail', this.property);
     this.propertyservice.PropertyDetails(this.property).subscribe(data => {
-      alert("Added new Future and objective details");
+      alert('Added new Future and objective details');
       this.getsavePropertyByuid(this.uid);
     });
   }
   getsavePropertyByuid(uid) {
     this.propertyservice.getsavePropertyByuid(this.uid).subscribe(res => {
-      console.log("this is responce of getsavePropertyByuid", res);
+      console.log('this is responce of getsavePropertyByuid', res);
       this.propertyDetail = res;
       console.log(
-        "responce of getsavePropertyByuid service",
+        'responce of getsavePropertyByuid service',
         this.propertyDetail
       );
     });
   }
   getPropertyById(commonid) {
     this.propertyservice.getPropertyById(this.commonid).subscribe(res => {
-      console.log("this is responce of getPropertyById ", res);
+      console.log('this is responce of getPropertyById ', res);
       this.getdata = res;
       this.property.prop_name = this.getdata.prop_name;
       this.property.prop_type = this.getdata.prop_type;
@@ -125,27 +125,27 @@ export class PropertyComponent implements OnInit {
     });
   }
   update(commonid) {
-    console.log("inside update id is ", this.commonid);
+    console.log('inside update id is ', this.commonid);
     // this.getStockId(this.id)
     this.property.id = this.commonid;
     // this.newid= this.stocks.id;
     // this.getStockId(this.newid);
-    console.log("inside update", this.property);
+    console.log('inside update', this.property);
     this.propertyservice.UpdateProperty(this.property).subscribe(data => {
-      alert("Added new chit details");
+      alert('Added new chit details');
       this.getsavePropertyByuid(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm("really Want to delete?");
+    this.conformkey = confirm('really Want to delete?');
     if (this.conformkey === true) {
       // this.conformkey = 'You pressed OK!';
-      console.log("inside delete id is ", this.commonid);
+      console.log('inside delete id is ', this.commonid);
       // this.getStockId(this.id)
       this.property.id = this.commonid;
-      console.log("inside delete", this.property);
+      console.log('inside delete', this.property);
       this.propertyservice.DeleteProperty(this.property.id).subscribe(data => {
-        confirm("delete chit details");
+        confirm('delete chit details');
         this.getsavePropertyByuid(this.uid);
       });
     } else {

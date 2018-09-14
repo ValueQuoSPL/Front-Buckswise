@@ -6,9 +6,9 @@ import {
   Input,
   ElementRef,
   ViewContainerRef
-} from "@angular/core";
-import { DraggableDirective } from "app/shared/draggable/draggable.directive";
-import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
+} from '@angular/core';
+import { DraggableDirective } from 'app/shared/draggable/draggable.directive';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 interface Position {
   x: number;
@@ -16,28 +16,28 @@ interface Position {
 }
 
 @Directive({
-  selector: "[jhiMovable]"
+  selector: '[jhiMovable]'
 })
 export class MovableDirective extends DraggableDirective {
-  @HostBinding("class.movable") movable = true;
+  @HostBinding('class.movable') movable = true;
 
   public position: Position = { x: 0, y: 0 };
   private startPosition: Position;
 
   // tslint:disable-next-line:no-input-rename
-  @Input("appMovableReset") reset = false;
+  @Input('appMovableReset') reset = false;
   constructor(private sanitizer: DomSanitizer, public element: ElementRef) {
     super();
   }
 
-  @HostBinding("style.transform")
+  @HostBinding('style.transform')
   get transform(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(
       `translateX(${this.position.x}px) translateY(${this.position.y}px)`
     );
   }
 
-  @HostListener("dragStart", ["$event"])
+  @HostListener('dragStart', ['$event'])
   onDragStart(event) {
     this.startPosition = {
       x: event.clientX - this.position.x,
@@ -46,14 +46,14 @@ export class MovableDirective extends DraggableDirective {
     // console.log('start');
   }
 
-  @HostListener("dragMove", ["$event"])
+  @HostListener('dragMove', ['$event'])
   onDragMove(event) {
     this.position.x = event.clientX - this.startPosition.x;
     this.position.y = event.clientY - this.startPosition.y;
     // console.log('moving...');
   }
 
-  @HostListener("dragEnd", ["$event"])
+  @HostListener('dragEnd', ['$event'])
   onDragEnd(event) {
     if (this.reset) {
       this.position = { x: 0, y: 0 };

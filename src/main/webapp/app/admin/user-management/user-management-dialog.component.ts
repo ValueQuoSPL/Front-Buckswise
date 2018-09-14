@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { JhiEventManager } from "ng-jhipster";
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { JhiEventManager } from 'ng-jhipster';
 
-import { UserModalService } from "app/admin/user-management/user-modal.service";
-import { User, UserService } from "app/shared";
+import { UserModalService } from 'app/admin/user-management/user-modal.service';
+import { User, UserService } from 'app/shared';
 
 @Component({
-  selector: "jhi-user-mgmt-dialog",
-  templateUrl: "./user-management-dialog.component.html"
+  selector: 'jhi-user-mgmt-dialog',
+  templateUrl: './user-management-dialog.component.html'
 })
 export class UserMgmtDialogComponent implements OnInit {
   user: User;
@@ -32,7 +32,7 @@ export class UserMgmtDialogComponent implements OnInit {
   }
 
   clear() {
-    this.activeModal.dismiss("cancel");
+    this.activeModal.dismiss('cancel');
   }
 
   save() {
@@ -45,7 +45,7 @@ export class UserMgmtDialogComponent implements OnInit {
           () => this.onSaveError()
         );
     } else {
-      this.user.langKey = "en";
+      this.user.langKey = 'en';
       this.userService
         .create(this.user)
         .subscribe(
@@ -57,8 +57,8 @@ export class UserMgmtDialogComponent implements OnInit {
 
   private onSaveSuccess(result) {
     this.eventManager.broadcast({
-      name: "userListModification",
-      content: "OK"
+      name: 'userListModification',
+      content: 'OK'
     });
     this.isSaving = false;
     this.activeModal.dismiss(result.body);
@@ -70,8 +70,8 @@ export class UserMgmtDialogComponent implements OnInit {
 }
 
 @Component({
-  selector: "jhi-user-dialog",
-  template: ""
+  selector: 'jhi-user-dialog',
+  template: ''
 })
 export class UserDialogComponent implements OnInit, OnDestroy {
   routeSub: any;
@@ -83,10 +83,10 @@ export class UserDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
-      if (params["login"]) {
+      if (params['login']) {
         this.userModalService.open(
           UserMgmtDialogComponent as Component,
-          params["login"]
+          params['login']
         );
       } else {
         this.userModalService.open(UserMgmtDialogComponent as Component);
