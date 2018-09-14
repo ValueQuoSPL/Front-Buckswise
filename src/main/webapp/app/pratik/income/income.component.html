@@ -262,7 +262,7 @@
                                     <td> {{field.name}} </td>
                                     <td><input  type="number" value="{{field.value}}"    disabled> </td>
                                     <td>{{field.value * 12}} </td>
-                                    <td><button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(i)" >
+                                    <td><button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(field.id, i)" >
                                     <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
                                     </td>
                                 </tr>

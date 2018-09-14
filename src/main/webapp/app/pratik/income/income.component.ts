@@ -44,6 +44,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   dynamicTotal: number;
   nameField;
   editField;
+  panelOpenState;
 
   changesSaved: boolean;
   dataChanged: boolean;

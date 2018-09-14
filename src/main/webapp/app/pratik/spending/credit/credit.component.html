@@ -7,31 +7,6 @@
               <span>Add</span>
           </span>
   </button>
-  <!-- <button type="button" class="btn btn-link" (click)="onGetCredit()">
-        <span>
-            <i class="fa fa-save" aria-hidden="true"></i>
-            <span>Get</span>
-        </span>
-</button> -->
-  <!-- <span [ngSwitch]="isCreditData">
-    <div *ngSwitchCase="true">
-            <button type="button" class="btn btn-link" (click)="updateCredit()">
-                    <span>
-                        <i class="fa fa-save" aria-hidden="true"></i>
-                        <span>Update</span>
-                    </span>
-            </button>
-    </div>
-    <div *ngSwitchCase="false">
-            <button type="button" class="btn btn-link" (click)="onCreditSave()">
-                    <span>
-                        <i class="fa fa-save" aria-hidden="true"></i>
-                        <span>Save</span>
-                    </span>
-            </button>
-    </div>
-  </span> -->
-
   </div>
 </div>
 
@@ -59,7 +34,7 @@
                     <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                 </button>
               </td>       
-              <td><button class="btn  btn-outline-danger"  type="button" (click)="RemoveCredit(i)" >
+              <td><button class="btn  btn-outline-danger"  type="button" (click)="RemoveCredit(i, field.id)" >
                   <span> <i class="fa fa-trash" aria-hidden="true"></i></span></button>
               </td>
           </tr>
