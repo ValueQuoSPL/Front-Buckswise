@@ -16,4 +16,4 @@ export * from "app/sheetal/main/main.component";
 export * from "app/sheetal/advice/advice.route";
 export * from "app/sheetal/advice/advice.component";
 
-export * from "app/sheetal/sheetal.route";
+// export * from "app/sheetal/sheetal.route";

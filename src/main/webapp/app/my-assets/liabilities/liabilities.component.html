@@ -20,7 +20,32 @@
                         </mat-expansion-panel-header>
     
                         <div>
-    
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">OrganisationName</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Tenure</th>
+                                        <th scope="col">ROI</th>
+                                        <th scope="col">OutstandingAmount</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let l of loan">
+                                        <td>{{l.lenderName}}</td>
+                                        <td>{{l.ltype}}</td>
+                                        <td>{{l.tenure}}</td>
+                                        <td>{{l.roi}}</td>
+                                        <td></td>
+                                        <td>
+                                            <button class="btn btn-outline-info" type="button">
+                                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                                            </button>
+                                        </td>    
+                                    </tr>    
+                                </tbody>    
+                            </table>    
                         </div>
     
                     </mat-expansion-panel>
