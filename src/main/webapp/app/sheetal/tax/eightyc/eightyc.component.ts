@@ -8,14 +8,9 @@ import {
   ModalDismissReasons
 } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-<<<<<<< HEAD
   selector: 'jhi-eightyc',
   providers: [EightycService],
   templateUrl: './eightyc.component.html',
-=======
-  selector: "jhi-eightyc",
-  templateUrl: "./eightyc.component.html",
->>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
   styles: []
 })
 export class EightycComponent implements OnInit {
@@ -41,16 +36,9 @@ export class EightycComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-<<<<<<< HEAD
         console.log('user info', this.user);
         this.userID = this.user.id;
         console.log('in service', this.userID);
-=======
-        console.log("user info", this.user);
-        this.eightyc.userID = this.user.id;
-        this.uid = this.eightyc.userID;
-        console.log("in service", this.uid);
->>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
       });
   }
   // // eightyc call function

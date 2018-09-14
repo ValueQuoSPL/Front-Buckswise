@@ -50,7 +50,7 @@ import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
  import { BuckswiseContactModule } from 'app/sheetal/contactus/contact.module';
 import { BuckswiseTaxModule } from 'app/sheetal/tax/tax.module';
 
@@ -65,7 +65,7 @@ import { BuckswiseTaxModule } from 'app/sheetal/tax/tax.module';
     BuckswiseFrontEndAdminModule,
     BuckswiseFrontEndAccountModule,
     BuckswiseFrontEndEntityModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     BuckswiseFrontEndMyAssetsModule,
     BuckswiseFrontEndRiskModule,
     FamilyModule,

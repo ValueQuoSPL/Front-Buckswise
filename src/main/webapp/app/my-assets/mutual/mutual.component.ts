@@ -10,7 +10,7 @@ import { MutualfundService } from './mutual.service';
   templateUrl: './mutual.component.html',
   styles: []
 })
-export class MutualfundComponent implements OnInit {
+export class MutualComponent implements OnInit {
   user: any;
   uid: any;
   output: any;

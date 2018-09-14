@@ -28,7 +28,6 @@ import { AdviceComponent } from './advice/advice.component';
   ],
   declarations: [
     MainComponent,
-    ContactusComponent,
     RequestmeetingComponent,
     AdviceComponent,
     SheetalComponent

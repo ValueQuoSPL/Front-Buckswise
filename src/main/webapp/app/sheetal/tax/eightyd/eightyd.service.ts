@@ -32,21 +32,12 @@ export class EightydService {
   // console.log(eightyd.Health);
   // id: any;
   save(eightyd: any): Observable<any> {
-<<<<<<< HEAD
     return this.http.post(SERVER_API_URL + 'api/eightds', eightyd);
   }
 
   public geteightyd(uid) {
     console.log('in geteightyd service', uid);
     this.ServiceAPIParam = 'api/eightds' + '/' + uid;
-=======
-    return this.http.post(SERVER_API_URL + "api/eightyds", eightyd);
-  }
-
-  public geteightyd(uid) {
-    console.log("in geteightyd service", uid);
-    this.ServiceAPIParam = "api/eightyds" + "/" + uid;
->>>>>>> 38f1decb52340f342dc7f7c9315808c551d58ce8
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
   // public PutEightyd(eightyd) {

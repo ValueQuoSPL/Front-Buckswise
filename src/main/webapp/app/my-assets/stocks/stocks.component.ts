@@ -7,7 +7,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // import {MutualFundService} from './mutual.service';
 
 @Component({
-  selector: 'jhi-stocks',
+  selector: 'jhi-stock',
   templateUrl: './stocks.component.html',
   styles: []
 })

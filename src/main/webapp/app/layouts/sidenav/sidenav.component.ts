@@ -25,6 +25,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
+
   isSafari: boolean;
   constructor(
     private breakpointObserver: BreakpointObserver,

@@ -15,6 +15,7 @@ import { myasstsRoute } from './my-assets.route';
 import { LiabilitiesComponent } from './liabilities/liabilities.component';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { StockComponent } from 'app/my-assets/stocks/stocks.component';
+import { StocksComponent } from 'app/my-assets/mutual-fund/mutual-fund.component.ts';
 import { PropertyComponent } from 'app/my-assets/property/property.component';
 import { SavingSchemeComponent } from 'app/my-assets/saving-scheme/savingscheme.component';
 import { SavingSchemeService } from 'app/my-assets/saving-scheme/savingscheme.service';
@@ -23,7 +24,8 @@ import { ChitFundComponent } from './chit-funds/chitfund.component';
 import { CashComponent } from './cash/cash.component';
 import { AlternativeComponent } from './alternate-investment/alternateinvest.component';
 import { MyAssetsComponent } from './my-assets.component';
-import { MutualfundComponent } from 'app/my-assets/mutual/mutual.component';
+import { MutualComponent } from 'app/my-assets/mutual/mutual.component';
+// import { MutualFundComponent } from 'app/my-assets/mutual-fund/mutual-fund.component.ts';
 import { MutualfundService } from 'app/my-assets/mutual/mutual.service';
 import { AlternateService } from './alternate-investment/alternateinvest.service';
 import { CashService } from './cash/cash.service';
@@ -41,7 +43,8 @@ import { FutureOptionService } from './future-option/futureoption.service';
   ],
   declarations: [
     // AssetsComponent,
-    MutualfundComponent,
+    MutualComponent,
+    MutualFundComponent,
     LiabilitiesComponent,
     AlternativeComponent,
     CashComponent,
@@ -50,6 +53,7 @@ import { FutureOptionService } from './future-option/futureoption.service';
     PropertyComponent,
     SavingSchemeComponent,
     StockComponent,
+    StocksComponent,
     MyAssetsComponent
   ],
   providers: [
