@@ -140,7 +140,7 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
     console.log('inside fill income data');
     this.dynamicIncome.splice(0, this.dynamicIncome.length);
     for (let i = 0; i < this.IncomeArray.length; i++) {
-       // console.log('from IncomeArray : ', this.IncomeArray[i]);
+      // console.log('from IncomeArray : ', this.IncomeArray[i]);
       if (this.IncomeArray[i].name === 'incomeSalary') {
         this.income.incomeSalary = +this.IncomeArray[i].amount;
         // // console.log(this.income.incomeSalary);
@@ -243,14 +243,10 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
   }
 
   deleteFieldValue(index, id) {
-
     if (id) {
       console.log(id);
       this.removeIncome.name = this.dynamicIncome[index].name;
-      this.incomeService.DeleteIncome(id).subscribe(
-        responce => {
-        }
-      );
+      this.incomeService.DeleteIncome(id).subscribe(responce => {});
     }
 
     this.dynamicIncome.splice(index, 1);
@@ -406,21 +402,21 @@ export class IncomeComponent implements OnInit, CanComponentDeactivate {
           return false;
         }
       } else if (this.IncomeArray[i].name !== 'userid') {
-          for (let j = 0; j < this.dynamicIncome.length; j++) {
-            //  // console.log('dynamic', j, this.dynamicIncome[j].name);
-            if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
-              if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
-                //  // console.log('change found in dynamic');
-                return false;
-                }
-              }
+        for (let j = 0; j < this.dynamicIncome.length; j++) {
+          //  // console.log('dynamic', j, this.dynamicIncome[j].name);
+          if (this.dynamicIncome[j].name === this.IncomeArray[i].name) {
+            if (+this.dynamicIncome[j].value !== +this.IncomeArray[i].amount) {
+              //  // console.log('change found in dynamic');
+              return false;
             }
-            //  // console.log('change not found in dynamic');
           }
-     }
+        }
+        //  // console.log('change not found in dynamic');
+      }
+    }
     //  // console.log('change not found in any income');
-     return true;
-   }
+    return true;
+  }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     // console.log('inside can deactivate');

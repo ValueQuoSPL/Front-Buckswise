@@ -4,46 +4,50 @@ import { BuckswiseFrontEndSharedModule } from 'app/shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
-    adminState,
-    AuditsComponent,
-    UserMgmtComponent,
-    UserMgmtDetailComponent,
-    UserMgmtUpdateComponent,
-    UserMgmtDeleteDialogComponent,
-    LogsComponent,
-    JhiMetricsMonitoringModalComponent,
-    JhiMetricsMonitoringComponent,
-    JhiHealthModalComponent,
-    JhiHealthCheckComponent,
-    JhiConfigurationComponent,
-    JhiDocsComponent,
-    UserMgmtDialogComponent,
-    UserDialogComponent
+  adminState,
+  AuditsComponent,
+  UserMgmtComponent,
+  UserMgmtDetailComponent,
+  UserMgmtUpdateComponent,
+  UserMgmtDeleteDialogComponent,
+  LogsComponent,
+  JhiMetricsMonitoringModalComponent,
+  JhiMetricsMonitoringComponent,
+  JhiHealthModalComponent,
+  JhiHealthCheckComponent,
+  JhiConfigurationComponent,
+  JhiDocsComponent,
+  UserMgmtDialogComponent,
+  UserDialogComponent
 } from './';
 
 @NgModule({
-    imports: [
-        BuckswiseFrontEndSharedModule,
-        RouterModule.forChild(adminState)
-        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
-    ],
-    declarations: [
-        AuditsComponent,
-        UserMgmtComponent,
-        UserMgmtDetailComponent,
-        UserMgmtDialogComponent,
-        UserDialogComponent,
-        UserMgmtUpdateComponent,
-        UserMgmtDeleteDialogComponent,
-        LogsComponent,
-        JhiConfigurationComponent,
-        JhiHealthCheckComponent,
-        JhiHealthModalComponent,
-        JhiDocsComponent,
-        JhiMetricsMonitoringComponent,
-        JhiMetricsMonitoringModalComponent
-    ],
-    entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent, JhiMetricsMonitoringModalComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [
+    BuckswiseFrontEndSharedModule,
+    RouterModule.forChild(adminState)
+    /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
+  ],
+  declarations: [
+    AuditsComponent,
+    UserMgmtComponent,
+    UserMgmtDetailComponent,
+    UserMgmtDialogComponent,
+    UserDialogComponent,
+    UserMgmtUpdateComponent,
+    UserMgmtDeleteDialogComponent,
+    LogsComponent,
+    JhiConfigurationComponent,
+    JhiHealthCheckComponent,
+    JhiHealthModalComponent,
+    JhiDocsComponent,
+    JhiMetricsMonitoringComponent,
+    JhiMetricsMonitoringModalComponent
+  ],
+  entryComponents: [
+    UserMgmtDeleteDialogComponent,
+    JhiHealthModalComponent,
+    JhiMetricsMonitoringModalComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BuckswiseFrontEndAdminModule {}

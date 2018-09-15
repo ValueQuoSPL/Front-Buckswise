@@ -20,7 +20,7 @@ import { CustomDirectiveModule } from '../shared/directive/directive.module';
     FormsModule,
     CommonModule,
     CustomMaterialModule,
-    CustomDirectiveModule,
+    CustomDirectiveModule
     // BsDatepickerModule.forRoot()
   ],
   declarations: [

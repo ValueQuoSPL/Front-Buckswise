@@ -9,8 +9,7 @@ import { VERSION } from 'app/app.constants';
 @Component({
   selector: 'jhi-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css',
-'../../css/fa/css/all.css']
+  styleUrls: ['./sidebar.component.css', '../../css/fa/css/all.css']
 })
 @Injectable()
 export class SidebarComponent implements OnInit {

@@ -7,18 +7,16 @@ import { CommonModule } from '@angular/common';
 import { subscribeRoute } from 'app/home/subscription/subscribe.route';
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([subscribeRoute], { useHash: true }),
-        FormsModule,
-        CommonModule,
-        // BsDatepickerModule.forRoot()
-    ],
-    declarations: [
-        // SubscriptionComponent
-    ],
-    entryComponents: [
-    ],
-    providers: [
-    ]
+  imports: [
+    RouterModule.forRoot([subscribeRoute], { useHash: true }),
+    FormsModule,
+    CommonModule
+    // BsDatepickerModule.forRoot()
+  ],
+  declarations: [
+    // SubscriptionComponent
+  ],
+  entryComponents: [],
+  providers: []
 })
-export class SubscriptionModule { }
+export class SubscriptionModule {}
