@@ -1,26 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 @Component({
-  selector: 'jhi-goal-add-button',
-  templateUrl: './goal-add-button.component.html',
+  selector: "jhi-goal-add-button",
+  templateUrl: "./goal-add-button.component.html",
   styles: []
 })
 export class GoalAddButtonComponent implements OnInit {
-  constructor() {}
+  onNoClick() {
+    console.log("inside onNoClick");
+    this.dialogRef.close();
+  }
+  dialogRef;
+  constructor(
+    private ActiveModal: NgbActiveModal,
+    private modalService: NgbModal,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {}
-}
-// openDialog(): void {
-//   const dialogRef = this.dialog.open(GoalAddButtonComponent, {
-//     width: '550px',
-//     // data: {name: this.name, animal: this.animal}
-//   });
+  openDialog(): void {
+    this.dialogRef = this.dialog.open(GoalAddButtonComponent, {
+      width: "550px"
+      // data: {name: this.name, animal: this.animal}
+    });
 
-//   dialogRef.afterClosed().subscribe(result => {
-//     console.log('The dialog was closed');
-//     this.animal = result;
-//   });
-// }
-// onNoClick(): void {
-//   this.dialogRef.close();
-// }
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+      // this.animal = result;
+    });
+  }
+  //   onNoClick(){
+  //   console.log('inside onNoClick');
+  //   this.dialogRef.close();
+  // }
+}

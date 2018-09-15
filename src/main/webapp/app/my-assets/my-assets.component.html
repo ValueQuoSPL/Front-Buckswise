@@ -1,87 +1,82 @@
 <div class="container">
+    <div>
+        <div class="form-group row justify-content-center"><label><h5>Assets</h5></label>
+            </div>
+        
         <mat-accordion>
-            <mat-expansion-panel class="accordion" [expanded]="true">
+            <!-- stocks -->
+            <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Assets</mat-panel-title>
-                    <mat-panel-description> Assets Details </mat-panel-description>
+                    <mat-panel-title> Stocks </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
                 </mat-expansion-panel-header>
-                <div>
-                    <mat-accordion>
-                        <!-- stocks -->
-                        <mat-expansion-panel class="accordion" [expanded]="true">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Stocks </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here--> 
-                            <jhi-stocks></jhi-stocks>            
-                        </mat-expansion-panel>
-                        <!-- Mutual funds -->
-                        <mat-expansion-panel >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Mutual Funds </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-mutualfund></jhi-mutualfund>  
-                        </mat-expansion-panel>
-                        <!-- Saving Schemes -->
-                        <mat-expansion-panel>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Saving Schemes </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                             <!--write selector here-->
-                             <jhi-savingscheme></jhi-savingscheme>
-                        </mat-expansion-panel>
-                        <!-- Alternative Investment -->
-                        <mat-expansion-panel >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Alternative Investment </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-alternative></jhi-alternative>
-                        </mat-expansion-panel>
-                        <!-- Cash -->
-                        <mat-expansion-panel>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Cash </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-cash></jhi-cash>
-                        </mat-expansion-panel>
-                        <!-- Property -->
-                        <mat-expansion-panel >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Property, Jewellery & Others </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-property></jhi-property>
-                        </mat-expansion-panel>
-                        <!-- Chit -->
-                        <mat-expansion-panel >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Chit Funds </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-chitfund></jhi-chitfund>
-                        </mat-expansion-panel>
-    
-                        <!-- Future and Options -->
-                        <mat-expansion-panel >
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Future and Options </mat-panel-title>
-                                <mat-panel-description> 00 </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <!--write selector here-->
-                            <jhi-futureoption></jhi-futureoption>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
+                <!--write selector here--> 
+                <jhi-stock></jhi-stock>           
+            </mat-expansion-panel>
+            <!-- Mutual funds -->
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Mutual Funds </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-mutualfund></jhi-mutualfund>  
+            </mat-expansion-panel>
+            <!-- Saving Schemes -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Saving Schemes </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <!--write selector here-->
+                    <jhi-savingscheme></jhi-savingscheme>
+            </mat-expansion-panel>
+            <!-- Alternative Investment -->
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Alternative Investment </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-alternative></jhi-alternative>
+            </mat-expansion-panel>
+            <!-- Cash -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Cash </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-cash></jhi-cash>
+            </mat-expansion-panel>
+            <!-- Property -->
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Property, Jewellery & Others </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-property></jhi-property>
+            </mat-expansion-panel>
+            <!-- Chit -->
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Chit Funds </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-chitfund></jhi-chitfund>
+            </mat-expansion-panel>
+
+            <!-- Future and Options -->
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Future and Options </mat-panel-title>
+                    <mat-panel-description> 00 </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--write selector here-->
+                <jhi-futureoption></jhi-futureoption>
             </mat-expansion-panel>
         </mat-accordion>
     </div>
+</div>
