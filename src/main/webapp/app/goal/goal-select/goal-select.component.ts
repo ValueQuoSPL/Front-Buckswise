@@ -101,6 +101,7 @@ export class GoalSelectComponent implements OnInit {
     this.RetirementFundselect = {};
     this.NewGoalselect = {};
   }
+  clear() {}
 
   // clear()
   // {

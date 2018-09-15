@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class GoalAddButtonComponent implements OnInit {
+  assettype;
   constructor() {}
 
   ngOnInit() {}
+
+  clear() {}
 }
+
 // openDialog(): void {
 //   const dialogRef = this.dialog.open(GoalAddButtonComponent, {
 //     width: '550px',
