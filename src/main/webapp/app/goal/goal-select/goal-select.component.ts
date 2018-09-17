@@ -307,7 +307,7 @@ export class GoalSelectComponent implements OnInit {
         console.log('user goal info', this.user);
         this.uid = this.user.id;
         console.log('in fetchid method in goal', this.uid);
-        this.getgoalbyid(this.uid);
+        this.getgoalbyid();
       });
   }
   getgoal() {
@@ -318,7 +318,7 @@ export class GoalSelectComponent implements OnInit {
       console.log(this.output);
     });
   }
-  getgoalbyid(uid) {
+  getgoalbyid() {
     console.log('in main ts', this.uid);
     this.goalSelectService.getgoalbyid(this.uid).subscribe(res => {
       console.log(res);

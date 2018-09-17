@@ -7,8 +7,19 @@ import { Home } from './home.model';
   styles: []
 })
 export class HomeComponent implements OnInit {
-  home: Home = new Home();
+  homeout: Home = new Home();
+  home;
+  nameField;
+  editField;
+  valid;
+
   constructor() {}
 
   ngOnInit() {}
+
+  onHomeGet() {}
+  onHomeSave() {}
+  resetHome() {}
+  updateHome() {}
+  onEditHomeField(type, content) {}
 }

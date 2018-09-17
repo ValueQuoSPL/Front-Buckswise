@@ -19,6 +19,8 @@ export class GrossComponent implements OnInit {
   output: any;
   gross: Gross = new Gross();
   grossout: any;
+  valid: boolean;
+
   constructor(
     private modalService: NgbModal,
     private grossService: GrossService,
@@ -41,9 +43,10 @@ export class GrossComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
-  onGrossGet(uid) {
-    console.log('in main ts', uid);
-    this.grossService.getgross(uid).subscribe(res => {
+  resetGross() {}
+  onGrossGet() {
+    console.log('in main ts', this.uid);
+    this.grossService.getgross(this.uid).subscribe(res => {
       console.log(res);
       this.grossout = res;
       console.log('onEightydGet response ', this.grossout);
@@ -64,7 +67,7 @@ export class GrossComponent implements OnInit {
         this.gross.uid = this.user.id;
         console.log('uid is', this.gross.uid);
         this.uid = this.gross.uid;
-        this.onGrossGet(this.uid);
+        this.onGrossGet();
       });
   }
   // onGrossGet(uid) {

@@ -17,21 +17,21 @@ describe('account', () => {
 
     it('should fail to login with bad password', () => {
         const expect1 = /Welcome, Java Hipster!/;
-        element.all(by.css('h1')).first().getText().then((value) => {
+        element.all(by.css('h1')).first().getText().then(value => {
             expect(value).toMatch(expect1);
         });
         signInPage = navBarPage.getSignInPage();
         signInPage.autoSignInUsing('admin', 'foo');
 
         const expect2 = /Failed to sign in!/;
-        element.all(by.css('.alert-danger')).first().getText().then((value) => {
+        element.all(by.css('.alert-danger')).first().getText().then(value => {
             expect(value).toMatch(expect2);
         });
     });
 
     it('should login successfully with admin account', () => {
         const expect1 = /Login/;
-        element.all(by.css('.modal-content label')).first().getText().then((value) => {
+        element.all(by.css('.modal-content label')).first().getText().then(value => {
             expect(value).toMatch(expect1);
         });
         signInPage.clearUserName();
@@ -43,7 +43,7 @@ describe('account', () => {
         browser.waitForAngular();
 
         const expect2 = /You are logged in as user "admin"/;
-        element.all(by.css('.alert-success span')).getText().then((value) => {
+        element.all(by.css('.alert-success span')).getText().then(value => {
             expect(value).toMatch(expect2);
         });
     });
@@ -51,13 +51,13 @@ describe('account', () => {
         settingsPage = navBarPage.getSettingsPage();
 
         const expect1 = /User settings for \[admin\]/;
-        settingsPage.getTitle().then((value) => {
+        settingsPage.getTitle().then(value => {
             expect(value).toMatch(expect1);
         });
         settingsPage.save();
 
         const expect2 = /Settings saved!/;
-        element.all(by.css('.alert-success')).first().getText().then((value) => {
+        element.all(by.css('.alert-success')).first().getText().then(value => {
             expect(value).toMatch(expect2);
         });
     });
@@ -72,7 +72,7 @@ describe('account', () => {
         passwordPage.save();
 
         const expect2 = /Password changed!/;
-        element.all(by.css('.alert-success')).first().getText().then((value) => {
+        element.all(by.css('.alert-success')).first().getText().then(value => {
             expect(value).toMatch(expect2);
         });
         navBarPage.autoSignOut();

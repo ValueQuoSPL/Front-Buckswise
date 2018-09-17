@@ -7,8 +7,18 @@ import { Other } from './other.model';
   styles: []
 })
 export class OtherComponent implements OnInit {
-  other: Other = new Other();
+  otherout: Other = new Other();
+  other;
+  nameField;
+  editField;
+  valid;
+
   constructor() {}
 
   ngOnInit() {}
+  onOtherSave() {}
+  onOtherGet() {}
+  resetOther() {}
+  updateEightyd() {}
+  onEditOtherField(type, content) {}
 }

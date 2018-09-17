@@ -14,7 +14,7 @@ export class StockService {
   }
   public getStockById(uid) {
     console.log('in getStockById service uid', uid);
-    this.ServiceAPIParam = 'api/stock' + '/' + uid;
+    this.ServiceAPIParam = 'api/getbyuidstock' + '/' + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
   public getStockId(commonid) {

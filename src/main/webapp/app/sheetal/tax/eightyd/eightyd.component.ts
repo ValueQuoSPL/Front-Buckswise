@@ -19,6 +19,10 @@ export class EightydComponent implements OnInit {
   eightydout: any;
   eightyd: Eightyd = new Eightyd();
   uid1: any;
+  nameField;
+  editField;
+  valid;
+
   constructor(
     private modalService: NgbModal,
     private eightydService: EightydService,
@@ -57,4 +61,7 @@ export class EightydComponent implements OnInit {
         this.onEightydGet(this.uid);
       });
   }
+  resetEightyd() {}
+  updateEightyd() {}
+  onEditStaticField(type, content) {}
 }

@@ -17,7 +17,7 @@ export class MutualfundService {
   }
   public getMutualFund(uid) {
     console.log('in getMutualFundByUid service uid', uid);
-    this.ServiceAPIParam = 'api/mutualfund' + '/' + uid;
+    this.ServiceAPIParam = 'api/mlfnd' + '/' + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
   public getMutualFundByid(commonid) {
@@ -26,12 +26,12 @@ export class MutualfundService {
   }
   public UpdateMutualFund(mutualfund) {
     return this.http.put<MutualFund[]>(
-      SERVER_API_URL + 'api/mutualfund',
+      SERVER_API_URL + 'api/putmutualfund',
       mutualfund
     );
   }
   public DeleteMutualFund(id) {
-    this.ServiceAPI = 'api/mutualfund' + '/' + id;
+    this.ServiceAPI = 'api/deletemutualfund' + '/' + id;
     return this.http.delete<MutualFund[]>(SERVER_API_URL + this.ServiceAPI);
   }
 }
