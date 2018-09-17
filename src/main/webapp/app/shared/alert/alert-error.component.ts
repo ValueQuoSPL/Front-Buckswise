@@ -21,7 +21,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
     constructor(private alertService: JhiAlertService, private eventManager: JhiEventManager) {
         this.alerts = [];
 
-        this.cleanHttpErrorListener = eventManager.subscribe('buckswiseFrontEndApp.httpError', (response) => {
+        this.cleanHttpErrorListener = eventManager.subscribe('buckswiseFrontEndApp.httpError', response => {
             let i;
             const httpErrorResponse = response.content;
             switch (httpErrorResponse.status) {
@@ -34,7 +34,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
                     const arr = httpErrorResponse.headers.keys();
                     let errorHeader = null;
                     let entityKey = null;
-                    arr.forEach((entry) => {
+                    arr.forEach(entry => {
                         if (entry.endsWith('app-error')) {
                             errorHeader = httpErrorResponse.headers.get(entry);
                         } else if (entry.endsWith('app-params')) {
