@@ -1,5 +1,6 @@
-<div>
-  <div class="row pull-right" style="margin-top: -80px;">
+<div *ngIf="valid">
+  <div>
+  <div class="row pull-right" style="margin-top: -50px;">
     <button type="button" class="btn btn-link" (click)="onEightydSave()" data-toggle="modal" data-target="#eightydModelCenter">
       <span>
         <i class="fa fa-save" aria-hidden="true"></i>
@@ -84,6 +85,8 @@
     </div>
   </div> <!--form end-->   
 </div><!--container end-->
+</div>
+<div *ngIf="!valid">
 <ng-template #eightydEditContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="eightydEditContent">Eightyd Add</h4>
@@ -117,7 +120,9 @@
     <i class="fa fa-save" aria-hidden="true"> </i> 
     <span>Update</span>
   </button>
-  <div class="card-body">
+  
+
+<div class="card-body">
     <table class="table table-hover table-sm">
       <thead class="thead-light">
         <tr>
@@ -167,5 +172,5 @@
       </tbody>
       <!--Body of table end-->
     </table>
-  </div>
-</div>        
+  </div></div>
+</div>

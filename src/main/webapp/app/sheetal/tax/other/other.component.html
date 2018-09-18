@@ -1,11 +1,7 @@
-<div *ngIf="!valid">
+<div *ngIf="valid">
+    <h3>other deduction</h3>
     <div  class="row pull-right" style="margin-top: -80px;">
-        <button type="button" (click)="onOtherGet(id)" class="btn btn-link">
-            <span>
-              <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
-              <span>Get</span>
-            </span>
-          </button>
+        
       <button type="button" class="btn btn-link" (click)="onOtherSave()" data-toggle="modal" data-target="#otherModelCenter">
         <span>
           <i class="fa fa-save" aria-hidden="true"></i>
@@ -213,7 +209,7 @@
 </form>
 </div>
 </ng-template>
-<div *ngIf="valid" class="card-body">
+<div *ngIf="!valid" class="card-body">
     <table class="table table-hover table-sm">
       <thead class="thead-light">
           <button type="button" class="btn btn-link" (click)="updateEightyd()">

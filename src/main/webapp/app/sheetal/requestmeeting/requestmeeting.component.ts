@@ -50,14 +50,14 @@
 //   ]],
 
 // });
-import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
 
 /** @title Form field with error messages */
 @Component({
-  selector: 'jhi-requestmeeting',
-  templateUrl: './requestmeeting.component.html',
-  styleUrls: ['./requestmeeting.component.css']
+  selector: "jhi-requestmeeting",
+  templateUrl: "./requestmeeting.component.html",
+  styleUrls: ["./requestmeeting.component.css"]
 })
 export class RequestmeetingComponent {
   // email = new FormControl('', [Validators.required, Validators.email]);
