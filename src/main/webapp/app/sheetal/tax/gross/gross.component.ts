@@ -65,9 +65,9 @@ export class GrossComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
-  onGrossGet(uid) {
-    console.log("in main ts", uid);
-    this.grossService.getgross(uid).subscribe(res => {
+  onGrossGet() {
+    console.log("in main ts");
+    this.grossService.getgross(this.uid).subscribe(res => {
       console.log(res);
       this.output = res;
       console.log("onEightydGet response ", this.output);
@@ -88,7 +88,7 @@ export class GrossComponent implements OnInit {
         this.gross.uid = this.user.id;
         console.log("uid is", this.gross.uid);
         this.uid = this.gross.uid;
-        this.onGrossGet(this.uid);
+        this.onGrossGet();
       });
   }
   onEditGrossField(nameField, modal) {

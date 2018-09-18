@@ -20,12 +20,12 @@ export class PaymentComponent implements OnInit {
   // public txnid: string;
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
-    private PaymentService: PaymentService,
+    private paymentService: PaymentService,
     private http: HttpClient
   ) {}
 
   submitUser() {
-    this.PaymentService.submitUser(this.user).subscribe(data => {
+    this.paymentService.submitUser(this.user).subscribe(data => {
       this.paymentDetail = data;
       console.log(this.paymentDetail);
     });

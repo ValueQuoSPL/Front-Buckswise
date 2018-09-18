@@ -36,6 +36,9 @@ export class EightycComponent implements OnInit {
   ngOnInit() {
     this.FetchID();
   }
+
+  updateHome() {}
+
   FetchID(): Promise<any> {
     console.log("FetchID in eightyc");
     return this.Accountservice.get()
@@ -56,7 +59,7 @@ export class EightycComponent implements OnInit {
       .save(this.eightyc)
       .subscribe(response => console.log(response));
   }
-  // EightyC Reset
+  // // EightyC Reset
   resetEightyc() {
     this.eightyc.fixed = 0;
     this.eightyc.tution = 0;
@@ -72,9 +75,9 @@ export class EightycComponent implements OnInit {
     this.eightyc.tutionfee = 0;
     this.eightyc.ulip = 0;
   }
-  onEightycGet(uid) {
+  onEightycGet() {
     //  console.log('in main ts', id);
-    this.eightycService.geteightyc(uid).subscribe(res => {
+    this.eightycService.geteightyc(this.uid).subscribe(res => {
       console.log(res);
       this.out = res;
       console.log(this.out);

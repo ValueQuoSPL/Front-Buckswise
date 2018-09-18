@@ -138,7 +138,7 @@
                 required>
               </mat-form-field>
               <div *ngIf="phonenumber?.touched && !phonenumber?.valid">
-                  <div *ngIf="familyemail.errors.required" style="color: red">
+                  <div *ngIf="phonenumber.errors.required" style="color: red">
                     Email is required
                   </div>
                   <div *ngIf="phonenumber.errors.minlength" style="color: red">
