@@ -19,7 +19,7 @@
                             <canvas baseChart
                                 [data]="pieChartData"
                                 [labels]="pieChartableLabels"
-                                [chartType]="pieChartType"
+                                [chartType]="assetChart"
                                 (chartHover)="chartHovered($event)"
                                 (chartClick)="chartClicked($event)"></canvas>
                         </div>
@@ -47,7 +47,16 @@
                         <mat-card-title>Liabilities</mat-card-title>
                         <mat-card-subtitle> Your Liabilities</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="../img/header/2.jpg" alt="Photo of a Shiba Inu">
+                    <!-- <img mat-card-image src="../img/header/2.jpg" alt="Photo of a Shiba Inu"> -->
+                    <div style="display: grid">
+                        <canvas baseChart
+                            [data]="pieChartDataa"
+                            [labels]="pieChartableLabel"
+                            [chartType]="liabilityChart"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                    <!-- <div id="chart1" style="width: 900px; height: 500px;"></div>    -->
                     <mat-card-content>
                         <p>
                         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.

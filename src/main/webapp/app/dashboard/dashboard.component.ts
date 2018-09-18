@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AccountService, Principal } from 'app/shared';
-import { DashboardService } from 'app/dashboard/dashboard.service';
-import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AccountService, Principal } from "app/shared";
+import { DashboardService } from "app/dashboard/dashboard.service";
+import { GoogleCharts } from "google-charts";
+// import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @Component({
-  selector: 'jhi-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "jhi-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
   uid: any;
@@ -28,28 +30,49 @@ export class DashboardComponent implements OnInit {
   resultPCJ: any;
   resultAlterInvestment: any;
   resultFAO: any;
-
+  totalLiabilities: any;
+  resultLiabilities: any;
+  // public GoogleCharts: any;
   public pieChartableLabels: any = [];
   public pieChartData: any = [];
-  public pieChartType: any;
+  public assetChart;
+
+  public pieChartableLabel: any = [];
+  public pieChartDataa: any = [];
+  public liabilityChart;
+
   // public pieChartOptions: any;
   // public pieChartableLabels: string[] = ['Mutual Fund', 'Stock', 'Saving'];
   // public pieChartData: number[] = [0 , 500, 100];
-  // public pieChartType = 'pie';
+  // public assetChart = 'pie';
+
+  // GoogleCharts.load(drawChart);
 
   constructor(
     private router: Router,
     private dashboardService: DashboardService,
     private accountService: AccountService,
     private principal: Principal
-  ) {}
+  ) {
+    // this.piechart(
+    //   this.total,
+    //   this.totalStock,
+    //   this.totalSaving,
+    //   this.totalChit,
+    //   this.totalCash,
+    //   this.totalAlterInvestment,
+    //   this.totalPCJ,
+    //   this.totalFAO
+    // );
+  }
 
   ngOnInit() {
-    this.getUserid();
-
+    console.log("inside init");
+    // this.liabilityChart = 'pie';
     this.principal.identity().then(account => {
       this.account = account;
     });
+    this.getUserid();
   }
 
   getUserid() {
@@ -58,6 +81,7 @@ export class DashboardComponent implements OnInit {
       .toPromise()
       .then(response => {
         const account = response.body;
+        console.log(account.id);
         if (account) {
           this.uid = account.id;
           this.getMutualFund(this.uid);
@@ -68,18 +92,21 @@ export class DashboardComponent implements OnInit {
           this.getAlterInvestment(this.uid);
           this.getPCJ(this.uid);
           this.getFAO(this.uid);
-        } else {
+          console.log("inside get lia");
+          this.getLiabilities(this.uid);
+          console.log("data filled");
+          // this.drawChart();
         }
-      })
-      .catch(err => {});
+      });
+    // .catch(err => {});
   }
 
   onLiabilityEdit() {
-    this.router.navigate(['assets']);
+    this.router.navigate(["assets"]);
   }
 
   onAssetEdit() {
-    this.router.navigate(['asstesroute']);
+    this.router.navigate(["asstesroute"]);
   }
 
   public chartClicked(e: any): void {
@@ -189,6 +216,7 @@ export class DashboardComponent implements OnInit {
         this.totalPCJ,
         this.totalFAO
       );
+      // this.getLiabilities(this.uid);
     });
   }
 
@@ -202,16 +230,16 @@ export class DashboardComponent implements OnInit {
     totalPCJ,
     totalFAO
   ) {
-    // console.log(total);
+    console.log("inside pie chart");
     this.pieChartableLabels.push(
-      'MutualFund',
-      'stock',
-      'saving',
-      'chit',
-      'cash',
-      'alterInvest',
-      'pcj',
-      'fao'
+      "MutualFund",
+      "stock",
+      "saving",
+      "chit",
+      "cash",
+      "alterInvest",
+      "pcj",
+      "fao"
     );
     this.pieChartData.push(
       total,
@@ -223,6 +251,69 @@ export class DashboardComponent implements OnInit {
       totalPCJ,
       totalFAO
     );
-    this.pieChartType = 'pie';
+    this.assetChart = "pie";
+    // console.log('value', this.total);
+    // console.log('value filled chart');
   }
+
+  getLiabilities(uid) {
+    console.log("inside get lia");
+    this.totalLiabilities = 0;
+    this.dashboardService.getLiabilities(this.uid).subscribe(data => {
+      this.resultLiabilities = data;
+      console.log(this.resultLiabilities);
+      for (let i = 0; i < this.resultLiabilities.length; i++) {
+        this.totalLiabilities =
+          this.totalLiabilities +
+          +this.resultLiabilities[i].outstandingpricipal;
+      }
+      this.liabilitiesChart(this.totalLiabilities);
+    });
+  }
+
+  liabilitiesChart(totalLiabilities) {
+    console.log("valueset");
+    this.pieChartableLabel.push("totalLiabilities");
+    this.pieChartDataa.push(totalLiabilities);
+    this.liabilityChart = "pie";
+  }
+
+  // get for chart
+  // getChart() {
+  //   this.assetChart = 'pie';
+  // }
+
+  // google.charts.load('current', {'packages':['corechart']});
+  //     google.charts.setOnLoadCallback(drawChart);
+
+  //     function drawChart() {
+
+  //       let data = google.visualization.arrayToDataTable([
+  //         ['Task', 'Hours per Day'],
+  //         ['Work',     11],
+  //         ['Eat',      2],
+  //         ['Commute',  2],
+  //         ['Watch TV', 2],
+  //         ['Sleep',    7]
+  //       ]);
+
+  //       var options = {
+  //         title: 'My Daily Activities'
+  //       };
+
+  //       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  //       chart.draw(data, options);
+  //     }
+  // drawChart() {
+  //   const data = GoogleCharts.api.visualization.arrayToDataTable([
+  //     ['Chart thing', 'Chart amount'],
+  //     ['Lorem ipsum', 60],
+  //     ['Dolor sit', 22],
+  //     ['Sit amet', 18]
+  // ]);
+
+  // const pie_1_chart = new GoogleCharts.api.visualization.PieChart(document.getElementById('chart1'));
+  // pie_1_chart.draw(data);
+  // }
 }
