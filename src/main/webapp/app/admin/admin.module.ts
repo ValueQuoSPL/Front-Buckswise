@@ -18,13 +18,19 @@ import {
   JhiConfigurationComponent,
   JhiDocsComponent,
   UserMgmtDialogComponent,
-  UserDialogComponent
+  UserDialogComponent,
+  PromoCodeManageComponent
 } from './';
+import { CustomMaterialModule } from 'app/custom-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BuckswiseFrontEndSharedModule,
-    RouterModule.forChild(adminState)
+    RouterModule.forChild(adminState),
+    CustomMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
     /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
   ],
   declarations: [
@@ -41,7 +47,8 @@ import {
     JhiHealthModalComponent,
     JhiDocsComponent,
     JhiMetricsMonitoringComponent,
-    JhiMetricsMonitoringModalComponent
+    JhiMetricsMonitoringModalComponent,
+    PromoCodeManageComponent
   ],
   entryComponents: [
     UserMgmtDeleteDialogComponent,
