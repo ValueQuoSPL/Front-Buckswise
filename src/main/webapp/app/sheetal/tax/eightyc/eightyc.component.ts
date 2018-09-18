@@ -20,6 +20,9 @@ export class EightycComponent implements OnInit {
   out: any;
   eightyc: Eightyc = new Eightyc();
   uid: any;
+  nameField;
+  editField;
+  valid;
 
   constructor(
     private eightycService: EightycService,
@@ -30,6 +33,10 @@ export class EightycComponent implements OnInit {
   ngOnInit() {
     this.FetchID();
   }
+
+  onEditEightycField(type, content) {  }
+  updateHome() {}
+
   FetchID(): Promise<any> {
     return this.account
       .get()
@@ -42,30 +49,30 @@ export class EightycComponent implements OnInit {
       });
   }
   // // eightyc call function
-  // onEightycSave() {
-  //   this.eightycService
-  //     .save(this.eightyc)
-  //     .subscribe(response => console.log(response));
-  // }
+  onEightycSave() {
+    this.eightycService
+      .save(this.eightyc)
+      .subscribe(response => console.log(response));
+  }
   // // EightyC Reset
-  // resetEightyc() {
-  //   this.eightyc.fixed = 0;
-  //   this.eightyc.tution = 0;
-  //   this.eightyc.nsc = 0;
-  //   this.eightyc.nss = 0;
-  //   this.eightyc.post = 0;
-  //   this.eightyc.reinvest = 0;
-  //   this.eightyc.licpremium = 0;
-  //   this.eightyc.equity = 0;
-  //   this.eightyc.pf = 0;
-  //   this.eightyc.ppf = 0;
-  //   this.eightyc.other = 0;
-  //   this.eightyc.tutionfee = 0;
-  //   this.eightyc.ulip = 0;
-  // }
-  onEightycGet(uid) {
+  resetEightyc() {
+    this.eightyc.fixed = 0;
+    this.eightyc.tution = 0;
+    this.eightyc.nsc = 0;
+    this.eightyc.nss = 0;
+    this.eightyc.post = 0;
+    this.eightyc.reinvest = 0;
+    this.eightyc.licpremium = 0;
+    this.eightyc.equity = 0;
+    this.eightyc.pf = 0;
+    this.eightyc.ppf = 0;
+    this.eightyc.other = 0;
+    this.eightyc.tutionfee = 0;
+    this.eightyc.ulip = 0;
+  }
+  onEightycGet() {
     //  console.log('in main ts', id);
-    this.eightycService.geteightyc(uid).subscribe(res => {
+    this.eightycService.geteightyc(this.uid).subscribe(res => {
       console.log(res);
       this.out = res;
       console.log(this.out);

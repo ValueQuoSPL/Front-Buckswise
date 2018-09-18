@@ -1,4 +1,5 @@
 export class Other {
+  id;
   handicapped;
   medicaltreat;
   selfedu;

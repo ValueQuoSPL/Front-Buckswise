@@ -28,6 +28,8 @@ export class MyprofileComponent implements OnInit {
     this.myProfile = {};
     this.FetchId();
   }
+  clear() {}
+
   saveDetail() {
     this.myProfile.uid = this.uid;
     this.MyProfileSer.save(this.myProfile).subscribe(

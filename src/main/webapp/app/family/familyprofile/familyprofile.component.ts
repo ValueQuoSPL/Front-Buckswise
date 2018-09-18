@@ -34,6 +34,8 @@ export class FamilyprofileComponent implements OnInit {
 
     // this.getFamilyProfile();
   }
+  clear() {}
+
   saveFamilyProfile() {
     console.log('in family profile');
     this.familyProfile.uid = this.uid;

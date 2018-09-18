@@ -133,7 +133,7 @@ export class MainComponent implements OnInit {
         // this.onEightydGet(this.id);
         // this.onOtherGet(this.id);
         this.eightyd.uid = this.uid;
-        this.onEightydGet(this.uid);
+        this.onEightydGet();
       });
   }
 
@@ -223,41 +223,41 @@ export class MainComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
-  onGrossGet(id) {
-    this.grossService.getgross(id).subscribe(res => {
+  onGrossGet() {
+    this.grossService.getgross(this.uid).subscribe(res => {
       console.log(res);
       this.output = res;
       console.log(this.output);
     });
     // this.onEightycGet(this.id);
   }
-  onEightycGet(id) {
+  onEightycGet() {
     //  console.log('in main ts', id);
-    this.eightycService.geteightyc(id).subscribe(res => {
+    this.eightycService.geteightyc(this.uid).subscribe(res => {
       console.log(res);
       this.out = res;
       console.log(this.out);
     });
   }
-  onHomeGet(id) {
+  onHomeGet() {
     //  console.log('in main ts', id);
-    this.homeService.gethome(id).subscribe(res => {
+    this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);
       this.homeout = res;
       console.log(this.output);
     });
   }
-  onEightydGet(uid) {
-    console.log('in main ts', uid);
-    this.eightydService.geteightyd(uid).subscribe(res => {
+  onEightydGet() {
+    console.log('in main ts', this.uid);
+    this.eightydService.geteightyd(this.uid).subscribe(res => {
       console.log(res);
       this.eightydout = res;
       console.log(this.output);
     });
   }
-  onOtherGet(id) {
-    console.log('in main ts', id);
-    this.otherService.getother(id).subscribe(res => {
+  onOtherGet() {
+    console.log('in main ts', this.id);
+    this.otherService.getother(this.id).subscribe(res => {
       console.log(res);
       this.otherout = res;
       console.log(this.output);

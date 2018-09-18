@@ -29,7 +29,7 @@
                       <div *ngIf="!valid">
                         <h2>Gross</h2>
                         <div class="row pull-right" style="margin-top: -80px;">
-                            <button type="button" (click)="onGrossGet(id)" class="btn btn-link">
+                            <button type="button" (click)="onGrossGet()" class="btn btn-link">
                                 <span>
                                   <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
                                   <span>Get</span>
@@ -478,7 +478,7 @@
                       <div>
                         <h1>80C Deduction</h1>
                         <div class="row pull-right" style="margin-top: -80px;">
-                            <button type="button" (click)="onEightycGet(id)" class="btn btn-link">
+                            <button type="button" (click)="onEightycGet()" class="btn btn-link">
                                 <span>
                                   <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
                                   <span>Get</span>
@@ -857,7 +857,7 @@
                       <div *ngIf="!valid">
                           <h3>Home Deduction</h3>
                           <div class="row pull-right" style="margin-top: -80px;">
-                              <button type="button" (click)="onHomeGet(id)" class="btn btn-link">
+                              <button type="button" (click)="onHomeGet()" class="btn btn-link">
                                   <span>
                                     <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
                                     <span>Get</span>
@@ -1364,7 +1364,7 @@
                                 <!-- {{eightydout.id}} -->
                                 
                               </td>
-                              <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('Medical Insurance for Self', eightydEditContent )" >
+                              <td><button class="btn btn-outline-info"  type="button" (click)="onEditStaticField('Medical Insurance for Self', eightydEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                                 </td>
                             </tr>
@@ -1412,7 +1412,7 @@
                       <div *ngIf="!valid">
                           <h3>other deduction</h3>
                           <div  class="row pull-right" style="margin-top: -80px;">
-                              <button type="button" (click)="onOtherGet(id)" class="btn btn-link">
+                              <button type="button" (click)="onOtherGet()" class="btn btn-link">
                                   <span>
                                     <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
                                     <span>Get</span>
@@ -1652,7 +1652,7 @@
                                     {{otherout.handicapped}}
                                     {{otherout.id}}
                                 </td>
-                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Handicapped', otherEditContent,otherout.id)" >
+                                <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Handicapped', otherEditContent)" >
                                     <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                                 
                               </tr>

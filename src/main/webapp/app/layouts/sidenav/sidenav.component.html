@@ -21,7 +21,7 @@
           </span>
         </button>
         <a routerLink="/" routerLinkAciveOptions="active">
-            <span>Mobile</span>
+            <span></span>
         </a>
       </div>
 
@@ -33,7 +33,7 @@
             </span>
           </button>
           <a routerLink="/" routerLinkAciveOptions="active">
-            <span>Desktop !safari</span>
+            <span></span>
           </a>
         </div>
       </div>
@@ -46,7 +46,7 @@
             </span>
           </button>
           <a routerLink="/" routerLinkAciveOptions="active">
-            <span>Desktop Safari</span>
+            <span></span>
           </a>
         </div>
       </div>
@@ -54,7 +54,10 @@
 <!-- <router-outlet name="navbar"></router-outlet> -->
       <jhi-navbar></jhi-navbar>
     </mat-toolbar>
-    <br><br><br>
+   
+    <div *ngIf="isSafari">
+      <br><br><br>
+    </div>
     
     <router-outlet></router-outlet>
     

@@ -1,5 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { DatePipe } from "@angular/common";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import {
   BuckswiseFrontEndSharedLibsModule,
@@ -14,8 +14,8 @@ import {
   JhiLoginModalComponent,
   Principal,
   HasAnyAuthorityDirective
-} from "app/shared";
-import { CustomMaterialModule } from "app/custom-material.module";
+} from './';
+import { CustomMaterialModule } from 'app/custom-material.module';
 
 @NgModule({
   imports: [
