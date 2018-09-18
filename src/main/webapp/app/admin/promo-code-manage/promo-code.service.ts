@@ -6,4 +6,17 @@ import { Injectable } from '@angular/core';
 export class PromoCodeService {
 
   constructor() { }
+
+  create(data) {
+
+  }
+  get() {
+
+  }
+  update() {
+
+  }
+  delete() {
+
+  }
 }

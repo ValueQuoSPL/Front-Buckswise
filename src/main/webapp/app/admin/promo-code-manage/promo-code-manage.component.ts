@@ -6,6 +6,8 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
 import { PromoCodeModule } from 'app/pratik/promo-code';
+import { JhiEventManager } from 'ng-jhipster';
+import { PromoCodeService } from 'app/admin/promo-code-manage/promo-code.service';
 class PromoCodeModel {
   id;
   plan;
@@ -32,6 +34,8 @@ export class PromoCodeManageComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
+    private eventManager: JhiEventManager,
+    private promoService: PromoCodeService
 
   ) { }
 
@@ -67,13 +71,14 @@ export class PromoCodeManageComponent implements OnInit {
 
   AddPromo() {
     console.log(this.promo);
-    this.dynamicPromo.push({
-      plan: this.promo.plan,
-      promocode: this.promo.promocode,
-      expiry_date: this.promoDate.value,
-      discount: this.promo.discount
-    });
-    console.log(this.dynamicPromo);
+    // this.dynamicPromo.push({
+    //   plan: this.promo.plan,
+    //   promocode: this.promo.promocode,
+    //   expiry_date: this.promoDate.value,
+    //   discount: this.promo.discount
+    // });
+    // console.log(this.dynamicPromo);
+    this.promoService.create(this.promo);
     this.clear();
   }
 
