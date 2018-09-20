@@ -47,7 +47,7 @@ import { BuckswiseFrontEndMyAssetsModule } from 'app/my-assets/my-assets.module'
 import { SuccessComponent } from 'app/success/success.component';
 import { FailComponent } from 'app/fail/fail.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { PromoCodeModule } from 'app/pratik/promo-code';
+import { PromoCodeModule } from 'app/home/subscriber/promo-code';
 
 @NgModule({
   imports: [

@@ -1,20 +1,61 @@
 <br><br>
+
 <div class="row">
     <div class="col-md-9">
         <div [ngSwitch]="isAuthenticated()">
             <div *ngSwitchCase="true">
-                <jhi-payment></jhi-payment>
+                    
+                <div *ngIf="!payment">
+                    <div class="row justify-content-md-center">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title>Plan Confirmation</mat-card-title>
+                                <mat-card-subtitle>check your plan details are correect or not</mat-card-subtitle>
+                            </mat-card-header>
+                            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                            
+                                <h3>
+                                    Your Selected Plan is ---
+                                </h3>
+                    
+                            
+                            <mat-card-content>
+                                <p>
+                                You have to pay ---
+                                </p>
+
+                               <div *ngIf="!applied">
+                                    Do you have any PromoCode?
+                                    <button class="btn btn-outline-warning" (click)="apply()">
+                                            Click here To Apply
+                                    </button>
+                               </div>
+                               <div *ngIf="applied" class="alert alert-success">
+                                    Promocode applied successfully
+                               </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button (click)="goToPayment()">Proceed to checkout</button>
+                                <button mat-button>Go Back</button>
+                            </mat-card-actions>
+                            </mat-card>                      
+                    </div>
+                </div>
+
+                        <div *ngIf="payment">
+                            <jhi-payment></jhi-payment>
+                        </div>
             </div>
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>Oops you are not Signed In </span>
                 Please <a class="alert-link" (click)="login()">Click here</a><span> to sign-in now.</span>
-            </div>
-            <br>
-            <div class="alert alert-warning" *ngSwitchCase="false">
+ <br>
                 <span>You don't have an account yet?</span>
                 <a class="alert-link" (click)="register()">Register a new account</a>
             </div>
         </div>
     </div>
 </div>
+
 

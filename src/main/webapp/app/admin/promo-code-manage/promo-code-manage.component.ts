@@ -9,6 +9,8 @@ import { PromoCodeModule } from 'app/pratik/promo-code';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { PromoCodeService } from 'app/admin/promo-code-manage/promo-code.service';
 import { HttpResponse } from '@angular/common/http';
+import { EventEmitter } from 'protractor';
+
 class PromoCodeModel {
   id;
   plan;
@@ -27,6 +29,7 @@ export class PromoCodeManageComponent implements OnInit {
   promo: PromoCodeModel = new PromoCodeModel();
   promoDate = new FormControl(new Date());
   dynamicPromo: any = [];
+  event: EventEmitter;
 
   PlanTypeArray = [
     { name: 'WISER'},
@@ -85,13 +88,6 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   AddPromo() {
-    // this.dynamicPromo.push({
-      //   plan: this.promo.plan,
-      //   promocode: this.promo.promocode,
-      //   expiryDate: this.promoDate.value,
-      //   discount: this.promo.discount
-      // });
-      // console.log(this.dynamicPromo);
       this.promo.expiryDate = this.promoDate.value;
       console.log(this.promo);
     this.promoService.create(this.promo).subscribe(
@@ -110,8 +106,7 @@ export class PromoCodeManageComponent implements OnInit {
 
   private onSuccess(data) {
     this.dynamicPromo = data;
-    console.log(this.dynamicPromo);
-
+    this.event.emit('promocodeAdded');
   }
 
   private onError(error) {

@@ -1,15 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { AccountService, Principal } from "app/shared";
-import { DashboardService } from "app/dashboard/dashboard.service";
-import { GoogleCharts } from "google-charts";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService, Principal } from 'app/shared';
+import { DashboardService } from 'app/dashboard/dashboard.service';
 // import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
 // import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @Component({
-  selector: "jhi-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"]
+  selector: 'jhi-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   uid: any;
@@ -67,7 +66,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("inside init");
+    console.log('inside init');
     // this.liabilityChart = 'pie';
     this.principal.identity().then(account => {
       this.account = account;
@@ -92,9 +91,9 @@ export class DashboardComponent implements OnInit {
           this.getAlterInvestment(this.uid);
           this.getPCJ(this.uid);
           this.getFAO(this.uid);
-          console.log("inside get lia");
+          console.log('inside get lia');
           this.getLiabilities(this.uid);
-          console.log("data filled");
+          console.log('data filled');
           // this.drawChart();
         }
       });
@@ -102,11 +101,11 @@ export class DashboardComponent implements OnInit {
   }
 
   onLiabilityEdit() {
-    this.router.navigate(["assets"]);
+    this.router.navigate(['assets']);
   }
 
   onAssetEdit() {
-    this.router.navigate(["asstesroute"]);
+    this.router.navigate(['asstesroute']);
   }
 
   public chartClicked(e: any): void {
@@ -230,16 +229,16 @@ export class DashboardComponent implements OnInit {
     totalPCJ,
     totalFAO
   ) {
-    console.log("inside pie chart");
+    console.log('inside pie chart');
     this.pieChartableLabels.push(
-      "MutualFund",
-      "stock",
-      "saving",
-      "chit",
-      "cash",
-      "alterInvest",
-      "pcj",
-      "fao"
+      'MutualFund',
+      'stock',
+      'saving',
+      'chit',
+      'cash',
+      'alterInvest',
+      'pcj',
+      'fao'
     );
     this.pieChartData.push(
       total,
@@ -251,13 +250,13 @@ export class DashboardComponent implements OnInit {
       totalPCJ,
       totalFAO
     );
-    this.assetChart = "pie";
+    this.assetChart = 'pie';
     // console.log('value', this.total);
     // console.log('value filled chart');
   }
 
   getLiabilities(uid) {
-    console.log("inside get lia");
+    console.log('inside get lia');
     this.totalLiabilities = 0;
     this.dashboardService.getLiabilities(this.uid).subscribe(data => {
       this.resultLiabilities = data;
@@ -272,10 +271,10 @@ export class DashboardComponent implements OnInit {
   }
 
   liabilitiesChart(totalLiabilities) {
-    console.log("valueset");
-    this.pieChartableLabel.push("totalLiabilities");
+    console.log('valueset');
+    this.pieChartableLabel.push('totalLiabilities');
     this.pieChartDataa.push(totalLiabilities);
-    this.liabilityChart = "pie";
+    this.liabilityChart = 'pie';
   }
 
   // get for chart
