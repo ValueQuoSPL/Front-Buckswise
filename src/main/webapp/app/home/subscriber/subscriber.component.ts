@@ -19,15 +19,15 @@ export class SubscriberComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
     payment: boolean;
-    applied: boolean;
+    applied = false;
     closeResult: string;
     clicked: boolean;
     promocode: any;
     promocodeError: boolean;
 
     message;
-    payable = 1000;
-    oldAmount = this.payable;
+    payable = 0;
+    oldAmount ;
     pay;
     plan;
 
@@ -52,18 +52,18 @@ export class SubscriberComponent implements OnInit {
             );
         const plan = this.route.snapshot.params['plan'];
         this.plan = plan;
-        // console.log(this.plan);
         if (this.plan === 'free') {
-            console.log('free');
             this.payable = 0;
+            this.oldAmount = this.payable;
         } else if (this.plan === 'wiser') {
-            console.log('wiser');
             this.payable = 1000;
+            this.oldAmount = this.payable;
         } else if (this.plan === 'wisest') {
-            console.log('wisest');
             this.payable = 2000;
+            this.oldAmount = this.payable;
         }
 
+        console.log('init', this.applied);
     }
 
     calculate(discount) {
@@ -71,17 +71,20 @@ export class SubscriberComponent implements OnInit {
         const oldAmount = this.payable;
         let off = discount;
         off = off / 100 ;
-        console.log(off);
         pay = pay * off;
         this.pay = pay;
-        console.log(pay);
         this.payable = this.payable - pay;
-        console.log(this.payable);
 
         if (this.payable !== oldAmount) {
+            console.log('payable', this.payable);
+            console.log('old amount', oldAmount);
+
             this.applied = true;
+            console.log('calculate changed', this.applied);
         } else {
             this.applied = false;
+            console.log('calculate not changed', this.applied);
+
         }
     }
 
