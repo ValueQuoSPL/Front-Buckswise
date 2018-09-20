@@ -23,12 +23,14 @@ import {
 } from './';
 import { CustomMaterialModule } from 'app/custom-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
 
 @NgModule({
   imports: [
     BuckswiseFrontEndSharedModule,
     RouterModule.forChild(adminState),
     CustomMaterialModule,
+    CustomDirectiveModule,
     FormsModule,
     ReactiveFormsModule
     /* jhipster-needle-add-admin-module - JHipster will add admin modules here */

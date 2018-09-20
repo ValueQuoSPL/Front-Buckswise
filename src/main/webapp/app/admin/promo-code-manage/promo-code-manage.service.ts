@@ -5,7 +5,7 @@ import { SERVER_API_URL } from 'app/app.constants';
 @Injectable({
   providedIn: 'root'
 })
-export class PromoCodeService {
+export class PromoCodeManageService {
 
   url = SERVER_API_URL + 'api/promocodes';
 
