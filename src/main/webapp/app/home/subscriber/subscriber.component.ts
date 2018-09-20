@@ -1,9 +1,9 @@
 import { Router, Route, ActivatedRoute } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { JhiEventManager, JhiAlertService } from "ng-jhipster";
 import { PaymentComponent } from "app/home/subscriber/payment/payment.component";
 import { Account, LoginModalService, Principal } from "app/shared";
-import { PromoCodeModalService } from "app/home/subscriber//promo-code/promo-code-modal.service";
+import { PromoCodeModalService } from "app/home/subscriber/promo-code/promo-code-modal.service";
 import { PromoCodeService } from "app/home/subscriber/promo-code";
 import { NgbModalRef, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { HttpResponse } from "@angular/common/http";
@@ -31,9 +31,10 @@ export class SubscriberComponent implements OnInit {
   plan;
 
   constructor(
-    private route: ActivatedRoute,
+    private zone: NgZone,
     private router: Router,
     private principal: Principal,
+    private route: ActivatedRoute,
     public activeModal: NgbActiveModal,
     private eventManager: JhiEventManager,
     private promoCodeService: PromoCodeService,
@@ -47,17 +48,21 @@ export class SubscriberComponent implements OnInit {
     });
     this.registerAuthenticationSuccess();
     this.promoCodeService.currentMessage.subscribe(message =>
-      this.calculate(message)
+      this.zone.run(() => {
+        // <== added
+        this.calculate(message);
+        console.log("change detection");
+      })
     );
     const plan = this.route.snapshot.params["plan"];
     this.plan = plan;
-    if (this.plan === "free") {
+    if (this.plan === "FREE") {
       this.payable = 0;
       this.oldAmount = this.payable;
-    } else if (this.plan === "wiser") {
+    } else if (this.plan === "WISER") {
       this.payable = 1000;
       this.oldAmount = this.payable;
-    } else if (this.plan === "wisest") {
+    } else if (this.plan === "WISEST") {
       this.payable = 2000;
       this.oldAmount = this.payable;
     }

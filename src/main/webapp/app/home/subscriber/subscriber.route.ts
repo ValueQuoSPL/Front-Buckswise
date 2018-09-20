@@ -7,6 +7,6 @@ export const subscriberRoute: Route = {
   component: SubscriberComponent,
   data: {
     authorities: [],
-    pageTitle: "subscriber.title"
+    pageTitle: "subscription"
   }
 };
