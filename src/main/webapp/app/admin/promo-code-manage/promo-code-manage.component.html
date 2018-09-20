@@ -18,10 +18,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let field of dynamicPromo; let i = index">
-        <th scope="row">{{field.plan}}</th>
+        <th scope="row">{{field.id}}</th>
         <td>{{field.plan}}</td>
         <td>{{field.promocode}}</td>
-        <td>{{field.expiry_date | date : 'shortDate'}}</td>
+        <td>{{field.expiry_date }}</td>
         <td>{{field.discount}}</td>
         <td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, incomeEditContent)" >
@@ -48,7 +48,7 @@
   <div class="modal-body">
       <form class="example-container" #promoform="ngForm">
           <!-- form start-->
-          <div class="row">
+          <div >
               <mat-form-field>
                 <mat-select placeholder="Select plan type" name="plantype" [(ngModel)]="promo.plan">
                     <mat-option *ngFor="let type of PlanTypeArray" [value]="type.name">
@@ -56,7 +56,7 @@
                     </mat-option>
                 </mat-select>
               </mat-form-field>
-
+<br>
                 <mat-form-field>
                     <input required matInput placeholder="Enter PromoCode" name="promoname" [(ngModel)]="promo.promocode" >
                 </mat-form-field>

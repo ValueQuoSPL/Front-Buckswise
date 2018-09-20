@@ -6,13 +6,14 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
 import { PromoCodeModule } from 'app/pratik/promo-code';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { PromoCodeService } from 'app/admin/promo-code-manage/promo-code.service';
+import { HttpResponse } from '@angular/common/http';
 class PromoCodeModel {
   id;
   plan;
   promocode;
-  expiry_date;
+  expiryDate;
   discount;
 }
 
@@ -35,11 +36,25 @@ export class PromoCodeManageComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private eventManager: JhiEventManager,
-    private promoService: PromoCodeService
+    private promoService: PromoCodeService,
+    private alertService: JhiAlertService,
 
   ) { }
 
   ngOnInit() {
+    this.loadAll();
+    this.registerChange();
+  }
+
+  registerChange() {
+    this.eventManager.subscribe('promoCodeListModification', response => this.loadAll());
+  }
+
+  private onSaveSuccess(result) {
+    this.eventManager.broadcast({
+      name: 'promoCodeListModification',
+      content: 'OK'
+    });
   }
 
   getDismissReason(reason: any): string {
@@ -70,23 +85,44 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   AddPromo() {
-    console.log(this.promo);
     // this.dynamicPromo.push({
-    //   plan: this.promo.plan,
-    //   promocode: this.promo.promocode,
-    //   expiry_date: this.promoDate.value,
-    //   discount: this.promo.discount
-    // });
-    // console.log(this.dynamicPromo);
-    this.promoService.create(this.promo);
+      //   plan: this.promo.plan,
+      //   promocode: this.promo.promocode,
+      //   expiryDate: this.promoDate.value,
+      //   discount: this.promo.discount
+      // });
+      // console.log(this.dynamicPromo);
+      this.promo.expiryDate = this.promoDate.value;
+      console.log(this.promo);
+    this.promoService.create(this.promo).subscribe(
+      response => this.onSaveSuccess(response),
+    );
     this.clear();
+  }
+
+  loadAll() {
+    this.promoService.get()
+      .subscribe(
+          (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
+          (res: HttpResponse<any>) => this.onError(res.body)
+      );
+  }
+
+  private onSuccess(data) {
+    this.dynamicPromo = data;
+    console.log(this.dynamicPromo);
+
+  }
+
+  private onError(error) {
+    this.alertService.error(error.error, error.message, null);
   }
 
   clear() {
     this.promo.id = null;
     this.promo.plan = null;
     this.promo.promocode = null;
-    this.promo.expiry_date = null;
+    this.promo.expiryDate = null;
     this.promo.discount = null;
   }
 }
