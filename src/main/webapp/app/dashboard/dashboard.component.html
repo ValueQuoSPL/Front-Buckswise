@@ -20,9 +20,11 @@
                                 [data]="pieChartData"
                                 [labels]="pieChartableLabels"
                                 [chartType]="assetChart"
+                                [colors]="colors"
                                 (chartHover)="chartHovered($event)"
                                 (chartClick)="chartClicked($event)"></canvas>
                         </div>
+                     <!-- <jhi-chart [chartData]="chartData"></jhi-chart>    -->
                     </mat-card-content>
                     <!-- <mat-card-content>
                         <p>
@@ -53,10 +55,11 @@
                             [data]="pieChartDataa"
                             [labels]="pieChartableLabel"
                             [chartType]="liabilityChart"
+                            [colors]="color"
                             (chartHover)="chartHovered($event)"
                             (chartClick)="chartClicked($event)"></canvas>
                     </div>
-                    <!-- <div id="chart1" style="width: 900px; height: 500px;"></div>    -->
+                    <!-- <div id="chart1" [ChartData]="drawChart" style="width: 900px; height: 500px;"></div>    -->
                     <mat-card-content>
                         <p>
                         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.

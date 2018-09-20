@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService, Principal } from 'app/shared';
 import { DashboardService } from 'app/dashboard/dashboard.service';
-// import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
-// import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { Color } from '../../../../../node_modules/ng2-charts';
 
 @Component({
   selector: 'jhi-dashboard',
@@ -31,21 +30,24 @@ export class DashboardComponent implements OnInit {
   resultFAO: any;
   totalLiabilities: any;
   resultLiabilities: any;
-  // public GoogleCharts: any;
-  public pieChartableLabels: any = [];
-  public pieChartData: any = [];
-  public assetChart;
+
+  public pieChartableLabels: string[] = [];
+  public pieChartData: number[] = [];
+  public colors: Array<Color>;
+  public assetChart = 'pie';
 
   public pieChartableLabel: any = [];
   public pieChartDataa: any = [];
-  public liabilityChart;
+  public color: Array<Color>;
+  public liabilityChart = 'pie';
 
-  // public pieChartOptions: any;
-  // public pieChartableLabels: string[] = ['Mutual Fund', 'Stock', 'Saving'];
-  // public pieChartData: number[] = [0 , 500, 100];
-  // public assetChart = 'pie';
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
 
-  // GoogleCharts.load(drawChart);
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 
   constructor(
     private router: Router,
@@ -53,25 +55,20 @@ export class DashboardComponent implements OnInit {
     private accountService: AccountService,
     private principal: Principal
   ) {
-    // this.piechart(
-    //   this.total,
-    //   this.totalStock,
-    //   this.totalSaving,
-    //   this.totalChit,
-    //   this.totalCash,
-    //   this.totalAlterInvestment,
-    //   this.totalPCJ,
-    //   this.totalFAO
-    // );
-  }
-
-  ngOnInit() {
-    console.log('inside init');
-    // this.liabilityChart = 'pie';
     this.principal.identity().then(account => {
       this.account = account;
     });
     this.getUserid();
+  }
+
+  ngOnInit() {}
+
+  onLiabilityEdit() {
+    this.router.navigate(['assets']);
+  }
+
+  onAssetEdit() {
+    this.router.navigate(['asstesroute']);
   }
 
   getUserid() {
@@ -91,29 +88,10 @@ export class DashboardComponent implements OnInit {
           this.getAlterInvestment(this.uid);
           this.getPCJ(this.uid);
           this.getFAO(this.uid);
-          console.log('inside get lia');
           this.getLiabilities(this.uid);
-          console.log('data filled');
-          // this.drawChart();
         }
       });
     // .catch(err => {});
-  }
-
-  onLiabilityEdit() {
-    this.router.navigate(['assets']);
-  }
-
-  onAssetEdit() {
-    this.router.navigate(['asstesroute']);
-  }
-
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
   }
 
   getMutualFund(uid) {
@@ -215,7 +193,6 @@ export class DashboardComponent implements OnInit {
         this.totalPCJ,
         this.totalFAO
       );
-      // this.getLiabilities(this.uid);
     });
   }
 
@@ -250,9 +227,24 @@ export class DashboardComponent implements OnInit {
       totalPCJ,
       totalFAO
     );
-    this.assetChart = 'pie';
-    // console.log('value', this.total);
-    // console.log('value filled chart');
+    // this.assetChart = 'pie';
+    this.colors = [
+      {
+        backgroundColor: [
+          '#FF69B4',
+          '#ff0000',
+          '	#9400D3',
+          '#696969',
+          '#1E90FF',
+          '#00CED1',
+          '#FFD700',
+          '#00FF00',
+          '#FF4500'
+        ]
+      }
+    ];
+    console.log('value', this.total);
+    console.log('value filled chart');
   }
 
   getLiabilities(uid) {
@@ -274,45 +266,6 @@ export class DashboardComponent implements OnInit {
     console.log('valueset');
     this.pieChartableLabel.push('totalLiabilities');
     this.pieChartDataa.push(totalLiabilities);
-    this.liabilityChart = 'pie';
+    this.color = [{ backgroundColor: ['#808080'] }];
   }
-
-  // get for chart
-  // getChart() {
-  //   this.assetChart = 'pie';
-  // }
-
-  // google.charts.load('current', {'packages':['corechart']});
-  //     google.charts.setOnLoadCallback(drawChart);
-
-  //     function drawChart() {
-
-  //       let data = google.visualization.arrayToDataTable([
-  //         ['Task', 'Hours per Day'],
-  //         ['Work',     11],
-  //         ['Eat',      2],
-  //         ['Commute',  2],
-  //         ['Watch TV', 2],
-  //         ['Sleep',    7]
-  //       ]);
-
-  //       var options = {
-  //         title: 'My Daily Activities'
-  //       };
-
-  //       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-  //       chart.draw(data, options);
-  //     }
-  // drawChart() {
-  //   const data = GoogleCharts.api.visualization.arrayToDataTable([
-  //     ['Chart thing', 'Chart amount'],
-  //     ['Lorem ipsum', 60],
-  //     ['Dolor sit', 22],
-  //     ['Sit amet', 18]
-  // ]);
-
-  // const pie_1_chart = new GoogleCharts.api.visualization.PieChart(document.getElementById('chart1'));
-  // pie_1_chart.draw(data);
-  // }
 }
