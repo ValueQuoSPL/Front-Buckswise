@@ -10,7 +10,7 @@ export class User {
   _hash_string: string;
   _txid: string;
   _action: string;
-  key: any[];
+  key: any;
   hashString: any;
   hash: any;
   txnid: any;

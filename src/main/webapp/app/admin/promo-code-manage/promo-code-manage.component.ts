@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {
   NgbModal,
   ModalDismissReasons,
   NgbModalRef
-} from '@ng-bootstrap/ng-bootstrap';
-import { FormControl } from '@angular/forms';
-import { PromoCodeModule } from 'app/pratik/promo-code';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import { PromoCodeService } from 'app/admin/promo-code-manage/promo-code.service';
-import { HttpResponse } from '@angular/common/http';
-import { EventEmitter } from 'protractor';
+} from "@ng-bootstrap/ng-bootstrap";
+import { FormControl } from "@angular/forms";
+import { JhiEventManager, JhiAlertService } from "ng-jhipster";
+import { PromoCodeService } from "app/admin/promo-code-manage/promo-code.service";
+import { HttpResponse } from "@angular/common/http";
+import { EventEmitter } from "protractor";
 
 class PromoCodeModel {
   id;
@@ -20,9 +19,9 @@ class PromoCodeModel {
 }
 
 @Component({
-  selector: 'jhi-promo-code-manage',
-  templateUrl: './promo-code-manage.component.html',
-  styleUrls: ['./promo.css']
+  selector: "jhi-promo-code-manage",
+  templateUrl: "./promo-code-manage.component.html",
+  styleUrls: ["./promo.css"]
 })
 export class PromoCodeManageComponent implements OnInit {
   closeResult;
@@ -31,18 +30,14 @@ export class PromoCodeManageComponent implements OnInit {
   dynamicPromo: any = [];
   event: EventEmitter;
 
-  PlanTypeArray = [
-    { name: 'WISER'},
-    { name: 'WISEST'},
-  ];
+  PlanTypeArray = [{ name: "WISER" }, { name: "WISEST" }];
 
   constructor(
     private modalService: NgbModal,
     private eventManager: JhiEventManager,
     private promoService: PromoCodeService,
-    private alertService: JhiAlertService,
-
-  ) { }
+    private alertService: JhiAlertService
+  ) {}
 
   ngOnInit() {
     this.loadAll();
@@ -50,21 +45,23 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   registerChange() {
-    this.eventManager.subscribe('promoCodeListModification', response => this.loadAll());
+    this.eventManager.subscribe("promoCodeListModification", response =>
+      this.loadAll()
+    );
   }
 
   private onSaveSuccess(result) {
     this.eventManager.broadcast({
-      name: 'promoCodeListModification',
-      content: 'OK'
+      name: "promoCodeListModification",
+      content: "OK"
     });
   }
 
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -74,7 +71,7 @@ export class PromoCodeManageComponent implements OnInit {
     // console.log('income modal open');
 
     this.modalService
-      .open(content, { ariaLabelledBy: 'PromoModal' })
+      .open(content, { ariaLabelledBy: "PromoModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -88,25 +85,26 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   AddPromo() {
-      this.promo.expiryDate = this.promoDate.value;
-      console.log(this.promo);
-    this.promoService.create(this.promo).subscribe(
-      response => this.onSaveSuccess(response),
-    );
+    this.promo.expiryDate = this.promoDate.value;
+    console.log(this.promo);
+    this.promoService
+      .create(this.promo)
+      .subscribe(response => this.onSaveSuccess(response));
     this.clear();
   }
 
   loadAll() {
-    this.promoService.get()
+    this.promoService
+      .get()
       .subscribe(
-          (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
-          (res: HttpResponse<any>) => this.onError(res.body)
+        (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
+        (res: HttpResponse<any>) => this.onError(res.body)
       );
   }
 
   private onSuccess(data) {
     this.dynamicPromo = data;
-    this.event.emit('promocodeAdded');
+    this.event.emit("promocodeAdded");
   }
 
   private onError(error) {
