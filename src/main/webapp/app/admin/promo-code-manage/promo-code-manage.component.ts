@@ -1,12 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  NgbModal,
-  ModalDismissReasons,
-  NgbModalRef
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { FormControl } from "@angular/forms";
 import { JhiEventManager, JhiAlertService } from "ng-jhipster";
-import { PromoCodeService } from "app/admin/promo-code-manage/promo-code.service";
+import { PromoCodeManageService } from "app/admin/promo-code-manage/promo-code-manage.service";
 import { HttpResponse } from "@angular/common/http";
 import { EventEmitter } from "protractor";
 
@@ -35,7 +31,7 @@ export class PromoCodeManageComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private eventManager: JhiEventManager,
-    private promoService: PromoCodeService,
+    private promoService: PromoCodeManageService,
     private alertService: JhiAlertService
   ) {}
 
@@ -50,13 +46,6 @@ export class PromoCodeManageComponent implements OnInit {
     );
   }
 
-  private onSaveSuccess(result) {
-    this.eventManager.broadcast({
-      name: "promoCodeListModification",
-      content: "OK"
-    });
-  }
-
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";
@@ -69,7 +58,6 @@ export class PromoCodeManageComponent implements OnInit {
 
   openModal(content) {
     // console.log('income modal open');
-
     this.modalService
       .open(content, { ariaLabelledBy: "PromoModal" })
       .result.then(
@@ -91,6 +79,13 @@ export class PromoCodeManageComponent implements OnInit {
       .create(this.promo)
       .subscribe(response => this.onSaveSuccess(response));
     this.clear();
+  }
+
+  private onSaveSuccess(result) {
+    this.eventManager.broadcast({
+      name: "promoCodeListModification",
+      content: "OK"
+    });
   }
 
   loadAll() {
