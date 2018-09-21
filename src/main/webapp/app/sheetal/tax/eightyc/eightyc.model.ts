@@ -13,5 +13,6 @@ export class Eightyc {
   tutionfee;
   ulip;
   userID;
+  uid: any;
   constructor() {}
 }

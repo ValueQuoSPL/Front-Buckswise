@@ -21,7 +21,7 @@
           </mat-select>
         </mat-form-field> 
       </div><!--end of select div-->
-      <button mat-raised-button color="primary" (click)="getgoalbyid()">Submit</button>
+      <!-- <button mat-raised-button color="primary" (click)="getgoalbyid()">Submit</button> -->
     </div><!--start of row1.col2 div-->
   </div><!--end of row1 div-->
   <div [ngSwitch]="goaltype"><!--start of ngSwitch div-->
@@ -966,6 +966,7 @@
                 <th>Linked Assets</th>
                 <th>Date Of Creation</th>
                 <th>Notes</th>
+                <th><button mat-button color="primary" color="accent"(click)="AddGoal()">AddGoal</button></th>
                 <!-- <th>Update</th>
                 <th>Delete</th> -->
             </tr>
@@ -1003,3 +1004,5 @@
         </tbody>
     </table><!-- table end here -->
 </div>
+
+<button mat-raised-button color="primary" (click)="AddGoal()">AddGoal</button>

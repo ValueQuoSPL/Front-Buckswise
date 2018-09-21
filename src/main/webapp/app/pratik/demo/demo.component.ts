@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Mylogin } from './mylogin.model';
-import { MyloginService } from './mylogin.service';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { PromoCodeModalService } from 'app/home/subscriber/promo-code/promo-code-modal.service';
+import { Component, OnInit } from "@angular/core";
+import { Mylogin } from "./mylogin.model";
+import { MyloginService } from "./mylogin.service";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { PromoCodeModalService } from "app/home/subscriber/promo-code/promo-code-modal.service";
 
 @Component({
-  selector: 'jhi-demo',
-  templateUrl: './demo.component.html',
+  selector: "jhi-demo",
+  templateUrl: "./demo.component.html",
   styles: []
 })
 export class DemoComponent implements OnInit {
@@ -16,8 +16,10 @@ export class DemoComponent implements OnInit {
   windowRef: any;
   user;
 
-  constructor(private myloginService: MyloginService,
-              private promoCodeModalService: PromoCodeModalService) {}
+  constructor(
+    private myloginService: MyloginService,
+    private promoCodeModalService: PromoCodeModalService
+  ) {}
 
   ngOnInit() {}
 

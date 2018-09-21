@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule, Router } from '@angular/router';
-import { DemoComponent } from './demo.component';
-import { GridComponent } from './widget/grid/grid.component';
-import { MaterialComponent } from './material/material.component';
-import { NgBootstrapComponent } from './ng-bootstrap/ng-bootstrap.component';
-import { SimpleComponent } from './simple/simple.component';
-import { MobileOtpComponent } from './mobile-otp/mobile-otp.component';
-import { PromoCodeManageComponent } from 'app/admin';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule, Router } from "@angular/router";
+import { DemoComponent } from "./demo.component";
+import { GridComponent } from "./widget/grid/grid.component";
+import { MaterialComponent } from "./material/material.component";
+import { NgBootstrapComponent } from "./ng-bootstrap/ng-bootstrap.component";
+import { SimpleComponent } from "./simple/simple.component";
+import { MobileOtpComponent } from "./mobile-otp/mobile-otp.component";
+import { PromoCodeManageComponent } from "app/admin";
 
 const MyRoute: Routes = [
   {
-    path: 'demo',
+    path: "demo",
     component: DemoComponent,
     children: [
-      { path: 'grid', component: GridComponent },
-      { path: 'material', component: MaterialComponent },
-      { path: 'ngb', component: NgBootstrapComponent },
-      { path: 'simple', component: SimpleComponent },
-      { path: 'otp', component: MobileOtpComponent },
-      { path: 'promo', component: PromoCodeManageComponent }
+      { path: "grid", component: GridComponent },
+      { path: "material", component: MaterialComponent },
+      { path: "ngb", component: NgBootstrapComponent },
+      { path: "simple", component: SimpleComponent },
+      { path: "otp", component: MobileOtpComponent },
+      { path: "promo", component: PromoCodeManageComponent }
     ]
   }
 ];

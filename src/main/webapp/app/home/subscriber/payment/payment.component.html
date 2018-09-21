@@ -16,7 +16,7 @@
                     <div class="row justify-content-center">
                             <div class="form-group">
                                 <mat-form-field style="width: 100%;">
-                                    <input matInput [(ngModel)]="user.amount" placeholder="amount" #amount="ngModel" name="amount" id="amount" required>
+                                    <input matInput [(ngModel)]="user.amount" placeholder="Amount Payable" #amount="ngModel" name="amount" id="amount" disabled required>
                                 </mat-form-field>
                                 <mat-form-field style="width: 100%;">
                                     <input matInput [(ngModel)]="user.firstName" placeholder="firstName" #amount="ngModel" name="firstName" id="firstName" required>
@@ -28,7 +28,7 @@
                                     <input matInput type="email" [(ngModel)]="user.eMail" placeholder="EMail" #amount="ngModel" name="eMail" id="eMail" required>
                                 </mat-form-field>
                                 <mat-form-field style="width: 100%;">
-                                    <input matInput [(ngModel)]="user.productInfo" placeholder="ProductInfo" #amount="ngModel" name="productInfo" id="productInfo">
+                                    <input matInput [(ngModel)]="user.productInfo" placeholder="Your Plan" #amount="ngModel" name="productInfo" id="productInfo" disabled>
                                 </mat-form-field>
                             </div>
                         </div> 

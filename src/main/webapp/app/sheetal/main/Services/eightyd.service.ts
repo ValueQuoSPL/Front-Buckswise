@@ -1,13 +1,13 @@
-import { Injectable, Output } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { SERVER_API_URL } from 'app/app.constants';
-import { Eightyd } from 'app/sheetal/main/Services/eightyd.model';
-import { Subscription } from 'rxjs/Subscription';
-import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'app/shared';
-import { Subject } from 'rxjs/Subject';
-import { accountState } from 'app/account';
+import { Injectable, Output } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { SERVER_API_URL } from "app/app.constants";
+import { Eightyd } from "app/sheetal/main/Services/eightyd.model";
+import { Subscription } from "rxjs/Subscription";
+import { Component, OnInit } from "@angular/core";
+import { AccountService } from "app/shared";
+import { Subject } from "rxjs/Subject";
+import { accountState } from "app/account";
 
 @Injectable()
 export class EightydService {
@@ -32,12 +32,12 @@ export class EightydService {
   // console.log(eightyd.Health);
   // id: any;
   save(eightyd: any): Observable<any> {
-    return this.http.post(SERVER_API_URL + 'api/eightds', eightyd);
+    return this.http.post(SERVER_API_URL + "api/eightds", eightyd);
   }
 
   public geteightyd(uid) {
-    console.log('in geteightyd service', uid);
-    this.ServiceAPIParam = 'api/eightds' + '/' + uid;
+    console.log("in geteightyd service", uid);
+    this.ServiceAPIParam = "api/eightds" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
   // public PutEightyd(eightyd) {

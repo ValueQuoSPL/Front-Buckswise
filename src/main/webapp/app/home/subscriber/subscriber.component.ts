@@ -9,6 +9,11 @@ import { NgbModalRef, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { HttpResponse } from "@angular/common/http";
 import { PromoCodeManageService } from "app/admin";
 
+class Offer {
+  payable;
+  plan;
+}
+
 @Component({
   selector: "jhi-subscriber",
   templateUrl: "./subscriber.component.html",
@@ -23,7 +28,7 @@ export class SubscriberComponent implements OnInit {
   clicked: boolean;
   promocode: any;
   promocodeError: boolean;
-
+  offer: Offer = new Offer();
   message;
   payable = 0;
   oldAmount;
@@ -56,15 +61,20 @@ export class SubscriberComponent implements OnInit {
     );
     const plan = this.route.snapshot.params["plan"];
     this.plan = plan;
+    this.offer.plan = plan;
+
     if (this.plan === "FREE") {
       this.payable = 0;
       this.oldAmount = this.payable;
+      this.offer.payable = this.payable;
     } else if (this.plan === "WISER") {
       this.payable = 1000;
       this.oldAmount = this.payable;
+      this.offer.payable = this.payable;
     } else if (this.plan === "WISEST") {
       this.payable = 2000;
       this.oldAmount = this.payable;
+      this.offer.payable = this.payable;
     }
 
     console.log("init", this.applied);
@@ -78,6 +88,7 @@ export class SubscriberComponent implements OnInit {
     pay = pay * off;
     this.pay = pay;
     this.payable = this.payable - pay;
+    this.offer.payable = this.payable;
 
     if (this.payable !== oldAmount) {
       console.log("payable", this.payable);

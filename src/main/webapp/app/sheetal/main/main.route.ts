@@ -1,12 +1,12 @@
-import { Route } from '@angular/router';
+import { Route } from "@angular/router";
 
-import { MainComponent } from 'app/sheetal/main/main.component';
+import { MainComponent } from "app/sheetal/main/main.component";
 
 export const mainRoute: Route = {
-  path: 'main',
+  path: "main",
   component: MainComponent,
   data: {
     authorities: [],
-    pageTitle: 'Main Component'
+    pageTitle: "Main Component"
   }
 };
