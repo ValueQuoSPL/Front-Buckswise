@@ -46,6 +46,7 @@ export class GoalSelectComponent implements OnInit {
   closeResult: string;
   assettype: any;
   dialogRef: any;
+
   // goalselectArray = [];
   // HOMESELECT=[];
   // EDUCATIONSELECT=[];
@@ -85,10 +86,22 @@ export class GoalSelectComponent implements OnInit {
     private modalService: NgbModal,
     public dialog: MatDialog
   ) {
+    this.FetchId();
+    // this.goalSelectService.getgoalbyid(this.uid).subscribe(res => {
+    //   console.log(res);
+    //   this.output = res;
+    //   console.log(this.output);
+    //   // this.isValid=false;
+    //   if (this.output.uid === null) {
+    //     this.isValid = true;
+    //   } else {
+    //     this.isValid = false;
+    //   }
+    // });
     // this.EducationSelect = new EducationSelect('Educationselect');
   }
   ngOnInit() {
-    this.FetchId();
+    // this.FetchId();
     this.goalselect = {};
     this.Educationselect = {};
     this.Vehicleselect = {};
@@ -130,6 +143,8 @@ export class GoalSelectComponent implements OnInit {
         error => console.log(error)
       );
     console.log("outside saveHome details");
+    this.isValid = false;
+    this.getgoalbyid(this.uid);
   }
 
   Education() {
@@ -288,7 +303,7 @@ export class GoalSelectComponent implements OnInit {
   AddGoal() {
     console.log("in addgoal");
     // this.router.navigate(['goal']);
-    this.isValid = false;
+    this.isValid = true;
   }
   linkAssets() {
     this.router.navigate(["goalAdd"]);
