@@ -14,7 +14,7 @@ export class PaymentComponent implements OnInit {
   user: User = new User();
   public paymentDetail: any = [];
 
-  @Input() payable;
+  @Input() offer;
 
   constructor(
     private paymentService: PaymentService,
@@ -32,8 +32,9 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
     this.user.sUrl = 'http://localhost:8080/sucess';
     this.user.fUrl = 'http://localhost:8080/fail';
-    console.log(this.payable);
-    this.user.amount = this.payable;
+    console.log(this.offer);
+    this.user.amount = this.offer.payable;
+    this.user.productInfo = this.offer.plan;
 
   }
 }
