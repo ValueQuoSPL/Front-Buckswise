@@ -27,6 +27,7 @@ export class GoalAddButtonComponent implements OnInit {
     this.dialogRef.close();
   }
   dialogRef;
+
   constructor(
     private ActiveModal: NgbActiveModal,
     private modalService: NgbModal,
@@ -50,7 +51,6 @@ export class GoalAddButtonComponent implements OnInit {
       width: "550px"
       // data: {name: this.name, animal: this.animal}
     });
-
     this.dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
       // this.animal = result;

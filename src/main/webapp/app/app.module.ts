@@ -15,11 +15,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppointmentModule } from "../app/appointment/appointment.module";
-import { AuthInterceptor } from "app/blocks/interceptor/auth.interceptor";
-import { AuthExpiredInterceptor } from "app/blocks/interceptor/auth-expired.interceptor";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   Ng2Webstorage,
   LocalStorageService,
@@ -30,6 +27,9 @@ import { NotificationInterceptor } from "app/blocks/interceptor/notification.int
 import { PaginationConfig } from "app/blocks/config/uib-pagination.config";
 import { BuckswiseFrontEndHomeModule } from "app/home/home.module";
 import { BuckswiseFrontEndAppRoutingModule } from "app/app-routing.module";
+
+import { AuthInterceptor } from "app/blocks/interceptor/auth.interceptor";
+import { AuthExpiredInterceptor } from "app/blocks/interceptor/auth-expired.interceptor";
 import {
   BuckswiseFrontEndSharedModule,
   UserRouteAccessService
@@ -53,6 +53,7 @@ import { SpinnerComponent } from "./spinner/spinner.component";
 // import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuckswiseContactModule } from "app/sheetal/contactus/contact.module";
 import { BuckswiseTaxModule } from "app/sheetal/tax/tax.module";
+import { PromoCodeModule } from "app/home/subscriber/promo-code";
 
 @NgModule({
   imports: [
@@ -68,19 +69,20 @@ import { BuckswiseTaxModule } from "app/sheetal/tax/tax.module";
     // FlexLayoutModule,
     BuckswiseFrontEndMyAssetsModule,
     BuckswiseFrontEndRiskModule,
+    BuckswiseContactModule,
+    BuckswiseTaxModule,
+    FontAwesomeModule,
     FamilyModule,
-    FormsModule,
     AppointmentModule,
     // BsDatepickerModule.forRoot(),
     GoalModule,
+    // BsDatepickerModule.forRoot(),
     BuckswiseFrontEndPratikModule,
-    BuckswiseTaxModule,
-    DraggableModule,
     CustomDirectiveModule,
     CustomMaterialModule,
     DashBoardModule,
-    FontAwesomeModule,
-    BuckswiseContactModule
+    DraggableModule,
+    PromoCodeModule
   ],
   declarations: [
     JhiMainComponent,

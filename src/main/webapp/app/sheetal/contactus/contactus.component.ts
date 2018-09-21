@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared';
-import { ContactService } from './contact.service';
-import * as $ from 'jQuery';
+import { Component, OnInit } from "@angular/core";
+import { UserContact } from "./contact.model";
+import { ContactService } from "./contact.service";
+import * as $ from "jQuery";
 @Component({
-  selector: 'jhi-contactus',
-  templateUrl: './contactus.component.html',
-  styleUrls: ['./contactus.component.css', '../../css/universal.css']
+  selector: "jhi-contactus",
+  templateUrl: "./contactus.component.html",
+  styleUrls: ["./contactus.component.css", "../../css/universal.css"]
 })
 export class ContactusComponent implements OnInit {
-  user: User = new User();
+  user: UserContact = new UserContact();
+
+  mobile;
+  name;
+  phone;
+  msg;
+
   constructor(private contactService: ContactService) {}
   submitUser() {
     this.contactService
       .save(this.user)
       .subscribe(response => console.log(response));
   }
-  // resetContact() {
-  //     this.user.name = '';
-  //     this.user.email = '';
-  //     this.user.phone = '';
-  //     this.user.message = '';
-  //   }
+
+  resetContact() {}
 
   ngOnInit() {
     //    Validation for name

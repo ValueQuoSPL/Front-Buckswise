@@ -6,6 +6,7 @@ import { MaterialComponent } from "./material/material.component";
 import { NgBootstrapComponent } from "./ng-bootstrap/ng-bootstrap.component";
 import { SimpleComponent } from "./simple/simple.component";
 import { MobileOtpComponent } from "./mobile-otp/mobile-otp.component";
+import { PromoCodeManageComponent } from "app/admin";
 
 const MyRoute: Routes = [
   {
@@ -16,7 +17,8 @@ const MyRoute: Routes = [
       { path: "material", component: MaterialComponent },
       { path: "ngb", component: NgBootstrapComponent },
       { path: "simple", component: SimpleComponent },
-      { path: "otp", component: MobileOtpComponent }
+      { path: "otp", component: MobileOtpComponent },
+      { path: "promo", component: PromoCodeManageComponent }
     ]
   }
 ];

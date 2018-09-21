@@ -14,7 +14,7 @@ import {
   JhiLoginModalComponent,
   Principal,
   HasAnyAuthorityDirective
-} from "app/shared";
+} from "./";
 import { CustomMaterialModule } from "app/custom-material.module";
 
 @NgModule({

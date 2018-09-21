@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AccountService, Principal } from 'app/shared';
-import { DashboardService } from 'app/dashboard/dashboard.service';
-import { SavingScheme } from 'app/my-assets/saving-scheme/savingscheme.modal';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AccountService, Principal } from "app/shared";
+import { DashboardService } from "app/dashboard/dashboard.service";
+import { Color } from "../../../../../node_modules/ng2-charts";
 
 @Component({
-  selector: 'jhi-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "jhi-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
   uid: any;
@@ -28,28 +28,47 @@ export class DashboardComponent implements OnInit {
   resultPCJ: any;
   resultAlterInvestment: any;
   resultFAO: any;
+  totalLiabilities: any;
+  resultLiabilities: any;
 
-  public pieChartableLabels: any = [];
-  public pieChartData: any = [];
-  public pieChartType: any;
-  // public pieChartOptions: any;
-  // public pieChartableLabels: string[] = ['Mutual Fund', 'Stock', 'Saving'];
-  // public pieChartData: number[] = [0 , 500, 100];
-  // public pieChartType = 'pie';
+  public pieChartableLabels: string[] = [];
+  public pieChartData: number[] = [];
+  public colors: Array<Color>;
+  public assetChart = "pie";
+
+  public pieChartableLabel: any = [];
+  public pieChartDataa: any = [];
+  public color: Array<Color>;
+  public liabilityChart = "pie";
+
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 
   constructor(
     private router: Router,
     private dashboardService: DashboardService,
     private accountService: AccountService,
     private principal: Principal
-  ) {}
-
-  ngOnInit() {
-    this.getUserid();
-
+  ) {
     this.principal.identity().then(account => {
       this.account = account;
     });
+    this.getUserid();
+  }
+
+  ngOnInit() {}
+
+  onLiabilityEdit() {
+    this.router.navigate(["liability"]);
+  }
+
+  onAssetEdit() {
+    this.router.navigate(["asstesroute"]);
   }
 
   getUserid() {
@@ -58,6 +77,7 @@ export class DashboardComponent implements OnInit {
       .toPromise()
       .then(response => {
         const account = response.body;
+        console.log(account.id);
         if (account) {
           this.uid = account.id;
           this.getMutualFund(this.uid);
@@ -68,26 +88,10 @@ export class DashboardComponent implements OnInit {
           this.getAlterInvestment(this.uid);
           this.getPCJ(this.uid);
           this.getFAO(this.uid);
-        } else {
+          this.getLiabilities(this.uid);
         }
-      })
-      .catch(err => {});
-  }
-
-  onLiabilityEdit() {
-    this.router.navigate(['assets']);
-  }
-
-  onAssetEdit() {
-    this.router.navigate(['asstesroute']);
-  }
-
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
+      });
+    // .catch(err => {});
   }
 
   getMutualFund(uid) {
@@ -202,16 +206,16 @@ export class DashboardComponent implements OnInit {
     totalPCJ,
     totalFAO
   ) {
-    // console.log(total);
+    console.log("inside pie chart");
     this.pieChartableLabels.push(
-      'MutualFund',
-      'stock',
-      'saving',
-      'chit',
-      'cash',
-      'alterInvest',
-      'pcj',
-      'fao'
+      "MutualFund",
+      "stock",
+      "saving",
+      "chit",
+      "cash",
+      "alterInvest",
+      "pcj",
+      "fao"
     );
     this.pieChartData.push(
       total,
@@ -223,6 +227,43 @@ export class DashboardComponent implements OnInit {
       totalPCJ,
       totalFAO
     );
-    this.pieChartType = 'pie';
+    // this.assetChart = 'pie';
+    this.colors = [
+      {
+        backgroundColor: [
+          "#FF69B4",
+          "#ff0000",
+          "	#9400D3",
+          "#696969",
+          "#1E90FF",
+          "#00CED1",
+          "#FFD700",
+          "#00FF00",
+          "#FF4500"
+        ]
+      }
+    ];
+  }
+
+  getLiabilities(uid) {
+    console.log("inside get lia");
+    this.totalLiabilities = 0;
+    this.dashboardService.getLiabilities(this.uid).subscribe(data => {
+      this.resultLiabilities = data;
+      console.log(this.resultLiabilities);
+      for (let i = 0; i < this.resultLiabilities.length; i++) {
+        this.totalLiabilities =
+          this.totalLiabilities +
+          +this.resultLiabilities[i].outstandingpricipal;
+      }
+      this.liabilitiesChart(this.totalLiabilities);
+    });
+  }
+
+  liabilitiesChart(totalLiabilities) {
+    console.log("valueset");
+    this.pieChartableLabel.push("totalLiabilities");
+    this.pieChartDataa.push(totalLiabilities);
+    this.color = [{ backgroundColor: ["#808080"] }];
   }
 }

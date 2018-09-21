@@ -1,6 +1,45 @@
-<!-- <jhi-success-payment [payDetail]="paymentDetail"></jhi-success-payment> -->
-<br><br>
+
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="row justify-content-md-center">
+                <h5>Payment Detail</h5>
+                <form #form action="https://test.payu.in/_payment" method="POST">
+                    <div *ngFor="let payment of paymentDetail">
+                        <input type="hidden" name="key" value="{{payment.key}}" />
+                        <input type="hidden" name="hash_string" value="{{payment.hashString}}" />
+                        <input type="hidden" name="hash" value="{{payment.hash}}" />
+                        <input type="hidden" name="txnid" value="{{payment.txnid}}" />
+                        <input type="hidden" name="surl" value="http://localhost:8080/Success">  
+                    </div>
+                   
+                    <div class="row justify-content-center">
+                            <div class="form-group">
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [(ngModel)]="user.amount" placeholder="Amount Payable" #amount="ngModel" name="amount" id="amount" disabled required>
+                                </mat-form-field>
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [(ngModel)]="user.firstName" placeholder="firstName" #amount="ngModel" name="firstName" id="firstName" required>
+                                </mat-form-field>
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [(ngModel)]="user.phone" placeholder="phone" #amount="ngModel" name="phone" id="phone" required>
+                                </mat-form-field>
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput type="email" [(ngModel)]="user.eMail" placeholder="EMail" #amount="ngModel" name="eMail" id="eMail" required>
+                                </mat-form-field>
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [(ngModel)]="user.productInfo" placeholder="Your Plan" #amount="ngModel" name="productInfo" id="productInfo" disabled>
+                                </mat-form-field>
+                            </div>
+                        </div> 
+                     <button class="btn btn-success btn-lg btn-block" (click)="submitUser()">pay</button>
+                    <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>                 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="container">
         <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -12,7 +51,6 @@
                             <input type="hidden" name="hash" value="{{payment.hash}}" />
                             <input type="hidden" name="txnid" value="{{payment.txnid}}" /> 
                         </div>    
-                            
                             <table>
                                 <p>Mandatory Parameters</p>
                                 <tr>
@@ -95,14 +133,6 @@
                             <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
                         </form>
                 </div>
-                <!-- <div class="col-md-2"></div>
-                <div [ngSwitch]="submitUser()">
-                <div class="alert alert-success" *ngSwitchCase="true">
-                        <span *ngIf="payDetail"
-                           > <jhi-success></jhi-success>
-                        </span>
-                    </div>
-                    <div> -->
             </div>
             
-</div>
+</div> -->

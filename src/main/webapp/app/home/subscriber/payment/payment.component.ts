@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { User } from "app/home/subscriber/payment/payment.model";
 import { PaymentService } from "app/home/subscriber/payment/payment.service";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
@@ -11,25 +11,29 @@ import { JhiEventManager } from "ng-jhipster";
   styles: []
 })
 export class PaymentComponent implements OnInit {
-  // user: User = new User();
-  public paymentDetail = [];
-  user: any;
-  // public key: string;
-  // public hashString: string;
-  // public hash: string;
-  // public txnid: string;
-  // tslint:disable-next-line:no-shadowed-variable
+  user: User = new User();
+  public paymentDetail: any = [];
+
+  @Input() offer;
+
   constructor(
-    private PaymentService: PaymentService,
+    private paymentService: PaymentService,
     private http: HttpClient
   ) {}
 
   submitUser() {
-    this.PaymentService.submitUser(this.user).subscribe(data => {
-      this.paymentDetail = data;
+    this.paymentService.submitUser(this.user).subscribe(data => {
+      console.log(this.user);
+      this.paymentDetail.push(data);
       console.log(this.paymentDetail);
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user.sUrl = "http://localhost:8080/sucess";
+    this.user.fUrl = "http://localhost:8080/fail";
+    console.log(this.offer);
+    this.user.amount = this.offer.payable;
+    this.user.productInfo = this.offer.plan;
+  }
 }

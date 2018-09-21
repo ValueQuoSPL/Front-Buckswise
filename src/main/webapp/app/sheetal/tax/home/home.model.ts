@@ -4,6 +4,7 @@ export class Home {
   rentclm;
   remintrst;
   rentclmgg;
+  uid: any;
 
   constructor() {}
 }
