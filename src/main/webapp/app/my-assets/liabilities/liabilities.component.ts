@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { LiabilitiesService } from 'app/my-assets/liabilities/liabilities.service';
-import { AccountService, Principal } from 'app/shared';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { LiabilitiesService } from "app/my-assets/liabilities/liabilities.service";
+import { AccountService, Principal } from "app/shared";
 
 @Component({
-  selector: 'jhi-liabilities',
-  templateUrl: './liabilities.component.html',
+  selector: "jhi-liabilities",
+  templateUrl: "./liabilities.component.html",
   styles: []
 })
 export class LiabilitiesComponent implements OnInit {
@@ -15,6 +15,8 @@ export class LiabilitiesComponent implements OnInit {
   uid: any;
   account: Account;
   loan: any = [];
+  shortLiability: any = [];
+  longLiability: any = [];
 
   constructor(
     private modalService: NgbModal,
@@ -30,7 +32,7 @@ export class LiabilitiesComponent implements OnInit {
     });
   }
   getUserid() {
-    console.log('inside get uid');
+    console.log("inside get uid");
     // retrieve the userIdentity data from the server, update the identity object, and then resolve.
     return this.accountService
       .get()
@@ -39,11 +41,11 @@ export class LiabilitiesComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from income userid is : ', this.uid);
+          console.log("from income userid is : ", this.uid);
           // this.onIncomeGet(this.uid);
           this.getLoanandDebt(this.uid);
         } else {
-          console.log('cannot get user details check login ');
+          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
@@ -51,15 +53,57 @@ export class LiabilitiesComponent implements OnInit {
   getLoanandDebt(uid) {
     this.liabilitiesService.getloan(this.uid).subscribe(data => {
       this.loan = data;
-      console.log('return from loandebts' + data);
+      console.log("return from loandebts", this.loan);
+      this.divideLiability(this.loan);
     });
+  }
+
+  divideLiability(data) {
+    console.log(data);
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index].tenure;
+      console.log(element);
+      if (element <= 5) {
+        // console.log(this.shortLiability.amount);
+        this.shortLiability.push({
+          amount: data[index].amount,
+          appName: data[index].appName,
+          checkType: data[index].checkType,
+          id: data[index].id,
+          itype: data[index].itype,
+          ldate: data[index].ldate,
+          lenderName: data[index].lenderName,
+          ltype: data[index].ltype,
+          outstandingpricipal: data[index].outstandingpricipal,
+          rdate: data[index].rdate,
+          roi: data[index].roi,
+          tenure: data[index].tenure
+        });
+      } else {
+        this.longLiability.push({
+          amount: data[index].amount,
+          appName: data[index].appName,
+          checkType: data[index].checkType,
+          id: data[index].id,
+          itype: data[index].itype,
+          ldate: data[index].ldate,
+          lenderName: data[index].lenderName,
+          ltype: data[index].ltype,
+          outstandingpricipal: data[index].outstandingpricipal,
+          rdate: data[index].rdate,
+          roi: data[index].roi,
+          tenure: data[index].tenure
+        });
+        console.log(this.longLiability);
+      }
+    }
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -67,10 +111,10 @@ export class LiabilitiesComponent implements OnInit {
 
   // income
   openShortTerm(incomeContent) {
-    console.log('income modal open');
+    console.log("income modal open");
 
     this.modalService
-      .open(incomeContent, { ariaLabelledBy: 'incomeModal' })
+      .open(incomeContent, { ariaLabelledBy: "incomeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
