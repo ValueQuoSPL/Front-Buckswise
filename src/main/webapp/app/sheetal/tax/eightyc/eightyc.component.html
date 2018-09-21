@@ -1,4 +1,4 @@
-<div *ngIf="valid">
+<div *ngIf="!valid">
         <div class="row pull-right" style="margin-top: -50px;">
                 
                 <button type="button" class="btn btn-link" (click)="onEightycSave()" data-toggle="modal" data-target="#eightycModelCenter">
@@ -166,7 +166,7 @@
                 </div>
             </div>
 </div>
-<div *ngIf="!valid">
+<div *ngIf="valid">
         <ng-template #eightycEditContent let-c="close" let-d="dismiss">
                 <div class="modal-header">
                     <h4 class="modal-title" id="eightycEditContent">Eightyc Add</h4>
@@ -191,15 +191,15 @@
                     </form>
             </div>
         </ng-template>
-        <div class="card">
+        <!-- <div class="card">
                 <div class="card-header">
                     Investment Other than Home
                 </div>
                 <button type="button" class="btn btn-link" (click)="updateHome()">
                     <i class="fa fa-save" aria-hidden="true"> </i> 
                     <span>Update</span>
-                </button>  -->
-                <div class="card-body">
+                </button>  
+                <div class="card-body"> -->
                     <table class="table table-hover table-sm">
                         <thead class="thead-light">
                             <tr>
@@ -215,9 +215,9 @@
                                 <td>5 Years of Fixed Deposit in Schedule Bank (Enter amount of Tax-Saver Fixed Deposits only)</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{out.fixed}}</td> -->
-                                <!-- <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Fixed Deposit in Schedule Bank', eightycEditContent)" >
-                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button> -->
+                                <td>{{out.fixed}}</td> 
+                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Fixed Deposit in Schedule Bank', eightycEditContent)" >
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                              </tr>
                               <tr>
                                 <td scope="row">Tution Fees</td>
@@ -329,10 +329,8 @@
                                 {{out.ulip}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('ULIP of UTI/LIC', eightycEditContent)" >
-                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button> -->
+                                <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button> 
                              </tr>
                         </tbody>
                     </table>
                 </div>
-             </div> 
-    </div>

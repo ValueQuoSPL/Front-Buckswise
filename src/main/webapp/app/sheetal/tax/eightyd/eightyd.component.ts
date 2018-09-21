@@ -70,53 +70,53 @@ export class EightydComponent implements OnInit {
         this.onEightydGet(this.uid);
       });
   }
-  onEditStaticField(nameField, modal) {
-    console.log("inside edit eightyd");
-    this.nameField = nameField;
-    console.log("inside edit eightyd", nameField);
-    if (nameField === "Medical Insurance for Self") {
-      this.nameField = "Amount of Medical for self";
-      this.editField = this.eightydout.medself;
-    } else if (nameField === "Medical Insurance for Parents ") {
-      this.nameField = "Amount of Medical for Parents";
-      this.editField = this.eightydout.medparents;
-    } else if (nameField === "Preventive Health Checkup") {
-      this.nameField = "Amount of Preventive health checkup";
-      this.editField = this.eightydout.healthcheck;
-    }
-    this.modalService
-      .open(modal, { ariaLabelledBy: "eightydEditContent" })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.FillEditEightyd(nameField);
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+  // onEditStaticField(nameField, modal) {
+  //   console.log("inside edit eightyd");
+  //   this.nameField = nameField;
+  //   console.log("inside edit eightyd", nameField);
+  //   if (nameField === "Medical Insurance for Self") {
+  //     this.nameField = "Amount of Medical for self";
+  //     this.editField = this.eightydout.medself;
+  //   } else if (nameField === "Medical Insurance for Parents ") {
+  //     this.nameField = "Amount of Medical for Parents";
+  //     this.editField = this.eightydout.medparents;
+  //   } else if (nameField === "Preventive Health Checkup") {
+  //     this.nameField = "Amount of Preventive health checkup";
+  //     this.editField = this.eightydout.healthcheck;
+  //   }
+  //   this.modalService
+  //     .open(modal, { ariaLabelledBy: "eightydEditContent" })
+  //     .result.then(
+  //       result => {
+  //         this.closeResult = `Closed with: ${result}`;
+  //         this.FillEditEightyd(nameField);
+  //       },
+  //       reason => {
+  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //       }
+  //     );
+  // }
+  // getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return "by pressing ESC";
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return "by clicking on a backdrop";
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
 
-  FillEditEightyd(nameField) {
-    console.log("inside fill edit eightyd");
-    if (nameField === "Medical Insurance for Self") {
-      this.eightydout.medself = this.editField;
-      this.editField = "";
-    } else if (nameField === "Medical Insurance for Parents") {
-      this.eightydout.medparents = this.editField;
-      this.editField = "";
-    } else if (nameField === "Preventive Health Checkup") {
-      this.eightydout.healthcheck = this.editField;
-      this.editField = "";
-    }
-  }
+  // FillEditEightyd(nameField) {
+  //   console.log("inside fill edit eightyd");
+  //   if (nameField === "Medical Insurance for Self") {
+  //     this.eightydout.medself = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "Medical Insurance for Parents") {
+  //     this.eightydout.medparents = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "Preventive Health Checkup") {
+  //     this.eightydout.healthcheck = this.editField;
+  //     this.editField = "";
+  //   }
+  // }
 }

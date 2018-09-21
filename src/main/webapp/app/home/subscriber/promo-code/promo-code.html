@@ -7,11 +7,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8" *ngIf="clicked">
             <div class="alert alert-danger" *ngIf="promocodeError">
-                <strong>Failed to apply promo code!</strong> <br> This Promo-Code is expired
+                <strong>Failed to apply promo code! </strong><br> 
+                <div *ngIf="expired">
+                    This Promo-Code is expired <br> 
+                </div>
+                <div *ngIf="!valid">
+                    This Promo-Code is not Valid
+                </div>
             </div>
-            <div class="alert alert-success" *ngIf="!promocodeError">
-                 Promo-Code applied successfully
-            </div>
+            
         </div>
         <div class="col-md-8">
             <form class="form" role="form" (ngSubmit)="apply()" #promo="ngForm">

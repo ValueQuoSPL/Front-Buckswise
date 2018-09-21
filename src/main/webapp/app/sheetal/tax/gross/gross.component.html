@@ -1,4 +1,4 @@
-<div *ngIf="valid">
+<div *ngIf="!valid">
         <div>
         <div class="row pull-right" style="margin-top: -50px;">
             <button type="button" class="btn btn-link" (click)="onGrossSave()" data-toggle="modal" data-target="#exampleModalCenter">
@@ -237,7 +237,7 @@
         </form>
         </div>
         </ng-template>
-        <div *ngIf="!valid">
+        <div *ngIf="valid">
             <div class="card">
             <div class="card-header">
               Income from salaries (Per Annum)

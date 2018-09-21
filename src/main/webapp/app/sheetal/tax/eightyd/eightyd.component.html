@@ -1,4 +1,4 @@
-<div *ngIf="valid">
+<div *ngIf="!valid">
   <div>
   <div class="row pull-right" style="margin-top: -50px;">
     <button type="button" class="btn btn-link" (click)="onEightydSave()" data-toggle="modal" data-target="#eightydModelCenter">
@@ -7,11 +7,11 @@
         <span> Save</span>
       </span>
     </button>
-    <button type="button" (click)="resetEightyd()" class="btn btn-link">
+   <button type="button" (click)="resetEightyd()" class="btn btn-link">
       <span>
         <i class="fas fa-sync fa-spin" aria-hidden="true"></i>
         <span> Reset</span>
-      </span>
+      </span> 
     </button>
     <button type="button" class="btn btn-link">
       <span>
@@ -50,6 +50,7 @@
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col">Amount</th>
+           
           </tr>
         </thead>
         <!--Head of table end-->
@@ -86,7 +87,7 @@
   </div> <!--form end-->   
 </div><!--container end-->
 </div>
-<div *ngIf="!valid">
+<div *ngIf="valid">
 <ng-template #eightydEditContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="eightydEditContent">Eightyd Add</h4>
@@ -112,15 +113,6 @@
     </form>
   </div>
 </ng-template>
-<div  class="card">
-  <div class="card-header">
-     80D Deduction
-  </div>   
-  <button type="button" class="btn btn-link" (click)="updateEightyd()">
-    <i class="fa fa-save" aria-hidden="true"> </i> 
-    <span>Update</span>
-  </button>
-  
 
 <div class="card-body">
     <table class="table table-hover table-sm">
@@ -172,5 +164,4 @@
       </tbody>
       <!--Body of table end-->
     </table>
-  </div></div>
-</div>
+  </div>

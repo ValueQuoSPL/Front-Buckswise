@@ -1,4 +1,4 @@
-<div *ngIf="valid">
+<div *ngIf="!valid">
     <h3>other deduction</h3>
     <div  class="row pull-right" style="margin-top: -80px;">
         
@@ -209,7 +209,7 @@
 </form>
 </div>
 </ng-template>
-<div *ngIf="!valid" class="card-body">
+<div *ngIf="valid" class="card-body">
     <table class="table table-hover table-sm">
       <thead class="thead-light">
           <button type="button" class="btn btn-link" (click)="updateEightyd()">

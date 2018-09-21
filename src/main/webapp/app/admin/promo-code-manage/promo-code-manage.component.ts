@@ -1,18 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  NgbModal,
-  ModalDismissReasons,
-  NgbModalRef
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { FormControl } from "@angular/forms";
-import { PromoCodeModule } from "app/pratik/promo-code";
-import { JhiEventManager } from "ng-jhipster";
-import { PromoCodeService } from "app/admin/promo-code-manage/promo-code.service";
+import { JhiEventManager, JhiAlertService } from "ng-jhipster";
+import { PromoCodeManageService } from "app/admin/promo-code-manage/promo-code-manage.service";
+import { HttpResponse } from "@angular/common/http";
+import { EventEmitter } from "protractor";
+
 class PromoCodeModel {
   id;
   plan;
   promocode;
-  expiry_date;
+  expiryDate;
   discount;
 }
 
@@ -26,16 +24,27 @@ export class PromoCodeManageComponent implements OnInit {
   promo: PromoCodeModel = new PromoCodeModel();
   promoDate = new FormControl(new Date());
   dynamicPromo: any = [];
+  event: EventEmitter;
 
   PlanTypeArray = [{ name: "WISER" }, { name: "WISEST" }];
 
   constructor(
     private modalService: NgbModal,
     private eventManager: JhiEventManager,
-    private promoService: PromoCodeService
+    private promoService: PromoCodeManageService,
+    private alertService: JhiAlertService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadAll();
+    this.registerChange();
+  }
+
+  registerChange() {
+    this.eventManager.subscribe("promoCodeListModification", response =>
+      this.loadAll()
+    );
+  }
 
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -49,7 +58,6 @@ export class PromoCodeManageComponent implements OnInit {
 
   openModal(content) {
     // console.log('income modal open');
-
     this.modalService
       .open(content, { ariaLabelledBy: "PromoModal" })
       .result.then(
@@ -65,23 +73,44 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   AddPromo() {
+    this.promo.expiryDate = this.promoDate.value;
     console.log(this.promo);
-    // this.dynamicPromo.push({
-    //   plan: this.promo.plan,
-    //   promocode: this.promo.promocode,
-    //   expiry_date: this.promoDate.value,
-    //   discount: this.promo.discount
-    // });
-    // console.log(this.dynamicPromo);
-    this.promoService.create(this.promo);
+    this.promoService
+      .create(this.promo)
+      .subscribe(response => this.onSaveSuccess(response));
     this.clear();
+  }
+
+  private onSaveSuccess(result) {
+    this.eventManager.broadcast({
+      name: "promoCodeListModification",
+      content: "OK"
+    });
+  }
+
+  loadAll() {
+    this.promoService
+      .get()
+      .subscribe(
+        (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
+        (res: HttpResponse<any>) => this.onError(res.body)
+      );
+  }
+
+  private onSuccess(data) {
+    this.dynamicPromo = data;
+    this.event.emit("promocodeAdded");
+  }
+
+  private onError(error) {
+    this.alertService.error(error.error, error.message, null);
   }
 
   clear() {
     this.promo.id = null;
     this.promo.plan = null;
     this.promo.promocode = null;
-    this.promo.expiry_date = null;
+    this.promo.expiryDate = null;
     this.promo.discount = null;
   }
 }

@@ -23,7 +23,7 @@ export class HomeService {
   }
   public gethome(uid) {
     console.log("in home service", uid);
-    this.ServiceAPIParam = "api/homeses" + "/" + uid;
+    this.ServiceAPIParam = "api/homes" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
 }

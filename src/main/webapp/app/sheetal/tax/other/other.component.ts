@@ -79,70 +79,70 @@ export class OtherComponent implements OnInit {
         this.onOtherGet(this.uid);
       });
   }
-  onEditOtherField(nameField, modal) {
-    console.log("inside edit other");
-    this.nameField = nameField;
-    console.log("inside edit other", nameField);
-    if (nameField === "Medical Handicapped") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.handicapped;
-    } else if (nameField === "Medical Treatment") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.medicaltreat;
-    } else if (nameField === "Repayment") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.selfedu;
-    } else if (nameField === "nps") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.nps;
-    } else if (nameField === "rgess") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.rgess;
-    } else if (nameField === "donation") {
-      this.nameField = "Amount";
-      this.editField = this.otherout.donation;
-    }
-    this.modalService
-      .open(modal, { ariaLabelledBy: "otherEditContent" })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.FillEditOther(nameField);
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  FillEditOther(nameField) {
-    console.log("inside fill edit other");
-    if (nameField === "Medical Handicapped") {
-      this.otherout.handicapped = this.editField;
-      this.editField = "";
-    } else if (nameField === "Medical Treatment") {
-      this.otherout.medicaltreat = this.editField;
-      this.editField = "";
-    } else if (nameField === "Repayment") {
-      this.otherout.selfedu = this.editField;
-      this.editField = "";
-    } else if (nameField === "nps") {
-      this.otherout.nps = this.editField;
-      this.editField = "";
-    } else if (nameField === "rgess") {
-      this.otherout.rgess = this.editField;
-      this.editField = "";
-    } else if (nameField === "donation") {
-      this.otherout.donation = this.editField;
-      this.editField = "";
-    }
-  }
+  // onEditOtherField(nameField, modal) {
+  //   console.log("inside edit other");
+  //   this.nameField = nameField;
+  //   console.log("inside edit other", nameField);
+  //   if (nameField === "Medical Handicapped") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.handicapped;
+  //   } else if (nameField === "Medical Treatment") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.medicaltreat;
+  //   } else if (nameField === "Repayment") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.selfedu;
+  //   } else if (nameField === "nps") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.nps;
+  //   } else if (nameField === "rgess") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.rgess;
+  //   } else if (nameField === "donation") {
+  //     this.nameField = "Amount";
+  //     this.editField = this.otherout.donation;
+  //   }
+  //   this.modalService
+  //     .open(modal, { ariaLabelledBy: "otherEditContent" })
+  //     .result.then(
+  //       result => {
+  //         this.closeResult = `Closed with: ${result}`;
+  //         this.FillEditOther(nameField);
+  //       },
+  //       reason => {
+  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //       }
+  //     );
+  // }
+  // getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return "by pressing ESC";
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return "by clicking on a backdrop";
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
+  // FillEditOther(nameField) {
+  //   console.log("inside fill edit other");
+  //   if (nameField === "Medical Handicapped") {
+  //     this.otherout.handicapped = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "Medical Treatment") {
+  //     this.otherout.medicaltreat = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "Repayment") {
+  //     this.otherout.selfedu = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "nps") {
+  //     this.otherout.nps = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "rgess") {
+  //     this.otherout.rgess = this.editField;
+  //     this.editField = "";
+  //   } else if (nameField === "donation") {
+  //     this.otherout.donation = this.editField;
+  //     this.editField = "";
+  //   }
+  // }
 }

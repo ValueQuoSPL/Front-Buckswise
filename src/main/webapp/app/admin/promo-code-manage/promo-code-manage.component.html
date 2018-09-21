@@ -18,10 +18,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let field of dynamicPromo; let i = index">
-        <th scope="row">{{field.plan}}</th>
+        <th scope="row">{{field.id}}</th>
         <td>{{field.plan}}</td>
         <td>{{field.promocode}}</td>
-        <td>{{field.expiry_date | date : 'shortDate'}}</td>
+        <td>{{field.expiryDate }}</td>
         <td>{{field.discount}}</td>
         <td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, incomeEditContent)" >
@@ -48,8 +48,8 @@
   <div class="modal-body">
       <form class="example-container" #promoform="ngForm">
           <!-- form start-->
-          <div class="row">
-              <mat-form-field>
+          <div >
+              <mat-form-field style="width: 100%;">
                 <mat-select placeholder="Select plan type" name="plantype" [(ngModel)]="promo.plan">
                     <mat-option *ngFor="let type of PlanTypeArray" [value]="type.name">
                     {{type.name}}
@@ -57,7 +57,7 @@
                 </mat-select>
               </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field style="width: 100%;">
                     <input required matInput placeholder="Enter PromoCode" name="promoname" [(ngModel)]="promo.promocode" >
                 </mat-form-field>
 
@@ -68,7 +68,7 @@
                   <mat-datepicker #picker1 ></mat-datepicker>
               </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field style="width: 100%;">
                     <input required matInput jhiNumberOnly placeholder="Discount Value" name="insname21" [(ngModel)]="promo.discount" >
                 </mat-form-field>
                       

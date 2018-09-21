@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Mylogin } from "./mylogin.model";
 import { MyloginService } from "./mylogin.service";
 import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
-import { PromoCodeModalService } from "app/pratik/promo-code/promo-code-modal.service";
+import { PromoCodeModalService } from "app/home/subscriber/promo-code/promo-code-modal.service";
 
 @Component({
   selector: "jhi-demo",

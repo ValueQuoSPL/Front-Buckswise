@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     this.homeService.gethome(uid).subscribe(res => {
       console.log(res);
       this.homeout = res;
-      console.log("home response ", this.homeout);
+      console.log("onHomeget response ", this.homeout);
     });
   }
   FetchID(): Promise<any> {
@@ -76,64 +76,64 @@ export class HomeComponent implements OnInit {
         this.onHomeGet(this.uid);
       });
   }
-  onEditHomeField(nameField, modal) {
-    console.log("inside home other");
-    this.nameField = nameField;
-    console.log("inside edit home", nameField);
-    if (nameField === "Housing Loan") {
-      this.nameField = "Amount";
-      this.editField = this.homeout.homeloan;
-    } else if (nameField === "Pricipal Loan") {
-      this.nameField = "Amount";
-      this.editField = this.homeout.prncpalloan;
-    } else if (nameField === "Rent Claimed") {
-      this.nameField = "Amount";
-      this.editField = this.homeout.rentclm;
-    } else if (nameField === "Remaining Interest") {
-      this.nameField = "Amount";
-      this.editField = this.homeout.remintrst;
-    } else if (nameField === "Mentioned the Rent claimed") {
-      this.nameField = "Amount";
-      this.editField = this.homeout.rentclmgg;
-    }
-    this.modalService
-      .open(modal, { ariaLabelledBy: "homeEditContent" })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.FillEditHome(nameField);
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  FillEditHome(nameField) {
-    console.log("inside fill edit home");
-    if (nameField === "Housing Loan") {
-      this.homeout.homeloan = this.editField;
-      this.editField = "";
-    } else if (nameField === "Pricipal Loan") {
-      this.homeout.prncpalloan = this.editField;
-      this.editField = "";
-    } else if (nameField === "Rent Claimed") {
-      this.homeout.rentclm = this.editField;
-      this.editField = "";
-    } else if (nameField === "Remaining Interest") {
-      this.homeout.remintrst = this.editField;
-      this.editField = "";
-    } else if (nameField === "Mentioned the Rent claimed") {
-      this.homeout.rentclmgg = this.editField;
-      this.editField = "";
-    }
-  }
+  // onEditHomeField(nameField, modal) {
+  //   console.log('inside home other');
+  //   this.nameField = nameField;
+  //   console.log('inside edit home', nameField);
+  //   if (nameField === 'Housing Loan') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.homeout.homeloan;
+  //   } else if (nameField === 'Pricipal Loan') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.homeout.prncpalloan;
+  //   } else if (nameField === 'Rent Claimed') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.homeout.rentclm;
+  //   } else if (nameField === 'Remaining Interest') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.homeout.remintrst;
+  //   } else if (nameField === 'Mentioned the Rent claimed') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.homeout.rentclmgg;
+  //   }
+  //   this.modalService
+  //     .open(modal, { ariaLabelledBy: 'homeEditContent' })
+  //     .result.then(
+  //       result => {
+  //         this.closeResult = `Closed with: ${result}`;
+  //         this.FillEditHome(nameField);
+  //       },
+  //       reason => {
+  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //       }
+  //     );
+  // }
+  // getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return 'by pressing ESC';
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return 'by clicking on a backdrop';
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
+  // FillEditHome(nameField) {
+  //   console.log('inside fill edit home');
+  //   if (nameField === 'Housing Loan') {
+  //     this.homeout.homeloan = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'Pricipal Loan') {
+  //     this.homeout.prncpalloan = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'Rent Claimed') {
+  //     this.homeout.rentclm = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'Remaining Interest') {
+  //     this.homeout.remintrst = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'Mentioned the Rent claimed') {
+  //     this.homeout.rentclmgg = this.editField;
+  //     this.editField = '';
+  //   }
+  // }
 }

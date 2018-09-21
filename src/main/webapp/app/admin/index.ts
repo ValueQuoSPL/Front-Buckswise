@@ -28,5 +28,5 @@ export * from "./user-management/user-management.component";
 export * from "./user-management/user-management.route";
 export * from "./admin.route";
 export * from "./promo-code-manage/promo-code.route";
-export * from "./promo-code-manage/promo-code.service";
+export * from "app/admin/promo-code-manage/promo-code-manage.service";
 export * from "./promo-code-manage/promo-code-manage.component";

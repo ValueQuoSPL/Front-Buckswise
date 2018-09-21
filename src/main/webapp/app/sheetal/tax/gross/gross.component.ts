@@ -91,88 +91,88 @@ export class GrossComponent implements OnInit {
         this.onGrossGet();
       });
   }
-  onEditGrossField(nameField, modal) {
-    console.log("inside gross");
-    this.nameField = nameField;
-    console.log("inside edit gross", nameField);
-    if (nameField === "bs") {
-      this.nameField = "Amount";
-      this.editField = this.output.bsalary;
-    } else if (nameField === "da") {
-      this.nameField = "Amount";
-      this.editField = this.output.da;
-    } else if (nameField === "hra") {
-      this.nameField = "Amount";
-      this.editField = this.output.hra;
-    } else if (nameField === "convey") {
-      this.nameField = "Amount";
-      this.editField = this.output.conveyance;
-    } else if (nameField === "ce") {
-      this.nameField = "Amount";
-      this.editField = this.output.childedu;
-    } else if (nameField === "med") {
-      this.nameField = "Amount";
-      this.editField = this.output.medical;
-    } else if (nameField === "lta") {
-      this.nameField = "Amount";
-      this.editField = this.output.lta;
-    } else if (nameField === "oa") {
-      this.nameField = "Amount";
-      this.editField = this.output.otherallown;
-    } else if (nameField === "bonus") {
-      this.nameField = "Amount";
-      this.editField = this.output.bonus;
-    }
-    this.modalService
-      .open(modal, { ariaLabelledBy: "grossEditContent" })
-      .result.then(
-        result => {
-          this.closeResult = `Closed with: ${result}`;
-          this.FillEditGross(nameField);
-        },
-        reason => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-  getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  FillEditGross(nameField) {
-    console.log("inside fill edit home");
-    if (nameField === "bs") {
-      this.output.bsalary = this.editField;
-      this.editField = "";
-    } else if (nameField === "da") {
-      this.output.da = this.editField;
-      this.editField = "";
-    } else if (nameField === "hra") {
-      this.output.hra = this.editField;
-      this.editField = "";
-    } else if (nameField === "convey") {
-      this.output.conveyance = this.editField;
-      this.editField = "";
-    } else if (nameField === "ce") {
-      this.output.childedu = this.editField;
-      this.editField = "";
-    } else if (nameField === "med") {
-      this.output.medical = this.editField;
-      this.editField = "";
-    } else if (nameField === "lta") {
-      this.output.lta = this.editField;
-      this.editField = "";
-    } else if (nameField === "oa") {
-      this.output.otherallown = this.editField;
-      this.editField = "";
-    } else if (nameField === "bonus") {
-      this.output.bonus = this.editField;
-      this.editField = "";
-    }
-  }
+  // onEditGrossField(nameField, modal) {
+  //   console.log('inside gross');
+  //   this.nameField = nameField;
+  //   console.log('inside edit gross', nameField);
+  //   if (nameField === 'bs') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.bsalary;
+  //   } else if (nameField === 'da') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.da;
+  //   } else if (nameField === 'hra') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.hra;
+  //   } else if (nameField === 'convey') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.conveyance;
+  //   } else if (nameField === 'ce') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.childedu;
+  //   } else if (nameField === 'med') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.medical;
+  //   } else if (nameField === 'lta') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.lta;
+  //   } else if (nameField === 'oa') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.otherallown;
+  //   } else if (nameField === 'bonus') {
+  //     this.nameField = 'Amount';
+  //     this.editField = this.output.bonus;
+  //   }
+  //   this.modalService
+  //     .open(modal, { ariaLabelledBy: 'grossEditContent' })
+  //     .result.then(
+  //       result => {
+  //         this.closeResult = `Closed with: ${result}`;
+  //         this.FillEditGross(nameField);
+  //       },
+  //       reason => {
+  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //       }
+  //     );
+  // }
+  // getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return 'by pressing ESC';
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return 'by clicking on a backdrop';
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
+  // FillEditGross(nameField) {
+  //   console.log('inside fill edit home');
+  //   if (nameField === 'bs') {
+  //     this.output.bsalary = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'da') {
+  //     this.output.da = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'hra') {
+  //     this.output.hra = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'convey') {
+  //     this.output.conveyance = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'ce') {
+  //     this.output.childedu = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'med') {
+  //     this.output.medical = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'lta') {
+  //     this.output.lta = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'oa') {
+  //     this.output.otherallown = this.editField;
+  //     this.editField = '';
+  //   } else if (nameField === 'bonus') {
+  //     this.output.bonus = this.editField;
+  //     this.editField = '';
+  //   }
+  // }
 }
