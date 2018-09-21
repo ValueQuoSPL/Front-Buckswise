@@ -966,6 +966,7 @@
                 <th>Linked Assets</th>
                 <th>Date Of Creation</th>
                 <th>Notes</th>
+                <th><button (click)="AddGoal()">Add Goal</button></th>
                 <!-- <th>Update</th>
                 <th>Delete</th> -->
             </tr>
@@ -1003,3 +1004,5 @@
         </tbody>
     </table><!-- table end here -->
 </div>
+
+<button mat-raised-button color="primary" (click)="AddGoal()">AddGoal</button>

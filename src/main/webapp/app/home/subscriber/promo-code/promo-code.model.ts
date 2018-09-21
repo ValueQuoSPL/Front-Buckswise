@@ -1,4 +1,3 @@
 export class PromoCodeModel {
-    constructor(parameters) {
-    }
+  constructor(parameters) {}
 }

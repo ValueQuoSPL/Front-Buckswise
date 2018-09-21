@@ -6,5 +6,6 @@ export class Other {
   nps;
   rgess;
   donation;
+  uid: any;
   constructor() {}
 }
