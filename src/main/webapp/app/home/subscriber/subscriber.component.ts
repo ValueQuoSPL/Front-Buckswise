@@ -1,13 +1,13 @@
-import { Router, Route, ActivatedRoute } from "@angular/router";
-import { Component, OnInit, NgZone } from "@angular/core";
-import { JhiEventManager, JhiAlertService } from "ng-jhipster";
-import { PaymentComponent } from "app/home/subscriber/payment/payment.component";
-import { Account, LoginModalService, Principal } from "app/shared";
-import { PromoCodeModalService } from "app/home/subscriber/promo-code/promo-code-modal.service";
-import { PromoCodeService } from "app/home/subscriber/promo-code";
-import { NgbModalRef, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { HttpResponse } from "@angular/common/http";
-import { PromoCodeManageService } from "app/admin";
+import { Router, Route, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { PaymentComponent } from 'app/home/subscriber/payment/payment.component';
+import { Account, LoginModalService, Principal } from 'app/shared';
+import { PromoCodeModalService } from 'app/home/subscriber/promo-code/promo-code-modal.service';
+import { PromoCodeService } from 'app/home/subscriber/promo-code';
+import { NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpResponse } from '@angular/common/http';
+import { PromoCodeManageService } from 'app/admin';
 
 class Offer {
   payable;
@@ -15,9 +15,9 @@ class Offer {
 }
 
 @Component({
-  selector: "jhi-subscriber",
-  templateUrl: "./subscriber.component.html",
-  styleUrls: ["subscriber.css"]
+  selector: 'jhi-subscriber',
+  templateUrl: './subscriber.component.html',
+  styleUrls: ['subscriber.css']
 })
 export class SubscriberComponent implements OnInit {
   account: Account;
@@ -56,28 +56,28 @@ export class SubscriberComponent implements OnInit {
       this.zone.run(() => {
         // <== added
         this.calculate(message);
-        console.log("change detection");
+        console.log('change detection');
       })
     );
-    const plan = this.route.snapshot.params["plan"];
+    const plan = this.route.snapshot.params['plan'];
     this.plan = plan;
     this.offer.plan = plan;
 
-    if (this.plan === "FREE") {
+    if (this.plan === 'FREE') {
       this.payable = 0;
       this.oldAmount = this.payable;
       this.offer.payable = this.payable;
-    } else if (this.plan === "WISER") {
+    } else if (this.plan === 'WISER') {
       this.payable = 1000;
       this.oldAmount = this.payable;
       this.offer.payable = this.payable;
-    } else if (this.plan === "WISEST") {
+    } else if (this.plan === 'WISEST') {
       this.payable = 2000;
       this.oldAmount = this.payable;
       this.offer.payable = this.payable;
     }
 
-    console.log("init", this.applied);
+    console.log('init', this.applied);
   }
 
   calculate(discount) {
@@ -91,14 +91,14 @@ export class SubscriberComponent implements OnInit {
     this.offer.payable = this.payable;
 
     if (this.payable !== oldAmount) {
-      console.log("payable", this.payable);
-      console.log("old amount", oldAmount);
+      console.log('payable', this.payable);
+      console.log('old amount', oldAmount);
 
       this.applied = true;
-      console.log("calculate changed", this.applied);
+      console.log('calculate changed', this.applied);
     } else {
       this.applied = false;
-      console.log("calculate not changed", this.applied);
+      console.log('calculate not changed', this.applied);
     }
   }
 
@@ -111,7 +111,7 @@ export class SubscriberComponent implements OnInit {
   }
 
   registerAuthenticationSuccess() {
-    this.eventManager.subscribe("authenticationSuccess", message => {
+    this.eventManager.subscribe('authenticationSuccess', message => {
       this.principal.identity().then(account => {
         this.account = account;
       });
@@ -126,6 +126,6 @@ export class SubscriberComponent implements OnInit {
     this.modalRef = this.loginModalService.open();
   }
   register() {
-    this.router.navigate(["register"]);
+    this.router.navigate(['register']);
   }
 }
