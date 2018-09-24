@@ -1,5 +1,4 @@
-import { element } from "protractor";
-import { log } from "util";
+import { StockService } from "app/my-assets/stocks/stocks.service";
 import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
 import { FormControl } from "@angular/forms";
@@ -8,7 +7,6 @@ import { GoalselectService } from "./goalselect.service";
 import { Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { GoalAddButtonComponent } from "../../goal/goal-add-button/goal-add-button.component";
-import { StockService } from "./../../my-assets/stocks/stocks.service";
 import {
   GoalSelect,
   EducationSelect,
@@ -28,7 +26,7 @@ import { AccountService } from "../../shared";
 @Component({
   selector: "jhi-goal-select",
   templateUrl: "./goal-select.component.html",
-  styleUrls: ["./goal-select.component.css"]
+  styles: ["./goal-select.component.css"]
 })
 export class GoalSelectComponent implements OnInit {
   // goalselect: GoalSelect = new GoalSelect();
