@@ -86,4 +86,14 @@ export class GoalselectService {
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
     // return this.http.get(SERVER_API_URL + 'api/goal/{uid}').map((res) => res);
   }
+  public getGoalbyId(commonid) {
+    this.ServiceAPIParam = "api/goalsetbyid" + "/" + commonid;
+    return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
+  }
+  public UpdateGoal(goalArray) {
+    return this.http.put<GoalSelect[]>(
+      SERVER_API_URL + "api/putgoal",
+      goalArray
+    );
+  }
 }

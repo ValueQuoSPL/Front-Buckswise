@@ -9,7 +9,7 @@ import { FormControl } from "@angular/forms";
 @Component({
   selector: "jhi-myprofile",
   templateUrl: "./myprofile.component.html",
-  styles: ["./myprofile.component.css"]
+  styleUrls: ["./myprofile.component.css"]
 })
 export class MyprofileComponent implements OnInit {
   myProfile: any;

@@ -34,11 +34,12 @@
     <tr *ngFor="let output of out; let i = index">
         <td> <mat-checkbox ></mat-checkbox></td>&nbsp;
         <td>{{output.company_name}}</td>&nbsp;
-        <td>{{output.share_price}}</td>
+        <td>{{output.share_price}}</td>&nbsp;
+        <td><input type="text" maxlength="5" size="5"></td>
     </tr>
   </table>
 </div>
 <div class="pull-right"><!--start of btn div-->
-  <button mat-button color="primary"(click)="sub()">Submit</button>
-  <button mat-button color="accent" (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" class="btn btn-outline-primary" (click)="sub()">Submit</button>
+  <button mat-button color="accent"  class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
 </div>

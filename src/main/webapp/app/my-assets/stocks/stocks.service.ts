@@ -10,7 +10,7 @@ export class StockService {
   constructor(private http: HttpClient) {}
 
   public SaveStocks(stocks) {
-    return this.http.post<Stocks[]>(SERVER_API_URL + "api/stocks", stocks);
+    return this.http.post<Stocks[]>(SERVER_API_URL + "api/poststocks", stocks);
   }
   public getStockById(uid) {
     console.log("in getStockById service uid", uid);
@@ -18,14 +18,14 @@ export class StockService {
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
   public getStockId(commonid) {
-    this.ServiceAPIParam = "api/stocks" + "/" + commonid;
+    this.ServiceAPIParam = "api/getbyidstocks" + "/" + commonid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
   public UpdateStock(stocks) {
-    return this.http.put<Stocks[]>(SERVER_API_URL + "api/stocks", stocks);
+    return this.http.put<Stocks[]>(SERVER_API_URL + "api/deletestocks", stocks);
   }
   public DeleteStock(id) {
-    this.ServiceAPI = "api/stocks" + "/" + id;
+    this.ServiceAPI = "api/deletestocks" + "/" + id;
     return this.http.delete<Stocks[]>(SERVER_API_URL + this.ServiceAPI);
   }
 }

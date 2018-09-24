@@ -1,5 +1,5 @@
 <div *ngIf="isValid">
-  <div class="row"><!--start of row1 div-->
+  <div class="row container"><!--start of row1 div-->
     <div class="col-md-2"><!--start of row1.col1 div-->
       <label><h4><b>Select Goal</b></h4></label>
     </div><!--end of row1.col1 div-->
@@ -950,8 +950,10 @@
     
   </table>
 </div> -->
-<div>
-    <table *ngIf="!isValid" class="table table-hover table-sm">
+
+<div class="table-responsive">
+  <h5>Goal Details</h5>
+    <table *ngIf="!isValid" class="table table-hover table-sm" class="table table-striped">
         <thead>
             <tr>
                 <th>SrNo</th>
@@ -966,7 +968,7 @@
                 <th>Linked Assets</th>
                 <th>Date Of Creation</th>
                 <th>Notes</th>
-                <th><button mat-button color="primary" color="accent"(click)="AddGoal()">AddGoal</button></th>
+                <th><button mat-button color="primary" class="btn btn-link" (click)="AddGoal()"><span> <i class="fa fa-plus" aria-hidden="true"></i></span>AddGoal</button></th>
                 <!-- <th>Update</th>
                 <th>Delete</th> -->
             </tr>
@@ -982,7 +984,14 @@
                 <td>{{out.futurecost}}</td>
                 <td>{{out.requiremonthinvest}}</td>
                 <td>{{out.fundshortage}}</td>
-                <td><a (click)="openDialog()">Link Assets</a></td>
+                <td>
+                  <button 
+                      class="btn btn-outline-info" 
+                      type="button" 
+                      (click)="openLinkAsset(editLinkModal,out.id)">
+                      Link Assets
+                  </button>             
+              </td>
                 <td>{{out.crationdate}}</td>
                 <td>{{out.goalNotes}}</td>
                 <td>
@@ -1003,6 +1012,142 @@
             </tr>
         </tbody>
     </table><!-- table end here -->
+    <ng-template #editLinkModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
+      <div class="modal-header"><!-- modal header start -->
+          <h4 
+              class="modal-title" 
+              id="editLinkModal">Linked Assets</h4>
+          <button 
+              type="button" 
+              class="close" 
+              aria-label="Close" 
+              (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div><!-- modal header end -->
+      <div class="modal-body"><!-- modal body start -->
+          <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
+              <!-- <mat-form-field>
+                  <input
+                      matInput 
+                      class="full-width"
+                      required type="text" 
+                      placeholder="Company Name" 
+                      [(ngModel)]="stocks.company_name" 
+                      [ngModelOptions]="{standalone: true}"
+                  >
+              </mat-form-field>&nbsp;&nbsp;
+              <mat-form-field>
+                  <input 
+                      matInput
+                      class="full-width"
+                      required
+                      type="text"
+                      placeholder="Investor Name" 
+                      [(ngModel)]="stocks.investor_name" 
+                      [ngModelOptions]="{standalone: true}"
+                  >
+              </mat-form-field>&nbsp;&nbsp;
+              <mat-form-field>
+                  <input 
+                      matInput 
+                      style="width: 100%;" 
+                      type="number" 
+                      jhiNumberOnly 
+                      placeholder="No of shares"
+                      name="no_of_shares" id="no_of_shares" 
+                      [(ngModel)]="stocks.no_of_shares" 
+                      required 
+                  />
+              </mat-form-field> &nbsp;&nbsp;
+              <mat-form-field>
+                  <input 
+                      matInput 
+                      style="width: 100%;" 
+                      type="number" 
+                      jhiNumberOnly 
+                      placeholder="Share Price" 
+                      name="share_price" id="share_price" 
+                      [(ngModel)]="stocks.share_price"
+                      required
+                  />
+              </mat-form-field>&nbsp;&nbsp;
+              <mat-form-field>
+                  <input 
+                      matInput 
+                      style="width: 100%;" 
+                      type="textarea" 
+                      placeholder="Notes" 
+                      name="notes" 
+                      id="notes" 
+                      [(ngModel)]="stocks.notes"
+                  /> -->
+                  <div class="row"><!--start of row1 div-->
+                    <div class="col-md-6"><!--start of row1.col1 div-->
+                      <label><h6><b>Select Asset Type</b></h6></label>
+                    </div><!--end of row1.col1 div-->
+                    <div class="setmar col-md-6"><!--start of row1.col2 div-->
+                      <div><!--start of select div-->
+                        <mat-form-field>
+                          <mat-select placeholder="Choose Assets" name="assettype" [(ngModel)]="assettype">
+                            <mat-option  value="stocks" (click)="getAsset()">Stock</mat-option>
+                            <mat-option value="mutual" (click)="getAsset()">Mutual Fund</mat-option>
+                            <mat-option value="ChitFund" (click)="getAsset()">Chit Fund</mat-option>
+                            <mat-option value="FutureandOption"  (click)="getAsset()">Future and Option</mat-option>
+                            <mat-option value="SavingScheme" (click)="getAsset()">Saving Scheme</mat-option>
+                            <mat-option value="AlternativeInvestment" (click)="getAsset()">Alternative Investment</mat-option>
+                            <mat-option value="cash" (click)="getAsset()">Cash</mat-option>
+                            <mat-option value="physicalgoods" (click)="getAsset()">Physical Goods</mat-option>
+                            <mat-option value="Propertyandhousehold"  (click)="getAsset()">Property and Household</mat-option>
+                          </mat-select>
+                        </mat-form-field> 
+                      </div><!--end of select div-->
+                    </div><!--start of row1.col2 div-->
+                  </div><!--end of row1 div-->
+                  <div class="row">
+                    <h6>Available Asset to map</h6>
+                  </div>
+                  <div>
+                    <table>
+                      <tr>
+                        <th></th>&nbsp;
+                        <th>Asset Name</th>&nbsp;
+                        <th>Value</th>&nbsp;
+                        <th>Value to Map</th>
+                      </tr>
+                      <tr *ngFor="let output of stockout; let i = index">
+                          <td> <mat-checkbox (click)="selectedRecord(output.id)" ></mat-checkbox></td>&nbsp;
+                          <td>{{output.company_name}}</td>&nbsp;
+                          <td>{{output.share_price}}</td>&nbsp;
+                          <td><input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="goalselect.valuetomap"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- <div class="pull-right">start of btn div -->
+                    <!-- <button mat-button color="primary" class="btn btn-outline-primary" (click)="sub()">Submit</button>
+                    <button mat-button color="accent"  class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+                  </div> -->
+              </mat-form-field>
+              <div class="modal-footer">
+                  <button 
+                      type="submit"
+                      class="btn btn-primary"
+                      [disabled]="editForm.form.invalid || isSaving"
+                      class="btn btn-primary"
+                      (click)="c('Save click')">
+                      <span class="fa fa-save"></span>&nbsp;
+                      <span>Save</span>
+                  </button>
+                  <button 
+                      type="button" 
+                      class="btn btn-secondary" 
+                      data-dismiss="modal" 
+                      (click)="d('Cross click')">
+                      <span class="fa fa-ban"></span>&nbsp;
+                      <span>Cancel</span>
+                  </button>
+              </div>
+          </form>
+      </div>    
+  </ng-template>
 </div>
-
-<button mat-raised-button color="primary" (click)="AddGoal()">AddGoal</button>
