@@ -951,9 +951,9 @@
   </table>
 </div> -->
 
-<div class="table-responsive">
+<div class="">
   <h5>Goal Details</h5>
-    <table *ngIf="!isValid" class="table table-hover table-sm" class="table table-striped">
+    <table *ngIf="!isValid" class=" table-responsive table-bordered table-hover table-sm table-striped">
         <thead>
             <tr>
                 <th>SrNo</th>
@@ -1027,61 +1027,7 @@
       </div><!-- modal header end -->
       <div class="modal-body"><!-- modal body start -->
           <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
-              <!-- <mat-form-field>
-                  <input
-                      matInput 
-                      class="full-width"
-                      required type="text" 
-                      placeholder="Company Name" 
-                      [(ngModel)]="stocks.company_name" 
-                      [ngModelOptions]="{standalone: true}"
-                  >
-              </mat-form-field>&nbsp;&nbsp;
-              <mat-form-field>
-                  <input 
-                      matInput
-                      class="full-width"
-                      required
-                      type="text"
-                      placeholder="Investor Name" 
-                      [(ngModel)]="stocks.investor_name" 
-                      [ngModelOptions]="{standalone: true}"
-                  >
-              </mat-form-field>&nbsp;&nbsp;
-              <mat-form-field>
-                  <input 
-                      matInput 
-                      style="width: 100%;" 
-                      type="number" 
-                      jhiNumberOnly 
-                      placeholder="No of shares"
-                      name="no_of_shares" id="no_of_shares" 
-                      [(ngModel)]="stocks.no_of_shares" 
-                      required 
-                  />
-              </mat-form-field> &nbsp;&nbsp;
-              <mat-form-field>
-                  <input 
-                      matInput 
-                      style="width: 100%;" 
-                      type="number" 
-                      jhiNumberOnly 
-                      placeholder="Share Price" 
-                      name="share_price" id="share_price" 
-                      [(ngModel)]="stocks.share_price"
-                      required
-                  />
-              </mat-form-field>&nbsp;&nbsp;
-              <mat-form-field>
-                  <input 
-                      matInput 
-                      style="width: 100%;" 
-                      type="textarea" 
-                      placeholder="Notes" 
-                      name="notes" 
-                      id="notes" 
-                      [(ngModel)]="stocks.notes"
-                  /> -->
+ 
                   <div class="row"><!--start of row1 div-->
                     <div class="col-md-6"><!--start of row1.col1 div-->
                       <label><h6><b>Select Asset Type</b></h6></label>
@@ -1108,18 +1054,23 @@
                     <h6>Available Asset to map</h6>
                   </div>
                   <div>
-                    <table>
-                      <tr>
+                    <table class="table-responsive table-striped table-hover">
+                      <thead>
                         <th></th>&nbsp;
                         <th>Asset Name</th>&nbsp;
                         <th>Value</th>&nbsp;
                         <th>Value to Map</th>
-                      </tr>
-                      <tr *ngFor="let output of stockout; let i = index">
-                          <td> <mat-checkbox (click)="selectedRecord(output.id)" ></mat-checkbox></td>&nbsp;
+                      </thead>
+                      <tr *ngFor="let output of goalArray" >
+                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada"></mat-checkbox></td>&nbsp;
                           <td>{{output.company_name}}</td>&nbsp;
                           <td>{{output.share_price}}</td>&nbsp;
-                          <td><input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="goalselect.valuetomap"></td>
+                          <td (click)="getMapValue(output.id)" class="btn btn-sm btn-outline-success"> map </td>
+                          <!-- <td> {{temp.value}</td> -->
+                          <!-- <td *ngIf="mapValue"></td>
+                          <td *ngIf="mapValue">
+                            <input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="output.valuetomap">
+                          </td> -->
                       </tr>
                     </table>
                   </div>
