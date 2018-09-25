@@ -917,42 +917,10 @@
     </div><!--end of ngSwitchCaseNewGoal div-->
   </div><!-- end of ngSwitch div -->  
 </div>
-<!-- <div *ngIf="!isValid" style="margin-top: 50px;">
-  <table>
-    <tr>
-      <th>SrNo</th>
-      <th>GoalType</th>
-      <th>GoalName</th>
-      <th>Priority</th>
-      <th>Year To Goal</th>
-      <th>Present Cost</th>
-      <th>Future Cost</th>
-      <th>Required Monthly Investment</th>
-      <th>Fund Shortage</th>
-      <th>Linked Assets</th>
-      <th>Date Of Creation</th>
-      <th>Notes</th>
-    </tr>
-    <tr *ngFor="let out of output">
-      <td>{{out.id}}</td>
-      <td>{{out.goaltype}}</td>
-      <td>{{out.goalname}}</td>
-      <td>{{out.goalpriority}}</td>
-      <td>{{out.yeartogoal}}</td>
-      <td>{{out.presentcost}}</td>
-      <td>{{out.futurecost}}</td>
-      <td>{{out.requiremonthinvest}}</td>
-      <td>{{out.fundshortage}}</td>
-      <td><a (click)="openDialog()">Link Assets</a></td>
-      <td>{{out.crationdate}}</td>
-      <td>{{out.goalNotes}}</td>
-    </tr>
-    
-  </table>
-</div> -->
 
 <div class="">
   <h5>Goal Details</h5>
+  <button mat-button color="primary" class="btn btn-link" (click)="AddGoal()"><span> <i class="fa fa-plus" aria-hidden="true"></i></span>AddGoal</button></th>
     <table *ngIf="!isValid" class=" table-responsive table-bordered table-hover table-sm table-striped">
         <thead>
             <tr>
@@ -965,10 +933,10 @@
                 <th>Future Cost</th>
                 <th>Required Monthly Investment</th>
                 <th>Fund Shortage</th>
-                <th>Linked Assets</th>
                 <th>Date Of Creation</th>
                 <th>Notes</th>
-                <th><button mat-button color="primary" class="btn btn-link" (click)="AddGoal()"><span> <i class="fa fa-plus" aria-hidden="true"></i></span>AddGoal</button></th>
+                <th>Link Assets</th>
+                <th>View</th>
                 <!-- <th>Update</th>
                 <th>Delete</th> -->
             </tr>
@@ -984,31 +952,18 @@
                 <td>{{out.futurecost}}</td>
                 <td>{{out.requiremonthinvest}}</td>
                 <td>{{out.fundshortage}}</td>
-                <td>
-                  <button 
-                      class="btn btn-outline-info" 
-                      type="button" 
-                      (click)="openLinkAsset(editLinkModal,out.id)">
-                      Link Assets
-                  </button>             
-              </td>
                 <td>{{out.crationdate}}</td>
                 <td>{{out.goalNotes}}</td>
                 <td>
-                    <!-- <button 
-                        class="btn btn-outline-info" 
-                        type="button" 
-                        (Click)="change()">
-                        <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
-                    </button>             
+                  <button class="btn btn-sm btn-outline-info" type="button" (click)="openLinkAsset(editLinkModal,out.id)">
+                    <span class="fa fa-link"></span>
+                  </button>
                 </td>
                 <td>
-                    <button 
-                        class="btn btn-outline-danger" 
-                        type="button">
-                        <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                    </button>             
-                </td> -->
+                  <button class="btn btn-sm btn-outline-warning" (click)="viewByGoalId(out.id, viewLinkedAssetModal)">
+                    <span class="fa fa-eye"></span>
+                  </button>
+                </td>
             </tr>
         </tbody>
     </table><!-- table end here -->
@@ -1054,30 +1009,27 @@
                     <h6>Available Asset to map</h6>
                   </div>
                   <div>
-                    <table class="table-responsive table-striped table-hover">
+                    <table class="table table-responsive table-hover table-striped table-bordered">
                       <thead>
-                        <th></th>&nbsp;
-                        <th>Asset Name</th>&nbsp;
-                        <th>Value</th>&nbsp;
+                        <th>ID</th>
+                        <th>Asset Name</th>
+                        <th>Value</th>
                         <th>Value to Map</th>
+                        <th>Map/Unmap</th>
+                        <th>Mapping</th>
                       </thead>
-                      <tr *ngFor="let output of goalArray" >
-                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada"></mat-checkbox></td>&nbsp;
-                          <td>{{output.company_name}}</td>&nbsp;
-                          <td>{{output.share_price}}</td>&nbsp;
+                      <tr *ngFor="let output of stockout" >
+                          <td>{{output.id}}</td>
+                          <td>{{output.company_name}}</td>
+                          <td>{{output.share_price}}</td>
                           <td (click)="getMapValue(output.id)" class="btn btn-sm btn-outline-success"> map </td>
-                          <!-- <td> {{temp.value}</td> -->
-                          <!-- <td *ngIf="mapValue"></td>
-                          <td *ngIf="mapValue">
-                            <input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="output.valuetomap">
-                          </td> -->
+                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada">
+                                </mat-checkbox>
+                          </td>
                       </tr>
                     </table>
                   </div>
-                  <!-- <div class="pull-right">start of btn div -->
-                    <!-- <button mat-button color="primary" class="btn btn-outline-primary" (click)="sub()">Submit</button>
-                    <button mat-button color="accent"  class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
-                  </div> -->
+                 
               </mat-form-field>
               <div class="modal-footer">
                   <button 
@@ -1102,3 +1054,31 @@
       </div>    
   </ng-template>
 </div>
+
+<ng-template #viewLinkedAssetModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
+  <div class="modal-header">
+      <h4 class="modal-title" id="viewLinkedAssetModal">Linked Assets</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <table class="table table-responsive table-hover table-striped">
+        <thead>
+          <th>#</th>
+          <th>Goal ID</th>
+          <th>Asset Name</th>
+          <th>Asset ID</th>
+          <th>Mapped Value</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of MappedArray">
+            <td> {{ item.element.id }} </td>
+            <td> {{ item.element.goalid }} </td>
+            <td> {{ item.element.assetname }} </td>
+            <td> {{ item.element.assetid }} </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>    
+</ng-template>

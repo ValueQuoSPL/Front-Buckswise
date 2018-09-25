@@ -96,4 +96,23 @@ export class GoalselectService {
       goalArray
     );
   }
+
+  public PostMapping(data) {
+    const url = SERVER_API_URL + 'api/assetmappings';
+    return this.http.post(url, data);
+
+  }
+  public GetMapping() {
+    const url = SERVER_API_URL + 'api/assetmappings';
+    return this.http.get(url);
+
+  }
+
+  public DeleteMapping(id) {
+    // console.log('deleting data', id);
+    const url = SERVER_API_URL + 'api/delete/' + id;
+    console.log(url);
+    return this.http.delete(url);
+
+  }
 }
