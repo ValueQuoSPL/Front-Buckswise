@@ -96,9 +96,21 @@ export class GoalselectService {
       goalArray
     );
   }
-  public assetmap(mapping): Observable<any> {
-    // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + "api/assetmappings", mapping);
+
+  public PostMapping(data) {
+    const url = SERVER_API_URL + "api/assetmappings";
+    return this.http.post(url, data);
+  }
+  public GetMapping() {
+    const url = SERVER_API_URL + "api/assetmap";
+    return this.http.get(url);
+  }
+
+  public DeleteMapping(id) {
+    // console.log('deleting data', id);
+    const url = SERVER_API_URL + "api/delete/" + id;
+    console.log(url);
+    return this.http.delete(url);
   }
   public getMutualFund(uid) {
     console.log("in getMutualFundByUid service uid", uid);

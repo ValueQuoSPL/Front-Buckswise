@@ -8,6 +8,13 @@ import { Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { MutualfundService } from "app/my-assets/mutual/mutual.service";
 import { GoalAddButtonComponent } from "../../goal/goal-add-button/goal-add-button.component";
+// import { AlternateService } from "./alternate-investment/alternateinvest.service";
+// import { CashService } from "./cash/cash.service";
+// import { ChitFundService } from "./chit-funds/chitfund.service";
+// import { PropertyService } from "./property/property.service";
+// import { FutureOptionService } from "./future-option/futureoption.service";
+// import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
+
 import {
   GoalSelect,
   EducationSelect,
@@ -30,6 +37,7 @@ class Mapping {
   assetname;
   assetid;
   valuetomap;
+  value;
 }
 
 @Component({
@@ -46,10 +54,12 @@ export class GoalSelectComponent implements OnInit {
   assettype: any;
   dialogRef: any;
   commonid: number;
-  goalArray: any;
+  AssetArray: any;
   assetname: any = [];
   mapping: Mapping = new Mapping();
   checked;
+  mutualres: any;
+  valtomap: any;
 
   // goalselectArray = [];
   // HOMESELECT=[];
@@ -86,9 +96,13 @@ export class GoalSelectComponent implements OnInit {
   keyid: number;
 
   tempArray: any = [];
-  mapval: string;
-  assetres: any = [];
-  resp: any;
+  AssetMappingDB: any = [];
+  AfterDeleteAssetMappingDB: any = [];
+  MappedArray: any = [];
+  MappedArrayDB: any = [];
+  GoalArray: any = [];
+  goalid: any;
+  assetid: any;
 
   constructor(
     private router: Router,
@@ -327,19 +341,13 @@ export class GoalSelectComponent implements OnInit {
         this.getgoalbyid(this.uid);
       });
   }
-  getgoal() {
-    //  // console.log('in main ts', id);
-    this.goalSelectService.getgoal().subscribe(res => {
-      // console.log(res);
-      this.output = res;
-      // console.log(this.output);
-    });
-  }
+
   getgoalbyid(uid) {
     // console.log('in main ts', this.uid);
     this.goalSelectService.getgoalbyid(this.uid).subscribe(res => {
       // console.log(res);
       this.output = res;
+      this.GoalArray = res;
       // console.log(this.output);
       // this.isValid=false;
       if (this.output.uid === null) {
@@ -373,7 +381,7 @@ export class GoalSelectComponent implements OnInit {
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          console.log("before update goalArray is", this.goalArray);
+          console.log("before update AssetArray is", this.AssetArray);
           this.update();
         },
         reason => {
@@ -385,22 +393,22 @@ export class GoalSelectComponent implements OnInit {
     // console.log('in main ts', this.commonid);
     this.goalSelectService.getGoalbyId(this.commonid).subscribe(res => {
       // console.log(res);
-      this.goalArray = res;
-      // console.log('in goalArray ', this.goalArray);
-      // this.goalselect.uid = this.goalArray.uid;
-      // this.goalselect.goalname =this. goalArray.goalname;
-      // this.goalselect.priority =this. goalArray.goalpriority;
-      // this.goalselect.price = this.goalArray.presentcost;
-      // this.goalselect.notes = this.goalArray.goalNotes;
-      // this.goalselect.loanrequire = this.goalArray.uid;
-      // this.goalselect.creationdate = this.goalArray.crationdate;
-      // this.goalselect.fundshortage = this.goalArray.fundshortage;
-      // this.goalselect.futurecost = this.goalArray.futurecost;
-      // this.goalselect.goaltype = this.goalArray.goaltype;
-      // this.goalselect.requiremonthinvest = this.goalArray.requiremonthinvest;
+      this.AssetArray = res;
+      // console.log('in AssetArray ', this.AssetArray);
+      // this.goalselect.uid = this.AssetArray.uid;
+      // this.goalselect.goalname =this. AssetArray.goalname;
+      // this.goalselect.priority =this. AssetArray.goalpriority;
+      // this.goalselect.price = this.AssetArray.presentcost;
+      // this.goalselect.notes = this.AssetArray.goalNotes;
+      // this.goalselect.loanrequire = this.AssetArray.uid;
+      // this.goalselect.creationdate = this.AssetArray.crationdate;
+      // this.goalselect.fundshortage = this.AssetArray.fundshortage;
+      // this.goalselect.futurecost = this.AssetArray.futurecost;
+      // this.goalselect.goaltype = this.AssetArray.goaltype;
+      // this.goalselect.requiremonthinvest = this.AssetArray.requiremonthinvest;
       // this.getStockById(this.uid);
-      // this.goalselect.assetname = goalArray.uid;
-      //         // console.log('this is responce of getGoalbyId ', this.goalArray);
+      // this.goalselect.assetname = AssetArray.uid;
+      //         // console.log('this is responce of getGoalbyId ', this.AssetArray);
     });
   }
 
@@ -415,8 +423,8 @@ export class GoalSelectComponent implements OnInit {
   }
 
   update() {
-    console.log("inside update goalArray is ", this.goalArray);
-    const element = this.goalArray;
+    console.log("inside update AssetArray is ", this.AssetArray);
+    const element = this.AssetArray;
     console.log("array", this.stockout);
 
     // this.getStockId(this.id)
@@ -431,35 +439,100 @@ export class GoalSelectComponent implements OnInit {
     // });
   }
   selectedRecord(checked, id) {
-    // console.log(event);
     console.log(checked, id);
-    // console.log(event.checked);
+    this.assetid = id;
 
-    for (let index = 0; index < this.goalArray.length; index++) {
-      const element = this.goalArray[index];
-      if (element.id === id) {
-        console.log("match found");
+    for (let index = 0; index < this.AssetArray.length; index++) {
+      const asset = this.AssetArray[index];
+      if (asset.id === this.assetid) {
+        // console.log('match found');
+        this.findAsset(this.assetid);
+
         if (checked === true) {
-          this.mapping.uid = this.uid;
-          this.mapping.goalid = this.commonid;
-          this.mapping.assetname = this.assettype;
-          this.mapping.assetid = id;
-          this.mapping.valuetomap = this.mapval;
-          console.log("call post", this.mapping);
-          this.goalSelectService.assetmap(this.mapping).subscribe(response => {
-            this.assetres = response;
-            console.log("response of assetpost", this.assetres);
-            // this.resp = this.assetres.valuetomap;
-            // console.log('response of assetpost', this.resp);
+          // console.log('call post', this.mapping);
+          this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
+            // console.log('added to db');
+            this.goalSelectService.GetMapping().subscribe(data => {
+              this.AssetMappingDB = data;
+              console.log("db value after map", this.AssetMappingDB);
+            });
           });
         } else {
-          console.log("call delete", this.mapping);
+          // console.log('call delete', this.mapping);
+          for (let j = 0; j < this.AssetMappingDB.length; j++) {
+            const row = this.AssetMappingDB[j];
+            if (row.assetname === this.assettype && row.assetid === id) {
+              const res = this.goalSelectService
+                .DeleteMapping(row.id)
+                .subscribe();
+              console.log("delete response", res);
+              break;
+            }
+          }
         }
         break;
       } else {
         console.log("not found");
       }
     }
+  }
+
+  findAsset(id) {
+    for (let index = 0; index < this.stockout.length; index++) {
+      const element = this.stockout[index];
+      if (id === element.id) {
+        this.mapping.assetname = element.company_name;
+        this.mapping.value = element.share_price;
+      }
+      this.mapping.goalid = this.commonid;
+      this.mapping.valuetomap = this.valtomap;
+    }
+  }
+
+  viewByGoalId(id, content) {
+    this.goalid = id;
+
+    this.MappedArray.splice(0, this.MappedArray.length);
+    console.log("before filling mapped array", this.MappedArray);
+
+    for (let index = 0; index < this.GoalArray.length; index++) {
+      const goal = this.GoalArray[index];
+      if (goal.id === this.goalid) {
+        // console.log('goal found');
+        // console.log(goal);
+        this.viewGoal(id, content);
+        break;
+      } else {
+        console.log("goal not found");
+      }
+    }
+  }
+
+  viewGoal(id, content) {
+    this.goalSelectService.GetMapping().subscribe(res => {
+      this.MappedArrayDB = res;
+      // console.log(this.MappedArrayDB);
+      for (let index = 0; index < this.MappedArrayDB.length; index++) {
+        const element = this.MappedArrayDB[index];
+        if (element.goalid === id) {
+          this.MappedArray.push({ element });
+        }
+      }
+      this.OpenMappedAsset(content);
+    });
+  }
+
+  OpenMappedAsset(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: "viewLinkedAssetModal" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   deleteRecord(id) {
@@ -471,9 +544,9 @@ export class GoalSelectComponent implements OnInit {
     return false;
   }
   getMapValue(id) {
-    const res = prompt("Enter value to map ");
-    this.mapval = res;
-    console.log("map value of id ", id, "is", res);
+    this.valtomap = prompt("Enter value to map ");
+    //  this.mapval = res;
+    console.log("map value of id ", id, "is", this.valtomap);
   }
   getAsset() {
     // console.log(this.assettype);
@@ -482,27 +555,22 @@ export class GoalSelectComponent implements OnInit {
       this.getStockById(this.uid);
     } else if (this.assettype === "mutual") {
       // console.log(this.assettype);
-      // this.getMutualFundByUid(this.uid);
+      this.getMutualFundByUid(this.uid);
     }
   }
   getStockById(uid) {
     this.stockService.getStockById(this.uid).subscribe(res => {
       this.stockout = res;
-      this.goalArray = res;
-      for (let index = 0; index < this.goalArray.length; index++) {
-        const element = this.goalArray[index];
-        this.tempArray.push({
-          id: element.id,
-          value: element.share_price
-        });
-      }
+      this.AssetArray = res;
     });
   }
   getMutualFundByUid(uid) {
     this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
       console.log("this is responce of mufund", res);
-      this.output = res;
-      console.log("responce of getMutualFundByUid service", this.output);
+      this.mutualres = res;
+      this.AssetArray = res;
+      console.log("responce of getMutualFundByUid service", this.mutualres);
     });
+    // this.getSavingSchemeUid(this.uid2);
   }
 }
