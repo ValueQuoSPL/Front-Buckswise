@@ -12,6 +12,7 @@ import {
 
 import { UserRouteAccessService } from "app/shared";
 import { promoRoute } from "app/admin/promo-code-manage/promo-code.route";
+import { appointmentRoute } from "app/admin/appointment-manage/appointment.route";
 
 const ADMIN_ROUTES = [
   auditsRoute,
@@ -21,7 +22,8 @@ const ADMIN_ROUTES = [
   logsRoute,
   ...userMgmtRoute,
   metricsRoute,
-  promoRoute
+  promoRoute,
+  appointmentRoute
 ];
 
 export const adminState: Routes = [
