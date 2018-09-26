@@ -24,6 +24,7 @@ import {
 import { CustomMaterialModule } from "app/custom-material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CustomDirectiveModule } from "app/shared/directive/directive.module";
+import { AppointmentManageComponent } from "./appointment-manage/appointment-manage.component";
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { CustomDirectiveModule } from "app/shared/directive/directive.module";
     JhiDocsComponent,
     JhiMetricsMonitoringComponent,
     JhiMetricsMonitoringModalComponent,
-    PromoCodeManageComponent
+    PromoCodeManageComponent,
+    AppointmentManageComponent
   ],
   entryComponents: [
     UserMgmtDeleteDialogComponent,
