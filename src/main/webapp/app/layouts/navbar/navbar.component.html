@@ -2,7 +2,7 @@
 <div >
     <span [ngSwitch]="isAuthenticated()">
         <div *ngSwitchCase="true">
-            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top" style="margin-left: 40%;">
+            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top" style="margin-left: 40%;  background: transparent;">
                 <div class="jh-logo-container float-left">
                     <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
                         <i class="fa fa-ellipsis-v"></i>
@@ -141,7 +141,7 @@
             </nav>    
         </div>
         <div *ngSwitchCase="false">
-            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top" style="" >
+            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top" style=" background: transparent;" >
                 <div class="jh-logo-container float-left">
                     <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
                         <i class="fa fa-bars"></i>
