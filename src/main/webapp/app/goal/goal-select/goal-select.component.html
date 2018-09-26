@@ -1,5 +1,5 @@
 <div *ngIf="isValid">
-  <div class="row"><!--start of row1 div-->
+  <div class="row container"><!--start of row1 div-->
     <div class="col-md-2"><!--start of row1.col1 div-->
       <label><h4><b>Select Goal</b></h4></label>
     </div><!--end of row1.col1 div-->
@@ -917,41 +917,11 @@
     </div><!--end of ngSwitchCaseNewGoal div-->
   </div><!-- end of ngSwitch div -->  
 </div>
-<!-- <div *ngIf="!isValid" style="margin-top: 50px;">
-  <table>
-    <tr>
-      <th>SrNo</th>
-      <th>GoalType</th>
-      <th>GoalName</th>
-      <th>Priority</th>
-      <th>Year To Goal</th>
-      <th>Present Cost</th>
-      <th>Future Cost</th>
-      <th>Required Monthly Investment</th>
-      <th>Fund Shortage</th>
-      <th>Linked Assets</th>
-      <th>Date Of Creation</th>
-      <th>Notes</th>
-    </tr>
-    <tr *ngFor="let out of output">
-      <td>{{out.id}}</td>
-      <td>{{out.goaltype}}</td>
-      <td>{{out.goalname}}</td>
-      <td>{{out.goalpriority}}</td>
-      <td>{{out.yeartogoal}}</td>
-      <td>{{out.presentcost}}</td>
-      <td>{{out.futurecost}}</td>
-      <td>{{out.requiremonthinvest}}</td>
-      <td>{{out.fundshortage}}</td>
-      <td><a (click)="openDialog()">Link Assets</a></td>
-      <td>{{out.crationdate}}</td>
-      <td>{{out.goalNotes}}</td>
-    </tr>
-    
-  </table>
-</div> -->
-<div>
-    <table *ngIf="!isValid" class="table table-hover table-sm">
+
+<div class="">
+  <h5>Goal Details</h5>
+  <button mat-button color="primary" class="btn btn-link" (click)="AddGoal()"><span> <i class="fa fa-plus" aria-hidden="true"></i></span>AddGoal</button></th>
+    <table *ngIf="!isValid" class=" table-responsive table-bordered table-hover table-sm table-striped">
         <thead>
             <tr>
                 <th>SrNo</th>
@@ -963,10 +933,10 @@
                 <th>Future Cost</th>
                 <th>Required Monthly Investment</th>
                 <th>Fund Shortage</th>
-                <th>Linked Assets</th>
                 <th>Date Of Creation</th>
                 <th>Notes</th>
-                <th><button mat-button color="primary" color="accent"(click)="AddGoal()">AddGoal</button></th>
+                <th>Link Assets</th>
+                <th>View</th>
                 <!-- <th>Update</th>
                 <th>Delete</th> -->
             </tr>
@@ -982,27 +952,133 @@
                 <td>{{out.futurecost}}</td>
                 <td>{{out.requiremonthinvest}}</td>
                 <td>{{out.fundshortage}}</td>
-                <td><a (click)="openDialog()">Link Assets</a></td>
                 <td>{{out.crationdate}}</td>
                 <td>{{out.goalNotes}}</td>
                 <td>
-                    <!-- <button 
-                        class="btn btn-outline-info" 
-                        type="button" 
-                        (Click)="change()">
-                        <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
-                    </button>             
+                  <button class="btn btn-sm btn-outline-info" type="button" (click)="openLinkAsset(editLinkModal,out.id)">
+                    <span class="fa fa-link"></span>
+                  </button>
                 </td>
                 <td>
-                    <button 
-                        class="btn btn-outline-danger" 
-                        type="button">
-                        <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                    </button>             
-                </td> -->
+                  <button class="btn btn-sm btn-outline-warning" (click)="viewByGoalId(out.id, viewLinkedAssetModal)">
+                    <span class="fa fa-eye"></span>
+                  </button>
+                </td>
             </tr>
         </tbody>
     </table><!-- table end here -->
+    <ng-template #editLinkModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
+      <div class="modal-header"><!-- modal header start -->
+          <h4 
+              class="modal-title" 
+              id="editLinkModal">Linked Assets</h4>
+          <button 
+              type="button" 
+              class="close" 
+              aria-label="Close" 
+              (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div><!-- modal header end -->
+      <div class="modal-body"><!-- modal body start -->
+          <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
+ 
+                  <div class="row"><!--start of row1 div-->
+                    <div class="col-md-6"><!--start of row1.col1 div-->
+                      <label><h6><b>Select Asset Type</b></h6></label>
+                    </div><!--end of row1.col1 div-->
+                    <div class="setmar col-md-6"><!--start of row1.col2 div-->
+                      <div><!--start of select div-->
+                        <mat-form-field>
+                          <mat-select placeholder="Choose Assets" name="assettype" [(ngModel)]="assettype">
+                            <mat-option  value="stocks" (click)="getAsset()">Stock</mat-option>
+                            <mat-option value="mutual" (click)="getAsset()">Mutual Fund</mat-option>
+                            <mat-option value="ChitFund" (click)="getAsset()">Chit Fund</mat-option>
+                            <mat-option value="FutureandOption"  (click)="getAsset()">Future and Option</mat-option>
+                            <mat-option value="SavingScheme" (click)="getAsset()">Saving Scheme</mat-option>
+                            <mat-option value="AlternativeInvestment" (click)="getAsset()">Alternative Investment</mat-option>
+                            <mat-option value="cash" (click)="getAsset()">Cash</mat-option>
+                            <mat-option value="physicalgoods" (click)="getAsset()">Physical Goods</mat-option>
+                            <mat-option value="Propertyandhousehold"  (click)="getAsset()">Property and Household</mat-option>
+                          </mat-select>
+                        </mat-form-field> 
+                      </div><!--end of select div-->
+                    </div><!--start of row1.col2 div-->
+                  </div><!--end of row1 div-->
+                  <div class="row">
+                    <h6>Available Asset to map</h6>
+                  </div>
+                  <div>
+                    <table class="table table-responsive table-hover table-striped table-bordered">
+                      <thead>
+                        <th>ID</th>
+                        <th>Asset Name</th>
+                        <th>Value</th>
+                        <th>Value to Map</th>
+                        <th>Map/Unmap</th>
+                        <th>Mapping</th>
+                      </thead>
+                      <tr *ngFor="let output of stockout" >
+                          <td>{{output.id}}</td>
+                          <td>{{output.company_name}}</td>
+                          <td>{{output.share_price}}</td>
+                          <td (click)="getMapValue(output.id)" class="btn btn-sm btn-outline-success"> map </td>
+                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada">
+                                </mat-checkbox>
+                          </td>
+                      </tr>
+                    </table>
+                  </div>
+                 
+              </mat-form-field>
+              <div class="modal-footer">
+                  <button 
+                      type="submit"
+                      class="btn btn-primary"
+                      [disabled]="editForm.form.invalid || isSaving"
+                      class="btn btn-primary"
+                      (click)="c('Save click')">
+                      <span class="fa fa-save"></span>&nbsp;
+                      <span>Save</span>
+                  </button>
+                  <button 
+                      type="button" 
+                      class="btn btn-secondary" 
+                      data-dismiss="modal" 
+                      (click)="d('Cross click')">
+                      <span class="fa fa-ban"></span>&nbsp;
+                      <span>Cancel</span>
+                  </button>
+              </div>
+          </form>
+      </div>    
+  </ng-template>
 </div>
 
-<button mat-raised-button color="primary" (click)="AddGoal()">AddGoal</button>
+<ng-template #viewLinkedAssetModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
+  <div class="modal-header">
+      <h4 class="modal-title" id="viewLinkedAssetModal">Linked Assets</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <table class="table table-responsive table-hover table-striped">
+        <thead>
+          <th>#</th>
+          <th>Goal ID</th>
+          <th>Asset Name</th>
+          <th>Asset ID</th>
+          <th>Mapped Value</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of MappedArray">
+            <td> {{ item.element.id }} </td>
+            <td> {{ item.element.goalid }} </td>
+            <td> {{ item.element.assetname }} </td>
+            <td> {{ item.element.assetid }} </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>    
+</ng-template>

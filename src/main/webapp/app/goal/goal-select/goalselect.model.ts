@@ -1,15 +1,25 @@
 import { WSAEINVALIDPROVIDER } from "constants";
 
 export class GoalSelect {
+  uid: Number;
+  id: number;
   goalname: string;
   priority: string;
   price: string;
   notes: string;
   loanrequire: string;
+  fundshortage: string;
+  futurecost: string;
   creationdate: string;
   goaltype: string;
+  requiremonthinvest: string;
+  assetname: string;
+  value: string;
+  valuetomap: string;
 }
 export class EducationSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -19,6 +29,8 @@ export class EducationSelect {
   creationdate: string;
 }
 export class VehicleSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -27,6 +39,8 @@ export class VehicleSelect {
   creationdate: string;
 }
 export class ChildBirthSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -35,6 +49,8 @@ export class ChildBirthSelect {
   creationdate: string;
 }
 export class MerrageSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -43,6 +59,8 @@ export class MerrageSelect {
   creationdate: string;
 }
 export class BusinessSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -51,6 +69,8 @@ export class BusinessSelect {
   creationdate: string;
 }
 export class FamilySupportSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -59,6 +79,8 @@ export class FamilySupportSelect {
   creationdate: string;
 }
 export class VacationSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -67,6 +89,8 @@ export class VacationSelect {
   creationdate: string;
 }
 export class EmergencyFundSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -75,6 +99,8 @@ export class EmergencyFundSelect {
   creationdate: string;
 }
 export class RetirementFundSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
@@ -84,6 +110,8 @@ export class RetirementFundSelect {
   creationdate: string;
 }
 export class NewGoalSelect {
+  uid: Number;
+  goaltype: string;
   goalname: string;
   priority: string;
   price: string;
