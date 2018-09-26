@@ -21,6 +21,7 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatTableModule } from "@angular/material/table";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   imports: [],
@@ -43,7 +44,8 @@ import { MatTableModule } from "@angular/material/table";
     MatListModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
   ]
 })
 export class CustomMaterialModule {}
