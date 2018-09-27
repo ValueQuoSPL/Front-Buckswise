@@ -82,7 +82,7 @@ export class AppointmentComponent implements OnInit {
   _day: any;
   _time: any;
   formatDate: any;
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen = true;
 
   constructor(
     private appointmentService: AppointmentService,

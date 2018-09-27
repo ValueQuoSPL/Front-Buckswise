@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LifeInsurance } from 'app/risk/risk.model';
-import { RiskService } from 'app/risk/risk.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { LifeInsurance } from "app/risk/risk.model";
+import { RiskService } from "app/risk/risk.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import {
   CreditService,
   LoanService
-} from 'app/pratik/spending/spending.service';
-import { GoalselectService } from 'app/goal/goal-select/goalselect.service';
-import { Principal, AccountService } from 'app/shared';
+} from "app/pratik/spending/spending.service";
+import { GoalselectService } from "app/goal/goal-select/goalselect.service";
+import { Principal, AccountService } from "app/shared";
 
 @Component({
-  selector: 'jhi-life-insurance',
-  templateUrl: './life-insurance.component.html'
+  selector: "jhi-life-insurance",
+  templateUrl: "./life-insurance.component.html"
 })
 export class LifeInsuranceComponent implements OnInit {
   account: Account;
@@ -22,7 +22,6 @@ export class LifeInsuranceComponent implements OnInit {
   deleteFieldValue: any;
   liabilitiyArray: any;
   liability: any = [];
-
   total: any;
   isSaving: any;
   save: any;
@@ -30,18 +29,20 @@ export class LifeInsuranceComponent implements OnInit {
   resetFieldValue: any;
   closeResult: string;
   public output: any;
+  commanId: any;
 
+  checkLife: any;
   dynamicGoalArray: any;
   dynamicLoanArray: any = [];
   dynamicCreditArray: any = [];
-
-  // goalLife;
+  updateGoalArray: any = [];
   check;
   goalLife: any;
   futurecost: any;
   outstandingpricipal: any;
   result: any;
   i;
+  goalId: any;
 
   constructor(
     private principal: Principal,
@@ -60,13 +61,19 @@ export class LifeInsuranceComponent implements OnInit {
       this.uid = account.id;
     });
     this.getUserid();
-    // this.getGoal(this.uid);
-    // this.getCredit(this.uid);
-    // this.getLoan(this.uid);
+  }
+  checklife(event, id) {
+    this.goalId = id;
+    this.checkLife = event.target.checked;
+    this.updateGoalArray.push({
+      id: this.goalId,
+      check: this.checkLife
+    });
+    this.riskService.updateGoal(this.updateGoalArray).subscribe(data => {});
   }
 
   getUserid() {
-    console.log('inside get uid');
+    console.log("inside get uid");
     // retrieve the userIdentity data from the server, update the identity object, and then resolve.
     return this.accountService
       .get()
@@ -75,42 +82,41 @@ export class LifeInsuranceComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log('from life userid is : ', this.uid);
+          console.log("from life userid is : ", this.uid);
           this.getGoal(this.uid);
           this.getCredit(this.uid);
           this.getLoan(this.uid);
           this.onGetLife();
         } else {
-          console.log('cannot get user details check login ');
+          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
   }
 
   getGoal(uid) {
-    console.log('inside risk getCredit()', uid);
+    console.log("inside risk getCredit()", uid);
     this.goalService.getgoalbyid(uid).subscribe((response: any[]) => {
       this.dynamicGoalArray = response;
       console.log(this.dynamicGoalArray);
       for (let i = 0; i < this.dynamicGoalArray.length; i++) {
         this.futurecost = this.dynamicGoalArray[i].futurecost;
+        console.log(this.futurecost);
       }
-      console.log(this.futurecost);
-      // console.log('goaldata', this.dynamicGoalArray);
     });
   }
 
   getCredit(uid) {
-    console.log('inside risk getCredit()', uid);
+    console.log("inside risk getCredit()", uid);
     this.creditService.GetCredit(uid).subscribe((response: any[]) => {
       this.dynamicCreditArray = response;
       console.log(this.dynamicCreditArray);
     });
-    console.log('getCredit() success');
+    console.log("getCredit() success");
   }
 
   getLoan(uid) {
-    console.log('inside risk getLoan()', uid);
+    console.log("inside risk getLoan()", uid);
     this.loanService.GetLoan(uid).subscribe((response: any[]) => {
       this.dynamicLoanArray = response;
       console.log(this.dynamicLoanArray);
@@ -120,7 +126,7 @@ export class LifeInsuranceComponent implements OnInit {
         this.outstandingpricipal = this.dynamicLoanArray[i].outstandingpricipal;
         // console.log(type);
         if (type === true) {
-          console.log('if');
+          console.log("if");
         } else {
           // console.log('under esle');
           this.liability.push(this.dynamicLoanArray[i]);
@@ -129,14 +135,14 @@ export class LifeInsuranceComponent implements OnInit {
       // console.log('liability', this.liability);
       this.check = this.dynamicLoanArray.checkType;
     });
-    console.log('getLoan() success');
+    console.log("getLoan() success");
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -144,10 +150,9 @@ export class LifeInsuranceComponent implements OnInit {
 
   // life
   openLife(lifeContent) {
-    console.log('income modal open');
-
+    console.log("income modal open");
     this.modalService
-      .open(lifeContent, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeContent, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -180,20 +185,21 @@ export class LifeInsuranceComponent implements OnInit {
       userid: this.lifeInsurance.userid
     });
     this.riskService.SaveLifeInsurance(this.lifeInsurance).subscribe(data => {
-      alert('Added new stocks details');
+      alert("Added new stocks details");
       this.onGetLife();
     });
   }
 
   opnLife(id, lifeContent) {
-    console.log('income modal open');
-
+    console.log(id);
+    this.getGoal(this.uid);
+    this.commanId = id;
     this.modalService
-      .open(lifeContent, { ariaLabelledBy: 'lifeModal' })
+      .open(lifeContent, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          this.update(id);
+          this.update(this.commanId);
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -208,16 +214,18 @@ export class LifeInsuranceComponent implements OnInit {
     });
   }
   // update service for lifeInsurance
-  update(id) {
+  update(commanId) {
+    this.lifeInsurance.id = this.commanId;
+    this.lifeInsurance.userid = this.uid;
     this.riskService.updatelifeInsurance(this.lifeInsurance).subscribe(data => {
-      alert('data saved');
+      alert("data saved");
       this.onGetLife();
     });
   }
 
   deleteField(index, id) {
     this.riskService.delete(id).subscribe(data => {
-      alert('deleted');
+      alert("deleted");
     });
     this.goalLife.splice(index, 1);
   }
