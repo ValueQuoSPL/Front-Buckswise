@@ -167,12 +167,16 @@
 </form>
     </div><!--end of container div -->
 <div class="container" *ngIf="isValid">
-    <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar3 div -->
-        <h5>Relationship Details</h5>
-                <a style="margin-left: 20px;"><span (click)="editDetail()">Edit</span><i class="fa fa-pencil" aria-hidden="true"></i>
-                  </span></a>
-        <!-- <button mat-raised-button color="accent" (click)="editDetail()" style="margin-left: 700px;">Edit</button> -->
-        </div><!--end of navbar3 div -->
+    <div><!--start of navbar3 div -->
+        <div class="row">
+                <h5><strong>Relationship Details</strong></h5><span>
+                <button 
+                class="btn btn-outline-info d btn-sm"
+                type="button" 
+                (click)="editDetail()">
+                <span><i class="fa fa-edit" aria-hidden="true"></i></span>
+            </button></span>
+            </div>
     <div *ngFor="let profile of output">
         <div class="row">
             <div class="col-md-6">

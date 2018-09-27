@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: [
     './header.component.css',
-    '../../css/universal.css'
+    '../../css/universal.css',
+    '../../css/animate.css'
   ]
 })
 export class HeaderComponent implements OnInit {

@@ -10,7 +10,7 @@ import { FormControl } from "@angular/forms";
 @Component({
   selector: "jhi-familyprofile",
   templateUrl: "./familyprofile.component.html",
-  styles: ["./familyprofile.component.css"]
+  styleUrls: ["./familyprofile.component.css"]
 })
 export class FamilyprofileComponent implements OnInit {
   familyProfile: any;
@@ -47,7 +47,7 @@ export class FamilyprofileComponent implements OnInit {
       responce => console.log(responce),
       error => console.log(error)
     );
-    this.refreshPage();
+    this.getFamilyProfilebyid(this.uid);
   }
   getFamilyProfile() {
     this.Familypro.getFamilyProfile().subscribe(res => {
@@ -104,9 +104,6 @@ export class FamilyprofileComponent implements OnInit {
       responce => console.log(responce),
       error => console.log(error)
     );
-    this.refreshPage();
-  }
-  refreshPage() {
-    window.location.reload();
+    this.getFamilyProfilebyid(this.uid);
   }
 }

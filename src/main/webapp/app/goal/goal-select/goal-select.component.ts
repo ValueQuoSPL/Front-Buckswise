@@ -1,12 +1,20 @@
-import { StockService } from 'app/my-assets/stocks/stocks.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, Route } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { GoalselectService } from './goalselect.service';
-import { Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { GoalAddButtonComponent } from '../../goal/goal-add-button/goal-add-button.component';
+import { StockService } from "app/my-assets/stocks/stocks.service";
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
+import { FormControl } from "@angular/forms";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { GoalselectService } from "./goalselect.service";
+import { Inject } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MutualfundService } from "app/my-assets/mutual/mutual.service";
+import { GoalAddButtonComponent } from "../../goal/goal-add-button/goal-add-button.component";
+// import { AlternateService } from "./alternate-investment/alternateinvest.service";
+// import { CashService } from "./cash/cash.service";
+// import { ChitFundService } from "./chit-funds/chitfund.service";
+// import { PropertyService } from "./property/property.service";
+// import { FutureOptionService } from "./future-option/futureoption.service";
+// import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
+
 import {
   GoalSelect,
   EducationSelect,
@@ -19,25 +27,26 @@ import {
   EmergencyFundSelect,
   RetirementFundSelect,
   NewGoalSelect
-} from './goalselect.model';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService } from '../../shared';
+} from "./goalselect.model";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService } from "../../shared";
 
 class Mapping {
   uid;
   goalid;
   assetname;
   assetid;
+  valuetomap;
+  value;
 }
 
 @Component({
-  selector: 'jhi-goal-select',
-  templateUrl: './goal-select.component.html',
-  styleUrls: ['./goal-select.component.css']
+  selector: "jhi-goal-select",
+  templateUrl: "./goal-select.component.html",
+  styleUrls: ["./goal-select.component.css"]
 })
 export class GoalSelectComponent implements OnInit {
-
-  selectedday = '';
+  selectedday = "";
   isValid: boolean;
   resource: any;
   amount: any;
@@ -49,6 +58,8 @@ export class GoalSelectComponent implements OnInit {
   assetname: any = [];
   mapping: Mapping = new Mapping();
   checked;
+  mutualres: any;
+  valtomap: any;
 
   // goalselectArray = [];
   // HOMESELECT=[];
@@ -90,6 +101,8 @@ export class GoalSelectComponent implements OnInit {
   MappedArray: any = [];
   MappedArrayDB: any = [];
   GoalArray: any = [];
+  goalid: any;
+  assetid: any;
 
   constructor(
     private router: Router,
@@ -99,9 +112,9 @@ export class GoalSelectComponent implements OnInit {
     public dialog: MatDialog,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    public stockService: StockService
-  ) {
-     }
+    public stockService: StockService,
+    public Mutualfundservice: MutualfundService
+  ) {}
   ngOnInit() {
     this.FetchId();
   }
@@ -122,10 +135,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log(this.goalselect.requiremonthinvest);
     this.goalSelectService
       .saveHome(this.goalselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -144,10 +157,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.Educationselect.goaltype);
     this.goalSelectService
       .saveEducation(this.Educationselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -160,10 +173,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.Vehicleselect.goaltype);
     this.goalSelectService
       .saveVehicle(this.Vehicleselect)
-      .subscribe(
-        // // responce => // console.log(responce),
-        // // error => // console.log(error)
-      );
+      .subscribe
+      // // responce => // console.log(responce),
+      // // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -176,10 +189,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.Childbirthselect.goaltype);
     this.goalSelectService
       .saveChildBirth(this.Childbirthselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -192,10 +205,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.Merrageselect.goaltype);
     this.goalSelectService
       .saveMerrage(this.Merrageselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -208,10 +221,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.Businessselect.goaltype);
     this.goalSelectService
       .saveBusiness(this.Businessselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -224,10 +237,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.FamilySupportselect.goaltype);
     this.goalSelectService
       .saveFamilySupport(this.FamilySupportselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -244,10 +257,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log(this.goalselect.notes);
     this.goalSelectService
       .saveVacation(this.Vacationselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -260,10 +273,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.EmergencyFundselect.goaltype);
     this.goalSelectService
       .saveEmergencyFund(this.EmergencyFundselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -276,10 +289,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after adding type', this.RetirementFundselect.goaltype);
     this.goalSelectService
       .saveRetirementFund(this.RetirementFundselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -296,10 +309,10 @@ export class GoalSelectComponent implements OnInit {
     // console.log(this.goalselect.notes);
     this.goalSelectService
       .saveNewGoal(this.NewGoalselect)
-      .subscribe(
-        // responce => // console.log(responce),
-        // error => // console.log(error)
-      );
+      .subscribe
+      // responce => // console.log(responce),
+      // error => // console.log(error)
+      ();
     // console.log('outside saveHome details');
     this.isValid = false;
     this.getgoalbyid(this.uid);
@@ -310,7 +323,7 @@ export class GoalSelectComponent implements OnInit {
     this.isValid = true;
   }
   linkAssets() {
-    this.router.navigate(['goalAdd']);
+    this.router.navigate(["goalAdd"]);
   }
   selectChange(event: any) {
     // console.log('in selectchange method');
@@ -347,7 +360,7 @@ export class GoalSelectComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GoalAddButtonComponent, {
-      width: '550px'
+      width: "550px"
       // data: {name: this.name, animal: this.animal}
     });
 
@@ -364,11 +377,11 @@ export class GoalSelectComponent implements OnInit {
     // console.log('editLinkModal common id is', this.commonid);
     this.getGoalbyId(this.commonid);
     this.modalService
-      .open(editLinkModal, { ariaLabelledBy: 'editLinkModal' })
+      .open(editLinkModal, { ariaLabelledBy: "editLinkModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          console.log('before update AssetArray is', this.AssetArray);
+          console.log("before update AssetArray is", this.AssetArray);
           this.update();
         },
         reason => {
@@ -401,18 +414,18 @@ export class GoalSelectComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
 
   update() {
-    console.log('inside update AssetArray is ', this.AssetArray);
+    console.log("inside update AssetArray is ", this.AssetArray);
     const element = this.AssetArray;
-    console.log('array', this.stockout);
+    console.log("array", this.stockout);
 
     // this.getStockId(this.id)
     // this.getStockById(this.uid);
@@ -427,60 +440,71 @@ export class GoalSelectComponent implements OnInit {
   }
   selectedRecord(checked, id) {
     console.log(checked, id);
+    this.assetid = id;
 
     for (let index = 0; index < this.AssetArray.length; index++) {
       const asset = this.AssetArray[index];
-      if (asset.id === id) {
+      if (asset.id === this.assetid) {
         // console.log('match found');
-        this.mapping.uid = this.uid;
-        this.mapping.goalid = this.commonid;
-        this.mapping.assetname = this.assettype;
-        this.mapping.assetid = id;
+        this.findAsset(this.assetid);
 
         if (checked === true) {
-            // console.log('call post', this.mapping);
-            this.goalSelectService.PostMapping(this.mapping).subscribe(
-              res => {
-                // console.log('added to db');
-                this.goalSelectService.GetMapping().subscribe(
-                  data => {
-                    this.AssetMappingDB = data;
-                    console.log('db value after map', this.AssetMappingDB);
-                  });
-              });
+          // console.log('call post', this.mapping);
+          this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
+            // console.log('added to db');
+            this.goalSelectService.GetMapping().subscribe(data => {
+              this.AssetMappingDB = data;
+              console.log("db value after map", this.AssetMappingDB);
+            });
+          });
         } else {
           // console.log('call delete', this.mapping);
           for (let j = 0; j < this.AssetMappingDB.length; j++) {
             const row = this.AssetMappingDB[j];
             if (row.assetname === this.assettype && row.assetid === id) {
-              const res = this.goalSelectService.DeleteMapping(row.id).subscribe();
-              console.log('delete response', res);
+              const res = this.goalSelectService
+                .DeleteMapping(row.id)
+                .subscribe();
+              console.log("delete response", res);
               break;
             }
           }
         }
         break;
       } else {
-        console.log('not found');
+        console.log("not found");
       }
     }
   }
 
+  findAsset(id) {
+    for (let index = 0; index < this.stockout.length; index++) {
+      const element = this.stockout[index];
+      if (id === element.id) {
+        this.mapping.assetname = element.company_name;
+        this.mapping.value = element.share_price;
+      }
+      this.mapping.goalid = this.commonid;
+      this.mapping.valuetomap = this.valtomap;
+    }
+  }
+
   viewByGoalId(id, content) {
+    this.goalid = id;
 
     this.MappedArray.splice(0, this.MappedArray.length);
-    console.log('before filling mapped array', this.MappedArray);
+    console.log("before filling mapped array", this.MappedArray);
 
     for (let index = 0; index < this.GoalArray.length; index++) {
       const goal = this.GoalArray[index];
-        if (goal.id === id) {
-          // console.log('goal found');
-          // console.log(goal);
-          this.viewGoal(id, content);
-          break;
-        } else {
-          console.log('goal not found');
-        }
+      if (goal.id === this.goalid) {
+        // console.log('goal found');
+        // console.log(goal);
+        this.viewGoal(id, content);
+        break;
+      } else {
+        console.log("goal not found");
+      }
     }
   }
 
@@ -491,7 +515,7 @@ export class GoalSelectComponent implements OnInit {
       for (let index = 0; index < this.MappedArrayDB.length; index++) {
         const element = this.MappedArrayDB[index];
         if (element.goalid === id) {
-          this.MappedArray.push({element});
+          this.MappedArray.push({ element });
         }
       }
       this.OpenMappedAsset(content);
@@ -500,15 +524,15 @@ export class GoalSelectComponent implements OnInit {
 
   OpenMappedAsset(content) {
     this.modalService
-    .open(content, { ariaLabelledBy: 'viewLinkedAssetModal' })
-    .result.then(
-      result => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      reason => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }
-    );
+      .open(content, { ariaLabelledBy: "viewLinkedAssetModal" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   deleteRecord(id) {
@@ -520,26 +544,33 @@ export class GoalSelectComponent implements OnInit {
     return false;
   }
   getMapValue(id) {
-   const res =  prompt('Enter value to map ');
-   console.log('map value of id ', id , 'is', res);
-
+    this.valtomap = prompt("Enter value to map ");
+    //  this.mapval = res;
+    console.log("map value of id ", id, "is", this.valtomap);
   }
   getAsset() {
     // console.log(this.assettype);
-    if (this.assettype === 'stocks') {
+    if (this.assettype === "stocks") {
       // console.log(this.assettype);
       this.getStockById(this.uid);
-    } else if (this.assettype === 'mutual') {
+    } else if (this.assettype === "mutual") {
       // console.log(this.assettype);
-      // this.getMutualFundByUid(this.uid);
+      this.getMutualFundByUid(this.uid);
     }
   }
   getStockById(uid) {
-    this.getGoalbyId(this.commonid);
     this.stockService.getStockById(this.uid).subscribe(res => {
-      // console.log('this is responce of stock', res);
       this.stockout = res;
       this.AssetArray = res;
     });
+  }
+  getMutualFundByUid(uid) {
+    this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
+      console.log("this is responce of mufund", res);
+      this.mutualres = res;
+      this.AssetArray = res;
+      console.log("responce of getMutualFundByUid service", this.mutualres);
+    });
+    // this.getSavingSchemeUid(this.uid2);
   }
 }
