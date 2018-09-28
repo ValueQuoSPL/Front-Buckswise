@@ -31,8 +31,13 @@
                 <form name="editForm" role="form" novalidate #editForm="ngForm">
 
                     <mat-form-field>
-                        <input matInput type="text" placeholder="Risk Coverage for" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
-                            required>
+                        <!-- <input matInput type="text" placeholder="Risk Coverage for" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
+                            required> -->
+                            <mat-select aria-placeholder="select">
+                                <div *ngFor="let name of familyName">
+                                        <mat-option value="family name">{{name.firstname}}</mat-option>
+                                 </div>
+                            </mat-select>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label>How much of Expense would you want to be replaced through insurance cover?</mat-label>
@@ -66,7 +71,10 @@
                                             <tbody>
 
                                                 <tr *ngFor="let goal of dynamicGoalArray; let i = index">
-                                                    <td><input type="checkbox" (click)="checklife($event, goal.id)" [checked]="goal.check"></td>
+                                                    <td>
+                                                        <mat-checkbox  #cb [ngModel]="get(goal.id)" (ngModelChange)="checklife(cb.checked, goal.id)" [name]="goal.id">
+                                                        </mat-checkbox>
+                                                    </td>
                                                     <td> {{goal.goalname}} </td>
                                                     <td>{{goal.futurecost}} </td>
                                                 </tr>

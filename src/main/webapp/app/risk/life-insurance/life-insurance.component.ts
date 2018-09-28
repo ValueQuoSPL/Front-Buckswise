@@ -12,7 +12,8 @@ import { Principal, AccountService } from "app/shared";
 
 @Component({
   selector: "jhi-life-insurance",
-  templateUrl: "./life-insurance.component.html"
+  templateUrl: "./life-insurance.component.html",
+  styleUrls: ["./life-insurance.component.css"]
 })
 export class LifeInsuranceComponent implements OnInit {
   account: Account;
@@ -36,6 +37,7 @@ export class LifeInsuranceComponent implements OnInit {
   dynamicLoanArray: any = [];
   dynamicCreditArray: any = [];
   updateGoalArray: any = [];
+  familyName: any = [];
   check;
   goalLife: any;
   futurecost: any;
@@ -43,6 +45,9 @@ export class LifeInsuranceComponent implements OnInit {
   result: any;
   i;
   goalId: any;
+  tick: any;
+  ischecked;
+  unchecked;
 
   constructor(
     private principal: Principal,
@@ -62,9 +67,12 @@ export class LifeInsuranceComponent implements OnInit {
     });
     this.getUserid();
   }
-  checklife(event, id) {
+  checklife(checked, id) {
     this.goalId = id;
-    this.checkLife = event.target.checked;
+    // this.checkLife = event.target.checked;
+    this.checkLife = checked;
+    console.log(checked);
+    console.log(this.checkLife);
     this.updateGoalArray.push({
       id: this.goalId,
       check: this.checkLife
@@ -87,6 +95,7 @@ export class LifeInsuranceComponent implements OnInit {
           this.getCredit(this.uid);
           this.getLoan(this.uid);
           this.onGetLife();
+          this.getName(this.uid);
         } else {
           console.log("cannot get user details check login ");
         }
@@ -101,7 +110,8 @@ export class LifeInsuranceComponent implements OnInit {
       console.log(this.dynamicGoalArray);
       for (let i = 0; i < this.dynamicGoalArray.length; i++) {
         this.futurecost = this.dynamicGoalArray[i].futurecost;
-        console.log(this.futurecost);
+        this.ischecked = this.dynamicGoalArray[i].check;
+        console.log(this.ischecked);
       }
     });
   }
@@ -239,5 +249,30 @@ export class LifeInsuranceComponent implements OnInit {
       this.lifeInsurance.total = this.result.total;
       this.lifeInsurance.risk_coverage = this.result.risk_coverage;
     });
+  }
+
+  // get family profile name
+  getName(uid) {
+    this.riskService.getFamilyName(this.uid).subscribe(data => {
+      this.familyName = data;
+      console.log(this.familyName);
+    });
+  }
+
+  get(id) {
+    let flag = 0;
+    for (let i = 0; i < this.dynamicGoalArray.length; i++) {
+      const goal = this.dynamicGoalArray[i];
+      if (goal.id === id) {
+        const value = goal.check;
+        if (value === "true") {
+          flag = 1;
+          return true;
+        } else {
+          flag = 0;
+          return false;
+        }
+      }
+    }
   }
 }
