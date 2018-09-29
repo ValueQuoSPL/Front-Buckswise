@@ -4,7 +4,7 @@
         <h5>Personal Information</h5>&nbsp;&nbsp;
           <span style="margin-left: 560px"><a class="nav-link" *ngIf="show" (click)="saveDetail()">Save</a></span>
           <span><a class="nav-link"  *ngIf="!show" (click)="update()">Update</a></span>
-          <span><a class="nav-link"  href="#">Cancel</a></span>
+          <span><a class="nav-link"  (click)="cencel()">Cancel</a></span>
           <span><a class="nav-link" href="#">Help</a></span>
     </div>     
     <div class="row"><!-- start of row1-->

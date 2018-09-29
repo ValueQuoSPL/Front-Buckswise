@@ -110,4 +110,7 @@ export class MyprofileComponent implements OnInit {
   //   refreshPage(){
   //     window.location.reload();
   // }
+  cencel() {
+    this.isValid = true;
+  }
 }
