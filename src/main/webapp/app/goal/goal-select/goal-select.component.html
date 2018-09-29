@@ -1,9 +1,10 @@
+<br><br>
 <div *ngIf="isValid">
-  <div class="row container"><!--start of row1 div-->
+  <div class="row justify-content-md-center colored"><!--start of row1 div-->
     <div class="col-md-2"><!--start of row1.col1 div-->
       <label><h4><b>Select Goal</b></h4></label>
     </div><!--end of row1.col1 div-->
-    <div class="setmar col-md-10 "><!--start of row1.col2 div-->
+    <div class=""><!--start of row1.col2 div-->
       <div><!--start of select div-->
         <mat-form-field>
           <mat-select placeholder="Choose Goal" name="goaltype" [(ngModel)]="goaltype">
@@ -11,7 +12,7 @@
             <mat-option value="education">Education</mat-option>
             <mat-option value="vehicle">Vehicle</mat-option>
             <mat-option value="childbirth">Childbirth</mat-option>
-            <mat-option value="merrage">Merrage</mat-option>
+            <mat-option value="merrage">Marriage</mat-option>
             <mat-option value="business">Business</mat-option>
             <mat-option value="familysupport">Familysupport</mat-option>
             <mat-option value="vacation">Vacation</mat-option>
@@ -26,319 +27,159 @@
   </div><!--end of row1 div-->
   <div [ngSwitch]="goaltype"><!--start of ngSwitch div-->
     <div *ngSwitchCase="'home'"><!--start of ngSwitchCaseHome div-->
-      <div class="tab-pane fade show active container"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="goalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="goalselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="goalselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="requiremonthinvest" [(ngModel)]="goalselect.requiremonthinvest" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="goalselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="goalselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-            </div><!--end of row2.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-raised-button color="primary" (click)="Home()">Submit</button>
-          <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
-        </div><!--end of btn div-->
-      </div><!--end of home-tabpane div-->
+
+      <mat-card class="container-fluid example-card">
+        <mat-card-header>
+          <mat-card-title>Enter New Home Goal</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="container-fluid">
+          <mat-form-field>
+            <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="goalselect.goalname" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="goalselect.priority" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="goalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="goalselect.presentcost" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="goalselect.dateofcreation">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions class="pull-right">
+
+            <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+            <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+
+        </mat-card-actions>
+      </mat-card>
+
+     <!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseHome div-->
     <div *ngSwitchCase="'education'"><!--start of ngSwitchCaseEducation div-->
-      <div class="container" style="margin-top: 20px" ><!--start of edu-container div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Educationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Educationselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="goalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
+
+      <mat-card class="container-fluid example-card">
+          <mat-card-header>
+            <mat-card-title>Enter New Education Goal</mat-card-title>
+          </mat-card-header>
+  
+          <mat-card-content class="container-fluid">
+              <mat-form-field>
+                  <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Educationselect.goalname" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Educationselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Educationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Educationselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Educationselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary"(click)="Education()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of edu-container div-->
+                    <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Educationselect.priority" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Educationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Educationselect.presentcost" [ngModelOptions]="{standalone: true}">
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Educationselect.dateofcreation">
+                          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                          <mat-datepicker #picker3></mat-datepicker>
+                        </mat-form-field>
+            </mat-card-content>
+
+          <mat-card-actions class="pull-right">
+  
+              <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+              <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+
+          </mat-card-actions>
+        </mat-card>
+     <!--end of edu-container div-->
     </div><!--end of ngSwitchCaseEducation div-->
     <div *ngSwitchCase="'vehicle'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of vehicle-container div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New Vehicle Goal</mat-card-title>
+            </mat-card-header>
+        
+            <mat-card-content class="container-fluid">
+                <mat-form-field>
                     <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vehicleselect.goalname" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vehicleselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vehicleselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vehicleselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment"  form="usrform"  name="notes" [(ngModel)]="Vehicleselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
+                      <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Vehicleselect.priority" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vehicleselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vehicleselect.presentcost" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vehicleselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+                  </mat-card-content>
+        
+            <mat-card-actions class="pull-right">
+        
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+        
+            </mat-card-actions>
+          </mat-card>
+
+      <!--end of home-tabpane div-->
+    </div><!--end of ngSwitchCaseVehicle div-->
+    <div *ngSwitchCase="'childbirth'">
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New Child Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
                 <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vehicleselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vehicleselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vehicleselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-             <tr>
-              <td>
+                    <input matInput  placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Childbirthselect.goalname" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Childbirthselect.priority" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Childbirthselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Childbirthselect.presentcost" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
                  <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vehicleselect.dateofcreation">
+                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Childbirthselect.dateofcreation">
                   <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                   <mat-datepicker #picker3></mat-datepicker>
                 </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary"(click)="Vehicle()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of home-tabpane div-->
-    </div><!--end of ngSwitchCaseVehicle div-->
-    <div *ngSwitchCase="'childbirth'">
+
+              </mat-card-content>
+          
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+
+
       <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
         <div class="row"><!--start of row2 div-->
           <div class="col-md-6"><!--start of row2.col1 div-->
             <table><!--start of home table-->
               <tr>
                 <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Childbirthselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Childbirthselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Childbirthselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Childbirthselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Childbirthselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Childbirthselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Childbirthselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Childbirthselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-             <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Childbirthselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
+                                </td>
             </tr>
           </div><!--end of row1.col2 div-->
         </div><!--end of row2 div-->
@@ -349,157 +190,88 @@
       </div><!--end of home-tabpane div-->
     </div><!--end of ngSwitchCasechildbirth div-->
     <div *ngSwitchCase="'merrage'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Merrageselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Merrageselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Merrageselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Merrageselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Merrageselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Merrageselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Merrageselect.price" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Merrageselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Merrageselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary" (click)="Merrage()">Submit</button>
-              <button mat-button color="accent" (click)="clear()">Cancel</button>
-            </div>
-           </div><!--end of home-tabpane div --> 
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New Marriage Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Merrageselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Merrageselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Merrageselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Merrageselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Merrageselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+
+
+              </mat-card-content>
+          
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+
+      <!--end of home-tabpane div -->
     </div><!--end of ngSwitchCaseMerrage div-->
     <div *ngSwitchCase="'business'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New Buiseness Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+                <mat-form-field>
                     <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Businessselect.goalname" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Businessselect.priority" [ngModelOptions]="{standalone: true}">
+                    <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Businessselect.priority" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Businessselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                    <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Businessselect.yeartogoal" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
                   <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Businessselect.presentcost" [ngModelOptions]="{standalone: true}">
+                    <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Businessselect.presentcost" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Businessselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Businessselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Businessselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Businessselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
                  <mat-form-field>
                   <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Businessselect.dateofcreation">
                   <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                   <mat-datepicker #picker3></mat-datepicker>
                 </mat-form-field>
+              </mat-card-content>
+          
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+
+            </mat-card-actions>
+          </mat-card>
+
+
+      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
+        <div class="row"><!--start of row2 div-->
+          <div class="col-md-6"><!--start of row2.col1 div-->
+            <table><!--start of home table-->
+              <tr>
+                <td>
+
               </td>
             </tr>
           </div><!--end of row1.col2 div-->
@@ -511,417 +283,197 @@
       </div><!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseBusiness div-->
     <div *ngSwitchCase="'familysupport'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="FamilySupportselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="FamilySupportselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="FamilySupportselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="FamilySupportselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="FamilySupportselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="FamilySupportselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="FamilySupportselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="FamilySupportselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-             <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="FamilySupportselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary" (click)= "Familysupport()" >Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of home-tabpane div-->
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New  Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="FamilySupportselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="FamilySupportselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="FamilySupportselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="FamilySupportselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="FamilySupportselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+
+
+      <!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseFamilySup div-->
     <div *ngSwitchCase="'vacation'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vacationselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="Vacationselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vacationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vacationselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="Vacationselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="Vacationselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="Vacationselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="Vacationselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vacationselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-            <button mat-button color="primary" (click)="Vacation()">Submit</button>
-            <button mat-button color="accent" (click)="clear()">Cancel</button>
-          </div>
-        </div><!--end of home-tabpane div-->
-      </div><!--end of ngSwitchCaseVacation div-->
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New  Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="Vacationselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="Vacationselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                          <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="Vacationselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="Vacationselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="Vacationselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+              </mat-card-content>
+          
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+    </div><!--end of ngSwitchCaseVacation div-->
     <div *ngSwitchCase="'emergencyfund'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="EmergencyFundselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="EmergencyFundselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="EmergencyFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="EmergencyFundselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="EmergencyFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="EmergencyFundselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="EmergencyFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="EmergencyFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-             <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="EmergencyFundselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary" (click)="EmergencyFund()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of home-tabpane div-->
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New  Goal</mat-card-title>
+            </mat-card-header>
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="EmergencyFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="EmergencyFundselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="EmergencyFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="EmergencyFundselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="EmergencyFundselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+              </mat-card-content>
+          
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+
+     <!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseEmergency div-->
     <div *ngSwitchCase="'retairementfund'">
-      <div class="tab-pane fade show active container" style="margin-top: 20px"><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="RetirementFundselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="RetirementFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="RetirementFundselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="RetirementFundselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="RetirementFundselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="RetirementFundselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="RetirementFundselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="RetirementFundselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary" (click)="RetairementFund()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of home-tabpane div-->
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New  Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="RetirementFundselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="RetirementFundselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="RetirementFundselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="RetirementFundselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="RetirementFundselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+              </mat-card-content>
+
+            <mat-card-actions class="pull-right">
+          
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+          
+            </mat-card-actions>
+          </mat-card>
+
+      <!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseRetaire div-->
     <div *ngSwitchCase="'newgoal'">
-      <div class="tab-pane fade show active container" ><!--start of home-tabpane div-->
-        <div class="row"><!--start of row2 div-->
-          <div class="col-md-6"><!--start of row2.col1 div-->
-            <table><!--start of home table-->
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="NewGoalselect.goalname" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Priority" type="text"name="priority" [(ngModel)]="NewGoalselect.priority" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="NewGoalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="NewGoalselect.presentcost" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field>
-                    <textarea matInput rows="3" cols="50" placeholder="Comment" form="usrform"  name="notes" [(ngModel)]="NewGoalselect.notes" [ngModelOptions]="{standalone: true}"></textarea>
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table><!--end of home table-->
-          </div><!--end of row1.col1 div-->
-          <div class="col-md-6"><!--start of row2.col2 div-->
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Future Cost" type="text" name="futurecost" [(ngModel)]="NewGoalselect.futurecost" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Required Monthly Investment" type="text" name="monthlyinvestment" [(ngModel)]="NewGoalselect.monthlyinvestment" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field>
-                  <input matInput placeholder="Fund Shortage" type="text" name="fundshortage" [(ngModel)]="NewGoalselect.fundshortage" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="NewGoalselect.dateofcreation">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                </mat-form-field>
-              </td>
-            </tr>
-          </div><!--end of row1.col2 div-->
-        </div><!--end of row2 div-->
-        <div class="pull-right"><!--start of btn div-->
-          <button mat-button color="primary"(click)="NewGoal()">Submit</button>
-          <button mat-button color="accent" (click)="clear()">Cancel</button>
-        </div>
-      </div><!--end of home-tabpane div-->
+
+        <mat-card class="container-fluid example-card">
+            <mat-card-header>
+              <mat-card-title>Enter New  Goal</mat-card-title>
+            </mat-card-header>
+          
+            <mat-card-content class="container-fluid">
+                            <mat-form-field>
+                              <input matInput placeholder="Goal Name" type="text" name="goalname" [(ngModel)]="NewGoalselect.goalname" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Priority" type="text"name="priority" [(ngModel)]="NewGoalselect.priority" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Year to Goal" type="text" name="yeartogoal" [(ngModel)]="NewGoalselect.yeartogoal" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input matInput jhiNumberOnly placeholder="Present Cost" type="text" name="presentcost" [(ngModel)]="NewGoalselect.presentcost" [ngModelOptions]="{standalone: true}">
+                            </mat-form-field>
+                           <mat-form-field>
+                            <input matInput [matDatepicker]="picker3" placeholder="Creation Date" name="dateofcreation" [(ngModel)]="NewGoalselect.dateofcreation">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                          </mat-form-field>
+            <mat-card-actions class="pull-right">
+
+                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+
+            </mat-card-actions>
+          </mat-card>
+
+      <!--end of home-tabpane div-->
     </div><!--end of ngSwitchCaseNewGoal div-->
-  </div><!-- end of ngSwitch div -->  
+  </div><!-- end of ngSwitch div -->
 </div>
 
-<div*ngIf="!isValid">
+<div *ngIf="!isValid">
   <h5>Goal Details</h5>
   <button mat-button color="primary" class="btn btn-link" (click)="AddGoal()"><span> <i class="fa fa-plus" aria-hidden="true"></i></span>AddGoal</button></th>
-    <table *ngIf="!isValid" class=" table-responsive table-bordered table-hover table-sm table-striped">
+
+<!-- view page -->
+
+  <table *ngIf="!isValid" class=" table-responsive table-bordered table-hover table-sm table-striped">
         <thead>
             <tr>
                 <th>SrNo</th>
@@ -934,7 +486,7 @@
                 <th>Required Monthly Investment</th>
                 <th>Fund Shortage</th>
                 <th>Date Of Creation</th>
-                <th>Notes</th>
+                <th>Linked Asset Value</th>
                 <th>Link Assets</th>
                 <th>View</th>
                 <!-- <th>Update</th>
@@ -967,13 +519,16 @@
             </tr>
         </tbody>
     </table><!-- table end here -->
+
+<!-- asset link modal-->
+
     <ng-template #editLinkModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
       <div class="modal-header"><!-- modal header start -->
           <h4 
               class="modal-title" 
-              id="editLinkModal">Linked Assets</h4>
+              id="editLinkModal">Assets Linking</h4>
           <button 
-              type="button" 
+              type="button"
               class="close" 
               aria-label="Close" 
               (click)="d('Cross click')">
@@ -981,7 +536,7 @@
           </button>
       </div><!-- modal header end -->
       <div class="modal-body"><!-- modal body start -->
-          <form name="editForm" role="form" novalidate #editForm="ngForm"> 
+          <form name="editForm" role="form" novalidate #editForm="ngForm">
  
                   <div class="row"><!--start of row1 div-->
                     <div class="col-md-6"><!--start of row1.col1 div-->
@@ -998,83 +553,46 @@
                             <mat-option value="SavingScheme" (click)="getAsset()">Saving Scheme</mat-option>
                             <mat-option value="AlternativeInvestment" (click)="getAsset()">Alternative Investment</mat-option>
                             <mat-option value="cash" (click)="getAsset()">Cash</mat-option>
-                            <mat-option value="physicalgoods" (click)="getAsset()">Physical Goods</mat-option>
                             <mat-option value="Propertyandhousehold"  (click)="getAsset()">Property and Household</mat-option>
                           </mat-select>
                         </mat-form-field> 
                       </div><!--end of select div-->
                     </div><!--start of row1.col2 div-->
                   </div><!--end of row1 div-->
-                  <div class="row">
-                    <h6>Available Asset to map</h6>
+                  <div class="row justify-content-md-center">
+                    <h4>Present Value : {{PresentCost}}</h4> <br>
+                    <h4>Available Asset to map : {{AvailableCost}}</h4>
                   </div>
                   <div>
-                    <table class="table-responsive table-striped table-hover" *ngIf="this.assettype === 'stocks'">
+                    <table class="table table-responsive table-sm table-striped table-hover table-bordered" >
                       <thead>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
+                        <th>Select</th>
                         <th>Asset Name</th>
-                        <th>Value</th>
-                        <th>Value to Map</th>
-                        <th>Map/Unmap</th>
-                        <th>Mapping</th>
+                        <th>Asset Value</th>
+                        <th>Mapped Value</th>
                       </thead>
-                      <tr *ngFor="let output of stockout" >
-                          <td>{{output.id}}</td>
-                          <td>{{output.company_name}}</td>
-                          <td>{{output.share_price}}</td>
-                          <td (click)="getMapValue(output.id)" class="btn btn-sm btn-outline-success"> map </td>
-                          <!-- <td>{{outpu.valuetomap}}</td> -->
-                          <!-- <td> {{temp.value}</td> -->
-                          <!-- <td *ngIf="mapValue"></td>
-                          <td *ngIf="mapValue">
-                            <input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="output.valuetomap">
-                          </td> -->
-                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada">
+                      <tr *ngFor="let output of HTMLArray" >
+                          <!-- <td>{{output.id}}</td> -->
+                          <td> <mat-checkbox  #cb [ngModel]="get(output.id)" (ngModelChange)="selectedRecord(cb.checked, output.id)" name="rada">
                                 </mat-checkbox>
                           </td>
-                      </tr>
-                    </table>
-                    <table class="table-responsive table-striped table-hover" *ngIf="this.assettype === 'mutual'">
-                      <thead>
-                        <th>ID</th>
-                        <th>Asset Name</th>
-                        <th>Value</th>
-                        <th>Value to Map</th>
-                        <th>Map/Unmap</th>
-                        <th>Mapping</th>
-                      </thead>
-                      <tr *ngFor="let out of mutualres" >
-                          <td>{{out.id}}</td>
-                          <td>{{out.mfscheme}}</td>
-                          <td>{{out.currentvalue}}</td>
-                          <td (click)="getMapValue(out.id)" class="btn btn-sm btn-outline-success"> map </td>
-                          <!-- <td>{{outpu.valuetomap}}</td> -->
-                          <!-- <td> {{temp.value}</td> -->
-                          <!-- <td *ngIf="mapValue"></td>
-                          <td *ngIf="mapValue">
-                            <input type="text" maxlength="5" size="5" name="valuetomap"  [(ngModel)]="output.valuetomap">
-                          </td> -->
-                          <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, out.id)" name="rada">
-                                </mat-checkbox>
+                          <td>{{output.assetname}}</td>
+                          <td>{{output.assetvalue}}</td>
+                          <td>{{output.mappedvalue}}</td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-success" [disabled]="output.disable" (click)="getMapValue(output.id)">{{output.valid}} map</button>
                           </td>
+
                       </tr>
+                      <tfoot>
+                        <td colspan="3">Total</td>
+                        {{ singleAssetTotal }}
+                      </tfoot>
                     </table>
-                    <!-- <table *ngIf="this.assettype === 'mutual'">
-                      <thead>
-                        <th></th>&nbsp;
-                        <th>Asset Name</th>&nbsp;
-                        <th>Value</th>&nbsp;
-                        <th>Value to Map</th>
-                      </thead>
-                      <tr *ngFor="let out of output" >
-                          <!-- <td> <mat-checkbox  #cb [ngModel]="get()" (ngModelChange)="selectedRecord(cb.checked, out.id)" name="rada"></mat-checkbox></td>&nbsp; -->
-                          <!-- <td>{{out.mfscheme}}</td>&nbsp;
-                          <td>{{out.currentvalue}}</td>&nbsp; -->
-                          <!-- <td (click)="getMapValue(out.id)" class="btn btn-sm btn-outline-success"> map </td> -->
-                      </tr>
-                    </table>
+
                   </div>
-                 
+
               </mat-form-field>
               <div class="modal-footer">
                   <button 
@@ -1100,6 +618,8 @@
   </ng-template>
 </div>
 
+<!-- maaped asset view -->
+
 <ng-template #viewLinkedAssetModal let-c="close" let-d="dismiss"><!-- editStocksModal ng-template start -->
   <div class="modal-header">
       <h4 class="modal-title" id="viewLinkedAssetModal">Linked Assets</h4>
@@ -1110,21 +630,37 @@
   <div class="modal-body">
       <table class="table table-responsive table-hover table-striped">
         <thead>
-          <th>#</th>
-          <th>Goal ID</th>
+          <th>Sl#</th>
           <th>Asset Name</th>
-          <th>Asset ID</th>
+          <th>Asset Value</th>
           <th>Mapped Value</th>
         </thead>
         <tbody>
           <tr *ngFor="let item of MappedArray">
             <td> {{ item.element.id }} </td>
-            <td> {{ item.element.goalid }} </td>
             <td> {{ item.element.assetname }} </td>
-            <td> {{ item.element.assetid }} </td>
+            <td> {{ item.element.value }} </td>
             <td> {{ item.element.valuetomap }} </td>
           </tr>
         </tbody>
       </table>
   </div>    
 </ng-template>
+<!--
+<mat-card class="container-fluid example-card">
+  <mat-card-header>
+    <mat-card-title>Enter New  Goal</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="container-fluid">
+
+    </mat-card-content>
+
+  <mat-card-actions class="pull-right">
+
+      <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+      <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+
+  </mat-card-actions>
+</mat-card>
+  -->

@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  TemplateRef,
-  ViewChild
-} from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {
   startOfDay,
   subDays,
@@ -82,7 +76,7 @@ export class AppointmentComponent implements OnInit {
   _day: any;
   _time: any;
   formatDate: any;
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen = true;
 
   constructor(
     private appointmentService: AppointmentService,

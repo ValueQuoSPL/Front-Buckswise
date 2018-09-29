@@ -1,6 +1,6 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { BuckswiseFrontEndSharedModule } from "app/shared";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BuckswiseFrontEndSharedModule } from 'app/shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -20,11 +20,11 @@ import {
   UserMgmtDialogComponent,
   UserDialogComponent,
   PromoCodeManageComponent
-} from "./";
-import { CustomMaterialModule } from "app/custom-material.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CustomDirectiveModule } from "app/shared/directive/directive.module";
-import { AppointmentManageComponent } from "./appointment-manage/appointment-manage.component";
+} from './';
+import { CustomMaterialModule } from 'app/custom-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomDirectiveModule } from 'app/shared/directive/directive.module';
+import { AppointmentManageComponent } from './appointment-manage/appointment-manage.component';
 
 @NgModule({
   imports: [

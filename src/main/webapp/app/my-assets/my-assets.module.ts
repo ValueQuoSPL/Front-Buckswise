@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { BuckswiseFrontEndSharedModule } from "app/shared";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import {
   // AssetsComponent,
@@ -32,14 +32,23 @@ import { PropertyService } from "./property/property.service";
 import { FutureOptionService } from "./future-option/futureoption.service";
 import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
 import { StockService } from "app/my-assets/stocks/stocks.service";
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from "../../../../../node_modules/@angular/forms";
+import { CommonModule } from "../../../../../node_modules/@angular/common";
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BuckswiseFrontEndSharedModule,
     RouterModule.forRoot([myasstsRoute], { useHash: true }),
     RouterModule.forRoot([liRoute], { useHash: true }),
     BsDatepickerModule.forRoot(),
-    CustomMaterialModule
+    CustomMaterialModule,
+    CommonModule,
+    NgbModule
   ],
   declarations: [
     // AssetsComponent,

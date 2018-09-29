@@ -12,6 +12,9 @@ import { JhiEventManager } from "ng-jhipster";
 })
 export class PaymentComponent implements OnInit {
   user: User = new User();
+  amount: any;
+  sUrl = "http://localhost:8080/Success";
+  fUrl = "http://localhost:8080/Fail";
   public paymentDetail: any = [];
 
   @Input() offer;
@@ -22,18 +25,20 @@ export class PaymentComponent implements OnInit {
   ) {}
 
   submitUser() {
+    console.log(this.user);
+    this.user.sUrl = this.sUrl;
+    this.user.fUrl = this.fUrl;
     this.paymentService.submitUser(this.user).subscribe(data => {
-      console.log(this.user);
       this.paymentDetail.push(data);
       console.log(this.paymentDetail);
     });
   }
 
   ngOnInit() {
-    this.user.sUrl = "http://localhost:8080/sucess";
-    this.user.fUrl = "http://localhost:8080/fail";
     console.log(this.offer);
-    this.user.amount = this.offer.payable;
+    const paymoney = this.offer.payable;
+    this.amount = paymoney.toString();
+    this.user.amount = this.amount;
     this.user.productInfo = this.offer.plan;
   }
 }

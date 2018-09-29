@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 import {
   auditsRoute,
@@ -8,11 +8,11 @@ import {
   logsRoute,
   metricsRoute,
   userMgmtRoute
-} from "./";
+} from './';
 
-import { UserRouteAccessService } from "app/shared";
-import { promoRoute } from "app/admin/promo-code-manage/promo-code.route";
-import { appointmentRoute } from "app/admin/appointment-manage/appointment.route";
+import { UserRouteAccessService } from 'app/shared';
+import { promoRoute } from 'app/admin/promo-code-manage/promo-code.route';
+import { appointmentRoute } from 'app/admin/appointment-manage/appointment.route';
 
 const ADMIN_ROUTES = [
   auditsRoute,
@@ -28,9 +28,9 @@ const ADMIN_ROUTES = [
 
 export const adminState: Routes = [
   {
-    path: "",
+    path: '',
     data: {
-      authorities: ["ROLE_ADMIN"]
+      authorities: ['ROLE_ADMIN']
     },
     canActivate: [UserRouteAccessService],
     children: ADMIN_ROUTES

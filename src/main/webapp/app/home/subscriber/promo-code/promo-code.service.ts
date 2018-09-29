@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class PromoCodeService {
@@ -10,7 +10,7 @@ export class PromoCodeService {
 
   apply(promocode) {
     // console.log('applying Promo-Code', promocode);
-    if (promocode === "buckswise") {
+    if (promocode === 'buckswise') {
       return true;
     } else {
       return false;

@@ -1,9 +1,10 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BuckswiseFrontEndSharedModule } from 'app/shared';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { RiskService } from 'app/risk/risk.service';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { BuckswiseFrontEndSharedModule } from "app/shared";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { RiskService } from "app/risk/risk.service";
+
 import {
   LifeInsuranceComponent,
   MedicalInsuranceComponent,
@@ -12,9 +13,10 @@ import {
   medicalRoute,
   questionnaireRoute,
   riskRoute
-} from 'app/risk';
-import { CustomMaterialModule } from 'app/custom-material.module';
-import { RiskComponent } from 'app/risk/risk.component';
+} from "app/risk";
+import { CustomMaterialModule } from "app/custom-material.module";
+import { RiskComponent } from "app/risk/risk.component";
+import { FormsModule } from "../../../../../node_modules/@angular/forms";
 
 // import { QuestionnaireComponent } from './questinnaire/questionnaire.component';
 @NgModule({
@@ -22,7 +24,8 @@ import { RiskComponent } from 'app/risk/risk.component';
     BuckswiseFrontEndSharedModule,
     RouterModule.forRoot([riskRoute], { useHash: true }),
     BsDatepickerModule.forRoot(),
-    CustomMaterialModule
+    CustomMaterialModule,
+    FormsModule
   ],
   declarations: [
     LifeInsuranceComponent,
