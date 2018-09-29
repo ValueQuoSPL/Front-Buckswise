@@ -16,7 +16,7 @@ import {
 export class GrossComponent implements OnInit {
   user: any;
   uid: any;
-  output: any;
+  output: any = [];
   gross: Gross = new Gross();
   grossout: any;
   valid = true;
@@ -26,6 +26,8 @@ export class GrossComponent implements OnInit {
   closeResult: string;
   changesSaved: boolean;
   dataChanged: boolean;
+  dynamicgross: any;
+  updateout: any = [];
 
   constructor(
     private modalService: NgbModal,
@@ -35,19 +37,34 @@ export class GrossComponent implements OnInit {
 
   ngOnInit() {
     this.FetchID();
-    this.gross.bsalary = 0;
-    this.gross.da = 0;
-    this.gross.hra = 0;
-    this.gross.conveyance = 0;
-    this.gross.childedu = 0;
-    this.gross.medical = 0;
-    this.gross.lta = 0;
-    this.gross.otherallown = 0;
-    this.gross.bonus = 0;
-    this.gross.rentincome = 0;
-    this.gross.saving = 0;
-    this.gross.bonds = 0;
-    this.gross.conveyanceother = 0;
+    // this.gross.bsalary = 0;
+    // this.gross.da = 0;
+    // this.gross.hra = 0;
+    // this.gross.conveyance = 0;
+    // this.gross.childedu = 0;
+    // this.gross.medical = 0;
+    // this.gross.lta = 0;
+    // this.gross.otherallown = 0;
+    // this.gross.bonus = 0;
+    // this.gross.rentincome = 0;
+    // this.gross.saving = 0;
+    // this.gross.bonds = 0;
+    // this.gross.conveyanceother = 0;
+    this.changesSaved = true;
+  }
+  FetchID(): Promise<any> {
+    return this.account
+      .get()
+      .toPromise()
+      .then(response => {
+        this.user = response.body;
+        console.log("user info", this.user);
+        this.gross.uid = this.user.id;
+        console.log(" gross uid is", this.gross.uid);
+        this.uid = this.gross.uid;
+        this.onGrossGet(this.uid);
+        console.log(" gross uid is", this.uid);
+      });
   }
   // Gross Reset
   resetGross() {
@@ -65,114 +82,219 @@ export class GrossComponent implements OnInit {
     this.gross.bonds = 0;
     this.gross.conveyanceother = 0;
   }
-  onGrossGet() {
-    console.log("in main ts");
+  onGrossGet(uid) {
+    console.log("in grossget ts uid", this.uid);
     this.grossService.getgross(this.uid).subscribe(res => {
       console.log(res);
       this.output = res;
-      console.log("onEightydGet response ", this.output);
+      console.log("gross data in output", this.output);
+      for (let index = 0; index < this.output.length; index++) {
+        const element = this.output[index];
+        this.gross.bsalary = element.bsalary;
+        this.gross.da = element.da;
+        this.gross.hra = element.hra;
+        this.gross.conveyance = element.conveyance;
+        this.gross.childedu = element.childedu;
+        this.gross.medical = element.medical;
+        this.gross.lta = element.lta;
+        this.gross.otherallown = element.otherallown;
+        this.gross.bonus = element.bonus;
+        this.gross.rentincome = element.rentincome;
+        this.gross.saving = element.saving;
+        this.gross.bonds = element.bonds;
+        this.gross.conveyanceother = element.conveyanceother;
+        this.gross.uid = element.uid;
+        this.gross.id = element.id;
+        console.log("output id", this.gross.id);
+      }
+      if (this.output.length === 0) {
+        this.valid = false;
+        console.log("in if valid value", this.valid);
+      } else {
+        this.valid = true;
+        console.log("in else valid value", this.valid);
+      }
     });
+
+    // for (let i = 0; i < this.output.length; i++) {
+    //   const element = this.output[i];
+    //   console.log('data in outpurarray', element);
+    // this.output.uid = element.uid;
+    // this.output = element;
+    // console.log('in element uid s', element.uid);
+    // if (element.uid === null) {
+    //   this.valid = false;
+    //   console.log('in if valid value', this.valid);
+    // } else {
+    //   this.valid = true;
+    //   console.log('in else valid value', this.valid);
+    // }
+    // console.log('uid is', this.output.uid);
+    //    console.log('onGrossGet response ', this.output);
   }
   onGrossSave() {
-    this.grossService
-      .save(this.gross)
-      .subscribe(response => console.log(response));
+    console.log("in gross bsal", this.gross.bsalary);
+    this.grossService.save(this.gross).subscribe(response => {
+      alert("Your data saved successfully");
+      this.changesSaved = true;
+      // console.log(response);
+    });
+    this.valid = true;
   }
-  FetchID(): Promise<any> {
-    return this.account
-      .get()
-      .toPromise()
-      .then(response => {
-        this.user = response.body;
-        console.log("user info", this.user);
-        this.gross.uid = this.user.id;
-        console.log("uid is", this.gross.uid);
-        this.uid = this.gross.uid;
-        this.onGrossGet();
-      });
+  updateGross() {
+    // console.log('inside update income');
+    // this.grossService.getgross(this.uid).subscribe(res => {
+    //   console.log(res);
+    //  this.updateout = res;
+    //  console.log('update result', this.updateout);
+    //  for (let index = 0; index < this.updateout.length; index++) {
+    //    const element = this.updateout[index];
+    //  }
+    // this.gross.bsalary = this.updateout.bsalary;
+    // this.gross.da = this.updateout.da;
+    // this.gross.hra = this.updateout.hra;
+    // this.gross.conveyance = this.updateout.conveyance;
+    // this.gross.childedu = this.updateout.childedu;
+    // this.gross.medical = this.updateout.medical;
+    // this.gross.lta = this.updateout.lta;
+    // this.gross.otherallown = this.updateout.otherallown;
+    // this.gross.bonus = this.updateout.bonus;
+    // this.gross.rentincome = this.updateout.rentincome;
+    // this.gross.saving = this.updateout.saving;
+    // this.gross.bonds = this.updateout.bonds;
+    // this.gross.conveyanceother = this.updateout.conveyanceother;
+    // this.gross.uid = this.uid;
+    // this.gross.id = .id;
+
+    // this.gross.bsalary = this.bsalary;
+    console.log(" in update method gross", this.gross);
+    this.grossService.PutGross(this.gross).subscribe(data => {
+      alert("Your data update");
+      this.changesSaved = true;
+    });
+    // });
   }
-  // onEditGrossField(nameField, modal) {
-  //   console.log('inside gross');
-  //   this.nameField = nameField;
-  //   console.log('inside edit gross', nameField);
-  //   if (nameField === 'bs') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.bsalary;
-  //   } else if (nameField === 'da') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.da;
-  //   } else if (nameField === 'hra') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.hra;
-  //   } else if (nameField === 'convey') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.conveyance;
-  //   } else if (nameField === 'ce') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.childedu;
-  //   } else if (nameField === 'med') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.medical;
-  //   } else if (nameField === 'lta') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.lta;
-  //   } else if (nameField === 'oa') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.otherallown;
-  //   } else if (nameField === 'bonus') {
-  //     this.nameField = 'Amount';
-  //     this.editField = this.output.bonus;
-  //   }
-  //   this.modalService
-  //     .open(modal, { ariaLabelledBy: 'grossEditContent' })
-  //     .result.then(
-  //       result => {
-  //         this.closeResult = `Closed with: ${result}`;
-  //         this.FillEditGross(nameField);
-  //       },
-  //       reason => {
-  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //       }
-  //     );
-  // }
-  // getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return 'by pressing ESC';
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return 'by clicking on a backdrop';
-  //   } else {
-  //     return `with: ${reason}`;
-  //   }
-  // }
-  // FillEditGross(nameField) {
-  //   console.log('inside fill edit home');
-  //   if (nameField === 'bs') {
-  //     this.output.bsalary = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'da') {
-  //     this.output.da = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'hra') {
-  //     this.output.hra = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'convey') {
-  //     this.output.conveyance = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'ce') {
-  //     this.output.childedu = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'med') {
-  //     this.output.medical = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'lta') {
-  //     this.output.lta = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'oa') {
-  //     this.output.otherallown = this.editField;
-  //     this.editField = '';
-  //   } else if (nameField === 'bonus') {
-  //     this.output.bonus = this.editField;
-  //     this.editField = '';
-  //   }
-  // }
+  onEditGrossField(nameField, grossEditContent) {
+    console.log("name field", nameField);
+    console.log("inside gross");
+    this.nameField = nameField;
+    // console.log('inside edit gross', nameField);
+    if (nameField === "bsalary") {
+      this.nameField = "Amount";
+      // this.gross.bsalary = this.nameField;
+      // this.editField = this.output[0].bsalary;
+      // this.gross.bsalary = this.editField;
+      this.editField = this.output[0].bsalary;
+    } else if (nameField === "da") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].da;
+    } else if (nameField === "hra") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].hra;
+    } else if (nameField === "convey") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].conveyance;
+    } else if (nameField === "ce") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].childedu;
+    } else if (nameField === "med") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].medical;
+    } else if (nameField === "lta") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].lta;
+    } else if (nameField === "oa") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].otherallown;
+    } else if (nameField === "bonus") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].bonus;
+    } else if (nameField === "rent") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].rentincome;
+    } else if (nameField === "saving") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].saving;
+    } else if (nameField === "bonds") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].bonds;
+    } else if (nameField === "conveyance") {
+      this.nameField = "Amount";
+      this.editField = this.output[0].conveyanceother;
+    }
+    this.modalService
+      .open(grossEditContent, { ariaLabelledBy: "grossEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditGross(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  FillEditGross(nameField) {
+    // console.log('inside fill edit home');
+    if (nameField === "bsalary") {
+      // this.editField = this.output[0].bsalary;
+      this.gross.bsalary = this.editField;
+      console.log("updated gross value", this.gross.bsalary);
+      this.output[0].bsalary = this.gross.bsalary;
+      // this.editField = '';
+    } else if (nameField === "da") {
+      this.gross.da = this.editField;
+      this.output[0].da = this.gross.da;
+      // this.editField = '';
+    } else if (nameField === "hra") {
+      this.gross.hra = this.editField;
+      this.output[0].hra = this.gross.hra;
+      // this.editField = '';
+    } else if (nameField === "convey") {
+      this.gross.conveyance = this.editField;
+      this.output[0].conveyance = this.gross.conveyance;
+      // this.editField = '';
+    } else if (nameField === "ce") {
+      this.gross.childedu = this.editField;
+      this.output[0].childedu = this.gross.childedu;
+      //  this.editField = '';
+    } else if (nameField === "med") {
+      this.gross.medical = this.editField;
+      this.output[0].medical = this.gross.medical;
+      // this.editField = '';
+    } else if (nameField === "lta") {
+      this.gross.lta = this.editField;
+      this.output[0].lta = this.gross.lta;
+      // this.editField = '';
+    } else if (nameField === "oa") {
+      this.gross.otherallown = this.editField;
+      this.output[0].otherallown = this.gross.otherallown;
+      // this.editField = '';
+    } else if (nameField === "bonus") {
+      this.gross.bonus = this.editField;
+      this.output[0].bonus = this.gross.bonus;
+    } else if (nameField === "rent") {
+      this.gross.rentincome = this.editField;
+      this.output[0].rentincome = this.gross.rentincome;
+      // this.editField = '';
+    } else if (nameField === "saving") {
+      this.gross.saving = this.editField;
+      this.output[0].saving = this.gross.saving;
+    } else if (nameField === "bonds") {
+      this.gross.bonds = this.editField;
+      this.output[0].bonds = this.gross.bonds;
+    } else if (nameField === "conveyance") {
+      this.gross.conveyanceother = this.editField;
+      this.output[0].conveyanceother = this.gross.conveyanceother;
+    }
+  }
 }

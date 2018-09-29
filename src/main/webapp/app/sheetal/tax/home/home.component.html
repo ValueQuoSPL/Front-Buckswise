@@ -69,7 +69,7 @@
               </td>
               <td></td>
               <td>
-                <input type="number" value="0" name="homeloan" [(ngModel)]="home.homeloan">
+                <input type="number" value="0" name="hoamloan" [(ngModel)]="home.hoamloan">
               </td>
             </tr>
           </tbody>
@@ -225,7 +225,7 @@
 </td>
 <td></td>
 <td>
-{{homeout.homeloan}}
+{{homeout[0].hoamloan}}
 </td>
 <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Housing Loan', homeEditContent)" >
 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -250,7 +250,7 @@
 <td></td>
 <td></td>
 <td>
-{{homeout.prncpalloan}}
+{{homeout[0].prncpalloan}}
 </td>
 <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Pricipal Loan', homeEditContent)" >
 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -275,7 +275,7 @@
 <td></td>
 <td></td>
 <td>
-{{homeout.rentclm}}
+{{homeout[0].rentclm}}
 </td>
 <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Rent Claimed', homeEditContent)" >
 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -299,7 +299,7 @@
 <td></td>
 <td></td>
 <td>
-{{homeout.remintrst}}
+{{homeout[0].remintrst}}
 </td>
 <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Remaining Interest', homeEditContent)" >
 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -323,7 +323,7 @@
 <td></td>
 <td></td>
 <td>
-{{homeout.rentclmgg}}
+{{homeout[0].rentclmgg}}
 </td>
 <button class="btn btn-outline-info"  type="button" (click)="onEditHomeField('Mentioned the Rent claimed', homeEditContent)" >
 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
