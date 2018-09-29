@@ -69,10 +69,7 @@ export class LifeInsuranceComponent implements OnInit {
   }
   checklife(checked, id) {
     this.goalId = id;
-    // this.checkLife = event.target.checked;
     this.checkLife = checked;
-    console.log(checked);
-    console.log(this.checkLife);
     this.updateGoalArray.push({
       id: this.goalId,
       check: this.checkLife
@@ -81,8 +78,6 @@ export class LifeInsuranceComponent implements OnInit {
   }
 
   getUserid() {
-    console.log("inside get uid");
-    // retrieve the userIdentity data from the server, update the identity object, and then resolve.
     return this.accountService
       .get()
       .toPromise()
@@ -90,62 +85,46 @@ export class LifeInsuranceComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log("from life userid is : ", this.uid);
           this.getGoal(this.uid);
           this.getCredit(this.uid);
           this.getLoan(this.uid);
           this.onGetLife();
           this.getName(this.uid);
         } else {
-          console.log("cannot get user details check login ");
         }
       })
       .catch(err => {});
   }
 
   getGoal(uid) {
-    console.log("inside risk getCredit()", uid);
     this.goalService.getgoalbyid(uid).subscribe((response: any[]) => {
       this.dynamicGoalArray = response;
-      console.log(this.dynamicGoalArray);
       for (let i = 0; i < this.dynamicGoalArray.length; i++) {
         this.futurecost = this.dynamicGoalArray[i].futurecost;
         this.ischecked = this.dynamicGoalArray[i].check;
-        console.log(this.ischecked);
       }
     });
   }
 
   getCredit(uid) {
-    console.log("inside risk getCredit()", uid);
     this.creditService.GetCredit(uid).subscribe((response: any[]) => {
       this.dynamicCreditArray = response;
-      console.log(this.dynamicCreditArray);
     });
-    console.log("getCredit() success");
   }
 
   getLoan(uid) {
-    console.log("inside risk getLoan()", uid);
     this.loanService.GetLoan(uid).subscribe((response: any[]) => {
       this.dynamicLoanArray = response;
-      console.log(this.dynamicLoanArray);
       for (let i = 0; i < this.dynamicLoanArray.length; i++) {
-        console.log(this.dynamicLoanArray[i].checkType);
         const type = this.dynamicLoanArray[i].checkType;
         this.outstandingpricipal = this.dynamicLoanArray[i].outstandingpricipal;
-        // console.log(type);
         if (type === true) {
-          console.log("if");
         } else {
-          // console.log('under esle');
           this.liability.push(this.dynamicLoanArray[i]);
         }
       }
-      // console.log('liability', this.liability);
       this.check = this.dynamicLoanArray.checkType;
     });
-    console.log("getLoan() success");
   }
 
   private getDismissReason(reason: any): string {
@@ -160,15 +139,13 @@ export class LifeInsuranceComponent implements OnInit {
 
   // life
   openLife(lifeContent) {
-    console.log("income modal open");
+    this.sum();
     this.modalService
       .open(lifeContent, { ariaLabelledBy: "lifeModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          this.sum();
           this.saveLifeInsurance();
-          // console.log('add income success');
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -178,19 +155,13 @@ export class LifeInsuranceComponent implements OnInit {
 
   sum() {
     this.lifeInsurance.total = +this.futurecost + +this.outstandingpricipal;
-    console.log(this.futurecost);
-    console.log(this.outstandingpricipal);
-    console.log(this.lifeInsurance.total);
   }
 
   saveLifeInsurance() {
     this.lifeInsurance.userid = this.uid;
-
     this.lifeArray.push({
-      // id: this.id,
       risk_coverage: this.lifeInsurance.risk_coverage,
       expense_cover: this.lifeInsurance.expense_cover,
-      // total_yearly_expenses: this.lifeInsurance.total_yearly_expenses
       total_yearly_expenses: this.lifeInsurance.total,
       userid: this.lifeInsurance.userid
     });
@@ -201,7 +172,6 @@ export class LifeInsuranceComponent implements OnInit {
   }
 
   opnLife(id, lifeContent) {
-    console.log(id);
     this.getGoal(this.uid);
     this.commanId = id;
     this.modalService
@@ -220,7 +190,6 @@ export class LifeInsuranceComponent implements OnInit {
   onGetLife() {
     this.riskService.getLifeInsurance(this.uid).subscribe(data => {
       this.goalLife = data;
-      console.log(this.goalLife);
     });
   }
   // update service for lifeInsurance
@@ -255,7 +224,6 @@ export class LifeInsuranceComponent implements OnInit {
   getName(uid) {
     this.riskService.getFamilyName(this.uid).subscribe(data => {
       this.familyName = data;
-      console.log(this.familyName);
     });
   }
 

@@ -113,9 +113,11 @@
                     <button class="btn btn-outline-info" type="button" (click)="opnMedical(medical.id,lifeModal)">
                         <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
                     </button>
-                </td>
-                <td>
-                    <button class="btn btn-outline-danger" type="button" (click)="deleteField(i, medical.id)">Delete</button>
+                    <button class="btn btn-outline-danger" type="button" (click)="deleteField(i, medical.id)">
+                        <span>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </span>
+                    </button>
                 </td>
             </tr>
         </tbody>
