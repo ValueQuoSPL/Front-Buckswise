@@ -16,6 +16,9 @@ export class GoalSelect {
   assetname: string;
   value: string;
   valuetomap: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class EducationSelect {
   uid: Number;
@@ -26,7 +29,9 @@ export class EducationSelect {
   duration: string;
   notes: string;
   loanrequire: string;
-  creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class VehicleSelect {
   uid: Number;
@@ -37,6 +42,9 @@ export class VehicleSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class ChildBirthSelect {
   uid: Number;
@@ -47,6 +55,9 @@ export class ChildBirthSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class MerrageSelect {
   uid: Number;
@@ -57,6 +68,9 @@ export class MerrageSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class BusinessSelect {
   uid: Number;
@@ -67,6 +81,9 @@ export class BusinessSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class FamilySupportSelect {
   uid: Number;
@@ -77,6 +94,9 @@ export class FamilySupportSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class VacationSelect {
   uid: Number;
@@ -87,6 +107,9 @@ export class VacationSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class EmergencyFundSelect {
   uid: Number;
@@ -97,6 +120,9 @@ export class EmergencyFundSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class RetirementFundSelect {
   uid: Number;
@@ -108,6 +134,9 @@ export class RetirementFundSelect {
   notes: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }
 export class NewGoalSelect {
   uid: Number;
@@ -119,4 +148,7 @@ export class NewGoalSelect {
   loantype: string;
   loanrequire: string;
   creationdate: string;
+  dateofcreation: string;
+  yeartogoal: string;
+  presentcost: string;
 }

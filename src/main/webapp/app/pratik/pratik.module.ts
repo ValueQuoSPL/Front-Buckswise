@@ -40,7 +40,6 @@ import { MiscComponent } from "./spending/misc/misc.component";
 import { LifeComponent } from "app/pratik/spending/life/life.component";
 import { GeneralComponent } from "app/pratik/spending/general/general.component";
 import { HealthComponent } from "app/pratik/spending/health/health.component";
-
 @NgModule({
   imports: [
     BrowserModule,
