@@ -8,15 +8,12 @@ import { SheetalComponent } from ".././sheetal/sheetal.component";
 import {
   MainComponent,
   mainRoute,
-  ContactusComponent,
-  contactRoute,
   RequestmeetingComponent,
   meetRoute,
   taxRoute
 } from "app/sheetal";
 import { FormsModule } from "@angular/forms";
 import { MeetService } from "app/sheetal/requestmeeting/meet.service";
-// import { ContactService } from "app/sheetal/contactus/contact.service";
 import { AdviceComponent } from "./advice/advice.component";
 
 @NgModule({
@@ -28,7 +25,6 @@ import { AdviceComponent } from "./advice/advice.component";
   ],
   declarations: [
     MainComponent,
-    ContactusComponent,
     RequestmeetingComponent,
     AdviceComponent,
     SheetalComponent

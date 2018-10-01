@@ -12,11 +12,11 @@
      </mat-expansion-panel-header> -->
     <mat-accordion>
                 
-                <mat-expansion-panel>
+                <mat-expansion-panel class="accordion" [expanded]="true">
 
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                    Gross Income
+                                    <h5>Gross Income</h5>
                             </mat-panel-title>
                             <mat-panel-description>
                             Gross Details
@@ -28,7 +28,7 @@
 
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                    EightyC Deduction
+                                    <h5>EightyC Deduction</h5>
                             </mat-panel-title>
                             <mat-panel-description>
                             EightyC Details
@@ -37,38 +37,12 @@
                         <jhi-eightyc></jhi-eightyc>
                         
                         </mat-expansion-panel>
+                        
                         <mat-expansion-panel>
 
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                        other Deduction
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                Other Details
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <jhi-other></jhi-other>
-                            </mat-expansion-panel>
-            
-                            <mat-expansion-panel>
-
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                            Home Deduction
-                                    </mat-panel-title>
-                                    <mat-panel-description>
-                                    Home Details
-                                    </mat-panel-description>
-                                </mat-expansion-panel-header>
-                                <jhi-home></jhi-home>
-                                </mat-expansion-panel>
-                       
-
-                        <mat-expansion-panel>
-
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                        EightyD Deduction
+                                       <h5> EightyD Deduction</h5>
                                 </mat-panel-title>
                                 <mat-panel-description>
                                 EightyD Details
@@ -77,6 +51,34 @@
                 <jhi-eightyd></jhi-eightyd>
                             
          </mat-expansion-panel>
+         <mat-expansion-panel>
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                        <h5>Home Deduction</h5>
+                </mat-panel-title>
+                <mat-panel-description>
+                Home Details
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <jhi-home></jhi-home>
+            </mat-expansion-panel>
+                        <mat-expansion-panel>
+
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                      <h5>Other Deduction</h5>  
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                Other Details
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <jhi-other></jhi-other>
+                            </mat-expansion-panel>
+            
+                            
+                       
+
          </mat-accordion>
          </div>
                       

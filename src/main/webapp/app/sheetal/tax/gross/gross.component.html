@@ -59,7 +59,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="bsalary" [(ngModel)]="gross.bsalary">
+                                <input type="number" name="bsalary" [(ngModel)]="gross.bsalary">
                                 
                             </td>
                         </tr>
@@ -68,11 +68,11 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="da" [(ngModel)]="gross.da">
+                                <input type="number"  name="da" [(ngModel)]="gross.da">
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">HRA(Click checkbox if you are staying in metro city)</td>
+                            <td scope="row">HRA</td>
                             <!-- <td>
                                 <input type="checkbox">
                             </td> --><td></td>
@@ -106,7 +106,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">LTA(Click checkbox if you are claiming for the current year)</td>
+                            <td scope="row">LTA</td>
                             <td>
                                 <!-- <input type="checkbox"> -->
                             </td>
@@ -284,9 +284,9 @@
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                         </tr>
                         <tr>
-                            <td scope="row">HRA(Click checkbox if you are staying in metro city)</td>
+                            <td scope="row">HRA</td>
                             <td>
-                            <input type="checkbox">
+                            <!-- <input type="checkbox"> -->
                             </td>
                             <td></td>
                             <td>{{output[0].hra}}</td>
@@ -322,9 +322,9 @@
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                         </tr>
                         <tr>
-                            <td scope="row">LTA(Click checkbox if you are claiming for the current year)</td>
+                            <td scope="row">LTA</td>
                             <td>
-                            <input type="checkbox">
+                            <!-- <input type="checkbox"> -->
                             </td>
                             <td></td>
                             <td>{{output[0].lta}}</td>

@@ -1,7 +1,7 @@
 <div *ngIf="!valid">
   <h3>Home Deduction</h3>
   <div class="row pull-right" style="margin-top: -80px;">
-      <button type="button" (click)="onHomeGet(id)" class="btn btn-link">
+      <button type="button" (click)="onHomeGet()" class="btn btn-link">
           <span>
             <i class="far fa-arrow-alt-circle-down" routerLink="/tax" aria-hidden="true"></i>
             <span>Get</span>
@@ -12,6 +12,7 @@
         <i class="fa fa-save" aria-hidden="true"></i>
         <span> Save</span>
       </span>
+
     </button>
     <div class="modal fade" id="homeModelCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -63,9 +64,9 @@
           <tbody>
             <!--Body of table start-->
             <tr>
-              <td scope="row">Interest in Housing Loan(click checkbox if possession is taken)</td>
+              <td scope="row">Interest in Housing Loan</td>
               <td>
-                <input type="checkbox">
+                <!-- <input type="checkbox"> -->
               </td>
               <td></td>
               <td>
@@ -219,9 +220,9 @@
 <tbody>
 <!--Body of table start-->
 <tr>
-<td scope="row">Interest in Housing Loan(click checkbox if possession is taken)</td>
+<td scope="row">Interest in Housing Loan</td>
 <td>
-<input type="checkbox">
+<!-- <input type="checkbox"> -->
 </td>
 <td></td>
 <td>

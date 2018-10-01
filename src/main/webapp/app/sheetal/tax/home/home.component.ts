@@ -73,8 +73,8 @@ export class HomeComponent implements OnInit {
       console.log(res);
       this.homeout = res;
       console.log("eightyc data in homeResponse", this.homeout);
-      for (let index = 0; index < this.homeout.length; index++) {
-        const element = this.homeout[index];
+      for (let i = 0; i < this.homeout.length; i++) {
+        const element = this.homeout[i];
         this.home.hoamloan = element.hoamloan;
         this.home.prncpalloan = element.prncpalloan;
         this.home.rentclm = element.rentclm;
@@ -99,9 +99,9 @@ export class HomeComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        // console.log("user info", this.user);
+        // console.log('user info', this.user);
         this.home.uid = this.user.id;
-        // console.log("uid is", this.home.uid);
+        // console.log('uid is', this.home.uid);
         this.uid = this.home.uid;
         this.onHomeGet(this.uid);
       });
