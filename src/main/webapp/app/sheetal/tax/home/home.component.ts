@@ -14,6 +14,7 @@ import {
   styles: []
 })
 export class HomeComponent implements OnInit {
+  id;
   user: any;
   uid: any;
   eightydout: any = [];

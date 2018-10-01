@@ -56,6 +56,7 @@ class Mapping {
 export class GoalSelectComponent implements OnInit {
   selectedday = '';
   isValid: boolean;
+  isSaving: boolean;
   resource: any;
   amount: any;
   closeResult: string;
@@ -121,7 +122,6 @@ export class GoalSelectComponent implements OnInit {
   savingTotal;
   faoTotal;
   inflation = 0.07;
-  isSaving: boolean;
 
   constructor(
     private router: Router,
@@ -138,8 +138,7 @@ export class GoalSelectComponent implements OnInit {
     public chitService: ChitFundService,
     public propService: PropertyService,
     public faoService: FutureOptionService,
-    public savingService: SavingSchemeService,
-
+    public savingService: SavingSchemeService
   ) {}
   ngOnInit() {
     this.singleAssetTotal = 0;
@@ -159,10 +158,7 @@ export class GoalSelectComponent implements OnInit {
   Home() {
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;
-    this.goalSelectService
-      .saveHome(this.goalselect)
-      .subscribe
-      ();
+    this.goalSelectService.saveHome(this.goalselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -172,10 +168,7 @@ export class GoalSelectComponent implements OnInit {
     this.Educationselect.uid = this.uid;
     console.log(this.Educationselect);
 
-    this.goalSelectService
-      .saveEducation(this.Educationselect)
-      .subscribe
-      ();
+    this.goalSelectService.saveEducation(this.Educationselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -375,28 +368,26 @@ export class GoalSelectComponent implements OnInit {
     this.goalSelectService.GetMapping(this.uid).subscribe(data => {
       this.AssetMappingDB = data;
     });
-
   }
 
   viewUpdate() {
-
     for (let index = 0; index < this.GoalArray.length; index++) {
       const element = this.GoalArray[index];
 
       // view update of modal for available cost
-      if (element.id === this.commonid ) {
+      if (element.id === this.commonid) {
         this.PresentCost = element.presentcost;
         this.GrandTotal = element.goalNotes;
         this.AvailableCost = +this.PresentCost - +this.GrandTotal;
         console.log('available 1', this.AvailableCost);
-
       }
 
       // calculating Future cost = B3*(1+B4)^B2
       // element.futurecost = present cost *( 1+ inflation)^ years
-      element.futurecost = Math.round(element.presentcost * (Math.pow(1 + this.inflation, element.yeartogoal)));
+      element.futurecost = Math.round(
+        element.presentcost * Math.pow(1 + this.inflation, element.yeartogoal)
+      );
       element.fundshortage = +element.futurecost - +element.goalNotes;
-
     }
   }
 
@@ -462,14 +453,21 @@ export class GoalSelectComponent implements OnInit {
   updateGoal() {
     this.SetGrandTotal();
 
-      this.goalSelectService.UpdateGoal(this.GoalNotesUpdate).subscribe( res => {
-      });
-
+    this.goalSelectService
+      .UpdateGoal(this.GoalNotesUpdate)
+      .subscribe(res => {});
   }
 
   SetGrandTotal() {
-
-    this.GrandTotal = +this.stockTotal + +this.mutualTotal + +this.chitTotal + +this.cashTotal + +this.propertyTotal + +this.faoTotal + +this.savingTotal + +this.altTotal;
+    this.GrandTotal =
+      +this.stockTotal +
+      +this.mutualTotal +
+      +this.chitTotal +
+      +this.cashTotal +
+      +this.propertyTotal +
+      +this.faoTotal +
+      +this.savingTotal +
+      +this.altTotal;
 
     console.log('grand total', this.GrandTotal);
 
@@ -485,7 +483,7 @@ export class GoalSelectComponent implements OnInit {
     for (let index = 0; index < this.GoalArray.length; index++) {
       const element = this.GoalArray[index];
 
-      if (element.id === this.commonid ) {
+      if (element.id === this.commonid) {
         element.goalNotes = this.GrandTotal;
         break;
       }
@@ -521,10 +519,9 @@ export class GoalSelectComponent implements OnInit {
         // console.log('asset value', element.assetvalue, 'your value', this.valtomap);
 
         if (element.assetvalue >= this.valtomap) {
-            element.mappedvalue = this.valtomap;
-            const total = this.calculateSingleAssetTotal();
+          element.mappedvalue = this.valtomap;
+          const total = this.calculateSingleAssetTotal();
           // console.log('returned total', total);
-
         } else {
           alert('Please enter value which is less than Asset Value');
         }
@@ -571,7 +568,6 @@ export class GoalSelectComponent implements OnInit {
       const asset = this.HTMLArray[index];
 
       if (asset.id === this.assetid) {
-
         this.findAssetAndFillMapping(this.assetid);
 
         if (this.checked === true) {
@@ -579,11 +575,12 @@ export class GoalSelectComponent implements OnInit {
           this.PostMapping();
           this.SetGrandTotal();
         } else {
-
           for (let j = 0; j < this.AssetMappingDB.length; j++) {
             const row = this.AssetMappingDB[j];
             if (row.assettype === this.assettype && row.assetid === assetid) {
-              const res = this.goalSelectService.DeleteMapping(row.id).subscribe();
+              const res = this.goalSelectService
+                .DeleteMapping(row.id)
+                .subscribe();
               break;
             }
           }
@@ -599,26 +596,28 @@ export class GoalSelectComponent implements OnInit {
     let flag = 0;
     for (let index = 0; index < this.AssetMappingDB.length; index++) {
       const db = this.AssetMappingDB[index];
-      if (this.mapping.goalid === db.goalid &&
+      if (
+        this.mapping.goalid === db.goalid &&
         this.mapping.assettype === db.assettype &&
-        this.mapping.assetid  ===  db.assetid) {
+        this.mapping.assetid === db.assetid
+      ) {
         // console.log('alredy in db');
         flag = 0;
         this.GlobalFlag = false;
-          this.mapping.id = db.id;
+        this.mapping.id = db.id;
 
         this.goalSelectService.PutMapping(this.mapping).subscribe(res => {
           this.getMappedAsset();
         });
 
         break;
-      } else  {
+      } else {
         flag = 1;
         this.GlobalFlag = true;
       }
     }
 
-    if (flag === 1 || this.AssetMappingDB.length === 0 ) {
+    if (flag === 1 || this.AssetMappingDB.length === 0) {
       // console.log('not in db posing now');
       this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
         this.getMappedAsset();
@@ -719,7 +718,7 @@ export class GoalSelectComponent implements OnInit {
     //   return true;
     // } else {
     //   // console.log('flag false');
-      return false;
+    return false;
     // }
   }
 
@@ -744,7 +743,6 @@ export class GoalSelectComponent implements OnInit {
     }
   }
   getMappedAsset() {
-
     this.goalSelectService.GetMapping(this.uid).subscribe(data => {
       this.AssetMappingDB = data;
       console.log('Db data', this.AssetMappingDB);
@@ -759,7 +757,11 @@ export class GoalSelectComponent implements OnInit {
     this.HTMLArray.forEach(html => {
       for (let index = 0; index < this.AssetMappingDB.length; index++) {
         const db = this.AssetMappingDB[index];
-        if (this.commonid === db.goalid && this.assettype === db.assettype && html.id  ===  db.assetid) {
+        if (
+          this.commonid === db.goalid &&
+          this.assettype === db.assettype &&
+          html.id === db.assetid
+        ) {
           html.mappedvalue = db.valuetomap;
           break;
         }
@@ -768,11 +770,9 @@ export class GoalSelectComponent implements OnInit {
 
     this.calculateSingleAssetTotal();
     console.log('html after', this.HTMLArray);
-
   }
 
   getStockById(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.stockService.getStockById(this.uid).subscribe(res => {
@@ -791,11 +791,9 @@ export class GoalSelectComponent implements OnInit {
 
       console.log('html array of stock', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getMutualFundByUid(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
@@ -814,7 +812,6 @@ export class GoalSelectComponent implements OnInit {
 
       console.log('html array of mutual', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getChitFund() {
@@ -836,7 +833,6 @@ export class GoalSelectComponent implements OnInit {
 
       console.log('html array of chit', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getFAO() {
@@ -853,13 +849,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.contract_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       console.log('html array of fao', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getSaving() {
@@ -876,13 +870,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount_invested,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       console.log('html array of saving', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getAlt() {
@@ -899,13 +891,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.market_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       console.log('html array of alt', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getCash() {
@@ -922,13 +912,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       console.log('html array of cash', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
   getProperty() {
@@ -945,13 +933,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.current_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       console.log('html array of prop', this.HTMLArray);
       this.getMappedAsset();
-
     });
   }
 }
