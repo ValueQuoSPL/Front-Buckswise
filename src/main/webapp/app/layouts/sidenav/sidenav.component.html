@@ -1,33 +1,41 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport="true"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
 
-      <jhi-sidebar></jhi-sidebar>
+    <jhi-sidebar></jhi-sidebar>
 
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <mat-toolbar color="primary" class="fixed-top" id="toolbar">
+    <mat-toolbar color="primary" class="fixed-top" id="toolbar"style="background-color: #fafafa">
       <div *ngIf="(isHandset$ | async)" >
         <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <span aria-label="Side nav toggle icon">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars" style="color:black"></i>
           </span>
         </button>
         <a routerLink="/" routerLinkAciveOptions="active">
-            <span></span>
+          <span></span>
         </a>
       </div>
 
       <div *ngIf="!(isHandset$ | async)" id="desktop" [ngClass]="slide" class="animated">
         <div *ngIf="!isSafari">
-          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
+          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()">
+            <span aria-label="Side nav toggle icon">
+              <i class="fa fa-bars" style="color:black"></i>
+            </span>
+          </button>
+          <a routerLink="/" routerLinkAciveOptions="active">
+            <span></span>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="!(isHandset$ | async)" id="desktop" [ngClass]="slide" class="animated">
+        <div *ngIf="isSafari">
+          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()">
             <span aria-label="Side nav toggle icon">
               <i class="fa fa-bars"></i>
             </span>
@@ -38,28 +46,17 @@
         </div>
       </div>
 
-      <div *ngIf="!(isHandset$ | async)"   id="desktop" [ngClass]="slide" class="animated">
-        <div *ngIf="isSafari">
-          <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()" >
-            <span aria-label="Side nav toggle icon">
-              <i class="fa fa-bars"></i>
-            </span>
-          </button>
-          <a routerLink="/" routerLinkAciveOptions="active">
-            <span></span>
-          </a>
-        </div>
-      </div>
-      
-<!-- <router-outlet name="navbar"></router-outlet> -->
+      <router-outlet name="navbar"></router-outlet>
       <jhi-navbar></jhi-navbar>
     </mat-toolbar>
-   
+
     <div *ngIf="isSafari">
-      <br><br><br>
+      <br>
+      <br>
+      <br>
     </div>
-    
+
     <router-outlet></router-outlet>
-    
+
   </mat-sidenav-content>
 </mat-sidenav-container>

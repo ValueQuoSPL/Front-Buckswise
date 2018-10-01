@@ -16,7 +16,7 @@ export class EightydService {
   // temp: any = [];
   user;
   // id: any;
-  model: Eightyd = new Eightyd();
+  eightyd: Eightyd = new Eightyd();
 
   ServiceAPIParam: string;
   constructor(private http: HttpClient, private account: AccountService) {}
@@ -37,11 +37,11 @@ export class EightydService {
 
   public geteightyd(uid) {
     console.log("in geteightyd service", uid);
-    this.ServiceAPIParam = "api/eightyds" + "/" + uid;
+    this.ServiceAPIParam = "api/eightd" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
   }
-  // public PutEightyd(eightyd) {
-  //   const url = SERVER_API_URL + 'api/eightds' + id;
-  //   return this.http.put(url);
-  // }
+  public PutEightyd(eightyd) {
+    console.log("inside update eightyd", eightyd);
+    return this.http.put(SERVER_API_URL + "api/eightyds", eightyd);
+  }
 }

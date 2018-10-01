@@ -1,10 +1,10 @@
 export class Home {
-  homeloan;
+  id;
+  hoamloan;
   prncpalloan;
   rentclm;
   remintrst;
   rentclmgg;
   uid: any;
-
   constructor() {}
 }

@@ -66,7 +66,7 @@
                             required
                         />    
                     </mat-form-field>
-                    <mat-form-field>
+                    <!-- <mat-form-field>
                             <input 
                                 matInput 
                                 type="text"
@@ -75,7 +75,12 @@
                                 [ngModelOptions]="{standalone: true}"
                                 bsDatepicker
                             />
-                    </mat-form-field>
+                    </mat-form-field> -->
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Start Date" name="start_date"  [(ngModel)]="savingScheme.start_date" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
                     <mat-form-field>
                             <input 
                                 matInput
@@ -134,7 +139,7 @@
                             required
                         />
                     </mat-form-field>
-                    <mat-form-field>
+                    <!-- <mat-form-field>
                             <input 
                                 matInput type="text" 
                                 placeholder="End Date"
@@ -142,8 +147,13 @@
                                 [ngModelOptions]="{standalone: true}"
                                 bsDatepicker
                             >
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="End Date" name="end_date"   [(ngModel)]="savingScheme.end_date" >
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    <!-- <mat-form-field>
                         <input 
                             matInput 
                             type="text" 
@@ -151,7 +161,12 @@
                             [(ngModel)]="savingScheme.as_of_date" 
                             [ngModelOptions]="{standalone: true}"
                             bsDatepicker>
-                    </mat-form-field>
+                    </mat-form-field> -->
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker2" placeholder="As of Date" name="as_of_date" [(ngModel)]="savingScheme.as_of_date" >
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
                 </div>
             </div>
             <div class="modal-footer">

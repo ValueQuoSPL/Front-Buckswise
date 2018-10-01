@@ -58,10 +58,11 @@ export class DashboardComponent implements OnInit {
     this.principal.identity().then(account => {
       this.account = account;
     });
-    this.getUserid();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserid();
+  }
 
   onLiabilityEdit() {
     this.router.navigate(["liability"]);

@@ -17,7 +17,6 @@
                             <mat-panel-title> Short Term Liabilities </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
                         </mat-expansion-panel-header>
-
                         <div>
                             <table class="table table-hover table-sm">
                                 <thead>
@@ -39,17 +38,14 @@
                                         <td>{{l.outstandingpricipal}}</td>
                                         <td></td>
                                         <td>
-                                            <button class="btn btn-outline-info" type="button">
-                                                <span>
-                                                    <i class="fa fa-edit" aria-hidden="true"></i>
-                                                </span>
-                                            </button>
+                                        <button class="btn btn-outline-info" type="button" (click)="openShortTerm(l.id, loanModal)">
+                                            <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
                     </mat-expansion-panel>
 
                     <mat-expansion-panel>
@@ -79,11 +75,9 @@
                                         <td>{{l.outstandingpricipal}}</td>
                                         <td></td>
                                         <td>
-                                            <button class="btn btn-outline-info" type="button">
-                                                <span>
-                                                    <i class="fa fa-edit" aria-hidden="true"></i>
-                                                </span>
-                                            </button>
+                                        <button class="btn btn-outline-info" type="button" (click)="openLongTerm(l.id, loanModal)">
+                                            <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -96,3 +90,77 @@
         </mat-expansion-panel>
     </mat-accordion>
 </div>
+<ng-template #loanModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="loanModal">Add Your Loan Details</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="example-container" #incomeAdd="ngForm">
+                <!-- form start-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field style="width: 100%;">
+                            <mat-select placeholder="Choose Loan Type" [(ngModel)]="loann.loan_type" name="loantype">
+                                <mat-option *ngFor="let type of LoanTypeArray" [value]="type.name">
+                                {{type.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput  placeholder="Lender Name" name="lender" [(ngModel)]="loann.lender">
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput  placeholder="Applicant Name" name="applicant" [(ngModel)]="loann.applicant">
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput jhiNumberOnly placeholder="Rate of Interest" name="applicant" [(ngModel)]="loann.roi">
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput [matDatepicker]="picker1" placeholder="Loan Date" 
+                            [formControl]="loanDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                            <mat-datepicker #picker1 ></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- right start -->
+                    <div class="col-md-6">
+                        <mat-form-field  style="width: 100%;">
+                                <mat-select placeholder="Choose Interest Type" [(ngModel)]="loann.intrest_type" name="inttype">
+                                    <mat-option *ngFor="let type of InterestTypeArray" [value]="type.name">
+                                    {{type.name}}
+                                    </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+
+                        <mat-checkbox [(ngModel)]="loan.check" name="check">Is Loan Insured</mat-checkbox>
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput jhiNumberOnly placeholder="Amount of Loan" name="amnt" [(ngModel)]="loann.amnt">
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput jhiNumberOnly placeholder="Loan Tenure" name="tenure" [(ngModel)]="loann.tenure">
+                        </mat-form-field>
+
+                        <mat-form-field style="width: 100%;">
+                            <input required matInput [matDatepicker]="picker2" placeholder="Repayment date" 
+                            [formControl]="repDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker2" style="z-index:1200"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2 ></mat-datepicker>
+                        </mat-form-field>
+                    </div>  <!-- right end-->
+                </div>  <!-- row end -->
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" [disabled]="incomeAdd.form.invalid">Add</button>
+                </div>
+            </form>
+        </div>
+        
+    </ng-template>    

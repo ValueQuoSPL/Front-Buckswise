@@ -31,8 +31,13 @@
                 <form name="editForm" role="form" novalidate #editForm="ngForm">
 
                     <mat-form-field>
-                        <input matInput type="text" placeholder="Risk Coverage for" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
-                            required>
+                        <!-- <input matInput type="text" placeholder="Risk Coverage for" [(ngModel)]="lifeInsurance.risk_coverage" [ngModelOptions]="{standalone: true}"
+                            required> -->
+                        <mat-select aria-placeholder="select">
+                            <div *ngFor="let name of familyName">
+                                <mat-option value="family name">{{name.firstname}}</mat-option>
+                            </div>
+                        </mat-select>
                     </mat-form-field>
                     <mat-form-field style="width: 100%;">
                         <mat-label>How much of Expense would you want to be replaced through insurance cover?</mat-label>
@@ -60,18 +65,19 @@
                                                     <th scope="col">check</th>
                                                     <th scope="col">Goal Name</th>
                                                     <th scope="col">Total Fund Needed</th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                                 <tr *ngFor="let goal of dynamicGoalArray; let i = index">
-                                                    <td><input type="checkbox" (click)="checklife($event, goal.id)" [checked]="goal.check"></td>
+                                                    <td>
+                                                        <mat-checkbox #cb [ngModel]="get(goal.id)" (ngModelChange)="checklife(cb.checked, goal.id)" [name]="goal.id">
+                                                        </mat-checkbox>
+                                                    </td>
                                                     <td> {{goal.goalname}} </td>
                                                     <td>{{goal.futurecost}} </td>
                                                 </tr>
                                             </tbody>
-
                                         </table>
                                     </div>
 
@@ -87,7 +93,6 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Liability Type</th>
-
                                                     <th scope="col">Oraganisation Name</th>
                                                     <th scope="col">Outstanding Amount</th>
                                                 </tr>
@@ -98,16 +103,12 @@
                                                     <td>{{l.lenderName}} </td>
                                                     <td> {{l.outstandingpricipal}}</td>
                                                 </tr>
-
                                                 <td>
                                                     <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
                                                 </td>
-
                                             </tbody>
-
                                         </table>
                                     </div>
-
                                 </mat-expansion-panel>
                             </mat-accordion>
                         </mat-card-content>
@@ -116,11 +117,7 @@
                     <div style="width: 100%;">
                         <mat-label>Total</mat-label>
                         {{lifeInsurance.total }}
-                        <!-- <input matInput type="number"  name="total" id="total" [(ngModel)]="total" [ngModelOptions]="{standalone: true}"
-                                required/> -->
                     </div>
-
-
                     <div class="modal-footer">
 
                         <button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" data-dismiss="modal"
@@ -132,7 +129,6 @@
                             <span class="fa fa-ban"></span>&nbsp;
                             <span>Cancel</span>
                         </button>
-
                     </div>
                 </form>
             </div>
@@ -158,16 +154,17 @@
                         <td> {{lifeInsurance.risk_coverage}} </td>
                         <td>{{lifeInsurance.expense_cover}} </td>
                         <td>{{lifeInsurance.total}} </td>
-                        <td>{{lifeInsurance.id}} </td>
                         <td>
                             <button class="btn btn-outline-info" type="button" (click)="opnLife(lifeInsurance.id,lifeModal)">
                                 <span>
                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                 </span>
                             </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-default" type="button" (click)="deleteField(i, lifeInsurance.id)">Delete</button>
+                            <button class="btn  btn-outline-danger" type="button" (click)="deleteField(i, lifeInsurance.id)">
+                                <span>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </span>
+                            </button>
 
                         </td>
 

@@ -212,7 +212,7 @@
 <div *ngIf="valid" class="card-body">
     <table class="table table-hover table-sm">
       <thead class="thead-light">
-          <button type="button" class="btn btn-link" (click)="updateEightyd()">
+          <button type="button" class="btn btn-link" (click)="updateOther()">
               <i class="fa fa-save" aria-hidden="true"> </i> 
               <span>Update</span>
           </button> 
@@ -233,8 +233,8 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.handicapped}}
-              {{otherout.id}}
+              {{otherout[0].handicapped}}
+             
           </td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Handicapped', otherEditContent)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -259,7 +259,7 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.medicaltreat}}
+              {{otherout[0].medicaltreat}}
               
             </td>
             <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Medical Treatment', otherEditContent)" >
@@ -284,7 +284,7 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.selfedu}}
+              {{otherout[0].selfedu}}
           </td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('Repayment', otherEditContent)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -308,7 +308,7 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.nps}}
+              {{otherout[0].nps}}
           </td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('nps', otherEditContent)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -332,7 +332,7 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.rgess}}
+              {{otherout[0].rgess}}
           </td>
           <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('rgess', otherEditContent)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -356,7 +356,7 @@
           <td></td>
           <td></td>
           <td>
-              {{otherout.donation}}
+              {{otherout[0].donation}}
                 </td>
                 <button class="btn btn-outline-info"  type="button" (click)="onEditOtherField('donation', otherEditContent)" >
                     <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>

@@ -81,4 +81,10 @@ export class RiskService {
     const url = SERVER_API_URL + "api/putCheck";
     return this.http.put(url, data);
   }
+
+  // get family profile names
+  public getFamilyName(uid) {
+    const url = SERVER_API_URL + "api/familyprofiles/" + uid;
+    return this.http.get(url);
+  }
 }
