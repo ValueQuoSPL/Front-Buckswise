@@ -113,4 +113,7 @@ export class PromoCodeManageComponent implements OnInit {
     this.promo.expiryDate = null;
     this.promo.discount = null;
   }
+  onEditDynamicField(id, content) {}
+
+  deleteFieldValue(index, id) {}
 }

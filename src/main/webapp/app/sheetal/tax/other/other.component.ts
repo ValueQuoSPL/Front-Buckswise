@@ -14,6 +14,7 @@ import {
   styles: []
 })
 export class OtherComponent implements OnInit {
+  id;
   user: any;
   uid: any;
   eightydout: any;

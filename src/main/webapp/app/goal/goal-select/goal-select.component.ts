@@ -1,19 +1,19 @@
-import { StockService } from 'app/my-assets/stocks/stocks.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, Route } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { GoalselectService } from './goalselect.service';
-import { Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { MutualfundService } from 'app/my-assets/mutual/mutual.service';
-import { GoalAddButtonComponent } from '../../goal/goal-add-button/goal-add-button.component';
-import { AlternateService } from 'app/my-assets/alternate-investment/alternateinvest.service';
-import { CashService } from 'app/my-assets/cash/cash.service';
-import { ChitFundService } from 'app/my-assets/chit-funds/chitfund.service';
-import { PropertyService } from 'app/my-assets/property/property.service';
-import { FutureOptionService } from 'app/my-assets/future-option/futureoption.service';
-import { SavingSchemeService } from 'app/my-assets/saving-scheme/savingscheme.service';
+import { StockService } from "app/my-assets/stocks/stocks.service";
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
+import { FormControl } from "@angular/forms";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { GoalselectService } from "./goalselect.service";
+import { Inject } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MutualfundService } from "app/my-assets/mutual/mutual.service";
+import { GoalAddButtonComponent } from "../../goal/goal-add-button/goal-add-button.component";
+import { AlternateService } from "app/my-assets/alternate-investment/alternateinvest.service";
+import { CashService } from "app/my-assets/cash/cash.service";
+import { ChitFundService } from "app/my-assets/chit-funds/chitfund.service";
+import { PropertyService } from "app/my-assets/property/property.service";
+import { FutureOptionService } from "app/my-assets/future-option/futureoption.service";
+import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
 
 import {
   GoalSelect,
@@ -27,9 +27,9 @@ import {
   EmergencyFundSelect,
   RetirementFundSelect,
   NewGoalSelect
-} from './goalselect.model';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService } from '../../shared';
+} from "./goalselect.model";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService } from "../../shared";
 
 class Mapping {
   uid;
@@ -42,13 +42,14 @@ class Mapping {
 }
 
 @Component({
-  selector: 'jhi-goal-select',
-  templateUrl: './goal-select.component.html',
-  styleUrls: ['./goal-select.component.css']
+  selector: "jhi-goal-select",
+  templateUrl: "./goal-select.component.html",
+  styleUrls: ["./goal-select.component.css"]
 })
 export class GoalSelectComponent implements OnInit {
-  selectedday = '';
+  selectedday = "";
   isValid: boolean;
+  isSaving: boolean;
   resource: any;
   amount: any;
   closeResult: string;
@@ -114,8 +115,7 @@ export class GoalSelectComponent implements OnInit {
     public chitService: ChitFundService,
     public propService: PropertyService,
     public faoService: FutureOptionService,
-    public savingService: SavingSchemeService,
-
+    public savingService: SavingSchemeService
   ) {}
   ngOnInit() {
     this.singleAssetTotal = 0;
@@ -125,13 +125,9 @@ export class GoalSelectComponent implements OnInit {
   clear() {}
 
   Home() {
-
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;
-    this.goalSelectService
-      .saveHome(this.goalselect)
-      .subscribe
-      ();
+    this.goalSelectService.saveHome(this.goalselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -139,10 +135,7 @@ export class GoalSelectComponent implements OnInit {
   Education() {
     this.Educationselect.goaltype = this.goaltype;
     this.Educationselect.uid = this.uid;
-    this.goalSelectService
-      .saveEducation(this.Educationselect)
-      .subscribe
-      ();
+    this.goalSelectService.saveEducation(this.Educationselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -304,7 +297,7 @@ export class GoalSelectComponent implements OnInit {
     this.isValid = true;
   }
   linkAssets() {
-    this.router.navigate(['goalAdd']);
+    this.router.navigate(["goalAdd"]);
   }
   selectChange(event: any) {
     // // console.log('in selectchange method');
@@ -341,17 +334,15 @@ export class GoalSelectComponent implements OnInit {
     this.goalSelectService.GetMapping(this.uid).subscribe(data => {
       this.AssetMappingDB = data;
     });
-
   }
 
   viewUpdate() {
-
     // formula work
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GoalAddButtonComponent, {
-      width: '550px'
+      width: "550px"
       // data: {name: this.name, animal: this.animal}
     });
 
@@ -388,7 +379,7 @@ export class GoalSelectComponent implements OnInit {
     // // console.log('editLinkModal common id is', this.commonid);
     this.getGoalbyId(this.commonid);
     this.modalService
-      .open(editLinkModal, { ariaLabelledBy: 'editLinkModal' })
+      .open(editLinkModal, { ariaLabelledBy: "editLinkModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -402,9 +393,9 @@ export class GoalSelectComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
@@ -451,7 +442,7 @@ export class GoalSelectComponent implements OnInit {
   }
 
   getMapValue(assetid) {
-    this.valtomap = prompt('Enter value to map ');
+    this.valtomap = prompt("Enter value to map ");
 
     for (let index = 0; index < this.HTMLArray.length; index++) {
       const element = this.HTMLArray[index];
@@ -460,12 +451,11 @@ export class GoalSelectComponent implements OnInit {
         // console.log('asset value', element.assetvalue, 'your value', this.valtomap);
 
         if (element.assetvalue >= this.valtomap) {
-            element.mappedvalue = this.valtomap;
-            const total = this.calculateSingleAssetTotal();
+          element.mappedvalue = this.valtomap;
+          const total = this.calculateSingleAssetTotal();
           // console.log('returned total', total);
-
         } else {
-          alert('Please enter value which is less than Asset Value');
+          alert("Please enter value which is less than Asset Value");
         }
         break;
       }
@@ -479,7 +469,6 @@ export class GoalSelectComponent implements OnInit {
       const asset = this.HTMLArray[index];
 
       if (asset.id === this.assetid) {
-
         this.findAssetAndFillMapping(this.assetid);
 
         // console.log(this.checked, assetid);
@@ -501,7 +490,9 @@ export class GoalSelectComponent implements OnInit {
           for (let j = 0; j < this.AssetMappingDB.length; j++) {
             const row = this.AssetMappingDB[j];
             if (row.assettype === this.assettype && row.assetid === assetid) {
-              const res = this.goalSelectService.DeleteMapping(row.id).subscribe();
+              const res = this.goalSelectService
+                .DeleteMapping(row.id)
+                .subscribe();
               // console.log('delete response', res);
               break;
             }
@@ -543,11 +534,11 @@ export class GoalSelectComponent implements OnInit {
       if (flag === false) {
         this.GrandTotal = +this.GrandTotal + +element.mappedvalue;
         flag = true;
-        console.log('grand total flag', this.GrandTotal);
+        console.log("grand total flag", this.GrandTotal);
         break;
       } else {
-        this.GrandTotal = (+this.GrandTotal + +element.mappedvalue) - temp;
-        console.log('grand total without flag', this.GrandTotal);
+        this.GrandTotal = +this.GrandTotal + +element.mappedvalue - temp;
+        console.log("grand total without flag", this.GrandTotal);
       }
     }
 
@@ -595,7 +586,7 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after filling mapped array', this.MappedArray);
 
     this.modalService
-      .open(content, { ariaLabelledBy: 'viewLinkedAssetModal' })
+      .open(content, { ariaLabelledBy: "viewLinkedAssetModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -636,32 +627,31 @@ export class GoalSelectComponent implements OnInit {
     //   return true;
     // } else {
     //   // console.log('flag false');
-      return false;
+    return false;
     // }
   }
 
   getAsset() {
-    if (this.assettype === 'stocks') {
+    if (this.assettype === "stocks") {
       this.getStockById(this.uid);
-    } else if (this.assettype === 'mutual') {
+    } else if (this.assettype === "mutual") {
       this.getMutualFundByUid(this.uid);
-    } else if (this.assettype === 'ChitFund') {
+    } else if (this.assettype === "ChitFund") {
       this.getChitFund();
-    } else if (this.assettype === 'FutureandOption') {
+    } else if (this.assettype === "FutureandOption") {
       this.getFAO();
-    } else if (this.assettype === 'SavingScheme') {
+    } else if (this.assettype === "SavingScheme") {
       this.getSaving();
-    } else if (this.assettype === 'AlternativeInvestment') {
+    } else if (this.assettype === "AlternativeInvestment") {
       this.getAlt();
-    } else if (this.assettype === 'cash') {
+    } else if (this.assettype === "cash") {
       this.getCash();
-    } else if (this.assettype === 'Propertyandhousehold') {
+    } else if (this.assettype === "Propertyandhousehold") {
       this.getProperty();
     }
   }
 
   getStockById(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.stockService.getStockById(this.uid).subscribe(res => {
@@ -679,11 +669,9 @@ export class GoalSelectComponent implements OnInit {
       });
 
       // console.log('html array of stock', this.HTMLArray);
-
     });
   }
   getMutualFundByUid(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
@@ -701,7 +689,6 @@ export class GoalSelectComponent implements OnInit {
       });
 
       // console.log('html array of mutual', this.HTMLArray);
-
     });
   }
   getChitFund() {
@@ -722,7 +709,6 @@ export class GoalSelectComponent implements OnInit {
       });
 
       // console.log('html array of chit', this.HTMLArray);
-
     });
   }
   getFAO() {
@@ -739,12 +725,10 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.contract_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       // console.log('html array of fao', this.HTMLArray);
-
     });
   }
   getSaving() {
@@ -761,12 +745,10 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount_invested,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       // console.log('html array of saving', this.HTMLArray);
-
     });
   }
   getAlt() {
@@ -783,12 +765,10 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.market_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       // console.log('html array of alt', this.HTMLArray);
-
     });
   }
   getCash() {
@@ -805,12 +785,10 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       // console.log('html array of cash', this.HTMLArray);
-
     });
   }
   getProperty() {
@@ -827,12 +805,10 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.current_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
       // console.log('html array of prop', this.HTMLArray);
-
     });
   }
 }
