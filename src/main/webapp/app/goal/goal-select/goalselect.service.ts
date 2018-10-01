@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import { SERVER_API_URL } from "../../app.constants";
 import {
   GoalSelect,
   EducationSelect,
@@ -14,105 +14,111 @@ import {
   VacationSelect,
   FamilySupportSelect,
   BusinessSelect
-} from './goalselect.model';
+} from "./goalselect.model";
 @Injectable()
 export class GoalselectService {
   ServiceAPIParam: any;
   constructor(private http: HttpClient) {}
   saveHome(goalselect: any): Observable<any> {
     // console.log(goalselect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', goalselect);
+    return this.http.post(SERVER_API_URL + "api/goalset", goalselect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveEducation(EducationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', EducationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", EducationSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveVehicle(VacationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', VacationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", VacationSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveChildBirth(ChildBirthSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', ChildBirthSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", ChildBirthSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveMerrage(MerrageSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', MerrageSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", MerrageSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveBusiness(BusinessSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', BusinessSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", BusinessSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveFamilySupport(FamilySupportSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', FamilySupportSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", FamilySupportSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveVacation(VacationSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', VacationSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", VacationSelect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveEmergencyFund(EmergencyFundSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', EmergencyFundSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", EmergencyFundSelect);
   }
   saveRetirementFund(RetirementFundselect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', RetirementFundselect);
+    return this.http.post(SERVER_API_URL + "api/goalset", RetirementFundselect);
   }
   // tslint:disable-next-line:no-shadowed-variable
   saveNewGoal(NewGoalSelect: any): Observable<any> {
     // console.log(EducationSelect);
-    return this.http.post(SERVER_API_URL + 'api/goalset', NewGoalSelect);
+    return this.http.post(SERVER_API_URL + "api/goalset", NewGoalSelect);
   }
   // in service
   public getgoal() {
     //   console.log('in goalselect service', id);
     //  this.ServiceAPIParam = 'api/goal' + '/' + id;
     //  return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map((res)  => res);
-    return this.http.get(SERVER_API_URL + 'api/goalset').map(res => res);
+    return this.http.get(SERVER_API_URL + "api/goalset").map(res => res);
     //   }
   }
   public getgoalbyid(uid) {
-    console.log('in service uid', uid);
-    this.ServiceAPIParam = 'api/goalset' + '/' + uid;
+    console.log("in service uid", uid);
+    this.ServiceAPIParam = "api/goalset" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam).map(res => res);
     // return this.http.get(SERVER_API_URL + 'api/goal/{uid}').map((res) => res);
   }
   public getGoalbyId(commonid) {
-    this.ServiceAPIParam = 'api/goalsetbyid' + '/' + commonid;
+    this.ServiceAPIParam = "api/goalsetbyid" + "/" + commonid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
   public UpdateGoal(goalArray) {
-    console.log('Goal', goalArray);
-    return this.http.put(SERVER_API_URL + 'api/putgoal', goalArray);
+    console.log("Goal", goalArray);
+    return this.http.put(SERVER_API_URL + "api/putgoal", goalArray);
   }
 
   public PostMapping(data) {
-    const url = SERVER_API_URL + 'api/assetmappings';
+    console.log("posting data", data);
+    const url = SERVER_API_URL + "api/assetmappings";
     return this.http.post(url, data);
   }
+  public PutMapping(data) {
+    console.log("updating data", data);
+    const url = SERVER_API_URL + "api/assetmappings";
+    return this.http.put(url, data);
+  }
   public GetMapping(uid) {
-    const url = SERVER_API_URL + 'api/getbyuid/' + uid;
+    const url = SERVER_API_URL + "api/getbyuid/" + uid;
     return this.http.get(url);
   }
 
   public DeleteMapping(id) {
-    console.log('deleting data', id);
-    const url = SERVER_API_URL + 'api/delete/' + id;
+    console.log("deleting data", id);
+    const url = SERVER_API_URL + "api/delete/" + id;
     console.log(url);
     return this.http.delete(url);
   }
   public getMutualFund(uid) {
-    console.log('in getMutualFundByUid service uid', uid);
-    this.ServiceAPIParam = 'api/mlfnd' + '/' + uid;
+    console.log("in getMutualFundByUid service uid", uid);
+    this.ServiceAPIParam = "api/mlfnd" + "/" + uid;
     return this.http.get(SERVER_API_URL + this.ServiceAPIParam);
   }
 }
