@@ -1,3 +1,4 @@
+// tslint:disable-next-line:quotemark
 import { WSAEINVALIDPROVIDER } from "constants";
 
 export class GoalSelect {

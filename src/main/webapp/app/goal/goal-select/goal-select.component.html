@@ -92,7 +92,7 @@
 
           <mat-card-actions class="pull-right">
   
-              <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+              <button mat-raised-button color="primary" (click)="Education()">Submit</button>
               <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
 
           </mat-card-actions>
@@ -128,7 +128,7 @@
         
             <mat-card-actions class="pull-right">
         
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Vehicle()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
         
             </mat-card-actions>
@@ -166,7 +166,7 @@
           
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Childbirth()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -221,7 +221,7 @@
           
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Merrage()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -258,7 +258,7 @@
           
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Business()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
 
             </mat-card-actions>
@@ -311,7 +311,7 @@
 
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Familysupport()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -350,7 +350,7 @@
           
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="Vacation()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -383,7 +383,7 @@
           
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="EmergencyFund()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -421,7 +421,7 @@
 
             <mat-card-actions class="pull-right">
           
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="RetairementFund()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
           
             </mat-card-actions>
@@ -456,7 +456,7 @@
                           </mat-form-field>
             <mat-card-actions class="pull-right">
 
-                <button mat-raised-button color="primary" (click)="Home()">Submit</button>
+                <button mat-raised-button color="primary" (click)="NewGoal()">Submit</button>
                 <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
 
             </mat-card-actions>
@@ -587,7 +587,7 @@
                       </tr>
                       <tfoot>
                         <td colspan="3">Total</td>
-                        {{ singleAssetTotal }}
+                        <td colspan="2"> {{ singleAssetTotal }}</td>
                       </tfoot>
                     </table>
 
@@ -639,7 +639,7 @@
           <tr *ngFor="let item of MappedArray">
             <td> {{ item.element.id }} </td>
             <td> {{ item.element.assetname }} </td>
-            <td> {{ item.element.value }} </td>
+            <td> {{ item.element.assetValue }} </td>
             <td> {{ item.element.valuetomap }} </td>
           </tr>
         </tbody>

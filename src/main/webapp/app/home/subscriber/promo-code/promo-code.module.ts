@@ -1,13 +1,13 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { CustomMaterialModule } from "../../../custom-material.module";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CustomMaterialModule } from '../../../custom-material.module';
 import {
   PromoCodeComponent,
   PromoCodeService,
   PromoCodeModalService
-} from "./";
-import { FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+} from './';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [

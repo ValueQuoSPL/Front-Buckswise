@@ -96,8 +96,14 @@ export class GoalselectService {
   }
 
   public PostMapping(data) {
+    console.log('posting data', data);
     const url = SERVER_API_URL + 'api/assetmappings';
     return this.http.post(url, data);
+  }
+  public PutMapping(data) {
+    console.log('updating data', data);
+    const url = SERVER_API_URL + 'api/assetmappings';
+    return this.http.put(url, data);
   }
   public GetMapping(uid) {
     const url = SERVER_API_URL + 'api/getbyuid/' + uid;
