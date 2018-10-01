@@ -121,6 +121,7 @@ export class GoalSelectComponent implements OnInit {
   savingTotal;
   faoTotal;
   inflation = 0.07;
+  isSaving: boolean;
 
   constructor(
     private router: Router,

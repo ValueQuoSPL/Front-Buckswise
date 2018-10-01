@@ -24,7 +24,7 @@
         <td>{{field.expiryDate }}</td>
         <td>{{field.discount}}</td>
         <td>
-          <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, incomeEditContent)" >
+          <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, PromoModal)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
           </button> 
         </td>
@@ -79,3 +79,4 @@
       <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="promoform.form.invalid">Add</button>
   </div>
 </ng-template>
+
