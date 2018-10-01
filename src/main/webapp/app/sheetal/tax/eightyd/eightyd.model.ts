@@ -4,5 +4,7 @@ export class Eightyd {
   medself: any;
   uid: any;
   FetchID: any;
+  userid: any;
+  id: any;
   constructor() {}
 }

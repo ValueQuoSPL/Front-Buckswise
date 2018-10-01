@@ -1,6 +1,6 @@
 export class Home {
   id;
-  homeloan;
+  hoamloan;
   prncpalloan;
   rentclm;
   remintrst;

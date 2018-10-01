@@ -1,4 +1,5 @@
 export class Eightyc {
+  id;
   fixed;
   tution;
   nsc;
@@ -14,5 +15,4 @@ export class Eightyc {
   ulip;
   userID;
   uid: any;
-  constructor() {}
 }

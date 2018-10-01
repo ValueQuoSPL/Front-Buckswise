@@ -58,7 +58,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <input type="number" value="0" name="Fixed" [(ngModel)]="eightyc.fixed">
+                                    <input type="number"  name="fixed" [(ngModel)]="eightyc.fixed">
                                 </td>
                             </tr>
                             <tr>
@@ -186,20 +186,20 @@
                             </mat-form-field>
                         </div><br><br>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="eightycAdd.form.invalid">Add</button>
+                            <button type="button" class="btn btn-eightycResponseline-success" (click)="c('Save click')" [disabled]="eightycAdd.form.invalid">Add</button>
                         </div>
                     </form>
             </div>
         </ng-template>
-        <!-- <div class="card">
+        <div class="card">
                 <div class="card-header">
                     Investment Other than Home
                 </div>
-                <button type="button" class="btn btn-link" (click)="updateHome()">
+                <button type="button" class="btn btn-link" (click)="updateEightyc()">
                     <i class="fa fa-save" aria-hidden="true"> </i> 
                     <span>Update</span>
                 </button>  
-                <div class="card-body"> -->
+                <div class="card-body">
                     <table class="table table-hover table-sm">
                         <thead class="thead-light">
                             <tr>
@@ -215,7 +215,7 @@
                                 <td>5 Years of Fixed Deposit in Schedule Bank (Enter amount of Tax-Saver Fixed Deposits only)</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{out.fixed}}</td> 
+                                <td>{{eightycResponse[0].fixed}}</td> 
                                  <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Fixed Deposit in Schedule Bank', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                              </tr>
@@ -224,7 +224,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.tution}}
+                                {{eightycResponse[0].tution}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Tution Fees', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -236,7 +236,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                {{out.nsc}}
+                                {{eightycResponse[0].nsc}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Deposite in NSC', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -246,7 +246,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.nss}}
+                                {{eightycResponse[0].nss}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Deposite in NSS', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -256,7 +256,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.post}}
+                                {{eightycResponse[0].post}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Post Office saving Scheme', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -266,7 +266,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.reinvest}}
+                                {{eightycResponse[0].reinvest}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Interest on NSC Reinvested', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -278,7 +278,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                {{out.licpremium}}
+                                {{eightycResponse[0].licpremium}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Life Insurance Premium', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -288,7 +288,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.equity}}
+                                {{eightycResponse[0].equity}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Equity linked Savings Scheme', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -298,7 +298,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.pf}}
+                                {{eightycResponse[0].pf}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Provident Fund', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -307,7 +307,7 @@
                                 <td scope="row">Public Provident Fund</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{out.ppf}}</td>
+                                <td>{{eightycResponse[0].ppf}}</td>
                                     <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Public Provident Fund', eightycEditContent)" >
                                     <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
                             </tr>
@@ -316,7 +316,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.other}}
+                                {{eightycResponse[0].other}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('Others', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button>
@@ -326,7 +326,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                {{out.ulip}}
+                                {{eightycResponse[0].ulip}}
                                 </td>
                                 <button class="btn btn-outline-info"  type="button" (click)="onEditEightycField('ULIP of UTI/LIC', eightycEditContent)" >
                                 <span> <i class="fa fa-edit" aria-hidden="true"></i></span></button> 

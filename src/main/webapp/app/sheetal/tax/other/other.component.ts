@@ -18,7 +18,7 @@ export class OtherComponent implements OnInit {
   uid: any;
   eightydout: any;
   other: Other = new Other();
-  otherout;
+  otherout: any = [];
   valid = true;
   modalRef: NgbModalRef;
   nameField: any;
@@ -42,12 +42,23 @@ export class OtherComponent implements OnInit {
     this.other.rgess = 0;
     this.other.donation = 0;
     this.FetchID();
+    this.changesSaved = true;
   }
   // Other call function
   onOtherSave() {
-    this.otherService
-      .save(this.other)
-      .subscribe(response => console.log(response));
+    this.otherService.save(this.other).subscribe(response => {
+      alert("Your data saved successfully");
+      this.changesSaved = true;
+      //   console.log(response));
+    });
+    this.valid = true;
+  }
+  updateOther() {
+    console.log(" in update method other", this.other);
+    this.otherService.PutOther(this.other).subscribe(data => {
+      alert("Your data update");
+      this.changesSaved = true;
+    });
   }
   // Other Reset
   resetOther() {
@@ -58,12 +69,32 @@ export class OtherComponent implements OnInit {
     this.other.rgess = 0;
     this.other.donation = 0;
   }
+
   onOtherGet(uid) {
-    console.log("in main ts", uid);
-    this.otherService.getother(uid).subscribe(res => {
+    console.log("in eightycget ts uid", this.uid);
+    this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);
       this.otherout = res;
-      console.log("onOtherGet response ", this.otherout);
+      console.log("eightyc data in eightycResponse", this.otherout);
+      for (let index = 0; index < this.otherout.length; index++) {
+        const element = this.otherout[index];
+        this.other.handicapped = element.handicapped;
+        this.other.medicaltreat = element.medicaltreat;
+        this.other.selfedu = element.selfedu;
+        this.other.nps = element.nps;
+        this.other.rgess = element.rgess;
+        this.other.donation = element.donation;
+        this.other.uid = element.uid;
+        this.other.id = element.id;
+        console.log("otherResponse id", this.other.id);
+      }
+      if (this.otherout.length === 0) {
+        this.valid = false;
+        console.log("in if valid value", this.valid);
+      } else {
+        this.valid = true;
+        console.log("in else valid value", this.valid);
+      }
     });
   }
   FetchID(): Promise<any> {
@@ -79,70 +110,76 @@ export class OtherComponent implements OnInit {
         this.onOtherGet(this.uid);
       });
   }
-  // onEditOtherField(nameField, modal) {
-  //   console.log("inside edit other");
-  //   this.nameField = nameField;
-  //   console.log("inside edit other", nameField);
-  //   if (nameField === "Medical Handicapped") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.handicapped;
-  //   } else if (nameField === "Medical Treatment") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.medicaltreat;
-  //   } else if (nameField === "Repayment") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.selfedu;
-  //   } else if (nameField === "nps") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.nps;
-  //   } else if (nameField === "rgess") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.rgess;
-  //   } else if (nameField === "donation") {
-  //     this.nameField = "Amount";
-  //     this.editField = this.otherout.donation;
-  //   }
-  //   this.modalService
-  //     .open(modal, { ariaLabelledBy: "otherEditContent" })
-  //     .result.then(
-  //       result => {
-  //         this.closeResult = `Closed with: ${result}`;
-  //         this.FillEditOther(nameField);
-  //       },
-  //       reason => {
-  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //       }
-  //     );
-  // }
-  // getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return "by pressing ESC";
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return "by clicking on a backdrop";
-  //   } else {
-  //     return `with: ${reason}`;
-  //   }
-  // }
-  // FillEditOther(nameField) {
-  //   console.log("inside fill edit other");
-  //   if (nameField === "Medical Handicapped") {
-  //     this.otherout.handicapped = this.editField;
-  //     this.editField = "";
-  //   } else if (nameField === "Medical Treatment") {
-  //     this.otherout.medicaltreat = this.editField;
-  //     this.editField = "";
-  //   } else if (nameField === "Repayment") {
-  //     this.otherout.selfedu = this.editField;
-  //     this.editField = "";
-  //   } else if (nameField === "nps") {
-  //     this.otherout.nps = this.editField;
-  //     this.editField = "";
-  //   } else if (nameField === "rgess") {
-  //     this.otherout.rgess = this.editField;
-  //     this.editField = "";
-  //   } else if (nameField === "donation") {
-  //     this.otherout.donation = this.editField;
-  //     this.editField = "";
-  //   }
-  // }
+  onEditOtherField(nameField, otherEditContent) {
+    console.log("inside edit other");
+    this.nameField = nameField;
+    console.log("inside edit other", nameField);
+    if (nameField === "Medical Handicapped") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].handicapped;
+    } else if (nameField === "Medical Treatment") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].medicaltreat;
+    } else if (nameField === "Repayment") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].selfedu;
+    } else if (nameField === "nps") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].nps;
+    } else if (nameField === "rgess") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].rgess;
+    } else if (nameField === "donation") {
+      this.nameField = "Amount";
+      this.editField = this.otherout[0].donation;
+    }
+    this.modalService
+      .open(otherEditContent, { ariaLabelledBy: "otherEditContent" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.FillEditOther(nameField);
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+  getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  FillEditOther(nameField) {
+    console.log("inside fill edit other");
+    if (nameField === "Medical Handicapped") {
+      this.other.handicapped = this.editField;
+      this.otherout[0].handicapped = this.other.handicapped;
+      //  this.editField = '';
+    } else if (nameField === "Medical Treatment") {
+      this.other.medicaltreat = this.editField;
+      this.otherout[0].medicaltreat = this.other.medicaltreat;
+      //  this.editField = '';
+    } else if (nameField === "Repayment") {
+      this.other.selfedu = this.editField;
+      this.otherout[0].selfedu = this.other.selfedu;
+      //  this.editField = '';
+    } else if (nameField === "nps") {
+      this.other.nps = this.editField;
+      this.otherout[0].nps = this.other.nps;
+      //   this.editField = '';
+    } else if (nameField === "rgess") {
+      this.other.rgess = this.editField;
+      this.otherout[0].rgess = this.other.rgess;
+      //  this.editField = '';
+    } else if (nameField === "donation") {
+      this.other.donation = this.editField;
+      this.otherout[0].donation = this.other.donation;
+      // this.editField = '';
+    }
+  }
 }

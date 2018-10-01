@@ -1,4 +1,5 @@
 export class Gross {
+  id;
   uid;
   bsalary;
   da;
@@ -13,6 +14,4 @@ export class Gross {
   saving;
   bonds;
   conveyanceother;
-
-  constructor() {}
 }
