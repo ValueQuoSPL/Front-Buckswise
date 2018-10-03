@@ -1,9 +1,9 @@
-import { Component, OnDestroy } from "@angular/core";
-import { JhiEventManager, JhiAlertService } from "ng-jhipster";
-import { Subscription } from "rxjs/Subscription";
+import { Component, OnDestroy } from '@angular/core';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: "jhi-alert-error",
+  selector: 'jhi-alert-error',
   template: `
         <div class="alerts" role="alert">
             <div *ngFor="let alert of alerts"  [ngClass]="{\'alert.position\': true, \'toast\': alert.toast}">
@@ -24,7 +24,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
     this.alerts = [];
 
     this.cleanHttpErrorListener = eventManager.subscribe(
-      "buckswiseFrontEndApp.httpError",
+      'buckswiseFrontEndApp.httpError',
       response => {
         let i;
         const httpErrorResponse = response.content;
@@ -32,8 +32,8 @@ export class JhiAlertErrorComponent implements OnDestroy {
           // connection refused, server not reachable
           case 0:
             this.addErrorAlert(
-              "Server not reachable",
-              "error.server.not.reachable"
+              'Server not reachable',
+              'error.server.not.reachable'
             );
             break;
 
@@ -42,9 +42,9 @@ export class JhiAlertErrorComponent implements OnDestroy {
             let errorHeader = null;
             let entityKey = null;
             arr.forEach(entry => {
-              if (entry.endsWith("app-error")) {
+              if (entry.endsWith('app-error')) {
                 errorHeader = httpErrorResponse.headers.get(entry);
-              } else if (entry.endsWith("app-params")) {
+              } else if (entry.endsWith('app-params')) {
                 entityKey = httpErrorResponse.headers.get(entry);
               }
             });
@@ -52,7 +52,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
               const entityName = entityKey;
               this.addErrorAlert(errorHeader, errorHeader, { entityName });
             } else if (
-              httpErrorResponse.error !== "" &&
+              httpErrorResponse.error !== '' &&
               httpErrorResponse.error.fieldErrors
             ) {
               const fieldErrors = httpErrorResponse.error.fieldErrors;
@@ -61,19 +61,19 @@ export class JhiAlertErrorComponent implements OnDestroy {
                 // convert 'something[14].other[4].id' to 'something[].other[].id' so translations can be written to it
                 const convertedField = fieldError.field.replace(
                   /\[\d*\]/g,
-                  "[]"
+                  '[]'
                 );
                 const fieldName =
                   convertedField.charAt(0).toUpperCase() +
                   convertedField.slice(1);
                 this.addErrorAlert(
                   'Error on field "' + fieldName + '"',
-                  "error." + fieldError.message,
+                  'error.' + fieldError.message,
                   { fieldName }
                 );
               }
             } else if (
-              httpErrorResponse.error !== "" &&
+              httpErrorResponse.error !== '' &&
               httpErrorResponse.error.message
             ) {
               this.addErrorAlert(
@@ -87,12 +87,12 @@ export class JhiAlertErrorComponent implements OnDestroy {
             break;
 
           case 404:
-            this.addErrorAlert("Not found", "error.url.not.found");
+            this.addErrorAlert('Not found', 'error.url.not.found');
             break;
 
           default:
             if (
-              httpErrorResponse.error !== "" &&
+              httpErrorResponse.error !== '' &&
               httpErrorResponse.error.message
             ) {
               this.addErrorAlert(httpErrorResponse.error.message);
@@ -118,7 +118,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
     this.alerts.push(
       this.alertService.addAlert(
         {
-          type: "danger",
+          type: 'danger',
           msg: message,
           timeout: 5000,
           toast: this.alertService.isToast(),

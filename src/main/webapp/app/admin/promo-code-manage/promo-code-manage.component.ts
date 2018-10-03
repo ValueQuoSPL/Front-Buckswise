@@ -38,6 +38,7 @@ export class PromoCodeManageComponent implements OnInit {
   ngOnInit() {
     this.loadAll();
     this.registerChange();
+    this.promo.expiryDate = this.promoDate.value;
   }
 
   registerChange() {
@@ -57,6 +58,7 @@ export class PromoCodeManageComponent implements OnInit {
   }
 
   openModal(content) {
+    this.clear();
     // console.log('income modal open');
     this.modalService
       .open(content, { ariaLabelledBy: 'PromoModal' })
@@ -72,15 +74,6 @@ export class PromoCodeManageComponent implements OnInit {
       );
   }
 
-  AddPromo() {
-    this.promo.expiryDate = this.promoDate.value;
-    console.log(this.promo);
-    this.promoService
-      .create(this.promo)
-      .subscribe(response => this.onSaveSuccess(response));
-    this.clear();
-  }
-
   private onSaveSuccess(result) {
     this.eventManager.broadcast({
       name: 'promoCodeListModification',
@@ -88,18 +81,11 @@ export class PromoCodeManageComponent implements OnInit {
     });
   }
 
-  loadAll() {
-    this.promoService
-      .get()
-      .subscribe(
-        (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
-        (res: HttpResponse<any>) => this.onError(res.body)
-      );
-  }
-
   private onSuccess(data) {
     this.dynamicPromo = data;
-    this.event.emit('promocodeAdded');
+    // this.event.emit('promocodeAdded');
+    console.log('get all response', this.dynamicPromo);
+
   }
 
   private onError(error) {
@@ -110,15 +96,71 @@ export class PromoCodeManageComponent implements OnInit {
     this.promo.id = null;
     this.promo.plan = null;
     this.promo.promocode = null;
-    this.promo.expiryDate = null;
+    this.promo.expiryDate = this.promoDate.value;
     this.promo.discount = null;
   }
 
-  onEditDynamicField(index, content) {
-    console.log('code to open modal');
+  onEditDynamicField(id, content) {
+
+    this.fill(id);
+
+    this.modalService
+    .open(content, { ariaLabelledBy: 'PromoModal' })
+    .result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+        this.UpdatePromo();
+        // // console.log('add income success');
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   }
 
-  deleteFieldValue(index, id) {
+  fill(id) {
+    for (let index = 0; index < this.dynamicPromo.length; index++) {
+      const element = this.dynamicPromo[index];
+      if (element.id === id) {
+        console.log('match found');
+
+        this.promo.id = element.id;
+        this.promo.discount = element.discount ;
+        this.promo.expiryDate = element.expiryDate;
+        this.promo.plan = element.plan;
+        this.promo.promocode = element.promocode;
+
+        console.log('from array', element);
+        console.log('fiiled model', this.promo);
+
+        break;
+      }
+    }
+  }
+
+  AddPromo() {
+    this.promoService.create(this.promo).subscribe(response => this.onSaveSuccess(response));
+    this.clear();
+  }
+
+  loadAll() {
+    this.promoService.get().subscribe(
+        (res: HttpResponse<PromoCodeModel[]>) => this.onSuccess(res.body),
+        (res: HttpResponse<any>) => this.onError(res.body)
+      );
+  }
+
+  UpdatePromo() {
+    this.promoService.update(this.promo).subscribe(res => this.loadAll());
+    this.clear();
+  }
+
+  deleteFieldValue(id) {
     console.log('code for delete promocode');
+
+    const ret = confirm('Are you sure to delete this PromoCode ?');
+    if (ret) {
+      this.promoService.delete(id).subscribe(res => this.loadAll());
+    }
   }
 }
