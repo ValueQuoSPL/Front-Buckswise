@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { HostListener} from '@angular/core';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
+import { WINDOW } from './window.service';
 
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { Principal, LoginModalService, LoginService } from 'app/shared';
@@ -19,16 +23,34 @@ export class NavbarComponent implements OnInit {
   swaggerEnabled: boolean;
   modalRef: NgbModalRef;
   version: string;
+  navIsFixed = false;
 
   constructor(
     private loginService: LoginService,
     private principal: Principal,
     private loginModalService: LoginModalService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(WINDOW) private window: Window
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+   // we'll do some stuff here when the window is scrolled
+   const number = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+   if (number > 100) {
+     this.navIsFixed = true;
+     console.log('up 100 detected');
+
+   } else if (this.navIsFixed && number < 10) {
+     this.navIsFixed = false;
+     console.log('down detected');
+
+   }
   }
 
   ngOnInit() {
