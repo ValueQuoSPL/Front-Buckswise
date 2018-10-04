@@ -16,11 +16,11 @@
   color: white;
 }
 
-/* #main-menu:hover,
+#main-menu:hover,
 nav.main-menu.expanded {
   width: 250px;
-  overflow: visible;
-} */
+  /* overflow: visible; */
+}
 
 #side-menu {
   background: #353d47 !important;
@@ -33,7 +33,7 @@ nav.main-menu.expanded {
   bottom: 0;
   height: 100%;
   left: 0;
-  width: 200px;
+  width: 60px;
   overflow: hidden;
   -webkit-transition: width 0.05s linear;
   transition: width 0.05s linear;
