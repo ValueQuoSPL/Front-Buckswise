@@ -39,7 +39,7 @@
     <div class="navbar-header">
 
         <div [ngSwitch]="isAuthenticated()">
-            <div *ngSwitchCase="false">
+            <div *ngSwitchCase="true">
                 <ul> 
                     <li>
                         <a routerLink="familyroute" routerLinkActive="active"  >
@@ -135,7 +135,7 @@
                     </li>
                 </ul>
             </div>
-            <div *ngSwitchCase="true">
+            <div *ngSwitchCase="false">
                 <ul> 
                     <li>
                         <a (click)="Login()"  >
@@ -148,7 +148,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </nav>
 
