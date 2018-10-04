@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FAO } from './futureoption.modal';
-import { AccountService } from '../../shared';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FutureOptionService } from './futureoption.service';
+import { Component, OnInit } from "@angular/core";
+import { FAO } from "./futureoption.modal";
+import { AccountService } from "../../shared";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { FutureOptionService } from "./futureoption.service";
 
 @Component({
-  selector: 'jhi-futureoption',
-  templateUrl: './futureoption.component.html',
-  styles: []
+  selector: "jhi-futureoption",
+  templateUrl: "./futureoption.component.html",
+  styleUrls: []
 })
 export class FutureOptionComponent implements OnInit {
   user: any;
@@ -38,34 +38,30 @@ export class FutureOptionComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log('user info of fao', this.user);
+        console.log("user info of fao", this.user);
         this.fao.userid = this.user.id;
-        console.log('in fetchid method', this.fao.userid);
+        console.log("in fetchid method", this.fao.userid);
         this.uid = this.fao.userid;
-        // this.getMyProfilebyid(this.uid);
-        // this. getAltInvestment(this.uid)
-        // this.getCashDetailsByuid(this.uid);
         this.getFAOByUid(this.uid);
       });
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
   openFuture(content) {
-    console.log('future modal open');
+    console.log("future modal open");
     this.modalService
-      .open(content, { ariaLabelledBy: 'futureModal' })
+      .open(content, { ariaLabelledBy: "futureModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
           this.SaveFAO();
-          // console.log('add income success');
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -74,11 +70,11 @@ export class FutureOptionComponent implements OnInit {
   }
   openEditFuture(editfutureModal, id) {
     this.commonid = id;
-    console.log('editChitModal common id is', this.commonid);
-    console.log('editChitModal modal open', id);
+    console.log("editChitModal common id is", this.commonid);
+    console.log("editChitModal modal open", id);
     this.getFutureById(this.commonid);
     this.modalService
-      .open(editfutureModal, { ariaLabelledBy: 'editfutureModal' })
+      .open(editfutureModal, { ariaLabelledBy: "editfutureModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -91,13 +87,13 @@ export class FutureOptionComponent implements OnInit {
   }
   opendeleteFuture(id) {
     this.commonid = id;
-    console.log('opendeleteStocks common id is', this.commonid);
-    console.log('opendeleteStocks modal open', id);
+    console.log("opendeleteStocks common id is", this.commonid);
+    console.log("opendeleteStocks modal open", id);
     this.delete(this.commonid);
   }
   getFutureById(commonid) {
     this.futureOptionService.getFutureById(this.commonid).subscribe(res => {
-      console.log('this is responce of getStockId ', res);
+      console.log("this is responce of getStockId ", res);
       this.getdata = res;
       this.fao.num = this.getdata.num;
       this.fao.investment_type = this.getdata.investment_type;
@@ -114,44 +110,51 @@ export class FutureOptionComponent implements OnInit {
   }
   SaveFAO() {
     this.futureOptionService.SaveFAO(this.fao).subscribe(data => {
-      alert('Added new Future and objective details');
+      alert("Added new Future and objective details");
       this.getFAOByUid(this.uid);
     });
   }
   getFAOByUid(uid) {
     this.futureOptionService.getFAOByUid(this.uid).subscribe(res => {
-      console.log('this is responce of getFAOByUid', res);
+      console.log("this is responce of getFAOByUid", res);
       this.FutureOptionDetails = res;
-      console.log('responce of getFAOByUid service', this.FutureOptionDetails);
+      console.log("responce of getFAOByUid service", this.FutureOptionDetails);
     });
-    // this.getSavingSchemeUid(this.uid);
   }
   update(commonid) {
-    console.log('inside update id is ', this.commonid);
-    // this.getStockId(this.id)
+    console.log("inside update id is ", this.commonid);
     this.fao.id = this.commonid;
-    // this.newid= this.stocks.id;
-    // this.getStockId(this.newid);
-    console.log('inside update', this.fao);
+    console.log("inside update", this.fao);
     this.futureOptionService.UpdateFuture(this.fao).subscribe(data => {
-      alert('Added new chit details');
+      alert("Added new chit details");
       this.getFAOByUid(this.uid);
     });
   }
   delete(commonid) {
-    this.conformkey = confirm('really Want to delete?');
+    this.conformkey = confirm("really Want to delete?");
     if (this.conformkey === true) {
-      // this.conformkey = 'You pressed OK!';
-      console.log('inside delete id is ', this.commonid);
-      // this.getStockId(this.id)
+      console.log("inside delete id is ", this.commonid);
       this.fao.id = this.commonid;
-      console.log('inside delete', this.fao);
+      console.log("inside delete", this.fao);
       this.futureOptionService.DeleteFuture(this.fao.id).subscribe(data => {
-        confirm('delete chit details');
+        confirm("delete chit details");
         this.getFAOByUid(this.uid);
       });
     } else {
       this.getFAOByUid(this.uid);
     }
+  }
+  resetFieldValue() {
+    this.fao.num = null;
+    this.fao.investment_type = "";
+    this.fao.asset_type = "";
+    this.fao.investor_name = "";
+    this.fao.asset_name = "";
+    this.fao.no_of_contracts = null;
+    this.fao.p_date = "";
+    this.fao.contract_p_value = null;
+    this.fao.contract_m_value = null;
+    this.fao.as_of_date = "";
+    this.fao.notes = "";
   }
 }

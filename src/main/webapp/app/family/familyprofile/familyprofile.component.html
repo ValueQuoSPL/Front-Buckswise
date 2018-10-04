@@ -1,5 +1,5 @@
 <div class="container" *ngIf="!isValid"  ><!--start of container div -->
-  <div class="navbar navbar-expand-lg navbar-light navb"style="background-color: #e3f2fd;"><!--start of navbar3 div -->
+  <div><!--start of navbar3 div -->
     <h5>Enter Relationship Details<span class="glyphicons glyphicons-remove-circle"></span></h5>  
 </div><!--end of navbar3 div -->
   <form  name="form" role="form" #familyproForm="ngForm">
@@ -152,11 +152,11 @@
         <div class="pull-right"><!--start of btn div-->
             <div *ngIf="show" >
                     <button mat-raised-button color="primary" [disabled]="familyproForm.form.invalid"  (click)="saveFamilyProfile()">Save</button>
-                    <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+                    <button mat-raised-button color="accent" (click)="formpage()">Cancel</button>
             </div>
             <div *ngIf="!show">
-                    <button mat-raised-button color="primary" [disabled]="familyproForm.form.invalid"  (click)=" update()">update</button>
-                    <button mat-raised-button color="accent" (click)="clear()">Cancel</button>
+                    <button mat-raised-button color="primary" [disabled]="familyproForm.form.invalid" (click)=" update()">update</button>
+                    <button mat-raised-button color="accent" (click)="viewpage()">Cancel</button>
             </div>
             <!-- <button class="btn btn-primary float-right" (click)="refresh()">
                     <span class="fa fa-refresh"></span> <span>Refresh</span>
@@ -164,11 +164,11 @@
             
           </div><!--end of btn div-->
       </div>
-</form>
+</form><!--end of form-->
     </div><!--end of container div -->
-<div class="container" *ngIf="isValid">
-    <div><!--start of navbar3 div -->
-        <div class="row">
+<!-- <div class="container" *ngIf="isValid"> -->
+    <!-- <div>start of navbar3 div -->
+        <!-- <div class="row">
                 <h5><strong>Relationship Details</strong></h5><span>
                 <button 
                 class="btn btn-outline-info d btn-sm"
@@ -209,4 +209,36 @@
             </div>
             </div>
         </div>
-</div>
+</div> -->
+<!--start of view page-->
+<div class="container" *ngIf="isValid"><!--start of container div-->
+    <table class="table-responsive-md table table-hover table-striped  table-sm setfont" *ngFor="let profile of output">
+        <tr></tr>
+        <tr>
+            <td><strong>Relationship Details</strong></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button 
+                    class="btn btn-outline-info  btn-sm orange"
+                    type="button" 
+                    (click)="editDetail()">
+                    <span><i class="fa fa-edit" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>FirstName:&nbsp;{{profile.firstname}}</td>
+            <td>MiddleName:&nbsp;{{profile.middlename}}</td>
+            <td>LastName:&nbsp;{{profile.lastname}}</td>
+        </tr>
+        <tr>
+            <td>Date Of Birth:&nbsp;{{profile.dateOfBirth | date: 'd/M/y'}}</td>
+            <td>MobileNumber:&nbsp;{{profile.phonenumber}}</td>
+            <td>EmailId:&nbsp;{{profile.email}}</td>
+        </tr>
+    </table>
+</div><!--end of container div-->
+

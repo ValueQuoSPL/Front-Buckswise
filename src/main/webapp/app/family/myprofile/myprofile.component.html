@@ -2,10 +2,14 @@
   <form><!--end of form-->
     <div class="row">
         <h5>Personal Information</h5>&nbsp;&nbsp;
-          <span style="margin-left: 560px"><a class="nav-link" *ngIf="show" (click)="saveDetail()">Save</a></span>
+          <!-- <span style="margin-left: 560px"><a class="nav-link" *ngIf="show" (click)="saveDetail()">Save</a></span>
           <span><a class="nav-link"  *ngIf="!show" (click)="update()">Update</a></span>
           <span><a class="nav-link"  (click)="cencel()">Cancel</a></span>
-          <span><a class="nav-link" href="#">Help</a></span>
+          <span><a class="nav-link" href="#">Help</a></span> -->
+         <span style="margin-left: 470px"><button mat-raised-button class="colm" *ngIf="show" (click)="saveDetail()">Save</button></span>&nbsp;
+         <span><button mat-raised-button color="accent" *ngIf="!show" class="colm" (click)="update()">Update</button></span>&nbsp;
+         <span><button mat-raised-button color="warn" (click)="cencel()">Cancel</button></span>&nbsp;
+         <span><button mat-raised-button color="primary" href="#">Help</button></span> 
     </div>     
     <div class="row"><!-- start of row1-->
       <div class="col-md-3"><!-- start of row1.col1-->
@@ -394,7 +398,7 @@
     </div><!--end of row5-->
   </form><!--end of form-->
 </div><!--end of container-->
-<div class="container" *ngIf="isValid">
+<!-- <div class="container" *ngIf="isValid">
     <div class="row">
         <h5><strong>Personal Information</strong></h5><span>
         <button 
@@ -479,4 +483,56 @@
                   </div>
                 </div>
               </div>
+            </div> -->
+            <div  *ngIf="isValid">
+                <table class="table-responsive-md table table-hover table-striped  table-sm setfont"  *ngFor="let profile of output">
+                  <tr></tr>
+                  <tr>
+                    <td><strong>Personal Information</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td><button 
+                      class="btn btn-outline-info  btn-sm"
+                      type="button" 
+                      (click)="editDetail()">
+                      <span><i class="fa fa-edit" aria-hidden="true"></i></span>
+                  </button></td>
+                </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>FirstName:&nbsp;{{profile.firstName}}</td>
+                    <td>MiddleName:&nbsp;{{profile.middleName}}</td>
+                    <td>LastName:&nbsp;{{profile.lastName}}</td>
+                  </tr>
+                  <tr>
+                      <td>Gender:&nbsp;{{profile.gender}}</td>
+                      <td>Marital Status:&nbsp;{{profile.maritalStatus}}</td>
+                      <td>Date Of Birth:&nbsp;{{profile.dob | date: 'd/M/y'}}</td>
+                  </tr>
+                  <tr>
+                      <td>Occupation:&nbsp;{{profile.occupation}}</td>
+                      <td>MobileNumber:&nbsp;{{profile.mobileNumber}}</td>
+                      <td>AlternateNumber:&nbsp;{{profile.alternateNumber}}</td>
+                  </tr>
+                  <tr>
+                      <td>Company:&nbsp;{{profile.company}}</td>
+                      <td>HowDidYouKnow:&nbsp;{{profile.howDidYouKnow}}</td>
+                      <td>Address:&nbsp;{{profile.address}}</td>
+                  </tr>
+                  <tr></tr>
+                  <tr></tr>
+                  <tr><td><strong>Cammunication Information</strong></td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                      <td>EmailId:&nbsp;{{profile.emailId}}</td>
+                      <td>Pan:&nbsp;{{profile.pan}}</td>
+                      <td>City:&nbsp;{{profile.city}}</td>
+                  </tr>
+                  <tr>
+                      <td>State:&nbsp;{{profile.state}}</td>
+                      <td>Country:&nbsp;{{profile.country}}</td>
+                      <td>Pin:&nbsp;{{profile.pin}}</td>
+                  </tr>
+                </table>
             </div>

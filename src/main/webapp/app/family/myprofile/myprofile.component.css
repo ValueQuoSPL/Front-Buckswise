@@ -20,3 +20,17 @@
 .d {
   margin-left: 800px;
 }
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.col {
+  background-color: #2e3192;
+}
+.colm {
+  background-color: #f1592a;
+}

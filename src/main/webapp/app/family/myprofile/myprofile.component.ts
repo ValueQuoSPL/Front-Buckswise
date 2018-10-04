@@ -13,7 +13,7 @@ import { FormControl } from "@angular/forms";
 })
 export class MyprofileComponent implements OnInit {
   myProfile: any;
-  output: any;
+  output: any = [];
   user: any;
   uid: any;
   isValid: boolean;
@@ -51,14 +51,17 @@ export class MyprofileComponent implements OnInit {
       console.log(res);
       this.output = res;
       console.log("responce of myprofile service", this.output);
-      if (this.output.length === null) {
-        console.log(this.output.uid);
-        this.isValid = false;
-        console.log(this.isValid);
-      } else {
-        console.log(this.output.uid);
-        this.isValid = true;
-        console.log(this.isValid);
+      for (let i = 0; i < this.output.length; i++) {
+        const element = this.output[i];
+        if (element.uid === 0) {
+          console.log(element.uid);
+          this.isValid = false;
+          console.log(this.isValid);
+        } else {
+          console.log(element.uid);
+          this.isValid = true;
+          console.log(this.isValid);
+        }
       }
     });
   }
@@ -102,6 +105,7 @@ export class MyprofileComponent implements OnInit {
     this.MyProfileSer.updateProfile(this.myProfile).subscribe(
       responce => {
         console.log(responce), this.getMyProfilebyid(this.uid);
+        alert("data update successfully");
       },
       error => console.log(error)
     );

@@ -66,16 +66,6 @@
                             required
                         />    
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                            <input 
-                                matInput 
-                                type="text"
-                                placeholder="Start Date"
-                                [(ngModel)]="savingScheme.start_date" 
-                                [ngModelOptions]="{standalone: true}"
-                                bsDatepicker
-                            />
-                    </mat-form-field> -->
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker" placeholder="Start Date" name="start_date"  [(ngModel)]="savingScheme.start_date" >
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -139,29 +129,11 @@
                             required
                         />
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                            <input 
-                                matInput type="text" 
-                                placeholder="End Date"
-                                [(ngModel)]="savingScheme.end_date" 
-                                [ngModelOptions]="{standalone: true}"
-                                bsDatepicker
-                            >
-                    </mat-form-field> -->
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker1" placeholder="End Date" name="end_date"   [(ngModel)]="savingScheme.end_date" >
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                       </mat-form-field>
-                    <!-- <mat-form-field>
-                        <input 
-                            matInput 
-                            type="text" 
-                            placeholder="As of Date"
-                            [(ngModel)]="savingScheme.as_of_date" 
-                            [ngModelOptions]="{standalone: true}"
-                            bsDatepicker>
-                    </mat-form-field> -->
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker2" placeholder="As of Date" name="as_of_date" [(ngModel)]="savingScheme.as_of_date" >
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -344,7 +316,7 @@
         </form><!-- form end-->
     </div><!--modal-body end -->
 </ng-template><!--editsavingModal template end -->
-<table class="table table-hover table-sm"><!-- table start -->
+<table class="table-responsive-md table table-hover table-striped  table-sm"><!-- table start -->
     <thead>
         <tr>
             <th scope="col">ID</th>
