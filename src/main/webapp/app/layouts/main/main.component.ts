@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 
 import { Title } from '@angular/platform-browser';
@@ -15,6 +15,11 @@ export class JhiMainComponent implements OnInit {
   loginStatus = false;
   spinner = true;
   isSafari;
+
+  @HostListener('window:mousemove', [])
+  onMouseOver() {
+    // console.log('change detected');
+  }
 
   constructor(
     private titleService: Title,
