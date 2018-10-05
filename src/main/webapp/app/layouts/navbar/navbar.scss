@@ -2,18 +2,18 @@
 Navbar
 ========================================================================== */
 .transparent {
+  background-color: transparent;
 
-  background-color: white;
   a.nav-link {
-    color: black;
+    color: white;
   }
 }
 
 .solid {
+  background-color: white;
   a.nav-link {
-    color: white;
+    color: black;
   }
-  background-color: transparent;
 }
 
 .navbar-version {

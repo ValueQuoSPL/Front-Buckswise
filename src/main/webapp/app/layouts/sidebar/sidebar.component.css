@@ -33,7 +33,7 @@ nav.main-menu.expanded {
   bottom: 0;
   height: 100%;
   left: 0;
-  width: 60px;
+  width: 200px;
   overflow: hidden;
   -webkit-transition: width 0.05s linear;
   transition: width 0.05s linear;
