@@ -1,19 +1,12 @@
 <div class="container">
-    <mat-accordion>
-
-        <mat-expansion-panel class="accordion" [expanded]="steps === 0">
-
-            <mat-expansion-panel-header>
-                <mat-panel-title>Liabilities</mat-panel-title>
-                <mat-panel-description> Liabilities Details </mat-panel-description>
-            </mat-expansion-panel-header>
+        <div class="form-group row justify-content-center"><label><h5>Liabilities</h5></label>
+        </div>
 
             <div>
-
                 <mat-accordion>
 
                     <mat-expansion-panel class="accordion" [expanded]="steps === 0">
-                        <mat-expansion-panel-header>
+                        <mat-expansion-panel-header class="gray">
                             <mat-panel-title> Short Term Liabilities </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
                         </mat-expansion-panel-header>
@@ -49,7 +42,7 @@
                     </mat-expansion-panel>
 
                     <mat-expansion-panel>
-                        <mat-expansion-panel-header>
+                        <mat-expansion-panel-header class="gray1">
                             <mat-panel-title> Long Term Liabilities </mat-panel-title>
                             <mat-panel-description> 00 </mat-panel-description>
                         </mat-expansion-panel-header>
@@ -87,8 +80,6 @@
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
-        </mat-expansion-panel>
-    </mat-accordion>
 </div>
 <ng-template #loanModal let-c="close" let-d="dismiss">
         <div class="modal-header">

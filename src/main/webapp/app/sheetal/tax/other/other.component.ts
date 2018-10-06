@@ -71,7 +71,7 @@ export class OtherComponent implements OnInit {
     this.other.donation = 0;
   }
 
-  onOtherGet(uid) {
+  onOtherGet() {
     console.log("in eightycget ts uid", this.uid);
     this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);
@@ -108,7 +108,7 @@ export class OtherComponent implements OnInit {
         this.other.uid = this.user.id;
         console.log("uid is", this.other.uid);
         this.uid = this.other.uid;
-        this.onOtherGet(this.uid);
+        this.onOtherGet();
       });
   }
   onEditOtherField(nameField, otherEditContent) {

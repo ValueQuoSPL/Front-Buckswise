@@ -1,6 +1,20 @@
 /* ==========================================================================
 Navbar
 ========================================================================== */
+.transparent {
+  background-color: transparent;
+
+  a.nav-link {
+    color: white;
+  }
+}
+
+.solid {
+  background-color: white;
+  a.nav-link {
+    color: black;
+  }
+}
 
 .navbar-version {
   font-size: 10px;
@@ -32,7 +46,7 @@ Navbar
   }
   a.nav-link {
     font-weight: 300;
-    color: black;
+    // color: black;
     font-size: initial;
   }
   .jh-navbar-toggler {

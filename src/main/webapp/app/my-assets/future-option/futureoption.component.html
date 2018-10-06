@@ -247,100 +247,6 @@
             </form>
         </div> <!-- body -->
     </ng-template>
-    <!-- <ng-template #editfutureModal let-c="close" let-d="dismiss">
-        <div class="modal-header">
-            <h4 class="modal-title" id="editfutureModal">Future and Options</h4>
-            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                
-                <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="fao.num" [ngModelOptions]="{standalone: true}" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_investment_type">Investment Type</label>
-                    <input type="text" class="form-control" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type"
-                        [ngModelOptions]="{standalone: true}" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_asset_type">Asset Type</label>
-                    <input type="text" class="form-control" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type" [ngModelOptions]="{standalone: true}"
-                        required/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_investor_name">Investor Name</label>
-                    <input type="text" class="form-control" name="investor_name" id="field_investor_name" [(ngModel)]="fao.investor_name" [ngModelOptions]="{standalone: true}"
-                        required/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_asset_name">Asset Name</label>
-                    <input type="text" class="form-control" name="asset_name" id="field_asset_name" [(ngModel)]="fao.asset_name" [ngModelOptions]="{standalone: true}"
-                        required/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_no_of_contracts">No of Contracts</label>
-                    <input type="number" class="form-control" name="no_of_contracts" id="field_no_of_contracts" [(ngModel)]="fao.no_of_contracts"
-                        [ngModelOptions]="{standalone: true}" required/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" f7or="field_p_date">Purchase Date</label>
-                    <input type="text" placeholder="" class="form-control" [(ngModel)]="fao.p_date" [ngModelOptions]="{standalone: true}" bsDatepicker>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_contract_p_value">contract Purchase Value</label>
-                    <input type="number" class="form-control" name="contract_p_value" id="field_contract_p_value" [(ngModel)]="fao.contract_p_value"
-                        [ngModelOptions]="{standalone: true}" required />
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label class="form-control-label" for="field_contract_m_value">contract Market Value</label>
-                            <input type="number" 
-                            class="form-control"
-                            name="contract_m_value"
-                            id="field_contract_m_value"
-                            [(ngModel)]="fao.contract_m_value"
-                            [ngModelOptions]="{standalone: true}" 
-                            required />
-                        </div>
-                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label class="form-control-label" f7or="field_as_of_date">As of Date</label>
-                            <input type="text" 
-                                    placeholder="" 
-                                    class="form-control"
-                                     [(ngModel)]="fao.as_of_date"
-                                    [ngModelOptions]="{standalone: true}"
-                                    bsDatepicker>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_notes">Notes</label>
-                    <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"/>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" 
-                    [disabled]="editForm.form.invalid || isSaving"
-                     class="btn btn-primary"
-                    (click)="c('Save click')">
-                        <span class="fa fa-save"></span>&nbsp;
-                        <span>Save</span>
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="d('Cross click')">
-                        <span class="fa fa-ban"></span>&nbsp;
-                        <span>Cancel</span>
-                    </button>  
-                </div> <!-- footer -->
-            <!-- </form> -->
-        <!-- </div> body -->
-    <!-- </ng-template> -->
     <ng-template #editfutureModal let-c="close" let-d="dismiss">
         <div class="modal-header">
             <h4 class="modal-title" id="futureModal">Future and Options</h4>
@@ -350,11 +256,6 @@
         </div>
         <div class="modal-body">
             <form name="editForm" role="form" novalidate  #editForm="ngForm">
-                
-                <!-- <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="fao.num" [ngModelOptions]="{standalone: true}" />
-                </div> -->
                 <mat-form-field>
                     <input 
                         matInput 
@@ -369,11 +270,6 @@
                         required
                     >
                 </mat-form-field>&nbsp;&nbsp;
-                <!-- <div class="form-group">
-                    <label class="form-control-label" for="field_investment_type">Investment Type</label>
-                    <input type="text" class="form-control" name="investment_type" id="field_investment_type" [(ngModel)]="fao.investment_type"
-                        [ngModelOptions]="{standalone: true}" required>
-                </div> -->
                 <mat-form-field>
                     <input 
                         matInput 
@@ -386,11 +282,6 @@
                         required
                     >
                 </mat-form-field>
-                <!-- <div class="form-group">
-                    <label class="form-control-label" for="field_asset_type">Asset Type</label>
-                    <input type="text" class="form-control" name="asset_type" id="field_asset_type" [(ngModel)]="fao.asset_type" [ngModelOptions]="{standalone: true}"
-                        required/>
-                </div> -->
                 <mat-form-field>
                     <input 
                         matInput 
@@ -575,7 +466,7 @@
         </div> <!-- body -->
     </ng-template>
     <!-- table -->
-    <table class="table table-hover table-sm">
+    <table class= "table-responsive-md table table-hover table-striped  table-sm">
         <thead>
             <tr>
                 <th scope="col">ID</th>

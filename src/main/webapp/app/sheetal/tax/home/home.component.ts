@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onHomeGet(uid) {
+  onHomeGet() {
     console.log("in homeget ts uid", this.uid);
     this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
         this.home.uid = this.user.id;
         // console.log("uid is", this.home.uid);
         this.uid = this.home.uid;
-        this.onHomeGet(this.uid);
+        this.onHomeGet();
       });
   }
   onEditHomeField(nameField, homeEditContent) {

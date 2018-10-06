@@ -66,6 +66,7 @@ export class StockComponent implements OnInit {
   }
   // stocks
   openStocks(stocksModal) {
+    this.resetFieldValue();
     console.log("openStocks modal open");
     this.modalService
       .open(stocksModal, { ariaLabelledBy: "stocksModal" })
@@ -171,7 +172,6 @@ export class StockComponent implements OnInit {
       this.stocks.id = this.commonid;
       console.log("inside delete", this.stocks);
       this.stockService.DeleteStock(this.stocks.id).subscribe(data => {
-        confirm("delete stocks details");
         this.getStockById(this.uid);
       });
     } else {

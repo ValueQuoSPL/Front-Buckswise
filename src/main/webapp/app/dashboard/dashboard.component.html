@@ -1,8 +1,74 @@
 <br><br>
 <h2> Dashboard </h2> <hr>
 
-<div >
-    <div class="row">
+
+
+<div>
+
+    <!-- navbar -->
+    <div class="row" jhiMovableArea>
+
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Income</mat-card-title>
+                    <mat-card-title>1,00,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Expenses</mat-card-title>
+                    <mat-card-title>50,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Surplus</mat-card-title>
+                    <mat-card-title>20,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Assets</mat-card-title>
+                    <mat-card-title>40,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Liability</mat-card-title>
+                    <mat-card-title>30,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+        <div class="col-md-2">
+            <mat-card class="example-card" jhiMovable>
+                <mat-card-header>
+                    <div mat-card-avatar class=""></div>
+                    <mat-card-title>Networth</mat-card-title>
+                    <mat-card-title>10,000</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+
+
+    </div>
+
+    <hr>
+    <!-- asset liability -->
+    <div class="row" jhiMovableArea>
 
 
         <div class="col-md-6">
@@ -21,7 +87,8 @@
                                 [chartType]="assetChart"
                                 [colors]="colors"
                                 (chartHover)="chartHovered($event)"
-                                (chartClick)="chartClicked($event)"></canvas>
+                                (chartClick)="chartClicked($event)">
+                            </canvas>
                         </div>
                     </mat-card-content>
                     <mat-card-actions>
@@ -54,6 +121,72 @@
             </mat-card>
 
         </div>
+
+    </div>
+
+    <hr>
+    <!-- goals -->
+    <div class="row justify-content-md-center">
+
+            <mat-card class="example-card2"  >
+                    <mat-card-header>
+                        <div mat-card-avatar class=""></div>
+                        <mat-card-title>Goals</mat-card-title>
+                        <mat-card-title>1,00,000</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                            <table class="table">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Goal Name</th>
+                                        <th scope="col">Achievement</th>
+                                        <th scope="col">Cost</th>
+                                        <th scope="col">Tagged Assets </th>
+                    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Buying New Home</td>
+                                            <td>
+                                                    <div class="col-md-3 col-sm-6">
+                                                            <div class="progress yellow">
+                                                                <span class="progress-left">
+                                                                    <span class="progress-bar"></span>
+                                                                </span>
+                                                                <span class="progress-right">
+                                                                    <span class="progress-bar"></span>
+                                                                </span>
+                                                                <div class="progress-value">75%</div>
+                                                            </div>
+                                                        </div>
+                                            </td>
+                                            <td>1000</td>
+                                            <td>500</td>
+                    
+                                        </tr>
+                                        <tr>
+                                            <td>Kids Education</td>
+                                            <td>
+                                                    <div class="col-md-3 col-sm-6">
+                                                            <div class="progress blue">
+                                                                <span class="progress-left">
+                                                                    <span class="progress-bar"></span>
+                                                                </span>
+                                                                <span class="progress-right">
+                                                                    <span class="progress-bar"></span>
+                                                                </span>
+                                                                <div class="progress-value">90%</div>
+                                                            </div>
+                                                        </div>
+                                            </td>
+                                            <td>2000</td>
+                                            <td>1000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                    </mat-card-content>
+                </mat-card>
 
     </div>
     
