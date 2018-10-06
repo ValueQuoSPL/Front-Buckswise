@@ -105,7 +105,7 @@ export class MyprofileComponent implements OnInit {
     this.MyProfileSer.updateProfile(this.myProfile).subscribe(
       responce => {
         console.log(responce), this.getMyProfilebyid(this.uid);
-        alert("data update successfully");
+        // alert("data update successfully");
       },
       error => console.log(error)
     );

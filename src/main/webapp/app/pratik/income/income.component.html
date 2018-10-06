@@ -11,7 +11,7 @@
         <div *ngSwitchCase="true">
             
             <mat-expansion-panel class="accordion" (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
+            (closed)="panelOpenState = false"  [expanded]="step === 0">
                 
                 <!-- Header -->
                 <mat-expansion-panel-header>
