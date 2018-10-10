@@ -2,7 +2,7 @@
 <div >
     <span [ngSwitch]="isAuthenticated()">
         <div *ngSwitchCase="true" >
-            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top" style="margin-left: 40%;" [ngClass]="navIsFixed ? 'transparent' : 'solid'">
+            <nav class="navbar navbar-dark navbar-expand-md jh-navbar fixed-top solid" style="margin-left: 40%;" >
                 <div class="jh-logo-container float-left">
                     <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
                         <i class="fa fa-ellipsis-v"></i>

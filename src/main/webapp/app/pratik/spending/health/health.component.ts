@@ -1,15 +1,15 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
-import { FormControl } from "@angular/forms";
-import { Health } from "app/pratik/spending/spending.model";
-import { HealthService } from "app/pratik/spending/spending.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService, Principal } from 'app/shared';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Health } from 'app/pratik/spending/spending.model';
+import { HealthService } from 'app/pratik/spending/spending.service';
 
 @Component({
-  selector: "jhi-health",
-  templateUrl: "./health.component.html",
-  styleUrls: ["../spending.component.css"]
+  selector: 'jhi-health',
+  templateUrl: './health.component.html',
+  styleUrls: ['../spending.component.css']
 })
 export class HealthComponent implements OnInit {
   uid;
@@ -32,18 +32,18 @@ export class HealthComponent implements OnInit {
   healthDate = new FormControl(new Date());
 
   PolicyTypeArray = [
-    { name: "Child Policy" },
-    { name: "Retirement Policy" },
-    { name: "Saving Policy" },
-    { name: "Investment Policy" },
-    { name: "Term Policy" }
+    { name: 'Child Policy' },
+    { name: 'Retirement Policy' },
+    { name: 'Saving Policy' },
+    { name: 'Investment Policy' },
+    { name: 'Term Policy' }
   ];
   PremiumTypeArray = [
-    { name: "Single" },
-    { name: "Monthly" },
-    { name: "Quarterly" },
-    { name: "Half Yearly" },
-    { name: "Yearly" }
+    { name: 'Single' },
+    { name: 'Monthly' },
+    { name: 'Quarterly' },
+    { name: 'Half Yearly' },
+    { name: 'Yearly' }
   ];
   constructor(
     private healthService: HealthService,
@@ -79,27 +79,27 @@ export class HealthComponent implements OnInit {
   }
 
   clear() {
-    this.resource = "";
-    this.amount = "";
-    this.expense = "";
+    this.resource = '';
+    this.amount = '';
+    this.expense = '';
 
-    this.health.ins_name = "";
-    this.health.issuer = "";
-    this.health.policy_name = "";
-    this.health.policy_no = "";
-    this.health.policy_term = "";
-    this.health.premium = "";
-    this.health.premium_mode = "";
-    this.health.proposer_name = "";
-    this.health.start_date = "";
-    this.health.sum = "";
+    this.health.ins_name = '';
+    this.health.issuer = '';
+    this.health.policy_name = '';
+    this.health.policy_no = '';
+    this.health.policy_term = '';
+    this.health.premium = '';
+    this.health.premium_mode = '';
+    this.health.proposer_name = '';
+    this.health.start_date = '';
+    this.health.sum = '';
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -107,7 +107,7 @@ export class HealthComponent implements OnInit {
   // health insurance
   openHealth(healthModal) {
     this.modalService
-      .open(healthModal, { ariaLabelledBy: "healthModal" })
+      .open(healthModal, { ariaLabelledBy: 'healthModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -152,7 +152,7 @@ export class HealthComponent implements OnInit {
   }
   RemoveHealth(index, id) {
     console.log(id);
-    const res = confirm("Are you sure?");
+    const res = confirm('Are you sure?');
     if (res) {
       this.healthService.DeleteHealth(id).subscribe(responce => {
         // // // console.log(responce);
@@ -168,7 +168,7 @@ export class HealthComponent implements OnInit {
     this.healthService
       .PostHealth(this.health.healthModelArray)
       .subscribe(data => {
-        alert("Health Insurance saved");
+        alert('Health Insurance saved');
         this.onGetHealth();
       });
   }
@@ -185,7 +185,7 @@ export class HealthComponent implements OnInit {
     this.fillModal(id);
     // console.log('modal', healthModal);
     this.modalService
-      .open(healthModal, { ariaLabelledBy: "healthModal" })
+      .open(healthModal, { ariaLabelledBy: 'healthModal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -237,7 +237,7 @@ export class HealthComponent implements OnInit {
     this.health.userid = this.uid;
     this.healthService.PutHealth(this.health, this.uid).subscribe(res => {
       this.clear();
-      alert("Your data saved");
+      alert('Your data saved');
     });
   }
 }

@@ -40,6 +40,7 @@
     "jquery": "3.3.1",
     "maven": "^4.4.1",
     "moment": "2.20.1",
+    "ng-circle-progress": "^1.2.0",
     "ng-device-detector": "^5.1.2",
     "ng-jhipster": "0.5.4",
     "ng-recaptcha": "^3.0.5",

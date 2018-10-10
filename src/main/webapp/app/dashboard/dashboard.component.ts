@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService, Principal } from 'app/shared';
+import { AccountService, Principal, LoginModalService } from 'app/shared';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { Color } from '../../../../../node_modules/ng2-charts';
+// tslint:disable-next-line:max-line-length
+import { CreditService, GeneralService, HealthService, LifeService, LoanService,
+  MiscService, TravelService, UtilityService, HouseService, IncomeService} from 'app/pratik/spending/spending.service';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
 
 @Component({
   selector: 'jhi-dashboard',
@@ -10,6 +14,7 @@ import { Color } from '../../../../../node_modules/ng2-charts';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  // [x: string]: any;
   uid: any;
   account: any;
   result: any = [];
@@ -41,27 +46,56 @@ export class DashboardComponent implements OnInit {
   public color: Array<Color>;
   public liabilityChart = 'pie';
 
-  // navbar
-  inProduction: boolean;
-  isNavbarCollapsed: boolean;
-  languages: any[];
-  swaggerEnabled: boolean;
-  // modalRef: NgbModalRef;
-  version: string;
+  // cardbar
+  incomeTotal = 0;
+  assetTotal = 0;
+  expenseTotal = 0;
+  liabilityTotal = 0;
+  surplus = 0;
+  currentDate = new Date();
+  dbDate;
+  emi: any;
+  inflation = 0.07;
+
+  GoalArray: any = [];
+  HTMLGoalArray: any = [];
+  dynamicCredit: any[];
+  dynamicGeneral: any[];
+  dynamicHealth: any[];
+  HouseholdArray: any[];
+  dynamicLifeArray: any[];
+  dynamicLoan: any[];
+  MiscArray: any[];
+  TravelArray: any[];
+  UtilityArray: any[];
+  linkedasset: boolean;
+
+  modalRef: NgbModalRef;
 
   public chartClicked(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
 
   public chartHovered(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
 
   constructor(
     private router: Router,
     private dashboardService: DashboardService,
     private accountService: AccountService,
-    private principal: Principal
+    private principal: Principal,
+    private generalService: GeneralService,
+    private healthService: HealthService,
+    private lifeService: LifeService,
+    private loanService: LoanService,
+    private miscService: MiscService,
+    private travelService: TravelService,
+    private utilityService: UtilityService,
+    private houseService: HouseService,
+    private incomeService: IncomeService,
+    private loginModalService: LoginModalService,
+
   ) {
     this.principal.identity().then(account => {
       this.account = account;
@@ -70,14 +104,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getUserid();
+    // this.getGoal();
   }
 
-  onLiabilityEdit() {
-    this.router.navigate(['liability']);
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
   }
 
-  onAssetEdit() {
-    this.router.navigate(['asstesroute']);
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 
   getUserid() {
@@ -86,7 +121,7 @@ export class DashboardComponent implements OnInit {
       .toPromise()
       .then(response => {
         const account = response.body;
-        console.log(account.id);
+        // console.log(account.id);
         if (account) {
           this.uid = account.id;
           this.getMutualFund(this.uid);
@@ -98,20 +133,291 @@ export class DashboardComponent implements OnInit {
           this.getPCJ(this.uid);
           this.getFAO(this.uid);
           this.getLiabilities(this.uid);
+          this.getGoal();
+          this.getIncome();
+          this.getExpense();
         }
       });
     // .catch(err => {});
+  }
+
+  getLiabilities(uid) {
+    // // console.log('inside libility get');
+
+    this.totalLiabilities = 0;
+    this.dashboardService.getLiabilities(this.uid).subscribe(data => {
+      // // console.log('response liability', data);
+
+      this.resultLiabilities = data;
+      for (let i = 0; i < this.resultLiabilities.length; i++) {
+        this.totalLiabilities =
+        this.totalLiabilities +
+        +this.resultLiabilities[i].outstandingpricipal;
+      }
+      this.liabilityTotal = this.totalLiabilities;
+      // // console.log('total liability', this.liabilityTotal);
+      this.liabilitiesChart(this.totalLiabilities);
+    });
+  }
+
+  getIncome() {
+    this.incomeService.GetIncome(this.uid).subscribe((response: any[]) => {
+      let value = 0;
+      response.forEach(element => {
+        value = +value + +element.amount;
+      });
+      this.incomeTotal = value;
+    });
+  }
+
+  getExpense() {
+    this.getUtility();
+    this.getHousehold();
+    this.getTravel();
+    this.getMisc();
+    this.getHealth();
+    this.getLife();
+    this.getGeneral();
+    // this.getCredit();
+    this.getLoan();
+  }
+
+  calcExpense(value) {
+    this.expenseTotal = +this.expenseTotal + +value;
+    // // console.log('expense total', this.expenseTotal);
+    this.surplus = +this.incomeTotal - +this.expenseTotal;
+    // // console.log('surplus', this.surplus);
+  }
+
+  getGeneral(): void {
+    this.generalService.GetGeneral(this.uid).subscribe((response: any[]) => {
+      // // console.log('in general res', response);
+      if (response.length !== 0) {
+        // // console.log('found in general res');
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.premium;
+        });
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in general');
+      }
+    });
+  }
+
+  getHealth(): void {
+    this.healthService.GetHealth(this.uid).subscribe((response: any[]) => {
+      // // console.log('in health');
+      if (response.length !== 0) {
+        // // console.log('found in health', response);
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.premium;
+        });
+        // // console.log('from health', value);
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in health');
+      }
+   });
+  }
+
+  getHousehold(): void {
+    this.houseService.GetHouse(this.uid).subscribe((response: any[]) => {
+      // // console.log('in house');
+      if (response.length !== 0) {
+        // // console.log('found in health', response);
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.amount;
+        });
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in house');
+      }
+
+    });
+  }
+
+  getLife(): void {
+    this.lifeService.GetLife(this.uid).subscribe((response: any[]) => {
+      // // console.log('in life');
+
+      if (response.length !== 0) {
+        // // console.log('found in life', response);
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.premium;
+        });
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in life');
+      }
+   });
+  }
+
+  getLoan() {
+    this.loanService.GetLoan(this.uid).subscribe((response: any[]) => {
+      // // console.log('inside loan get');
+      let value = 0;
+      if (response.length !== 0) {
+        // // console.log('found loan ' , response);
+        response.forEach(element => {
+          this.dbDate = new Date(element.ldate);
+          this.calculateEMI(element.amount, element.tenure, element.roi);
+          // // console.log('emi of ', element.ltype, 'is  : ' , this.emi);
+          value = +value + +this.emi;
+        });
+        // // console.log('all emi total' , value);
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in loan');
+      }
+
+    });
+  }
+
+  calculateEMI(P, N, R) {
+    if (this.dbDate < this.currentDate) {
+      const ROI = R;
+      R = R / 12 / 100;
+      const A = Math.pow(1 + R, N);
+      const up = P * R * A;
+      const down = Math.pow(1 + R, N) - 1;
+      this.emi = up / down;
+      P = P - this.emi;
+      this.dbDate.setMonth(this.dbDate.getMonth() + 1);
+
+      this.calculateEMI(P, N, ROI);
+    } else {
+      this.emi = Math.round(this.emi);
+      // // console.log('todays emi', this.emi);
+    }
+  }
+
+  getMisc(): void {
+    this.miscService.GetMisc(this.uid).subscribe((response: any[]) => {
+      // // console.log('in misc');
+
+      if (response.length !== 0) {
+      // // console.log('found in misc', response);
+
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.amount;
+        });
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in misc');
+      }
+   });
+  }
+
+  getTravel(): void {
+    this.travelService.GetTravel(this.uid).subscribe((response: any[]) => {
+      // // console.log('in travel');
+
+      if (response.length !== 0) {
+      // // console.log('found in health', response);
+
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.amount;
+        });
+        // // console.log('from travel', value);
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in travel');
+      }
+  });
+  }
+
+  getUtility(): void {
+    this.utilityService.GetUtility(this.uid).subscribe((response: any[]) => {
+      // // console.log('inside utility get');
+
+      if (response.length !== 0) {
+        // // console.log('found in utility', response);
+        let value = 0;
+        response.forEach(element => {
+          value = +value + +element.amount;
+        });
+        // // console.log('from utility', value);
+        this.calcExpense(value);
+      } else {
+      // console.log('data not in utility');
+      }
+  });
+  }
+
+// end expense
+
+  onLiabilityEdit() {
+    this.router.navigate(['liability']);
+  }
+
+  onAssetEdit() {
+    this.router.navigate(['asstesroute']);
+  }
+
+  getGoal() {
+    this.dashboardService.getGoal(this.uid).subscribe( data => {
+      this.GoalArray = data;
+      // console.log('goal from dashboard', this.GoalArray);
+
+      this.FillGoalCircle();
+    });
+  }
+
+  linkAssetGoal() {
+        this.router.navigate(['goalselect']);
+
+  }
+
+  FillGoalCircle() {
+    this.HTMLGoalArray.splice(0, this.HTMLGoalArray.length);
+
+    this.GoalArray.forEach(element => {
+      let calc = 0;
+      if (element.goalNotes === null) {
+        // console.log('null asset total', element.goalNotes);
+        // console.log('please link asset to goal');
+        this.linkedasset = false;
+
+      } else {
+
+        element.futurecost = Math.round(
+          element.presentcost * Math.pow(1 + this.inflation, element.yeartogoal)
+        );
+
+        calc = (+element.goalNotes / +element.futurecost) * 100;
+        calc = Math.round(calc);
+        // console.log('percent', calc);
+
+        this.HTMLGoalArray.push({
+          name: element.goalname,
+          percent: calc,
+          cost: element.futurecost,
+          tagged: element.goalNotes
+        });
+
+        this.linkedasset = true;
+
+      }
+      // // console.log('assset total', element.goalNotes, 'future cost', element.futurecost);
+    });
   }
 
   getMutualFund(uid) {
     this.total = 0;
     this.dashboardService.getMutualFund(this.uid).subscribe(data => {
       this.result = data;
-      // console.log(this.result);
+      // // console.log(this.result);
       for (let i = 0; i < this.result.length; i++) {
         this.total = this.total + +this.result[i].currentvalue;
       }
-      console.log(this.total);
+      this.assetTotal = +this.assetTotal + +this.total;
+      // // console.log('mutual', this.total);
     });
   }
 
@@ -119,11 +425,12 @@ export class DashboardComponent implements OnInit {
     this.totalStock = 0;
     this.dashboardService.getStock(this.uid).subscribe(data => {
       this.resultStock = data;
-      // console.log(this.resultStock);
+      // // console.log(this.resultStock);
       for (let i = 0; i < this.resultStock.length; i++) {
         this.totalStock = this.totalStock + +this.resultStock[i].no_of_shares;
       }
-      console.log(this.totalStock);
+      this.assetTotal = +this.assetTotal + +this.totalStock;
+      // // console.log('stock', this.totalStock);
     });
   }
 
@@ -131,10 +438,12 @@ export class DashboardComponent implements OnInit {
     this.totalSaving = 0;
     this.dashboardService.getSaving(this.uid).subscribe(data => {
       this.resultSaving = data;
-      // console.log(this.resultSaving);
+      // // console.log(this.resultSaving);
       for (let i = 0; i < this.resultSaving.length; i++) {
         this.totalSaving = this.totalSaving + +this.resultSaving[i];
       }
+      this.assetTotal = +this.assetTotal + +this.totalSaving;
+
     });
   }
 
@@ -142,10 +451,12 @@ export class DashboardComponent implements OnInit {
     this.totalChit = 0;
     this.dashboardService.getChit(this.uid).subscribe(data => {
       this.resultChit = data;
-      // console.log(this.resultChit);
+      // // console.log(this.resultChit);
       for (let i = 0; i < this.resultChit.length; i++) {
         this.totalChit = this.totalChit + +this.resultChit[i].current_value;
       }
+      this.assetTotal = +this.assetTotal + +this.totalChit;
+
     });
   }
 
@@ -153,10 +464,12 @@ export class DashboardComponent implements OnInit {
     this.totalCash = 0;
     this.dashboardService.getCash(this.uid).subscribe(data => {
       this.resultCash = data;
-      // console.log(this.resultCash);
+      // // console.log(this.resultCash);
       for (let i = 0; i < this.resultCash.length; i++) {
         this.totalCash = this.totalCash + +this.resultCash[i].amount;
       }
+      this.assetTotal = +this.assetTotal + +this.totalCash;
+
     });
   }
 
@@ -164,12 +477,14 @@ export class DashboardComponent implements OnInit {
     this.totalAlterInvestment = 0;
     this.dashboardService.getAlterInvestment(this.uid).subscribe(data => {
       this.resultAlterInvestment = data;
-      // console.log(this.resultAlterInvestment);
+      // // console.log(this.resultAlterInvestment);
       for (let i = 0; i < this.resultAlterInvestment.length; i++) {
         this.totalAlterInvestment =
           this.totalAlterInvestment +
           +this.resultAlterInvestment[i].amount_invested;
       }
+      this.assetTotal = +this.assetTotal + +this.totalAlterInvestment;
+
     });
   }
 
@@ -177,10 +492,12 @@ export class DashboardComponent implements OnInit {
     this.totalPCJ = 0;
     this.dashboardService.getPCJ(this.uid).subscribe(data => {
       this.resultPCJ = data;
-      // console.log(this.resultPCJ);
+      // // console.log(this.resultPCJ);
       for (let i = 0; i < this.resultPCJ.length; i++) {
         this.totalPCJ = this.totalPCJ + +this.resultPCJ[i].current_m_value;
       }
+      this.assetTotal = +this.assetTotal + +this.totalPCJ;
+
     });
   }
 
@@ -188,10 +505,12 @@ export class DashboardComponent implements OnInit {
     this.totalFAO = 0;
     this.dashboardService.getFAO(this.uid).subscribe(data => {
       this.resultFAO = data;
-      // console.log(this.resultFAO);
+      // // console.log(this.resultFAO);
       for (let i = 0; i < this.resultFAO.length; i++) {
         this.totalFAO = this.totalFAO + +this.resultFAO[i].contract_m_value;
       }
+      this.assetTotal = +this.assetTotal + +this.totalFAO;
+
       this.piechart(
         this.total,
         this.totalStock,
@@ -215,7 +534,6 @@ export class DashboardComponent implements OnInit {
     totalPCJ,
     totalFAO
   ) {
-    console.log('inside pie chart');
     this.pieChartableLabels.push(
       'MutualFund',
       'stock',
@@ -254,23 +572,8 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
-  getLiabilities(uid) {
-    console.log('inside get lia');
-    this.totalLiabilities = 0;
-    this.dashboardService.getLiabilities(this.uid).subscribe(data => {
-      this.resultLiabilities = data;
-      console.log(this.resultLiabilities);
-      for (let i = 0; i < this.resultLiabilities.length; i++) {
-        this.totalLiabilities =
-          this.totalLiabilities +
-          +this.resultLiabilities[i].outstandingpricipal;
-      }
-      this.liabilitiesChart(this.totalLiabilities);
-    });
-  }
-
   liabilitiesChart(totalLiabilities) {
-    console.log('valueset');
+    // console.log('valueset');
     this.pieChartableLabel.push('totalLiabilities');
     this.pieChartDataa.push(totalLiabilities);
     this.color = [{ backgroundColor: ['#808080'] }];

@@ -428,6 +428,7 @@ export class GoalSelectComponent implements OnInit {
     }
 
     this.getGoalbyId(this.commonid);
+
     this.modalService
       .open(editLinkModal, { ariaLabelledBy: 'editLinkModal' })
       .result.then(

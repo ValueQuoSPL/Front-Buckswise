@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject, Renderer, ElementRef } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
-import { House } from "app/pratik/spending/spending.model";
-import { HouseService } from "app/pratik/spending/spending.service";
+import { Component, OnInit} from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService, Principal } from 'app/shared';
+import { House } from 'app/pratik/spending/spending.model';
+import { HouseService } from 'app/pratik/spending/spending.service';
 
 class NewHousehold {
   dynamicHousehold: any = [];
@@ -11,9 +10,9 @@ class NewHousehold {
 }
 
 @Component({
-  selector: "jhi-household",
-  templateUrl: "./household.component.html",
-  styleUrls: ["../spending.component.css"]
+  selector: 'jhi-household',
+  templateUrl: './household.component.html',
+  styleUrls: ['../spending.component.css']
 })
 export class HouseholdComponent implements OnInit {
   uid;
@@ -35,8 +34,6 @@ export class HouseholdComponent implements OnInit {
   newHouse: NewHousehold = new NewHousehold();
 
   constructor(
-    private renderer: Renderer,
-    private elementRef: ElementRef,
     private principal: Principal,
     private houseService: HouseService,
     private modalService: NgbModal,
@@ -107,35 +104,35 @@ export class HouseholdComponent implements OnInit {
 
   FillHouseholdData() {
     for (let i = 0; i < this.HouseholdArray.length; i++) {
-      if (this.HouseholdArray[i].name === "milk") {
+      if (this.HouseholdArray[i].name === 'milk') {
         this.house.milk = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "fruit") {
+      } else if (this.HouseholdArray[i].name === 'fruit') {
         this.house.fruit = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "rent") {
+      } else if (this.HouseholdArray[i].name === 'rent') {
         this.house.rent = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "fuel") {
+      } else if (this.HouseholdArray[i].name === 'fuel') {
         this.house.fuel = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "medical") {
+      } else if (this.HouseholdArray[i].name === 'medical') {
         this.house.medical = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "society") {
+      } else if (this.HouseholdArray[i].name === 'society') {
         this.house.society = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "auto") {
+      } else if (this.HouseholdArray[i].name === 'auto') {
         this.house.auto = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "edu") {
+      } else if (this.HouseholdArray[i].name === 'edu') {
         this.house.vcd = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "grocery") {
+      } else if (this.HouseholdArray[i].name === 'grocery') {
         this.house.grocery = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "servent") {
+      } else if (this.HouseholdArray[i].name === 'servent') {
         this.house.servent = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "laundry") {
+      } else if (this.HouseholdArray[i].name === 'laundry') {
         this.house.laundry = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "vcd") {
+      } else if (this.HouseholdArray[i].name === 'vcd') {
         this.house.vcd = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "selfcare") {
+      } else if (this.HouseholdArray[i].name === 'selfcare') {
         this.house.selfcare = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name === "property") {
+      } else if (this.HouseholdArray[i].name === 'property') {
         this.house.property = +this.HouseholdArray[i].amount;
-      } else if (this.HouseholdArray[i].name !== "userid") {
+      } else if (this.HouseholdArray[i].name !== 'userid') {
         this.dynamicHousehold.push({
           id: this.HouseholdArray[i].id,
           name: this.HouseholdArray[i].name,
@@ -149,16 +146,16 @@ export class HouseholdComponent implements OnInit {
   }
 
   clear() {
-    this.resource = "";
-    this.amount = "";
-    this.expense = "";
+    this.resource = '';
+    this.amount = '';
+    this.expense = '';
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -166,7 +163,7 @@ export class HouseholdComponent implements OnInit {
 
   openHousehold(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: "expense-modal" })
+      .open(content, { ariaLabelledBy: 'expense-modal' })
       .result.then(
         result => {
           //  this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#resource'), 'focus', []);
@@ -220,7 +217,7 @@ export class HouseholdComponent implements OnInit {
     this.house.userid = this.uid;
     // this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PostHouse(this.house).subscribe(data => {
-      alert("Your household data saved");
+      alert('Your household data saved');
       this.isHouseData = true;
       this.changesSaved = true;
     });
@@ -231,7 +228,7 @@ export class HouseholdComponent implements OnInit {
     this.house.userid = this.uid;
     this.house.dynamicHousehold = this.dynamicHousehold;
     this.houseService.PutHouse(this.house, this.uid).subscribe(data => {
-      alert("Your data saved");
+      alert('Your data saved');
       this.changesSaved = true;
     });
   }
@@ -242,52 +239,52 @@ export class HouseholdComponent implements OnInit {
 
   onEditStaticField(nameField, modal) {
     // // console.log('inside edit household');
-    if (nameField === "milk") {
-      this.nameField = "Milk ";
+    if (nameField === 'milk') {
+      this.nameField = 'Milk ';
       this.editField = this.house.milk;
-    } else if (nameField === "fruit") {
-      this.nameField = "Veg / Non Veg / Fruits";
+    } else if (nameField === 'fruit') {
+      this.nameField = 'Veg / Non Veg / Fruits';
       this.editField = this.house.fruit;
-    } else if (nameField === "rent") {
-      this.nameField = "Rent";
+    } else if (nameField === 'rent') {
+      this.nameField = 'Rent';
       this.editField = this.house.rent;
-    } else if (nameField === "fuel") {
-      this.nameField = "Fuel";
+    } else if (nameField === 'fuel') {
+      this.nameField = 'Fuel';
       this.editField = this.house.fuel;
-    } else if (nameField === "medical") {
-      this.nameField = "Medical expenses";
+    } else if (nameField === 'medical') {
+      this.nameField = 'Medical expenses';
       this.editField = this.house.medical;
-    } else if (nameField === "society") {
-      this.nameField = "Monthly Society Maintainance";
+    } else if (nameField === 'society') {
+      this.nameField = 'Monthly Society Maintainance';
       this.editField = this.house.society;
-    } else if (nameField === "auto") {
-      this.nameField = "Auto Maintainance";
+    } else if (nameField === 'auto') {
+      this.nameField = 'Auto Maintainance';
       this.editField = this.house.auto;
-    } else if (nameField === "edu") {
-      this.nameField = "Education";
+    } else if (nameField === 'edu') {
+      this.nameField = 'Education';
       this.editField = this.house.edu;
-    } else if (nameField === "grocery") {
-      this.nameField = "Groceries and Supplies";
+    } else if (nameField === 'grocery') {
+      this.nameField = 'Groceries and Supplies';
       this.editField = this.house.grocery;
-    } else if (nameField === "servent") {
-      this.nameField = "Maid / Cook / Nanny / Driver";
+    } else if (nameField === 'servent') {
+      this.nameField = 'Maid / Cook / Nanny / Driver';
       this.editField = this.house.servent;
-    } else if (nameField === "laundry") {
-      this.nameField = "Laundry / Dhobi	";
+    } else if (nameField === 'laundry') {
+      this.nameField = 'Laundry / Dhobi	';
       this.editField = this.house.laundry;
-    } else if (nameField === "vcd") {
-      this.nameField = "Video / CD Rentals	";
+    } else if (nameField === 'vcd') {
+      this.nameField = 'Video / CD Rentals	';
       this.editField = this.house.vcd;
-    } else if (nameField === "selfcare") {
-      this.nameField = "Personal care (haircut / Salon / spa / gym etc.)";
+    } else if (nameField === 'selfcare') {
+      this.nameField = 'Personal care (haircut / Salon / spa / gym etc.)';
       this.editField = this.house.selfcare;
-    } else if (nameField === "property") {
-      this.nameField = "Property Tax";
+    } else if (nameField === 'property') {
+      this.nameField = 'Property Tax';
       this.editField = this.house.property;
     }
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "houseEditContent" })
+        .open(modal, { ariaLabelledBy: 'houseEditContent' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -304,48 +301,48 @@ export class HouseholdComponent implements OnInit {
 
   FillEdithouse(nameField) {
     // // console.log('inside fill edit house');
-    if (nameField === "milk") {
+    if (nameField === 'milk') {
       this.house.milk = this.editField;
-      this.editField = "";
-    } else if (nameField === "fruit") {
+      this.editField = '';
+    } else if (nameField === 'fruit') {
       this.house.fruit = this.editField;
-      this.editField = "";
-    } else if (nameField === "rent") {
+      this.editField = '';
+    } else if (nameField === 'rent') {
       this.house.rent = this.editField;
-      this.editField = "";
-    } else if (nameField === "fuel") {
+      this.editField = '';
+    } else if (nameField === 'fuel') {
       this.house.fuel = this.editField;
-      this.editField = "";
-    } else if (nameField === "society") {
+      this.editField = '';
+    } else if (nameField === 'society') {
       this.house.society = this.editField;
-      this.editField = "";
-    } else if (nameField === "auto") {
+      this.editField = '';
+    } else if (nameField === 'auto') {
       this.house.auto = this.editField;
-      this.editField = "";
-    } else if (nameField === "edu") {
+      this.editField = '';
+    } else if (nameField === 'edu') {
       this.house.edu = this.editField;
-      this.editField = "";
-    } else if (nameField === "vcd") {
+      this.editField = '';
+    } else if (nameField === 'vcd') {
       this.house.vcd = this.editField;
-      this.editField = "";
-    } else if (nameField === "grocery") {
+      this.editField = '';
+    } else if (nameField === 'grocery') {
       this.house.grocery = this.editField;
-      this.editField = "";
-    } else if (nameField === "servent") {
+      this.editField = '';
+    } else if (nameField === 'servent') {
       this.house.servent = this.editField;
-      this.editField = "";
-    } else if (nameField === "laundry") {
+      this.editField = '';
+    } else if (nameField === 'laundry') {
       this.house.laundry = this.editField;
-      this.editField = "";
-    } else if (nameField === "selfcare") {
+      this.editField = '';
+    } else if (nameField === 'selfcare') {
       this.house.selfcare = this.editField;
-      this.editField = "";
-    } else if (nameField === "property") {
+      this.editField = '';
+    } else if (nameField === 'property') {
       this.house.property = this.editField;
-      this.editField = "";
-    } else if (nameField === "medical") {
+      this.editField = '';
+    } else if (nameField === 'medical') {
       this.house.medical = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
 
@@ -356,7 +353,7 @@ export class HouseholdComponent implements OnInit {
 
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "incomeEditContent" })
+        .open(modal, { ariaLabelledBy: 'incomeEditContent' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;

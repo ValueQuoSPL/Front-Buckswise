@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
-import { Travel } from "app/pratik/spending/spending.model";
-import { TravelService } from "app/pratik/spending/spending.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService, Principal } from 'app/shared';
+import { Observable } from 'rxjs';
+import { Travel } from 'app/pratik/spending/spending.model';
+import { TravelService } from 'app/pratik/spending/spending.service';
 
 class Newtravel {
   dynamicTravel: any = [];
@@ -11,9 +11,9 @@ class Newtravel {
 }
 
 @Component({
-  selector: "jhi-travel",
-  templateUrl: "./travel.component.html",
-  styleUrls: ["../spending.component.css"]
+  selector: 'jhi-travel',
+  templateUrl: './travel.component.html',
+  styleUrls: ['../spending.component.css']
 })
 export class TravelComponent implements OnInit {
   uid;
@@ -93,17 +93,17 @@ export class TravelComponent implements OnInit {
   }
   FillTravelData() {
     for (let i = 0; i < this.TravelArray.length; i++) {
-      if (this.TravelArray[i].name === "food") {
+      if (this.TravelArray[i].name === 'food') {
         this.travel.food = +this.TravelArray[i].amount;
-      } else if (this.TravelArray[i].name === "entertainment") {
+      } else if (this.TravelArray[i].name === 'entertainment') {
         this.travel.entertainment = +this.TravelArray[i].amount;
-      } else if (this.TravelArray[i].name === "dineout") {
+      } else if (this.TravelArray[i].name === 'dineout') {
         this.travel.dineout = +this.TravelArray[i].amount;
-      } else if (this.TravelArray[i].name === "vacation") {
+      } else if (this.TravelArray[i].name === 'vacation') {
         this.travel.vacation = +this.TravelArray[i].amount;
-      } else if (this.TravelArray[i].name === "hobby") {
+      } else if (this.TravelArray[i].name === 'hobby') {
         this.travel.hobby = +this.TravelArray[i].amount;
-      } else if (this.TravelArray[i].name !== "userid") {
+      } else if (this.TravelArray[i].name !== 'userid') {
         this.dynamicTravel.push({
           id: this.TravelArray[i].id,
           name: this.TravelArray[i].name,
@@ -117,16 +117,16 @@ export class TravelComponent implements OnInit {
   }
 
   clear() {
-    this.resource = "";
-    this.amount = "";
-    this.expense = "";
+    this.resource = '';
+    this.amount = '';
+    this.expense = '';
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
@@ -134,7 +134,7 @@ export class TravelComponent implements OnInit {
   // travel
   openTravel(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: "expense-modal" })
+      .open(content, { ariaLabelledBy: 'expense-modal' })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -182,31 +182,31 @@ export class TravelComponent implements OnInit {
     this.travel.userid = this.uid;
     // this.travel.dynamicTravel = this.dynamicTravel;
     this.travelService.PutTravel(this.travel, this.uid).subscribe(data => {
-      alert("Your travel data saved");
+      alert('Your travel data saved');
     });
   }
 
   onEditStaticField(nameField, modal) {
     // console.log('inside edit travel');
-    if (nameField === "food") {
-      this.nameField = "Food ";
+    if (nameField === 'food') {
+      this.nameField = 'Food ';
       this.editField = this.travel.food;
-    } else if (nameField === "entertainment") {
-      this.nameField = "Entertainment";
+    } else if (nameField === 'entertainment') {
+      this.nameField = 'Entertainment';
       this.editField = this.travel.entertainment;
-    } else if (nameField === "dineout") {
-      this.nameField = "Dineout";
+    } else if (nameField === 'dineout') {
+      this.nameField = 'Dineout';
       this.editField = this.travel.dineout;
-    } else if (nameField === "vacation") {
-      this.nameField = "Vaccation/Travel";
+    } else if (nameField === 'vacation') {
+      this.nameField = 'Vaccation/Travel';
       this.editField = this.travel.vacation;
-    } else if (nameField === "hobby") {
-      this.nameField = "Hobby";
+    } else if (nameField === 'hobby') {
+      this.nameField = 'Hobby';
       this.editField = this.travel.hobby;
     }
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "travelModal" })
+        .open(modal, { ariaLabelledBy: 'travelModal' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -222,21 +222,21 @@ export class TravelComponent implements OnInit {
   }
   FillEditTravel(nameField) {
     // console.log('inside fill edit travel');
-    if (nameField === "food") {
+    if (nameField === 'food') {
       this.travel.food = this.editField;
-      this.editField = "";
-    } else if (nameField === "entertainment") {
+      this.editField = '';
+    } else if (nameField === 'entertainment') {
       this.travel.entertainment = this.editField;
-      this.editField = "";
-    } else if (nameField === "vaction") {
+      this.editField = '';
+    } else if (nameField === 'vaction') {
       this.travel.vacation = this.editField;
-      this.editField = "";
-    } else if (nameField === "dineout") {
+      this.editField = '';
+    } else if (nameField === 'dineout') {
       this.travel.dineout = this.editField;
-      this.editField = "";
-    } else if (nameField === "hobby") {
+      this.editField = '';
+    } else if (nameField === 'hobby') {
       this.travel.hobby = this.editField;
-      this.editField = "";
+      this.editField = '';
     }
   }
   editDynamicField(index, modal) {
@@ -246,7 +246,7 @@ export class TravelComponent implements OnInit {
 
     {
       this.modalService
-        .open(modal, { ariaLabelledBy: "travelModal" })
+        .open(modal, { ariaLabelledBy: 'travelModal' })
         .result.then(
           result => {
             this.closeResult = `Closed with: ${result}`;
@@ -264,7 +264,7 @@ export class TravelComponent implements OnInit {
     this.travel.userid = this.uid;
     this.travel.dynamicTravel = this.dynamicTravel;
     this.travelService.PutTravel(this.travel, this.uid).subscribe(data => {
-      alert("Your data saved");
+      alert('Your data saved');
       this.changesSaved = true;
     });
   }

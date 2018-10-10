@@ -133,7 +133,7 @@ export class LoanService {
   constructor(private http: HttpClient) {}
 
   public PostLoan(data) {
-    console.log(data);
+    // console.log(data);
     const url = SERVER_API_URL + 'api/loananddebt/loan-debt';
     return this.http.post(url, data);
   }
@@ -143,6 +143,7 @@ export class LoanService {
   }
   public GetLoan(uid) {
     const url = SERVER_API_URL + 'api/loananddebt/getloandebt/' + uid;
+    // console.log('get loan ', url);
     return this.http.get(url);
   }
   public DeleteLoan(id) {
