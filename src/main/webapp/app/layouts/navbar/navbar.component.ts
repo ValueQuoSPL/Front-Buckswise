@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { HostListener} from '@angular/core';
-import { Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
-import { WINDOW } from './window.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { HostListener } from "@angular/core";
+import { Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/platform-browser";
+import { WINDOW } from "./window.service";
 
-import { ProfileService } from 'app/layouts/profiles/profile.service';
-import { Principal, LoginModalService, LoginService } from 'app/shared';
+import { ProfileService } from "app/layouts/profiles/profile.service";
+import { Principal, LoginModalService, LoginService } from "app/shared";
 
-import { VERSION } from 'app/app.constants';
+import { VERSION } from "app/app.constants";
 
 @Component({
-  selector: 'jhi-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['navbar.scss']
+  selector: "jhi-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["navbar.scss"]
 })
 export class NavbarComponent implements OnInit {
   inProduction: boolean;
@@ -34,23 +34,25 @@ export class NavbarComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     @Inject(WINDOW) private window: Window
   ) {
-    this.version = VERSION ? 'v' + VERSION : '';
+    this.version = VERSION ? "v" + VERSION : "";
     this.isNavbarCollapsed = true;
   }
 
-  @HostListener('window:scroll', [])
+  @HostListener("window:scroll", [])
   onWindowScroll() {
-   // we'll do some stuff here when the window is scrolled
-   const number = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-   if (number > 100) {
-     this.navIsFixed = true;
-     console.log('up 100 detected');
-
-   } else if (this.navIsFixed && number < 10) {
-     this.navIsFixed = false;
-     console.log('down detected');
-
-   }
+    // we'll do some stuff here when the window is scrolled
+    const number =
+      this.window.pageYOffset ||
+      this.document.documentElement.scrollTop ||
+      this.document.body.scrollTop ||
+      0;
+    if (number > 100) {
+      this.navIsFixed = true;
+      console.log("up 100 detected");
+    } else if (this.navIsFixed && number < 10) {
+      this.navIsFixed = false;
+      console.log("down detected");
+    }
   }
 
   ngOnInit() {
@@ -75,7 +77,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.collapseNavbar();
     this.loginService.logout();
-    this.router.navigate(['']);
+    this.router.navigate([""]);
   }
 
   toggleNavbar() {

@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Home } from './home.model';
-import { HomeService } from './home.service';
-import { AccountService } from 'app/shared';
+import { Component, OnInit } from "@angular/core";
+import { Home } from "./home.model";
+import { HomeService } from "./home.service";
+import { AccountService } from "app/shared";
 import {
   NgbModalRef,
   NgbModal,
   ModalDismissReasons
-} from '@ng-bootstrap/ng-bootstrap';
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'jhi-home',
-  templateUrl: './home.component.html',
+  selector: "jhi-home",
+  templateUrl: "./home.component.html",
   styles: []
 })
 export class HomeComponent implements OnInit {
@@ -54,28 +54,28 @@ export class HomeComponent implements OnInit {
   }
   onHomeSave() {
     this.homeService.save(this.home).subscribe(response => {
-      alert('Your data saved successfully');
+      alert("Your data saved successfully");
       this.changesSaved = true;
       //   console.log(response));
     });
     this.valid = true;
   }
   updateHome() {
-    console.log(' in update method other', this.home);
+    console.log(" in update method other", this.home);
     this.homeService.PutHome(this.home).subscribe(data => {
-      alert('Your data update');
+      alert("Your data update");
       this.changesSaved = true;
     });
   }
 
   onHomeGet() {
-    console.log('in homeget ts uid', this.uid);
+    console.log("in homeget ts uid", this.uid);
     this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);
       this.homeout = res;
-      console.log('eightyc data in homeResponse', this.homeout);
-      for (let index = 0; index < this.homeout.length; index++) {
-        const element = this.homeout[index];
+      console.log("eightyc data in homeResponse", this.homeout);
+      for (let i = 0; i < this.homeout.length; i++) {
+        const element = this.homeout[i];
         this.home.hoamloan = element.hoamloan;
         this.home.prncpalloan = element.prncpalloan;
         this.home.rentclm = element.rentclm;
@@ -83,14 +83,14 @@ export class HomeComponent implements OnInit {
         this.home.rentclmgg = element.rentclmgg;
         this.home.uid = element.uid;
         this.home.id = element.id;
-        console.log('eightycResponse id', this.home.id);
+        console.log("eightycResponse id", this.home.id);
       }
       if (this.homeout.length === 0) {
         this.valid = false;
-        console.log('in if valid value', this.valid);
+        console.log("in if valid value", this.valid);
       } else {
         this.valid = true;
-        console.log('in else valid value', this.valid);
+        console.log("in else valid value", this.valid);
       }
     });
   }
@@ -100,35 +100,31 @@ export class HomeComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        // console.log("user info", this.user);
         this.home.uid = this.user.id;
-        // console.log("uid is", this.home.uid);
         this.uid = this.home.uid;
         this.onHomeGet();
       });
   }
   onEditHomeField(nameField, homeEditContent) {
-    // console.log('inside home other');
     this.nameField = nameField;
-    // console.log('inside edit home', nameField);
-    if (nameField === 'Housing Loan') {
-      this.nameField = 'Amount';
+    if (nameField === "Housing Loan") {
+      this.nameField = "Amount";
       this.editField = this.homeout[0].hoamloan;
-    } else if (nameField === 'Pricipal Loan') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Pricipal Loan") {
+      this.nameField = "Amount";
       this.editField = this.homeout[0].prncpalloan;
-    } else if (nameField === 'Rent Claimed') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Rent Claimed") {
+      this.nameField = "Amount";
       this.editField = this.homeout[0].rentclm;
-    } else if (nameField === 'Remaining Interest') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Remaining Interest") {
+      this.nameField = "Amount";
       this.editField = this.homeout[0].remintrst;
-    } else if (nameField === 'Mentioned the Rent claimed') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Mentioned the Rent claimed") {
+      this.nameField = "Amount";
       this.editField = this.homeout[0].rentclmgg;
     }
     this.modalService
-      .open(homeEditContent, { ariaLabelledBy: 'homeEditContent' })
+      .open(homeEditContent, { ariaLabelledBy: "homeEditContent" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -141,35 +137,29 @@ export class HomeComponent implements OnInit {
   }
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
   FillEditHome(nameField) {
-    // console.log('inside fill edit home');
-    if (nameField === 'Housing Loan') {
+    if (nameField === "Housing Loan") {
       this.home.hoamloan = this.editField;
       this.homeout[0].hoamloan = this.home.hoamloan;
-      //  this.editField = '';
-    } else if (nameField === 'Pricipal Loan') {
+    } else if (nameField === "Pricipal Loan") {
       this.home.prncpalloan = this.editField;
       this.homeout[0].prncpalloan = this.home.prncpalloan;
-      //  this.editField = '';
-    } else if (nameField === 'Rent Claimed') {
+    } else if (nameField === "Rent Claimed") {
       this.home.rentclm = this.editField;
       this.homeout[0].rentclm = this.home.rentclm;
-      //  this.editField = '';
-    } else if (nameField === 'Remaining Interest') {
+    } else if (nameField === "Remaining Interest") {
       this.home.remintrst = this.editField;
       this.homeout[0].remintrst = this.home.remintrst;
-      // this.editField = '';
-    } else if (nameField === 'Mentioned the Rent claimed') {
+    } else if (nameField === "Mentioned the Rent claimed") {
       this.home.rentclmgg = this.editField;
       this.homeout[0].rentclmgg = this.home.rentclmgg;
-      // this.editField = '';
     }
   }
 }

@@ -4,7 +4,7 @@ import { AccountService, Principal, LoginModalService } from 'app/shared';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { Color } from '../../../../../node_modules/ng2-charts';
 // tslint:disable-next-line:max-line-length
-import { CreditService, GeneralService, HealthService, LifeService, LoanService,
+import { GeneralService, HealthService, LifeService, LoanService,
   MiscService, TravelService, UtilityService, HouseService, IncomeService} from 'app/pratik/spending/spending.service';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
 

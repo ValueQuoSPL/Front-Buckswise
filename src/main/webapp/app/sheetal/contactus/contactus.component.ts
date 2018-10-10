@@ -9,7 +9,6 @@ import * as $ from "jQuery";
 })
 export class ContactusComponent implements OnInit {
   user: UserContact = new UserContact();
-
   mobile;
   name;
   phone;
@@ -20,22 +19,23 @@ export class ContactusComponent implements OnInit {
     this.contactService
       .save(this.user)
       .subscribe(response => console.log(response));
+    alert("thanx for contactus");
   }
 
   resetContact() {}
 
   ngOnInit() {
+    // Validation for name
+    $("#name").bind("keypress", function(event) {
+      const charCode = event.which;
+      if (charCode === 8 || charCode === 0) {
+        return;
+      } else {
+        const keyChar = String.fromCharCode(charCode);
+        return /[a-zA-Z\s]/.test(keyChar);
+      }
+    });
     //    Validation for name
-    //     $('#name').bind('keypress', function(event) {
-    //       const charCode = event.which;
-    //       if (charCode === 8 || charCode === 0) {
-    //         return;
-    //       } else {
-    //         const keyChar = String.fromCharCode(charCode);
-    //         return /[a-zA-Z\s]/.test(keyChar);
-    //       }
-    //     });
-    //     //    Validation for name
     //     //    Validation for mobile
     //     $('#phone').keydown(function(e) {
     //       if (

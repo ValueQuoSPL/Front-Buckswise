@@ -29,8 +29,8 @@
 			</div>
 			<div class="form">
 				<mat-form-field>
-					<input matInput id="phone"type="text" maxlength="10" name="phone"#phone="ngModel" value="" 
-						placeholder="Phone"[(ngModel)]="user.phone"minlength="10" maxlength="10" 
+					<input matInput jhiNumberOnly required placeholder="phone" id="phone"type="text" maxlength="10" name="phone"#phone="ngModel" value="" 
+						[(ngModel)]="user.phone"minlength="10" maxlength="10" 
 						pattern="^[_'.@A-Za-z0-9-]*$"required>
 				</mat-form-field>
 				<div *ngIf="phone.touched && !phone.valid">
@@ -78,9 +78,7 @@
 		</div>
 	</div></div>
 	</section>
-<br>
-<br>
-
+<br><br>
 <div class="container second-portion">
 	<div class="row">
 		<!-- Boxes de Acoes -->
@@ -95,7 +93,7 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i> Contact@valuequo.com
 							<br>
 							<br>
-							<i class="fa fa-globe" aria-hidden="true"></i> www.Buckswise.com
+							<i class="fa fa-globe" aria-hidden="true"></i> www.buckswise.com
 						</p>
 					
 					</div>
@@ -139,8 +137,5 @@
 				<div class="space"></div>
 </div> 
 </div>		
-<br>
-<br>
-
-<br>
-<br>
+</div>
+</div>

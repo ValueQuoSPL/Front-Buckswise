@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Other } from './other.model';
-import { OtherService } from './other.service';
-import { AccountService } from 'app/shared';
+import { Component, OnInit } from "@angular/core";
+import { Other } from "./other.model";
+import { OtherService } from "./other.service";
+import { AccountService } from "app/shared";
 import {
   NgbModalRef,
   NgbModal,
   ModalDismissReasons
-} from '@ng-bootstrap/ng-bootstrap';
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'jhi-other',
-  templateUrl: './other.component.html',
+  selector: "jhi-other",
+  templateUrl: "./other.component.html",
   styles: []
 })
 export class OtherComponent implements OnInit {
@@ -48,16 +48,15 @@ export class OtherComponent implements OnInit {
   // Other call function
   onOtherSave() {
     this.otherService.save(this.other).subscribe(response => {
-      alert('Your data saved successfully');
+      alert("Your data saved successfully");
       this.changesSaved = true;
-      //   console.log(response));
     });
     this.valid = true;
   }
   updateOther() {
-    console.log(' in update method other', this.other);
+    console.log(" in update method other", this.other);
     this.otherService.PutOther(this.other).subscribe(data => {
-      alert('Your data update');
+      alert("Your data update");
       this.changesSaved = true;
     });
   }
@@ -72,11 +71,11 @@ export class OtherComponent implements OnInit {
   }
 
   onOtherGet() {
-    console.log('in eightycget ts uid', this.uid);
+    console.log("in eightycget ts uid", this.uid);
     this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);
       this.otherout = res;
-      console.log('eightyc data in eightycResponse', this.otherout);
+      console.log("eightyc data in eightycResponse", this.otherout);
       for (let index = 0; index < this.otherout.length; index++) {
         const element = this.otherout[index];
         this.other.handicapped = element.handicapped;
@@ -87,14 +86,12 @@ export class OtherComponent implements OnInit {
         this.other.donation = element.donation;
         this.other.uid = element.uid;
         this.other.id = element.id;
-        console.log('otherResponse id', this.other.id);
+        console.log("otherResponse id", this.other.id);
       }
       if (this.otherout.length === 0) {
         this.valid = false;
-        console.log('in if valid value', this.valid);
       } else {
         this.valid = true;
-        console.log('in else valid value', this.valid);
       }
     });
   }
@@ -104,38 +101,34 @@ export class OtherComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log('user info', this.user);
         this.other.uid = this.user.id;
-        console.log('uid is', this.other.uid);
         this.uid = this.other.uid;
         this.onOtherGet();
       });
   }
   onEditOtherField(nameField, otherEditContent) {
-    console.log('inside edit other');
     this.nameField = nameField;
-    console.log('inside edit other', nameField);
-    if (nameField === 'Medical Handicapped') {
-      this.nameField = 'Amount';
+    if (nameField === "Medical Handicapped") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].handicapped;
-    } else if (nameField === 'Medical Treatment') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Medical Treatment") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].medicaltreat;
-    } else if (nameField === 'Repayment') {
-      this.nameField = 'Amount';
+    } else if (nameField === "Repayment") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].selfedu;
-    } else if (nameField === 'nps') {
-      this.nameField = 'Amount';
+    } else if (nameField === "nps") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].nps;
-    } else if (nameField === 'rgess') {
-      this.nameField = 'Amount';
+    } else if (nameField === "rgess") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].rgess;
-    } else if (nameField === 'donation') {
-      this.nameField = 'Amount';
+    } else if (nameField === "donation") {
+      this.nameField = "Amount";
       this.editField = this.otherout[0].donation;
     }
     this.modalService
-      .open(otherEditContent, { ariaLabelledBy: 'otherEditContent' })
+      .open(otherEditContent, { ariaLabelledBy: "otherEditContent" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -148,39 +141,33 @@ export class OtherComponent implements OnInit {
   }
   getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
   FillEditOther(nameField) {
-    console.log('inside fill edit other');
-    if (nameField === 'Medical Handicapped') {
+    console.log("inside fill edit other");
+    if (nameField === "Medical Handicapped") {
       this.other.handicapped = this.editField;
       this.otherout[0].handicapped = this.other.handicapped;
-      //  this.editField = '';
-    } else if (nameField === 'Medical Treatment') {
+    } else if (nameField === "Medical Treatment") {
       this.other.medicaltreat = this.editField;
       this.otherout[0].medicaltreat = this.other.medicaltreat;
-      //  this.editField = '';
-    } else if (nameField === 'Repayment') {
+    } else if (nameField === "Repayment") {
       this.other.selfedu = this.editField;
       this.otherout[0].selfedu = this.other.selfedu;
-      //  this.editField = '';
-    } else if (nameField === 'nps') {
+    } else if (nameField === "nps") {
       this.other.nps = this.editField;
       this.otherout[0].nps = this.other.nps;
-      //   this.editField = '';
-    } else if (nameField === 'rgess') {
+    } else if (nameField === "rgess") {
       this.other.rgess = this.editField;
       this.otherout[0].rgess = this.other.rgess;
-      //  this.editField = '';
-    } else if (nameField === 'donation') {
+    } else if (nameField === "donation") {
       this.other.donation = this.editField;
       this.otherout[0].donation = this.other.donation;
-      // this.editField = '';
     }
   }
 }
