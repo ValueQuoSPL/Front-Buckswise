@@ -179,11 +179,16 @@ export class TravelComponent implements OnInit {
     this.calcTravelTotal();
   }
   SaveTravel(): void {
-    this.travel.userid = this.uid;
-    // this.travel.dynamicTravel = this.dynamicTravel;
-    this.travelService.PutTravel(this.travel, this.uid).subscribe(data => {
-      alert('Your travel data saved');
-    });
+    if (this.isSaveFieldChanged()) {
+      this.travel.userid = this.uid;
+      this.travelService.PutTravel(this.travel, this.uid).subscribe(data => {
+        alert('Your travel data saved');
+      });
+    } else {
+      alert('Nothing changed to be save');
+
+    }
+
   }
 
   onEditStaticField(nameField, modal) {
@@ -269,7 +274,16 @@ export class TravelComponent implements OnInit {
     });
   }
 
+  isSaveFieldChanged() {
+    if (this.travel.dineout === 0 && this.travel.food === 0 && this.travel.hobby === 0 &&
+      this.travel.vacation === 0 && this.travel.entertainment === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   isFieldChanged() {
-    return true;
+
   }
 }
