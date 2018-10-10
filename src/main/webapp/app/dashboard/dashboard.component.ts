@@ -41,6 +41,14 @@ export class DashboardComponent implements OnInit {
   public color: Array<Color>;
   public liabilityChart = "pie";
 
+  // navbar
+  inProduction: boolean;
+  isNavbarCollapsed: boolean;
+  languages: any[];
+  swaggerEnabled: boolean;
+  // modalRef: NgbModalRef;
+  version: string;
+
   public chartClicked(e: any): void {
     console.log(e);
   }

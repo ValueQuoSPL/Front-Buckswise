@@ -13,7 +13,7 @@ import { AccountService } from "../shared";
 @Component({
   selector: "jhi-myassets",
   templateUrl: "./my-assets.component.html",
-  styleUrls: []
+  styleUrls: ["./my-assets.component.css"]
 })
 export class MyAssetsComponent implements OnInit {
   uid: any;

@@ -14,6 +14,7 @@ import {
   styles: []
 })
 export class OtherComponent implements OnInit {
+  id;
   user: any;
   uid: any;
   eightydout: any;
@@ -69,7 +70,7 @@ export class OtherComponent implements OnInit {
     this.other.donation = 0;
   }
 
-  onOtherGet(uid) {
+  onOtherGet() {
     console.log("in eightycget ts uid", this.uid);
     this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);
@@ -102,7 +103,7 @@ export class OtherComponent implements OnInit {
         this.user = response.body;
         this.other.uid = this.user.id;
         this.uid = this.other.uid;
-        this.onOtherGet(this.uid);
+        this.onOtherGet();
       });
   }
   onEditOtherField(nameField, otherEditContent) {

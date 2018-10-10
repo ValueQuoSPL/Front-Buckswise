@@ -24,12 +24,12 @@
         <td>{{field.expiryDate }}</td>
         <td>{{field.discount}}</td>
         <td>
-          <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(i, incomeEditContent)" >
+          <button class="btn btn-outline-info"  type="button" (click)="onEditDynamicField(field.id, PromoModal)" >
               <span> <i class="fa fa-edit" aria-hidden="true"></i></span>
           </button> 
         </td>
         <td>
-          <button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(i, field.id)" >
+          <button class="btn btn-outline-danger"  type="button" (click)="deleteFieldValue(field.id)" >
               <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
           </button>
         </td>
@@ -62,8 +62,8 @@
                 </mat-form-field>
 
                 <mat-form-field style="width: 100%;">
-                  <input required matInput [matDatepicker]="picker1" placeholder="Expiry Date" 
-                  [formControl]="promoDate">
+                  <input required matInput [matDatepicker]="picker1" placeholder="Expiry Date"
+                  [(ngModel)]="promo.expiryDate" name="expirydate">
                   <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
                   <mat-datepicker #picker1 ></mat-datepicker>
               </mat-form-field>
@@ -71,7 +71,7 @@
                 <mat-form-field style="width: 100%;">
                     <input required matInput jhiNumberOnly placeholder="Discount Value" name="insname21" [(ngModel)]="promo.discount" >
                 </mat-form-field>
-                      
+
               </div>  <!-- form end -->
       </form>
   </div>
@@ -79,3 +79,4 @@
       <button type="button" class="btn btn-outline-success" (click)="c('Save click')" [disabled]="promoform.form.invalid">Add</button>
   </div>
 </ng-template>
+

@@ -12,10 +12,10 @@
       <div *ngIf="(isHandset$ | async)" >
         <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <span aria-label="Side nav toggle icon">
-            <i class="fa fa-bars" style="color:black"></i>
+            <i class="fa fa-bars" style="color:#353d47"></i>
           </span>
         </button>
-        <a routerLink="/" routerLinkAciveOptions="active">
+        <a routerLink="#" routerLinkAciveOptions="active">
           <span></span>
         </a>
       </div>
@@ -24,7 +24,7 @@
         <div *ngIf="!isSafari">
           <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()">
             <span aria-label="Side nav toggle icon">
-              <i class="fa fa-bars" style="color:black"></i>
+              <i class="fa fa-bars" style="color:#353d47"></i>
             </span>
           </button>
           <a routerLink="/" routerLinkAciveOptions="active">
@@ -37,7 +37,7 @@
         <div *ngIf="isSafari">
           <button type="button" class="btn-lg" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" (click)="show()">
             <span aria-label="Side nav toggle icon">
-              <i class="fa fa-bars"></i>
+              <i class="fa fa-bars" style="color:#353d47"></i>
             </span>
           </button>
           <a routerLink="/" routerLinkAciveOptions="active">

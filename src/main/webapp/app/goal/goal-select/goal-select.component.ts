@@ -1,5 +1,6 @@
 import { StockService } from "app/my-assets/stocks/stocks.service";
 import { Component, OnInit } from "@angular/core";
+import { Principal, LoginModalService } from "app/shared";
 import { Router, Route } from "@angular/router";
 import { FormControl } from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
@@ -14,6 +15,7 @@ import { ChitFundService } from "app/my-assets/chit-funds/chitfund.service";
 import { PropertyService } from "app/my-assets/property/property.service";
 import { FutureOptionService } from "app/my-assets/future-option/futureoption.service";
 import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 import {
   GoalSelect,
@@ -56,6 +58,7 @@ class Mapping {
 export class GoalSelectComponent implements OnInit {
   selectedday = "";
   isValid: boolean;
+  isSaving: boolean;
   resource: any;
   amount: any;
   closeResult: string;
@@ -84,7 +87,7 @@ export class GoalSelectComponent implements OnInit {
 
   // GoalNotesUpdate: GoalUpdate = new GoalUpdate();
   GoalNotesUpdate: any = []; // amount
-
+  modalRef: NgbModalRef;
   goaltype: any;
   userId: any;
   user: any;
@@ -124,6 +127,8 @@ export class GoalSelectComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private principal: Principal,
+    private loginModalService: LoginModalService,
     private goalSelectService: GoalselectService,
     private ActiveModal: NgbActiveModal,
     private account: AccountService,
@@ -153,7 +158,12 @@ export class GoalSelectComponent implements OnInit {
     this.FetchId();
   }
   clear() {}
-
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+  login() {
+    this.modalRef = this.loginModalService.open();
+  }
   Home() {
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;

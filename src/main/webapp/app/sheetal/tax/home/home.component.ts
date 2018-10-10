@@ -14,6 +14,7 @@ import {
   styles: []
 })
 export class HomeComponent implements OnInit {
+  id;
   user: any;
   uid: any;
   eightydout: any = [];
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onHomeGet(uid) {
+  onHomeGet() {
     console.log("in homeget ts uid", this.uid);
     this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);
@@ -101,7 +102,7 @@ export class HomeComponent implements OnInit {
         this.user = response.body;
         this.home.uid = this.user.id;
         this.uid = this.home.uid;
-        this.onHomeGet(this.uid);
+        this.onHomeGet();
       });
   }
   onEditHomeField(nameField, homeEditContent) {

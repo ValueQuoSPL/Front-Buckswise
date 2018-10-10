@@ -8,7 +8,7 @@ import { Loan } from "app/pratik/spending/spending.model";
 @Component({
   selector: "jhi-liabilities",
   templateUrl: "./liabilities.component.html",
-  styles: []
+  styleUrls: ["./liabilities.component.css"]
 })
 export class LiabilitiesComponent implements OnInit {
   steps = 0;

@@ -54,6 +54,7 @@ import { SpinnerComponent } from "./spinner/spinner.component";
 import { BuckswiseContactModule } from "app/sheetal/contactus/contact.module";
 import { BuckswiseTaxModule } from "app/sheetal/tax/tax.module";
 import { PromoCodeModule } from "app/home/subscriber/promo-code";
+import { WINDOW_PROVIDERS } from "./layouts/navbar/window.service";
 
 @NgModule({
   imports: [
@@ -97,6 +98,7 @@ import { PromoCodeModule } from "app/home/subscriber/promo-code";
     SpinnerComponent
   ],
   providers: [
+    WINDOW_PROVIDERS,
     ProfileService,
     PaginationConfig,
     UserRouteAccessService,
