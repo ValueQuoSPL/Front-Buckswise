@@ -13,7 +13,6 @@ import { accountState } from "app/account";
 export class EightydService {
   id;
   userID;
-  // temp: any = [];
   user;
   // id: any;
   eightyd: Eightyd = new Eightyd();

@@ -36,7 +36,6 @@ export class EightydComponent implements OnInit {
     this.eightyd.medself = 0;
     this.eightyd.medparents = 0;
     this.eightyd.healthcheck = 0;
-
     this.FetchID();
     this.changesSaved = true;
   }
@@ -44,7 +43,6 @@ export class EightydComponent implements OnInit {
     this.eightydService.save(this.eightyd).subscribe(response => {
       alert("Your data saved successfully");
       this.changesSaved = true;
-      //   console.log(response));
     });
     this.valid = true;
   }
@@ -66,21 +64,17 @@ export class EightydComponent implements OnInit {
     this.eightydService.geteightyd(this.uid).subscribe(res => {
       console.log("eightyd res", res);
       this.eightydout = res;
-      console.log("eightyd data in eightydResponse", this.eightydout);
       for (let index = 0; index < this.eightydout.length; index++) {
         const element = this.eightydout[index];
         this.eightyd.medself = element.medself;
         this.eightyd.medparents = element.medparents;
         this.eightyd.healthcheck = element.healthcheck;
         this.eightyd.id = element.id;
-        console.log("eightyd id", this.eightyd.id);
       }
       if (this.eightydout.length === 0) {
         this.valid = false;
-        console.log("in if valid value", this.valid);
       } else {
         this.valid = true;
-        console.log("in else valid value", this.valid);
       }
     });
   }
@@ -140,15 +134,12 @@ export class EightydComponent implements OnInit {
     if (nameField === "Medical Insurance for Self") {
       this.eightyd.medself = this.editField;
       this.eightydout[0].medself = this.eightyd.medself;
-      //  this.editField = '';
     } else if (nameField === "Medical Insurance for Parents") {
       this.eightyd.medparents = this.editField;
       this.eightydout[0].medparents = this.eightyd.medparents;
-      //  this.editField = '';
     } else if (nameField === "Preventive Health Checkup") {
       this.eightyd.healthcheck = this.editField;
       this.eightydout[0].healthcheck = this.eightyd.healthcheck;
-      // this.editField = '';
     }
   }
 }

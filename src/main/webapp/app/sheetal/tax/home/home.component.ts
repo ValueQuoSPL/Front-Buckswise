@@ -99,17 +99,13 @@ export class HomeComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        // console.log('user info', this.user);
         this.home.uid = this.user.id;
-        // console.log('uid is', this.home.uid);
         this.uid = this.home.uid;
         this.onHomeGet(this.uid);
       });
   }
   onEditHomeField(nameField, homeEditContent) {
-    // console.log('inside home other');
     this.nameField = nameField;
-    // console.log('inside edit home', nameField);
     if (nameField === "Housing Loan") {
       this.nameField = "Amount";
       this.editField = this.homeout[0].hoamloan;
@@ -148,27 +144,21 @@ export class HomeComponent implements OnInit {
     }
   }
   FillEditHome(nameField) {
-    // console.log('inside fill edit home');
     if (nameField === "Housing Loan") {
       this.home.hoamloan = this.editField;
       this.homeout[0].hoamloan = this.home.hoamloan;
-      //  this.editField = '';
     } else if (nameField === "Pricipal Loan") {
       this.home.prncpalloan = this.editField;
       this.homeout[0].prncpalloan = this.home.prncpalloan;
-      //  this.editField = '';
     } else if (nameField === "Rent Claimed") {
       this.home.rentclm = this.editField;
       this.homeout[0].rentclm = this.home.rentclm;
-      //  this.editField = '';
     } else if (nameField === "Remaining Interest") {
       this.home.remintrst = this.editField;
       this.homeout[0].remintrst = this.home.remintrst;
-      // this.editField = '';
     } else if (nameField === "Mentioned the Rent claimed") {
       this.home.rentclmgg = this.editField;
       this.homeout[0].rentclmgg = this.home.rentclmgg;
-      // this.editField = '';
     }
   }
 }

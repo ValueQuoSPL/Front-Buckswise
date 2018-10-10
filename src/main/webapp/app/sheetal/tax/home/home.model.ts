@@ -6,6 +6,5 @@ export class Home {
   remintrst;
   rentclmgg;
   uid: any;
-
   constructor() {}
 }

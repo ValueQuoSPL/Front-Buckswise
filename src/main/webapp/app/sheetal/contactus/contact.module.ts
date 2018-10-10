@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { contactRoute } from "../contactus/contact.route";
 import { ContactusComponent } from "./contactus.component";
 import { ContactService } from "./contact.service";
+import { CustomDirectiveModule } from "app/shared/directive/directive.module";
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ContactService } from "./contact.service";
     BuckswiseFrontEndSharedModule,
     RouterModule.forRoot([contactRoute], { useHash: true }),
     CustomMaterialModule,
-    MatInputModule
+    MatInputModule,
+    CustomDirectiveModule
   ],
   declarations: [ContactusComponent],
   providers: [ContactService],

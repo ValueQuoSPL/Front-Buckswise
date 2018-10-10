@@ -1,19 +1,19 @@
-import { StockService } from 'app/my-assets/stocks/stocks.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, Route } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { GoalselectService } from './goalselect.service';
-import { Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { MutualfundService } from 'app/my-assets/mutual/mutual.service';
-import { GoalAddButtonComponent } from '../../goal/goal-add-button/goal-add-button.component';
-import { AlternateService } from 'app/my-assets/alternate-investment/alternateinvest.service';
-import { CashService } from 'app/my-assets/cash/cash.service';
-import { ChitFundService } from 'app/my-assets/chit-funds/chitfund.service';
-import { PropertyService } from 'app/my-assets/property/property.service';
-import { FutureOptionService } from 'app/my-assets/future-option/futureoption.service';
-import { SavingSchemeService } from 'app/my-assets/saving-scheme/savingscheme.service';
+import { StockService } from "app/my-assets/stocks/stocks.service";
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
+import { FormControl } from "@angular/forms";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { GoalselectService } from "./goalselect.service";
+import { Inject } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MutualfundService } from "app/my-assets/mutual/mutual.service";
+import { GoalAddButtonComponent } from "../../goal/goal-add-button/goal-add-button.component";
+import { AlternateService } from "app/my-assets/alternate-investment/alternateinvest.service";
+import { CashService } from "app/my-assets/cash/cash.service";
+import { ChitFundService } from "app/my-assets/chit-funds/chitfund.service";
+import { PropertyService } from "app/my-assets/property/property.service";
+import { FutureOptionService } from "app/my-assets/future-option/futureoption.service";
+import { SavingSchemeService } from "app/my-assets/saving-scheme/savingscheme.service";
 
 import {
   GoalSelect,
@@ -27,27 +27,34 @@ import {
   EmergencyFundSelect,
   RetirementFundSelect,
   NewGoalSelect
-} from './goalselect.model';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService } from '../../shared';
+} from "./goalselect.model";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService } from "../../shared";
+import { diffByUnit } from "fullcalendar/src/util";
 
 class Mapping {
+  id;
   uid;
   goalid;
   assetname;
   assetid;
   valuetomap;
-  value;
+  assetValue;
   assettype;
 }
 
+// class GoalUpdate {
+//   id;
+//   notes;
+// }
+
 @Component({
-  selector: 'jhi-goal-select',
-  templateUrl: './goal-select.component.html',
-  styleUrls: ['./goal-select.component.css']
+  selector: "jhi-goal-select",
+  templateUrl: "./goal-select.component.html",
+  styleUrls: ["./goal-select.component.css"]
 })
 export class GoalSelectComponent implements OnInit {
-  selectedday = '';
+  selectedday = "";
   isValid: boolean;
   resource: any;
   amount: any;
@@ -74,6 +81,10 @@ export class GoalSelectComponent implements OnInit {
   EmergencyFundselect: EmergencyFundSelect = new EmergencyFundSelect();
   RetirementFundselect: RetirementFundSelect = new RetirementFundSelect();
   NewGoalselect: NewGoalSelect = new NewGoalSelect();
+
+  // GoalNotesUpdate: GoalUpdate = new GoalUpdate();
+  GoalNotesUpdate: any = []; // amount
+
   goaltype: any;
   userId: any;
   user: any;
@@ -96,8 +107,20 @@ export class GoalSelectComponent implements OnInit {
   singleAssetTotal;
   AvailableCost;
   GrandTotal;
+  PrevGrandTotal;
   PresentCost;
   prevGoalID;
+  GlobalFlag;
+
+  stockTotal;
+  mutualTotal;
+  chitTotal;
+  cashTotal;
+  propertyTotal;
+  altTotal;
+  savingTotal;
+  faoTotal;
+  inflation = 0.07;
 
   constructor(
     private router: Router,
@@ -114,24 +137,27 @@ export class GoalSelectComponent implements OnInit {
     public chitService: ChitFundService,
     public propService: PropertyService,
     public faoService: FutureOptionService,
-    public savingService: SavingSchemeService,
-
+    public savingService: SavingSchemeService
   ) {}
   ngOnInit() {
     this.singleAssetTotal = 0;
     this.GrandTotal = 0;
+    this.stockTotal = 0;
+    this.mutualTotal = 0;
+    this.chitTotal = 0;
+    this.cashTotal = 0;
+    this.propertyTotal = 0;
+    this.altTotal = 0;
+    this.savingTotal = 0;
+    this.faoTotal = 0;
     this.FetchId();
   }
   clear() {}
 
   Home() {
-
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;
-    this.goalSelectService
-      .saveHome(this.goalselect)
-      .subscribe
-      ();
+    this.goalSelectService.saveHome(this.goalselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -139,10 +165,9 @@ export class GoalSelectComponent implements OnInit {
   Education() {
     this.Educationselect.goaltype = this.goaltype;
     this.Educationselect.uid = this.uid;
-    this.goalSelectService
-      .saveEducation(this.Educationselect)
-      .subscribe
-      ();
+    console.log(this.Educationselect);
+
+    this.goalSelectService.saveEducation(this.Educationselect).subscribe();
     this.isValid = false;
     this.getgoalbyid(this.uid);
   }
@@ -304,7 +329,7 @@ export class GoalSelectComponent implements OnInit {
     this.isValid = true;
   }
   linkAssets() {
-    this.router.navigate(['goalAdd']);
+    this.router.navigate(["goalAdd"]);
   }
   selectChange(event: any) {
     // // console.log('in selectchange method');
@@ -326,6 +351,7 @@ export class GoalSelectComponent implements OnInit {
   getgoalbyid(uid) {
     this.goalSelectService.getgoalbyid(this.uid).subscribe(res => {
       this.GoalArray = res;
+      console.log(this.GoalArray);
 
       this.viewUpdate();
 
@@ -341,17 +367,32 @@ export class GoalSelectComponent implements OnInit {
     this.goalSelectService.GetMapping(this.uid).subscribe(data => {
       this.AssetMappingDB = data;
     });
-
   }
 
   viewUpdate() {
+    for (let index = 0; index < this.GoalArray.length; index++) {
+      const element = this.GoalArray[index];
 
-    // formula work
+      // view update of modal for available cost
+      if (element.id === this.commonid) {
+        this.PresentCost = element.presentcost;
+        this.GrandTotal = element.goalNotes;
+        this.AvailableCost = +this.PresentCost - +this.GrandTotal;
+        console.log("available 1", this.AvailableCost);
+      }
+
+      // calculating Future cost = B3*(1+B4)^B2
+      // element.futurecost = present cost *( 1+ inflation)^ years
+      element.futurecost = Math.round(
+        element.presentcost * Math.pow(1 + this.inflation, element.yeartogoal)
+      );
+      element.fundshortage = +element.futurecost - +element.goalNotes;
+    }
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GoalAddButtonComponent, {
-      width: '550px'
+      width: "550px"
       // data: {name: this.name, animal: this.animal}
     });
 
@@ -370,29 +411,28 @@ export class GoalSelectComponent implements OnInit {
   }
   openLinkAsset(editLinkModal, goalid) {
     this.commonid = goalid;
-    this.AvailableCost = 0;
-    this.GrandTotal = 0;
-    this.singleAssetTotal = 0;
+    // this.assettype = null;
+    this.viewUpdate();
+    console.log("available 2", this.AvailableCost);
+
+    this.HTMLArray.splice(0, this.HTMLArray.length);
 
     for (let index = 0; index < this.GoalArray.length; index++) {
       const element = this.GoalArray[index];
       if (goalid === element.id) {
-        this.AvailableCost = element.presentcost;
         this.PresentCost = element.presentcost;
         this.GrandTotal = element.goalNotes;
         break;
       }
     }
-    // console.log('after check available cost', this.AvailableCost);
 
-    // // console.log('editLinkModal common id is', this.commonid);
     this.getGoalbyId(this.commonid);
     this.modalService
-      .open(editLinkModal, { ariaLabelledBy: 'editLinkModal' })
+      .open(editLinkModal, { ariaLabelledBy: "editLinkModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
-          // this.update(goalid);
+          this.updateGoal();
         },
         reason => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -402,29 +442,46 @@ export class GoalSelectComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       return `with: ${reason}`;
     }
   }
-  update() {
+  updateGoal() {
     this.SetGrandTotal();
-    // call for update
-    for (let index = 0; index < this.GoalArray.length; index++) {
-      const element = this.GoalArray[index];
-      if (element.id === this.commonid) {
-        // console.log('call update', element);
-        this.goalSelectService.UpdateGoal(element).subscribe();
-        break;
-      }
-    }
+
+    this.goalSelectService
+      .UpdateGoal(this.GoalNotesUpdate)
+      .subscribe(res => {});
   }
 
   SetGrandTotal() {
+    this.GrandTotal =
+      +this.stockTotal +
+      +this.mutualTotal +
+      +this.chitTotal +
+      +this.cashTotal +
+      +this.propertyTotal +
+      +this.faoTotal +
+      +this.savingTotal +
+      +this.altTotal;
+
+    console.log("grand total", this.GrandTotal);
+
+    this.AvailableCost = +this.PresentCost - +this.GrandTotal;
+
+    this.GoalNotesUpdate.splice(0, this.GoalNotesUpdate.length);
+
+    this.GoalNotesUpdate.push({
+      id: this.commonid,
+      notes: this.GrandTotal
+    });
+
     for (let index = 0; index < this.GoalArray.length; index++) {
       const element = this.GoalArray[index];
+
       if (element.id === this.commonid) {
         element.goalNotes = this.GrandTotal;
         break;
@@ -451,21 +508,21 @@ export class GoalSelectComponent implements OnInit {
   }
 
   getMapValue(assetid) {
-    this.valtomap = prompt('Enter value to map ');
+    this.valtomap = prompt("Enter value to map ");
 
     for (let index = 0; index < this.HTMLArray.length; index++) {
       const element = this.HTMLArray[index];
 
       if (element.id === assetid) {
+        // console.log('html array asset id ', element.id, 'selected asset id', assetid);
         // console.log('asset value', element.assetvalue, 'your value', this.valtomap);
 
         if (element.assetvalue >= this.valtomap) {
-            element.mappedvalue = this.valtomap;
-            const total = this.calculateSingleAssetTotal();
+          element.mappedvalue = this.valtomap;
+          const total = this.calculateSingleAssetTotal();
           // console.log('returned total', total);
-
         } else {
-          alert('Please enter value which is less than Asset Value');
+          alert("Please enter value which is less than Asset Value");
         }
         break;
       }
@@ -474,43 +531,96 @@ export class GoalSelectComponent implements OnInit {
     this.ManipulateMapping(assetid);
   }
 
+  calculateSingleAssetTotal() {
+    this.singleAssetTotal = 0;
+
+    for (let index = 0; index < this.HTMLArray.length; index++) {
+      const element = this.HTMLArray[index];
+      this.singleAssetTotal = this.singleAssetTotal + +element.mappedvalue;
+    }
+
+    if (this.assettype === "stocks") {
+      this.stockTotal = this.singleAssetTotal;
+    } else if (this.assettype === "mutual") {
+      this.mutualTotal = this.singleAssetTotal;
+    } else if (this.assettype === "ChitFund") {
+      this.chitTotal = this.singleAssetTotal;
+    } else if (this.assettype === "FutureandOption") {
+      this.faoTotal = this.singleAssetTotal;
+    } else if (this.assettype === "SavingScheme") {
+      this.savingTotal = this.singleAssetTotal;
+    } else if (this.assettype === "AlternativeInvestment") {
+      this.altTotal = this.singleAssetTotal;
+    } else if (this.assettype === "cash") {
+      this.cashTotal = this.singleAssetTotal;
+    } else if (this.assettype === "Propertyandhousehold") {
+      this.propertyTotal = this.singleAssetTotal;
+    }
+
+    return this.singleAssetTotal;
+  }
+
   ManipulateMapping(assetid) {
+    // console.log('manipulate');
+
     for (let index = 0; index < this.HTMLArray.length; index++) {
       const asset = this.HTMLArray[index];
 
       if (asset.id === this.assetid) {
-
         this.findAssetAndFillMapping(this.assetid);
 
-        // console.log(this.checked, assetid);
-
         if (this.checked === true) {
-          // console.log('call post', this.mapping);
-
-          this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
-            // // console.log('added to db');
-            this.goalSelectService.GetMapping(this.uid).subscribe(data => {
-              this.AssetMappingDB = data;
-              // console.log('db value after map', this.AssetMappingDB);
-            });
-            // console.log('calling update goal');
-            this.update();
-          });
+          // console.log('checked = true');
+          this.PostMapping();
+          this.SetGrandTotal();
         } else {
-          // console.log('call delete', this.mapping);
           for (let j = 0; j < this.AssetMappingDB.length; j++) {
             const row = this.AssetMappingDB[j];
             if (row.assettype === this.assettype && row.assetid === assetid) {
-              const res = this.goalSelectService.DeleteMapping(row.id).subscribe();
-              // console.log('delete response', res);
+              const res = this.goalSelectService
+                .DeleteMapping(row.id)
+                .subscribe();
               break;
             }
           }
         }
         break;
-      } else {
-        // console.log('not found');
       }
+    }
+  }
+
+  PostMapping() {
+    // console.log('checking for db');
+
+    let flag = 0;
+    for (let index = 0; index < this.AssetMappingDB.length; index++) {
+      const db = this.AssetMappingDB[index];
+      if (
+        this.mapping.goalid === db.goalid &&
+        this.mapping.assettype === db.assettype &&
+        this.mapping.assetid === db.assetid
+      ) {
+        // console.log('alredy in db');
+        flag = 0;
+        this.GlobalFlag = false;
+        this.mapping.id = db.id;
+
+        this.goalSelectService.PutMapping(this.mapping).subscribe(res => {
+          this.getMappedAsset();
+        });
+
+        break;
+      } else {
+        flag = 1;
+        this.GlobalFlag = true;
+      }
+    }
+
+    if (flag === 1 || this.AssetMappingDB.length === 0) {
+      // console.log('not in db posing now');
+      this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
+        this.getMappedAsset();
+      });
     }
   }
 
@@ -522,40 +632,11 @@ export class GoalSelectComponent implements OnInit {
         this.mapping.assettype = this.assettype;
         this.mapping.assetname = element.assetname;
         this.mapping.assetid = element.id;
-        this.mapping.value = element.assetvalue;
+        this.mapping.assetValue = element.assetvalue;
         this.mapping.valuetomap = element.mappedvalue;
         break;
       }
     }
-  }
-
-  calculateSingleAssetTotal() {
-    // console.log('calculating mapped asset total');
-    let total = 0;
-    let flag = false;
-
-    for (let index = 0; index < this.HTMLArray.length; index++) {
-      const element = this.HTMLArray[index];
-      total = +total + +element.mappedvalue;
-      let temp = this.GrandTotal;
-      temp = this.GrandTotal;
-
-      if (flag === false) {
-        this.GrandTotal = +this.GrandTotal + +element.mappedvalue;
-        flag = true;
-        console.log('grand total flag', this.GrandTotal);
-        break;
-      } else {
-        this.GrandTotal = (+this.GrandTotal + +element.mappedvalue) - temp;
-        console.log('grand total without flag', this.GrandTotal);
-      }
-    }
-
-    this.singleAssetTotal = total;
-
-    this.AvailableCost = +this.PresentCost - +this.GrandTotal;
-
-    return this.singleAssetTotal;
   }
 
   viewByGoalId(id, content) {
@@ -595,7 +676,7 @@ export class GoalSelectComponent implements OnInit {
     // console.log('after filling mapped array', this.MappedArray);
 
     this.modalService
-      .open(content, { ariaLabelledBy: 'viewLinkedAssetModal' })
+      .open(content, { ariaLabelledBy: "viewLinkedAssetModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -636,32 +717,61 @@ export class GoalSelectComponent implements OnInit {
     //   return true;
     // } else {
     //   // console.log('flag false');
-      return false;
+    return false;
     // }
   }
 
   getAsset() {
-    if (this.assettype === 'stocks') {
+    if (this.assettype === "stocks") {
       this.getStockById(this.uid);
-    } else if (this.assettype === 'mutual') {
+      // this.getMappedAsset();
+    } else if (this.assettype === "mutual") {
       this.getMutualFundByUid(this.uid);
-    } else if (this.assettype === 'ChitFund') {
+    } else if (this.assettype === "ChitFund") {
       this.getChitFund();
-    } else if (this.assettype === 'FutureandOption') {
+    } else if (this.assettype === "FutureandOption") {
       this.getFAO();
-    } else if (this.assettype === 'SavingScheme') {
+    } else if (this.assettype === "SavingScheme") {
       this.getSaving();
-    } else if (this.assettype === 'AlternativeInvestment') {
+    } else if (this.assettype === "AlternativeInvestment") {
       this.getAlt();
-    } else if (this.assettype === 'cash') {
+    } else if (this.assettype === "cash") {
       this.getCash();
-    } else if (this.assettype === 'Propertyandhousehold') {
+    } else if (this.assettype === "Propertyandhousehold") {
       this.getProperty();
     }
   }
+  getMappedAsset() {
+    this.goalSelectService.GetMapping(this.uid).subscribe(data => {
+      this.AssetMappingDB = data;
+      console.log("Db data", this.AssetMappingDB);
+      this.AssetViewUpdate();
+    });
+  }
+
+  AssetViewUpdate() {
+    console.log("html before", this.HTMLArray);
+
+    this.singleAssetTotal = 0;
+    this.HTMLArray.forEach(html => {
+      for (let index = 0; index < this.AssetMappingDB.length; index++) {
+        const db = this.AssetMappingDB[index];
+        if (
+          this.commonid === db.goalid &&
+          this.assettype === db.assettype &&
+          html.id === db.assetid
+        ) {
+          html.mappedvalue = db.valuetomap;
+          break;
+        }
+      }
+    });
+
+    this.calculateSingleAssetTotal();
+    console.log("html after", this.HTMLArray);
+  }
 
   getStockById(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.stockService.getStockById(this.uid).subscribe(res => {
@@ -678,12 +788,11 @@ export class GoalSelectComponent implements OnInit {
         });
       });
 
-      // console.log('html array of stock', this.HTMLArray);
-
+      console.log("html array of stock", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getMutualFundByUid(uid) {
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
@@ -700,8 +809,8 @@ export class GoalSelectComponent implements OnInit {
         });
       });
 
-      // console.log('html array of mutual', this.HTMLArray);
-
+      console.log("html array of mutual", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getChitFund() {
@@ -721,8 +830,8 @@ export class GoalSelectComponent implements OnInit {
         });
       });
 
-      // console.log('html array of chit', this.HTMLArray);
-
+      console.log("html array of chit", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getFAO() {
@@ -739,12 +848,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.contract_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
-      // console.log('html array of fao', this.HTMLArray);
-
+      console.log("html array of fao", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getSaving() {
@@ -761,12 +869,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount_invested,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
-      // console.log('html array of saving', this.HTMLArray);
-
+      console.log("html array of saving", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getAlt() {
@@ -783,12 +890,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.market_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
-      // console.log('html array of alt', this.HTMLArray);
-
+      console.log("html array of alt", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getCash() {
@@ -805,12 +911,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.amount,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
-      // console.log('html array of cash', this.HTMLArray);
-
+      console.log("html array of cash", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
   getProperty() {
@@ -827,12 +932,11 @@ export class GoalSelectComponent implements OnInit {
           assetvalue: element.current_m_value,
           mappedvalue: 0,
           disable: true
-
         });
       });
 
-      // console.log('html array of prop', this.HTMLArray);
-
+      console.log("html array of prop", this.HTMLArray);
+      this.getMappedAsset();
     });
   }
 }
