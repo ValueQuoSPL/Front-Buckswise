@@ -77,6 +77,16 @@ Generic styles
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+.setfont {
+  font-family: "ArtifaktElementRegular", Tahoma, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+.gray {
+  background-color: #a9a9a9;
+}
+.gray1 {
+  background-color: #dcdcdc;
+}
 
 /* ==========================================================================
 make sure browsers use the pointer cursor for anchors, even with no href
@@ -259,10 +269,4 @@ ui bootstrap tweaks
   padding: 40px;
   border: 1px solid magenta;
   border-radius: 20px 40px;
-}
-
-.bwtitle {
-  font-size: 40px;
-  font-weight: bolder;
-  font-family: "Titillium Web";
 }
