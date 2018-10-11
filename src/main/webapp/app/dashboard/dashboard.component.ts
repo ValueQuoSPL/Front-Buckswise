@@ -1,17 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AccountService, Principal, LoginModalService } from 'app/shared';
-import { DashboardService } from 'app/dashboard/dashboard.service';
-import { Color } from '../../../../../node_modules/ng2-charts';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AccountService, Principal, LoginModalService } from "app/shared";
+import { DashboardService } from "app/dashboard/dashboard.service";
+import { Color } from "../../../../../node_modules/ng2-charts";
 // tslint:disable-next-line:max-line-length
-import { GeneralService, HealthService, LifeService, LoanService,
-  MiscService, TravelService, UtilityService, HouseService, IncomeService} from 'app/pratik/spending/spending.service';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
+import {
+  GeneralService,
+  HealthService,
+  LifeService,
+  LoanService,
+  MiscService,
+  TravelService,
+  UtilityService,
+  HouseService,
+  IncomeService
+} from "app/pratik/spending/spending.service";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap/modal/modal.module";
 
 @Component({
-  selector: 'jhi-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "jhi-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
   // [x: string]: any;
@@ -39,12 +48,12 @@ export class DashboardComponent implements OnInit {
   public pieChartableLabels: string[] = [];
   public pieChartData: number[] = [];
   public colors: Array<Color>;
-  public assetChart = 'pie';
+  public assetChart = "pie";
 
   public pieChartableLabel: any = [];
   public pieChartDataa: any = [];
   public color: Array<Color>;
-  public liabilityChart = 'pie';
+  public liabilityChart = "pie";
 
   // cardbar
   incomeTotal = 0;
@@ -94,8 +103,7 @@ export class DashboardComponent implements OnInit {
     private utilityService: UtilityService,
     private houseService: HouseService,
     private incomeService: IncomeService,
-    private loginModalService: LoginModalService,
-
+    private loginModalService: LoginModalService
   ) {
     this.principal.identity().then(account => {
       this.account = account;
@@ -151,8 +159,8 @@ export class DashboardComponent implements OnInit {
       this.resultLiabilities = data;
       for (let i = 0; i < this.resultLiabilities.length; i++) {
         this.totalLiabilities =
-        this.totalLiabilities +
-        +this.resultLiabilities[i].outstandingpricipal;
+          this.totalLiabilities +
+          +this.resultLiabilities[i].outstandingpricipal;
       }
       this.liabilityTotal = this.totalLiabilities;
       // // console.log('total liability', this.liabilityTotal);
@@ -200,7 +208,7 @@ export class DashboardComponent implements OnInit {
         });
         this.calcExpense(value);
       } else {
-      // console.log('data not in general');
+        // console.log('data not in general');
       }
     });
   }
@@ -217,9 +225,9 @@ export class DashboardComponent implements OnInit {
         // // console.log('from health', value);
         this.calcExpense(value);
       } else {
-      // console.log('data not in health');
+        // console.log('data not in health');
       }
-   });
+    });
   }
 
   getHousehold(): void {
@@ -233,9 +241,8 @@ export class DashboardComponent implements OnInit {
         });
         this.calcExpense(value);
       } else {
-      // console.log('data not in house');
+        // console.log('data not in house');
       }
-
     });
   }
 
@@ -251,9 +258,9 @@ export class DashboardComponent implements OnInit {
         });
         this.calcExpense(value);
       } else {
-      // console.log('data not in life');
+        // console.log('data not in life');
       }
-   });
+    });
   }
 
   getLoan() {
@@ -271,9 +278,8 @@ export class DashboardComponent implements OnInit {
         // // console.log('all emi total' , value);
         this.calcExpense(value);
       } else {
-      // console.log('data not in loan');
+        // console.log('data not in loan');
       }
-
     });
   }
 
@@ -300,7 +306,7 @@ export class DashboardComponent implements OnInit {
       // // console.log('in misc');
 
       if (response.length !== 0) {
-      // // console.log('found in misc', response);
+        // // console.log('found in misc', response);
 
         let value = 0;
         response.forEach(element => {
@@ -308,9 +314,9 @@ export class DashboardComponent implements OnInit {
         });
         this.calcExpense(value);
       } else {
-      // console.log('data not in misc');
+        // console.log('data not in misc');
       }
-   });
+    });
   }
 
   getTravel(): void {
@@ -318,7 +324,7 @@ export class DashboardComponent implements OnInit {
       // // console.log('in travel');
 
       if (response.length !== 0) {
-      // // console.log('found in health', response);
+        // // console.log('found in health', response);
 
         let value = 0;
         response.forEach(element => {
@@ -327,9 +333,9 @@ export class DashboardComponent implements OnInit {
         // // console.log('from travel', value);
         this.calcExpense(value);
       } else {
-      // console.log('data not in travel');
+        // console.log('data not in travel');
       }
-  });
+    });
   }
 
   getUtility(): void {
@@ -345,23 +351,23 @@ export class DashboardComponent implements OnInit {
         // // console.log('from utility', value);
         this.calcExpense(value);
       } else {
-      // console.log('data not in utility');
+        // console.log('data not in utility');
       }
-  });
+    });
   }
 
-// end expense
+  // end expense
 
   onLiabilityEdit() {
-    this.router.navigate(['liability']);
+    this.router.navigate(["liability"]);
   }
 
   onAssetEdit() {
-    this.router.navigate(['asstesroute']);
+    this.router.navigate(["asstesroute"]);
   }
 
   getGoal() {
-    this.dashboardService.getGoal(this.uid).subscribe( data => {
+    this.dashboardService.getGoal(this.uid).subscribe(data => {
       this.GoalArray = data;
       // console.log('goal from dashboard', this.GoalArray);
 
@@ -370,8 +376,7 @@ export class DashboardComponent implements OnInit {
   }
 
   linkAssetGoal() {
-        this.router.navigate(['goalselect']);
-
+    this.router.navigate(["goalselect"]);
   }
 
   FillGoalCircle() {
@@ -383,14 +388,12 @@ export class DashboardComponent implements OnInit {
         // console.log('null asset total', element.goalNotes);
         // console.log('please link asset to goal');
         this.linkedasset = false;
-
       } else {
-
         element.futurecost = Math.round(
           element.presentcost * Math.pow(1 + this.inflation, element.yeartogoal)
         );
 
-        calc = (+element.goalNotes / +element.futurecost) * 100;
+        calc = +element.goalNotes / +element.futurecost * 100;
         calc = Math.round(calc);
         // console.log('percent', calc);
 
@@ -402,22 +405,28 @@ export class DashboardComponent implements OnInit {
         });
 
         this.linkedasset = true;
-
       }
       // // console.log('assset total', element.goalNotes, 'future cost', element.futurecost);
     });
   }
 
+  // asset
   getMutualFund(uid) {
     this.total = 0;
     this.dashboardService.getMutualFund(this.uid).subscribe(data => {
       this.result = data;
-      // // console.log(this.result);
-      for (let i = 0; i < this.result.length; i++) {
-        this.total = this.total + +this.result[i].currentvalue;
+      // console.log(this.result);
+      if (this.result.length !== 0) {
+        for (let i = 0; i < this.result.length; i++) {
+          this.total = this.total + +this.result[i].currentvalue;
+        }
+        this.assetTotal = +this.assetTotal + +this.total;
+      } else {
+        // console.log('data not in mutual');
       }
-      this.assetTotal = +this.assetTotal + +this.total;
-      // // console.log('mutual', this.total);
+
+      console.log("mutual", this.total);
+      console.log("mutual asset", this.assetTotal);
     });
   }
 
@@ -426,11 +435,16 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getStock(this.uid).subscribe(data => {
       this.resultStock = data;
       // // console.log(this.resultStock);
-      for (let i = 0; i < this.resultStock.length; i++) {
-        this.totalStock = this.totalStock + +this.resultStock[i].no_of_shares;
+
+      if (this.resultStock !== 0) {
+        for (let i = 0; i < this.resultStock.length; i++) {
+          this.totalStock = this.totalStock + +this.resultStock[i].no_of_shares;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalStock;
       }
-      this.assetTotal = +this.assetTotal + +this.totalStock;
-      // // console.log('stock', this.totalStock);
+
+      console.log("stock", this.totalStock);
+      console.log("stock asset", this.assetTotal);
     });
   }
 
@@ -438,12 +452,17 @@ export class DashboardComponent implements OnInit {
     this.totalSaving = 0;
     this.dashboardService.getSaving(this.uid).subscribe(data => {
       this.resultSaving = data;
-      // // console.log(this.resultSaving);
-      for (let i = 0; i < this.resultSaving.length; i++) {
-        this.totalSaving = this.totalSaving + +this.resultSaving[i];
-      }
-      this.assetTotal = +this.assetTotal + +this.totalSaving;
+      console.log(this.resultSaving);
 
+      if (this.resultSaving !== 0) {
+        for (let i = 0; i < this.resultSaving.length; i++) {
+          this.totalSaving =
+            this.totalSaving + +this.resultSaving[i].amount_invested;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalSaving;
+      }
+      console.log("saving", this.totalSaving);
+      console.log("saving asset", this.assetTotal);
     });
   }
 
@@ -452,11 +471,14 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getChit(this.uid).subscribe(data => {
       this.resultChit = data;
       // // console.log(this.resultChit);
-      for (let i = 0; i < this.resultChit.length; i++) {
-        this.totalChit = this.totalChit + +this.resultChit[i].current_value;
+      if (this.resultChit !== 0) {
+        for (let i = 0; i < this.resultChit.length; i++) {
+          this.totalChit = this.totalChit + +this.resultChit[i].current_value;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalChit;
       }
-      this.assetTotal = +this.assetTotal + +this.totalChit;
-
+      console.log("chit", this.totalChit);
+      console.log("chit asset", this.assetTotal);
     });
   }
 
@@ -465,11 +487,14 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getCash(this.uid).subscribe(data => {
       this.resultCash = data;
       // // console.log(this.resultCash);
-      for (let i = 0; i < this.resultCash.length; i++) {
-        this.totalCash = this.totalCash + +this.resultCash[i].amount;
+      if (this.resultCash !== 0) {
+        for (let i = 0; i < this.resultCash.length; i++) {
+          this.totalCash = this.totalCash + +this.resultCash[i].amount;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalCash;
       }
-      this.assetTotal = +this.assetTotal + +this.totalCash;
-
+      console.log("cash", this.totalCash);
+      console.log("cash asset", this.assetTotal);
     });
   }
 
@@ -478,13 +503,16 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getAlterInvestment(this.uid).subscribe(data => {
       this.resultAlterInvestment = data;
       // // console.log(this.resultAlterInvestment);
-      for (let i = 0; i < this.resultAlterInvestment.length; i++) {
-        this.totalAlterInvestment =
-          this.totalAlterInvestment +
-          +this.resultAlterInvestment[i].amount_invested;
+      if (this.resultAlterInvestment !== 0) {
+        for (let i = 0; i < this.resultAlterInvestment.length; i++) {
+          this.totalAlterInvestment =
+            this.totalAlterInvestment +
+            +this.resultAlterInvestment[i].amount_invested;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalAlterInvestment;
       }
-      this.assetTotal = +this.assetTotal + +this.totalAlterInvestment;
-
+      console.log("alt", this.totalAlterInvestment);
+      console.log("alt asset", this.assetTotal);
     });
   }
 
@@ -493,11 +521,14 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getPCJ(this.uid).subscribe(data => {
       this.resultPCJ = data;
       // // console.log(this.resultPCJ);
-      for (let i = 0; i < this.resultPCJ.length; i++) {
-        this.totalPCJ = this.totalPCJ + +this.resultPCJ[i].current_m_value;
+      if (this.resultPCJ !== 0) {
+        for (let i = 0; i < this.resultPCJ.length; i++) {
+          this.totalPCJ = this.totalPCJ + +this.resultPCJ[i].current_m_value;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalPCJ;
       }
-      this.assetTotal = +this.assetTotal + +this.totalPCJ;
-
+      console.log("pcj", this.totalPCJ);
+      console.log("pcj asset", this.assetTotal);
     });
   }
 
@@ -506,10 +537,15 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getFAO(this.uid).subscribe(data => {
       this.resultFAO = data;
       // // console.log(this.resultFAO);
-      for (let i = 0; i < this.resultFAO.length; i++) {
-        this.totalFAO = this.totalFAO + +this.resultFAO[i].contract_m_value;
+
+      if (this.resultFAO !== 0) {
+        for (let i = 0; i < this.resultFAO.length; i++) {
+          this.totalFAO = this.totalFAO + +this.resultFAO[i].contract_m_value;
+        }
+        this.assetTotal = +this.assetTotal + +this.totalFAO;
       }
-      this.assetTotal = +this.assetTotal + +this.totalFAO;
+      console.log("fao", this.totalFAO);
+      console.log("fao asset", this.assetTotal);
 
       this.piechart(
         this.total,
@@ -535,14 +571,14 @@ export class DashboardComponent implements OnInit {
     totalFAO
   ) {
     this.pieChartableLabels.push(
-      'MutualFund',
-      'stock',
-      'saving',
-      'chit',
-      'cash',
-      'alterInvest',
-      'pcj',
-      'fao'
+      "MutualFund",
+      "stock",
+      "saving",
+      "chit",
+      "cash",
+      "alterInvest",
+      "pcj",
+      "fao"
     );
     this.pieChartData.push(
       total,
@@ -558,15 +594,15 @@ export class DashboardComponent implements OnInit {
     this.colors = [
       {
         backgroundColor: [
-          '#FF69B4',
-          '#ff0000',
-          '	#9400D3',
-          '#696969',
-          '#1E90FF',
-          '#00CED1',
-          '#FFD700',
-          '#00FF00',
-          '#FF4500'
+          "#FF69B4",
+          "#ff0000",
+          "	#9400D3",
+          "#696969",
+          "#1E90FF",
+          "#00CED1",
+          "#FFD700",
+          "#00FF00",
+          "#FF4500"
         ]
       }
     ];
@@ -574,8 +610,8 @@ export class DashboardComponent implements OnInit {
 
   liabilitiesChart(totalLiabilities) {
     // console.log('valueset');
-    this.pieChartableLabel.push('totalLiabilities');
+    this.pieChartableLabel.push("totalLiabilities");
     this.pieChartDataa.push(totalLiabilities);
-    this.color = [{ backgroundColor: ['#808080'] }];
+    this.color = [{ backgroundColor: ["#808080"] }];
   }
 }
