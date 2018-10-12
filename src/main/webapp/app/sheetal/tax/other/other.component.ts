@@ -50,7 +50,6 @@ export class OtherComponent implements OnInit {
     this.otherService.save(this.other).subscribe(response => {
       alert("Your data saved successfully");
       this.changesSaved = true;
-      //   console.log(response));
     });
     this.valid = true;
   }
@@ -91,10 +90,8 @@ export class OtherComponent implements OnInit {
       }
       if (this.otherout.length === 0) {
         this.valid = false;
-        console.log("in if valid value", this.valid);
       } else {
         this.valid = true;
-        console.log("in else valid value", this.valid);
       }
     });
   }
@@ -104,17 +101,13 @@ export class OtherComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info", this.user);
         this.other.uid = this.user.id;
-        console.log("uid is", this.other.uid);
         this.uid = this.other.uid;
         this.onOtherGet();
       });
   }
   onEditOtherField(nameField, otherEditContent) {
-    console.log("inside edit other");
     this.nameField = nameField;
-    console.log("inside edit other", nameField);
     if (nameField === "Medical Handicapped") {
       this.nameField = "Amount";
       this.editField = this.otherout[0].handicapped;
@@ -160,27 +153,21 @@ export class OtherComponent implements OnInit {
     if (nameField === "Medical Handicapped") {
       this.other.handicapped = this.editField;
       this.otherout[0].handicapped = this.other.handicapped;
-      //  this.editField = '';
     } else if (nameField === "Medical Treatment") {
       this.other.medicaltreat = this.editField;
       this.otherout[0].medicaltreat = this.other.medicaltreat;
-      //  this.editField = '';
     } else if (nameField === "Repayment") {
       this.other.selfedu = this.editField;
       this.otherout[0].selfedu = this.other.selfedu;
-      //  this.editField = '';
     } else if (nameField === "nps") {
       this.other.nps = this.editField;
       this.otherout[0].nps = this.other.nps;
-      //   this.editField = '';
     } else if (nameField === "rgess") {
       this.other.rgess = this.editField;
       this.otherout[0].rgess = this.other.rgess;
-      //  this.editField = '';
     } else if (nameField === "donation") {
       this.other.donation = this.editField;
       this.otherout[0].donation = this.other.donation;
-      // this.editField = '';
     }
   }
 }

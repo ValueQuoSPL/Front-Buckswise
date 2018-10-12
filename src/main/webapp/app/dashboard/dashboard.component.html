@@ -1,193 +1,277 @@
-<br><br>
-<h2> Dashboard </h2> <hr>
-
-
-
-<div>
-
-    <!-- navbar -->
-    <div class="row" jhiMovableArea>
-
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Income</mat-card-title>
-                    <mat-card-title>1,00,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Expenses</mat-card-title>
-                    <mat-card-title>50,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Surplus</mat-card-title>
-                    <mat-card-title>20,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Assets</mat-card-title>
-                    <mat-card-title>40,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Liability</mat-card-title>
-                    <mat-card-title>30,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-        <div class="col-md-2">
-            <mat-card class="example-card" jhiMovable>
-                <mat-card-header>
-                    <div mat-card-avatar class=""></div>
-                    <mat-card-title>Networth</mat-card-title>
-                    <mat-card-title>10,000</mat-card-title>
-                </mat-card-header>
-            </mat-card>
-        </div>
-
-
-    </div>
-
-    <hr>
-    <!-- asset liability -->
-    <div class="row" jhiMovableArea>
-
-
-        <div class="col-md-6">
-
-            <mat-card class="example-card" jhiMovable>
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image1"></div>
-                        <mat-card-title>Assets</mat-card-title>
-                        <mat-card-subtitle>Here is Assets</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content class="example-card" class="shadow">
-                        <div style="display: grid">
-                            <canvas baseChart
-                                [data]="pieChartData"
-                                [labels]="pieChartableLabels"
-                                [chartType]="assetChart"
-                                [colors]="colors"
-                                (chartHover)="chartHovered($event)"
-                                (chartClick)="chartClicked($event)">
-                            </canvas>
+<div class="container">
+        <span [ngSwitch]="isAuthenticated()">
+                <div *ngSwitchCase="true">
+                        
+                        
+                        <div class="row justify-content-md-center bwtitle">
+                            Dashboard
                         </div>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button (click)="onAssetEdit()">Details</button>
-                    </mat-card-actions>
-            </mat-card>
+                        
+                        
+                        
+                        
+                        <hr>
+                        <!-- cardbar -->
+                        <div class="row " jhiMovableArea >
+                            <br><br>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+        
+                                    <div class="text-center"> 
+                                        <div style="font-weight:500"> Income </div> <hr style="height: 1px; background-color: blue;">
+                                        <div> {{ incomeTotal | currency:"INR"}} </div>
+                                    </div>
+                                    
+                                </mat-card>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+                                        <div class="text-center"> 
+                                                <div style="font-weight:500"> Expenses </div> <hr style="height: 1px; background-color: blue;">
+                                                <div> {{ expenseTotal | currency:"INR"}} </div>
+                                            </div>
+                                    
+                                </mat-card>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+                                        <div class="text-center"> 
+                                                <div style="font-weight:500"> Surplus </div> <hr style="height: 1px; background-color: blue;">
+                                                <div> {{ surplus | currency:"INR"}} </div>
+                                            </div>
+                                    
+                                </mat-card>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+                                        <div class="text-center"> 
+                                                <div style="font-weight:500"> Assets </div> <hr style="height: 1px; background-color: blue;">
+                                                <div> {{ assetTotal | currency:"INR"}} </div>
+                                            </div>
+                                    
+                                </mat-card>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+                                        <div class="text-center"> 
+                                                <div style="font-weight:500"> Liability </div> <hr style="height: 1px; background-color: blue;">
+                                                <div>  {{ liabilityTotal | currency:"INR"}} </div>
+                                            </div>
+                            
+                                </mat-card>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-card class="example-card" jhiMovable>
+                                        <div class="text-center"> 
+                                                <div style="font-weight:500"> Networth </div> <hr style="height: 1px; background-color: blue;">
+                                                <div> {{ networth | currency:"INR"}} </div>
+                                            </div>
+                                
+                                </mat-card>
+                            </div>
+                            <br><br>
+                        </div>
+                    
+                        <hr>
+                        <!-- asset liability -->
+                        <div class="row " jhiMovableArea>
+                            <br>
+                    
+                            <div class="col-md-6">
+                    
+                                <mat-card class="example-card" jhiMovable>
+                                        <!-- <mat-card-header>
+                                            <div>
+                                                <div class="pull-left bwtitle">
+                                                    Assets
+                                                </div>
+                                                <div class="pull-right">
+                                                        <a routerLink="/asstesroute" routerLinkActiveOptions="active"> Details </a>
+                                                </div>
+                                            </div>
+                                        </mat-card-header> -->
 
-        </div>
+                                        <div class="pull-right">
+                                                <a routerLink="/asstesroute" routerLinkActiveOptions="active"> Details </a>
+                                        </div>
+                                        <mat-card-header> 
+                                            <div class="pull-left bwtitle">
+                                                Assets
+                                            </div>
+                                        </mat-card-header>
+                                        
+                                        <br>
+                                        <mat-card-content class="example-card" class="shadow">
+        
+                                            <div style="display: grid">
+                                                <canvas baseChart
+                                                    [data]="pieChartData"
+                                                    [labels]="pieChartableLabels"
+                                                    [chartType]="assetChart"
+                                                    [colors]="colors"
+                                                    (chartHover)="chartHovered($event)"
+                                                    (chartClick)="chartClicked($event)">
+                                                </canvas>
+                                            </div>
+        
+                                            <div >
+                                                    <table class="table table-bordered table-striped table-hovered table-sm">
+                                                        <thead>
+                                                            <th>Asset Name</th>
+                                                            <th>Current Value</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of AssetArray">
+                                                                <td> {{ item.name }} </td>
+                                                                <td> {{ item.value }} </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
 
-        <div class="col-md-6">
 
-            <mat-card class="example-card" jhiMovable>
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image2"></div>
-                        <mat-card-title>Liabilities</mat-card-title>
-                        <mat-card-subtitle> Your Liabilities</mat-card-subtitle>
-                    </mat-card-header>
-                    <div style="display: grid" class="shadow">
-                        <canvas baseChart
-                            [data]="pieChartDataa"
-                            [labels]="pieChartableLabel"
-                            [chartType]="liabilityChart"
-                            [colors]="color"
-                            (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)"></canvas>
+                                            
+                                        </mat-card-content>
+                                        <!-- <mat-card-actions>
+                                            <button mat-button (click)="onAssetEdit()">Details</button>
+                                        </mat-card-actions> -->
+                                </mat-card>
+                    
+                            </div>
+                    
+                            <div class="col-md-6">
+                    
+                                <mat-card class="example-card" jhiMovable>
+                                    <div class="pull-right">
+                                            <a routerLink="/liability" routerLinkActiveOptions="active"> Details </a>
+                                    </div>
+                                    <mat-card-header>
+                                        <div>
+                                            <div class="pull-left bwtitle">
+                                                Liabilities
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </mat-card-header>
+                                        <div style="display: grid" class="shadow">
+                                            <canvas baseChart
+                                                [data]="pieChartDataa"
+                                                [labels]="pieChartableLabel"
+                                                [chartType]="liabilityChart"
+                                                [colors]="color"
+                                                (chartHover)="chartHovered($event)"
+                                                (chartClick)="chartClicked($event)">
+                                            </canvas>
+        
+                                            <th colspan="2" class="text-center"> Short Term Liabilities</th>
+                                            <table class="table table-bordered  table-striped table-hovered table-sm">
+                                                    <thead>
+                                                        <th>Liability Name</th>
+                                                        <th>Outstanding Amount</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let l of shortLiability">
+                                                            <td>{{l.name}}</td>
+                                                            <td>{{l.out}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                
+                                                </table>
+                                                <th colspan="2" class="text-center"> Long Term Liabilities</th>
+                                                <table class="table table-bordered  table-striped table-hovered table-sm">
+                                                    
+                                                        <thead>
+                                                            <th>Liability Name</th>
+                                                            <th>Outstanding Amount</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let l of longLiability">
+                                                                <td>{{l.name}}</td>
+                                                                <td>{{l.out}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                        </div>
+                                        
+                                        <mat-card-actions class="pull-right"> 
+                                            <button mat-button (click)="onLiabilityEdit()">Details</button>
+                                        </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </div>
+                    
+                        <br>
+                
+                        <hr>
+                        <!-- goals -->
+                        <div class="row justify-content-md-center ">
+                    
+                            <mat-card class="example-card"  >
+                                <div >
+                                    <div class="pull-left bwtitle">
+                                        Goals
+                                    </div>
+                                    <div class="pull-right">
+                                            <a routerLink="/goalselect" routerLinkActiveOptions="active"> Details </a>
+                                    </div>
+                                </div>
+        
+                                    
+                                    <mat-card-content>
+                    
+        
+                                                <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">Goal Name</th>
+                                                            <th scope="col">Achievement</th>
+                                                            <th scope="col">Cost</th>
+                                                            <th scope="col">Tagged Assets </th>
+                        
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                        
+                                                            <tr *ngFor="let item of HTMLGoalArray">
+                                                                <td>{{ item.name }}</td>
+                                                                <td>
+                                                                    <circle-progress
+                                                                    [percent]= item.percent
+                                                                    [radius]="20"
+                                                                    [title]= item.percent
+                                                                    [titleFontSize]="13"
+                                                                    [outerStrokeWidth]="9"
+                                                                    [innerStrokeWidth]="8"
+                                                                    [outerStrokeColor]="'#4882c2'"
+                                                                    [innerStrokeColor]="'#e7e8ea'"
+                                                                    [animationDuration]="1000"
+                                                                    [maxPercent] = "100"
+                                                                    [toFixed] = "0"
+                                                                    [showUnits] = "true"
+                                                                    [animation]="true"
+                                                                    [startFromZero] = "true"
+                                                                    [showSubtitle]="false"
+                                                                    ></circle-progress>
+                                                                </td>
+                                                                <td>{{ item.cost }}</td>
+                                                                <td>{{ item.tagged }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                    
+                                    </mat-card-content>
+                                </mat-card>
+                    
+                        </div>
+                    
                     </div>
-                    <mat-card-actions>
-                        <button mat-button (click)="onLiabilityEdit()">Details</button>
-                    </mat-card-actions>
-            </mat-card>
-
-        </div>
-
-    </div>
-
-    <hr>
-    <!-- goals -->
-    <div class="row justify-content-md-center">
-
-            <mat-card class="example-card2"  >
-                    <mat-card-header>
-                        <div mat-card-avatar class=""></div>
-                        <mat-card-title>Goals</mat-card-title>
-                        <mat-card-title>1,00,000</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                            <table class="table">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Goal Name</th>
-                                        <th scope="col">Achievement</th>
-                                        <th scope="col">Cost</th>
-                                        <th scope="col">Tagged Assets </th>
-                    
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Buying New Home</td>
-                                            <td>
-                                                    <div class="col-md-3 col-sm-6">
-                                                            <div class="progress yellow">
-                                                                <span class="progress-left">
-                                                                    <span class="progress-bar"></span>
-                                                                </span>
-                                                                <span class="progress-right">
-                                                                    <span class="progress-bar"></span>
-                                                                </span>
-                                                                <div class="progress-value">75%</div>
-                                                            </div>
-                                                        </div>
-                                            </td>
-                                            <td>1000</td>
-                                            <td>500</td>
-                    
-                                        </tr>
-                                        <tr>
-                                            <td>Kids Education</td>
-                                            <td>
-                                                    <div class="col-md-3 col-sm-6">
-                                                            <div class="progress blue">
-                                                                <span class="progress-left">
-                                                                    <span class="progress-bar"></span>
-                                                                </span>
-                                                                <span class="progress-right">
-                                                                    <span class="progress-bar"></span>
-                                                                </span>
-                                                                <div class="progress-value">90%</div>
-                                                            </div>
-                                                        </div>
-                                            </td>
-                                            <td>2000</td>
-                                            <td>1000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                    </mat-card-content>
-                </mat-card>
-
-    </div>
-    
+                
+                <div *ngSwitchCase="false">
+                    <br><br>
+                    <div class="alert-danger container ">
+                        Please <a (click)="login()">Login</a>
+                    </div>
+                    <br>
+                </div>
+            </span>
 </div>

@@ -167,182 +167,148 @@ export class GoalSelectComponent implements OnInit {
   Home() {
     this.goalselect.goaltype = this.goaltype;
     this.goalselect.uid = this.uid;
-    this.goalSelectService.saveHome(this.goalselect).subscribe();
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveHome(this.goalselect).subscribe(
+      responce => {
+        console.log("Save Home", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
 
   Education() {
     this.Educationselect.goaltype = this.goaltype;
     this.Educationselect.uid = this.uid;
     console.log(this.Educationselect);
-
-    this.goalSelectService.saveEducation(this.Educationselect).subscribe();
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveEducation(this.Educationselect).subscribe(
+      responce => {
+        console.log("Save Education", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   Vehicle() {
-    // // console.log('the value of type is', this.goaltype);
     this.Vehicleselect.goaltype = this.goaltype;
     this.Vehicleselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.Vehicleselect.goaltype);
-    this.goalSelectService
-      .saveVehicle(this.Vehicleselect)
-      .subscribe
-      // // responce => // // console.log(responce),
-      // // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveVehicle(this.Vehicleselect).subscribe(
+      responce => {
+        console.log("Save Vehicle", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   Childbirth() {
-    // // console.log('the value of type is', this.goaltype);
     this.Childbirthselect.goaltype = this.goaltype;
     this.Childbirthselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.Childbirthselect.goaltype);
-    this.goalSelectService
-      .saveChildBirth(this.Childbirthselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveChildBirth(this.Childbirthselect).subscribe(
+      responce => {
+        console.log("Save saveChildBirth", responce),
+          this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   Merrage() {
-    // // console.log('the value of type is', this.goaltype);
     this.Merrageselect.goaltype = this.goaltype;
     this.Merrageselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.Merrageselect.goaltype);
-    this.goalSelectService
-      .saveMerrage(this.Merrageselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveMerrage(this.Merrageselect).subscribe(
+      responce => {
+        console.log("Save Merrage", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   Business() {
-    // // console.log('the value of type is', this.goaltype);
     this.Businessselect.goaltype = this.goaltype;
     this.Businessselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.Businessselect.goaltype);
-    this.goalSelectService
-      .saveBusiness(this.Businessselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveBusiness(this.Businessselect).subscribe(
+      responce => {
+        console.log("Save Business", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   Familysupport() {
-    // // console.log('the value of type is', this.goaltype);
     this.FamilySupportselect.goaltype = this.goaltype;
     this.FamilySupportselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.FamilySupportselect.goaltype);
     this.goalSelectService
       .saveFamilySupport(this.FamilySupportselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+      .subscribe(
+        responce => {
+          console.log("Save Business", responce), this.getgoalbyid(this.uid);
+        },
+        error => console.log(error)
+      );
+    this.isValid = true;
   }
   Vacation() {
-    // // console.log('the value of type is', this.goaltype);
-    this.Vacationselect.goaltype = this.goaltype;
-    this.Vacationselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.Vacationselect.goaltype);
-    // // console.log(this.goalselect.goalname);
-    // // console.log(this.goalselect.priority);
-    // // console.log(this.goalselect.price);
-    // // console.log(this.goalselect.notes);
-    this.goalSelectService
-      .saveVacation(this.Vacationselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    // this.Vacationselect.goaltype = this.goaltype;
+    // this.Vacationselect.uid = this.uid;
+    // this.goalSelectService
+    //   .saveVacation(this.Vacationselect)
+    //   .subscribe
+    //   ();
+    this.goalSelectService.saveVacation(this.Vacationselect).subscribe(
+      responce => {
+        console.log("Save Vacation", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   EmergencyFund() {
     // // console.log('the value of type is', this.goaltype);
     this.EmergencyFundselect.goaltype = this.goaltype;
     this.EmergencyFundselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.EmergencyFundselect.goaltype);
     this.goalSelectService
       .saveEmergencyFund(this.EmergencyFundselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+      .subscribe(
+        responce => {
+          console.log("Save EmergencyFund", responce),
+            this.getgoalbyid(this.uid);
+        },
+        error => console.log(error)
+      );
+    this.isValid = true;
   }
   RetairementFund() {
-    // // console.log('the value of type is', this.goaltype);
     this.RetirementFundselect.goaltype = this.goaltype;
     this.RetirementFundselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding type', this.RetirementFundselect.goaltype);
     this.goalSelectService
       .saveRetirementFund(this.RetirementFundselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+      .subscribe(
+        responce => {
+          console.log("Save EmergencyFund", responce),
+            this.getgoalbyid(this.uid);
+        },
+        error => console.log(error)
+      );
+    this.isValid = true;
   }
   NewGoal() {
     // // console.log('the value of type is', this.goaltype);
     this.NewGoalselect.goaltype = this.goaltype;
     this.NewGoalselect.uid = this.uid;
-    // // console.log('inside saveHome details');
-    // // console.log('after adding goaltype', this.NewGoalselect.goaltype);
-    // // console.log(this.goalselect.goalname);
-    // // console.log(this.goalselect.priority);
-    // // console.log(this.goalselect.price);
-    // // console.log(this.goalselect.notes);
-    this.goalSelectService
-      .saveNewGoal(this.NewGoalselect)
-      .subscribe
-      // responce => // // console.log(responce),
-      // error => // // console.log(error)
-      ();
-    // // console.log('outside saveHome details');
-    this.isValid = false;
-    this.getgoalbyid(this.uid);
+    this.goalSelectService.saveNewGoal(this.NewGoalselect).subscribe(
+      responce => {
+        console.log("Save NewGoal", responce), this.getgoalbyid(this.uid);
+      },
+      error => console.log(error)
+    );
+    this.isValid = true;
   }
   AddGoal() {
-    // // console.log('in addgoal');
-    // this.router.navigate(['goal']);
-    this.isValid = true;
+    this.isValid = false;
   }
   linkAssets() {
     this.router.navigate(["goalAdd"]);
   }
   selectChange(event: any) {
-    // // console.log('in selectchange method');
     this.selectedday = event.target.value;
   }
   FetchId(): Promise<any> {
@@ -351,10 +317,8 @@ export class GoalSelectComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        // // console.log('user goal info', this.user);
         this.uid = this.user.id;
         this.mapping.uid = this.uid;
-        // // console.log('in fetchid method in goal', this.uid);
         this.getgoalbyid(this.uid);
       });
   }
@@ -362,15 +326,19 @@ export class GoalSelectComponent implements OnInit {
     this.goalSelectService.getgoalbyid(this.uid).subscribe(res => {
       this.GoalArray = res;
       console.log(this.GoalArray);
-
       this.viewUpdate();
-
       this.output = this.GoalArray;
-
-      if (this.output.uid === null) {
-        this.isValid = false;
-      } else {
-        this.isValid = false;
+      for (let i = 0; i < this.output.length; i++) {
+        const element = this.output[i];
+        if (element.uid === 0) {
+          console.log(element.uid);
+          this.isValid = false;
+          console.log(this.isValid);
+        } else {
+          console.log(element.uid);
+          this.isValid = true;
+          console.log(this.isValid);
+        }
       }
     });
 

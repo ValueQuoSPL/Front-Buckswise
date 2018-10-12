@@ -1,7 +1,7 @@
 <div [ngSwitch]="isAuthenticated()">
   <div *ngSwitchCase="true">
   <br><br>
-    <div *ngIf="isValid"><!-- start of isvalid div -->
+    <div *ngIf="!isValid"><!-- start of isvalid div -->
       <div class="row justify-content-md-center colored"><!--start of row1 div-->
         <div class="col-md-2"><!--start of row1.col1 div-->
           <label><h4><b>Select Goal</b></h4></label>
@@ -363,7 +363,7 @@
           </div><!--end of ngSwitchCaseNewGoal div-->
         </div><!-- end of ngSwitch div -->
       </div><!-- end of isvalid div -->
-    <div *ngIf="!isValid">
+    <div *ngIf="isValid">
       <div class="form-group row justify-content-center"><label><h5>Goal Details</h5></label>
       </div>
       <button 
@@ -376,8 +376,11 @@
       </button>
   <!-- view page -->
       <table 
-        *ngIf="!isValid" 
-        class=" table-responsive table-bordered table-hover table-sm table-striped"><!-- table start here -->
+        class= "table-responsive 
+                table-bordered 
+                table-hover
+                table-sm 
+                table-striped"><!-- table start here -->
         <thead>
           <tr>
               <th>SrNo</th>

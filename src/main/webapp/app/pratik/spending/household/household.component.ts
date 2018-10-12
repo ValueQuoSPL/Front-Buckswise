@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject, Renderer, ElementRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { AccountService, Principal } from "app/shared";
-import { Observable } from "rxjs";
 import { House } from "app/pratik/spending/spending.model";
 import { HouseService } from "app/pratik/spending/spending.service";
 
@@ -35,8 +34,6 @@ export class HouseholdComponent implements OnInit {
   newHouse: NewHousehold = new NewHousehold();
 
   constructor(
-    private renderer: Renderer,
-    private elementRef: ElementRef,
     private principal: Principal,
     private houseService: HouseService,
     private modalService: NgbModal,

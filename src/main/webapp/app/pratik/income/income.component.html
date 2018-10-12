@@ -1,7 +1,7 @@
 
 <div class="container">
     <div [ngSwitch]="isAuthenticated()">
-        <br>
+        
         <div class="alert alert-warning" *ngSwitchCase="false">
             <br>
             <span>You are not signed in. <br> If you want to sign in</span>
@@ -9,6 +9,10 @@
         </div>
 
         <div *ngSwitchCase="true">
+
+            <div class="row justify-content-md-center bwtitle">
+                Income
+            </div>
             
             <mat-expansion-panel class="accordion" (opened)="panelOpenState = true"
             (closed)="panelOpenState = false"  [expanded]="step === 0">

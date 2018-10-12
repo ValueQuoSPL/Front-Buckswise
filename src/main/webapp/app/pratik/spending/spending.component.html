@@ -10,14 +10,11 @@
     </div>
     <div *ngSwitchCase="true">
         <div class="container">
-            <mat-accordion >
+
                 <!-- Start expense panel -->
-                <mat-expansion-panel class="accordion" [expanded]="true">
-        
-                    <mat-expansion-panel-header>
-                        <mat-panel-title> Expense </mat-panel-title>
-                    <mat-panel-description> Fill your Expense details </mat-panel-description>
-                    </mat-expansion-panel-header>
+                <div class="row justify-content-md-center bwtitle">
+                    Expense
+                </div>
         
                 <div> <!-- start expense content -->
                 <mat-accordion>
@@ -182,7 +179,7 @@
                 </mat-accordion> 
                 </div>  <!-- end expense content -->
                 </mat-expansion-panel> <!-- end expense panel -->
-            </mat-accordion>
+
         </div>
     </div>
 </span>

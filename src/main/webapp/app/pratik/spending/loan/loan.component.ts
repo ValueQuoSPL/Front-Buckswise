@@ -119,15 +119,13 @@ export class LoanComponent implements OnInit {
       this.dynamicLoan = response;
       // console.log(this.dynamicLoan);
 
+      this.dynamicLoanArray.splice(0, this.dynamicLoanArray.length);
       this.dynamicLoan.forEach(element => {
         this.dbDate = new Date(element.ldate);
         this.calculateEMI(element.amount, element.tenure, element.roi);
         element.outstandingpricipal = this.out;
-        // console.log('outstanding amount from variable', this.out);
-        // console.log('outstanding amount from array', element.outstandingpricipal);
 
         this.dynamicLoanArray.push(element);
-        // console.log('new array', this.dynamicLoanArray);
       });
 
       if (this.dynamicLoanArray.length === 0) {
@@ -221,6 +219,7 @@ export class LoanComponent implements OnInit {
         }
       );
   }
+
   fillModal(id) {
     this.tempLoanArray = this.dynamicLoanArray;
     for (let i = 0; i < this.tempLoanArray.length; i++) {
@@ -238,6 +237,7 @@ export class LoanComponent implements OnInit {
       }
     }
   }
+
   fillLoan(id) {
     for (let i = 0; i < this.dynamicLoanArray.length; i++) {
       if (this.dynamicLoanArray[i].id === id) {
@@ -258,6 +258,7 @@ export class LoanComponent implements OnInit {
     }
     this.UpdateLoan(id);
   }
+
   UpdateLoan(id) {
     this.loan.id = id;
     this.loan.userid = this.uid;

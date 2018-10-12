@@ -22,11 +22,11 @@ export class GoalAddButtonComponent implements OnInit {
   out: Object;
   user: any;
   uid: any;
+  dialogRef;
   onNoClick() {
     console.log("inside onNoClick");
     this.dialogRef.close();
   }
-  dialogRef;
 
   constructor(
     private ActiveModal: NgbActiveModal,

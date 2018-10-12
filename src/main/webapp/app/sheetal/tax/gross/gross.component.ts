@@ -37,19 +37,6 @@ export class GrossComponent implements OnInit {
 
   ngOnInit() {
     this.FetchID();
-    // this.gross.bsalary = 0;
-    // this.gross.da = 0;
-    // this.gross.hra = 0;
-    // this.gross.conveyance = 0;
-    // this.gross.childedu = 0;
-    // this.gross.medical = 0;
-    // this.gross.lta = 0;
-    // this.gross.otherallown = 0;
-    // this.gross.bonus = 0;
-    // this.gross.rentincome = 0;
-    // this.gross.saving = 0;
-    // this.gross.bonds = 0;
-    // this.gross.conveyanceother = 0;
     this.changesSaved = true;
   }
   FetchID(): Promise<any> {
@@ -85,7 +72,6 @@ export class GrossComponent implements OnInit {
   onGrossGet(uid) {
     console.log("in grossget ts uid", this.uid);
     this.grossService.getgross(this.uid).subscribe(res => {
-      console.log(res);
       this.output = res;
       console.log("gross data in output", this.output);
       for (let index = 0; index < this.output.length; index++) {
@@ -105,32 +91,13 @@ export class GrossComponent implements OnInit {
         this.gross.conveyanceother = element.conveyanceother;
         this.gross.uid = element.uid;
         this.gross.id = element.id;
-        console.log("output id", this.gross.id);
       }
       if (this.output.length === 0) {
         this.valid = false;
-        console.log("in if valid value", this.valid);
       } else {
         this.valid = true;
-        console.log("in else valid value", this.valid);
       }
     });
-
-    // for (let i = 0; i < this.output.length; i++) {
-    //   const element = this.output[i];
-    //   console.log('data in outpurarray', element);
-    // this.output.uid = element.uid;
-    // this.output = element;
-    // console.log('in element uid s', element.uid);
-    // if (element.uid === null) {
-    //   this.valid = false;
-    //   console.log('in if valid value', this.valid);
-    // } else {
-    //   this.valid = true;
-    //   console.log('in else valid value', this.valid);
-    // }
-    // console.log('uid is', this.output.uid);
-    //    console.log('onGrossGet response ', this.output);
   }
   onGrossSave() {
     console.log("in gross bsal", this.gross.bsalary);
@@ -142,48 +109,18 @@ export class GrossComponent implements OnInit {
     this.valid = true;
   }
   updateGross() {
-    // console.log('inside update income');
-    // this.grossService.getgross(this.uid).subscribe(res => {
-    //   console.log(res);
-    //  this.updateout = res;
-    //  console.log('update result', this.updateout);
-    //  for (let index = 0; index < this.updateout.length; index++) {
-    //    const element = this.updateout[index];
-    //  }
-    // this.gross.bsalary = this.updateout.bsalary;
-    // this.gross.da = this.updateout.da;
-    // this.gross.hra = this.updateout.hra;
-    // this.gross.conveyance = this.updateout.conveyance;
-    // this.gross.childedu = this.updateout.childedu;
-    // this.gross.medical = this.updateout.medical;
-    // this.gross.lta = this.updateout.lta;
-    // this.gross.otherallown = this.updateout.otherallown;
-    // this.gross.bonus = this.updateout.bonus;
-    // this.gross.rentincome = this.updateout.rentincome;
-    // this.gross.saving = this.updateout.saving;
-    // this.gross.bonds = this.updateout.bonds;
-    // this.gross.conveyanceother = this.updateout.conveyanceother;
-    // this.gross.uid = this.uid;
-    // this.gross.id = .id;
-
-    // this.gross.bsalary = this.bsalary;
     console.log(" in update method gross", this.gross);
     this.grossService.PutGross(this.gross).subscribe(data => {
       alert("Your data update");
       this.changesSaved = true;
     });
-    // });
   }
   onEditGrossField(nameField, grossEditContent) {
     console.log("name field", nameField);
     console.log("inside gross");
     this.nameField = nameField;
-    // console.log('inside edit gross', nameField);
     if (nameField === "bsalary") {
       this.nameField = "Amount";
-      // this.gross.bsalary = this.nameField;
-      // this.editField = this.output[0].bsalary;
-      // this.gross.bsalary = this.editField;
       this.editField = this.output[0].bsalary;
     } else if (nameField === "da") {
       this.nameField = "Amount";
@@ -244,41 +181,31 @@ export class GrossComponent implements OnInit {
     }
   }
   FillEditGross(nameField) {
-    // console.log('inside fill edit home');
     if (nameField === "bsalary") {
-      // this.editField = this.output[0].bsalary;
       this.gross.bsalary = this.editField;
       console.log("updated gross value", this.gross.bsalary);
       this.output[0].bsalary = this.gross.bsalary;
-      // this.editField = '';
     } else if (nameField === "da") {
       this.gross.da = this.editField;
       this.output[0].da = this.gross.da;
-      // this.editField = '';
     } else if (nameField === "hra") {
       this.gross.hra = this.editField;
       this.output[0].hra = this.gross.hra;
-      // this.editField = '';
     } else if (nameField === "convey") {
       this.gross.conveyance = this.editField;
       this.output[0].conveyance = this.gross.conveyance;
-      // this.editField = '';
     } else if (nameField === "ce") {
       this.gross.childedu = this.editField;
       this.output[0].childedu = this.gross.childedu;
-      //  this.editField = '';
     } else if (nameField === "med") {
       this.gross.medical = this.editField;
       this.output[0].medical = this.gross.medical;
-      // this.editField = '';
     } else if (nameField === "lta") {
       this.gross.lta = this.editField;
       this.output[0].lta = this.gross.lta;
-      // this.editField = '';
     } else if (nameField === "oa") {
       this.gross.otherallown = this.editField;
       this.output[0].otherallown = this.gross.otherallown;
-      // this.editField = '';
     } else if (nameField === "bonus") {
       this.gross.bonus = this.editField;
       this.output[0].bonus = this.gross.bonus;

@@ -14,12 +14,12 @@ export class DashboardService {
   }
 
   public getStock(uid) {
-    const url = SERVER_API_URL + "api/stock/" + uid;
+    const url = SERVER_API_URL + "api/getbyuidstock/" + uid;
     return this._http.get(url);
   }
 
   public getSaving(uid) {
-    const url = SERVER_API_URL + "api/getSaving/" + uid;
+    const url = SERVER_API_URL + "api/getsaving/" + uid;
     return this._http.get(url);
   }
 
@@ -48,7 +48,12 @@ export class DashboardService {
   }
 
   public getLiabilities(uid) {
-    const url = SERVER_API_URL + " /api/loananddebt/getloandebt/" + uid;
+    const url = SERVER_API_URL + "api/loananddebt/getloandebt/" + uid;
+    return this._http.get(url);
+  }
+
+  public getGoal(uid) {
+    const url = SERVER_API_URL + "api/goalset/" + uid;
     return this._http.get(url);
   }
 }
