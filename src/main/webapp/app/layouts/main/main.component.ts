@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from "@angular/core";
+import { Component, OnInit, HostListener, AfterViewInit } from "@angular/core";
 import { Router, ActivatedRouteSnapshot, NavigationEnd } from "@angular/router";
 
 import { Title } from "@angular/platform-browser";
@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy } from "@angular/core";
   styleUrls: ["main.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class JhiMainComponent implements OnInit {
+export class JhiMainComponent implements OnInit, AfterViewInit {
   loginStatus = false;
   spinner = true;
   isSafari;
@@ -92,6 +92,10 @@ export class JhiMainComponent implements OnInit {
     output += " Blink: " + isBlink;
 
     console.log("browser : ", output);
+  }
+
+  ngAfterViewInit() {
+    document.getElementById("detect").focus();
   }
   isAuthenticated() {
     return this.principal.isAuthenticated();

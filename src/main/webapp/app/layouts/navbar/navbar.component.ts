@@ -48,10 +48,10 @@ export class NavbarComponent implements OnInit {
       0;
     if (number > 100) {
       this.navIsFixed = true;
-      console.log("up 100 detected");
+      // console.log("up 100 detected");
     } else if (this.navIsFixed && number < 10) {
       this.navIsFixed = false;
-      console.log("down detected");
+      // console.log("down detected");
     }
   }
 

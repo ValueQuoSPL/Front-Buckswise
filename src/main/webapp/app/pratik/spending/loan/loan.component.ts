@@ -1,16 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AccountService, Principal } from 'app/shared';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { Loan } from 'app/pratik/spending/spending.model';
-import { LoanService } from 'app/pratik/spending/spending.service';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Inject } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { AccountService, Principal } from "app/shared";
+import { Observable } from "rxjs";
+import { FormControl } from "@angular/forms";
+import { Loan } from "app/pratik/spending/spending.model";
+import { LoanService } from "app/pratik/spending/spending.service";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'jhi-loan',
-  templateUrl: './loan.component.html',
-  styleUrls: ['../spending.component.css']
+  selector: "jhi-loan",
+  templateUrl: "./loan.component.html",
+  styleUrls: ["../spending.component.css"]
 })
 export class LoanComponent implements OnInit {
   uid;
@@ -34,19 +34,19 @@ export class LoanComponent implements OnInit {
   out: any;
 
   LoanTypeArray = [
-    { name: 'Home Loan' },
-    { name: 'Personal Loan' },
-    { name: 'Auto Loan' },
-    { name: 'Educational Loan' },
-    { name: 'Property Loan' },
-    { name: 'Gold Loan' },
-    { name: 'Hand Loan' }
+    { name: "Home Loan" },
+    { name: "Personal Loan" },
+    { name: "Auto Loan" },
+    { name: "Educational Loan" },
+    { name: "Property Loan" },
+    { name: "Gold Loan" },
+    { name: "Hand Loan" }
   ];
 
   InterestTypeArray = [
-    { name: 'Fixed' },
-    { name: 'Floating' },
-    { name: 'Fixed-Floating' }
+    { name: "Fixed" },
+    { name: "Floating" },
+    { name: "Fixed-Floating" }
   ];
 
   constructor(
@@ -68,29 +68,29 @@ export class LoanComponent implements OnInit {
   }
 
   clear() {
-    this.resource = '';
-    this.amount = '';
-    this.expense = '';
+    this.resource = "";
+    this.amount = "";
+    this.expense = "";
 
-    this.loan.amnt = '';
-    this.loan.applicant = '';
+    this.loan.amnt = "";
+    this.loan.applicant = "";
     this.loan.check = false;
-    this.loan.intrest_type = '';
-    this.loan.ldate = '';
-    this.loan.lender = '';
-    this.loan.loan_type = '';
-    this.loan.rdate = '';
-    this.loan.roi = '';
-    this.loan.tenure = '';
+    this.loan.intrest_type = "";
+    this.loan.ldate = "";
+    this.loan.lender = "";
+    this.loan.loan_type = "";
+    this.loan.rdate = "";
+    this.loan.roi = "";
+    this.loan.tenure = "";
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       this.clear();
-      return 'by pressing ESC';
+      return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       this.clear();
-      return 'by clicking on a backdrop';
+      return "by clicking on a backdrop";
     } else {
       this.clear();
       return `with: ${reason}`;
@@ -119,15 +119,13 @@ export class LoanComponent implements OnInit {
       this.dynamicLoan = response;
       // console.log(this.dynamicLoan);
 
+      this.dynamicLoanArray.splice(0, this.dynamicLoanArray.length);
       this.dynamicLoan.forEach(element => {
         this.dbDate = new Date(element.ldate);
         this.calculateEMI(element.amount, element.tenure, element.roi);
         element.outstandingpricipal = this.out;
-        // console.log('outstanding amount from variable', this.out);
-        // console.log('outstanding amount from array', element.outstandingpricipal);
 
         this.dynamicLoanArray.push(element);
-        // console.log('new array', this.dynamicLoanArray);
       });
 
       if (this.dynamicLoanArray.length === 0) {
@@ -161,7 +159,7 @@ export class LoanComponent implements OnInit {
 
   openLoan(loanModal) {
     this.modalService
-      .open(loanModal, { ariaLabelledBy: 'loanModal' })
+      .open(loanModal, { ariaLabelledBy: "loanModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -202,7 +200,7 @@ export class LoanComponent implements OnInit {
     console.log(this.loan.loanModelArray);
 
     this.loanService.PostLoan(this.loan.loanModelArray).subscribe(data => {
-      alert('Loan Added successfully');
+      alert("Loan Added successfully");
       this.getLoanandDebt();
     });
   }
@@ -210,7 +208,7 @@ export class LoanComponent implements OnInit {
   onEditLoan(id, loanModal) {
     this.fillModal(id);
     this.modalService
-      .open(loanModal, { ariaLabelledBy: 'loanModal' })
+      .open(loanModal, { ariaLabelledBy: "loanModal" })
       .result.then(
         result => {
           this.closeResult = `Closed with: ${result}`;
@@ -266,7 +264,7 @@ export class LoanComponent implements OnInit {
     this.loan.userid = this.uid;
     this.loanService.PutLoan(this.loan, this.uid).subscribe(res => {
       this.clear();
-      alert('Your data saved');
+      alert("Your data saved");
     });
   }
 
