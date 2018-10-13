@@ -23,16 +23,18 @@ export class RiskComponent implements OnInit {
       this.account = account;
     });
   }
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+
+  login() {
+    this.modalRef = this.loginModalService.open();
+  }
+
   gotoLife() {
     this.router.navigate(["life"]);
   }
   gotoMedical() {
     this.router.navigate(["medical"]);
-  }
-  isAuthenticated() {
-    return this.principal.isAuthenticated();
-  }
-  login() {
-    this.modalRef = this.loginModalService.open();
   }
 }

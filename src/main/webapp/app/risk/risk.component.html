@@ -1,15 +1,22 @@
 <div [ngSwitch]="isAuthenticated()">
+<<<<<<< HEAD
     <div *ngSwitchCase="true">
         <div class="container">
             <div class="row justify-content-md-center colored">
                 <label><h5>Risk Management</h5></label>
             </div>
+=======
+    <div *ngSwitch="true">
+
+        <div class="container">
+>>>>>>> 703e7c356cd357b9f15b32b88604d0c9edb7e247
             <mat-accordion>
                 <mat-expansion-panel [expanded]="step === 0">
                     <mat-expansion-panel-header>
-                        <mat-panel-title> Life Insurance</mat-panel-title>
-                        <mat-panel-description>Check Your Life Insurance Risk</mat-panel-description>
+                        <mat-panel-title> Risk Management</mat-panel-title>
+                        <mat-panel-description>Maintain Your Risks Here</mat-panel-description>
                     </mat-expansion-panel-header>
+<<<<<<< HEAD
                     <jhi-life-insurance></jhi-life-insurance>
                 </mat-expansion-panel>
                 <mat-expansion-panel>
@@ -31,4 +38,40 @@
             </mat-card-content>
         </mat-card>
     </div>
+=======
+
+                    <mat-accordion>
+                        <mat-expansion-panel [expanded]="step === 0">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Life Insurance</mat-panel-title>
+                                <mat-panel-description>Check Your Life Insurance Risk</mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <jhi-life-insurance></jhi-life-insurance>
+
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Medical Insurance</mat-panel-title>
+                                <mat-panel-description>Check Your Medical Insurance Risk</mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <jhi-medical-insurance></jhi-medical-insurance>
+
+                        </mat-expansion-panel>
+
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+    </div>
+    <div *ngSwitchCase="false">
+        <br>
+        <br> please
+        <a (click)="login()">login</a>
+    </div>
+
+>>>>>>> 703e7c356cd357b9f15b32b88604d0c9edb7e247
 </div>

@@ -24,9 +24,10 @@ import {
 import { AppointmentService } from "./appointment.service";
 import {
   NgbModal,
-  ModalDismissReasons
+  ModalDismissReasons,
+  NgbModalRef
 } from "../../../../../node_modules/@ng-bootstrap/ng-bootstrap";
-import { AccountService } from "app/shared";
+import { AccountService, Principal, LoginModalService } from "app/shared";
 import { DatePipe } from "../../../../../node_modules/@angular/common";
 
 class Appointment {
@@ -148,6 +149,17 @@ export class AppointmentComponent implements OnInit {
   ngOnInit() {
     this.today();
     this.getUserid();
+    this.principal.identity().then(account => {
+      this.account = account;
+    });
+  }
+
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 
   // Post Data

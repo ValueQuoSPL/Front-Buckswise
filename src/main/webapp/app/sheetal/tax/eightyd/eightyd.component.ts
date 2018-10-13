@@ -40,10 +40,13 @@ export class EightydComponent implements OnInit {
     this.changesSaved = true;
   }
   onEightydSave() {
-    this.eightydService.save(this.eightyd).subscribe(response => {
-      alert("Your data saved successfully");
-      this.changesSaved = true;
-    });
+    this.eightydService.save(this.eightyd).subscribe(
+      responce => {
+        console.log(responce), this.onEightydGet(this.uid);
+        // alert("data update successfully");
+      },
+      error => console.log(error)
+    );
     this.valid = true;
   }
   updateEightyd() {
