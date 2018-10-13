@@ -1,14 +1,12 @@
-<div class="container">
-        <span [ngSwitch]="isAuthenticated()">
-                <div *ngSwitchCase="true">
+    <div [ngSwitch]="isAuthenticated()">
+        <div *ngSwitchCase="true">
+                <div class="container">
                         
-                        
-                        <div class="row justify-content-md-center bwtitle">
-                            Dashboard
+                        <div class="row justify-content-md-center bwtitle"><h5>
+                            
+                                Dashboard
+                        </h5>
                         </div>
-                        
-                        
-                        
                         
                         <hr>
                         <!-- cardbar -->
@@ -263,15 +261,15 @@
                                 </mat-card>
                     
                         </div>
-                    
-                    </div>
-                
-                <div *ngSwitchCase="false">
-                    <br><br>
-                    <div class="alert-danger container ">
-                        Please <a (click)="login()">Login</a>
-                    </div>
-                    <br>
-                </div>
-            </span>
-</div>
+        </div>
+    </div>
+        <div *ngSwitchCase="false" class="form-group row justify-content-center">
+                <mat-card class="example-card"> 
+                    <mat-card-content class="example-card" class="shadow">
+                        <img src="../../app//Assests//oops.jpg" style="height:300px;width:700px"><br>
+                        <span>Oops you are not Signed In </span>
+                        Please <a class="alert-link" (click)="login()">Click here</a><span> to sign-in now.</span>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+    </div>
