@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~angular-calendar/css/angular-calendar.css";
 @import "~flatpickr/dist/flatpickr.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 /* ==============================================================
 Bootstrap tweaks
@@ -269,4 +270,15 @@ ui bootstrap tweaks
   padding: 40px;
   border: 1px solid magenta;
   border-radius: 20px 40px;
+}
+
+.bwtitle {
+  font-size: 40px;
+  font-weight: bolder;
+  font-family: "Titillium Web";
+}
+.bwsubtitle {
+  font-size: 40px;
+  font-weight: bolder;
+  font-family: "Titillium Web";
 }
