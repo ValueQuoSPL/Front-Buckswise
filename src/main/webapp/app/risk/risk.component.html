@@ -1,34 +1,45 @@
+<div [ngSwitch]="isAuthenticated()">
+    <div *ngSwitch="true">
 
-<div class="container">
-    <mat-accordion>
-        <mat-expansion-panel [expanded]="step === 0">
-            <mat-expansion-panel-header>
-                <mat-panel-title> Risk Management</mat-panel-title>
-                <mat-panel-description>Maintain Your Risks Here</mat-panel-description>
-            </mat-expansion-panel-header>
-
+        <div class="container">
             <mat-accordion>
                 <mat-expansion-panel [expanded]="step === 0">
                     <mat-expansion-panel-header>
-                        <mat-panel-title> Life Insurance</mat-panel-title>
-                        <mat-panel-description>Check Your Life Insurance Risk</mat-panel-description>
+                        <mat-panel-title> Risk Management</mat-panel-title>
+                        <mat-panel-description>Maintain Your Risks Here</mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <jhi-life-insurance></jhi-life-insurance>
+                    <mat-accordion>
+                        <mat-expansion-panel [expanded]="step === 0">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Life Insurance</mat-panel-title>
+                                <mat-panel-description>Check Your Life Insurance Risk</mat-panel-description>
+                            </mat-expansion-panel-header>
 
+                            <jhi-life-insurance></jhi-life-insurance>
+
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Medical Insurance</mat-panel-title>
+                                <mat-panel-description>Check Your Medical Insurance Risk</mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <jhi-medical-insurance></jhi-medical-insurance>
+
+                        </mat-expansion-panel>
+
+                    </mat-accordion>
                 </mat-expansion-panel>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title> Medical Insurance</mat-panel-title>
-                        <mat-panel-description>Check Your Medical Insurance Risk</mat-panel-description>
-                    </mat-expansion-panel-header>
-
-                    <jhi-medical-insurance></jhi-medical-insurance>
-
-                </mat-expansion-panel>
-
             </mat-accordion>
-        </mat-expansion-panel>
-    </mat-accordion>
+        </div>
+
+    </div>
+    <div *ngSwitchCase="false">
+        <br>
+        <br> please
+        <a (click)="login()">login</a>
+    </div>
+
 </div>

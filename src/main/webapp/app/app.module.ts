@@ -55,6 +55,9 @@ import { BuckswiseContactModule } from "app/sheetal/contactus/contact.module";
 import { BuckswiseTaxModule } from "app/sheetal/tax/tax.module";
 import { PromoCodeModule } from "app/home/subscriber/promo-code";
 import { WINDOW_PROVIDERS } from "./layouts/navbar/window.service";
+import { RouterModule } from "../../../../node_modules/@angular/router";
+import { successRoute } from "app/success/success.route";
+import { CheckSubscribedService } from "./layouts/main/main.service";
 
 @NgModule({
   imports: [
@@ -83,7 +86,8 @@ import { WINDOW_PROVIDERS } from "./layouts/navbar/window.service";
     CustomMaterialModule,
     DashBoardModule,
     DraggableModule,
-    PromoCodeModule
+    PromoCodeModule,
+    RouterModule.forRoot([successRoute], { useHash: true })
   ],
   declarations: [
     JhiMainComponent,
@@ -102,6 +106,7 @@ import { WINDOW_PROVIDERS } from "./layouts/navbar/window.service";
     ProfileService,
     PaginationConfig,
     UserRouteAccessService,
+    CheckSubscribedService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

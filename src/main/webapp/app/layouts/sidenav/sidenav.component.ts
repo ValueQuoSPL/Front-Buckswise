@@ -81,7 +81,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     output += " Edge: " + isEdge;
     output += " Blink: " + isBlink;
 
-    console.log("browser : ", output);
+    // console.log('browser : ', output);
   }
 
   ngAfterViewInit() {
@@ -91,7 +91,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     if (this.isSafari === true) {
       this.flag = false;
       x.style = "margin-left: 16%;";
-      console.log("safari left 16%");
+      // console.log('safari left 16%');
     }
   }
 
@@ -113,7 +113,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     if (this.flag === true) {
       this.flag = false;
       x.style = "margin-left: 16%;";
-      console.log("left 16%");
+      // console.log('left 16%');
     }
 
     if (!this.toggler) {
@@ -123,14 +123,14 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         x.style = "margin-left: 0%;";
       }
       this.slide = "slideInRight";
-      console.log("left");
+      // console.log('left');
     } else {
       this.toggler = false;
       if (this.isSafari) {
         x.style = "margin-left: 16%;";
       }
       this.slide = "slideInLeft";
-      console.log("right");
+      // console.log('right');
     }
   }
 }

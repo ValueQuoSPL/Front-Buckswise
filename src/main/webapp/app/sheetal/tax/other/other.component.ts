@@ -47,10 +47,13 @@ export class OtherComponent implements OnInit {
   }
   // Other call function
   onOtherSave() {
-    this.otherService.save(this.other).subscribe(response => {
-      alert("Your data saved successfully");
-      this.changesSaved = true;
-    });
+    this.otherService.save(this.other).subscribe(
+      responce => {
+        console.log(responce), this.onOtherGet(this.uid);
+        // alert("data update successfully");
+      },
+      error => console.log(error)
+    );
     this.valid = true;
   }
   updateOther() {
@@ -70,7 +73,7 @@ export class OtherComponent implements OnInit {
     this.other.donation = 0;
   }
 
-  onOtherGet() {
+  onOtherGet(uid) {
     console.log("in eightycget ts uid", this.uid);
     this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);
