@@ -19,24 +19,23 @@ export class MyprofileComponent implements OnInit {
   isValid: boolean;
   date = new FormControl(new Date());
   show = true;
+
   constructor(
     private principal: Principal,
     private MyProfileSer: MyprofileService,
     private account: AccountService
   ) {}
+
   ngOnInit() {
     this.myProfile = {};
     this.FetchId();
   }
-  clear() {}
-
   saveDetail() {
     this.myProfile.uid = this.uid;
     this.MyProfileSer.save(this.myProfile).subscribe(
       responce => console.log(responce),
       error => console.log(error)
     );
-    // this.refreshPage();
     this.getMyProfilebyid(this.uid);
   }
   getMyProfile() {
@@ -105,15 +104,11 @@ export class MyprofileComponent implements OnInit {
     this.MyProfileSer.updateProfile(this.myProfile).subscribe(
       responce => {
         console.log(responce), this.getMyProfilebyid(this.uid);
-        // alert("data update successfully");
       },
       error => console.log(error)
     );
     this.isValid = true;
   }
-  //   refreshPage(){
-  //     window.location.reload();
-  // }
   cencel() {
     this.isValid = true;
   }

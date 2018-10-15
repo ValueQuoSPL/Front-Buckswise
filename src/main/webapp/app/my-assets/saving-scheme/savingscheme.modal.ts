@@ -11,6 +11,6 @@ export class SavingScheme {
   public end_date: string;
   public fund_value: number;
   public as_of_date: string;
-  public userid: number;
+  public userId: number;
   public id: number;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Principal, LoginModalService } from "app/shared";
 import { Router } from "@angular/router";
-import { NgbModalRef } from "../../../../../node_modules/@ng-bootstrap/ng-bootstrap";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "jhi-risk",
@@ -14,8 +14,8 @@ export class RiskComponent implements OnInit {
 
   constructor(
     private principal: Principal,
-    private router: Router,
-    private loginModalService: LoginModalService
+    private loginModalService: LoginModalService,
+    private router: Router
   ) {}
 
   ngOnInit() {

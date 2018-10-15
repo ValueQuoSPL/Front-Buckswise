@@ -28,7 +28,7 @@ export class SavingSchemeService {
     );
   }
   public DeleteSaving(id) {
-    this.ServiceAPI = "api/" + "/" + id;
+    this.ServiceAPI = "api/savingdelete" + "/" + id;
     return this.http.delete<SavingScheme[]>(SERVER_API_URL + this.ServiceAPI);
   }
   public getSavingSchemeById(commonid) {
