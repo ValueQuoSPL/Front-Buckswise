@@ -13,9 +13,9 @@ import { ActivatedRoute } from "../../../../../../../node_modules/@angular/route
 export class PaymentComponent implements OnInit {
   user: User = new User();
   amount: any;
-  // element: any;
+  disablePaymentButton: boolean = true;
   sUrl = "http://localhost:8080/api/success";
-  fUrl = "http://localhost:8080/Fail";
+  fUrl = "http://localhost:8080/api/success";
   public paymentDetail: any = [];
 
   @Input() offer;
@@ -32,6 +32,7 @@ export class PaymentComponent implements OnInit {
     this.paymentService.submitUser(this.user).subscribe(data => {
       console.log("response of submit");
       this.paymentDetail.push(data);
+      this.disablePaymentButton = false;
     });
   }
 
