@@ -151,7 +151,7 @@ export class SavingSchemeComponent implements OnInit {
         this.savingScheme.end_date = this.getdata.end_date;
         this.savingScheme.fund_value = this.getdata.fund_value;
         this.savingScheme.as_of_date = this.getdata.as_of_date;
-        this.savingScheme.userid = this.getdata.userid;
+        this.savingScheme.userId = this.getdata.userid;
         this.savingScheme.id = this.getdata.id;
       });
   }
