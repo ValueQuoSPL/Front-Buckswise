@@ -85,7 +85,6 @@ export class GoalSelectComponent implements OnInit {
   RetirementFundselect: RetirementFundSelect = new RetirementFundSelect();
   NewGoalselect: NewGoalSelect = new NewGoalSelect();
 
-  // GoalNotesUpdate: GoalUpdate = new GoalUpdate();
   GoalNotesUpdate: any = []; // amount
   modalRef: NgbModalRef;
   goaltype: any;
@@ -144,6 +143,7 @@ export class GoalSelectComponent implements OnInit {
     public faoService: FutureOptionService,
     public savingService: SavingSchemeService
   ) {}
+
   ngOnInit() {
     this.singleAssetTotal = 0;
     this.GrandTotal = 0;
@@ -157,7 +157,6 @@ export class GoalSelectComponent implements OnInit {
     this.faoTotal = 0;
     this.FetchId();
   }
-  clear() {}
   isAuthenticated() {
     return this.principal.isAuthenticated();
   }
@@ -179,10 +178,9 @@ export class GoalSelectComponent implements OnInit {
   Education() {
     this.Educationselect.goaltype = this.goaltype;
     this.Educationselect.uid = this.uid;
-    console.log(this.Educationselect);
     this.goalSelectService.saveEducation(this.Educationselect).subscribe(
       responce => {
-        console.log("Save Education", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -193,7 +191,7 @@ export class GoalSelectComponent implements OnInit {
     this.Vehicleselect.uid = this.uid;
     this.goalSelectService.saveVehicle(this.Vehicleselect).subscribe(
       responce => {
-        console.log("Save Vehicle", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -204,8 +202,7 @@ export class GoalSelectComponent implements OnInit {
     this.Childbirthselect.uid = this.uid;
     this.goalSelectService.saveChildBirth(this.Childbirthselect).subscribe(
       responce => {
-        console.log("Save saveChildBirth", responce),
-          this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -216,7 +213,7 @@ export class GoalSelectComponent implements OnInit {
     this.Merrageselect.uid = this.uid;
     this.goalSelectService.saveMerrage(this.Merrageselect).subscribe(
       responce => {
-        console.log("Save Merrage", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -227,7 +224,7 @@ export class GoalSelectComponent implements OnInit {
     this.Businessselect.uid = this.uid;
     this.goalSelectService.saveBusiness(this.Businessselect).subscribe(
       responce => {
-        console.log("Save Business", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -240,37 +237,29 @@ export class GoalSelectComponent implements OnInit {
       .saveFamilySupport(this.FamilySupportselect)
       .subscribe(
         responce => {
-          console.log("Save Business", responce), this.getgoalbyid(this.uid);
+          this.getgoalbyid(this.uid);
         },
         error => console.log(error)
       );
     this.isValid = true;
   }
   Vacation() {
-    // this.Vacationselect.goaltype = this.goaltype;
-    // this.Vacationselect.uid = this.uid;
-    // this.goalSelectService
-    //   .saveVacation(this.Vacationselect)
-    //   .subscribe
-    //   ();
     this.goalSelectService.saveVacation(this.Vacationselect).subscribe(
       responce => {
-        console.log("Save Vacation", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
     this.isValid = true;
   }
   EmergencyFund() {
-    // // console.log('the value of type is', this.goaltype);
     this.EmergencyFundselect.goaltype = this.goaltype;
     this.EmergencyFundselect.uid = this.uid;
     this.goalSelectService
       .saveEmergencyFund(this.EmergencyFundselect)
       .subscribe(
         responce => {
-          console.log("Save EmergencyFund", responce),
-            this.getgoalbyid(this.uid);
+          this.getgoalbyid(this.uid);
         },
         error => console.log(error)
       );
@@ -283,20 +272,18 @@ export class GoalSelectComponent implements OnInit {
       .saveRetirementFund(this.RetirementFundselect)
       .subscribe(
         responce => {
-          console.log("Save EmergencyFund", responce),
-            this.getgoalbyid(this.uid);
+          this.getgoalbyid(this.uid);
         },
         error => console.log(error)
       );
     this.isValid = true;
   }
   NewGoal() {
-    // // console.log('the value of type is', this.goaltype);
     this.NewGoalselect.goaltype = this.goaltype;
     this.NewGoalselect.uid = this.uid;
     this.goalSelectService.saveNewGoal(this.NewGoalselect).subscribe(
       responce => {
-        console.log("Save NewGoal", responce), this.getgoalbyid(this.uid);
+        this.getgoalbyid(this.uid);
       },
       error => console.log(error)
     );
@@ -350,17 +337,11 @@ export class GoalSelectComponent implements OnInit {
   viewUpdate() {
     for (let index = 0; index < this.GoalArray.length; index++) {
       const element = this.GoalArray[index];
-
-      // view update of modal for available cost
       if (element.id === this.commonid) {
         this.PresentCost = element.presentcost;
         this.GrandTotal = element.goalNotes;
         this.AvailableCost = +this.PresentCost - +this.GrandTotal;
-        console.log("available 1", this.AvailableCost);
       }
-
-      // calculating Future cost = B3*(1+B4)^B2
-      // element.futurecost = present cost *( 1+ inflation)^ years
       element.futurecost = Math.round(
         element.presentcost * Math.pow(1 + this.inflation, element.yeartogoal)
       );
@@ -371,11 +352,9 @@ export class GoalSelectComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(GoalAddButtonComponent, {
       width: "550px"
-      // data: {name: this.name, animal: this.animal}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // // console.log('The dialog was closed');
       this.animal = result;
     });
   }
@@ -389,10 +368,7 @@ export class GoalSelectComponent implements OnInit {
   }
   openLinkAsset(editLinkModal, goalid) {
     this.commonid = goalid;
-    // this.assettype = null;
     this.viewUpdate();
-    console.log("available 2", this.AvailableCost);
-
     this.HTMLArray.splice(0, this.HTMLArray.length);
 
     for (let index = 0; index < this.GoalArray.length; index++) {
@@ -446,10 +422,7 @@ export class GoalSelectComponent implements OnInit {
       +this.savingTotal +
       +this.altTotal;
 
-    console.log("grand total", this.GrandTotal);
-
     this.AvailableCost = +this.PresentCost - +this.GrandTotal;
-
     this.GoalNotesUpdate.splice(0, this.GoalNotesUpdate.length);
 
     this.GoalNotesUpdate.push({
@@ -492,20 +465,15 @@ export class GoalSelectComponent implements OnInit {
       const element = this.HTMLArray[index];
 
       if (element.id === assetid) {
-        // console.log('html array asset id ', element.id, 'selected asset id', assetid);
-        // console.log('asset value', element.assetvalue, 'your value', this.valtomap);
-
         if (element.assetvalue >= this.valtomap) {
           element.mappedvalue = this.valtomap;
           const total = this.calculateSingleAssetTotal();
-          // console.log('returned total', total);
         } else {
           alert("Please enter value which is less than Asset Value");
         }
         break;
       }
     }
-
     this.ManipulateMapping(assetid);
   }
 
@@ -539,8 +507,6 @@ export class GoalSelectComponent implements OnInit {
   }
 
   ManipulateMapping(assetid) {
-    // console.log('manipulate');
-
     for (let index = 0; index < this.HTMLArray.length; index++) {
       const asset = this.HTMLArray[index];
 
@@ -548,7 +514,6 @@ export class GoalSelectComponent implements OnInit {
         this.findAssetAndFillMapping(this.assetid);
 
         if (this.checked === true) {
-          // console.log('checked = true');
           this.PostMapping();
           this.SetGrandTotal();
         } else {
@@ -568,8 +533,6 @@ export class GoalSelectComponent implements OnInit {
   }
 
   PostMapping() {
-    // console.log('checking for db');
-
     let flag = 0;
     for (let index = 0; index < this.AssetMappingDB.length; index++) {
       const db = this.AssetMappingDB[index];
@@ -578,7 +541,6 @@ export class GoalSelectComponent implements OnInit {
         this.mapping.assettype === db.assettype &&
         this.mapping.assetid === db.assetid
       ) {
-        // console.log('alredy in db');
         flag = 0;
         this.GlobalFlag = false;
         this.mapping.id = db.id;
@@ -595,7 +557,6 @@ export class GoalSelectComponent implements OnInit {
     }
 
     if (flag === 1 || this.AssetMappingDB.length === 0) {
-      // console.log('not in db posing now');
       this.goalSelectService.PostMapping(this.mapping).subscribe(res => {
         this.getMappedAsset();
       });
@@ -621,17 +582,13 @@ export class GoalSelectComponent implements OnInit {
     this.goalid = id;
 
     this.MappedArray.splice(0, this.MappedArray.length);
-    // console.log('before filling mapped array', this.MappedArray);
 
     for (let index = 0; index < this.GoalArray.length; index++) {
       const goal = this.GoalArray[index];
       if (goal.id === this.goalid) {
-        // // console.log('goal found');
-        // // console.log(goal);
         this.viewGoal(id, content);
         break;
       } else {
-        // console.log('goal not found');
       }
     }
   }
@@ -639,7 +596,6 @@ export class GoalSelectComponent implements OnInit {
   viewGoal(id, content) {
     this.goalSelectService.GetMapping(this.uid).subscribe(res => {
       this.MappedArrayDB = res;
-      // console.log('db mapped array', this.MappedArrayDB);
       for (let index = 0; index < this.MappedArrayDB.length; index++) {
         const element = this.MappedArrayDB[index];
         if (element.goalid === id) {
@@ -651,8 +607,6 @@ export class GoalSelectComponent implements OnInit {
   }
 
   OpenMappedAsset(content) {
-    // console.log('after filling mapped array', this.MappedArray);
-
     this.modalService
       .open(content, { ariaLabelledBy: "viewLinkedAssetModal" })
       .result.then(
@@ -665,44 +619,13 @@ export class GoalSelectComponent implements OnInit {
       );
   }
 
-  deleteRecord(id) {
-    // console.log(id);
-  }
+  deleteRecord(id) {}
 
-  get(assetid) {
-    // // console.log('ccheck for', assetid);
-    // // console.log('mapped data', this.AssetMappingDB);
-
-    // let flag = 0;
-    // for (let index = 0; index < this.AssetMappingDB.length; index++) {
-    //   const element = this.AssetMappingDB[index];
-    //   // console.log('goal id db', this.commonid, 'goal id local', element.goalid);
-    //   // console.log('asset type db', this.commonid, 'asset type local', element.goalid);
-    //   // console.log('asset id db', this.commonid, 'asset id local', element.goalid);
-
-    //     if (this.commonid === element.goalid && this.assettype === element.assettype && element.assetid === assetid) {
-    //       // console.log('match found');
-    //       flag = 1;
-    //       break;
-    //     } else {
-    //       // console.log('match not found');
-    //       flag = 0;
-    //     }
-    // }
-
-    // if (flag === 1) {
-    //   // console.log('flag true');
-    //   return true;
-    // } else {
-    //   // console.log('flag false');
-    return false;
-    // }
-  }
+  get(assetid) {}
 
   getAsset() {
     if (this.assettype === "stocks") {
       this.getStockById(this.uid);
-      // this.getMappedAsset();
     } else if (this.assettype === "mutual") {
       this.getMutualFundByUid(this.uid);
     } else if (this.assettype === "ChitFund") {
@@ -722,14 +645,11 @@ export class GoalSelectComponent implements OnInit {
   getMappedAsset() {
     this.goalSelectService.GetMapping(this.uid).subscribe(data => {
       this.AssetMappingDB = data;
-      console.log("Db data", this.AssetMappingDB);
       this.AssetViewUpdate();
     });
   }
 
   AssetViewUpdate() {
-    console.log("html before", this.HTMLArray);
-
     this.singleAssetTotal = 0;
     this.HTMLArray.forEach(html => {
       for (let index = 0; index < this.AssetMappingDB.length; index++) {
@@ -746,16 +666,13 @@ export class GoalSelectComponent implements OnInit {
     });
 
     this.calculateSingleAssetTotal();
-    console.log("html after", this.HTMLArray);
   }
 
   getStockById(uid) {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.stockService.getStockById(this.uid).subscribe(res => {
       this.stockout = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -765,18 +682,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of stock", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getMutualFundByUid(uid) {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.Mutualfundservice.getMutualFund(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -786,18 +699,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of mutual", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getChitFund() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.chitService.getChitByuid(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -807,18 +716,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of chit", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getFAO() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.faoService.getFAOByUid(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -828,18 +733,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of fao", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getSaving() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.savingService.getSavingScheme(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -849,18 +750,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of saving", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getAlt() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.altService.getAltInvestmentByuid(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -870,18 +767,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of alt", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getCash() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.cashService.getCashDetailsByuid(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -891,18 +784,14 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of cash", this.HTMLArray);
       this.getMappedAsset();
     });
   }
   getProperty() {
     this.HTMLArray.splice(0, this.HTMLArray.length);
-
     this.propService.getsavePropertyByuid(this.uid).subscribe(res => {
       this.mutualres = res;
       this.AssetArray = res;
-
       this.AssetArray.forEach(element => {
         this.HTMLArray.push({
           id: element.id,
@@ -912,8 +801,6 @@ export class GoalSelectComponent implements OnInit {
           disable: true
         });
       });
-
-      console.log("html array of prop", this.HTMLArray);
       this.getMappedAsset();
     });
   }

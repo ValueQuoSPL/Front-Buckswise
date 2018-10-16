@@ -51,10 +51,13 @@ export class EightycComponent implements OnInit {
 
   // eightyc call function for post data
   onEightycSave() {
-    this.eightycService.save(this.eightyc).subscribe(response => {
-      alert("Your data saved successfully");
-      this.changesSaved = true;
-    });
+    this.eightycService.save(this.eightyc).subscribe(
+      responce => {
+        console.log(responce), this.onEightycGet(this.uid);
+        // alert("data update successfully");
+      },
+      error => console.log(error)
+    );
     this.valid = true;
   }
   // eightyc call function for update data

@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { LiabilitiesService } from "app/my-assets/liabilities/liabilities.service";
-import { AccountService, Principal } from "app/shared";
+import { AccountService, Principal, LoginModalService } from "app/shared";
 import { FormControl } from "../../../../../../node_modules/@angular/forms";
 import { Loan } from "app/pratik/spending/spending.model";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "jhi-liabilities",
@@ -24,6 +25,7 @@ export class LiabilitiesComponent implements OnInit {
   tempArray: any = [];
   tempLongArray: any = [];
   loann: Loan = new Loan();
+  modalRef: NgbModalRef;
 
   LoanTypeArray = [
     { name: "Home Loan" },
@@ -44,7 +46,8 @@ export class LiabilitiesComponent implements OnInit {
     private modalService: NgbModal,
     private liabilitiesService: LiabilitiesService,
     private accountService: AccountService,
-    private principal: Principal
+    private principal: Principal,
+    private loginModalService: LoginModalService
   ) {}
 
   ngOnInit() {
@@ -238,5 +241,11 @@ export class LiabilitiesComponent implements OnInit {
     this.loann.id = id;
     this.loann.userid = this.uid;
     this.liabilitiesService.updateloan(this.loann, this.uid).subscribe();
+  }
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 }

@@ -100,12 +100,13 @@ export class GrossComponent implements OnInit {
     });
   }
   onGrossSave() {
-    console.log("in gross bsal", this.gross.bsalary);
-    this.grossService.save(this.gross).subscribe(response => {
-      alert("Your data saved successfully");
-      this.changesSaved = true;
-      // console.log(response);
-    });
+    this.grossService.save(this.gross).subscribe(
+      responce => {
+        console.log(responce), this.onGrossGet(this.uid);
+        // alert("data update successfully");
+      },
+      error => console.log(error)
+    );
     this.valid = true;
   }
   updateGross() {

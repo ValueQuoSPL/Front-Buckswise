@@ -1,19 +1,67 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "../../../../../node_modules/@angular/router";
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
+import { SuccessService } from "app/success/success.service";
+import { AccountService, Principal, LoginModalService } from "app/shared";
+import { JhiEventManager } from "../../../../../node_modules/ng-jhipster";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "jhi-success",
   templateUrl: "./success.component.html",
   styles: []
 })
-export class SuccessComponent implements OnInit {
-  tnxid: any;
-  constructor(private route: ActivatedRoute) {}
+export class SuccessComponent implements OnInit, AfterViewInit {
+  last: any;
+  result: any = [];
+  uid: any;
+  userid: any;
+  account: Account;
+  constructor(
+    private successService: SuccessService,
+    private accountService: AccountService,
+    private principal: Principal,
+    private loginModalService: LoginModalService,
+    private eventManager: JhiEventManager,
+    private route: Router
+  ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.tnxid = params["txnid"];
-      console.log(this.tnxid);
+    this.principal.identity().then(account => {
+      this.account = account;
     });
+    this.registerAuthenticationSuccess();
+  }
+  ngAfterViewInit() {}
+
+  getUserid() {
+    return this.accountService
+      .get()
+      .toPromise()
+      .then(response => {
+        const account = response.body;
+        if (account) {
+          this.uid = account.id;
+          console.log("uid", this.uid);
+          this.successService.getTransactionData(this.uid).subscribe(data => {
+            this.result = data;
+            this.last = this.result.pop();
+          });
+        } else {
+        }
+      })
+      .catch(err => {});
+  }
+
+  registerAuthenticationSuccess() {
+    this.eventManager.subscribe("authenticationSuccess", message => {
+      this.principal.identity().then(account => {
+        this.account = account;
+        this.userid = this.account.id;
+      });
+    });
+    this.getUserid();
+  }
+
+  GoDashBoard() {
+    this.route.navigate(["dashboard"]);
   }
 }
