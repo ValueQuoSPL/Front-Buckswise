@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { User } from "app/home/subscriber/payment/payment.model";
 import { PaymentService } from "app/home/subscriber/payment/payment.service";
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { JhiEventManager } from "ng-jhipster";
-import { ActivatedRoute } from "../../../../../../../node_modules/@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "jhi-payment",
@@ -30,14 +28,14 @@ export class PaymentComponent implements OnInit {
     this.user.sUrl = this.sUrl;
     this.user.fUrl = this.fUrl;
     this.paymentService.submitUser(this.user).subscribe(data => {
-      console.log("response of submit");
+      // console.log('response of submit');
       this.paymentDetail.push(data);
       this.disablePaymentButton = false;
     });
   }
 
   ngOnInit() {
-    console.log(this.offer);
+    // console.log(this.offer);
     const paymoney = this.offer.payable;
     this.amount = paymoney.toString();
     this.user.amount = this.amount;

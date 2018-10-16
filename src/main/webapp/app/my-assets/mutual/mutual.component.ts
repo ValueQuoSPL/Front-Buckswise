@@ -44,15 +44,7 @@ export class MutualComponent implements OnInit {
         this.getMutualFundByUid(this.uid);
       });
   }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+
   openMutual(mutualModel) {
     this.resetFieldValue();
     console.log("mutual modal open");
@@ -86,9 +78,19 @@ export class MutualComponent implements OnInit {
         }
       );
   }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
   saveMutual(): void {
+    this.mutualfund.userid = this.uid;
     this.mutualFundService.SubmitUser(this.mutualfund).subscribe(data => {
-      alert("Added new MF details");
+      console.log("mutual userid is", this.mutualfund.userid);
       this.getMutualFundByUid(this.uid);
     });
   }
@@ -160,6 +162,5 @@ export class MutualComponent implements OnInit {
     this.mutualfund.gainloss = null;
     this.mutualfund.absolutereturn = null;
     this.mutualfund.cagr = null;
-    this.mutualfund.userid = null;
   }
 }

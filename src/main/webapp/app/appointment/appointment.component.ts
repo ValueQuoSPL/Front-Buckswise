@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Principal, LoginModalService } from "app/shared";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import {
   startOfDay,
   subDays,
@@ -53,7 +55,7 @@ const colors: any = {
   selector: "jhi-appointment",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./appointment.component.html",
-  styleUrls: ["./appointment.component.css"]
+  styleUrls: []
 })
 export class AppointmentComponent implements OnInit {
   postData: any = [];
@@ -78,16 +80,15 @@ export class AppointmentComponent implements OnInit {
   _time: any;
   formatDate: any;
   activeDayIsOpen = true;
-  account: Account;
   modalRef: NgbModalRef;
 
   constructor(
     private appointmentService: AppointmentService,
     private modalService: NgbModal,
     private accountService: AccountService,
+    private datepipe: DatePipe,
     private principal: Principal,
-    private loginModalService: LoginModalService,
-    private datepipe: DatePipe
+    private loginModalService: LoginModalService
   ) {}
 
   getUserid() {
@@ -260,5 +261,11 @@ export class AppointmentComponent implements OnInit {
   }
   value6() {
     this.val = "9PM";
+  }
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 }

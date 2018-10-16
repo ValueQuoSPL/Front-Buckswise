@@ -53,11 +53,13 @@ export class HomeComponent implements OnInit {
     this.home.rentclmgg = 0;
   }
   onHomeSave() {
-    this.homeService.save(this.home).subscribe(response => {
-      alert("Your data saved successfully");
-      this.changesSaved = true;
-      //   console.log(response));
-    });
+    this.homeService.save(this.home).subscribe(
+      responce => {
+        console.log(responce), this.onHomeGet(this.uid);
+        // alert("data update successfully");
+      },
+      error => console.log(error)
+    );
     this.valid = true;
   }
   updateHome() {
@@ -68,7 +70,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onHomeGet() {
+  onHomeGet(uid) {
     console.log("in homeget ts uid", this.uid);
     this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);

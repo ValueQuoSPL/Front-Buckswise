@@ -37,7 +37,6 @@ export class UserRouteAccessService implements CanActivate {
         if (!authorities || authorities.length === 0) {
           return true;
         }
-
         if (account) {
           return principal.hasAnyAuthority(authorities).then(response => {
             if (response) {

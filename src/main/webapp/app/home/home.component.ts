@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { Component, OnInit } from "@angular/core";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { JhiEventManager } from "ng-jhipster";
 
-import { Account, LoginModalService, Principal } from 'app/shared';
+import { Account, LoginModalService, Principal } from "app/shared";
+import { CheckSubscribedService } from "app/layouts/main/main.service";
 
 @Component({
-  selector: 'jhi-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['home.scss']
+  selector: "jhi-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["home.scss"]
 })
 export class HomeComponent implements OnInit {
   account: Account;
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private principal: Principal,
     private loginModalService: LoginModalService,
-    private eventManager: JhiEventManager
+    private eventManager: JhiEventManager,
+    private checkSubscription: CheckSubscribedService
   ) {}
 
   ngOnInit() {
@@ -24,10 +26,17 @@ export class HomeComponent implements OnInit {
       this.account = account;
     });
     this.registerAuthenticationSuccess();
+
+    this.checkSubscription.isSubscribed.subscribe(state => {
+      console.log("is subscribed", state);
+    });
+    this.checkSubscription.isPlanExpired.subscribe(state => {
+      console.log("is plan expired", state);
+    });
   }
 
   registerAuthenticationSuccess() {
-    this.eventManager.subscribe('authenticationSuccess', message => {
+    this.eventManager.subscribe("authenticationSuccess", message => {
       this.principal.identity().then(account => {
         this.account = account;
       });

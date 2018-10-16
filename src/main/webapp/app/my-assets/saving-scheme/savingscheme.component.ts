@@ -68,8 +68,8 @@ export class SavingSchemeComponent implements OnInit {
       .then(response => {
         this.user = response.body;
         console.log("user info savingScheme", this.user);
-        this.savingScheme.userid = this.user.id;
-        this.uid = this.savingScheme.userid;
+        this.savingScheme.userId = this.user.id;
+        this.uid = this.savingScheme.userId;
         console.log("in fetchid savingScheme method", this.uid);
         this.getSavingSchemeUid(this.uid);
       });
@@ -184,5 +184,11 @@ export class SavingSchemeComponent implements OnInit {
     } else {
       this.getSavingSchemeUid(this.uid);
     }
+  }
+  opendeleteSaving(id) {
+    this.commonid = id;
+    console.log("opendeleteStocks common id is", this.commonid);
+    console.log("opendeleteStocks modal open", id);
+    this.delete(this.commonid);
   }
 }

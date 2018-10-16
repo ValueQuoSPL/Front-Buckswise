@@ -9,11 +9,13 @@ import { ChitFundService } from "./chit-funds/chitfund.service";
 import { PropertyService } from "./property/property.service";
 import { FutureOptionService } from "./future-option/futureoption.service";
 import { SavingSchemeService } from "./saving-scheme/savingscheme.service";
+import { Principal, LoginModalService } from "app/shared";
 import { AccountService } from "../shared";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: "jhi-myassets",
   templateUrl: "./my-assets.component.html",
-  styleUrls: ["./my-assets.component.css"]
+  styleUrls: []
 })
 export class MyAssetsComponent implements OnInit {
   uid: any;
@@ -33,6 +35,7 @@ export class MyAssetsComponent implements OnInit {
   totalChitFund: any;
   futureOptionResponse: any = [];
   totalFutureOption: number;
+  modalRef: NgbModalRef;
   constructor(
     private stockService: StockService,
     private mutualfundService: MutualfundService,
@@ -42,7 +45,9 @@ export class MyAssetsComponent implements OnInit {
     private propertyservice: PropertyService,
     private futureoptionservice: FutureOptionService,
     private savingSchemeService: SavingSchemeService,
-    private account: AccountService
+    private account: AccountService,
+    private principal: Principal,
+    private loginModalService: LoginModalService
   ) {}
 
   ngOnInit() {
@@ -178,5 +183,11 @@ export class MyAssetsComponent implements OnInit {
         console.log("total share price is im my asset", this.totalFutureOption);
       }
     });
+  }
+  isAuthenticated() {
+    return this.principal.isAuthenticated();
+  }
+  login() {
+    this.modalRef = this.loginModalService.open();
   }
 }
