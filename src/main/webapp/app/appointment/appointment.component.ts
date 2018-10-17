@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Principal, LoginModalService } from "app/shared";
+import { Principal, LoginModalService, AccountService } from "app/shared";
 import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import {
   startOfDay,
@@ -24,10 +24,8 @@ import {
 import { AppointmentService } from "./appointment.service";
 import {
   NgbModal,
-  ModalDismissReasons,
-  NgbModalRef
+  ModalDismissReasons
 } from "../../../../../node_modules/@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal, LoginModalService } from "app/shared";
 import { DatePipe } from "../../../../../node_modules/@angular/common";
 
 class Appointment {
@@ -55,7 +53,7 @@ const colors: any = {
   selector: "jhi-appointment",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./appointment.component.html",
-  styleUrls: []
+  styleUrls: ["./appointment.component.css"]
 })
 export class AppointmentComponent implements OnInit {
   postData: any = [];
