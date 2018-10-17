@@ -21,6 +21,7 @@ export class PropertyComponent implements OnInit {
   propertyDetail: any;
   property: Property = new Property();
   isSaving;
+  prop_type: any;
 
   constructor(
     private account: AccountService,
@@ -97,6 +98,7 @@ export class PropertyComponent implements OnInit {
     this.delete(this.commonid);
   }
   saveProperty() {
+    this.property.prop_type = this.prop_type;
     console.log("this is responce of SavepropertyDetail", this.property);
     this.propertyservice.PropertyDetails(this.property).subscribe(data => {
       alert("Added new Future and objective details");

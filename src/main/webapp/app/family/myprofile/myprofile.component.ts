@@ -1,4 +1,3 @@
-import { log } from "util";
 import { Component, OnInit } from "@angular/core";
 import { Myprofile } from "../family.model";
 import { MyprofileService } from "./myprofile.service";

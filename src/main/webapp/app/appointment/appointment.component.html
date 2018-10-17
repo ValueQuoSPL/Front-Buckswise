@@ -4,14 +4,14 @@
                     <mat-card-content class="container-fluid">
                             <div>
                                     <form>
-                                    <label class="row justify-content-md-center colored"><h5>Appointment Booking</h5></label>
+                                    <label class="row justify-content-md-center colored  text-center labels"><h5>Appointment Booking</h5></label>
                                         <div class="row text-center">
                                             <div class="col-md-3 text-center">
                                                     <button mat-raised-button color="accent" (click)="today()" (click)="getCalendar()">
                                                         Today
                                                     </button>
                                             </div>
-                                            <mat-toolbar class="col-md-5">
+                                            <mat-toolbar class="col-md-5 text-center">
                                                 <h5>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h5>
                                             </mat-toolbar>
                                             <div class="col-md-3 text-center">
