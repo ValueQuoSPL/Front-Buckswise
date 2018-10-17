@@ -49,7 +49,7 @@ export class OtherComponent implements OnInit {
   onOtherSave() {
     this.otherService.save(this.other).subscribe(
       responce => {
-        console.log(responce), this.onOtherGet(this.uid);
+        console.log(responce), this.onOtherGet();
         // alert("data update successfully");
       },
       error => console.log(error)
@@ -73,7 +73,7 @@ export class OtherComponent implements OnInit {
     this.other.donation = 0;
   }
 
-  onOtherGet(uid) {
+  onOtherGet() {
     console.log("in eightycget ts uid", this.uid);
     this.otherService.getother(this.uid).subscribe(res => {
       console.log(res);

@@ -24,10 +24,9 @@ import {
 import { AppointmentService } from "./appointment.service";
 import {
   NgbModal,
-  ModalDismissReasons,
-  NgbModalRef
+  ModalDismissReasons
 } from "../../../../../node_modules/@ng-bootstrap/ng-bootstrap";
-import { AccountService, Principal, LoginModalService } from "app/shared";
+import { AccountService } from "app/shared";
 import { DatePipe } from "../../../../../node_modules/@angular/common";
 
 class Appointment {
@@ -81,6 +80,7 @@ export class AppointmentComponent implements OnInit {
   formatDate: any;
   activeDayIsOpen = true;
   modalRef: NgbModalRef;
+  account: Account;
 
   constructor(
     private appointmentService: AppointmentService,
@@ -261,11 +261,5 @@ export class AppointmentComponent implements OnInit {
   }
   value6() {
     this.val = "9PM";
-  }
-  isAuthenticated() {
-    return this.principal.isAuthenticated();
-  }
-  login() {
-    this.modalRef = this.loginModalService.open();
   }
 }

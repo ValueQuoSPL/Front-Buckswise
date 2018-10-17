@@ -804,4 +804,7 @@ export class GoalSelectComponent implements OnInit {
       this.getMappedAsset();
     });
   }
+  clear() {
+    this.isValid = true;
+  }
 }
