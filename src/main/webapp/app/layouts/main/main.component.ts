@@ -4,6 +4,8 @@ import { Router, ActivatedRouteSnapshot, NavigationEnd } from "@angular/router";
 import { Title } from "@angular/platform-browser";
 import { Principal } from "app/shared";
 import { ChangeDetectionStrategy } from "@angular/core";
+import { CheckSubscribedService } from "./main.service";
+import { UserPlanService } from "app/home/subscriber/userplan.service";
 
 @Component({
   selector: "jhi-main",
@@ -15,6 +17,11 @@ export class JhiMainComponent implements OnInit, AfterViewInit {
   loginStatus = false;
   spinner = true;
   isSafari;
+  userPlan: any = [];
+  uid;
+  account: Account;
+  isSubscribed: boolean;
+  currentDate = new Date();
 
   @HostListener("window:mousemove", [])
   onMouseOver() {
@@ -24,7 +31,9 @@ export class JhiMainComponent implements OnInit, AfterViewInit {
   constructor(
     private titleService: Title,
     private router: Router,
-    private principal: Principal
+    private principal: Principal,
+    private checkSubscription: CheckSubscribedService,
+    private userPlanService: UserPlanService
   ) {}
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
@@ -46,6 +55,19 @@ export class JhiMainComponent implements OnInit, AfterViewInit {
         );
       }
       this.spinner = false;
+    });
+
+    this.principal.identity().then(account => {
+      this.account = account;
+      this.uid = account.id;
+      this.get();
+    });
+
+    this.checkSubscription.isSubscribed.subscribe(state => {
+      console.log("is subscribed", state);
+    });
+    this.checkSubscription.isPlanExpired.subscribe(state => {
+      console.log("is plan expired", state);
     });
 
     // Opera 8.0+
@@ -108,5 +130,26 @@ export class JhiMainComponent implements OnInit, AfterViewInit {
       this.loginStatus = false;
       return this.loginStatus;
     }
+  }
+
+  get() {
+    this.userPlanService.GetUserPlan(this.uid).subscribe(response => {
+      this.userPlan = response;
+      if (this.userPlan.length !== 0) {
+        this.checkSubscription.changeSubscriptionState(true);
+        console.log("subscribed user", this.userPlan);
+
+        if (this.userPlan.expiryDate < this.currentDate.toJSON()) {
+          console.log("subscribed user but plan expired");
+          this.checkSubscription.changePlanState(true);
+        } else {
+          console.log("subscribed user with active plan");
+          this.checkSubscription.changePlanState(false);
+        }
+      } else {
+        this.checkSubscription.changeSubscriptionState(false);
+        console.log("not subscribed user", this.userPlan);
+      }
+    });
   }
 }

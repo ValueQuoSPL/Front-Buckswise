@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   onHomeSave() {
     this.homeService.save(this.home).subscribe(
       responce => {
-        console.log(responce), this.onHomeGet(this.uid);
+        console.log(responce), this.onHomeGet();
         // alert("data update successfully");
       },
       error => console.log(error)
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onHomeGet(uid) {
+  onHomeGet() {
     console.log("in homeget ts uid", this.uid);
     this.homeService.gethome(this.uid).subscribe(res => {
       console.log(res);

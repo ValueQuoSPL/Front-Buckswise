@@ -25,7 +25,7 @@ export class AppointmentManageComponent implements OnInit {
   }
 
   getUserid() {
-    console.log("inside get uid");
+    // .log('inside get uid');
     return this.accountService
       .get()
       .toPromise()
@@ -33,9 +33,9 @@ export class AppointmentManageComponent implements OnInit {
         const account = response.body;
         if (account) {
           this.uid = account.id;
-          console.log("from income userid is : ", this.uid);
+          // .log('from income userid is : ', this.uid);
         } else {
-          console.log("cannot get user details check login ");
+          // .log('cannot get user details check login ');
         }
       })
       .catch(err => {});
@@ -44,7 +44,7 @@ export class AppointmentManageComponent implements OnInit {
   // get service call
   getData() {
     this.appointmentManageService.getAppointmentData().subscribe(data => {
-      console.log(data);
+      // .log(data);
       this.tempAppointmentManage = data;
       for (let index = 0; index < this.tempAppointmentManage.length; index++) {
         const time = this.tempAppointmentManage[index].time;
@@ -55,7 +55,7 @@ export class AppointmentManageComponent implements OnInit {
         this.appointmentManageService
           .getUserdata(this.tempUserId)
           .subscribe(res => {
-            // console.log(res);
+            // // .log(res);
             this.userInfo = res;
             for (let i = 0; i < this.userInfo.length; i++) {
               const name = this.userInfo[i].firstName;

@@ -8,7 +8,8 @@ import { SERVER_API_URL } from "app/app.constants";
 export class SuccessService {
   constructor(private _http: HttpClient) {}
 
-  getTransactionData() {
-    return this._http.get(SERVER_API_URL + "api/getsuccess");
+  getTransactionData(uid) {
+    const url = SERVER_API_URL + "api/getsuccess/" + uid;
+    return this._http.get(url);
   }
 }

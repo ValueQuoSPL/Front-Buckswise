@@ -79,6 +79,7 @@ export class AppointmentComponent implements OnInit {
   formatDate: any;
   activeDayIsOpen = true;
   modalRef: NgbModalRef;
+  account: Account;
 
   constructor(
     private appointmentService: AppointmentService,
@@ -259,11 +260,5 @@ export class AppointmentComponent implements OnInit {
   }
   value6() {
     this.val = "9PM";
-  }
-  isAuthenticated() {
-    return this.principal.isAuthenticated();
-  }
-  login() {
-    this.modalRef = this.loginModalService.open();
   }
 }

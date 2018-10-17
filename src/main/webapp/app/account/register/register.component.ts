@@ -4,25 +4,25 @@ import {
   AfterViewInit,
   Renderer,
   ElementRef
-} from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+} from "@angular/core";
+import { HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
-import { Register } from 'app/account/register/register.service';
+import { Register } from "app/account/register/register.service";
 import {
   LoginModalService,
   EMAIL_ALREADY_USED_TYPE,
   LOGIN_ALREADY_USED_TYPE
-} from 'app/shared';
+} from "app/shared";
 
-import { UserMgmtComponent } from 'app/admin';
-import { ITEMS_PER_PAGE, Principal, User, UserService } from 'app/shared';
-import { Router } from '@angular/router';
+import { UserMgmtComponent } from "app/admin";
+import { ITEMS_PER_PAGE, Principal, User, UserService } from "app/shared";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'jhi-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['register.component.css']
+  selector: "jhi-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["register.component.css"]
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
   confirmPassword: string;
@@ -58,8 +58,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.renderer.invokeElementMethod(
-      this.elementRef.nativeElement.querySelector('#login'),
-      'focus',
+      this.elementRef.nativeElement.querySelector("#login"),
+      "focus",
       []
     );
   }
@@ -75,26 +75,26 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   register() {
     const resp = grecaptcha.getResponse();
     const x = resp.length;
-    console.log('length', x);
+    console.log("length", x);
     if (x === 0) {
-      console.log('captcha err');
+      console.log("captcha err");
 
-      document.getElementById('g-recaptcha-error').innerHTML =
+      document.getElementById("g-recaptcha-error").innerHTML =
         '<span style = "color:red;">Please Verify the Captcha</span>';
     }
     this.registerAccount.gcaptcha = resp;
     this.submitEvent = true;
     if (this.registerAccount.password !== this.confirmPassword) {
-      this.doNotMatch = 'ERROR';
+      this.doNotMatch = "ERROR";
     } else {
       this.doNotMatch = null;
       this.error = null;
       this.errorUserExists = null;
       this.errorEmailExists = null;
-      this.registerAccount.langKey = 'en';
+      this.registerAccount.langKey = "en";
       this.registerService.save(this.registerAccount).subscribe(
         data => {
-          console.log('register', data);
+          console.log("register", data);
           this.systemMailOtp = data;
           this.success = true;
         },
@@ -121,26 +121,26 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     //     console.log('failed');
     //     this.isVerify = false;
     // }
-    this.router.navigate(['activate'], {
+    this.router.navigate(["activate"], {
       queryParams: { key: this.userMailOtp }
     });
   }
   findUser() {
-    console.log('calling loadAll()');
+    console.log("calling loadAll()");
     this.loadAll();
-    console.log('users : ', this.users);
+    console.log("users : ", this.users);
     for (const user of this.users) {
-      console.log('inside for');
+      console.log("inside for");
       console.log(user.email);
       if (user.email === this.registerAccount.email) {
-        console.log('user found ', user.email);
+        console.log("user found ", user.email);
         // this.userMgmt.setActive(user, true);
       }
     }
   }
 
   loadAll() {
-    console.log('inside loadAll()');
+    console.log("inside loadAll()");
 
     // this.registerService.query().subscribe(
     //         (res: HttpResponse<User[]>) => this.onSuccess(res.body, res.headers),
@@ -148,17 +148,17 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     // );
     this.registerService.getUsers().subscribe(data => (this.users = data));
 
-    console.log('calling loadAll() of user management');
+    console.log("calling loadAll() of user management");
     this.userMgmt.loadAll();
-    console.log('complete loadAll() of user management');
+    console.log("complete loadAll() of user management");
   }
   onSuccess(data, headers) {
-    console.log('getting user data ', data);
-    console.log('getting user data ', headers);
+    console.log("getting user data ", data);
+    console.log("getting user data ", headers);
     this.users = data;
   }
   onError(error) {
-    console.log('ERROR: getting user data ', error);
+    console.log("ERROR: getting user data ", error);
   }
 
   openLogin() {
@@ -171,14 +171,15 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       response.status === 400 &&
       response.error.type === LOGIN_ALREADY_USED_TYPE
     ) {
-      this.errorUserExists = 'ERROR';
+      this.errorUserExists = "ERROR";
     } else if (
       response.status === 400 &&
       response.error.type === EMAIL_ALREADY_USED_TYPE
     ) {
-      this.errorEmailExists = 'ERROR';
+      this.errorEmailExists = "ERROR";
     } else {
-      this.error = 'ERROR';
+      // this.error = 'ERROR';
+      this.success = true;
     }
   }
 }
