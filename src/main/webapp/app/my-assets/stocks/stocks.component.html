@@ -28,10 +28,10 @@
     <div class="modal-body"><!-- modal body start -->
         <form name="editForm" role="form" novalidate   #editForm="ngForm"> 
             <mat-form-field>
-                <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" >
+                <input matInput class="full-width" required type="text" placeholder="Company Name" [(ngModel)]="stocks.company_name" [ngModelOptions]="{standalone: true}" required >
             </mat-form-field> &nbsp;&nbsp;
             <mat-form-field>
-                <input matInput class="full-width" required type="text" placeholder="Investor Name" [(ngModel)]="stocks.investor_name" [ngModelOptions]="{standalone: true}" >
+                <input matInput class="full-width" required type="text" placeholder="Investor Name" [(ngModel)]="stocks.investor_name" [ngModelOptions]="{standalone: true}" required>
             </mat-form-field> &nbsp;&nbsp;
             <mat-form-field>
                 <input matInput style="width: 100%;" type="number" jhiNumberOnly placeholder="No of shares" name="no_of_shares" id="no_of_shares" [(ngModel)]="stocks.no_of_shares" required />
@@ -46,7 +46,7 @@
                 <button 
                     type="submit" 
                     class="btn btn-primary" 
-                    [disabled]="editForm.form.invalid || isSaving" 
+                    [disabled]="editForm.form.invalid || isSaving"
                     class="btn btn-primary"
                     (click)="c('Save click')">
                     <span class="fa fa-save"></span>&nbsp;

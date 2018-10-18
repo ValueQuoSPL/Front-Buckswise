@@ -218,6 +218,7 @@
                                 [(ngModel)]="savingScheme.start_date" 
                                 [ngModelOptions]="{standalone: true}"
                                 bsDatepicker
+                                required
                             />
                     </mat-form-field>
                     <mat-form-field>
@@ -285,6 +286,7 @@
                                 [(ngModel)]="savingScheme.end_date" 
                                 [ngModelOptions]="{standalone: true}"
                                 bsDatepicker
+                                required
                             >
                     </mat-form-field>
                     <mat-form-field>
@@ -294,7 +296,9 @@
                             placeholder="As of Date"
                             [(ngModel)]="savingScheme.as_of_date" 
                             [ngModelOptions]="{standalone: true}"
-                            bsDatepicker>
+                            bsDatepicker
+                            required
+                        >
                     </mat-form-field>
                 </div>
             </div>

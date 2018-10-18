@@ -1,7 +1,8 @@
 <div *ngIf="!valid">
+    <form name="editForm" role="form" novalidate #editForm="ngForm">
         <div>
         <div class="row pull-right" style="margin-top: -50px;">
-            <button type="button" class="btn btn-link" (click)="onGrossSave()" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" [disabled]="editForm.form.invalid || isSaving" class="btn btn-link" (click)="onGrossSave()" data-toggle="modal" data-target="#exampleModalCenter">
                 <span>
                 <i class="fa fa-save" aria-hidden="true"></i>
                 <span> Save</span>
@@ -59,7 +60,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" name="bsalary" [(ngModel)]="gross.bsalary">
+                                <input type="number" name="bsalary" [(ngModel)]="gross.bsalary" required>
                                 
                             </td>
                         </tr>
@@ -68,7 +69,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number"  name="da" [(ngModel)]="gross.da">
+                                <input type="number"  name="da" [(ngModel)]="gross.da" required>
                             </td>
                         </tr>
                         <tr>
@@ -78,7 +79,7 @@
                             </td> --><td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="hra" [(ngModel)]="gross.hra">
+                                <input type="number" value="0" name="hra" [(ngModel)]="gross.hra" required>
                             </td>
                         </tr>
                         <tr>
@@ -86,7 +87,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="conveyance" [(ngModel)]="gross.conveyance">
+                                <input type="number" value="0" name="conveyance" [(ngModel)]="gross.conveyance" required>
                             </td>
                         </tr>
                         <tr>
@@ -94,7 +95,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="childedu" [(ngModel)]="gross.childedu">
+                                <input type="number" value="0" name="childedu" [(ngModel)]="gross.childedu" required>
                             </td>
                         </tr>
                         <tr>
@@ -102,7 +103,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="medical" [(ngModel)]="gross.medical">
+                                <input type="number" value="0" name="medical" [(ngModel)]="gross.medical" required>
                             </td>
                         </tr>
                         <tr>
@@ -112,7 +113,7 @@
                             </td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="lta" [(ngModel)]="gross.lta">
+                                <input type="number" value="0" name="lta" [(ngModel)]="gross.lta" required>
                             </td>
                         </tr>
                         <tr>
@@ -120,7 +121,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="otherallown" [(ngModel)]="gross.otherallown">
+                                <input type="number" value="0" name="otherallown" [(ngModel)]="gross.otherallown" required>
                             </td>
                         </tr>
                         <tr>
@@ -128,7 +129,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="number" value="0" name="bonus" [(ngModel)]="gross.bonus">
+                                <input type="number" value="0" name="bonus" [(ngModel)]="gross.bonus" required>
                             </td>
                         </tr>
                     </tbody>
@@ -158,7 +159,7 @@
                         <td></td>
                         
                         <td>
-                        <input type="number" value="0" name="rentincome" [(ngModel)]="gross.rentincome">
+                        <input type="number" value="0" name="rentincome" [(ngModel)]="gross.rentincome" required>
                         </td>
                     </tr>
                 </tbody>
@@ -185,7 +186,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    <input type="number" value="0" name="saving" [(ngModel)]="gross.saving">
+                    <input type="number" value="0" name="saving" [(ngModel)]="gross.saving" required>
                   </td>
                 </tr>
                 <tr>
@@ -193,7 +194,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    <input type="number" value="0" name="bonds" [(ngModel)]="gross.bonds">
+                    <input type="number" value="0" name="bonds" [(ngModel)]="gross.bonds" required>
                   </td>
                 </tr>
                 <tr>
@@ -201,7 +202,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    <input type="number" value="0" name="conveyanceother" [(ngModel)]="gross.conveyanceother">
+                    <input type="number" value="0" name="conveyanceother" [(ngModel)]="gross.conveyanceother" required>
                   </td>
                 </tr>
               </tbody>
@@ -210,7 +211,10 @@
       </div>
       </div>
       
-    </div>
+   
+   
+   
+    </form>
     </div>
      <!-- modal, edit dialog -->
      <ng-template #grossEditContent let-c="close" let-d="dismiss">
@@ -228,7 +232,7 @@
             
                 <div>
                 <mat-form-field class="example-full-width">
-                    <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+                    <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" required>
                     <mat-hint>Please enter amount</mat-hint>
                 </mat-form-field>
                 </div>

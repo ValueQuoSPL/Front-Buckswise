@@ -111,22 +111,22 @@ export class StockComponent implements OnInit {
       // for (let index = 0; index < this.out.length; index++) {
       //   const element = this.out[index];
       //    this.totalshareprice += element.share_price;
-      //    console.log("total share price is" , this.totalshareprice);
+      //    console.log('total share price is' , this.totalshareprice);
       // }
       // this.totalshareprice = 0;
       // for (let j = 0; j < this.out.length; j++) {
 
       //     // // console.log(this.IncomeArray[j].name, this.IncomeArray[j].amount);
-      //     console.log("total share price is" , this.totalshareprice);
+      //     console.log('total share price is' , this.totalshareprice);
       //     this.totalshareprice = +this.totalshareprice + +this.out[j].share_price;
-      //       console.log("total share price is" , this.totalshareprice);
+      //       console.log('total share price is' , this.totalshareprice);
       // }
 
       // this.out.forEach(element => {
-      //   console.log("share price is",element.share_price);
+      //   console.log('share price is',element.share_price);
 
       // this.totalshareprice = +this.totalshareprice + +element.share_price;
-      // console.log("total share price is" , this.totalshareprice);
+      // console.log('total share price is' , this.totalshareprice);
 
       // });
     });

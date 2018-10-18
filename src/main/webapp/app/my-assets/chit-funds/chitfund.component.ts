@@ -37,7 +37,6 @@ export class ChitFundComponent implements OnInit {
       .toPromise()
       .then(response => {
         this.user = response.body;
-        console.log("user info of chitfund", this.user);
         this.chitfund.userid = this.user.id;
         console.log("in fetchid method", this.chitfund.userid);
         this.uid = this.chitfund.userid;

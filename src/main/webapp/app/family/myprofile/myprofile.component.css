@@ -34,3 +34,26 @@ td {
 .colm {
   background-color: #f1592a;
 }
+.but {
+  margin-left: 200px;
+}
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  border-color: #3e8acc;
+  margin-left: 457px;
+  padding-top: -9px;
+  height: 34px;
+}
+.btn-primary.enabled,
+.btn-primary:enabled {
+  color: #fff;
+  border-color: #3e8acc;
+  margin-left: 457px;
+  padding-top: -9px;
+  height: 34px;
+}
+.colm[_ngcontent-c24] {
+  background-color: #f1592a;
+  margin-left: 457px;
+}

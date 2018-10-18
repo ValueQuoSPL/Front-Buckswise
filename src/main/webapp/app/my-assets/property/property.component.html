@@ -164,7 +164,7 @@
                         />
                     </mat-form-field>&nbsp;&nbsp;
                     <mat-form-field>
-                        <input matInput [matDatepicker]="picker" placeholder="As Of Date" name="as_of_date" [(ngModel)]="property.as_of_date" [ngModelOptions]="{standalone: true}" >
+                        <input matInput [matDatepicker]="picker" placeholder="As Of Date" name="as_of_date" [(ngModel)]="property.as_of_date" [ngModelOptions]="{standalone: true}" required >
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>&nbsp;&nbsp;

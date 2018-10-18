@@ -1,4 +1,5 @@
 <div *ngIf="!valid">
+    <form name="editForm" role="form" novalidate #editForm="ngForm">
   <h3>Home Deduction</h3>
   <div class="row pull-right" style="margin-top: -80px;">
       <button type="button" (click)="onHomeGet()" class="btn btn-link">
@@ -7,7 +8,7 @@
             <span>Get</span>
           </span>
         </button>
-    <button type="button" class="btn btn-link" (click)="onHomeSave()" data-toggle="modal" data-target="#homeModelCenter">
+    <button type="button" class="btn btn-link" [disabled]="editForm.form.invalid || isSaving"  (click)="onHomeSave()" data-toggle="modal" data-target="#homeModelCenter">
       <span>
         <i class="fa fa-save" aria-hidden="true"></i>
         <span> Save</span>
@@ -70,7 +71,7 @@
               </td>
               <td></td>
               <td>
-                <input type="number" value="0" name="hoamloan" [(ngModel)]="home.hoamloan">
+                <input type="number" value="0" name="hoamloan" [(ngModel)]="home.hoamloan" required>
               </td>
             </tr>
           </tbody>
@@ -92,7 +93,7 @@
               <td></td>
               <td></td>
               <td>
-                <input type="number" value="0" name="prncpalloan" [(ngModel)]="home.prncpalloan">
+                <input type="number" value="0" name="prncpalloan" [(ngModel)]="home.prncpalloan" required>
               </td>
             </tr>
           </tbody>
@@ -114,7 +115,7 @@
               <td></td>
               <td></td>
               <td>
-                <input type="number" value="0" name="rentclm" [(ngModel)]="home.rentclm">
+                <input type="number" value="0" name="rentclm" [(ngModel)]="home.rentclm" required>
               </td>
             </tr>
           </tbody>
@@ -136,7 +137,7 @@
               <td></td>
               <td></td>
               <td>
-                <input type="number" value="0" name="remintrst" [(ngModel)]="home.remintrst">
+                <input type="number" value="0" name="remintrst" [(ngModel)]="home.remintrst" required>
               </td>
             </tr>
           </tbody>
@@ -158,7 +159,7 @@
               <td></td>
               <td></td>
               <td>
-                <input type="number" value="0" name="rentclmgg" [(ngModel)]="home.rentclmgg">
+                <input type="number" value="0" name="rentclmgg" [(ngModel)]="home.rentclmgg" required>
               </td>
             </tr>
           </tbody>
@@ -166,7 +167,8 @@
         </table>          
                     </div>
 
-</div></div>
+</div>
+</form></div>
 
    <!-- modal, edit dialog -->
    <div *ngIf="valid">
@@ -185,7 +187,7 @@
 
   <div>
   <mat-form-field class="example-full-width">
-      <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" >
+      <input matInput jhiNumberOnly required placeholder="Amount" type="number" value="" [(ngModel)]="editField" name="amount-name" required>
       <mat-hint>Please enter amount</mat-hint>
   </mat-form-field>
   </div>

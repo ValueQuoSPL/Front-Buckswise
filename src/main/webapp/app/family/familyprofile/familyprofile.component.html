@@ -166,11 +166,11 @@
             <div class="pull-right"><!--start of btn div-->
                 <div *ngIf="show" >
                     <button mat-raised-button color="primary" [disabled]="familyproForm.form.invalid"  (click)="saveFamilyProfile()">Save</button>&nbsp;
-                    <button mat-raised-button color="accent" (click)="formpage()">Cancel</button>
+                    <button mat-raised-button class="" (click)="formpage()">Cancel</button>
                 </div>
                 <div *ngIf="!show">
                     <button mat-raised-button color="primary" [disabled]="familyproForm.form.invalid" (click)=" update()">update</button>&nbsp;
-                    <button mat-raised-button color="accent" (click)="viewpage()">Cancel</button>
+                    <button mat-raised-button (click)="viewpage()">Cancel</button>
                 </div>
             </div><!--end of btn div-->
          </div><!--end of row3-->

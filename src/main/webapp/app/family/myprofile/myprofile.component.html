@@ -1,9 +1,18 @@
 <div class="container" *ngIf="!isValid"><!--start of container-->
-  <form><!--end of form-->
+  <form name="editForm" role="form" novalidate   #editForm="ngForm"><!--end of form-->
     <div class="row">
-        <h5>Personal Information</h5>&nbsp;&nbsp;
-         <span style="margin-left: 270px"><button mat-raised-button class="colm" *ngIf="show" (click)="saveDetail()">Save</button></span>&nbsp;
-         <span style="margin-left: 270px"><button mat-raised-button color="accent" *ngIf="!show" class="colm" (click)="update()">Update</button></span>&nbsp;
+        <h5><strong>Personal Information</strong></h5>&nbsp;&nbsp;
+         <span>
+          <button
+          mat-raised-button
+          class="colm"
+          *ngIf="show"
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="editForm.form.invalid || isSaving" 
+          class="btn btn-primary"
+          (click)="saveDetail()">Save</button></span>&nbsp;
+         <span><button mat-raised-button color="accent" *ngIf="!show" class="colm" (click)="update()">Update</button></span>&nbsp;
          <span><button mat-raised-button color="warn" (click)="cencel()">Cancel</button></span>&nbsp;
          <span><button mat-raised-button color="primary" href="#">Help</button></span> 
     </div>     
@@ -248,9 +257,7 @@
         </mat-form-field> 
       </div><!--end of row3.col4-->
     </div><!--end of row3-->
-    <div class="navbar navbar-expand-lg navbar-light"><!--start of navbar-->
       <h5><strong>Cammunication Information</strong></h5>
-    </div><!--end of navbar-->
     <div class="row"><!-- start of row4-->
       <div class="col-md-3"><!-- start of row4.col1-->
         <mat-form-field class="example-full-width">
