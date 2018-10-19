@@ -25,6 +25,7 @@ export class MyAssetsComponent implements OnInit {
   totalshareprice: any;
   totalmutual: any;
   SavingResponse: any = [];
+  ChitResponse: any = [];
   totalSaving: number;
   alternateInvestResponse: any = [];
   totalAltenateInvest: number;
@@ -156,20 +157,20 @@ export class MyAssetsComponent implements OnInit {
     });
   }
   ChitFund() {
-    this.mutualfundService.getMutualFund(this.uid).subscribe(res => {
-      this.CashResponse = res;
-      console.log("responce of getMutualFundByUid service", this.CashResponse);
+    this.chitfundservice.getChitByuid(this.uid).subscribe(res => {
+      this.ChitResponse = res;
+      console.log("responce of getMutualFundByUid service", this.ChitResponse);
       this.totalChitFund = 0;
-      for (let j = 0; j < this.CashResponse.length; j++) {
+      for (let j = 0; j < this.ChitResponse.length; j++) {
         this.totalChitFund =
-          +this.totalChitFund + +this.CashResponse[j].current_value;
+          +this.totalChitFund + +this.ChitResponse[j].current_value;
         console.log("total share price is im my asset", this.totalChitFund);
       }
       this.futureOption();
     });
   }
   futureOption() {
-    this.mutualfundService.getMutualFund(this.uid).subscribe(res => {
+    this.futureoptionservice.getFAOByUid(this.uid).subscribe(res => {
       this.futureOptionResponse = res;
       console.log(
         "responce of getMutualFundByUid service",

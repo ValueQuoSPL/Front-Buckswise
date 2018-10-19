@@ -31,7 +31,7 @@
                         type="number"
                         jhiNumberOnly 
                         id="id" 
-                        name="id" 
+                        name="num" 
                         [(ngModel)]="fao.num" 
                         [ngModelOptions]="{standalone: true}"
                         required
@@ -115,7 +115,8 @@
                 </mat-form-field>&nbsp;&nbsp;
                 <mat-form-field>
                     <input 
-                        matInput 
+                        matInput
+
                         class="full-width"
                         placeholder="Number Of Contracts"
                         type="number"
@@ -153,8 +154,8 @@
                 </mat-form-field>
                 </div>
                 <mat-form-field>
-                    <textarea 
-                        matInput 
+                    <textarea style="width: 80%;"
+                        matInput
                         rows="3" 
                         cols="50" 
                         placeholder="Comment"  
@@ -371,7 +372,7 @@
                     <input type="text" class="form-control" name="notes" id="field_notes" [(ngModel)]="fao.notes" [ngModelOptions]="{standalone: true}"/>
                 </div> -->
                 <mat-form-field>
-                    <textarea 
+                    <textarea style="width: 80%;"
                         matInput 
                         rows="3" 
                         cols="50" 
@@ -384,7 +385,7 @@
                 </mat-form-field>&nbsp;&nbsp;
                 <div class="modal-footer">
                     <button type="submit" mat-button class=" btn btn-outline-primary"
-                    [disabled]="editForm.form.invalid || isSaving"
+                    [disabled]="editForm.form.invalid"
                     (click)="c('Save click')">
                         <span class="fa fa-save"></span>&nbsp;
                         <span>Save</span>

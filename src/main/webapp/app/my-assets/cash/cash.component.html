@@ -28,7 +28,6 @@
                     id="field_cash_source" 
                     name="cashsource" 
                     [(ngModel)]="cashsource"
-                    [ngModelOptions]="{standalone: true}" 
                     required
                 >
                     <mat-option value="Bank">In Bank</mat-option>
@@ -43,7 +42,7 @@
                     <div class="form-group">
                         <mat-form-field>
                             <mat-select placeholder="Account Type" id="accoounttype" name="accoounttype" [(ngModel)]="cash.accoounttype"
-                                [ngModelOptions]="{standalone: true}" required>
+                                        required>
                                 <mat-option value="saving">Saving</mat-option>
                                 <mat-option value="current">Current</mat-option>
                             </mat-select>
@@ -56,8 +55,7 @@
                                 type="text" 
                                 name="bankname" 
                                 id="bankname" 
-                                [(ngModel)]="cash.bankname" 
-                                [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="cash.bankname"
                                 required
                             >
                         </mat-form-field>&nbsp;&nbsp;
@@ -68,8 +66,7 @@
                                 type="text" 
                                 name="accountname" 
                                 id="accountname" 
-                                [(ngModel)]="cash.accountname" 
-                                [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="cash.accountname"
                                 required
                             >
                         </mat-form-field>&nbsp;&nbsp;
@@ -80,13 +77,12 @@
                                 type="text" 
                                 name="amount" 
                                 id="amount" 
-                                [(ngModel)]="cash.amount" 
-                                [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="cash.amount"
                                 required
                             >
                         </mat-form-field>&nbsp;&nbsp;
                         <mat-form-field style="width: 100%;">
-                                <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                                <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes"></textarea>
                         </mat-form-field>
                         <div class="modal-footer">
                             <button type="submit" 
@@ -120,12 +116,11 @@
                                 name="amount" 
                                 id="amount" 
                                 [(ngModel)]="cash.amount" 
-                                [ngModelOptions]="{standalone: true}"
                                 required
                             >
                         </mat-form-field>&nbsp;&nbsp;
                         <mat-form-field style="width: 100%;">
-                                <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                                <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes"></textarea>
                         </mat-form-field>
                         <div class="modal-footer">
                             <button type="submit" mat-button class=" btn btn-outline-primary"
@@ -150,8 +145,7 @@
                                 type="text" 
                                 name="intrestrate" 
                                 id="intrestrate" 
-                                [(ngModel)]="cash.intrestrate" 
-                                [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="cash.intrestrate"
                                 required
                             >
                         </mat-form-field>&nbsp;&nbsp;
@@ -162,8 +156,7 @@
                                     type="text" 
                                     name="handloanname" 
                                     id="handloanname" 
-                                    [(ngModel)]="cash.handloanname" 
-                                    [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="cash.handloanname"
                                     required
                                 >
                             </mat-form-field>&nbsp;&nbsp;
@@ -174,13 +167,12 @@
                                     type="text" 
                                     name="amount" 
                                     id="amount" 
-                                    [(ngModel)]="cash.amount" 
-                                    [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="cash.amount"
                                     required
                                 >
                             </mat-form-field>&nbsp;&nbsp;
                             <mat-form-field style="width: 100%;">
-                                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes"></textarea>
                             </mat-form-field>
                             <div class="modal-footer">
                                 <button type="submit" mat-button class=" btn btn-outline-primary" class="btn btn-primary"
@@ -204,13 +196,12 @@
                                     type="text" 
                                     name="amount" 
                                     id="amount" 
-                                    [(ngModel)]="cash.amount" 
-                                    [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="cash.amount"
                                     required
                                 >
                             </mat-form-field>&nbsp;&nbsp;
                             <mat-form-field style="width: 100%;">
-                                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes" [ngModelOptions]="{standalone: true}"></textarea>
+                                    <textarea matInput rows="3" cols="50" placeholder="Comment"  name="notes" id="notes" [(ngModel)]="cash.notes"></textarea>
                             </mat-form-field>
                             <div class="modal-footer">
                                 <button type="submit" mat-button class=" btn btn-outline-primary"  class="btn btn-primary"

@@ -21,7 +21,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form name="editForm" role="form" novalidate  #editForm="ngForm"> 
+        <form name="editForm" role="form"   #editForm="ngForm"> 
         <!-- <div class="form-group"> -->
                 <!-- <label class="form-control-label" for="field_prop_name">Property Name</label>
                 <input type="text" class="form-control" name="prop_name" id="prop_name" [(ngModel)]="property.prop_name" [ngModelOptions]="{standalone: true}"
@@ -178,7 +178,11 @@
                             />
                         </div> -->
             <div class="modal-footer">
-                <button type="submit" mat-button class="btn btn-outline-primary" [disabled]="editForm.form.invalid || isSaving"
+                <button 
+                type="submit" 
+                mat-button 
+                class="btn btn-outline-primary" 
+                [disabled]="editForm.form.invalid || isSaving"
                 (click)="c('Save click')">
                     <span class="fa fa-save"></span>&nbsp;
                     <span>Save</span>
